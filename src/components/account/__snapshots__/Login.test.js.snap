@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders 1`] = `
+<h1>
+  Login Component
+</h1>
+`;
