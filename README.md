@@ -1,46 +1,40 @@
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
+# Neighborhood Chef
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
+You can find the deployed project at [www.ourneighborhoodchef.com](https://master.d2jw35dcr89i4u.amplifyapp.com/)
 
-# 1️⃣ Title of project goes here
+## Contributors
 
-1️⃣ You can find the deployed project at [Neighborhood Chef](https://master.d2jw35dcr89i4u.amplifyapp.com/)
-
-## 4️⃣ Contributors
-
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                                          [Kyle Richardson](https://github.com/kyle-richardson)                                                           |                                                       [Student 2](https://github.com/)                                                        |                                                      [Student 3](https://github.com/)                                                       |                                                       [Student 4](https://github.com/)                                                        |                                                      [Student 5](https://github.com/)                                                       |
+|                                                          [Kyle Richardson](https://github.com/kyle-richardson)                                                           |                                                       [Paul Edwards](https://github.com/PaulMEdwards)                                                        |                                                      [Aaron Merrifield-Lucier](https://github.com/Aaroneld)                                                       |                                                       [Brennan Neilson](https://github.com/bvneilson)                                                        |                                                      [Patrick Replogle](https://github.com/patrick-replogle)                                                       |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://avatars3.githubusercontent.com/u/52683176?s=400&u=864097615ff093d54d380d2d7d9d36bc0aebf60b&v=4" width = "200" />](https://github.com/kyle-richardson) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) |
-|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/kyle-richardson)                                       |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                            |
+| [<img src="https://avatars3.githubusercontent.com/u/52683176?s=400&u=864097615ff093d54d380d2d7d9d36bc0aebf60b&v=4" width = "200" />](https://github.com/kyle-richardson) | [<img src="https://avatars1.githubusercontent.com/u/153847?s=400&u=9ce092b1023143bff17fd34191c0768a1f8fe5ea&v=4" width = "200" />](https://github.com/PaulMEdwards) | [<img src="https://avatars2.githubusercontent.com/u/52682445?s=400&u=158e754213409df82f96c0f9f9a52821e9c81d1d&v=4" width = "200" />](https://github.com/Aaroneld) | [<img src="https://avatars3.githubusercontent.com/u/12500686?s=400&u=9ab949e147ba9fe8c58fe50a891c3daf8dcd21b4&v=4" width = "200" />](https://github.com/bvneilson) | [<img src="https://avatars2.githubusercontent.com/u/50844285?s=400&u=7ffa88c4c221bf888b1771fec72530ac156d90c6&v=4" width = "200" />](https://github.com/patrick-replogle) |
+|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/kyle-richardson)                                       |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/PaulMEdwards)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Aaroneld)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/bvneilson)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/patrick-replogle)                            |
 |                      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://linkedin.com/in/kyle-m-richardson)                       |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
 
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/217cf613842592864005/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/217cf613842592864005/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/test_coverage)
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/8R1xwujU/neighborhood-chef)
+[Trello Board](https://trello.com/b/8R1xwujU/neighborhood-chef)
 
-1️⃣ [Product Canvas](https://www.notion.so/Release-Canvas-1-c0e04ce1aaa74365ac00241a3f548a46)
+[Product Canvas](https://www.notion.so/Release-Canvas-1-c0e04ce1aaa74365ac00241a3f548a46)
 
-1️⃣ [UX Design files](https://www.figma.com/file/j9n4cIYqv2hLp0bdBGVGt3/Neighborhood-Chef?node-id=0%3A1)
+[UX Design files](https://www.figma.com/file/j9n4cIYqv2hLp0bdBGVGt3/Neighborhood-Chef?node-id=0%3A1)
 
 Neighborhood Chef provides a uniquely intimate approach to social (food) gatherings, allowing for both the creation and attending of culinary events in your neighborhood.
 
-### 4️⃣ Key Features
+### Key Features
 
 - Culinary event creation
 - join/RSVP open events
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
@@ -83,33 +77,11 @@ Neighborhood Chef provides a uniquely intimate approach to social (food) gatheri
 
 # APIs
 
-## 2️⃣ Okta Authentication API
+## Okta Authentication API
 
-## 2️⃣ Payment API here
+  Robust and trusted authentication platform that is easily integrated into React front end as well as NodeJS backend frameworks
 
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
@@ -128,29 +100,23 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 5️⃣ Content Licenses
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
-
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
+ Jest library is sufficient to perform meaningful unit tests for our application, allowing near full test coverage.
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+`yarn install` or `npm install` to install all necessary dependencies locally.
 
 ## Other Scripts
-
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * start - sets up the development environment and starts a server
+    * test - runs tests found within the full application (*.test.js file extensions)
+    * build - creates a 'build' directory with the production build of the app
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
