@@ -7,6 +7,7 @@ import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneO
 import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 import BookOutlinedIcon from "@material-ui/icons/BookOutlined";
 import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,10 @@ const Sidebar = () => {
       <div>
         <SmsOutlinedIcon />
         <Link to="/messages">Messages</Link>
+      </div>
+      <div>
+        <SettingsOutlinedIcon />
+        <Link to="/settings">Settings</Link>
       </div>
     </nav>
   );

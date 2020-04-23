@@ -12,7 +12,6 @@ import Dashboard from "./components/dashboard/Dashboard";
 function App() {
   return (
     <div className="App">
-      <header> Neighborhood Chef</header>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-event" element={<CreateEvent />} />

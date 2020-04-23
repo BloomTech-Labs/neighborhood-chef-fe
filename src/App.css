@@ -36,8 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-main {
+  display: flex;
+  justify-content: space-between;
+}
 
-.sidebar-component {
+.sidebar-container {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }

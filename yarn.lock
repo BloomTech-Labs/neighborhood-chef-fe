@@ -1061,6 +1061,26 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconify/icons-ic@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ic/-/icons-ic-1.0.11.tgz#73cd387ae1da39c38134fdabc96db44e48d37268"
+  integrity sha512-9zWp0PTlPNtYnOQjHa8R22UA9U/Lt4j3D+ojD5NONkvbprCEr056iKWiuBJnyrIvLUa7FxKK2K8dbq7CuXm4rA==
+
+"@iconify/icons-mdi@^1.0.94":
+  version "1.0.94"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-mdi/-/icons-mdi-1.0.94.tgz#15bd91dc24117cc69f6c5b0b85989bd3481a94ad"
+  integrity sha512-GPXJ+VHh1YaBcfrxi5ALZqPLaNCo2xKbqY2SxuPSQg3vfwD06UlpmSwTJmZv32FEkjqUzyeATMUBnU8w3FmLzg==
+
+"@iconify/icons-whh@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-whh/-/icons-whh-1.0.3.tgz#cd313d534ab6d28a87fbd0b67d8e47ce87fe8ba9"
+  integrity sha512-g0bbbxmr33g6bv4Kmb6NXltq5fe5lV/OHmHQ6OBHoeWCEh3VsGAPk5+VngJE+ykMc3LPczk5SBK9gn0G/Ub35g==
+
+"@iconify/react@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.3.tgz#ebe4d3e5f5dea23cd6a9634acd7a0a25c7414a59"
+  integrity sha512-ReZNJyr89AfED6XZIXkhsJiNv2taT3j1cTo1HVPHMsrKOz6gAYdXtD2kDWF6+GVoFUxpmnO0fMcA6yCyTf6Tow==
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
