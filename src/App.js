@@ -11,7 +11,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app-container">
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-event" element={<CreateEvent />} />

@@ -1,8 +1,19 @@
 import React from "react";
-import Sidebar from "./Sidebar.js";
-import renderer from "react-test-renderer";
+import Sidebar from "./Sidebar";
+import { render } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom/extend-expect";
 
-it("Register component renders", () => {
-  const SidebarComponent = renderer.create(<Sidebar />).toJSON();
-  expect(SidebarComponent).toMatchSnapshot();
+describe("Test sidebar static properties", () => {
+  let SidebarComponent;
+  beforeEach(() => {
+    SidebarComponent = render(
+      <BrowserRouter>
+        <Sidebar />
+      </BrowserRouter>
+    );
+  });
+  test.only("Sidebar contains text 'calendar'", () => {
+    expect(SidebarComponent.getByText(/hello/i));
+  });
 });
