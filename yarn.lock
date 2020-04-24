@@ -1061,10 +1061,25 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconify/icons-ant-design@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ant-design/-/icons-ant-design-1.0.8.tgz#7cea4ea3a0467096dcba2ba050c72fe14fefe04f"
+  integrity sha512-tbmrVdJfIwgQuEFiV2aqMwgbjYT24ROLFoy6cXv+ZVL8KpkfKOPyUCs324w3EBn9NiL9M+AKNVSNbcydJq9jNg==
+
+"@iconify/icons-bi@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-bi/-/icons-bi-1.0.0.tgz#a0d269b32f8e4ff29c28b5b861743a7ced330099"
+  integrity sha512-7BEdC14qEgO3Bhqh+SnCI+wb/nlJT2V3/4My9QNjxW80ih8qq0uDufwAuaKWPK60jiv7jnWNlXwUZKbu5pnT3w==
+
 "@iconify/icons-ic@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@iconify/icons-ic/-/icons-ic-1.0.11.tgz#73cd387ae1da39c38134fdabc96db44e48d37268"
   integrity sha512-9zWp0PTlPNtYnOQjHa8R22UA9U/Lt4j3D+ojD5NONkvbprCEr056iKWiuBJnyrIvLUa7FxKK2K8dbq7CuXm4rA==
+
+"@iconify/icons-jam@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-jam/-/icons-jam-1.0.5.tgz#fc3fac1a6163cefb68a9bd31531df22bf7825416"
+  integrity sha512-S48G7bmEzj+FCuYtq4syreiPB181T92gyMZ0z1mQedf/5Gg+GfLl0Jtuldi/rmJKEkRbftZX9RuValUFpnLTrQ==
 
 "@iconify/icons-mdi@^1.0.94":
   version "1.0.94"
