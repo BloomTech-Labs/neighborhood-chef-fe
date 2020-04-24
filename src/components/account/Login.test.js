@@ -1,8 +1,15 @@
-import React from 'react';
-import Login from './Login.js';
-import renderer from 'react-test-renderer';
+import React from "react";
+import Login from "./Login.js";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
-it('Login component renders', () => {
-    const LoginComponent = renderer.create(<Login />).toJSON();
-    expect(LoginComponent).toMatchSnapshot();
+describe("Test login static properties", () => {
+  let LoginComponent;
+  beforeEach(() => {
+    LoginComponent = render(<Login />);
+  });
+
+  test("Login component renders", () => {
+    expect(LoginComponent.getByText(/Login Component/i));
+  });
 });
