@@ -1,13 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import HouseOutlinedIcon from "@material-ui/icons/HouseOutlined";
-import EventOutlinedIcon from "@material-ui/icons/EventOutlined";
-import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
-import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
-import BookOutlinedIcon from "@material-ui/icons/BookOutlined";
-import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { Icon, InlineIcon } from "@iconify/react";
 import houseDoor from "@iconify/icons-bi/house-door";
 import calendarOutlined from "@iconify/icons-ant-design/calendar-outlined";
