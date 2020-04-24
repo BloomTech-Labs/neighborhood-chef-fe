@@ -14,6 +14,6 @@ describe("Test sidebar static properties", () => {
     );
   });
   test.only("Sidebar contains text 'calendar'", () => {
-    expect(SidebarComponent.getByText(/hello/i));
+    expect(SidebarComponent.getByText(/calendar/i));
   });
 });

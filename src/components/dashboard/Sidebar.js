@@ -38,7 +38,6 @@ const Sidebar = ({ active }) => {
   const classes = useStyles();
   return (
     <>
-      <p>Hello</p>
       <nav className="sidebar-container">
         <Button className={classes.root}>
           <span style={{ marginRight: "5px" }}>
