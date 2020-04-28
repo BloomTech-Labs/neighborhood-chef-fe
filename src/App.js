@@ -2,9 +2,7 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-//import example for redux hook usage
-import ReduxHooksExample from "./components/ReduxHooksExample";
-
+import Register from "./components/account/Register.js";
 import CreateEvent from "./components/events/CreateEvent";
 import ViewEvents from "./components/events/ViewEvents";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -12,14 +10,13 @@ import Dashboard from "./components/dashboard/Dashboard";
 function App() {
   return (
     <div className="app-container">
+      <header> Neighborhood Chef</header>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/view-events" element={<ViewEvents />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-
-      {/* redux hook example component below */}
-      {/* <ReduxHooksExample /> */}
     </div>
   );
 }

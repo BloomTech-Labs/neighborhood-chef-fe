@@ -1,8 +1,15 @@
-import React from 'react';
-import Register from './Register.js';
-import renderer from 'react-test-renderer';
+import React from "react";
+import Register from "./Register.js";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
-it('Register component renders', () => {
-    const RegisterComponent = renderer.create(<Register />).toJSON();
-    expect(RegisterComponent).toMatchSnapshot();
+describe("Test register static properties", () => {
+  let RegisterComponent;
+  beforeEach(() => {
+    RegisterComponent = render(<Register />);
+  });
+
+  test("Register component renders", () => {
+    expect(RegisterComponent.getByText(/First Name/i));
+  });
 });

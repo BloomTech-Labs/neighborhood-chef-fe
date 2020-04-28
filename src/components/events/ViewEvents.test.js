@@ -1,8 +1,15 @@
-import React from 'react';
-import ViewEvents from './ViewEvents.js';
-import renderer from 'react-test-renderer';
+import React from "react";
+import ViewEvents from "./ViewEvents.js";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
-it('ViewEvents component renders', () => {
-    const ViewEventsComponent = renderer.create(<ViewEvents />).toJSON();
-    expect(ViewEventsComponent).toMatchSnapshot();
+describe("Test view event static properties", () => {
+  let ViewEventsComponent;
+  beforeEach(() => {
+    ViewEventsComponent = render(<ViewEvents />);
+  });
+
+  test("ViewEvents component renders", () => {
+    expect(ViewEventsComponent.getByText(/ViewEvents Component/i));
+  });
 });
