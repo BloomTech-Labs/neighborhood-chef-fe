@@ -21,23 +21,27 @@ const useStyles = makeStyles({
   root: {
     textTransform: "none",
     margin: "3px",
-    background: "white",
     border: 0,
     borderRadius: 3,
-    opacity: 0.5,
-    color: "black",
     padding: "5px 20px",
+  },
+  notActive: {
+    background: "white",
+    color: "black",
+    opacity: 0.5,
     "&:hover": {
       background: "lightgreen",
-    },
-    "&:active": {
-      background: "#58D573",
-      color: "white",
     },
   },
   active: {
     background: "#58D573",
     color: "white",
+    "& a": {
+      color: "white",
+    },
+    "&:hover": {
+      background: "#58D573",
+    },
   },
 });
 
@@ -55,7 +59,9 @@ const Sidebar = ({ active }) => {
         <nav className="nav-container">
           <Button
             className={
-              active === "neighborhood" ? classes.active : classes.root
+              active === "neighborhood"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
             }
           >
             <span style={{ marginRight: "5px" }}>
@@ -64,7 +70,11 @@ const Sidebar = ({ active }) => {
             <Link to="/view-events">My Neighborhood</Link>
           </Button>
           <Button
-            className={active === "calendar" ? classes.active : classes.root}
+            className={
+              active === "calendar"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
+            }
           >
             <span style={{ marginRight: "5px" }}>
               <Icon height="20" icon={calendarOutlined} />
@@ -73,7 +83,9 @@ const Sidebar = ({ active }) => {
           </Button>
           <Button
             className={
-              active === "notifications" ? classes.active : classes.root
+              active === "notifications"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
             }
           >
             <span style={{ marginRight: "5px" }}>
@@ -82,7 +94,11 @@ const Sidebar = ({ active }) => {
             <Link to="/notifications">Notifications</Link>
           </Button>
           <Button
-            className={active === "createEvent" ? classes.active : classes.root}
+            className={
+              active === "createEvent"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
+            }
           >
             <span style={{ marginRight: "5px" }}>
               <Icon height="20" icon={calendarPlus} />
@@ -90,7 +106,11 @@ const Sidebar = ({ active }) => {
             <Link to="/create-event">Create Event</Link>
           </Button>
           <Button
-            className={active === "recipes" ? classes.active : classes.root}
+            className={
+              active === "recipes"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
+            }
           >
             <span style={{ marginRight: "5px" }}>
               <Icon height="20" icon={bxFoodMenu} />
@@ -98,7 +118,11 @@ const Sidebar = ({ active }) => {
             <Link to="/shared-recipes">Shared Recipes</Link>
           </Button>
           <Button
-            className={active === "messages" ? classes.active : classes.root}
+            className={
+              active === "messages"
+                ? `${classes.root} ${classes.active}`
+                : `${classes.root} ${classes.notActive}`
+            }
           >
             <span style={{ marginRight: "5px" }}>
               <Icon height="20" icon={bxMessageSquareDots} />
@@ -109,7 +133,11 @@ const Sidebar = ({ active }) => {
       </div>
       <div className="settings-button">
         <Button
-          className={active === "settings" ? classes.active : classes.root}
+          className={
+            active === "settings"
+              ? `${classes.root} ${classes.active}`
+              : `${classes.root} ${classes.notActive}`
+          }
         >
           <span style={{ marginRight: "5px" }}>
             <Icon height="20" icon={outlineSettings} />
