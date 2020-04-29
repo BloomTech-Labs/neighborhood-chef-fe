@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./utilities/reducers";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
-import { BrowserRouter } from "react-router-dom";
 // import * as serviceWorker from "./serviceWorker";
 
 const logger = createLogger();

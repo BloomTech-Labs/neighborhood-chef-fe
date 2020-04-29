@@ -7,7 +7,7 @@ const CreateEvent = () => {
     <div>
       <Header />
       <h1>CreateEvent Component</h1>
-      <Sidebar active="createevent" />
+      <Sidebar active="createEvent" />
     </div>
   );
 };
