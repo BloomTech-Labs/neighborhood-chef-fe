@@ -19,7 +19,7 @@ import { UPDATE_EVENT } from "./events/event-mutations.js";
 
 /* 
 All graphql queries and mutations require sending data from the front-end to the back-end because at 
-the minimum you need to tell the server what shape you want the data to look like, it is common practice 
+the minimum you need to tell the server what shape you want the data to look like, so it is common practice 
 to use post requests for everything.
 */
 
