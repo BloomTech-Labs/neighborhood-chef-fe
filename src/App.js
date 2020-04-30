@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 import Register from "./components/account/Register.js";
 import CreateEvent from "./components/events/CreateEvent";
 import ViewEvents from "./components/events/ViewEvents";
