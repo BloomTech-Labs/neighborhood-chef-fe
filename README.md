@@ -13,6 +13,7 @@ You can find the deployed project at [www.ourneighborhoodchef.com](https://ourne
 <br>
 <br>
 
+![build](https://github.com/Lambda-School-Labs/neighborhood-chef-fe/workflows/build/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/217cf613842592864005/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/217cf613842592864005/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/test_coverage)
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
