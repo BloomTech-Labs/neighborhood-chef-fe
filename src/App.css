@@ -32,10 +32,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.nav-container > * {
-  padding: 10px;
+  text-align: left;
 }
 
 .sidebar-container {

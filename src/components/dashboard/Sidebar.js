@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     textTransform: "none",
     margin: "3px",
     border: 0,
-    borderRadius: 3,
+    borderRadius: 6,
     padding: "5px 20px",
   },
   notActive: {

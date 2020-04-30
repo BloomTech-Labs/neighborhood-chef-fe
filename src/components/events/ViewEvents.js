@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import Sidebar from "../dashboard/Sidebar";
 
 const ViewEvents = () => {
   return (
-    <h1>ViewEvents Component</h1>
-  )
-}
+    <div>
+      <Sidebar active="viewEvents" />
+      <p>ViewEvents Component</p>
+    </div>
+  );
+};
 
 export default ViewEvents;
