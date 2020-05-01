@@ -1,8 +1,15 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, INCREMENT } from "../actions";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  INCREMENT,
+  CHANGE_PAGE,
+} from "../actions";
 
 const initialState = {
   loginCredentials: {},
   counter: 0,
+  page: 1,
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -28,6 +35,12 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         counter: state.counter + 1,
+      };
+
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        page: state.page === 1 ? 2 : 1,
       };
     default:
       return {
