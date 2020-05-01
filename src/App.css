@@ -22,7 +22,7 @@ a {
   margin-left: 5px;
   padding-top: 10px;
 }
-.dashboard-main {
+.component-main {
   display: flex;
   justify-content: space-between;
 }
@@ -37,8 +37,7 @@ a {
 
 .sidebar-container {
   padding-right: 20px;
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

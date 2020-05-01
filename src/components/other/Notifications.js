@@ -3,7 +3,7 @@ import Sidebar from "../dashboard/Sidebar";
 
 const Notifications = () => {
   return (
-    <div>
+    <div className="component-main">
       <Sidebar active="notifications" />
       <p>Notifications Component</p>
     </div>

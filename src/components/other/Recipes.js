@@ -3,7 +3,7 @@ import Sidebar from "../dashboard/Sidebar";
 
 const Recipes = () => {
   return (
-    <div>
+    <div className="component-main">
       <Sidebar active="recipes" />
       <p>Recipes Component</p>
     </div>

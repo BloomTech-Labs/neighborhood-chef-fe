@@ -3,7 +3,7 @@ import Sidebar from "../dashboard/Sidebar";
 
 const CreateEvent = () => {
   return (
-    <div>
+    <div className="component-main">
       <Sidebar active="create-event" />
       <p>CreateEvent Component</p>
     </div>
