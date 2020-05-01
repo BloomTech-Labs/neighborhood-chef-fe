@@ -4,7 +4,7 @@ import Sidebar from "../dashboard/Sidebar";
 const CreateEvent = () => {
   return (
     <div>
-      <Sidebar active="createEvent" />
+      <Sidebar active="create-event" />
       <p>CreateEvent Component</p>
     </div>
   );
