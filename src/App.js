@@ -17,7 +17,6 @@ import Messages from "./components/other/Messages";
 function App() {
   return (
     <div className="app-container">
-      <h1>Neighborhood Chef</h1>
       <Routes>
         <Route path="/">{/* <Redirect to="/dashboard" /> */}</Route>
         <Route path="/dashboard" element={<Dashboard />} />

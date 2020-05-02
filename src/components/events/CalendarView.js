@@ -3,13 +3,11 @@ import { useSelector } from "react-redux";
 import CalendarRow from "./CalendarRow";
 
 const CalendarView = () => {
-  const addedEvents = useSelector((state) => state.addedEvents);
+  const eventList = useSelector((state) => state.eventList);
   return (
     <div className="calendar-view-main">
-      {!!addedEvents &&
-        addedEvents.map((event) => (
-          <CalendarRow {...event} key={event.title} />
-        ))}
+      {!!eventList &&
+        eventList.map((event) => <CalendarRow {...event} key={event.id} />)}
     </div>
   );
 };

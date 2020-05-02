@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     color: "black",
     opacity: 0.5,
     "&:hover": {
-      background: "lightgreen",
+      background: "rgba(88, 212, 115, 0.3);",
     },
   },
   active: {

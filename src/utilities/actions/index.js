@@ -4,6 +4,7 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const INCREMENT = "INCREMENT";
+export const MAKEACTIVE = "MAKEACTIVE";
 
 //action using thunk middleware, NOT hooks
 export const login = (event, credentials) => (dispatch) => {
@@ -24,3 +25,11 @@ export const login = (event, credentials) => (dispatch) => {
 export const increment = () => ({
   type: INCREMENT,
 });
+
+export const makeActive = (id) => {
+  console.log(id);
+  return {
+    type: MAKEACTIVE,
+    payload: id,
+  };
+};
