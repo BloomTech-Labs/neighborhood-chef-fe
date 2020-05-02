@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import Sidebar from "../dashboard/Sidebar";
 
 const CreateEvent = () => {
   return (
-    <h1>CreateEvent Component</h1>
-  )
-}
+    <div className="component-main">
+      <Sidebar active="create-event" />
+      <p>CreateEvent Component</p>
+    </div>
+  );
+};
 
 export default CreateEvent;

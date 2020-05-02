@@ -1,13 +1,13 @@
 import React from "react";
 import Sidebar from "../dashboard/Sidebar";
 
-const ViewEvents = () => {
+const Notifications = () => {
   return (
     <div className="component-main">
-      <Sidebar active="view-events" />
-      <p>ViewEvents Component</p>
+      <Sidebar active="notifications" />
+      <p>Notifications Component</p>
     </div>
   );
 };
 
-export default ViewEvents;
+export default Notifications;
