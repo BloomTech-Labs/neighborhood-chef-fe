@@ -38,7 +38,7 @@ const Register = () => {
           <Form className={classes.registerForm}>
             <h1>Sign up below</h1>
             {currentPage === 1 && <AuthFields />}
-            {currentPage === 2 && <ProfileFields />}
+            {currentPage === 2 && <ProfileFields submitting={isSubmitting} />}
           </Form>
         )}
       </Formik>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
+import { Button } from "@material-ui/core";
 
 const ProfileFields = (props) => {
   return (
@@ -41,9 +42,14 @@ const ProfileFields = (props) => {
         <Field type="text" name="photo" />
         <ErrorMessage name="photo" component="div" />
       </label>
-      <button type="submit" disabled={props.submitting}>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        disabled={props.submitting}
+      >
         Submit
-      </button>
+      </Button>
     </>
   );
 };
