@@ -42,3 +42,15 @@ a {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.calendar-view-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

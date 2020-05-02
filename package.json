@@ -40,7 +40,8 @@
       "**/*.js",
       "!**/node_modules/**",
       "!**/vendor/**",
-      "!**/__tests__/**"
+      "!**/__tests__/**",
+      "!index.js"
     ]
   },
   "eslintConfig": {

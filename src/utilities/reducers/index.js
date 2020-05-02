@@ -3,6 +3,20 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, INCREMENT } from "../actions";
 const initialState = {
   loginCredentials: {},
   counter: 0,
+  addedEvents: [
+    {
+      date: "05/06/2020",
+      time: "5:30pm",
+      title: "Mendez BBQ",
+      status: "going",
+    },
+    {
+      date: "05/12/2020",
+      time: "11:30am",
+      title: "Picnic with kids",
+      status: "maybe",
+    },
+  ],
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
