@@ -6,7 +6,6 @@ const Header = () => {
   return (
     <div className="header-container">
       <div>
-        <h1>Header Component</h1>
         <Icon width="2em" icon={roundAccountCircle} />
       </div>
     </div>

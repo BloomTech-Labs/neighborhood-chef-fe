@@ -9,6 +9,7 @@ describe("Test sidebar static properties", () => {
     HeaderComponent = render(<Header />);
   });
   test("Header contains text 'header component", () => {
-    expect(HeaderComponent.getByText(/header component/i));
+    const firstDiv = document.querySelector(".header-container");
+    expect(firstDiv.toBeInDocument);
   });
 });

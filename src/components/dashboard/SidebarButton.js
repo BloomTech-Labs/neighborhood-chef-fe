@@ -13,9 +13,10 @@ const useStyles = makeStyles({
   root: {
     textTransform: "none",
     margin: "3px",
+    marginBottom: "8px",
     border: 0,
     borderRadius: 6,
-    padding: "5px 20px",
+    padding: "8px 20px",
   },
   notActive: {
     background: "white",

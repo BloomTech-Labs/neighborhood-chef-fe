@@ -17,14 +17,14 @@ const CalendarRow = ({ id, title, date, time, status }) => {
       className={`calendar-row ${activeEvent === id && "calendar-row-active"}`}
       onClick={() => dispatch(makeActive(id))}
     >
-      <div style={{ width: "25%" }}>
+      <div style={{ width: "15%" }}>
         <div style={{ opacity: ".5" }}>{getWeekday}</div>
         <div style={{ fontSize: "3rem" }}>{getDay}</div>
       </div>
       <div
         style={{
           borderLeft: "1px solid rgba(0,0,0,.1)",
-          paddingLeft: "10px",
+          paddingLeft: "20px",
           width: "65%",
         }}
       >
@@ -41,7 +41,7 @@ const CalendarRow = ({ id, title, date, time, status }) => {
           {status}
         </div>
       </div>
-      <div style={{ opacity: ".3", width: "10%" }}>{time}</div>
+      <div style={{ opacity: ".3", width: "20%" }}>{time}</div>
     </div>
   );
 };
