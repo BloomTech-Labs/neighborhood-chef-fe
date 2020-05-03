@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
-import {
-  Routes,
-  Route,
-  /*Redirect*/
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Register from "./components/account/Register.js";
 import CreateEvent from "./components/events/CreateEvent";
 import ViewEvents from "./components/events/ViewEvents";
@@ -18,7 +14,8 @@ function App() {
   return (
     <div className="app-container">
       <Routes>
-        <Route path="/">{/* <Redirect to="/dashboard" /> */}</Route>
+        {/*redirect depricated  in react router v6. need to use server side redirect most likely*/}
+        <Route path="/" element={<Dashboard />} />{" "}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/view-events" element={<ViewEvents />} />

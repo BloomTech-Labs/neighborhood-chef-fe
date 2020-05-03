@@ -1,37 +1,26 @@
-import React, { useState } from "react";
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setMonth } from "../../utilities/actions";
 
 const MonthPicker = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const selectedMonth = useSelector((state) => state.selectedMonth);
+  console.log(selectedMonth);
+  const formattedMonth = selectedMonth.toLocaleDateString("en-us", {
+    month: "short",
+    year: "numeric",
+  });
+  const dispatch = useDispatch();
   return (
     <div className="month-picker-container">
       <div
-        onClick={() =>
-          setCurrentMonth(currentMonth === 0 ? 11 : currentMonth - 1)
-        }
+        onClick={() => dispatch(setMonth("previous"))}
         style={{ cursor: "pointer" }}
       >
         {"<"}
       </div>
-      <div>{months[currentMonth]}</div>
+      <div>{formattedMonth}</div>
       <div
-        onClick={() =>
-          setCurrentMonth(currentMonth === 11 ? 0 : currentMonth + 1)
-        }
+        onClick={() => dispatch(setMonth("next"))}
         style={{ cursor: "pointer" }}
       >
         {">"}

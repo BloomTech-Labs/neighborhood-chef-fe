@@ -4,12 +4,17 @@ import {
   LOGIN_FAIL,
   INCREMENT,
   MAKEACTIVE,
+  CHANGE_MONTH,
   RSVP,
 } from "../actions";
+
+const initialDate = new Date();
 
 const initialState = {
   loginCredentials: {},
   counter: 0,
+  activeCalendarEvent: null,
+  selectedMonth: initialDate,
 
   //test data below.
   eventList: [
@@ -58,7 +63,6 @@ const initialState = {
       status: "Not Going",
     },
   ],
-  activeCalendarEvent: null,
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -89,6 +93,23 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         activeCalendarEvent: payload,
+      };
+    case CHANGE_MONTH:
+      const tempDate = new Date(state.selectedMonth);
+      const month = tempDate.getMonth();
+      const year = tempDate.getUTCFullYear();
+      if (payload === "previous") {
+        tempDate.setMonth(month === 0 ? 11 : month - 1);
+        if (month === 0) tempDate.setFullYear(year - 1);
+      } else {
+        tempDate.setMonth(month === 11 ? 0 : month + 1);
+        if (month === 11) tempDate.setFullYear(year + 1);
+      }
+
+      console.log(month, year, tempDate);
+      return {
+        ...state,
+        selectedMonth: tempDate,
       };
     case RSVP:
       return {
