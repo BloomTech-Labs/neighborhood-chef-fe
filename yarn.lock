@@ -1076,6 +1076,11 @@
   resolved "https://registry.yarnpkg.com/@iconify/icons-bx/-/icons-bx-1.0.3.tgz#490206b3ded7f813be654b551c64548b08d7ebd6"
   integrity sha512-CgqM+XcypQDRCmuTZj3SlbZUGr0uK69vFc7GeBfJUKBZW/yelZ35I6ot1tVpkF/UrQebpRGRDmOFGRp/3z/SnQ==
 
+"@iconify/icons-flat-color-icons@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-flat-color-icons/-/icons-flat-color-icons-1.0.5.tgz#53af638061648e97111ffcfa22906878086d4cec"
+  integrity sha512-zgNK4Wnzynbihb6QOLEf9uAWm7bAc/IzrUOi+Q8EFF8JJX/F/m/qqyWm8EFzp0wVAU6Qgu6I5IBjjDXTyYWkrw==
+
 "@iconify/icons-ic@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@iconify/icons-ic/-/icons-ic-1.0.11.tgz#73cd387ae1da39c38134fdabc96db44e48d37268"
