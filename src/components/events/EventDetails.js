@@ -23,7 +23,6 @@ const EventDetails = () => {
               created by {event.creator}
             </p>
           </div>
-
           <p style={{ opacity: ".3" }}> {event.description}</p>
           <div>Participants (have indicated "Going")</div>
           <div>
@@ -82,7 +81,7 @@ const EventDetails = () => {
         </div>
       ) : (
         <div>
-          <h3>Select an event to view the details here.</h3>
+          <h3>Select an event from the calendar to view the details here.</h3>
         </div>
       )}
     </div>
