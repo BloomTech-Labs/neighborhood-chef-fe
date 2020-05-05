@@ -14,6 +14,11 @@ a {
   margin: 1%;
 }
 
+.login-container {
+  margin: auto;
+  text-align: center;
+  padding-top: 10%;
+}
 .left-side-header {
   display: flex;
   align-items: center;
