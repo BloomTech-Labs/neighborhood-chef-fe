@@ -1118,6 +1118,16 @@
   resolved "https://registry.yarnpkg.com/@iconify/icons-mdi/-/icons-mdi-1.0.100.tgz#52ca805e45b25d94d21253dd657c25ded05cbbba"
   integrity sha512-KMUU/2vc6Nw6tzawsxFWVe2YgfM/ajup0NKvvrQOLgiLidSRm73cfQSjz0jW6+1H130G/wep2BlzMt8hRVCFfg==
 
+"@iconify/icons-uil@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-uil/-/icons-uil-1.0.11.tgz#4a37e48447c6ce0d94441f0367c45fe56d2628f7"
+  integrity sha512-ShwIa/1l8dYOcKTuwdpHpjiaWhPxqWmMVxuxpsTJQNtBJzSe62lTE+AwxOnt8dDwEAQfn/ezHiis+mKuikuINA==
+
+"@iconify/icons-vs@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-vs/-/icons-vs-1.0.3.tgz#f120a3a870fd94f2ed425f22446fa5f6afa58d14"
+  integrity sha512-UiUGMkI+AzHkvUXs1webliLspPZlq55AZufEJbjQk8fol2mOz/O1ibmD4X0SQcC17nT2wBKEq8/ytoQ1oqUbZw==
+
 "@iconify/icons-whh@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@iconify/icons-whh/-/icons-whh-1.0.3.tgz#cd313d534ab6d28a87fbd0b67d8e47ce87fe8ba9"

@@ -2,8 +2,16 @@ import React from 'react';
 import moment from 'moment';
 
 import Hashtag from './Hashtag.js';
+import Modifier from './Modifier.js';
 
-const FormPageThree = ({ setPage, values, hashtags, removeHashtag }) => {
+const FormPageThree = ({
+  setPage,
+  values,
+  hashtags,
+  removeHashtag,
+  modifiers,
+  setModifiers,
+}) => {
   return (
     <div>
       <h3 style={{ fontSize: '1.8rem', fontWeight: '500', color: '#1A0F2C' }}>
@@ -42,19 +50,36 @@ const FormPageThree = ({ setPage, values, hashtags, removeHashtag }) => {
         </div>
       </div>
       <div>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-          <p>Hashtags</p>
-          {hashtags.map((hashtag) => {
-            return (
-              <Hashtag
-                key={hashtag.id}
-                hashtag={hashtag}
-                removeModifier={removeHashtag}
-              />
-            );
-          })}
-        </div>
-        <div>hashtags</div>
+        {hashtags.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <p>Hashtags</p>
+            {hashtags.map((hashtag) => {
+              return (
+                <Hashtag
+                  key={hashtag.id}
+                  hashtag={hashtag}
+                  removeModifier={removeHashtag}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {modifiers.length > 0 && (
+          <div>
+            <p>Modifiers</p>
+            {modifiers.map((modifier) => {
+              return (
+                <Modifier
+                  key={modifier.id}
+                  modifier={modifier}
+                  modifiers={modifiers}
+                  setModifiers={setModifiers}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
       <div className="createFormButtonDiv">
         <button className="createRightBtn" onClick={() => setPage(2)}>

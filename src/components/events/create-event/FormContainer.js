@@ -26,8 +26,11 @@ const initialState = {
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [hashtags, setHashtags] = useState([]);
+  const [modifiers, setModifiers] = useState([]);
+
+  console.log(modifiers);
 
   const removeHashtag = (id) => {
     setHashtags(hashtags.filter((tag) => tag.id !== id));
@@ -38,11 +41,12 @@ const FormContainer = () => {
       <Formik
         initialValues={initialState}
         validationSchema={validationSchema}
-        onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
+        onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
             user_id: 'insert user id',
             Hashtags: JSON.stringify({ modifiers: [...hashtags] }),
+            Modifiers: JSON.stringify({ modifiers: [...modifiers] }),
             Longitude: 'insert Longitude',
             Latitude: 'insert Latitude',
           };
@@ -57,8 +61,6 @@ const FormContainer = () => {
           handleChange,
           values,
           errors,
-          isSubmitting,
-          status,
           resetForm,
         }) => (
           <div className="createEventContainer">
@@ -87,6 +89,8 @@ const FormContainer = () => {
                     hashtags={hashtags}
                     setHashtags={setHashtags}
                     removeHashtag={removeHashtag}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
                   />
                 </>
               )}
@@ -100,6 +104,8 @@ const FormContainer = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                     removeHashtag={removeHashtag}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
                   />
                 </>
               )}

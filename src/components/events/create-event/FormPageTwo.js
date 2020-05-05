@@ -1,19 +1,32 @@
 import React from 'react';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import PublishIcon from '@material-ui/icons/Publish';
 
+import strollerIcon from '@iconify/icons-vs/stroller';
+import baselineOutdoorGrill from '@iconify/icons-ic/baseline-outdoor-grill';
+import bottleWine from '@iconify/icons-mdi/bottle-wine';
+import dogIcon from '@iconify/icons-whh/dog';
+import icon18Plus from '@iconify/icons-uil/18-plus';
+import foodApple from '@iconify/icons-mdi/food-apple';
+
+import Modifier from './Modifier.js';
 import AddHashtag from './AddHashtag.js';
+
+const modifierData = [
+  { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
+  { id: 2, title: 'Kid-Friendly', icon: strollerIcon, active: false },
+  { id: 3, title: 'Alcohol Accepted', icon: bottleWine, active: false },
+  { id: 4, title: '18+ Event', icon: icon18Plus, active: false },
+  { id: 5, title: 'Pet-Friendly', icon: dogIcon, active: false },
+  { id: 6, title: 'Vegetarian', icon: foodApple, active: false },
+];
 
 const FormPageTwo = ({
   hashtags,
   setHashtags,
   removeHashtag,
-  values,
-  handleChange,
-  errors,
-  touched,
   setPage,
+  modifiers,
+  setModifiers,
 }) => {
   return (
     <>
@@ -60,6 +73,18 @@ const FormPageTwo = ({
           >
             Pick modifiers for your event.
           </h5>
+          <div style={{ display: 'flex', width: '100%', flexFlow: 'row wrap' }}>
+            {modifierData.map((modifier) => {
+              return (
+                <Modifier
+                  key={modifier.id}
+                  modifier={modifier}
+                  modifiers={modifiers}
+                  setModifiers={setModifiers}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
 
