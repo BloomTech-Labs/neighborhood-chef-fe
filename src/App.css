@@ -42,3 +42,82 @@ a {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.calendar-view-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-row {
+  background: white;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calendar-row-active {
+  clip-path: polygon(92% 0, 100% 46%, 100% 54%, 92% 100%, 0 100%, 0% 0%);
+  background: rgba(88, 212, 115, 0.1);
+}
+
+.month-picker-container {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.middle-calendar {
+  width: 35%;
+  margin-right: 10%;
+}
+
+.right-side-calendar {
+  width: 30%;
+}
+
+.event-details-container {
+  background: #f2f2f2;
+  height: 90%;
+  margin: 10px;
+  padding: 20px 50px;
+  border-radius: 10px;
+}
+
+.single-event {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.header-container {
+  text-align: right;
+  margin: 10px 20px 20px auto;
+}
+
+.rsvp-buttons {
+  height: 60px;
+  width: 60px;
+  border-radius: 180px;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+  border: none;
+  opacity: 0.5;
+}
+
+.rsvp-active {
+  border: 1px solid black;
+  opacity: 1;
+}

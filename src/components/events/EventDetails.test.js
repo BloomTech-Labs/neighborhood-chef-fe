@@ -1,29 +1,30 @@
 import React from "react";
-import ViewEvents from "./ViewEvents.js";
+import EventDetails from "./EventDetails.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../utilities/reducers";
 import thunk from "redux-thunk";
 
+import "@testing-library/jest-dom/extend-expect";
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test view event static properties", () => {
-  let ViewEventsComponent;
+describe("Test EventDetails static properties", () => {
+  let EventDetailsComponent;
   beforeEach(() => {
-    ViewEventsComponent = render(
+    EventDetailsComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <ViewEvents />
+          <EventDetails />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("ViewEvents component renders", () => {
-    const firstDiv = document.querySelector(".middle-calendar");
+  test("EventDetails component renders", () => {
+    const firstDiv = document.querySelector(".event-details-container");
     expect(firstDiv.toBeInDocument);
   });
 });

@@ -13,16 +13,17 @@ const useStyles = makeStyles({
   root: {
     textTransform: "none",
     margin: "3px",
+    marginBottom: "8px",
     border: 0,
     borderRadius: 6,
-    padding: "5px 20px",
+    padding: "8px 20px",
   },
   notActive: {
     background: "white",
     color: "black",
     opacity: 0.5,
     "&:hover": {
-      background: "lightgreen",
+      background: "rgba(88, 212, 115, 0.3);",
     },
   },
   active: {

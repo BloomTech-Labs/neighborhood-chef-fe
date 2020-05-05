@@ -8,7 +8,8 @@ describe("Test sidebar static properties", () => {
   beforeEach(() => {
     HeaderComponent = render(<Header />);
   });
-  test("Header contains text 'Neighborhood Chef'", () => {
-    expect(HeaderComponent.getByText(/neighborhood chef/i));
+  test("Header contains text 'header component", () => {
+    const firstDiv = document.querySelector(".header-container");
+    expect(firstDiv.toBeInDocument);
   });
 });
