@@ -1,29 +1,30 @@
 import React from "react";
-import ViewEvents from "./ViewEvents.js";
+import CalendarView from "./CalendarView.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../utilities/reducers";
 import thunk from "redux-thunk";
 
+import "@testing-library/jest-dom/extend-expect";
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test view event static properties", () => {
-  let ViewEventsComponent;
+describe("Test CalendarView static properties", () => {
+  let CalendarViewComponent;
   beforeEach(() => {
-    ViewEventsComponent = render(
+    CalendarViewComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <ViewEvents />
+          <CalendarView />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("ViewEvents component renders", () => {
-    const firstDiv = document.querySelector(".middle-calendar");
+  test("CalendarView component renders", () => {
+    const firstDiv = document.querySelector(".calendar-view-main");
     expect(firstDiv.toBeInDocument);
   });
 });

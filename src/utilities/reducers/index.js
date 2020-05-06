@@ -3,10 +3,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   INCREMENT,
-  CHANGE_PAGE,
   MAKEACTIVE,
   CHANGE_MONTH,
   RSVP,
+  CHANGE_PAGE,
 } from "../actions";
 
 const initialDate = new Date();
@@ -91,13 +91,6 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         counter: state.counter + 1,
       };
-
-    case CHANGE_PAGE:
-      return {
-        ...state,
-        page: state.page === 1 ? 2 : 1,
-      };
-
     case MAKEACTIVE:
       return {
         ...state,
@@ -131,6 +124,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
               }
             : event
         ),
+      };
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        page: state.page === 1 ? 2 : 1,
       };
     default:
       return {

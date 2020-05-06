@@ -1,29 +1,34 @@
 import React from "react";
-import ViewEvents from "./ViewEvents.js";
+import StatusButton from "./StatusButton.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../utilities/reducers";
 import thunk from "redux-thunk";
 
+import "@testing-library/jest-dom/extend-expect";
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test view event static properties", () => {
-  let ViewEventsComponent;
+describe("Test StatusButton static properties", () => {
+  let StatusButtonComponent;
   beforeEach(() => {
-    ViewEventsComponent = render(
+    StatusButtonComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <ViewEvents />
+          <StatusButton
+            name={"Going"}
+            color={"#58D573"}
+            eventId={1}
+            eventStatus={"Maybe"}
+          />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("ViewEvents component renders", () => {
-    const firstDiv = document.querySelector(".middle-calendar");
-    expect(firstDiv.toBeInDocument);
+  test("StatusButton component renders", () => {
+    expect(StatusButtonComponent.getByText(/Going/i));
   });
 });

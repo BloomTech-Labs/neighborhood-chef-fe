@@ -1,13 +1,13 @@
 import React from "react";
 import Sidebar from "../dashboard/Sidebar";
 
-const CreateEvent = () => {
+const Recipes = () => {
   return (
     <div className="component-main">
-      <Sidebar active="create-event" />
-      <p>CreateEvent Component</p>
+      <Sidebar active="recipes" />
+      <p>Recipes Component</p>
     </div>
   );
 };
 
-export default CreateEvent;
+export default Recipes;
