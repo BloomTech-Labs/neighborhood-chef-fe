@@ -19,11 +19,10 @@ const FormPageOne = ({
   setPage,
   resetForm,
   initialState,
-  props,
 }) => {
   const [error, setError] = useState(false);
 
-  const turnPage = () => {
+  const validateAndTurnPage = () => {
     if (
       values.Title &&
       values.Address &&
@@ -251,7 +250,7 @@ const FormPageOne = ({
         <button
           type="button"
           className="createLeftBtn"
-          onClick={() => turnPage()}
+          onClick={() => validateAndTurnPage()}
         >
           Next
         </button>

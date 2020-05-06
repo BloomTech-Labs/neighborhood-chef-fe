@@ -34,8 +34,8 @@ const FormContainer = () => {
     return modifiers.map((mod) => (mod.active = false));
   };
 
-  // wasn't sure if we wanted to send the icon itself to backend too?
-  const modifiersWithoutIconPath = () => {
+  // wasn't sure if we wanted to send the modifier icon itself to the backend in JSON too?
+  const modifiersWithoutIcon = () => {
     return modifiers.map((mod) => {
       return {
         id: mod.id,
@@ -56,7 +56,7 @@ const FormContainer = () => {
             user_id: 'insert user id',
             Hashtags: JSON.stringify({ modifiers: [...hashtags] }),
             Modifiers: JSON.stringify({
-              modifiers: [modifiersWithoutIconPath()],
+              modifiers: [modifiersWithoutIcon()],
             }),
             Longitude: 'insert Longitude',
             Latitude: 'insert Latitude',
@@ -66,8 +66,6 @@ const FormContainer = () => {
           resetForm(initialState);
           resetModifiers();
           setModifiers([]);
-          console.log(JSON.parse(values.Modifiers));
-          //use graphql redux and push to next page
         }}
       >
         {({
