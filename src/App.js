@@ -9,6 +9,7 @@ import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
 import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
+import Login from "./components/account/Login";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/messages" element={<Messages />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
