@@ -13,7 +13,11 @@ const AuthFields = (props) => {
     const email = document.querySelector("input[name='email']").value;
     const password = document.querySelector("input[name='password']").value;
     const terms = document.querySelector("input[type='checkbox']").checked;
-    if (email && password && terms === true) {
+    if (
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email) &&
+      password &&
+      terms === true
+    ) {
       setButtonDisable(false);
     } else {
       setButtonDisable(true);
