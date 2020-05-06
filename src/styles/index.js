@@ -1,11 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const useStyles = makeStyles({
+export const formStyles = makeStyles({
+  registerComponent: {
+    "text-align": "center",
+  },
   registerForm: {
     width: "50%",
     margin: "0 auto",
     display: "flex",
     "flex-direction": "column",
+    "& .MuiFormControl-root": {
+      "margin-top": "40px",
+    },
     "& input": {
       width: "100%",
     },

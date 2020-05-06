@@ -3,15 +3,16 @@ import { Formik, Form } from "formik";
 import AuthFields from "./AuthFields.js";
 import ProfileFields from "./ProfileFields.js";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { useStyles } from "../../styles.js";
+import { formStyles } from "../../styles";
 
 const Register = () => {
   const currentPage = useSelector((state) => state.page);
-  const classes = useStyles();
+  const classes = formStyles();
 
   return (
-    <div>
+    <div className={classes.registerComponent}>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -42,6 +43,9 @@ const Register = () => {
           </Form>
         )}
       </Formik>
+      <p>
+        Already have an account? <Link to="/login">Login</Link>.
+      </p>
     </div>
   );
 };

@@ -1,47 +1,57 @@
 import React from "react";
-import { Field, ErrorMessage } from "formik";
-import { Button } from "@material-ui/core";
+import { Field } from "formik";
+import { Button, FormControlLabel, Radio } from "@material-ui/core";
+import { TextField, RadioGroup, SimpleFileUpload } from "formik-material-ui";
 
 const ProfileFields = (props) => {
   return (
     <>
-      <label>
-        First Name
-        <Field type="name" name="firstName" />
-        <ErrorMessage name="firstName" component="div" />
-      </label>
-      <label>
-        Last Name
-        <Field type="name" name="lastName" />
-        <ErrorMessage name="lastName" component="div" />
-      </label>
-      <label>
-        Location
-        <Field type="text" name="location" />
-        <ErrorMessage name="location" component="div" />
-      </label>
-      <label>
-        Gender
-        <Field type="radio" name="gender" value="Male" label="Male" />
-      </label>
-      <label>
-        Female
-        <Field type="radio" name="gender" value="Female" label="Female" />
-      </label>
-      <label>
-        Other
-        <Field type="radio" name="gender" value="Other" label="Other" />
-      </label>
-      <label>
-        None
-        <Field type="radio" name="gender" value="None" label="None" />
-        <ErrorMessage name="gender" component="div" />
-      </label>
-      <label>
-        Photo
-        <Field type="text" name="photo" />
-        <ErrorMessage name="photo" component="div" />
-      </label>
+      <Field
+        component={TextField}
+        label="First Name"
+        type="name"
+        name="firstName"
+      />
+      <Field
+        component={TextField}
+        label="Last Name"
+        type="name"
+        name="lastName"
+      />
+      <Field
+        component={TextField}
+        label="Location"
+        type="text"
+        name="location"
+      />
+      <Field component={RadioGroup} name="gender">
+        <h3>Gender</h3>
+        <FormControlLabel
+          value="male"
+          control={<Radio disabled={props.submitting} />}
+          label="Male"
+          disabled={props.submitting}
+        />
+        <FormControlLabel
+          value="female"
+          control={<Radio disabled={props.submitting} />}
+          label="Female"
+          disabled={props.submitting}
+        />
+        <FormControlLabel
+          value="other"
+          control={<Radio disabled={props.submitting} />}
+          label="Other"
+          disabled={props.submitting}
+        />
+        <FormControlLabel
+          value="none"
+          control={<Radio disabled={props.submitting} />}
+          label="None"
+          disabled={props.submitting}
+        />
+      </Field>
+      <Field component={SimpleFileUpload} label="Photo" name="photo" />
       <Button
         variant="contained"
         color="primary"
