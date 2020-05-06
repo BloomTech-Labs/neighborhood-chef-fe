@@ -244,7 +244,6 @@ const FormPageOne = ({
           className="createRightBtn"
           onClick={() => {
             resetForm(initialState);
-            props.history.push('/dashboard');
           }}
         >
           Cancel

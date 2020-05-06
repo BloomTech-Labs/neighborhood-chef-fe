@@ -15,7 +15,7 @@ describe('Test Hashtag component', () => {
     );
   });
 
-  test('Hashtag component renders', () => {
+  test('Hashtag component renders with text from props', () => {
     expect(HashtagComponent.getByText(/#hashtags/i));
   });
 });

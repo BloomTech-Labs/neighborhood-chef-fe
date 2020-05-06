@@ -9,7 +9,7 @@ const values = {
   Title: 'BBQ',
   Address: '123 ABC St.',
   Description: 'BBQ at my house!',
-  Date: moment(new Date()),
+  Date: new Date(),
   Start_Time: '6:00pm',
   End_End: '9:00pm',
   category_id: 1,

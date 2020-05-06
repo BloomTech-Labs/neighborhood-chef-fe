@@ -34,17 +34,30 @@ const FormContainer = () => {
     return modifiers.map((mod) => (mod.active = false));
   };
 
+  // wasn't sure if we wanted to send the icon itself to backend too?
+  const modifiersWithoutIconPath = () => {
+    return modifiers.map((mod) => {
+      return {
+        id: mod.id,
+        title: mod.title,
+        active: mod.active,
+      };
+    });
+  };
+
   return (
     <>
       <Formik
         initialValues={initialState}
         validationSchema={validationSchema}
-        onSubmit={(values, { resetForm, history }) => {
+        onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
             user_id: 'insert user id',
             Hashtags: JSON.stringify({ modifiers: [...hashtags] }),
-            Modifiers: JSON.stringify({ modifiers: [...modifiers] }),
+            Modifiers: JSON.stringify({
+              modifiers: [modifiersWithoutIconPath()],
+            }),
             Longitude: 'insert Longitude',
             Latitude: 'insert Latitude',
           };
@@ -53,6 +66,8 @@ const FormContainer = () => {
           resetForm(initialState);
           resetModifiers();
           setModifiers([]);
+          console.log(JSON.parse(values.Modifiers));
+          //use graphql redux and push to next page
         }}
       >
         {({

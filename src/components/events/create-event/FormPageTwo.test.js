@@ -6,13 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 const handleChange = jest.fn();
 
-const modifierData = [
-  { id: 1, title: 'BBQ', icon: 'icon 1', active: false },
-  { id: 2, title: 'Kid-Friendly', icon: 'icon 2', active: false },
-  { id: 3, title: 'Alcohol Accepted', icon: 'icon 3', active: false },
-];
-
-describe('Test FormContainer component', () => {
+describe('Test FormPageTwo component', () => {
   let FormPageTwoComponent;
   beforeEach(() => {
     FormPageTwoComponent = render(

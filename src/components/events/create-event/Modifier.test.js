@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Test create event static properties', () => {
+describe('Test Modifier component', () => {
   let ModifierComponent;
   beforeEach(() => {
     ModifierComponent = render(
@@ -17,7 +17,7 @@ describe('Test create event static properties', () => {
     );
   });
 
-  test('Modifier component renders', () => {
+  test('Modifier component renders with text from props', () => {
     expect(ModifierComponent.getByText(/18+/i));
   });
 });

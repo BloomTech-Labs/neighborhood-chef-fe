@@ -3,7 +3,7 @@ import AddHashtag from './AddHashtag.js';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Test create event static properties', () => {
+describe('Test addHashtag component', () => {
   let AddHashtagComponent;
   beforeEach(() => {
     AddHashtagComponent = render(
@@ -11,7 +11,7 @@ describe('Test create event static properties', () => {
     );
   });
 
-  test('AddModifiers component renders with props', () => {
+  test('AddHashtag component renders with props', () => {
     expect(AddHashtagComponent.getByText(/Add some hashtags for your event/i));
     expect(AddHashtagComponent.getByText(/#Vegan/i));
   });
