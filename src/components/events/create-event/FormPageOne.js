@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field } from 'formik';
 import CreateIcon from '@material-ui/icons/Create';
 import SearchIcon from '@material-ui/icons/Search';
@@ -9,24 +9,36 @@ import MenuItem from '@material-ui/core/MenuItem';
 const FormPageOne = ({
   handleChange,
   values,
-  errors,
-  touched,
   setPage,
   resetForm,
   initialState,
   props,
 }) => {
-  let errorMessage;
-  const turnPage = () => {
-    if (Object.keys(touched).length === 5 && Object.keys(errors).length === 0) {
-      setPage(2);
-      return;
-    }
-    errorMessage =
-      'Title, location, description, start time and category are required fields';
-    return;
+  const [error, setError] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
+  const turnPage = () => {
+    if (
+      values.Title &&
+      values.Address &&
+      values.Description &&
+      values.Date &&
+      values.Start_Time &&
+      values.End_Time &&
+      values.category_id
+    ) {
+      setPage(2);
+      scrollToTop();
+    } else {
+      setError(true);
+    }
+  };
   return (
     <>
       <div className="createFormPage1TopRow">
@@ -220,26 +232,12 @@ const FormPageOne = ({
         </div>
       </div>
 
-      <div>
-        {touched.Title && errors.Title && (
-          <p className="createFormError">{errors.Title}</p>
-        )}
-        {touched.Address && errors.Address && (
-          <p className="createFormError">{errors.Address}</p>
-        )}
-        {touched.Description && errors.Description && (
-          <p className="createFormError">{errors.Description}</p>
-        )}
-        {touched.Date && errors.Date && (
-          <p className="createFormError">{errors.Date}</p>
-        )}
-        {touched.Start_Time && errors.Start_Time && (
-          <p className="createFormError">{errors.Start_Time}</p>
-        )}
-        {touched.category_id && errors.category_id && (
-          <p className="createFormError">{errors.category_id}</p>
-        )}
-      </div>
+      {error && (
+        <p style={{ textAlign: 'center', color: 'crimson' }}>
+          *Title, Address, Description, Date, Start Time, and Category are
+          required
+        </p>
+      )}
 
       <div className="createFormButtonDiv">
         <button

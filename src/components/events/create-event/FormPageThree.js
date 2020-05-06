@@ -13,6 +13,12 @@ const FormPageThree = ({
   modifiers,
   setModifiers,
 }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <>
       <div
@@ -57,13 +63,25 @@ const FormPageThree = ({
                 {values.Date && moment(values.Date).format('MMM Do YYYY')}
                 .&nbsp;
               </p>
-              <p style={{ fontSize: '1.6rem', color: '#82DF96' }}>
+              <p
+                style={{
+                  fontSize: '1.6rem',
+                  color: '#82DF96',
+                  fontWeight: '500',
+                }}
+              >
                 {values.Start_Time}&nbsp;
               </p>
               <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
                 to&nbsp;
               </p>
-              <p style={{ fontSize: '1.6rem', color: '#ea6565' }}>
+              <p
+                style={{
+                  fontSize: '1.6rem',
+                  color: '#ea6565',
+                  fontWeight: '500',
+                }}
+              >
                 {values.End_Time}
               </p>
             </div>
@@ -154,7 +172,13 @@ const FormPageThree = ({
       </h3>
 
       <div className="createFormButtonDiv">
-        <button className="createRightBtn" onClick={() => setPage(2)}>
+        <button
+          className="createRightBtn"
+          onClick={() => {
+            setPage(2);
+            scrollToTop();
+          }}
+        >
           Previous
         </button>
         <button className="createLeftBtn" type="submit">

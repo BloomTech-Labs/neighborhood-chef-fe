@@ -28,6 +28,12 @@ const FormPageTwo = ({
   modifiers,
   setModifiers,
 }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <>
       <div className="createFormPage2Container">
@@ -89,10 +95,22 @@ const FormPageTwo = ({
       </div>
 
       <div className="createFormButtonDiv">
-        <button className="createRightBtn" onClick={() => setPage(1)}>
+        <button
+          className="createRightBtn"
+          onClick={() => {
+            setPage(1);
+            scrollToTop();
+          }}
+        >
           Previous
         </button>
-        <button className="createLeftBtn" onClick={() => setPage(3)}>
+        <button
+          className="createLeftBtn"
+          onClick={() => {
+            setPage(3);
+            scrollToTop();
+          }}
+        >
           Next
         </button>
       </div>

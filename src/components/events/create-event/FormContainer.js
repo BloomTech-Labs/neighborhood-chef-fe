@@ -30,12 +30,16 @@ const FormContainer = () => {
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
 
+  const resetModifiers = () => {
+    return modifiers.map((mod) => (mod.active = false));
+  };
+
   return (
     <>
       <Formik
         initialValues={initialState}
         validationSchema={validationSchema}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values, { resetForm, history }) => {
           values = {
             ...values,
             user_id: 'insert user id',
@@ -45,8 +49,10 @@ const FormContainer = () => {
             Latitude: 'insert Latitude',
           };
           console.log(values);
-          resetForm(initialState);
           setHashtags([]);
+          resetForm(initialState);
+          resetModifiers();
+          setModifiers([]);
         }}
       >
         {({
