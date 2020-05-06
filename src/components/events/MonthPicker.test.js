@@ -10,7 +10,6 @@ import thunk from "redux-thunk";
 import "@testing-library/jest-dom/extend-expect";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-import "@testing-library/jest-dom/extend-expect";
 
 const months = [
   "January",

@@ -6,6 +6,7 @@ import {
   MAKEACTIVE,
   CHANGE_MONTH,
   RSVP,
+  CHANGE_PAGE,
 } from "../actions";
 
 const initialDate = new Date();
@@ -13,6 +14,7 @@ const initialDate = new Date();
 const initialState = {
   loginCredentials: {},
   counter: 0,
+  page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
 
@@ -105,8 +107,6 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         tempDate.setMonth(month === 11 ? 0 : month + 1);
         if (month === 11) tempDate.setFullYear(year + 1);
       }
-
-      console.log(month, year, tempDate);
       return {
         ...state,
         selectedMonth: tempDate,
@@ -122,6 +122,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
               }
             : event
         ),
+      };
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        page: state.page === 1 ? 2 : 1,
       };
     default:
       return {

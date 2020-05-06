@@ -14,6 +14,11 @@ a {
   margin: 1%;
 }
 
+.login-container {
+  margin: auto;
+  text-align: center;
+  padding-top: 10%;
+}
 .left-side-header {
   display: flex;
   align-items: center;
@@ -120,6 +125,18 @@ a {
 .rsvp-active {
   border: 1px solid black;
   opacity: 1;
+}
+
+.green-link > a {
+  color: #58d473;
+}
+
+.login-container {
+  margin: 20px auto;
+  border: 2px solid #58d473;
+  border-radius: 10px;
+  width: 60%;
+  padding: 0 20px 50px 20px;
 }
 
 /* ---- start of CreateEvent styles ---- */
@@ -368,3 +385,4 @@ a {
 }
 
 /* -----End of CreateEvent styles------- */
+
