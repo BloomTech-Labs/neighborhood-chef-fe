@@ -8,79 +8,151 @@ const FormPageThree = ({
   setPage,
   values,
   hashtags,
+  setHashtags,
   removeHashtag,
   modifiers,
   setModifiers,
 }) => {
   return (
-    <div>
-      <h3 style={{ fontSize: '1.8rem', fontWeight: '500', color: '#1A0F2C' }}>
-        Double check if your event details are correct. Once finished, click
-        done.
-      </h3>
-      <div>
-        <img
-          style={{
-            width: '300px',
-            border: '8px solid #58D473',
-            borderRadius: '25px',
-          }}
-          src="https://images.pexels.com/photos/1309067/pexels-photo-1309067.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-          alt="bbq"
-        />
+    <>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          border: '2px solid #F3F3F3',
+          boxShadow: '0px 4px 15px rgba(179, 179, 179, 0.1)',
+          borderRadius: '25px',
+          marginTop: '40px',
+        }}
+      >
+        <div style={{ display: 'flex', width: '100%' }}>
+          <img
+            style={{
+              width: '40%',
+              border: '8px solid #58D473',
+              borderRadius: '25px',
+            }}
+            src="https://images.pexels.com/photos/1309067/pexels-photo-1309067.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+            alt="bbq"
+          />
 
-        <div style={{ marginLeft: '30px', textAlign: 'left' }}>
-          <h3
-            style={{ fontSize: '1.8rem', fontWeight: '500', color: '#1A0F2C' }}
+          <div
+            style={{
+              marginLeft: '30px',
+              textAlign: 'left',
+              width: '50%',
+            }}
           >
-            {values.Title}
-          </h3>
-          <div>
-            <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-              {values.Date && moment(values.Date).format('MMM Do YYYY')}
-            </p>
-            <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-              {values.Start_Time && values.Start_Time}{' '}
-              {values.End_Time && `to ${values.End_Time}`}
-            </p>
+            <h3
+              style={{
+                fontSize: '1.8rem',
+                fontWeight: '500',
+                color: '#1A0F2C',
+              }}
+            >
+              {values.Title}
+            </h3>
+            <div style={{ display: 'flex' }}>
+              <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
+                {values.Date && moment(values.Date).format('MMM Do YYYY')}
+                .&nbsp;
+              </p>
+              <p style={{ fontSize: '1.6rem', color: '#82DF96' }}>
+                {values.Start_Time}&nbsp;
+              </p>
+              <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
+                to&nbsp;
+              </p>
+              <p style={{ fontSize: '1.6rem', color: '#ea6565' }}>
+                {values.End_Time}
+              </p>
+            </div>
             <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
               {values.Address}
             </p>
           </div>
         </div>
-      </div>
-      <div>
-        {hashtags.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <p>Hashtags</p>
-            {hashtags.map((hashtag) => {
-              return (
-                <Hashtag
-                  key={hashtag.id}
-                  hashtag={hashtag}
-                  removeModifier={removeHashtag}
-                />
-              );
-            })}
-          </div>
-        )}
 
-        {modifiers.length > 0 && (
-          <div>
-            <p>Modifiers</p>
-            {modifiers.map((modifier) => {
-              return (
-                <Modifier
-                  key={modifier.id}
-                  modifier={modifier}
-                  modifiers={modifiers}
-                  setModifiers={setModifiers}
-                />
-              );
-            })}
-          </div>
-        )}
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            margin: '30px 0',
+          }}
+        >
+          {hashtags.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                width: '45%',
+                marginLeft: '3%',
+              }}
+            >
+              <p style={{ fontWeight: '500', fontSize: '1.6rem' }}>Hashtags</p>
+              <div
+                style={{ display: 'flex', width: '100%', flexFlow: 'row wrap' }}
+              >
+                {hashtags.map((hashtag) => {
+                  return (
+                    <Hashtag
+                      key={hashtag.id}
+                      hashtag={hashtag}
+                      removeModifier={removeHashtag}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {modifiers.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                width: '45%',
+                marginLeft: '3%',
+              }}
+            >
+              <p style={{ fontWeight: '500', fontSize: '1.6rem' }}>
+                Modifications
+              </p>
+              <div
+                style={{ display: 'flex', width: '100%', flexFlow: 'row wrap' }}
+              >
+                {modifiers.map((modifier) => {
+                  return (
+                    <Modifier
+                      key={modifier.id}
+                      modifier={modifier}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
+
+      <h3
+        style={{
+          fontSize: '1.8rem',
+          fontWeight: '500',
+          color: '#1A0F2C',
+          margin: '60px 0',
+        }}
+      >
+        Double check if your event details are correct. Once finished, click
+        done.
+      </h3>
+
       <div className="createFormButtonDiv">
         <button className="createRightBtn" onClick={() => setPage(2)}>
           Previous
@@ -89,7 +161,7 @@ const FormPageThree = ({
           Done
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

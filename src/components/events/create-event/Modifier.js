@@ -14,7 +14,6 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
 
   return (
     <div
-      d
       style={{
         display: 'flex',
         flexDirection: 'column',

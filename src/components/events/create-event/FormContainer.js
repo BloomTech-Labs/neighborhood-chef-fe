@@ -26,15 +26,9 @@ const initialState = {
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
-
-  console.log(modifiers);
-
-  const removeHashtag = (id) => {
-    setHashtags(hashtags.filter((tag) => tag.id !== id));
-  };
 
   return (
     <>
@@ -88,7 +82,6 @@ const FormContainer = () => {
                     values={values}
                     hashtags={hashtags}
                     setHashtags={setHashtags}
-                    removeHashtag={removeHashtag}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
                   />
@@ -100,10 +93,10 @@ const FormContainer = () => {
                   <FormPageThree
                     setPage={setPage}
                     hashtags={hashtags}
+                    setHashtags={setHashtags}
                     values={values}
                     handleSubmit={handleSubmit}
                     errors={errors}
-                    removeHashtag={removeHashtag}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
                   />

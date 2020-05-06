@@ -16,6 +16,17 @@ const FormPageOne = ({
   initialState,
   props,
 }) => {
+  let errorMessage;
+  const turnPage = () => {
+    if (Object.keys(touched).length === 5 && Object.keys(errors).length === 0) {
+      setPage(2);
+      return;
+    }
+    errorMessage =
+      'Title, location, description, start time and category are required fields';
+    return;
+  };
+
   return (
     <>
       <div className="createFormPage1TopRow">
@@ -30,9 +41,6 @@ const FormPageOne = ({
             />
             <CreateIcon color="disabled" style={{ fontSize: '22px' }} />
           </div>
-          {touched.Title && errors.Title && (
-            <p className="createFormError">{errors.Title}</p>
-          )}
 
           <div className="createFormInputDiv">
             <Field
@@ -44,10 +52,6 @@ const FormPageOne = ({
             />
             <SearchIcon color="disabled" style={{ fontSize: '22px' }} />
           </div>
-          {touched.Address && errors.Address && (
-            <p className="createFormError">{errors.Address}</p>
-          )}
-
           <Field
             as="textarea"
             name="Description"
@@ -56,9 +60,6 @@ const FormPageOne = ({
             value={values.Description}
             className="createFormTextArea"
           />
-          {touched.Description && errors.Description && (
-            <p className="createFormError">{errors.Description}</p>
-          )}
         </div>
 
         <div className="createFormPage1RightContainer">
@@ -72,9 +73,6 @@ const FormPageOne = ({
               onChange={handleChange}
               InputProps={{ disableUnderline: true }}
             />
-            {touched.Date && errors.Date && (
-              <p className="createFormError">{errors.Date}</p>
-            )}
           </div>
 
           <div className="eventTimeDiv">
@@ -137,9 +135,6 @@ const FormPageOne = ({
               <MenuItem value={'11:30pm'}>11:30pm</MenuItem>
             </Select>
           </div>
-          {touched.Start_Time && errors.Start_Time && (
-            <p className="createFormError">{errors.Start_Time}</p>
-          )}
 
           <div className="eventTimeDiv">
             <label htmlFor="End_Time">The event ends at:</label>
@@ -222,10 +217,28 @@ const FormPageOne = ({
               <MenuItem value={8}>Puppy Play Date</MenuItem>
             </Select>
           </div>
-          {touched.category_id && errors.category_id && (
-            <p className="createFormError">{errors.category_id}</p>
-          )}
         </div>
+      </div>
+
+      <div>
+        {touched.Title && errors.Title && (
+          <p className="createFormError">{errors.Title}</p>
+        )}
+        {touched.Address && errors.Address && (
+          <p className="createFormError">{errors.Address}</p>
+        )}
+        {touched.Description && errors.Description && (
+          <p className="createFormError">{errors.Description}</p>
+        )}
+        {touched.Date && errors.Date && (
+          <p className="createFormError">{errors.Date}</p>
+        )}
+        {touched.Start_Time && errors.Start_Time && (
+          <p className="createFormError">{errors.Start_Time}</p>
+        )}
+        {touched.category_id && errors.category_id && (
+          <p className="createFormError">{errors.category_id}</p>
+        )}
       </div>
 
       <div className="createFormButtonDiv">
@@ -238,7 +251,11 @@ const FormPageOne = ({
         >
           Cancel
         </button>
-        <button className="createLeftBtn" onClick={() => setPage(2)}>
+        <button
+          type="button"
+          className="createLeftBtn"
+          onClick={() => turnPage()}
+        >
           Next
         </button>
       </div>

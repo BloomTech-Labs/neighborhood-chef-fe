@@ -83,7 +83,8 @@ const AddHashtag = ({ hashtags, setHashtags, removeHashtag }) => {
             <Hashtag
               key={hashtag.id}
               hashtag={hashtag}
-              removeHashtag={removeHashtag}
+              hashtags={hashtags}
+              setHashtags={setHashtags}
             />
           );
         })}

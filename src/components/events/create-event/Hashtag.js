@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Hashtag = ({ hashtag, removeHashtag }) => {
+const Hashtag = ({ hashtag, hashtags, setHashtags }) => {
+  const removeHashtag = (id) => {
+    setHashtags(hashtags.filter((tag) => tag.id !== id));
+  };
+
   return (
     <div
       key={hashtag.id}
