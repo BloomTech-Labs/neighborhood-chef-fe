@@ -1,9 +1,3 @@
-import axios from "axios";
-
-export const LOGIN_START = "LOGIN_START";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const INCREMENT = "INCREMENT";
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";

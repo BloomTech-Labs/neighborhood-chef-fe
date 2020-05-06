@@ -1,13 +1,4 @@
-import {
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  INCREMENT,
-  MAKEACTIVE,
-  CHANGE_MONTH,
-  RSVP,
-  CHANGE_PAGE,
-} from "../actions";
+import { MAKEACTIVE, CHANGE_MONTH, RSVP, CHANGE_PAGE } from "../actions";
 
 const initialDate = new Date();
 
