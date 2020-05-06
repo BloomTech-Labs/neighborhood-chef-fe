@@ -8,11 +8,20 @@ const Login = () => {
     <div className="login-container">
       <h1>Neighborhood Chef</h1>
       <p style={{ fontStyle: "italic" }}>Prepare to eat well</p>
-      <div className={`${classes.root} ${classes.single}`}>
-        Login Securely with Okta
-      </div>
+
+      {/*need to add proper okta url for login here */}
+      <Link to="/test">
+        {" "}
+        <div className={`${classes.root} ${classes.single}`}>
+          {" "}
+          Login Securely with Okta
+        </div>
+      </Link>
       <div style={{ marginTop: "10px" }}>
-        Don't have an account? <Link to="/register">Register now.</Link>
+        Don't have an account?{" "}
+        <span className="green-link">
+          <Link to="/register">Register now.</Link>
+        </span>
       </div>
     </div>
   );

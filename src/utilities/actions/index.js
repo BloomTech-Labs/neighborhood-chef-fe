@@ -8,26 +8,6 @@ export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";
 
-//action using thunk middleware, NOT hooks
-export const login = (event, credentials) => (dispatch) => {
-  event.preventDefault();
-  dispatch({ type: LOGIN_START });
-  axios
-    .post("https://example-neighborhood.com/login", credentials)
-    .then((res) => {
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch({ type: LOGIN_FAIL, payload: err });
-    });
-};
-
-//simplified action using useDispatch hooks within component
-export const increment = () => ({
-  type: INCREMENT,
-});
-
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
   payload: id,
