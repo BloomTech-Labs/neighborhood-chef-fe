@@ -145,6 +145,17 @@ a {
 }
 
 /* page one */
+
+.createFormPage1TopRow {
+  display: flex;
+  justify-content: flex-end;
+  justify-content: center;
+}
+
+.createFormPage1LeftContainer {
+  width: 50%;
+}
+
 .createFormInputDiv {
   display: flex;
   align-items: center;
@@ -178,6 +189,11 @@ a {
   padding: 15px 15px;
   font-size: 1.6rem;
   width: 92%;
+}
+
+.createFormPage1RightContainer {
+  width: 40%;
+  margin-left: 8%;
 }
 
 .eventTimeDiv {
@@ -352,18 +368,3 @@ a {
 }
 
 /* -----End of CreateEvent styles------- */
-
-.createFormPage1TopRow {
-  display: flex;
-  justify-content: flex-end;
-  justify-content: center;
-}
-
-.createFormPage1LeftContainer {
-  width: 50%;
-}
-
-.createFormPage1RightContainer {
-  width: 40%;
-  margin-left: 8%;
-}
