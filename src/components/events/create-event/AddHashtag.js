@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Hashtag from './Hashtag';
 
-const AddHashtag = ({ hashtags, setHashtags, removeHashtag }) => {
+const AddHashtag = ({ hashtags, setHashtags }) => {
   const [formInput, setFormInput] = useState({ title: '' });
 
   const handleChange = (e) => {

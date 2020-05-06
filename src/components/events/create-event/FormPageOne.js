@@ -6,6 +6,13 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 const FormPageOne = ({
   handleChange,
   values,
@@ -15,13 +22,6 @@ const FormPageOne = ({
   props,
 }) => {
   const [error, setError] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   const turnPage = () => {
     if (
@@ -234,8 +234,8 @@ const FormPageOne = ({
 
       {error && (
         <p style={{ textAlign: 'center', color: 'crimson' }}>
-          *Title, Address, Description, Date, Start Time, and Category are
-          required
+          *Title, Address, Description, Date, Start Time, End Time, and Category
+          are required
         </p>
       )}
 

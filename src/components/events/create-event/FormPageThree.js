@@ -3,6 +3,7 @@ import moment from 'moment';
 
 import Hashtag from './Hashtag.js';
 import Modifier from './Modifier.js';
+import { scrollToTop } from './FormPageOne.js';
 
 const FormPageThree = ({
   setPage,
@@ -13,12 +14,6 @@ const FormPageThree = ({
   modifiers,
   setModifiers,
 }) => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
   return (
     <>
       <div

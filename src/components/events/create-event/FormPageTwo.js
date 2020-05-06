@@ -10,6 +10,7 @@ import foodApple from '@iconify/icons-mdi/food-apple';
 
 import Modifier from './Modifier.js';
 import AddHashtag from './AddHashtag.js';
+import { scrollToTop } from './FormPageOne.js';
 
 const modifierData = [
   { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
@@ -28,12 +29,6 @@ const FormPageTwo = ({
   modifiers,
   setModifiers,
 }) => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
   return (
     <>
       <div className="createFormPage2Container">
