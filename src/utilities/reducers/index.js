@@ -1,4 +1,10 @@
-import { MAKEACTIVE, CHANGE_MONTH, RSVP, CHANGE_PAGE } from "../actions";
+import {
+  MAKEACTIVE,
+  CHANGE_MONTH,
+  RSVP,
+  CHANGE_PAGE,
+  GET_EVENTS_SUCCESS,
+} from "../actions";
 
 const initialDate = new Date();
 
@@ -7,6 +13,8 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+  errors: [],
+  isGettingEvents: false,
 
   //test data below.
   eventList: [
@@ -59,6 +67,13 @@ const initialState = {
 
 export const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_EVENTS_SUCCESS:
+      return {
+        ...state,
+        isGettingEvents: false,
+        errors: [],
+        eventList: payload,
+      };
     case MAKEACTIVE:
       return {
         ...state,

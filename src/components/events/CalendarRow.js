@@ -5,13 +5,24 @@ import { makeActive } from "../../utilities/actions";
 const CalendarRow = ({ id, title, date, start_time, status }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
   const dispatch = useDispatch();
-  const formattedDate = new Date(date);
-  const getWeekday = formattedDate.toLocaleDateString("en-us", {
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
+  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
+  const addStartTime = new Date(`${simplifiedDate} ${start_time}`); // creates new date using start_time value for time, instead of 00:00:00 default
+  const getWeekday = addStartTime.toLocaleDateString("en-us", {
     weekday: "short",
   });
-  const getDay = formattedDate.toLocaleDateString("en-us", {
+  const getDay = addStartTime.toLocaleDateString("en-us", {
     day: "numeric",
   });
+  const displayedHoursMins = addStartTime
+    .toLocaleTimeString([], {
+      //formatting just time in 12 hr format with lower case am pm
+      hour: "numeric",
+      minute: "2-digit",
+    })
+    .toLowerCase();
+
   return (
     <div
       className={`calendar-row ${activeEvent === id && "calendar-row-active"}`}
@@ -41,7 +52,7 @@ const CalendarRow = ({ id, title, date, start_time, status }) => {
           {status}
         </div>
       </div>
-      <div style={{ opacity: ".3", width: "20%" }}>{start_time}</div>
+      <div style={{ opacity: ".3", width: "20%" }}>{displayedHoursMins}</div>
     </div>
   );
 };

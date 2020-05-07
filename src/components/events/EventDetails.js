@@ -29,14 +29,29 @@ const EventDetails = () => {
   const eventList = useSelector((state) => state.eventList);
   const event = eventList.find((ele) => ele.id === currentEventID);
 
+  //dealing with date formatting things
+
+  console.log(event);
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  // const formattedDate = new Date(parseInt(event.Date)); //formats 13 digit UNIX date provided by database
+  // const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
+  // const addStartTime = new Date(`${simplifiedDate} ${event.Start_Time}`); // creates new date using start_time value for time, instead of 00:00:00 default
+  // const displayedHoursMins = addStartTime
+  // .toLocaleTimeString([], {
+  // hour: "numeric",
+  // minute: "2-digit",
+  // })
+  // .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
+
   return (
     <div className="event-details-container">
       {!!event ? (
         <div className="single-event">
           <div>
-            <h2>{event.title}</h2>
+            <h2>{event.Title}</h2>
             <p style={{ fontStyle: "italic", opacity: ".3" }}>
-              created by {event.creator}
+              {/*need to convert user_id to actual name*/}
+              created by {event.user_id}
             </p>
           </div>
           <p style={{ opacity: ".3" }}> {event.description}</p>
@@ -45,19 +60,19 @@ const EventDetails = () => {
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={calendarIcon} />
             </span>
-            {event.date}
+            {/* {simplifiedDate} */}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={clockIcon} />
             </span>
-            {event.start_time}
+            {/* {displayedHoursMins} */}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={globeIcon} />
             </span>
-            {event.address}
+            {event.Address}
           </div>
           <div
             style={{
@@ -71,6 +86,7 @@ const EventDetails = () => {
                 {...ele}
                 eventStatus={event.status}
                 eventId={event.id}
+                key={ele.name}
               />
             ))}
           </div>
