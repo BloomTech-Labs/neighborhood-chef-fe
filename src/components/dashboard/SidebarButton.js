@@ -6,40 +6,11 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 //material-ui styles imports
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-
-const useStyles = makeStyles({
-  root: {
-    textTransform: "none",
-    margin: "3px",
-    marginBottom: "8px",
-    border: 0,
-    borderRadius: 6,
-    padding: "8px 20px",
-  },
-  notActive: {
-    background: "white",
-    color: "black",
-    opacity: 0.5,
-    "&:hover": {
-      background: "rgba(88, 212, 115, 0.3);",
-    },
-  },
-  active: {
-    background: "#58D573",
-    color: "white",
-    "& a": {
-      color: "white",
-    },
-    "&:hover": {
-      background: "#58D573",
-    },
-  },
-});
+import { buttonStyles } from "../../styles";
 
 const SidebarButton = ({ active, link, icon, text }) => {
-  const classes = useStyles();
+  const classes = buttonStyles();
   return (
     <Button
       className={`${classes.root} ${
