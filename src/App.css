@@ -13,12 +13,16 @@ a {
 .app-container {
   margin: 1%;
 }
+/* ---- start of Login styles ---- */
 
 .login-container {
   margin: auto;
   text-align: center;
   padding-top: 10%;
 }
+
+/* ---- start of Sidebar styles ---- */
+
 .left-side-header {
   display: flex;
   align-items: center;
@@ -26,10 +30,6 @@ a {
   font-weight: 500;
   margin-left: 5px;
   padding-top: 10px;
-}
-.component-main {
-  display: flex;
-  justify-content: space-between;
 }
 
 .nav-container {
@@ -47,6 +47,27 @@ a {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* ---- start of Dashboard styles ---- */
+
+.component-main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recent-events-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- start of View Event styles ---- */
 
 .calendar-view-main {
   display: flex;
@@ -385,4 +406,3 @@ a {
 }
 
 /* -----End of CreateEvent styles------- */
-

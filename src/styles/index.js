@@ -36,8 +36,8 @@ export const buttonStyles = makeStyles({
     color: "white",
     "& a": {
       color: "white",
-    }
-  }
+    },
+  },
 });
 
 export const formStyles = makeStyles({
@@ -64,5 +64,16 @@ export const formStyles = makeStyles({
         "background-color": "#12a245",
       },
     },
+  },
+});
+
+export const cardStyles = makeStyles({
+  root: {
+    width: "250px",
+    height: "200px",
+    padding: "10px",
+    margin: "10px",
+    border: "1px solid rgba(0,0,0,.15)",
+    borderRadius: "10px",
   },
 });

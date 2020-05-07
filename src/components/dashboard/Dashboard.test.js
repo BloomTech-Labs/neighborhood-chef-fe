@@ -5,9 +5,8 @@ import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 
 describe("Test dashboard static properties", () => {
-  let DashboardComponent;
   beforeEach(() => {
-    DashboardComponent = render(
+    const DashboardComponent = render(
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
@@ -15,6 +14,7 @@ describe("Test dashboard static properties", () => {
   });
 
   test("Dashboard component renders", () => {
-    expect(DashboardComponent.getByText(/Dashboard Component/i));
+    const secondDiv = document.querySelector(".component-main");
+    expect(secondDiv.toBeInDocument);
   });
 });

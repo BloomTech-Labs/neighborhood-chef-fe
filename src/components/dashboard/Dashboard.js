@@ -1,12 +1,15 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import Feed from "./Feed";
+import RecentEvents from "./RecentEvents";
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="component-main">
         <Sidebar active="dashboard" />
-        <p>Dashboard Component</p>
+        <Feed />
+        <RecentEvents />
       </div>
     </div>
   );
