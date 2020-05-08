@@ -13,20 +13,21 @@ const FeedCard = ({
   const classes = cardStyles();
   const elapsedTime = Math.ceil((new Date() - time_created) / 1000);
   let configuredTime;
-  /*configuring time elapsed to change based on how much time has elapsed*/
+  /*configuring time elapsed shown to change based on how much time has elapsed*/
   if (elapsedTime < 60) {
-    showType = "second(s)";
+    showType = "second";
     configuredTime = elapsedTime;
   } else if (elapsedTime < 3600) {
-    showType = "minute(s)";
+    showType = "minute";
     configuredTime = Math.floor(elapsedTime / 60);
   } else if (elapsedTime < 86400) {
-    showType = "hour(s)";
+    showType = "hour";
     configuredTime = Math.floor(elapsedTime / 3600);
   } else {
-    showType = "day(s)";
+    showType = "day";
     configuredTime = Math.floor(elapsedTime / 86400);
   }
+  if (configuredTime !== 1) showType = showType + "s";
   return (
     <div className={`${classes.root} card-container`}>
       <h3>{name}</h3>

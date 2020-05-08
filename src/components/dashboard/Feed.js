@@ -39,7 +39,7 @@ const feedList = [
 const Feed = () => {
   return (
     <div className="feed-container">
-      <h3>Feed</h3>
+      <h3 style={{ marginLeft: "12px" }}>Feed</h3>
       {!!feedList && feedList.map((ele) => <FeedCard {...ele} />)}
     </div>
   );

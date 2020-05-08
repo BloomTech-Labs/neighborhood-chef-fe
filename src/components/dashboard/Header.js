@@ -1,12 +1,13 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import roundAccountCircle from "@iconify/icons-ic/round-account-circle";
+import roundSearch from "@iconify/icons-ic/round-search";
 
 const Header = () => {
   return (
     <div className="header-container">
-      <div>
-        <Icon width="2em" icon={roundAccountCircle} />
+      <a href="#">neighborhood name</a>
+      <div className="header-icons">
+        <Icon height="25" icon={roundSearch} />
       </div>
     </div>
   );

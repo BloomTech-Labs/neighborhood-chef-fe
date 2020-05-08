@@ -3,7 +3,7 @@ import Sidebar from "../dashboard/Sidebar";
 import MonthPicker from "./MonthPicker";
 import CalendarView from "./CalendarView";
 import EventDetails from "./EventDetails";
-import Header from "../dashboard/Header";
+import AccountButton from "../account/preferences/AccountButton";
 
 const ViewEvents = () => {
   return (
@@ -14,7 +14,7 @@ const ViewEvents = () => {
         <CalendarView />
       </div>
       <div className="right-side-calendar">
-        <Header />
+        <AccountButton />
         <EventDetails />
       </div>
     </div>

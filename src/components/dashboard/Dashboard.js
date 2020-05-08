@@ -2,15 +2,21 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import RecentEvents from "./RecentEvents";
+import Header from "./Header";
+import AccountButton from "../account/preferences/AccountButton";
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <div className="component-main">
-        <Sidebar active="dashboard" />
-        <Feed />
-        <RecentEvents />
+      <Sidebar active="dashboard" />
+      <div>
+        <Header />
+        <div style={{ display: "flex" }}>
+          <Feed />
+          <RecentEvents />
+        </div>
       </div>
+      <AccountButton />
     </div>
   );
 };

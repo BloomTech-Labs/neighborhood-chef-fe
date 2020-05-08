@@ -69,7 +69,7 @@ export const formStyles = makeStyles({
 
 export const cardStyles = makeStyles({
   root: {
-    width: "250px",
+    width: "300px",
     height: "200px",
     padding: "10px",
     margin: "10px",

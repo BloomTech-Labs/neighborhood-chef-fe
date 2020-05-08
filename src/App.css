@@ -50,21 +50,28 @@ a {
 
 /* ---- start of Dashboard styles ---- */
 
-.component-main {
+.dashboard-container {
   display: flex;
   justify-content: space-between;
+}
+
+.header-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .feed-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
 }
 
 .recent-events-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
 }
 
 /* ---- start of View Event styles ---- */
@@ -127,7 +134,7 @@ a {
   flex-direction: column;
 }
 
-.header-container {
+.account-button {
   text-align: right;
   margin: 10px 20px 20px auto;
 }

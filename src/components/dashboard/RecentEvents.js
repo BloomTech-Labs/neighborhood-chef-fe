@@ -31,7 +31,7 @@ const recentEventsList = [
 const RecentEvents = () => {
   return (
     <div className="recent-events-container">
-      <h3>Neighborhood</h3>
+      <h3 style={{ marginLeft: "12px" }}>Neighborhood</h3>
       {!!recentEventsList &&
         recentEventsList.map((ele) => <RecentCard {...ele} />)}
     </div>
