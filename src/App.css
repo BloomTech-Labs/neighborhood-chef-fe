@@ -5,6 +5,18 @@ body {
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
 }
+p {
+  margin: 0;
+}
+h1 {
+  margin: 0;
+}
+h2 {
+  margin: 0;
+}
+h3 {
+  margin: 0;
+}
 a {
   text-decoration: none;
   color: black;
@@ -12,6 +24,11 @@ a {
 }
 .app-container {
   margin: 1%;
+}
+
+.component-main {
+  display: flex;
+  justify-content: space-between;
 }
 /* ---- start of Login styles ---- */
 

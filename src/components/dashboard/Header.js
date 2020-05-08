@@ -5,7 +5,7 @@ import roundSearch from "@iconify/icons-ic/round-search";
 const Header = () => {
   return (
     <div className="header-container">
-      <a href="#">neighborhood name</a>
+      <h3>neighborhood name</h3>
       <div className="header-icons">
         <Icon height="25" icon={roundSearch} />
       </div>
