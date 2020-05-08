@@ -107,8 +107,6 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         tempDate.setMonth(month === 11 ? 0 : month + 1);
         if (month === 11) tempDate.setFullYear(year + 1);
       }
-
-      console.log(month, year, tempDate);
       return {
         ...state,
         selectedMonth: tempDate,
