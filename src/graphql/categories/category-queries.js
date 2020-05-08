@@ -3,8 +3,8 @@ import gql from "graphql-tag";
 export const ALL_CATEGORIES = gql`
   query getCategories {
     getCategories {
-      id
-      Category
+    	id
+      category
     }
   }
 `;
@@ -12,8 +12,8 @@ export const ALL_CATEGORIES = gql`
 export const CATEGORY_BY_ID = gql`
   query getCategoryById($id: ID!) {
     getCategoryById(id: $id) {
-      Category
       id
+      category
     }
   }
 `;

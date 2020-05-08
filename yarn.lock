@@ -1103,10 +1103,20 @@
   resolved "https://registry.yarnpkg.com/@iconify/icons-flat-color-icons/-/icons-flat-color-icons-1.0.5.tgz#53af638061648e97111ffcfa22906878086d4cec"
   integrity sha512-zgNK4Wnzynbihb6QOLEf9uAWm7bAc/IzrUOi+Q8EFF8JJX/F/m/qqyWm8EFzp0wVAU6Qgu6I5IBjjDXTyYWkrw==
 
+"@iconify/icons-gridicons@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-gridicons/-/icons-gridicons-1.0.6.tgz#4c6d246c2250509a16db055efce499598d51be8e"
+  integrity sha512-YTySGg1fE/mc5d89IT4GYf8k0ld3iglBN5+H+E2FnHKN7cZ9E2/cKS3eCnYt+T+LcC6IxBSG162E9T7CkPpu1Q==
+
 "@iconify/icons-ic@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@iconify/icons-ic/-/icons-ic-1.0.11.tgz#73cd387ae1da39c38134fdabc96db44e48d37268"
   integrity sha512-9zWp0PTlPNtYnOQjHa8R22UA9U/Lt4j3D+ojD5NONkvbprCEr056iKWiuBJnyrIvLUa7FxKK2K8dbq7CuXm4rA==
+
+"@iconify/icons-icons8@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-icons8/-/icons-icons8-1.0.5.tgz#4642ddebee2b795c170204843b6c8d01de8a0b97"
+  integrity sha512-KgGXLhZD/GzbMhWlI4DVs23IsIiNFSuM91u00MJQtgHO1LtpGqjw8pSaZy+Q0/6kphcRuXsh3bDBE6cPNF17JA==
 
 "@iconify/icons-jam@^1.0.5":
   version "1.0.5"
