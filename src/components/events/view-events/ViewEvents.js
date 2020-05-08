@@ -3,14 +3,14 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 
 //action imports
-import { getEvents, getEventsSuccess } from "../../utilities/actions";
+import { getEvents, getEventsSuccess } from "../../../utilities/actions";
 
 //component imports
-import Sidebar from "../dashboard/Sidebar";
+import Sidebar from "../../dashboard/Sidebar";
 import MonthPicker from "./MonthPicker";
 import CalendarView from "./CalendarView";
 import EventDetails from "./EventDetails";
-import Header from "../dashboard/Header";
+import Header from "../../dashboard/Header";
 
 const ViewEvents = () => {
   const dispatch = useDispatch();

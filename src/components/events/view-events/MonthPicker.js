@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setMonth } from "../../utilities/actions";
+import { setMonth } from "../../../utilities/actions";
 
 const MonthPicker = () => {
   const selectedMonth = useSelector((state) => state.selectedMonth);

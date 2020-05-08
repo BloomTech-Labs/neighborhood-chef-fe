@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { rsvp } from "../../utilities/actions";
+import { rsvp } from "../../../utilities/actions";
 
 const StatusButton = ({ name, color, eventStatus, eventId }) => {
   const dispatch = useDispatch();

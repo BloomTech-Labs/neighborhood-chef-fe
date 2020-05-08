@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { makeActive } from "../../utilities/actions";
+import { makeActive } from "../../../utilities/actions";
 
 const CalendarRow = ({ id, title, date, start_time, status }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);

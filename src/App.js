@@ -3,7 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Register from "./components/account/Register.js";
 import CreateEvent from "./components/events/CreateEvent";
-import ViewEvents from "./components/events/ViewEvents";
+import ViewEvents from "./components/events/view-events/ViewEvents";
 import Dashboard from "./components/dashboard/Dashboard";
 import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
