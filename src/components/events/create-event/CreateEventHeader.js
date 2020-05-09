@@ -22,7 +22,7 @@ const CreateEventHeader = ({ page }) => {
       >
         <Icon
           icon={pencilIcon}
-          style={{ fontSize: '3.4rem', marginRight: '5px' }}
+          style={{ fontSize: '2.5rem', marginRight: '5px' }}
         />
         <h3>Details</h3>
       </div>
@@ -41,7 +41,7 @@ const CreateEventHeader = ({ page }) => {
       >
         <Icon
           icon={createIcon}
-          style={{ fontSize: '3.5rem', marginRight: '5px' }}
+          style={{ fontSize: '2.5rem', marginRight: '5px' }}
         />
         <h3>Create</h3>
       </div>
@@ -52,7 +52,7 @@ const CreateEventHeader = ({ page }) => {
       >
         <Icon
           icon={shareIcon}
-          style={{ fontSize: '4.5rem', marginRight: '5px' }}
+          style={{ fontSize: '2.5rem', marginRight: '5px' }}
         />
         <h3>Share</h3>
       </div>

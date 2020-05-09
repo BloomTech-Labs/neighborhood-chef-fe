@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import CreateEventHeader from './CreateEventHeader.js'
+import CreateEventHeader from './CreateEventHeader.js';
 import FormPageOne from './FormPageOne.js';
 import FormPageTwo from './FormPageTwo.js';
 import FormPageThree from './FormPageThree.js';
-import { modifierData } from './FormPageTwo.js'
+import FormPageFour from './FormPageFour.js';
+import { modifierData } from './FormPageTwo.js';
 
 const validationSchema = Yup.object({
   title: Yup.string().required('Title is required'),
@@ -28,13 +29,17 @@ const initialState = {
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(4);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
 
+  useEffect(() => {
+    resetModifiers();
+  }, []);
+
   const resetModifiers = () => {
-    return modifierData.map(mod => mod.active = false)
-  }
+    return modifierData.map((mod) => (mod.active = false));
+  };
 
   // wasn't sure if we wanted to send the modifier icon itself to the backend in JSON too?
   const modifiersWithoutIcon = () => {
@@ -48,7 +53,6 @@ const FormContainer = () => {
   };
 
   return (
-
     <>
       <Formik
         initialValues={initialState}
@@ -56,13 +60,13 @@ const FormContainer = () => {
         onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
-            user_id: "insert user id here",
+            user_id: 'insert user id here',
             hashtags: JSON.stringify({ modifiers: [...hashtags] }),
             modifiers: JSON.stringify({
               modifiers: [modifiersWithoutIcon()],
             }),
-            longitude: "insert calculated longitude",
-            latitude: "insert calculated longitude"
+            longitude: 'insert calculated longitude',
+            latitude: 'insert calculated longitude',
           };
           console.log(values);
           setHashtags([]);
@@ -79,55 +83,61 @@ const FormContainer = () => {
           errors,
           resetForm,
         }) => (
-            <div className="createEventContainer">
-              <CreateEventHeader page={page} />
-              <Form className="createForm" onSubmit={handleSubmit}>
-                {page === 1 && (
-                  <>
-                    <FormPageOne
-                      values={values}
-                      handleChange={handleChange}
-                      errors={errors}
-                      touched={touched}
-                      setPage={setPage}
-                      resetForm={resetForm}
-                    />
-                  </>
-                )}
+          <div className="createEventContainer">
+            <CreateEventHeader page={page} />
+            <Form className="createForm" onSubmit={handleSubmit}>
+              {page === 1 && (
+                <>
+                  <FormPageOne
+                    values={values}
+                    handleChange={handleChange}
+                    errors={errors}
+                    touched={touched}
+                    setPage={setPage}
+                    resetForm={resetForm}
+                  />
+                </>
+              )}
 
-                {page === 2 && (
-                  <>
-                    <FormPageTwo
-                      touched={touched}
-                      errors={errors}
-                      setPage={setPage}
-                      handleChange={handleChange}
-                      values={values}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  </>
-                )}
+              {page === 2 && (
+                <>
+                  <FormPageTwo
+                    touched={touched}
+                    errors={errors}
+                    setPage={setPage}
+                    handleChange={handleChange}
+                    values={values}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                  />
+                </>
+              )}
 
-                {page === 3 && (
-                  <>
-                    <FormPageThree
-                      setPage={setPage}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      values={values}
-                      handleSubmit={handleSubmit}
-                      errors={errors}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  </>
-                )}
-              </Form>
-            </div>
-          )}
+              {page === 3 && (
+                <>
+                  <FormPageThree
+                    setPage={setPage}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    values={values}
+                    handleSubmit={handleSubmit}
+                    errors={errors}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                  />
+                </>
+              )}
+
+              {page === 4 && (
+                <>
+                  <FormPageFour />
+                </>
+              )}
+            </Form>
+          </div>
+        )}
       </Formik>
     </>
   );
