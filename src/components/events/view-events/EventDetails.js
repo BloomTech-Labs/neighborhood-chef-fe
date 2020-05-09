@@ -16,6 +16,7 @@ import { rsvpButtons } from "../../../data/buttons";
 const EventDetails = () => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
+  const me = useSelector((state) => state.myUser);
   const event = eventList.find((ele) => ele.id === currentEventID);
   let simplifiedDate,
     displayedStartTime,
@@ -96,6 +97,7 @@ const EventDetails = () => {
                   {...ele}
                   eventStatus={event.status}
                   eventId={event.id}
+                  userId={me.id}
                   key={ele.name}
                 />
               ))}

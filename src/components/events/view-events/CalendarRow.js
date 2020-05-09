@@ -2,9 +2,21 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 
-const CalendarRow = ({ id, title, date, startTime, status }) => {
+const CalendarRow = ({ id, title, date, startTime, users }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
+  const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
+
+  //find status
+  let status = null;
+  if (users) {
+    const tempArray = users.filter((user) => user.id == me.id);
+    if (tempArray.length > 0) {
+      status = tempArray[0].status;
+    }
+  }
+
+  //time formatting
   var options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
   const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
@@ -40,16 +52,15 @@ const CalendarRow = ({ id, title, date, startTime, status }) => {
       >
         <div style={{ opacity: ".5" }}>{title}</div>
         <div>
-          <span style={{ opacity: ".5" }}>Attending? </span>
           <span
             style={
-              status === "No"
+              status === "Not Going"
                 ? { color: "rgba(232, 64, 64, .75)" }
                 : status === "Maybe"
                 ? { color: "rgba(255, 169, 40, .75)" }
-                : status === "Yes"
+                : status === "Going"
                 ? { color: "rgba(33, 186, 66, .75)" }
-                : { color: "rgba(0,0,0, .5)" }
+                : { color: "rgba(0,0,0, .3)" }
             }
           >
             {status || "undecided"}

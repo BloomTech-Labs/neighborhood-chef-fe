@@ -24,7 +24,7 @@ export const rsvp = (event, id) => {
   return {
     type: RSVP,
     payload: {
-      name: event.target.innerHTML,
+      name: event.target.name,
       id: id,
     },
   };

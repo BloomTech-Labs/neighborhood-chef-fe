@@ -16,7 +16,12 @@ const initialState = {
   errors: [],
   isGettingEvents: false,
 
-  //test data below.
+  //test user data
+  myUser: {
+    id: 1,
+  },
+
+  //test events
   eventList: [
     {
       id: 0,
