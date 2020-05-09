@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const ALL_EVENTS = gql`
   query getAllEvents {
@@ -37,7 +37,7 @@ export const EVENT_BY_ID = gql`
       id
       date
       startTime
-    	endTime
+      endTime
       title
       description
       category_id
@@ -46,7 +46,7 @@ export const EVENT_BY_ID = gql`
       latitude
       longitude
       modifiers
-			hashtags
+      hashtags
       users {
         id
         email

@@ -1,17 +1,17 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const ALL_USERS = gql`
   query getAllUsers {
     getAllUsers {
       id
       email
-    	firstName
+      firstName
       lastName
       gender
       address
       latitude
       longitude
-			eventsOwned {
+      eventsOwned {
         id
         title
         date
@@ -34,7 +34,7 @@ export const ALL_USERS = gql`
           longitude
           latitude
           status
-        }	
+        }
       }
     }
   }
@@ -51,11 +51,11 @@ export const USER_BY_ID = gql`
       address
       latitude
       longitude
-    	eventsOwned {
+      eventsOwned {
         id
         date
         startTime
-    	  endTime
+        endTime
         title
         description
         category_id
@@ -64,7 +64,7 @@ export const USER_BY_ID = gql`
         latitude
         longitude
         modifiers
-			  hashtags
+        hashtags
         users {
           id
           email
@@ -82,7 +82,7 @@ export const USER_BY_ID = gql`
 `;
 
 export const GET_AUTHORED_EVENTS = gql`
- query getAuthoredEvents($id: ID!) {
+  query getAuthoredEvents($id: ID!) {
     getAuthoredEvents(id: $id) {
       id
       startTime
@@ -93,8 +93,8 @@ export const GET_AUTHORED_EVENTS = gql`
       latitude
       longitude
       user_id
-    	modifiers
-    	hashtags
+      modifiers
+      hashtags
       users {
         id
         email
@@ -111,12 +111,12 @@ export const GET_AUTHORED_EVENTS = gql`
 `;
 
 export const GET_INVITED_EVENTS = gql`
-  query getInvitedEvents($id:ID!) {
-    getInvitedEvents(id:$id) {
-    	id
+  query getInvitedEvents($id: ID!) {
+    getInvitedEvents(id: $id) {
+      id
       date
       startTime
-    	endTime
+      endTime
       title
       description
       category_id
@@ -125,7 +125,7 @@ export const GET_INVITED_EVENTS = gql`
       latitude
       longitude
       modifiers
-			hashtags
+      hashtags
       users {
         id
         email
@@ -142,12 +142,12 @@ export const GET_INVITED_EVENTS = gql`
 `;
 
 export const GET_ATTENDING_EVENTS = gql`
-  query getAttendingEvents($id:ID!) {
-    getAttendingEvents(id:$id) {
+  query getAttendingEvents($id: ID!) {
+    getAttendingEvents(id: $id) {
       id
       date
       startTime
-    	endTime
+      endTime
       title
       description
       category_id
@@ -156,7 +156,7 @@ export const GET_ATTENDING_EVENTS = gql`
       latitude
       longitude
       modifiers
-			hashtags
+      hashtags
       users {
         id
         email

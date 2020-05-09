@@ -1,9 +1,9 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const ALL_CATEGORIES = gql`
   query getCategories {
     getCategories {
-    	id
+      id
       category
     }
   }

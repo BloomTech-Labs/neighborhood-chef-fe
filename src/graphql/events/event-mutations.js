@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const ADD_EVENT = gql`
   mutation addEvent($input: NewEventInput!) {
@@ -12,8 +12,8 @@ export const ADD_EVENT = gql`
       user_id
       category_id
       address
-    	latitude
-  	  longitude
+      latitude
+      longitude
       hashtags
       modifiers
     }
@@ -44,7 +44,7 @@ export const UPDATE_EVENT = gql`
         address
         latitude
         longitude
-    	  status	
+        status
       }
     }
   }
@@ -71,7 +71,7 @@ export const DELETE_EVENT = gql`
 
 export const INVITE_USER = gql`
   mutation inviteUserToEvent($input: EventInviteInput!) {
-    inviteUserToEvent(input:$input) {
+    inviteUserToEvent(input: $input) {
       id
       date
       startTime
@@ -101,12 +101,12 @@ export const INVITE_USER = gql`
 `;
 
 export const UPDATE_INVITATION = gql`
-  mutation updateInvitation($input:UpdateInviteInput!) {
-    updateInvitation(input:$input) {
+  mutation updateInvitation($input: UpdateInviteInput!) {
+    updateInvitation(input: $input) {
       id
       date
       startTime
-    	endTime
+      endTime
       title
       description
       category_id
@@ -115,7 +115,7 @@ export const UPDATE_INVITATION = gql`
       latitude
       longitude
       modifiers
-			hashtags
+      hashtags
       users {
         id
         email
@@ -132,12 +132,12 @@ export const UPDATE_INVITATION = gql`
 `;
 
 export const REMOVE_INVITATION = gql`
-  mutation removeInvitation($input:RemoveInviteInput!) {
-    removeInvitation(input:$input) {
+  mutation removeInvitation($input: RemoveInviteInput!) {
+    removeInvitation(input: $input) {
       id
       date
       startTime
-    	endTime
+      endTime
       title
       description
       category_id
@@ -146,7 +146,7 @@ export const REMOVE_INVITATION = gql`
       latitude
       longitude
       modifiers
-			hashtags
+      hashtags
       users {
         id
         email
