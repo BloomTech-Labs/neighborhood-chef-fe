@@ -83,7 +83,7 @@ export const textBoxStyles = makeStyles({
     border: "0",
     borderRadius: "5px",
     background: "rgba(0,0,0,.1)",
-    width: "165px",
+    width: "175px",
     padding: "5px 7px",
     display: "flex",
     alignItems: "center",

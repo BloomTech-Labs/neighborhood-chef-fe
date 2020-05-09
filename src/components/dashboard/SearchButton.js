@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import roundSearch from "@iconify/icons-ic/round-search";
 import { textBoxStyles } from "../../styles";
@@ -7,9 +7,6 @@ const SearchButton = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [search, setSearch] = useState("");
   const classes = textBoxStyles();
-  useEffect(() => {
-    console.log(isSearching);
-  }, [isSearching]);
   return (
     <>
       {isSearching ? (

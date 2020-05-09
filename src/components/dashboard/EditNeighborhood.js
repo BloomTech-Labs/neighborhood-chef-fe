@@ -25,7 +25,7 @@ const EditNeighborhood = (props) => {
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
       />
-      <button className={classes.button} style={{ color: "#58D573" }}>
+      <button className={classes.button}>
         <Icon width="2em" icon={baselineCheck} />
       </button>
     </form>
