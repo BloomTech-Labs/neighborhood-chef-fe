@@ -3,20 +3,18 @@ import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import RecentEvents from "./RecentEvents";
 import Header from "./Header";
-import AccountButton from "../account/preferences/AccountButton";
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <Sidebar active="dashboard" />
-      <div>
+      <div className="dashboard-main">
         <Header />
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           <Feed />
           <RecentEvents />
         </div>
       </div>
-      <AccountButton />
     </div>
   );
 };

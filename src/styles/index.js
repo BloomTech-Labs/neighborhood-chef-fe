@@ -77,3 +77,30 @@ export const cardStyles = makeStyles({
     borderRadius: "10px",
   },
 });
+
+export const textBoxStyles = makeStyles({
+  background: {
+    border: "0",
+    borderRadius: "5px",
+    background: "rgba(0,0,0,.1)",
+    width: "165px",
+    padding: "5px 7px",
+    display: "flex",
+    alignItems: "center",
+  },
+  button: {
+    background: "0",
+    cursor: "pointer",
+    border: "0",
+    width: "10%",
+  },
+  textBox: {
+    border: "0",
+    borderRadius: "10px",
+    background: "0",
+    width: "85%",
+    padding: "2px",
+    height: "100%",
+    fontSize: "1.5rem",
+  },
+});

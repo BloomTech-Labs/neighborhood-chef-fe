@@ -7,6 +7,7 @@ import {
   CHANGE_MONTH,
   RSVP,
   CHANGE_PAGE,
+  CHANGE_NEIGHB_NAME,
 } from "../actions";
 
 const initialDate = new Date();
@@ -17,6 +18,7 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+  neighborhoodName: "My Neighborhood",
 
   //test data below.
   eventList: [
@@ -127,6 +129,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         page: state.page === 1 ? 2 : 1,
+      };
+    case CHANGE_NEIGHB_NAME:
+      return {
+        ...state,
+        neighborhoodName: payload,
       };
     default:
       return {

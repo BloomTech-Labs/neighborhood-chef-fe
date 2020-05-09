@@ -60,6 +60,7 @@ a {
 .sidebar-container {
   padding-right: 20px;
   height: 90vh;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,7 +70,7 @@ a {
 
 .dashboard-container {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
 }
 
 .header-container {
@@ -77,6 +78,21 @@ a {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.header-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header-icons > :first-child {
+  margin-right: 10px;
 }
 
 .feed-container {
@@ -128,7 +144,7 @@ a {
 }
 
 .middle-calendar {
-  width: 35%;
+  width: 45%;
   margin-right: 10%;
 }
 
@@ -153,7 +169,6 @@ a {
 
 .account-button {
   text-align: right;
-  margin: 10px 20px 20px auto;
 }
 
 .rsvp-buttons {

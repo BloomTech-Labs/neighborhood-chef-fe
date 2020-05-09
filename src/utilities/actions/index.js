@@ -6,6 +6,7 @@ export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";
 export const CHANGE_PAGE = "CHANGE_PAGE";
+export const CHANGE_NEIGHB_NAME = "CHANGE_NEIGHB_NAME";
 
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
@@ -30,4 +31,9 @@ export const rsvp = (event, id) => {
 
 export const changePage = () => ({
   type: CHANGE_PAGE,
+});
+
+export const changeNeighborhoodName = (newName) => ({
+  type: CHANGE_NEIGHB_NAME,
+  payload: newName,
 });
