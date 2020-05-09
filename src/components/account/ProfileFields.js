@@ -8,23 +8,26 @@ const ProfileFields = (props) => {
     <>
       <Field
         component={TextField}
-        label="First Name"
+        placeholder="First Name"
         type="name"
         name="firstName"
+        className="firstName"
       />
       <Field
         component={TextField}
-        label="Last Name"
+        placeholder="Last Name"
         type="name"
         name="lastName"
+        className="lastName"
       />
       <Field
         component={TextField}
-        label="Location"
+        placeholder="Location"
         type="text"
         name="location"
+        className="location"
       />
-      <Field component={RadioGroup} name="gender">
+      <Field component={RadioGroup} name="gender" className="gender">
         <h3>Gender</h3>
         <FormControlLabel
           value="male"

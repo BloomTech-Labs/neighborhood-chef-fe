@@ -5,6 +5,7 @@ import ProfileFields from "./ProfileFields.js";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { MobileStepper } from "@material-ui/core";
 import { formStyles } from "../../styles";
 
 const Register = () => {
@@ -28,6 +29,10 @@ const Register = () => {
           if (!values.password) {
             errors.password = "Required";
           }
+
+          if (values.confirmPassword !== values.password) {
+            errors.confirmPassword = "Passwords do not match";
+          }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -44,8 +49,19 @@ const Register = () => {
         )}
       </Formik>
       <p>
-        Already have an account? <Link to="/login">Login</Link>.
+        Already have an account?{" "}
+        <Link to="/login" className="loginLink">
+          Login
+        </Link>
+        .
       </p>
+      <MobileStepper
+        variant="dots"
+        steps={2}
+        position="static"
+        activeStep={currentPage - 1}
+        className="steps"
+      />
     </div>
   );
 };
