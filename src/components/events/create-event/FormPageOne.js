@@ -24,12 +24,11 @@ const FormPageOne = ({
 
   const validateAndTurnPage = () => {
     if (
-      values.Title &&
-      values.Address &&
-      values.Description &&
-      values.Date &&
-      values.Start_Time &&
-      values.End_Time &&
+      values.title &&
+      values.address &&
+      values.description &&
+      values.date &&
+      values.startTime &&
       values.category_id
     ) {
       setPage(2);
@@ -45,10 +44,10 @@ const FormPageOne = ({
           <div className="createFormInputDiv">
             <Field
               type="text"
-              name="Title"
+              name="title"
               placeholder="Title"
               onChange={handleChange}
-              value={values.Title}
+              value={values.title}
             />
             <CreateIcon color="disabled" style={{ fontSize: '22px' }} />
           </div>
@@ -56,19 +55,19 @@ const FormPageOne = ({
           <div className="createFormInputDiv">
             <Field
               type="text"
-              name="Address"
+              name="address"
               placeholder="Location"
               onChange={handleChange}
-              value={values.Address}
+              value={values.address}
             />
             <SearchIcon color="disabled" style={{ fontSize: '22px' }} />
           </div>
           <Field
             as="textarea"
-            name="Description"
+            name="description"
             placeholder="Write a description for your event..."
             onChange={handleChange}
-            value={values.Description}
+            value={values.description}
             className="createFormTextArea"
           />
         </div>
@@ -78,9 +77,9 @@ const FormPageOne = ({
             <label htmlFor="eventFormDate">Date</label>
             <TextField
               type="date"
-              name="Date"
+              name="date"
               id="eventFormDate"
-              value={values.Date}
+              value={values.date}
               onChange={handleChange}
               InputProps={{ disableUnderline: true }}
             />
@@ -89,9 +88,9 @@ const FormPageOne = ({
           <div className="eventTimeDiv">
             <label htmlFor="Start_Time">The event starts at:</label>
             <Select
-              name="Start_Time"
+              name="startTime"
               id="Start_Time"
-              value={values.Start_Time}
+              value={values.startTime}
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -150,9 +149,9 @@ const FormPageOne = ({
           <div className="eventTimeDiv">
             <label htmlFor="End_Time">The event ends at:</label>
             <Select
-              name="End_Time"
+              name="endTime"
               id="End_Time"
-              value={values.End_Time}
+              value={values.endTime}
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -233,7 +232,7 @@ const FormPageOne = ({
 
       {error && (
         <p style={{ textAlign: 'center', color: 'crimson' }}>
-          *Title, Address, Description, Date, Start Time, End Time, and Category
+          *Title, Address, Description, Date, Start Time, and Category
           are required
         </p>
       )}
