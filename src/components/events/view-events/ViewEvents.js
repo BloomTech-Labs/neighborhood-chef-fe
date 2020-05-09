@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
+//graphql imports
+import { print } from "graphql";
+import { ALL_EVENTS } from "../../../graphql/events/event-queries";
+
 //action imports
+// eslint-disable-next-line
 import { getEvents, getEventsSuccess } from "../../../utilities/actions";
 
 //component imports
@@ -20,22 +25,7 @@ const ViewEvents = () => {
       url: "http://localhost:5100/graphql",
       method: "post",
       data: {
-        query: `
-          query getAllEvents {
-          getAllEvents {
-            id
-            Date
-            Start_Time
-            End_Time
-            Title
-            Description
-            category_id
-            user_id
-            Address
-            Latitude
-            Longitude
-          }
-        }`,
+        query: print(ALL_EVENTS),
       },
     })
       .then((res) => {
@@ -46,6 +36,7 @@ const ViewEvents = () => {
         console.log(err.message);
         // dispatch({ type: GET_EVENTS_FAIL, payload: err.message });
       });
+    // eslint-disable-next-line
   }, []);
 
   return (

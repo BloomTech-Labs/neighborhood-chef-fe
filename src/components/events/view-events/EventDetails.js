@@ -32,7 +32,7 @@ const EventDetails = () => {
   //dealing with date formatting things
 
   console.log(event);
-  var options = { year: "numeric", month: "long", day: "numeric" };
+  // var options = { year: "numeric", month: "long", day: "numeric" };
   // const formattedDate = new Date(parseInt(event.Date)); //formats 13 digit UNIX date provided by database
   // const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
   // const addStartTime = new Date(`${simplifiedDate} ${event.Start_Time}`); // creates new date using start_time value for time, instead of 00:00:00 default
