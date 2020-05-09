@@ -17,6 +17,23 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
 import { timeAgo } from "../../utilities/functions";
 
+import StatusButton from "../events/StatusButton";
+
+const rsvpButtons = [
+  {
+    name: "Going",
+    color: "#58D573",
+  },
+  {
+    name: "Maybe",
+    color: "#FFA928",
+  },
+  {
+    name: "Not Going",
+    color: "#E84040",
+  },
+];
+
 const RecentCard = (props) => {
   const classes = cardStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -94,7 +111,12 @@ const RecentCard = (props) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph></Typography>
+          <Typography paragraph>Are you attending this event?</Typography>
+          <div style={{ display: "flex" }}>
+            {rsvpButtons.map((ele) => (
+              <StatusButton />
+            ))}
+          </div>
         </CardContent>
       </Collapse>
     </Card>
