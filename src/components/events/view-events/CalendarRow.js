@@ -17,11 +17,10 @@ const CalendarRow = ({ id, title, date, startTime, status }) => {
   });
   const displayedHoursMins = addStartTime
     .toLocaleTimeString([], {
-      //formatting just time in 12 hr format with lower case am pm
       hour: "numeric",
       minute: "2-digit",
     })
-    .toLowerCase();
+    .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
 
   return (
     <div
@@ -40,16 +39,21 @@ const CalendarRow = ({ id, title, date, startTime, status }) => {
         }}
       >
         <div style={{ opacity: ".5" }}>{title}</div>
-        <div
-          style={
-            status === "Not Going"
-              ? { color: "rgba(232, 64, 64, .75)" }
-              : status === "Maybe"
-              ? { color: "rgba(255, 169, 40, .75)" }
-              : { color: "rgba(33, 186, 66, .75)" }
-          }
-        >
-          {status}
+        <div>
+          <span style={{ opacity: ".5" }}>Attending? </span>
+          <span
+            style={
+              status === "No"
+                ? { color: "rgba(232, 64, 64, .75)" }
+                : status === "Maybe"
+                ? { color: "rgba(255, 169, 40, .75)" }
+                : status === "Yes"
+                ? { color: "rgba(33, 186, 66, .75)" }
+                : { color: "rgba(0,0,0, .5)" }
+            }
+          >
+            {status || "undecided"}
+          </span>
         </div>
       </div>
       <div style={{ opacity: ".3", width: "20%" }}>{displayedHoursMins}</div>
