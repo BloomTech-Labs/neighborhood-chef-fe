@@ -8,7 +8,7 @@ const CalendarView = () => {
   const selectedMonth = useSelector((state) => state.selectedMonth);
   const eventsInMonth = eventList.filter(
     (ev) =>
-      new Date(parseInt(ev.Date)).toLocaleDateString("en-us", {
+      new Date(parseInt(ev.date)).toLocaleDateString("en-us", {
         month: "short",
         year: "numeric",
       }) ===
@@ -20,15 +20,7 @@ const CalendarView = () => {
   return (
     <div className="calendar-view-main">
       {!!eventsInMonth && eventsInMonth.length > 0 ? (
-        eventsInMonth.map((event) => (
-          <CalendarRow
-            date={event.Date}
-            id={event.id}
-            title={event.Title}
-            start_time={event.Start_Time}
-            key={event.id}
-          />
-        ))
+        eventsInMonth.map((event) => <CalendarRow {...event} key={event.id} />)
       ) : (
         <>
           <h3>No events for selected month</h3>

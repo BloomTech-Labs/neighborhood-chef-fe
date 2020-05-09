@@ -21,6 +21,7 @@ const ViewEvents = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(getEvents);
+
     axios({
       url: "http://localhost:5100/graphql",
       method: "post",

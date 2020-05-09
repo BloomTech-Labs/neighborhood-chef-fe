@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 //icon imports
@@ -27,21 +27,32 @@ const rsvpButtons = [
 const EventDetails = () => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
-  const event = eventList.find((ele) => ele.id === currentEventID);
+  let event,
+    options,
+    formattedDate,
+    simplifiedDate,
+    addStartTime,
+    displayedHoursMins;
+  useEffect(() => {
+    if (!!currentEventID) {
+      console.log(currentEventID);
+      event = eventList.find((ele) => ele.id === currentEventID);
 
-  //dealing with date formatting things
+      //dealing with date formatting things
 
-  console.log(event);
-  // var options = { year: "numeric", month: "long", day: "numeric" };
-  // const formattedDate = new Date(parseInt(event.Date)); //formats 13 digit UNIX date provided by database
-  // const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  // const addStartTime = new Date(`${simplifiedDate} ${event.Start_Time}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  // const displayedHoursMins = addStartTime
-  // .toLocaleTimeString([], {
-  // hour: "numeric",
-  // minute: "2-digit",
-  // })
-  // .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
+      console.log(event);
+      options = { year: "numeric", month: "long", day: "numeric" };
+      formattedDate = new Date(parseInt(event.date)); //formats 13 digit UNIX date provided by database
+      simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
+      addStartTime = new Date(`${simplifiedDate} ${event.start_time}`); // creates new date using start_time value for time, instead of 00:00:00 default
+      displayedHoursMins = addStartTime
+        .toLocaleTimeString([], {
+          hour: "numeric",
+          minute: "2-digit",
+        })
+        .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
+    }
+  }, [currentEventID]);
 
   return (
     <div className="event-details-container">

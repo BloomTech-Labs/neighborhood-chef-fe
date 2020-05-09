@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 
-const CalendarRow = ({ id, title, date, start_time, status }) => {
+const CalendarRow = ({ id, title, date, startTime, status }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
   const dispatch = useDispatch();
   var options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
   const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate} ${start_time}`); // creates new date using start_time value for time, instead of 00:00:00 default
+  const addStartTime = new Date(`${simplifiedDate}, ${startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
   const getWeekday = addStartTime.toLocaleDateString("en-us", {
     weekday: "short",
   });
