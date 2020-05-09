@@ -95,6 +95,17 @@ export const GET_AUTHORED_EVENTS = gql`
       user_id
     	modifiers
     	hashtags
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+      }
     }
   }
 `;
@@ -115,6 +126,17 @@ export const GET_INVITED_EVENTS = gql`
       longitude
       modifiers
 			hashtags
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+      }
     }
   }
 `;
@@ -135,6 +157,17 @@ export const GET_ATTENDING_EVENTS = gql`
       longitude
       modifiers
 			hashtags
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+      }
     }
   }
 `;

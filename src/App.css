@@ -3,7 +3,7 @@ html {
 }
 body {
   font-size: 1.5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 a {
   text-decoration: none;
@@ -385,10 +385,15 @@ a {
   width: 15%;
 }
 
-/* -----End of CreateEvent styles------- */
+/* -- CreateFormHeader styles ---*/
 
-/* ---- CreateFormHeader styles -------*/
-.createFormHeaderDiv {
-  
+.createFormHeaderNotActive {
+  display: flex;
+  align-items: center;
+  color: #d9d9d9;
 }
 
+.createFormHeaderActive {
+  color: #0c0c41;
+}
+/* -----End of CreateEvent styles------- */
