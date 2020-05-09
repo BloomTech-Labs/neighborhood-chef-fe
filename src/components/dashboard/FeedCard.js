@@ -1,5 +1,21 @@
 import React from "react";
 import { cardStyles } from "../../styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+
+import { timeAgo } from "../../utilities/functions";
 
 const FeedCard = ({
   name,
@@ -9,33 +25,77 @@ const FeedCard = ({
   photo,
   message,
 }) => {
-  let showType = "";
   const classes = cardStyles();
-  const elapsedTime = Math.ceil((new Date() - time_created) / 1000);
-  let configuredTime;
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   /*configuring time elapsed shown to change based on how much time has elapsed*/
-  if (elapsedTime < 60) {
-    showType = "second";
-    configuredTime = elapsedTime;
-  } else if (elapsedTime < 3600) {
-    showType = "minute";
-    configuredTime = Math.floor(elapsedTime / 60);
-  } else if (elapsedTime < 86400) {
-    showType = "hour";
-    configuredTime = Math.floor(elapsedTime / 3600);
-  } else {
-    showType = "day";
-    configuredTime = Math.floor(elapsedTime / 86400);
-  }
-  if (configuredTime !== 1) showType = showType + "s";
+  const shownTime = timeAgo(time_created);
+
   return (
-    <div className={`${classes.root} card-container`}>
-      <h3>{name}</h3>
-      <p>{`${configuredTime} ${showType} ago`}</p>
-      <p>{message}</p>
-      <p>likes: {likes}</p>
-      <p>comments: {comments_num}</p>
-    </div>
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={
+          <Typography variant="h5">{`${name} commented in an event`}</Typography>
+        }
+        subheader={shownTime}
+      />
+      {/* <CardMedia
+        className={classes.media}
+        image={photo}
+        title="Paella dish"
+      /> */}
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {message}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <span style={{ marginRight: "4px" }}>
+            <FavoriteIcon />
+          </span>
+          <Typography variant="caption" color="textSecondary">
+            {likes}
+          </Typography>
+        </IconButton>
+        <IconButton aria-label="share">
+          <span style={{ marginRight: "4px" }}>
+            <ChatBubbleIcon />
+          </span>
+          <Typography variant="caption" color="textSecondary">
+            {comments_num}
+          </Typography>
+        </IconButton>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>{message}</Typography>
+        </CardContent>
+      </Collapse>
+    </Card>
   );
 };
 
