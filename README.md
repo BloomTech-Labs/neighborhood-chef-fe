@@ -51,6 +51,12 @@ Neighborhood Chef provides a uniquely intimate approach to social culinary gathe
 - allows for scalability of application
 - provides a structured workflow of state management
 
+#### Okta API
+
+- service for the storing and authentication of user accounts
+- provides improved layers of security with a multifactor PCKE authorization flow and secure methods of authenticating a user after log in (via introspection requests)
+ 
+
 #### Front end deployed using AWS Amplify
 
 #### [Back end](https://github.com/Lambda-School-Labs/neighborhood-chef-be) built using:

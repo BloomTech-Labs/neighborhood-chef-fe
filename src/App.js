@@ -5,14 +5,17 @@ import PrivateRoute from './components/utils/private-route';
 import GenericRedirect from './components/utils/generic-redirect';
 import LoginRedirect from './components/utils/login-redirect';
 import Register from "./components/account/Register.js";
-import CreateEvent from "./components/events/CreateEvent";
+import CreateEvent from "./components/events/create-event/CreateEvent";
 import ViewEvents from "./components/events/ViewEvents";
 import Dashboard from "./components/dashboard/Dashboard";
 import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
 import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
-import Login from './components/account/Login';
+
+import Login from "./components/account/Login";
+
+
 
 function App() {
   return (
@@ -33,6 +36,7 @@ function App() {
         <Route path="/notifications" component={Notifications} />
         <Route path="/messages" component={Messages} />
       </Switch>
+
     </div>
   );
 }
