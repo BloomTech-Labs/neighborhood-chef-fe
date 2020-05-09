@@ -3,7 +3,7 @@ import { cardStyles } from "../../styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
+// import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
@@ -43,12 +43,6 @@ const RecentCard = (props) => {
   };
 
   const shownTime = timeAgo(props.date_created);
-  const created = props.date_created.toLocaleDateString("en-us", {
-    day: "numeric",
-    month: "short",
-    hours: "numeric",
-    minutes: "2-digit",
-  });
   const time = props.date.toLocaleTimeString("en-us", {
     hours: "numeric",
     minutes: "2-digit",
