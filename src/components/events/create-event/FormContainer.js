@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { print } from 'graphql';
+import axios from 'axios';
 
+import { ADD_EVENT } from '../../../graphql/events/event-mutations.js';
 import CreateEventHeader from './CreateEventHeader.js';
 import FormPageOne from './FormPageOne.js';
 import FormPageTwo from './FormPageTwo.js';
@@ -29,13 +32,10 @@ const initialState = {
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(4);
+  const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
-
-  useEffect(() => {
-    resetModifiers();
-  }, []);
+  const [photo, setPhoto] = useState(null);
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -52,6 +52,15 @@ const FormContainer = () => {
     });
   };
 
+  const photoHandler = () => {
+    const data = new FormData();
+    data.append('file', photo);
+  };
+
+  useEffect(() => {
+    resetModifiers();
+  }, []);
+
   return (
     <>
       <Formik
@@ -60,19 +69,33 @@ const FormContainer = () => {
         onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
-            user_id: 'insert user id here',
+            user_id: 1,
             hashtags: JSON.stringify({ modifiers: [...hashtags] }),
             modifiers: JSON.stringify({
               modifiers: [modifiersWithoutIcon()],
             }),
-            longitude: 'insert calculated longitude',
-            latitude: 'insert calculated longitude',
+            longitude: -22.11,
+            latitude: 2.11,
+            photo: photoHandler(),
           };
-          console.log(values);
-          setHashtags([]);
-          resetForm(initialState);
-          resetModifiers();
-          setModifiers([]);
+          axios
+            .post('http://localhost:5000/graphql', {
+              query: print(ADD_EVENT),
+              variables: { input: values },
+            })
+            .then((res) => {
+              console.log(res.data);
+              setHashtags([]);
+              resetForm(initialState);
+              resetModifiers();
+              setModifiers([]);
+            })
+            .catch((err) => console.log(err.message));
+          // console.log(values);
+          // setHashtags([]);
+          // resetForm(initialState);
+          // resetModifiers();
+          // setModifiers([]);
         }}
       >
         {({
@@ -111,6 +134,7 @@ const FormContainer = () => {
                     setHashtags={setHashtags}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    setPhoto={setPhoto}
                   />
                 </>
               )}

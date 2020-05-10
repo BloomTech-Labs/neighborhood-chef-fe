@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import EventCard from './EventCard.js';
 import SearchFriends from './SearchFriends.js';

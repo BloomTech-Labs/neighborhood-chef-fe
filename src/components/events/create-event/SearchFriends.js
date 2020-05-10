@@ -60,8 +60,8 @@ const SearchFriends = () => {
               color: 'white',
               borderRadius: '5px',
               width: '16%',
-              fontSize: '1.6rem',
-              padding: '20px 20px',
+              fontSize: '1.8rem',
+              padding: '16px 20px',
               marginLeft: '10%',
               outLine: 'none',
             }}
