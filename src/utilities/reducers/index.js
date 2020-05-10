@@ -7,6 +7,7 @@ import {
   CHANGE_MONTH,
   RSVP,
   CHANGE_PAGE,
+  CREATE_EVENT_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -127,6 +128,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         page: state.page === 1 ? 2 : 1,
+      };
+    case CREATE_EVENT_SUCCESS:
+      return {
+        ...state,
+        newEvent: payload,
       };
     default:
       return {

@@ -3,8 +3,9 @@ import React from 'react';
 const EventImageUpload = ({ setPhoto }) => {
   const handleChange = (e) => {
     const type = e.target.files[0].type;
-    if (type === 'image/png' || type === 'image/jpeg') {
+    if (type === 'image/png' || type === 'image/jpeg' || type === 'image/jpg') {
       setPhoto(e.target.files[0]);
+      console.log(e.target.files[0]);
     }
   };
 
@@ -20,10 +21,12 @@ const EventImageUpload = ({ setPhoto }) => {
       >
         Upload a main picture for your event page.
       </h5>
-      <div className="imgUploadDiv" style={{}}>
+      <div className="imgUploadDiv">
         <input
           type="file"
           name="file"
+          multiple={false}
+          accept="image/*"
           onChange={handleChange}
           style={{ fontSize: '1.6rem' }}
         />

@@ -3,7 +3,9 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { print } from 'graphql';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
+import { createEventSuccess } from '../../../utilities/actions/index.js';
 import { ADD_EVENT } from '../../../graphql/events/event-mutations.js';
 import CreateEventHeader from './CreateEventHeader.js';
 import FormPageOne from './FormPageOne.js';
@@ -36,6 +38,7 @@ const FormContainer = () => {
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
+  const dispatch = useDispatch();
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -52,10 +55,15 @@ const FormContainer = () => {
     });
   };
 
-  const photoHandler = () => {
-    const data = new FormData();
-    data.append('file', photo);
-  };
+  // const photoHandler = () => {
+  //   if (photo) {
+  //     const data = new FormData();
+  //     data.append('file', photo);
+  //     return data;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   useEffect(() => {
     resetModifiers();
@@ -76,7 +84,7 @@ const FormContainer = () => {
             }),
             longitude: -22.11,
             latitude: 2.11,
-            photo: photoHandler(),
+            // photo: photoHandler(),
           };
           axios
             .post('http://localhost:5000/graphql', {
@@ -84,18 +92,15 @@ const FormContainer = () => {
               variables: { input: values },
             })
             .then((res) => {
-              console.log(res.data);
+              dispatch(createEventSuccess(res.data.data.addEvent));
+              console.log(res.data.data.addEvent);
               setHashtags([]);
               resetForm(initialState);
               resetModifiers();
               setModifiers([]);
+              setPage(4);
             })
             .catch((err) => console.log(err.message));
-          // console.log(values);
-          // setHashtags([]);
-          // resetForm(initialState);
-          // resetModifiers();
-          // setModifiers([]);
         }}
       >
         {({
@@ -153,13 +158,12 @@ const FormContainer = () => {
                   />
                 </>
               )}
-
-              {page === 4 && (
-                <>
-                  <FormPageFour />
-                </>
-              )}
             </Form>
+            {page === 4 && (
+              <>
+                <FormPageFour />
+              </>
+            )}
           </div>
         )}
       </Formik>

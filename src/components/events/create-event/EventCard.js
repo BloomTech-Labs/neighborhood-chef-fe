@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import { connect } from "react-redux";
+
 
 const EventCard = ({ values }) => {
   return (
@@ -83,4 +85,10 @@ const EventCard = ({ values }) => {
   );
 };
 
-export default EventCard;
+const mapStateToProps = state => {
+  return {
+    values: state.newEvent
+  }
+}
+
+export default connect(mapStateToProps, null)(EventCard);

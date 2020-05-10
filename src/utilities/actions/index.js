@@ -8,6 +8,7 @@ export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";
 export const CHANGE_PAGE = "CHANGE_PAGE";
+export const CREATE_EVENT_SUCCESS = "CREATE_EVENT_SUCCESS";
 
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
@@ -32,4 +33,9 @@ export const rsvp = (event, id) => {
 
 export const changePage = () => ({
   type: CHANGE_PAGE,
+});
+
+export const createEventSuccess = (event) => ({
+  type: CREATE_EVENT_SUCCESS,
+  payload: event,
 });
