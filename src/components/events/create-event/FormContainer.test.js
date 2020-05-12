@@ -1,15 +1,26 @@
-import React from 'react';
-import FormContainer from './FormContainer.js';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import React from "react";
+import FormContainer from "./FormContainer.js";
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
+import "@testing-library/jest-dom/extend-expect";
 
-describe('Test FormContainer component', () => {
+const mockStore = configureStore([]);
+
+describe("Test FormContainer component", () => {
+  let store;
   let FormContainerComponent;
   beforeEach(() => {
-    FormContainerComponent = render(<FormContainer />);
+    store = mockStore({});
+
+    FormContainerComponent = render(
+      <Provider store={store}>
+        <FormContainer />
+      </Provider>
+    );
   });
 
-  test('FormContainer component renders', () => {
+  test("FormContainer component renders", () => {
     expect(FormContainerComponent).toBeDefined();
   });
 });

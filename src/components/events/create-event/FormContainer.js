@@ -55,15 +55,26 @@ const FormContainer = () => {
     });
   };
 
-  // const photoHandler = () => {
-  //   if (photo) {
-  //     const data = new FormData();
-  //     data.append('file', photo);
-  //     return data;
-  //   } else {
-  //     return null;
-  //   }
-  // };
+  const photoHandler = () => {
+    if (photo) {
+      const data = new FormData();
+      data.append('image', photo, photo.name);
+      return data;
+    } else {
+      return null;
+    }
+  };
+
+  function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      return reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
 
   useEffect(() => {
     resetModifiers();
@@ -84,7 +95,7 @@ const FormContainer = () => {
             }),
             longitude: -22.11,
             latitude: 2.11,
-            // photo: photoHandler(),
+            photo: getBase64(photo),
           };
           axios
             .post('http://localhost:5000/graphql', {
@@ -111,61 +122,61 @@ const FormContainer = () => {
           errors,
           resetForm,
         }) => (
-          <div className="createEventContainer">
-            <CreateEventHeader page={page} />
-            <Form className="createForm" onSubmit={handleSubmit}>
-              {page === 1 && (
-                <>
-                  <FormPageOne
-                    values={values}
-                    handleChange={handleChange}
-                    errors={errors}
-                    touched={touched}
-                    setPage={setPage}
-                    resetForm={resetForm}
-                  />
-                </>
-              )}
+            <div className="createEventContainer">
+              <CreateEventHeader page={page} />
+              <Form className="createForm" onSubmit={handleSubmit}>
+                {page === 1 && (
+                  <>
+                    <FormPageOne
+                      values={values}
+                      handleChange={handleChange}
+                      errors={errors}
+                      touched={touched}
+                      setPage={setPage}
+                      resetForm={resetForm}
+                    />
+                  </>
+                )}
 
-              {page === 2 && (
-                <>
-                  <FormPageTwo
-                    touched={touched}
-                    errors={errors}
-                    setPage={setPage}
-                    handleChange={handleChange}
-                    values={values}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                    setPhoto={setPhoto}
-                  />
-                </>
-              )}
+                {page === 2 && (
+                  <>
+                    <FormPageTwo
+                      touched={touched}
+                      errors={errors}
+                      setPage={setPage}
+                      handleChange={handleChange}
+                      values={values}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                      setPhoto={setPhoto}
+                    />
+                  </>
+                )}
 
-              {page === 3 && (
+                {page === 3 && (
+                  <>
+                    <FormPageThree
+                      setPage={setPage}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      values={values}
+                      handleSubmit={handleSubmit}
+                      errors={errors}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                    />
+                  </>
+                )}
+              </Form>
+              {page === 4 && (
                 <>
-                  <FormPageThree
-                    setPage={setPage}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    values={values}
-                    handleSubmit={handleSubmit}
-                    errors={errors}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                  />
+                  <FormPageFour />
                 </>
               )}
-            </Form>
-            {page === 4 && (
-              <>
-                <FormPageFour />
-              </>
-            )}
-          </div>
-        )}
+            </div>
+          )}
       </Formik>
     </>
   );

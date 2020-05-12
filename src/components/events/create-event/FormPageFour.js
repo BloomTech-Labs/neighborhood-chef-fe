@@ -2,7 +2,7 @@ import React from 'react';
 import EventCard from './EventCard.js';
 import SearchFriends from './SearchFriends.js';
 
-const FormPageFour = ({ values }) => {
+const FormPageFour = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <EventCard />
