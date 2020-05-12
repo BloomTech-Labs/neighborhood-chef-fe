@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import { print } from 'graphql';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { print } from "graphql";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
-import { createEventSuccess } from '../../../utilities/actions/index.js';
-import { ADD_EVENT } from '../../../graphql/events/event-mutations.js';
-import CreateEventHeader from './CreateEventHeader.js';
-import FormPageOne from './FormPageOne.js';
-import FormPageTwo from './FormPageTwo.js';
-import FormPageThree from './FormPageThree.js';
-import FormPageFour from './FormPageFour.js';
-import { modifierData } from './FormPageTwo.js';
+import { createEventSuccess } from "../../../utilities/actions/index.js";
+import { ADD_EVENT } from "../../../graphql/events/event-mutations.js";
+import CreateEventHeader from "./CreateEventHeader.js";
+import FormPageOne from "./FormPageOne.js";
+import FormPageTwo from "./FormPageTwo.js";
+import FormPageThree from "./FormPageThree.js";
+import FormPageFour from "./FormPageFour.js";
+import { modifierData } from "./FormPageTwo.js";
 
 const validationSchema = Yup.object({
-  title: Yup.string().required('Title is required'),
-  address: Yup.string().required('Address is required'),
-  description: Yup.string().required('Description is required'),
-  date: Yup.date().required('Date is required'),
-  startTime: Yup.string().required('Start Time is required'),
-  category_id: Yup.number().required('Category is required'),
+  title: Yup.string().required("Title is required"),
+  address: Yup.string().required("Address is required"),
+  description: Yup.string().required("Description is required"),
+  date: Yup.date().required("Date is required"),
+  startTime: Yup.string().required("Start Time is required"),
+  category_id: Yup.number().required("Category is required"),
 });
 
 const initialState = {
-  title: '',
-  description: '',
-  date: '',
-  startTime: '',
-  endTime: '',
-  category_id: '',
-  address: '',
+  title: "",
+  description: "",
+  date: "",
+  startTime: "",
+  endTime: "",
+  category_id: "",
+  address: "",
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(4);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -58,22 +58,26 @@ const FormContainer = () => {
   const photoHandler = () => {
     if (photo) {
       const data = new FormData();
-      data.append('image', photo, photo.name);
+      data.append("image", photo, photo.name);
       return data;
     } else {
       return null;
     }
   };
 
-  function getBase64(file) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      return reader.result;
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
+  function getBase64(photo) {
+    if (photo) {
+      let reader = new FileReader();
+      reader.readAsDataURL(photo);
+      reader.onload = function () {
+        return reader.result;
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
+    } else {
+      return null;
+    }
   }
 
   useEffect(() => {
@@ -98,13 +102,12 @@ const FormContainer = () => {
             photo: getBase64(photo),
           };
           axios
-            .post('http://localhost:5000/graphql', {
+            .post("http://localhost:5000/graphql", {
               query: print(ADD_EVENT),
               variables: { input: values },
             })
             .then((res) => {
               dispatch(createEventSuccess(res.data.data.addEvent));
-              console.log(res.data.data.addEvent);
               setHashtags([]);
               resetForm(initialState);
               resetModifiers();
@@ -122,61 +125,61 @@ const FormContainer = () => {
           errors,
           resetForm,
         }) => (
-            <div className="createEventContainer">
-              <CreateEventHeader page={page} />
-              <Form className="createForm" onSubmit={handleSubmit}>
-                {page === 1 && (
-                  <>
-                    <FormPageOne
-                      values={values}
-                      handleChange={handleChange}
-                      errors={errors}
-                      touched={touched}
-                      setPage={setPage}
-                      resetForm={resetForm}
-                    />
-                  </>
-                )}
-
-                {page === 2 && (
-                  <>
-                    <FormPageTwo
-                      touched={touched}
-                      errors={errors}
-                      setPage={setPage}
-                      handleChange={handleChange}
-                      values={values}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                      setPhoto={setPhoto}
-                    />
-                  </>
-                )}
-
-                {page === 3 && (
-                  <>
-                    <FormPageThree
-                      setPage={setPage}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      values={values}
-                      handleSubmit={handleSubmit}
-                      errors={errors}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  </>
-                )}
-              </Form>
-              {page === 4 && (
+          <div className="createEventContainer">
+            <CreateEventHeader page={page} />
+            <Form className="createForm" onSubmit={handleSubmit}>
+              {page === 1 && (
                 <>
-                  <FormPageFour />
+                  <FormPageOne
+                    values={values}
+                    handleChange={handleChange}
+                    errors={errors}
+                    touched={touched}
+                    setPage={setPage}
+                    resetForm={resetForm}
+                  />
                 </>
               )}
-            </div>
-          )}
+
+              {page === 2 && (
+                <>
+                  <FormPageTwo
+                    touched={touched}
+                    errors={errors}
+                    setPage={setPage}
+                    handleChange={handleChange}
+                    values={values}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                    setPhoto={setPhoto}
+                  />
+                </>
+              )}
+
+              {page === 3 && (
+                <>
+                  <FormPageThree
+                    setPage={setPage}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    values={values}
+                    handleSubmit={handleSubmit}
+                    errors={errors}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                  />
+                </>
+              )}
+            </Form>
+            {page === 4 && (
+              <>
+                <FormPageFour />
+              </>
+            )}
+          </div>
+        )}
       </Formik>
     </>
   );

@@ -8,6 +8,8 @@ import {
   RSVP,
   CHANGE_PAGE,
   CREATE_EVENT_SUCCESS,
+  ALL_USERS_SUCCESS,
+  INVITE_USER_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -18,6 +20,9 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+  newEvent: {},
+  userList: [],
+  invite: {},
 
   //test data below.
   eventList: [
@@ -133,6 +138,16 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         newEvent: payload,
+      };
+    case ALL_USERS_SUCCESS:
+      return {
+        ...state,
+        userList: [...payload],
+      };
+    case INVITE_USER_SUCCESS:
+      return {
+        ...state,
+        invite: payload,
       };
     default:
       return {

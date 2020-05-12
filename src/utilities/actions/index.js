@@ -9,6 +9,8 @@ export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const CREATE_EVENT_SUCCESS = "CREATE_EVENT_SUCCESS";
+export const ALL_USERS_SUCCESS = "ALL_USERS_SUCCESS";
+export const INVITE_USER_SUCCESS = "INVITE_USER_SUCCESS";
 
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
@@ -38,4 +40,14 @@ export const changePage = () => ({
 export const createEventSuccess = (event) => ({
   type: CREATE_EVENT_SUCCESS,
   payload: event,
+});
+
+export const searchForUsersSuccess = (users) => ({
+  type: ALL_USERS_SUCCESS,
+  payload: users,
+});
+
+export const inviteUserSuccess = (invite) => ({
+  type: INVITE_USER_SUCCESS,
+  payload: invite,
 });
