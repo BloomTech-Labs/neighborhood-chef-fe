@@ -1,14 +1,14 @@
 export const rsvpButtons = [
   {
-    name: "Yes",
+    name: "Going",
     color: "#82DF96",
   },
   {
-    name: "Maybe",
+    name: "Maybe Going",
     color: "#C4C4C4",
   },
   {
-    name: "No",
+    name: "Not Going",
     color: "#EA6565",
   },
 ];

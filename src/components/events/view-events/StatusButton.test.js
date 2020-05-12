@@ -18,10 +18,10 @@ describe("Test StatusButton static properties", () => {
       <Provider store={store}>
         <BrowserRouter>
           <StatusButton
-            name={"Going"}
+            name={"Maybe"}
             color={"#58D573"}
             eventId={1}
-            eventStatus={"Maybe"}
+            eventStatus={"Going"}
           />
         </BrowserRouter>
       </Provider>
@@ -29,6 +29,6 @@ describe("Test StatusButton static properties", () => {
   });
 
   test("StatusButton component renders", () => {
-    expect(StatusButtonComponent.getByText(/Going/i));
+    expect(StatusButtonComponent.getByText(/Maybe/i));
   });
 });

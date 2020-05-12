@@ -6,11 +6,12 @@ const CalendarRow = ({ id, title, date, startTime, users }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
   const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
+  let status;
 
   //find status
-  let status = null;
+
   if (users) {
-    const tempArray = users.filter((user) => user.id == me.id);
+    const tempArray = users.filter((user) => `${user.id}` === `${me.id}`);
     if (tempArray.length > 0) {
       status = tempArray[0].status;
     }

@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
+
+import { USER_BY_ID } from "../../../graphql/users/user-queries";
+import { print } from "graphql";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
@@ -14,16 +18,46 @@ import StatusButton from "./StatusButton";
 import { rsvpButtons } from "../../../data/buttons";
 
 const EventDetails = () => {
+  //grabbed from redux store
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
-  const event = eventList.find((ele) => ele.id === currentEventID);
+  const update = useSelector((state) => state.update);
+
+  const event = eventList && eventList.find((ele) => ele.id === currentEventID);
+
+  //useState hooks for local state
+  const [creatorName, setCreatorName] = useState("");
+  const [currentStatus, setCurrentStatus] = useState(
+    event && event.users.filter((ele) => `${ele.id}` === `${me.id}`)[0].status
+  );
+
   let simplifiedDate,
     displayedStartTime,
     formattedDate,
     addStartTime,
-    displayedEndTime;
-  let addEndTime = null;
+    displayedEndTime,
+    addEndTime;
+
+  useEffect(() => {
+    //get creator name when event loads
+    event &&
+      axios({
+        url: "http://localhost:5100/graphql",
+        method: "post",
+        data: {
+          query: print(USER_BY_ID),
+          variables: { id: event.user_id },
+        },
+      })
+        .then((res) => {
+          const data = res.data.data.getUserById;
+          setCreatorName(`${data.firstName} ${data.lastName}`);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+  }, [event, update]);
 
   //dealing with date formatting things
   if (event) {
@@ -56,7 +90,7 @@ const EventDetails = () => {
             <Typography variant="h3">{event.title}</Typography>
             <p style={{ fontStyle: "italic", opacity: ".3" }}>
               {/*need to convert user_id to actual name*/}
-              created by {event.user_id}
+              created by {creatorName}
             </p>
           </div>
           <p style={{ opacity: ".3" }}> {event.description}</p>
@@ -95,9 +129,10 @@ const EventDetails = () => {
               {rsvpButtons.map((ele) => (
                 <StatusButton
                   {...ele}
-                  eventStatus={event.status}
+                  eventStatus={currentStatus} //this needs to be updated to reflect the actual status field from database
                   eventId={event.id}
                   userId={me.id}
+                  setStatus={setCurrentStatus}
                   key={ele.name}
                 />
               ))}
