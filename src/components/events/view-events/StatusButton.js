@@ -49,7 +49,6 @@ const StatusButton = ({
       }`}
       style={{ background: color }}
       name={name}
-      // onClick={(e) => dispatch(rsvp(e, eventId))}
       onClick={(e) => {
         e.preventDefault();
         updateStatus(e.target.name);
