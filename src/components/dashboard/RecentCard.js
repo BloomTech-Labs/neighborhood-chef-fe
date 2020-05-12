@@ -43,11 +43,13 @@ const RecentCard = (props) => {
   };
 
   const shownTime = timeAgo(props.date_created);
-  const time = props.date.toLocaleTimeString("en-us", {
-    hours: "numeric",
-    minutes: "2-digit",
-  });
-  const day = props.date.toLocaleDateString("en-us", {
+  const time = props.date
+    .toLocaleTimeString("en-US", {
+      hours: "numeric",
+      minutes: "2-digit",
+    })
+    .replace(/:\d+ /, " ");
+  const day = props.date.toLocaleDateString("en-US", {
     day: "numeric",
     weekday: "short",
   });
@@ -108,7 +110,7 @@ const RecentCard = (props) => {
           <Typography paragraph>Are you attending this event?</Typography>
           <div style={{ display: "flex" }}>
             {rsvpButtons.map((ele) => (
-              <StatusButton />
+              <StatusButton key={ele.name} />
             ))}
           </div>
         </CardContent>

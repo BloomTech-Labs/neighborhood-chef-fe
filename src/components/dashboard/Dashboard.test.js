@@ -3,18 +3,26 @@ import Dashboard from "./Dashboard.js";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "../../utilities/reducers";
+import thunk from "redux-thunk";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 describe("Test dashboard static properties", () => {
   beforeEach(() => {
     const DashboardComponent = render(
-      <BrowserRouter>
-        <Dashboard />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Dashboard />
+        </BrowserRouter>
+      </Provider>
     );
   });
 
   test("Dashboard component renders", () => {
-    const secondDiv = document.querySelector(".component-main");
+    const secondDiv = document.querySelector(".dashboard-main");
     expect(secondDiv.toBeInDocument);
   });
 });

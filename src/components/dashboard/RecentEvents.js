@@ -11,7 +11,7 @@ const recentEventsList = [
     status: "Not Going",
   },
   {
-    name: "test name",
+    name: "test name1",
     date_created: new Date(2222222222222),
     photo: "",
     title: "summer BBQ",
@@ -19,7 +19,7 @@ const recentEventsList = [
     status: "Not Going",
   },
   {
-    name: "test name",
+    name: "test name 3",
     date_created: new Date(2222222222222),
     photo: "",
     title: "summer BBQ",
@@ -33,7 +33,7 @@ const RecentEvents = () => {
     <div className="recent-events-container">
       <h3 style={{ marginLeft: "12px" }}>Neighborhood</h3>
       {!!recentEventsList &&
-        recentEventsList.map((ele) => <RecentCard {...ele} />)}
+        recentEventsList.map((ele) => <RecentCard {...ele} key={ele.name} />)}
     </div>
   );
 };

@@ -61,7 +61,8 @@ const Feed = () => {
           </p>
         }
       >
-        {!!feedList && feedList.map((ele) => <FeedCard {...ele} />)}
+        {!!feedList &&
+          feedList.map((ele) => <FeedCard {...ele} key={ele.name} />)}
       </InfiniteScroll>
     </div>
   );
