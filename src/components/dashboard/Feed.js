@@ -1,6 +1,10 @@
 import React from "react";
 import FeedCard from "./FeedCard";
 
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const feedList = [
   {
     name: "Test name",
@@ -36,11 +40,29 @@ const feedList = [
   },
 ];
 
+const shownList = [1, 2, 3, 4];
+
 const Feed = () => {
   return (
     <div className="feed-container">
       <h3 style={{ marginLeft: "12px" }}>Feed</h3>
-      {!!feedList && feedList.map((ele) => <FeedCard {...ele} />)}
+      <InfiniteScroll
+        dataLength={feedList.length} //This is important field to render the next data
+        // next={fetchData}
+        hasMore={shownList.length < feedList.length}
+        loader={
+          <div style={{ textAlign: "center" }}>
+            <CircularProgress />
+          </div>
+        }
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>This is the end of your feed. Check back later!</b>
+          </p>
+        }
+      >
+        {!!feedList && feedList.map((ele) => <FeedCard {...ele} />)}
+      </InfiniteScroll>
     </div>
   );
 };
