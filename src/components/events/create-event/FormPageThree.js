@@ -51,11 +51,11 @@ const FormPageThree = ({
                 color: '#1A0F2C',
               }}
             >
-              {values.Title}
+              {values.title}
             </h3>
             <div style={{ display: 'flex' }}>
               <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-                {values.Date && moment(values.Date).format('MMM Do YYYY')}
+                {moment(values.date).format('MMM Do YYYY')}
                 .&nbsp;
               </p>
               <p
@@ -65,23 +65,28 @@ const FormPageThree = ({
                   fontWeight: '500',
                 }}
               >
-                {values.Start_Time}&nbsp;
+                {values.startTime}&nbsp;
               </p>
-              <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-                to&nbsp;
-              </p>
-              <p
-                style={{
-                  fontSize: '1.6rem',
-                  color: '#ea6565',
-                  fontWeight: '500',
-                }}
-              >
-                {values.End_Time}
-              </p>
+
+              {values.endTime && (
+                <>
+                  <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
+                    to&nbsp;
+                  </p>
+                  <p
+                    style={{
+                      fontSize: '1.6rem',
+                      color: '#ea6565',
+                      fontWeight: '500',
+                    }}
+                  >
+                    {values.endTime}
+                  </p>
+                </>
+              )}
             </div>
             <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-              {values.Address}
+              {values.address}
             </p>
           </div>
         </div>

@@ -12,8 +12,16 @@ const AuthFields = (props) => {
   const checkValues = (e) => {
     const email = document.querySelector("input[name='email']").value;
     const password = document.querySelector("input[name='password']").value;
+    const confirmPassword = document.querySelector(
+      "input[name='confirmPassword']"
+    ).value;
     const terms = document.querySelector("input[type='checkbox']").checked;
-    if (email && password && terms === true) {
+    if (
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email) &&
+      password &&
+      terms === true &&
+      confirmPassword === password
+    ) {
       setButtonDisable(false);
     } else {
       setButtonDisable(true);
@@ -26,17 +34,27 @@ const AuthFields = (props) => {
         component={TextField}
         type="email"
         name="email"
-        label="Email"
+        placeholder="Email"
+        className="email"
         InputProps={{ onKeyUp: checkValues }}
       />
       <Field
         component={TextField}
         type="password"
         name="password"
-        label="Password"
+        placeholder="Password"
+        className="password"
         InputProps={{ onKeyUp: checkValues }}
       />
-      <label>
+      <Field
+        component={TextField}
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        className="confirmPassword"
+        InputProps={{ onKeyUp: checkValues }}
+      />
+      <label className="terms">
         <Field
           component={Checkbox}
           type="checkbox"
