@@ -28,7 +28,7 @@ describe("Test StatusButton static properties", () => {
     );
   });
 
-  test("StatusButton component renders", () => {
+  test("StatusButton component renders (Maybe button)", () => {
     expect(StatusButtonComponent.getByText(/Maybe/i));
   });
 });
