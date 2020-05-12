@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+//component imports
 import CalendarRow from "./CalendarRow";
+
+//icon imports
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 //graphql imports
 import { print } from "graphql";
@@ -22,6 +26,7 @@ const CalendarView = () => {
   const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
   const classes = buttonStyles();
+  const [isLoading, setIsLoading] = useState(false);
   const eventsInMonth =
     eventList &&
     eventList.filter(
@@ -37,6 +42,7 @@ const CalendarView = () => {
     );
 
   useEffect(() => {
+    setIsLoading(true);
     axios({
       url: "http://localhost:5100/graphql",
       method: "post",
@@ -50,27 +56,40 @@ const CalendarView = () => {
       })
       .catch((err) => {
         console.log(err.message);
+      })
+      .then(function () {
+        setIsLoading(false);
       });
     // eslint-disable-next-line
   }, [update]);
 
   return (
-    <div className="calendar-view-main">
-      {!!eventsInMonth && eventsInMonth.length > 0 ? (
-        eventsInMonth.map((event) => <CalendarRow {...event} key={event.id} />)
+    <>
+      {!isLoading ? (
+        <div className="calendar-view-main">
+          {!!eventsInMonth && eventsInMonth.length > 0 ? (
+            eventsInMonth.map((event) => (
+              <CalendarRow {...event} key={event.id} />
+            ))
+          ) : (
+            <div style={{ textAlign: "center" }}>
+              <h3>No events for selected month</h3>
+              <br />
+              <p>But it doesn't have to stay that way.</p>
+              <Link to="/create-event">
+                <div className={`${classes.single} ${classes.root}`}>
+                  Create New Event
+                </div>
+              </Link>
+            </div>
+          )}
+        </div>
       ) : (
         <div style={{ textAlign: "center" }}>
-          <h3>No events for selected month</h3>
-          <br />
-          <p>But it doesn't have to stay that way.</p>
-          <Link to="/create-event">
-            <div className={`${classes.single} ${classes.root}`}>
-              Create New Event
-            </div>
-          </Link>
+          <CircularProgress />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
