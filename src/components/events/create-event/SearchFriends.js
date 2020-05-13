@@ -17,7 +17,7 @@ const SearchFriends = ({ history }) => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/graphql", {
+      .post("http://localhost:5100/graphql", {
         query: print(ALL_USERS),
       })
       .then((res) => {

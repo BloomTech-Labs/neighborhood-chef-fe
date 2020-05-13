@@ -24,7 +24,7 @@ const InvitedUser = ({ user }) => {
     };
 
     axios
-      .post("http://localhost:5000/graphql", {
+      .post("http://localhost:5100/graphql", {
         query: print(REMOVE_INVITATION),
         variables: { input: removeInvite },
       })

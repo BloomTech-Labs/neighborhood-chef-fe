@@ -96,17 +96,20 @@ const FormContainer = () => {
         onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
+            // replace with variable
             user_id: 1,
             hashtags: JSON.stringify({ modifiers: [...hashtags] }),
             modifiers: JSON.stringify({
               modifiers: [modifiersWithoutIcon()],
             }),
+            // replace with calculated longitude and latitude
             longitude: -22.11,
             latitude: 2.11,
+            // photo still not working quite right
             photo: getBase64(photo),
           };
           axios
-            .post("http://localhost:5000/graphql", {
+            .post("http://localhost:5100/graphql", {
               query: print(ADD_EVENT),
               variables: { input: values },
             })
