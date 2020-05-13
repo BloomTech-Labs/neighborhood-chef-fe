@@ -10,6 +10,7 @@ import {
   deleteInvitationSuccess,
   filterUserListSuccess,
 } from "../../../utilities/actions/index.js";
+
 import {
   INVITE_USER,
   REMOVE_INVITATION,
@@ -60,8 +61,8 @@ const UserList = ({ event, users, filteredList }) => {
   return (
     <>
       {invitedList.map((user, index) => {
-        if (index !== 0) {
-          return (
+        return (
+          index !== 0 && (
             <div
               style={{
                 display: "flex",
@@ -175,12 +176,12 @@ const UserList = ({ event, users, filteredList }) => {
                 </div>
               </div>
             </div>
-          );
-        }
+          )
+        );
       })}
       {filteredList.map((user) => {
-        if (Number(user.id) !== event.user_id) {
-          return (
+        return (
+          Number(user.id) !== event.user_id && (
             <div
               style={{
                 display: "flex",
@@ -282,8 +283,8 @@ const UserList = ({ event, users, filteredList }) => {
                 </button>
               </div>
             </div>
-          );
-        }
+          )
+        );
       })}
     </>
   );

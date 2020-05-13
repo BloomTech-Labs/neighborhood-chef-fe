@@ -1,6 +1,7 @@
 import React from "react";
 import FormPageFour from "./FormPageFour.js";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 import configureStore from "redux-mock-store";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
@@ -45,9 +46,11 @@ describe("Test FormPageFour component", () => {
       newEvent: values,
     });
     FormPageFourComponent = render(
-      <Provider store={store}>
-        <FormPageFour />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <FormPageFour />
+        </Provider>
+      </Router>
     );
   });
 

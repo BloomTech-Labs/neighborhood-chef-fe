@@ -86,7 +86,7 @@ const FormContainer = () => {
   useEffect(() => {
     dispatch(resetInviteSuccess([]));
     resetModifiers();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

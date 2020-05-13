@@ -82,7 +82,7 @@ const SearchFriends = ({ history }) => {
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
         marginTop: "40px",
-        marginBottom: "60px",
+        marginBottom: "120px",
       }}
     >
       <div style={{ marginLeft: "5%" }}>
