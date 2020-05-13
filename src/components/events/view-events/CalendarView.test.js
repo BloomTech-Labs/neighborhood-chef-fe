@@ -1,34 +1,30 @@
 import React from "react";
-import StatusButton from "./StatusButton.js";
+import CalendarView from "./CalendarView.js";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { rootReducer } from "../../utilities/reducers";
+import { rootReducer } from "../../../utilities/reducers";
 import thunk from "redux-thunk";
 
 import "@testing-library/jest-dom/extend-expect";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test StatusButton static properties", () => {
-  let StatusButtonComponent;
+describe("Test CalendarView static properties", () => {
+  let CalendarViewComponent;
   beforeEach(() => {
-    StatusButtonComponent = render(
+    CalendarViewComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <StatusButton
-            name={"Going"}
-            color={"#58D573"}
-            eventId={1}
-            eventStatus={"Maybe"}
-          />
+          <CalendarView />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("StatusButton component renders", () => {
-    expect(StatusButtonComponent.getByText(/Going/i));
+  test("CalendarView component renders", () => {
+    const firstDiv = document.querySelector(".calendar-view-main");
+    expect(firstDiv.toBeInDocument);
   });
 });

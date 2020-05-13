@@ -1,97 +1,45 @@
 import {
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  INCREMENT,
   MAKEACTIVE,
   CHANGE_MONTH,
-  RSVP,
   CHANGE_PAGE,
+<<<<<<< HEAD
   CHANGE_NEIGHB_NAME,
+=======
+  GET_EVENTS_SUCCESS,
+  UPDATE_STATE,
+>>>>>>> 8783f53fb55c66feec24e426e2c9e23a42b7618a
 } from "../actions";
 
 const initialDate = new Date();
 
 const initialState = {
   loginCredentials: {},
-  counter: 0,
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+<<<<<<< HEAD
   neighborhoodName: "My Neighborhood",
+=======
+  errors: [],
+  isGettingEvents: false,
+  update: false,
+  eventList: [],
+>>>>>>> 8783f53fb55c66feec24e426e2c9e23a42b7618a
 
-  //test data below.
-  eventList: [
-    {
-      id: 0,
-      date: "05/06/2020",
-      start_time: "5:30pm",
-      end_time: "6:30pm",
-      title: "Mendez BBQ",
-      description: "We're having a summer kickoff at Sunnyside park",
-      categories: ["bbq"],
-      creator: "Justin Thyme",
-      address: "132 Winter St, Lewiston, ME, 04240",
-      latitude: 44.10621,
-      longitude: -70.21818,
-      status: "Going",
-    },
-    {
-      id: 1,
-      date: "05/12/2020",
-      start_time: "11:30am",
-      end_time: "1:00pm",
-      title: "Picnic in the park",
-      description:
-        "Yes, I'm Justin's younger brother.  Geez, stop asking.  Let's have a parent get together at the better park, possibly across the nation, Bixby Park",
-      categories: ["picnic", "kids play"],
-      creator: "Nick O. Thyme",
-      address: "130 Cherry Ave, Long Beach, CA 90802",
-      latitude: 33.76632,
-      longitude: -118.16802,
-      status: "Maybe",
-    },
-    {
-      id: 2,
-      date: "05/29/2020",
-      start_time: "7:00pm",
-      end_time: "8:30pm",
-      title: "Asian cuisine",
-      description:
-        "My house, the best asian cooking you'll ever have. Trust me",
-      categories: ["multi-course meal"],
-      creator: "Robert Brownie Jr",
-      address: "5100 Spanish Heights Dr, Las Vegas, NV 89148",
-      latitude: 36.09621,
-      longitude: -115.286324,
-      status: "Not Going",
-    },
-  ],
+  //test user data
+  myUser: {
+    id: 1,
+  },
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOGIN_START:
+    case GET_EVENTS_SUCCESS:
       return {
         ...state,
-        //do something
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        //do something
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        //do something
-      };
-
-    //works with redux example from App.js
-    case INCREMENT:
-      return {
-        ...state,
-        counter: state.counter + 1,
+        isGettingEvents: false,
+        errors: [],
+        eventList: payload,
       };
     case MAKEACTIVE:
       return {
@@ -113,17 +61,10 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         selectedMonth: tempDate,
       };
-    case RSVP:
+    case UPDATE_STATE:
       return {
         ...state,
-        eventList: state.eventList.map((event) =>
-          event.id === payload.id
-            ? {
-                ...event,
-                status: payload.name,
-              }
-            : event
-        ),
+        update: !state.update,
       };
     case CHANGE_PAGE:
       return {
