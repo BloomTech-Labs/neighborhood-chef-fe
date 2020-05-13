@@ -3,7 +3,7 @@ html {
 }
 body {
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 p {
   margin: 0;
@@ -111,6 +111,19 @@ a {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+.date-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-top: -14%;
+  margin-left: 5%;
+  align-self: left;
+  width: 46px;
+  align-items: center;
 }
 
 /* ---- start of View Event styles ---- */

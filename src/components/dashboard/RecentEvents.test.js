@@ -15,6 +15,6 @@ describe("Test recent events static properties", () => {
   });
 
   test("RecentEvents component renders", () => {
-    expect(RecentEventsComponent.getByText(/neighborhood/i));
+    expect(RecentEventsComponent.getByText(/newest events/i));
   });
 });

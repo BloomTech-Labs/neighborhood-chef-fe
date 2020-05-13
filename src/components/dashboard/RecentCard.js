@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useSelector } from "react-redux";
+
+//style imports
 import { cardStyles } from "../../styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-// import CardMedia from "@material-ui/core/CardMedia";
+import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
@@ -17,26 +21,16 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
 import { timeAgo } from "../../utilities/functions";
 
-import StatusButton from "../events/StatusButton";
+import StatusButton from "../events/view-events/StatusButton";
+import modernRoom from "../../assets/modernRoom.png";
 
-const rsvpButtons = [
-  {
-    name: "Going",
-    color: "#58D573",
-  },
-  {
-    name: "Maybe",
-    color: "#FFA928",
-  },
-  {
-    name: "Not Going",
-    color: "#E84040",
-  },
-];
+import { rsvpButtons } from "../../data/buttons";
 
 const RecentCard = (props) => {
+  const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState("");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -51,8 +45,10 @@ const RecentCard = (props) => {
     .replace(/:\d+ /, " ");
   const day = props.date.toLocaleDateString("en-US", {
     day: "numeric",
-    weekday: "short",
+    month: "short",
   });
+  const dayNum = day.split(" ")[1];
+  const month = day.split(" ")[0];
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -71,14 +67,23 @@ const RecentCard = (props) => {
         }
         subheader={shownTime}
       />
-      {/* <CardMedia
+      <CardMedia
         className={classes.media}
-        image={photo}
-        title="Paella dish"
-      /> */}
+        image={modernRoom}
+        title="New Event"
+      />
+      <div className="date-box">
+        <Typography variant="h4">{dayNum}</Typography>
+        <Typography variant="h4" color="secondary">
+          {month}
+        </Typography>
+      </div>
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {`${day} at ${time}`}
+        <Typography variant="h3" align="center">
+          {props.title}
+        </Typography>
+        <Typography variant="h6" align="center">
+          {`@ ${time}`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -102,7 +107,12 @@ const RecentCard = (props) => {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <Typography variant="caption" color="textSecondary">
+            RSVP
+          </Typography>
+          <div>
+            <ExpandMoreIcon />
+          </div>
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -110,7 +120,14 @@ const RecentCard = (props) => {
           <Typography paragraph>Are you attending this event?</Typography>
           <div style={{ display: "flex" }}>
             {rsvpButtons.map((ele) => (
-              <StatusButton key={ele.name} />
+              <StatusButton
+                {...ele}
+                key={ele.name}
+                eventStatus={currentStatus}
+                eventId={props.id}
+                userId={me.id}
+                setStatus={setCurrentStatus}
+              />
             ))}
           </div>
         </CardContent>

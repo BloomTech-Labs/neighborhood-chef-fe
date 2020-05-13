@@ -45,7 +45,7 @@ const shownList = [1, 2, 3, 4];
 const Feed = () => {
   return (
     <div className="feed-container">
-      <h3 style={{ marginLeft: "12px" }}>Feed</h3>
+      <h3 style={{ marginLeft: "12px" }}>Recent Messages</h3>
       <InfiniteScroll
         dataLength={feedList.length} //This is important field to render the next data
         // next={fetchData}
