@@ -10,6 +10,8 @@ import {
   CREATE_EVENT_SUCCESS,
   ALL_USERS_SUCCESS,
   INVITE_USER_SUCCESS,
+  FILTER_USERS_SUCCESS,
+  DELETE_INVITATION_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -138,6 +140,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         newEvent: payload,
+        invite: payload.users,
       };
     case ALL_USERS_SUCCESS:
       return {
@@ -148,6 +151,16 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         invite: payload,
+      };
+    case DELETE_INVITATION_SUCCESS:
+      return {
+        ...state,
+        invite: payload,
+      };
+    case FILTER_USERS_SUCCESS:
+      return {
+        ...state,
+        userList: [...payload],
       };
     default:
       return {

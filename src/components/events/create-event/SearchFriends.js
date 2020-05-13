@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 
-//move to other component
-import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { print } from "graphql";
 import axios from "axios";
 import { ALL_USERS } from "../../../graphql/users/user-queries.js";
 import { searchForUsersSuccess } from "../../../utilities/actions";
 import UserList from "./UserList.js";
 
-const SearchFriends = ({ users, event }) => {
+const SearchFriends = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredList, setFilteredList] = useState([]);
+  const users = useSelector((state) => state.userList);
+  const event = useSelector((state) => state.newEvent);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const SearchFriends = ({ users, event }) => {
 
       <form style={{ marginLeft: "5%" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div className="createFormInputDiv" style={{ width: "50%" }}>
+          <div className="createFormInputDiv" style={{ width: "70%" }}>
             <input
               type="text"
               name="search"
@@ -92,35 +92,13 @@ const SearchFriends = ({ users, event }) => {
             />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
-
-          {/* <button
-            style={{
-              background: "#82DF96",
-              color: "white",
-              borderRadius: "5px",
-              width: "16%",
-              fontSize: "1.8rem",
-              padding: "16px 20px",
-              marginLeft: "10%",
-              outLine: "none",
-            }}
-          >
-            Invite
-          </button> */}
         </div>
       </form>
       <div style={{ width: "90%" }}>
-        <UserList event={event} filteredList={filteredList} />
+        <UserList event={event} filteredList={filteredList} users={users} />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.userList,
-    event: state.newEvent,
-  };
-};
-
-export default connect(mapStateToProps, null)(SearchFriends);
+export default SearchFriends;

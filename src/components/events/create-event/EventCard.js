@@ -1,9 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-export const EventCard = ({ values }) => {
-  function convertTime(time24) {
+export const EventCard = () => {
+  const values = useSelector((state) => state.newEvent);
+
+  const convertTime = (time24) => {
     let ts = time24;
     let H = +ts.substr(0, 2);
     let h = H % 12 || 12;
@@ -11,7 +13,7 @@ export const EventCard = ({ values }) => {
     let ampm = H < 12 ? " AM" : " PM";
     ts = h + ts.substr(2, 3) + ampm;
     return ts;
-  }
+  };
 
   return (
     <div
@@ -70,10 +72,9 @@ export const EventCard = ({ values }) => {
                   fontWeight: "500",
                 }}
               >
-                {/* {convertTime(values.startTime)}&nbsp;  */}
-                5:30pm
+                {/* {convertTime(values.startTime)}&nbsp; */}
+                6:00pm
               </p>
-
               {/* {values.endTime && (
                 <>
                   <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
@@ -88,6 +89,7 @@ export const EventCard = ({ values }) => {
                   </p>
                 </>
               )} */}
+              9:00pm
             </div>
           </div>
           {/* <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>{values.address}</p> */}
@@ -98,10 +100,4 @@ export const EventCard = ({ values }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    values: state.newEvent,
-  };
-};
-
-export default connect(mapStateToProps, null)(EventCard);
+export default EventCard;
