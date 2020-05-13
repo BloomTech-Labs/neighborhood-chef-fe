@@ -11,7 +11,7 @@ import UserList from "./UserList.js";
 const SearchFriends = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredList, setFilteredList] = useState([]);
-  const users = useSelector((state) => state.userList);
+  let users = useSelector((state) => state.userList);
   const event = useSelector((state) => state.newEvent);
   const dispatch = useDispatch();
 
@@ -26,25 +26,52 @@ const SearchFriends = () => {
       .catch((err) => console.log(err.message));
   }, [dispatch]);
 
+  // filtering userList to allow search by first name, last name and email
   useEffect(() => {
     if (searchTerm !== "") {
-      setFilteredList(
-        users.filter((user) => {
-          return (
-            user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        })
-      );
-    } else {
-      setFilteredList([]);
-    }
+      if (searchTerm.match(/^[a-zA-Z0-9_-]*@[a-zA-Z0-9_-]*.[a-zA-Z0-9_-]*$/)) {
+        setFilteredList(
+          users.filter((user) => {
+            return user.email.toLowerCase().includes(searchTerm.toLowerCase());
+          })
+        );
+      } else if (
+        searchTerm.match(/^\S*\S$/) ||
+        searchTerm.match(/(^\w* {1,}$|^\w*. {1,}$)/)
+      ) {
+        const formattedSearchTerm = searchTerm
+          .replace(".", "")
+          .replace(" ", "");
+        setFilteredList(
+          users.filter((user) => {
+            return (
+              user.firstName
+                .toLowerCase()
+                .includes(formattedSearchTerm.toLowerCase()) ||
+              user.lastName
+                .toLowerCase()
+                .includes(formattedSearchTerm.toLowerCase()) ||
+              user.email
+                .toLowerCase()
+                .includes(formattedSearchTerm.toLowerCase())
+            );
+          })
+        );
+      } else if (searchTerm.match(/(^\w*|^\w*.) {1}\w*\w$/)) {
+        const firstName = searchTerm.split(" ")[0];
+        const lastName = searchTerm.split(" ")[1];
+        const firstNameArray = users.filter((user) =>
+          user.firstName.toLowerCase().includes(firstName.toLowerCase())
+        );
+        const lastNameArray = users.filter((user) =>
+          user.lastName.toLowerCase().includes(lastName.toLowerCase())
+        );
+        setFilteredList(
+          firstNameArray.filter((user) => lastNameArray.includes(user))
+        );
+      } else setFilteredList([]);
+    } else setFilteredList([]);
   }, [users, searchTerm]);
-
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   return (
     <div
@@ -55,6 +82,7 @@ const SearchFriends = () => {
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
         marginTop: "40px",
+        marginBottom: "60px",
       }}
     >
       <div style={{ marginLeft: "5%" }}>
@@ -87,7 +115,7 @@ const SearchFriends = () => {
               type="text"
               name="search"
               placeholder="Search"
-              onChange={handleChange}
+              onChange={(e) => setSearchTerm(e.target.value)}
               value={searchTerm}
             />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />

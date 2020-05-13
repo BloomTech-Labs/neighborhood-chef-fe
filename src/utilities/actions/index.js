@@ -49,7 +49,7 @@ export const searchForUsersSuccess = (users) => ({
   payload: users,
 });
 
-export const filterUsers = (users) => ({
+export const filterUserListSuccess = (users) => ({
   type: FILTER_USERS_SUCCESS,
   payload: users,
 });

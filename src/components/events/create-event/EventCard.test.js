@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import "@testing-library/jest-dom/extend-expect";
 
-import { EventCard } from "./EventCard.js";
+import EventCard from "./EventCard.js";
 
-const newEvent = {
+const values = {
   title: "BBQ",
   address: "123 ABC St.",
   description: "BBQ at my house!",
@@ -20,13 +20,13 @@ const mockStore = configureStore([]);
 
 describe("Test EventCard component", () => {
   let EventCardComponent;
-  let store = newEvent;
+  let store;
 
   beforeEach(() => {
-    store = mockStore({});
+    store = mockStore({ newEvent: values });
 
     EventCardComponent = render(
-      <Provider store={}>
+      <Provider store={store}>
         <EventCard />
       </Provider>
     );
@@ -34,5 +34,6 @@ describe("Test EventCard component", () => {
 
   test("EventCard component renders", () => {
     expect(EventCardComponent).toBeDefined();
+    expect(EventCardComponent.getByText(/BBQ/i));
   });
 });

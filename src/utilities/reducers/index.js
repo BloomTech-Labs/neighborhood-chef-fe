@@ -24,7 +24,7 @@ const initialState = {
   selectedMonth: initialDate,
   newEvent: {},
   userList: [],
-  invite: {},
+  inviteList: [],
 
   //test data below.
   eventList: [
@@ -140,27 +140,26 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         newEvent: payload,
-        invite: payload.users,
       };
     case ALL_USERS_SUCCESS:
       return {
         ...state,
-        userList: [...payload],
+        userList: payload,
       };
     case INVITE_USER_SUCCESS:
       return {
         ...state,
-        invite: payload,
+        inviteList: payload,
       };
     case DELETE_INVITATION_SUCCESS:
       return {
         ...state,
-        invite: payload,
+        inviteList: payload,
       };
     case FILTER_USERS_SUCCESS:
       return {
         ...state,
-        userList: [...payload],
+        userList: payload,
       };
     default:
       return {

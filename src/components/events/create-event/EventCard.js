@@ -2,15 +2,15 @@ import React from "react";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
-export const EventCard = () => {
+const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
 
   const convertTime = (time24) => {
     let ts = time24;
     let H = +ts.substr(0, 2);
     let h = H % 12 || 12;
-    h = h < 10 ? "0" + h : h;
-    let ampm = H < 12 ? " AM" : " PM";
+    h = h < 10 ? h : h;
+    let ampm = H < 12 ? "AM" : "PM";
     ts = h + ts.substr(2, 3) + ampm;
     return ts;
   };
@@ -52,8 +52,7 @@ export const EventCard = () => {
               color: "#1A0F2C",
             }}
           >
-            {/* {values.title} */}
-            BBQ
+            {values.title}
           </h3>
           <div
             style={{
@@ -62,8 +61,8 @@ export const EventCard = () => {
             }}
           >
             <p style={{ color: "rgba(0, 0, 0, 0.35)" }}>
-              {/* {values.date && moment(Number(values.date)).format("MMM Do YYYY")} */}
-              May 22, 2020 .&nbsp;
+              {values.date && moment(Number(values.date)).format("MMM Do YYYY")}
+              .&nbsp;
             </p>
             <div style={{ display: "flex" }}>
               <p
@@ -72,10 +71,9 @@ export const EventCard = () => {
                   fontWeight: "500",
                 }}
               >
-                {/* {convertTime(values.startTime)}&nbsp; */}
-                6:00pm
+                {convertTime(values.startTime)}&nbsp;
               </p>
-              {/* {values.endTime && (
+              {values.endTime && (
                 <>
                   <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
                   <p
@@ -85,15 +83,12 @@ export const EventCard = () => {
                     }}
                   >
                     {convertTime(values.endTime)}
-                    9:30pm
                   </p>
                 </>
-              )} */}
-              9:00pm
+              )}
             </div>
           </div>
-          {/* <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>{values.address}</p> */}
-          <p>123 ABC St</p>
+          <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>{values.address}</p>
         </div>
       </div>
     </div>

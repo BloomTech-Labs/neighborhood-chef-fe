@@ -34,7 +34,7 @@ const initialState = {
 };
 
 const FormContainer = () => {
-  const [page, setPage] = useState(4);
+  const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
