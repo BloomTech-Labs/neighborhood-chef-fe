@@ -39,8 +39,6 @@ export const buttonStyles = makeStyles({
       color: "white",
     },
   },
-<<<<<<< HEAD
-=======
   rsvpRoot: {
     height: "30px",
     width: "100px",
@@ -56,7 +54,6 @@ export const buttonStyles = makeStyles({
     border: "1px solid black",
     opacity: "1",
   },
->>>>>>> 8783f53fb55c66feec24e426e2c9e23a42b7618a
 });
 
 export const formStyles = makeStyles({

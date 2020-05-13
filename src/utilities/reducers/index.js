@@ -2,12 +2,9 @@ import {
   MAKEACTIVE,
   CHANGE_MONTH,
   CHANGE_PAGE,
-<<<<<<< HEAD
   CHANGE_NEIGHB_NAME,
-=======
   GET_EVENTS_SUCCESS,
   UPDATE_STATE,
->>>>>>> 8783f53fb55c66feec24e426e2c9e23a42b7618a
 } from "../actions";
 
 const initialDate = new Date();
@@ -17,14 +14,11 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
-<<<<<<< HEAD
   neighborhoodName: "My Neighborhood",
-=======
   errors: [],
   isGettingEvents: false,
   update: false,
   eventList: [],
->>>>>>> 8783f53fb55c66feec24e426e2c9e23a42b7618a
 
   //test user data
   myUser: {
