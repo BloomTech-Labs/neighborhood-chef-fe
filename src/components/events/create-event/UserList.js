@@ -143,10 +143,10 @@ const UserList = ({ event, users, filteredList }) => {
                   display: "flex",
                   alignItems: "center",
                   marginLeft: "5%",
-                  width: "25%",
+                  width: "20%",
                 }}
               >
-                <p style={{ marginRight: "8%" }}>Invited</p>
+                <p style={{ marginRight: "2%" }}>Invited</p>
                 <div
                   onClick={() => deleteInvitation(user)}
                   style={{
