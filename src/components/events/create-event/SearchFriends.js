@@ -121,7 +121,7 @@ const SearchFriends = ({ history }) => {
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
           <button
-            onClick={() => history.push("/dashboard")}
+            onClick={() => history.push("/view-events")}
             style={{
               background: "#82DF96",
               padding: "15px 20px",
