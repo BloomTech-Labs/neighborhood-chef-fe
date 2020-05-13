@@ -5,7 +5,10 @@ import { print } from "graphql";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-import { createEventSuccess } from "../../../utilities/actions/index.js";
+import {
+  createEventSuccess,
+  resetInviteSuccess,
+} from "../../../utilities/actions/index.js";
 import { ADD_EVENT } from "../../../graphql/events/event-mutations.js";
 import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
@@ -81,6 +84,7 @@ const FormContainer = () => {
   }
 
   useEffect(() => {
+    dispatch(resetInviteSuccess([]));
     resetModifiers();
   }, []);
 

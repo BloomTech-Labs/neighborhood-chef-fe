@@ -13,6 +13,7 @@ export const ALL_USERS_SUCCESS = "ALL_USERS_SUCCESS";
 export const INVITE_USER_SUCCESS = "INVITE_USER_SUCCESS";
 export const FILTER_USERS_SUCCESS = "FILTER_USERS_SUCCESS";
 export const DELETE_INVITATION_SUCCESS = "DELETE_INVITATION_SUCCESS";
+export const RESET_INVITE_SUCCESS = "RESET_INVITE_SUCCESS";
 
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
@@ -61,5 +62,10 @@ export const inviteUserSuccess = (invite) => ({
 
 export const deleteInvitationSuccess = (invite) => ({
   type: DELETE_INVITATION_SUCCESS,
+  payload: invite,
+});
+
+export const resetInviteSuccess = (invite) => ({
+  type: RESET_INVITE_SUCCESS,
   payload: invite,
 });

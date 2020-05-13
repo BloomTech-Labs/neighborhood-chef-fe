@@ -12,6 +12,7 @@ import {
   INVITE_USER_SUCCESS,
   FILTER_USERS_SUCCESS,
   DELETE_INVITATION_SUCCESS,
+  RESET_INVITE_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -160,6 +161,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userList: payload,
+      };
+    case RESET_INVITE_SUCCESS:
+      return {
+        ...state,
+        inviteList: payload,
       };
     default:
       return {
