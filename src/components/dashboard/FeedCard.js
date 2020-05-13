@@ -47,7 +47,7 @@ const FeedCard = ({
       />
       {photo && <CardMedia className={classes.media} image={photo} />}
       <CardContent>
-        <Typography variant="body" color="textSecondary" component="p">
+        <Typography variant="body1" color="textSecondary" component="p">
           {message}
         </Typography>
       </CardContent>

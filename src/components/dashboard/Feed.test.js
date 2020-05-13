@@ -15,6 +15,6 @@ describe("Test Feed static properties", () => {
   });
 
   test("Feed component renders", () => {
-    expect(FeedComponent.getAllByText(/Feed/i));
+    expect(FeedComponent.getByText(/recent messages/i));
   });
 });
