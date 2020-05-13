@@ -108,7 +108,7 @@ const SearchFriends = ({ history }) => {
         </p>
       </div>
 
-      <form style={{ marginLeft: "5%" }}>
+      <div style={{ marginLeft: "5%" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div className="createFormInputDiv" style={{ width: "70%" }}>
             <input
@@ -137,9 +137,9 @@ const SearchFriends = ({ history }) => {
             Done
           </button>
         </div>
-      </form>
+      </div>
       <div style={{ width: "90%" }}>
-        <UserList event={event} filteredList={filteredList} users={users} />
+        <UserList event={event} filteredList={filteredList} />
       </div>
     </div>
   );
