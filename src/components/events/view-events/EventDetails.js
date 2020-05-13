@@ -40,7 +40,7 @@ const EventDetails = () => {
     addEndTime;
 
   useEffect(() => {
-    //get creator name when event loads
+    //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
       axios({
         url: "http://localhost:5100/graphql",
@@ -89,7 +89,6 @@ const EventDetails = () => {
           <div>
             <Typography variant="h3">{event.title}</Typography>
             <p style={{ fontStyle: "italic", opacity: ".3" }}>
-              {/*need to convert user_id to actual name*/}
               created by {creatorName}
             </p>
           </div>
@@ -129,7 +128,7 @@ const EventDetails = () => {
               {rsvpButtons.map((ele) => (
                 <StatusButton
                   {...ele}
-                  eventStatus={currentStatus} //this needs to be updated to reflect the actual status field from database
+                  eventStatus={currentStatus}
                   eventId={event.id}
                   userId={me.id}
                   setStatus={setCurrentStatus}
