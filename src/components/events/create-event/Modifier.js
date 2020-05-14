@@ -19,14 +19,14 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: '20px',
+        margin: '10px',
       }}
     >
       <div
         onClick={() => updateModifier(modifier)}
         className={`modifierNotActive${
           modifier.active ? ' modifierActive' : ''
-          }`}
+        }`}
       >
         <Icon
           icon={modifier.icon}
