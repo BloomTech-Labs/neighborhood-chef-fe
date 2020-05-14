@@ -133,6 +133,7 @@ a {
 .calendar-view-main {
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .calendar-row {
