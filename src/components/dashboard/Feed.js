@@ -52,13 +52,14 @@ const Feed = () => {
   return (
     <div className="feed-container">
       <h3 style={{ marginLeft: "12px" }}>Recent Messages</h3>
+      {/* infinitescroll not currently working. disabled for now. */}
       <InfiniteScroll
         dataLength={feedList.length}
         // next={fetchData}
         hasMore={shownList.length < feedList.length}
         loader={
           <div style={{ textAlign: "center" }}>
-            <CircularProgress />
+            {/* <CircularProgress /> */}
           </div>
         }
         endMessage={
