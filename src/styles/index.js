@@ -36,8 +36,8 @@ export const buttonStyles = makeStyles({
     color: "white",
     "& a": {
       color: "white",
-    }
-  }
+    },
+  },
 });
 
 export const formStyles = makeStyles({
@@ -100,9 +100,19 @@ export const formStyles = makeStyles({
       "margin-left": "4%",
     },
     "& .location": {
+      visibility: "hidden",
       "margin-top": "40px",
       width: "100%",
       "text-align": "left",
+    },
+    "& .geocoder": {
+      width: "100%",
+      "& input": {
+        width: "100%",
+      },
+      "& .react-geocoder-item": {
+        cursor: "pointer",
+      },
     },
     "& .terms": {
       "margin-top": "40px",

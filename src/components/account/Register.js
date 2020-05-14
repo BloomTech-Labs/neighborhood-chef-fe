@@ -40,11 +40,16 @@ const Register = () => {
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form className={classes.registerForm}>
             <h1>Sign up below</h1>
             {currentPage === 1 && <AuthFields />}
-            {currentPage === 2 && <ProfileFields submitting={isSubmitting} />}
+            {currentPage === 2 && (
+              <ProfileFields
+                submitting={isSubmitting}
+                setFieldValue={setFieldValue}
+              />
+            )}
           </Form>
         )}
       </Formik>
