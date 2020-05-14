@@ -2,6 +2,7 @@ import {
   MAKEACTIVE,
   CHANGE_MONTH,
   CHANGE_PAGE,
+  CHANGE_NEIGHB_NAME,
   GET_EVENTS_SUCCESS,
   UPDATE_STATE,
   CREATE_EVENT_SUCCESS,
@@ -19,6 +20,7 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+  neighborhoodName: "My Neighborhood",
   errors: [],
   isGettingEvents: false,
   update: false,
@@ -71,6 +73,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         page: state.page === 1 ? 2 : 1,
+      };
+    case CHANGE_NEIGHB_NAME:
+      return {
+        ...state,
+        neighborhoodName: payload,
       };
     case CREATE_EVENT_SUCCESS:
       return {

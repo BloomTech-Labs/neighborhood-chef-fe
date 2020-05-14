@@ -1,8 +1,7 @@
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
-export const RSVP = "RSVP";
 export const CHANGE_PAGE = "CHANGE_PAGE";
-export const GET_EVENTS_START = "GET_EVENTS";
+export const CHANGE_NEIGHB_NAME = "CHANGE_NEIGHB_NAME";
 export const GET_EVENTS_SUCCESS = "GET_EVENTS_SUCCESS";
 export const UPDATE_STATE = "UPDATE_STATE";
 export const CREATE_EVENT_SUCCESS = "CREATE_EVENT_SUCCESS";
@@ -32,6 +31,11 @@ export const rsvpChange = () => ({
 
 export const changePage = () => ({
   type: CHANGE_PAGE,
+});
+
+export const changeNeighborhoodName = (newName) => ({
+  type: CHANGE_NEIGHB_NAME,
+  payload: newName,
 });
 
 export const createEventSuccess = (event) => ({

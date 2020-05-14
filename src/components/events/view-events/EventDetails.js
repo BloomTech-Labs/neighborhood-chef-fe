@@ -57,7 +57,7 @@ const EventDetails = () => {
         .catch((err) => {
           console.log(err.message);
         });
-  }, [event, update]);
+  }, [event]);
 
   //dealing with date formatting things
   if (event) {

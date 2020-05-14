@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import RecentEvents from "./RecentEvents";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
@@ -10,17 +10,19 @@ import thunk from "redux-thunk";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test sidebar static properties", () => {
-  let HeaderComponent;
+describe("Test recent events static properties", () => {
+  let RecentEventsComponent;
   beforeEach(() => {
-    HeaderComponent = render(
+    RecentEventsComponent = render(
       <Provider store={store}>
-        <Header />
+        <BrowserRouter>
+          <RecentEvents />
+        </BrowserRouter>
       </Provider>
     );
   });
-  test("Header renders", () => {
-    const firstDiv = document.querySelector(".header-container");
-    expect(firstDiv.toBeInDocument);
+
+  test("RecentEvents component renders", () => {
+    expect(RecentEventsComponent.getByText(/newest events/i));
   });
 });
