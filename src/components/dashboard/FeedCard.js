@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { cardStyles } from "../../styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -22,6 +22,9 @@ const FeedCard = ({
   photo,
   message,
 }) => {
+  const [collapseMessage, setCollapseMessage] = useState(
+    message && message.length > 100 ? message.substring(0, 99) + "..." : ""
+  );
   const classes = cardStyles();
 
   /*configuring time elapsed shown to change based on how much time has elapsed*/
@@ -45,11 +48,24 @@ const FeedCard = ({
         }
         subheader={shownTime}
       />
-      {photo && <CardMedia className={classes.media} image={photo} />}
+
       <CardContent>
-        <Typography variant="body1" color="textSecondary" component="p">
-          {message}
+        <Typography variant="body1" color="textSecondary">
+          {collapseMessage ? (
+            <>
+              {collapseMessage}
+              <span
+                onClick={() => setCollapseMessage("")}
+                style={{ color: "blue", cursor: "pointer" }}
+              >
+                show more
+              </span>
+            </>
+          ) : (
+            message
+          )}
         </Typography>
+        {photo && <CardMedia className={classes.media} image={photo} />}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">

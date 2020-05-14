@@ -5,25 +5,30 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import curry from "../../assets/curry.jpg"; //test image
+
+//test message list
 const feedList = [
   {
-    name: "Test name",
+    name: "Sue",
     photo: "",
-    message: "test message",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     time_created: new Date(),
     likes: 10,
     comments_num: 5,
   },
   {
-    name: "Test name 2",
-    photo: "",
-    message: "test message 2",
+    name: "Bob",
+    photo: curry,
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
     time_created: new Date(1132309424029),
     likes: 15,
     comments_num: 8,
   },
   {
-    name: "Test name 3",
+    name: "Elaine",
     photo: "",
     message: "test message 3",
     time_created: new Date(),
@@ -31,23 +36,24 @@ const feedList = [
     comments_num: 1,
   },
   {
-    name: "Test name 4",
+    name: "Test name",
     photo: "",
-    message: "test message 4",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     time_created: new Date(),
     likes: 24,
     comments_num: 0,
   },
 ];
 
-const shownList = [1, 2, 3, 4];
+const shownList = [1, 2, 3];
 
 const Feed = () => {
   return (
     <div className="feed-container">
       <h3 style={{ marginLeft: "12px" }}>Recent Messages</h3>
       <InfiniteScroll
-        dataLength={feedList.length} //This is important field to render the next data
+        dataLength={feedList.length}
         // next={fetchData}
         hasMore={shownList.length < feedList.length}
         loader={

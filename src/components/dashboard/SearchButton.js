@@ -15,7 +15,6 @@ const SearchButton = () => {
           onSubmit={(e) => {
             e.preventDefault();
             //perform search
-            setIsSearching(false);
           }}
         >
           <input

@@ -86,19 +86,22 @@ a {
   margin-bottom: 20px;
 }
 
+.header-container > :last-child {
+  flex-basis: 20%;
+}
+
 .header-icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+.header-icons > :first-child {
+  margin-right: 10px;
 }
 
 .dashboard-main {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.header-icons > :first-child {
-  margin-right: 10px;
 }
 
 .feed-container {
