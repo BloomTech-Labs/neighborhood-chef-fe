@@ -4,6 +4,7 @@ html {
 body {
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
+  height: 100vh;
 }
 p {
   margin: 0;
@@ -65,7 +66,6 @@ a {
 
 .sidebar-container {
   padding-right: 20px;
-  height: 90vh;
   width: 250px;
   display: flex;
   flex-direction: column;
