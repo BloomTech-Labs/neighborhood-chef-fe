@@ -39,9 +39,9 @@ const EventCard = () => {
 
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
             marginLeft: "30px",
             textAlign: "left",
             width: "50%",
@@ -63,7 +63,7 @@ const EventCard = () => {
               flexDirection: "column",
             }}
           >
-            <p style={{ color: "rgba(0, 0, 0, 0.35)", marginBottom: '22px' }}>
+            <p style={{ color: "rgba(0, 0, 0, 0.35)", marginBottom: "22px" }}>
               {values.date && moment(Number(values.date)).format("MMM Do YYYY")}
               .&nbsp;
             </p>
