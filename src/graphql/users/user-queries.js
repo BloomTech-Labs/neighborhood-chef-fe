@@ -1,54 +1,40 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const ALL_USERS = gql`
   query getAllUsers {
     getAllUsers {
       id
-      Email
-      FirstName
-      LastName
-      Gender
-      Address
-      Latitude
-      Longitude
-      Events_Owned {
+      email
+      firstName
+      lastName
+      gender
+      address
+      latitude
+      longitude
+      eventsOwned {
         id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
-        category_id
+        title
+        date
+        description
+        startTime
+        endTime
+        address
+        latitude
+        longitude
+        hashtags
+        modifiers
         user_id
-        Address
-        Latitude
-        Longitude
-      }
-      Events_Invited {
-        id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
-        category_id
-        user_id
-        Address
-        Latitude
-        Longitude
-      }
-      Events_Attending {
-        id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
-        category_id
-        user_id
-        Address
-        Latitude
-        Longitude
+        users {
+          id
+          email
+          password
+          firstName
+          lastName
+          address
+          longitude
+          latitude
+          status
+        }
       }
     }
   }
@@ -58,51 +44,129 @@ export const USER_BY_ID = gql`
   query getUserById($id: ID!) {
     getUserById(id: $id) {
       id
-      Email
-      FirstName
-      LastName
-      Gender
-      Address
-      Latitude
-      Longitude
-      Events_Owned {
+      email
+      firstName
+      lastName
+      gender
+      address
+      latitude
+      longitude
+      eventsOwned {
         id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
+        date
+        startTime
+        endTime
+        title
+        description
         category_id
         user_id
-        Address
-        Latitude
-        Longitude
+        address
+        latitude
+        longitude
+        modifiers
+        hashtags
+        users {
+          id
+          email
+          password
+          firstName
+          lastName
+          address
+          longitude
+          latitude
+          status
+        }
       }
-      Events_Invited {
+    }
+  }
+`;
+
+export const GET_AUTHORED_EVENTS = gql`
+  query getAuthoredEvents($id: ID!) {
+    getAuthoredEvents(id: $id) {
+      id
+      startTime
+      endTime
+      description
+      title
+      address
+      latitude
+      longitude
+      user_id
+      modifiers
+      hashtags
+      users {
         id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
-        category_id
-        user_id
-        Address
-        Latitude
-        Longitude
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
       }
-      Events_Attending {
+    }
+  }
+`;
+
+export const GET_INVITED_EVENTS = gql`
+  query getInvitedEvents($id: ID!) {
+    getInvitedEvents(id: $id) {
+      id
+      date
+      startTime
+      endTime
+      title
+      description
+      category_id
+      user_id
+      address
+      latitude
+      longitude
+      modifiers
+      hashtags
+      users {
         id
-        Date
-        Start_Time
-        End_Time
-        Title
-        Description
-        category_id
-        user_id
-        Address
-        Latitude
-        Longitude
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+      }
+    }
+  }
+`;
+
+export const GET_ATTENDING_EVENTS = gql`
+  query getAttendingEvents($id: ID!) {
+    getAttendingEvents(id: $id) {
+      id
+      date
+      startTime
+      endTime
+      title
+      description
+      category_id
+      user_id
+      address
+      latitude
+      longitude
+      modifiers
+      hashtags
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
       }
     }
   }

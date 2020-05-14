@@ -1,9 +1,11 @@
 import React from "react";
-import Sidebar from "../dashboard/Sidebar";
+
+//component imports
+import Sidebar from "../../dashboard/Sidebar";
 import MonthPicker from "./MonthPicker";
 import CalendarView from "./CalendarView";
 import EventDetails from "./EventDetails";
-import Header from "../dashboard/Header";
+import Header from "../../dashboard/Header";
 
 const ViewEvents = () => {
   return (

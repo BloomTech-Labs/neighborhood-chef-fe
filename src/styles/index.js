@@ -38,6 +38,21 @@ export const buttonStyles = makeStyles({
       color: "white",
     },
   },
+  rsvpRoot: {
+    height: "30px",
+    width: "100px",
+    borderRadius: "5px",
+    color: "white",
+    fontWeight: "bolder",
+    cursor: "pointer",
+    border: "none",
+    opacity: ".6",
+    margin: "0px 3px",
+  },
+  rsvpActive: {
+    border: "1px solid black",
+    opacity: "1",
+  },
 });
 
 export const formStyles = makeStyles({

@@ -26,12 +26,11 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
         onClick={() => updateModifier(modifier)}
         className={`modifierNotActive${
           modifier.active ? ' modifierActive' : ''
-        }`}
+          }`}
       >
         <Icon
-          width="1.1em"
           icon={modifier.icon}
-          style={{ fontSize: '3.4rem', color: 'white' }}
+          style={{ fontSize: '3.5rem', color: 'white' }}
         />
       </div>
 

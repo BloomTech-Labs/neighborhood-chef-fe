@@ -1,14 +1,15 @@
-import axios from "axios";
-
-export const LOGIN_START = "LOGIN_START";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const INCREMENT = "INCREMENT";
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const RSVP = "RSVP";
 export const CHANGE_PAGE = "CHANGE_PAGE";
+export const GET_EVENTS_START = "GET_EVENTS";
+export const GET_EVENTS_SUCCESS = "GET_EVENTS_SUCCESS";
+export const UPDATE_STATE = "UPDATE_STATE";
 
+export const getEventsSuccess = (events) => ({
+  type: GET_EVENTS_SUCCESS,
+  payload: events,
+});
 export const makeActive = (id) => ({
   type: MAKEACTIVE,
   payload: id,
@@ -19,16 +20,9 @@ export const setMonth = (type) => ({
   payload: type,
 });
 
-export const rsvp = (event, id) => {
-  event.preventDefault();
-  return {
-    type: RSVP,
-    payload: {
-      name: event.target.innerHTML,
-      id: id,
-    },
-  };
-};
+export const rsvpChange = () => ({
+  type: UPDATE_STATE,
+});
 
 export const changePage = () => ({
   type: CHANGE_PAGE,

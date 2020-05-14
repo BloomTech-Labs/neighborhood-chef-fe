@@ -12,7 +12,7 @@ import Modifier from './Modifier.js';
 import AddHashtag from './AddHashtag.js';
 import { scrollToTop } from './FormPageOne.js';
 
-const modifierData = [
+export const modifierData = [
   { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
   { id: 2, title: 'Kid-Friendly', icon: strollerIcon, active: false },
   { id: 3, title: 'Alcohol Accepted', icon: bottleWine, active: false },
