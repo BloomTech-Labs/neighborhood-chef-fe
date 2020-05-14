@@ -23,16 +23,19 @@ const StatusButton = ({
       `event_id: ${eventId}, user_id: ${userId}, status: ${newStatus}`
     );
     axios
-      .post("http://localhost:5100/graphql", {
-        query: print(UPDATE_INVITATION),
-        variables: {
-          input: {
-            event_id: parseInt(eventId),
-            user_id: parseInt(userId),
-            status: newStatus,
+      .post(
+        "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
+        {
+          query: print(UPDATE_INVITATION),
+          variables: {
+            input: {
+              event_id: parseInt(eventId),
+              user_id: parseInt(userId),
+              status: newStatus,
+            },
           },
-        },
-      })
+        }
+      )
       .then((res) => {
         setStatus(
           res.data.data.updateInvitation.users.filter(

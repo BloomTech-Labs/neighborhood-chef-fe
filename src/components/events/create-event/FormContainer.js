@@ -109,11 +109,16 @@ const FormContainer = () => {
             photo: getBase64(photo),
           };
           axios
-            .post("http://localhost:5100/graphql", {
-              query: print(ADD_EVENT),
-              variables: { input: values },
-            })
+            .post(
+              "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
+              {
+                query: print(ADD_EVENT),
+                variables: { input: values },
+              }
+            )
             .then((res) => {
+              console.log(res);
+              console.log(values);
               dispatch(createEventSuccess(res.data.data.addEvent));
               setHashtags([]);
               resetForm(initialState);

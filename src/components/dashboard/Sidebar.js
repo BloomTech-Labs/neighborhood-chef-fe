@@ -27,38 +27,38 @@ const buttonList = [
     text: "Calendar",
     icon: calendarOutlined,
   },
-  {
-    active: false,
-    link: "notifications",
-    text: "Notifications",
-    icon: outlineNotifications,
-  },
+  // {
+  //   active: false,
+  //   link: "notifications",
+  //   text: "Notifications",
+  //   icon: outlineNotifications,
+  // },
   {
     active: false,
     link: "create-event",
     text: "Create Event",
     icon: calendarPlus,
   },
-  {
-    active: false,
-    link: "recipes",
-    text: "Shared Recipes",
-    icon: bxFoodMenu,
-  },
-  {
-    active: false,
-    link: "messages",
-    text: "Messages",
-    icon: bxMessageSquareDots,
-  },
+  // {
+  //   active: false,
+  //   link: "recipes",
+  //   text: "Shared Recipes",
+  //   icon: bxFoodMenu,
+  // },
+  // {
+  //   active: false,
+  //   link: "messages",
+  //   text: "Messages",
+  //   icon: bxMessageSquareDots,
+  // },
 ];
 
-const settingButton = {
-  active: false,
-  link: "settings",
-  text: "Settings",
-  icon: outlineSettings,
-};
+// const settingButton = {
+//   active: false,
+//   link: "settings",
+//   text: "Settings",
+//   icon: outlineSettings,
+// };
 
 const Sidebar = ({ active }) => {
   return (
@@ -80,12 +80,12 @@ const Sidebar = ({ active }) => {
           ))}
         </nav>
       </div>
-      <div className="settings-button">
+      {/* <div className="settings-button">
         <SidebarButton
           {...settingButton}
           active={active === settingButton.link}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
