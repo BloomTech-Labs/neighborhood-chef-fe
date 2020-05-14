@@ -117,8 +117,6 @@ const FormContainer = () => {
               }
             )
             .then((res) => {
-              console.log(res);
-              console.log(values);
               dispatch(createEventSuccess(res.data.data.addEvent));
               setHashtags([]);
               resetForm(initialState);
