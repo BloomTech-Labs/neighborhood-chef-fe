@@ -23,7 +23,7 @@ const Hashtag = ({ hashtag, hashtags, setHashtags }) => {
         width: 'auto',
         maxWidth: '400px',
         whiteSpace: 'pre-line',
-        padding: '0 20px',
+        padding: '12px 20px',
       }}
     >
       <p style={{ wordWrap: 'break-word' }}>{hashtag.title}</p>

@@ -10,7 +10,7 @@ const UserList = ({ event, filteredList }) => {
   return (
     <>
       {invitedList.map((user, index) => {
-        return index !== 0 && <InvitedUser key={user.id} user={user} />;
+        return Number(user.id) !== event.user_id && <InvitedUser key={user.id} user={user} />;
       })}
       {filteredList.map((user) => {
         return (
