@@ -55,7 +55,7 @@ const FormPageThree = ({
             </h3>
             <div style={{ display: 'flex' }}>
               <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
-                {moment(values.date).format('MMM Do YYYY')}
+                {values.date && moment(values.date).format('MMM Do YYYY')}
                 .&nbsp;
               </p>
               <p
@@ -70,7 +70,12 @@ const FormPageThree = ({
 
               {values.endTime && (
                 <>
-                  <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
+                  <p
+                    style={{
+                      fontSize: '1.6rem',
+                      color: 'rgba(0, 0, 0, 0.5)',
+                    }}
+                  >
                     to&nbsp;
                   </p>
                   <p

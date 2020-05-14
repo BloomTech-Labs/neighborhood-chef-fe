@@ -1,5 +1,4 @@
 import React from 'react';
-import PublishIcon from '@material-ui/icons/Publish';
 
 import strollerIcon from '@iconify/icons-vs/stroller';
 import baselineOutdoorGrill from '@iconify/icons-ic/baseline-outdoor-grill';
@@ -8,6 +7,7 @@ import dogIcon from '@iconify/icons-whh/dog';
 import icon18Plus from '@iconify/icons-uil/18-plus';
 import foodApple from '@iconify/icons-mdi/food-apple';
 
+import EventImageUpload from './EventImageUpload.js';
 import Modifier from './Modifier.js';
 import AddHashtag from './AddHashtag.js';
 import { scrollToTop } from './FormPageOne.js';
@@ -28,41 +28,18 @@ const FormPageTwo = ({
   setPage,
   modifiers,
   setModifiers,
+  photo,
+  setPhoto,
 }) => {
   return (
     <>
       <div className="createFormPage2Container">
-        <div className="createImgDiv">
-          <h5
-            style={{
-              textAlign: 'left',
-              fontSize: '1.8rem',
-              marginLeft: '10px',
-              fontWeight: 'normal',
-            }}
-          >
-            Upload a main picture for your event page.
-          </h5>
-          <div className="imgUploadDiv">
-            <p>Upload</p>
-            <PublishIcon
-              color="disabled"
-              style={{
-                fontSize: '22px',
-                color: 'white',
-                marginLeft: '5px',
-                fontWeight: 'normal',
-              }}
-            />
-          </div>
-        </div>
-
+        <EventImageUpload photo={photo} setPhoto={setPhoto} />
         <AddHashtag
           hashtags={hashtags}
           setHashtags={setHashtags}
           removeHashtag={removeHashtag}
         />
-
         <div>
           <h5
             style={{
