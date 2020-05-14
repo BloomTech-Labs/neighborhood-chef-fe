@@ -116,7 +116,7 @@ const InvitedUser = ({ user }) => {
           width: "20%",
         }}
       >
-        <p style={{ marginRight: "2%" }}>Invited</p>
+        <p style={{ marginRight: "3%" }}>Invited</p>
         <div
           onClick={() => deleteInvitation(user)}
           style={{
