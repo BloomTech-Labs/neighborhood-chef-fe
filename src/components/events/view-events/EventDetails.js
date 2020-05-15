@@ -43,8 +43,7 @@ const EventDetails = () => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
       axios({
-        url:
-          "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
+        url: process.env.REACT_APP_URL,
         method: "post",
         data: {
           query: print(USER_BY_ID),

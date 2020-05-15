@@ -44,8 +44,7 @@ const CalendarView = () => {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url:
-        "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
+      url: process.env.REACT_APP_URL,
       method: "post",
       data: {
         query: print(GET_INVITED_EVENTS),

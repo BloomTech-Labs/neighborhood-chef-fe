@@ -24,13 +24,10 @@ const UninvitedUser = ({ user }) => {
     };
 
     axios
-      .post(
-        "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
-        {
-          query: print(INVITE_USER),
-          variables: { input: invite },
-        }
-      )
+      .post(process.env.REACT_APP_URL, {
+        query: print(INVITE_USER),
+        variables: { input: invite },
+      })
       .then((res) => {
         dispatch(inviteUserSuccess(res.data.data.inviteUserToEvent.users));
         dispatch(filterUserListSuccess(users.filter((user) => user.id !== id)));

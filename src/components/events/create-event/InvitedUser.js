@@ -24,7 +24,7 @@ const InvitedUser = ({ user }) => {
     };
 
     axios
-      .post("http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql", {
+      .post(process.env.REACT_APP_URL, {
         query: print(REMOVE_INVITATION),
         variables: { input: removeInvite },
       })

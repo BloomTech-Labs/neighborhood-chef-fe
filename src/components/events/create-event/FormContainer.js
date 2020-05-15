@@ -109,13 +109,10 @@ const FormContainer = () => {
             photo: getBase64(photo),
           };
           axios
-            .post(
-              "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
-              {
-                query: print(ADD_EVENT),
-                variables: { input: values },
-              }
-            )
+            .post(process.env.REACT_APP_URL, {
+              query: print(ADD_EVENT),
+              variables: { input: values },
+            })
             .then((res) => {
               dispatch(createEventSuccess(res.data.data.addEvent));
               setHashtags([]);
