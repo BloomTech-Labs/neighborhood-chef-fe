@@ -12,7 +12,8 @@ import {
   DELETE_INVITATION_SUCCESS,
   RESET_INVITE_SUCCESS,
   START_EVENT_EDIT,
-  CANCEL_EDIT
+  CANCEL_EDIT,
+  UPDATE_EVENT_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -117,13 +118,20 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isEditing: true,
-        eventToEdit: payload
+        eventToEdit: payload,
       };
     case CANCEL_EDIT:
       return {
         ...state,
         isEditing: false,
-        eventToEdit: {}
+        eventToEdit: {},
+      };
+    case UPDATE_EVENT_SUCCESS:
+      return {
+        ...state,
+        isEditing: false,
+        eventToEdit: {},
+        newEvent: payload,
       };
     default:
       return {

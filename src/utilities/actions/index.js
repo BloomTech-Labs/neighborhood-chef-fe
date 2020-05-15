@@ -12,6 +12,7 @@ export const DELETE_INVITATION_SUCCESS = "DELETE_INVITATION_SUCCESS";
 export const RESET_INVITE_SUCCESS = "RESET_INVITE_SUCCESS";
 export const START_EVENT_EDIT = "START_EVENT_EDIT";
 export const CANCEL_EDIT = "CANCEL_EDIT";
+export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -72,9 +73,14 @@ export const resetInviteSuccess = (invite) => ({
 
 export const startEventEdit = (event) => ({
   type: START_EVENT_EDIT,
-  payload: event
-})
+  payload: event,
+});
 
 export const cancelEdit = () => ({
-  type: CANCEL_EDIT
-})
+  type: CANCEL_EDIT,
+});
+
+export const updateEventSuccess = (event) => ({
+  type: UPDATE_EVENT_SUCCESS,
+  payload: event,
+});

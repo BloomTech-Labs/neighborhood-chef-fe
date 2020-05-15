@@ -8,8 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createEventSuccess,
   resetInviteSuccess,
+  updateEventSuccess,
 } from "../../../utilities/actions/index.js";
-import { ADD_EVENT } from "../../../graphql/events/event-mutations.js";
+
+import {
+  ADD_EVENT,
+  UPDATE_EVENT,
+} from "../../../graphql/events/event-mutations.js";
 import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
 import FormPageTwo from "./FormPageTwo.js";
@@ -49,7 +54,6 @@ const FormContainer = () => {
     return modifierData.map((mod) => (mod.active = false));
   };
 
-  // wasn't sure if we wanted to send the modifier icon itself to the backend in JSON too?
   const modifiersWithoutIcon = () => {
     return modifiers.map((mod) => {
       return {
@@ -60,54 +64,35 @@ const FormContainer = () => {
     });
   };
 
-  const photoHandler = () => {
-    if (photo) {
-      const data = new FormData();
-      data.append("image", photo, photo.name);
-      return data;
-    } else {
-      return null;
-    }
-  };
-
-  function getBase64(photo) {
-    if (photo) {
-      let reader = new FileReader();
-      reader.readAsDataURL(photo);
-      reader.onload = function () {
-        return reader.result;
-      };
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
-    } else {
-      return null;
-    }
-  }
-
+  // reset form on each render
   useEffect(() => {
     dispatch(resetInviteSuccess([]));
     resetModifiers();
   }, [dispatch]);
 
+  // populate modifiers and hashtags with saved event details if editing
   useEffect(() => {
     if (isEditing) {
       const hashtagList = JSON.parse(eventToEdit.hashtags);
       const modifierList = JSON.parse(eventToEdit.modifiers);
       const modifierArr = modifierList.modifiers[0];
 
-      // compare event modifiers and reset them to state and change status to active
-      for (let i = 0; i < modifierData.length; i++) {
-        for (let j = 0; j < modifierArr.length; j++) {
-          if (modifierData[i].id === modifierArr[j].id) {
-            modifierData[i].active = true;
-            setModifiers([...modifiers, modifierData[i]]);
+      function restoreSavedModifiers(arr1, arr2) {
+        let arr = [];
+        for (let i = 0; i < arr1.length; i++) {
+          for (let j = 0; j < arr2.length; j++) {
+            if (arr1[i].id === arr2[j].id) {
+              arr1[i].active = true;
+              arr.push(arr1[i]);
+            }
           }
+          setModifiers(arr);
         }
       }
+      restoreSavedModifiers(modifierData, modifierArr);
       setHashtags(hashtagList.hashtags);
     }
-  }, [isEditing]);
+  }, [isEditing, eventToEdit]);
 
   return (
     <>
@@ -115,34 +100,76 @@ const FormContainer = () => {
         initialValues={isEditing ? eventToEdit : initialState}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          values = {
-            ...values,
-            // replace with variable
-            user_id: 1,
-            hashtags: JSON.stringify({ hashtags: [...hashtags] }),
-            modifiers: JSON.stringify({
-              modifiers: [modifiersWithoutIcon()],
-            }),
-            // replace with calculated longitude and latitude
-            longitude: -22.11,
-            latitude: 2.11,
-            // photo still not working quite right
-            photo: getBase64(photo),
-          };
-          axios
-            .post(process.env.REACT_APP_URL, {
-              query: print(ADD_EVENT),
-              variables: { input: values },
-            })
-            .then((res) => {
-              dispatch(createEventSuccess(res.data.data.addEvent));
-              setHashtags([]);
-              resetForm(initialState);
-              resetModifiers();
-              setModifiers([]);
-              setPage(4);
-            })
-            .catch((err) => console.log(err.message));
+          if (isEditing) {
+            // remove id field from values
+            const updatedEvent = {
+              title: values.title,
+              address: values.address,
+              description: values.description,
+              date: values.date,
+              startTime: values.startTime,
+              endTime: values.endTime,
+              category_id: values.category_id,
+              // replace with variable
+              user_id: 1,
+              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
+              modifiers: JSON.stringify({
+                modifiers: [modifiersWithoutIcon()],
+              }),
+              // replace with calculated longitude and latitude
+              longitude: -22.11,
+              latitude: 2.11,
+              // photo still not working quite right
+              photo: null,
+            };
+            axios
+              .post(process.env.REACT_APP_URL, {
+                query: print(UPDATE_EVENT),
+                variables: {
+                  id: Number(eventToEdit.id),
+                  input: updatedEvent,
+                },
+              })
+              .then((res) => {
+                console.log(res.data.data.updateEvent);
+                dispatch(updateEventSuccess(res.data.data.updateEvent));
+                setHashtags([]);
+                resetForm(initialState);
+                resetModifiers();
+                setModifiers([]);
+                setPage(4);
+              })
+              .catch((err) => console.log(err));
+          } else {
+            const newEvent = {
+              ...values,
+              // replace with variable
+              user_id: 1,
+              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
+              modifiers: JSON.stringify({
+                modifiers: [modifiersWithoutIcon()],
+              }),
+              // replace with calculated longitude and latitude
+              longitude: -22.11,
+              latitude: 2.11,
+              // photo still not working quite right
+              photo: null,
+            };
+            axios
+              .post(process.env.REACT_APP_URL, {
+                query: print(ADD_EVENT),
+                variables: { input: newEvent },
+              })
+              .then((res) => {
+                dispatch(createEventSuccess(res.data.data.addEvent));
+                setHashtags([]);
+                resetForm(initialState);
+                resetModifiers();
+                setModifiers([]);
+                setPage(4);
+              })
+              .catch((err) => console.log(err.message));
+          }
         }}
       >
         {({

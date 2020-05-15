@@ -29,8 +29,6 @@ const convertTime = (time24) => {
   return ts;
 };
 
-
-
 const FormPageOne = ({
   handleChange,
   values,
@@ -114,7 +112,11 @@ const FormPageOne = ({
             <Select
               name="startTime"
               id="Start_Time"
-              value={isEditing ? convertTime(eventToEdit.startTime) : values.startTime}
+              value={
+                isEditing
+                  ? convertTime(eventToEdit.startTime)
+                  : values.startTime
+              }
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -175,7 +177,9 @@ const FormPageOne = ({
             <Select
               name="endTime"
               id="End_Time"
-              value={isEditing ? convertTime(eventToEdit.endTime) : values.endTime}
+              value={
+                isEditing ? convertTime(eventToEdit.endTime) : values.endTime
+              }
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -266,7 +270,7 @@ const FormPageOne = ({
           className="createRightBtn"
           onClick={() => {
             resetForm(initialState);
-            dispatch(cancelEdit())
+            dispatch(cancelEdit());
             history.push("/dashboard");
           }}
         >
