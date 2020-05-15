@@ -11,6 +11,8 @@ import {
   FILTER_USERS_SUCCESS,
   DELETE_INVITATION_SUCCESS,
   RESET_INVITE_SUCCESS,
+  START_EVENT_EDIT,
+  CANCEL_EDIT
 } from "../actions";
 
 const initialDate = new Date();
@@ -28,6 +30,8 @@ const initialState = {
   newEvent: {},
   userList: [],
   inviteList: [],
+  isEditing: false,
+  eventToEdit: {},
 
   //test user data
   myUser: {
@@ -108,6 +112,18 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         inviteList: payload,
+      };
+    case START_EVENT_EDIT:
+      return {
+        ...state,
+        isEditing: true,
+        eventToEdit: payload
+      };
+    case CANCEL_EDIT:
+      return {
+        ...state,
+        isEditing: false,
+        eventToEdit: {}
       };
     default:
       return {

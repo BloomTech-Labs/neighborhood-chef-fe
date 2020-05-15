@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { print } from "graphql";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   createEventSuccess,
@@ -41,6 +41,8 @@ const FormContainer = () => {
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
+  const eventToEdit = useSelector((state) => state.eventToEdit);
+  const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
   const resetModifiers = () => {
@@ -88,17 +90,36 @@ const FormContainer = () => {
     resetModifiers();
   }, [dispatch]);
 
+  useEffect(() => {
+    if (isEditing) {
+      const hashtagList = JSON.parse(eventToEdit.hashtags);
+      const modifierList = JSON.parse(eventToEdit.modifiers);
+      const modifierArr = modifierList.modifiers[0];
+
+      // compare event modifiers and reset them to state and change status to active
+      for (let i = 0; i < modifierData.length; i++) {
+        for (let j = 0; j < modifierArr.length; j++) {
+          if (modifierData[i].id === modifierArr[j].id) {
+            modifierData[i].active = true;
+            setModifiers([...modifiers, modifierData[i]]);
+          }
+        }
+      }
+      setHashtags(hashtagList.hashtags);
+    }
+  }, [isEditing]);
+
   return (
     <>
       <Formik
-        initialValues={initialState}
+        initialValues={isEditing ? eventToEdit : initialState}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
             // replace with variable
             user_id: 1,
-            hashtags: JSON.stringify({ modifiers: [...hashtags] }),
+            hashtags: JSON.stringify({ hashtags: [...hashtags] }),
             modifiers: JSON.stringify({
               modifiers: [modifiersWithoutIcon()],
             }),

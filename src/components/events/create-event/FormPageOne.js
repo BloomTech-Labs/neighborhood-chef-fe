@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Field } from "formik";
 import { withRouter } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
@@ -6,6 +7,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useSelector } from "react-redux";
+import moment from "moment";
+
+import { cancelEdit } from "../../../utilities/actions";
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -13,6 +18,18 @@ export const scrollToTop = () => {
     behavior: "smooth",
   });
 };
+
+const convertTime = (time24) => {
+  let ts = time24;
+  let H = +ts.substr(0, 2);
+  let h = H % 12 || 12;
+  h = h < 10 ? h : h;
+  let ampm = H < 12 ? "am" : "pm";
+  ts = h + ts.substr(2, 3) + ampm;
+  return ts;
+};
+
+
 
 const FormPageOne = ({
   handleChange,
@@ -23,6 +40,9 @@ const FormPageOne = ({
   history,
 }) => {
   const [error, setError] = useState(false);
+  const eventToEdit = useSelector((state) => state.eventToEdit);
+  const isEditing = useSelector((state) => state.isEditing);
+  const dispatch = useDispatch();
 
   const validateAndTurnPage = () => {
     if (
@@ -40,6 +60,7 @@ const FormPageOne = ({
       setError(true);
     }
   };
+
   return (
     <>
       <div className="createFormPage1TopRow">
@@ -93,7 +114,7 @@ const FormPageOne = ({
             <Select
               name="startTime"
               id="Start_Time"
-              value={values.startTime}
+              value={isEditing ? convertTime(eventToEdit.startTime) : values.startTime}
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -154,7 +175,7 @@ const FormPageOne = ({
             <Select
               name="endTime"
               id="End_Time"
-              value={values.endTime}
+              value={isEditing ? convertTime(eventToEdit.endTime) : values.endTime}
               onChange={handleChange}
               disableUnderline={true}
             >
@@ -245,6 +266,7 @@ const FormPageOne = ({
           className="createRightBtn"
           onClick={() => {
             resetForm(initialState);
+            dispatch(cancelEdit())
             history.push("/dashboard");
           }}
         >

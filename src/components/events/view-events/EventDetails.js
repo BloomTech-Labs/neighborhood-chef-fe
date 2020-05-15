@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
+import { startEventEdit } from "../../../utilities/actions";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
@@ -17,8 +19,9 @@ import globeIcon from "@iconify/icons-flat-color-icons/globe";
 import StatusButton from "./StatusButton";
 import { rsvpButtons } from "../../../data/buttons";
 
-const EventDetails = () => {
+const EventDetails = ({ history }) => {
   //grabbed from redux store
+  const dispatch = useDispatch();
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
@@ -106,7 +109,7 @@ const EventDetails = () => {
             </span>
             {`${displayedStartTime} ${
               addEndTime ? "- " + displayedEndTime : ""
-            }`}
+              }`}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
@@ -135,16 +138,20 @@ const EventDetails = () => {
                   key={ele.name}
                 />
               ))}
+              <button onClick={() => {
+                dispatch(startEventEdit(event))
+                history.push("/create-event")
+              }}>Edit</button>
             </div>
           </div>
         </div>
       ) : (
-        <div>
-          <h3>Select an event from the calendar to view the details here.</h3>
-        </div>
-      )}
+          <div>
+            <h3>Select an event from the calendar to view the details here.</h3>
+          </div>
+        )}
     </div>
   );
 };
 
-export default EventDetails;
+export default withRouter(EventDetails);
