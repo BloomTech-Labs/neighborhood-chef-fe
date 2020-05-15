@@ -42,8 +42,6 @@ const CalendarView = () => {
     );
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_URL);
-    console.log(process.env.NODE_ENV);
     setIsLoading(true);
     axios({
       url: process.env.REACT_APP_URL,
