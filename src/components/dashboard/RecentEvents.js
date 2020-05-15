@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
+import { print } from "graphql";
+import { GET_INVITED_EVENTS } from "../../graphql/users/user-queries";
+import { getEventsSuccess } from "../../utilities/actions";
 
 const recentEventsList = [
   {
@@ -32,11 +37,31 @@ const recentEventsList = [
 ];
 
 const RecentEvents = () => {
+  const me = useSelector((state) => state.myUser);
+  const eventList = useSelector((state) => state.eventList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios({
+      url: process.env.REACT_APP_URL,
+      method: "post",
+      data: {
+        query: print(GET_INVITED_EVENTS),
+        variables: { id: me.id },
+      },
+    })
+      .then((res) => {
+        dispatch(getEventsSuccess(res.data.data.getInvitedEvents));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
   return (
     <div className="recent-events-container">
       <h3 style={{ marginLeft: "12px" }}>Newest Events</h3>
-      {!!recentEventsList &&
-        recentEventsList.map((ele) => <RecentCard {...ele} key={ele.id} />)}
+      {!!eventList &&
+        eventList.map((ele) => <RecentCard {...ele} key={ele.id} />)}
     </div>
   );
 };

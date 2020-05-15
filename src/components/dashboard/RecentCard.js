@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -26,29 +26,57 @@ import modernRoom from "../../assets/modernRoom.png";
 
 import { rsvpButtons } from "../../data/buttons";
 
+import axios from "axios";
+
+import { USER_BY_ID } from "../../graphql/users/user-queries";
+import { print } from "graphql";
+
 const RecentCard = (props) => {
+  console.log(props.createDateTime, props.date);
   const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState("");
+  const [creatorName, setCreatorName] = useState("");
+  const d = new Date(parseInt(props.date));
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const shownTime = timeAgo(props.date_created);
-  const time = props.date
+  const shownTime = timeAgo(props.createDateTime);
+  const time = d
     .toLocaleTimeString("en-US", {
       hours: "numeric",
       minutes: "2-digit",
     })
     .replace(/:\d+ /, " ");
-  const day = props.date.toLocaleDateString("en-US", {
+  const day = d.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
   });
   const dayNum = day.split(" ")[1];
   const month = day.split(" ")[0];
+
+  useEffect(() => {
+    //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
+    props.user_id &&
+      axios({
+        url: process.env.REACT_APP_URL,
+        method: "post",
+        data: {
+          query: print(USER_BY_ID),
+          variables: { id: props.user_id },
+        },
+      })
+        .then((res) => {
+          const data = res.data.data.getUserById;
+          setCreatorName(`${data.firstName} ${data.lastName}`);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+  }, []);
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -63,7 +91,10 @@ const RecentCard = (props) => {
           </IconButton>
         }
         title={
-          <Typography variant="h5">{`${props.name} created an event`}</Typography>
+          <Typography variant="h5">
+            {creatorName}
+            <span style={{ opacity: ".6" }}> created an event</span>
+          </Typography>
         }
         subheader={shownTime}
       />
@@ -78,12 +109,27 @@ const RecentCard = (props) => {
           {month}
         </Typography>
       </div>
+      <Typography variant="h6" align="center">
+        {`@ ${time}`}
+      </Typography>
       <CardContent>
-        <Typography variant="h3" align="center">
+        <Typography variant="h4" align="center">
           {props.title}
         </Typography>
         <Typography variant="h6" align="center">
-          {`@ ${time}`}
+          <span
+            style={
+              currentStatus === "Not Going"
+                ? { color: "rgba(232, 64, 64, .75)" }
+                : currentStatus === "Maybe"
+                ? { color: "rgba(255, 169, 40, .75)" }
+                : currentStatus === "Going"
+                ? { color: "rgba(33, 186, 66, .75)" }
+                : { color: "rgba(0,0,0, .3)" }
+            }
+          >
+            {currentStatus || "undecided"}
+          </span>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
