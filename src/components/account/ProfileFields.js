@@ -51,7 +51,7 @@ const ProfileFields = (props) => {
         className="location"
         value={userLocation}
       />
-      <p>Location</p>
+      <p style={{ "margin-top": "-60px" }}>Location</p>
       <Geocoder
         {...mapAccess}
         onSelected={onSelected}

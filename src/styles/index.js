@@ -122,6 +122,7 @@ export const formStyles = makeStyles({
     },
     "& .geocoder": {
       width: "100%",
+      "margin-top": "-35px",
       "& input": {
         width: "100%",
       },
