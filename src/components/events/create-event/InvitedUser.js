@@ -59,23 +59,23 @@ const InvitedUser = ({ user }) => {
             alt="user avatar"
           />
         ) : (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "50%",
-              background: "#82DF96",
-              color: "white",
-              height: "60px",
-              width: "60px",
-              marginLeft: "5%",
-              border: "4px solid #82DF96",
-            }}
-          >
-            {user.firstName.slice(0, 1)}
-          </div>
-        )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "50%",
+                background: "#82DF96",
+                color: "white",
+                height: "60px",
+                width: "60px",
+                marginLeft: "5%",
+                border: "4px solid #82DF96",
+              }}
+            >
+              {user.firstName.slice(0, 1)}
+            </div>
+          )}
 
         <div
           style={{
@@ -100,7 +100,6 @@ const InvitedUser = ({ user }) => {
             style={{
               color: "#000000",
               opacity: "0.3",
-              marginTop: "-5px",
             }}
           >
             {user.email.length > 35
@@ -117,7 +116,7 @@ const InvitedUser = ({ user }) => {
           width: "20%",
         }}
       >
-        <p style={{ marginRight: "2%" }}>Invited</p>
+        <p style={{ marginRight: "3%" }}>Invited</p>
         <div
           onClick={() => deleteInvitation(user)}
           style={{

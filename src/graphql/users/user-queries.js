@@ -27,7 +27,6 @@ export const ALL_USERS = gql`
         users {
           id
           email
-          password
           firstName
           lastName
           address
@@ -68,7 +67,6 @@ export const USER_BY_ID = gql`
         users {
           id
           email
-          password
           firstName
           lastName
           address

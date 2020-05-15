@@ -11,12 +11,13 @@ const event = {
   title: "BBQ",
   address: "123 ABC St.",
   date: new Date(),
+  user_id: 1,
   startTime: "6:00pm",
   endTime: "9:00pm",
 };
 
 const userList = [
-  { id: 1, firstName: "Homer", lastName: "Simpon", email: "homer@gmail.com" },
+  { id: 1, firstName: "Homer", lastName: "Simpson", email: "homer@gmail.com" },
   { id: 3, firstName: "Bart", lastName: "Simpson", email: "bart@gmail.com" },
 ];
 
@@ -25,7 +26,7 @@ const inviteList = [
     id: 4,
     firstName: "Lisa",
     lastName: "Simpson",
-    email: "list@gmail.com",
+    email: "lisa@gmail.com",
   },
   {
     id: 5,
@@ -45,7 +46,7 @@ describe("Test SearchFriends component", () => {
     store = mockStore({
       userList: userList,
       inviteList: inviteList,
-      event: event,
+      newEvent: event,
     });
 
     SearchFriendsComponent = render(

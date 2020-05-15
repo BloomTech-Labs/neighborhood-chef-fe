@@ -5,7 +5,6 @@ export const ADD_USER = gql`
     addUser(input: $input) {
       id
       email
-      password
       firstName
       lastName
       address

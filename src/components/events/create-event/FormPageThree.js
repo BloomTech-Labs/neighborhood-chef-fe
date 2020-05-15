@@ -39,6 +39,9 @@ const FormPageThree = ({
 
           <div
             style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-evenly',
               marginLeft: '30px',
               textAlign: 'left',
               width: '50%',
