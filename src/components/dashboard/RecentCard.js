@@ -14,10 +14,11 @@ import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import { Icon } from "@iconify/react";
+import smHeart from "@iconify/icons-heroicons/sm-heart";
 
 import { timeAgo } from "../../utilities/functions";
 
@@ -32,12 +33,12 @@ import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
 
 const RecentCard = (props) => {
-  console.log(props.createDateTime, props.date);
   const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
   const [expanded, setExpanded] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState("");
+  const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
+  const [liked, setLiked] = useState(false); //doesnt link with database currently.  may be added later.  purely visual component for now.
   const d = new Date(parseInt(props.date));
 
   const handleExpandClick = () => {
@@ -57,6 +58,10 @@ const RecentCard = (props) => {
   });
   const dayNum = day.split(" ")[1];
   const month = day.split(" ")[0];
+
+  const toggleLike = () => {
+    setLiked(!liked);
+  };
 
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
@@ -133,14 +138,19 @@ const RecentCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <span style={{ marginRight: "4px" }}>
-            <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={() => toggleLike()}>
+          <span>
+            {liked ? (
+              <Icon icon={smHeart} color="red" />
+            ) : (
+              <Icon icon={smHeart} />
+            )}
           </span>
           <Typography variant="caption" color="textSecondary"></Typography>
         </IconButton>
+
         <IconButton aria-label="share">
-          <span style={{ marginRight: "4px" }}>
+          <span>
             <ChatBubbleIcon />
           </span>
           <Typography variant="caption" color="textSecondary"></Typography>

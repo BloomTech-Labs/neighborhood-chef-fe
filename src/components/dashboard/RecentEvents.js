@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
@@ -6,39 +6,10 @@ import { print } from "graphql";
 import { GET_INVITED_EVENTS } from "../../graphql/users/user-queries";
 import { getEventsSuccess } from "../../utilities/actions";
 
-const recentEventsList = [
-  {
-    id: 1,
-    name: "test name",
-    date_created: new Date(1555555555555),
-    photo: "",
-    title: "summer BBQ",
-    date: new Date(2223333333333),
-    status: "Not Going",
-  },
-  {
-    id: 2,
-    name: "test name1",
-    date_created: new Date(3333333333333),
-    photo: "",
-    title: "summer BBQ",
-    date: new Date(2223333333333),
-    status: "Not Going",
-  },
-  {
-    id: 3,
-    name: "test name 3",
-    date_created: new Date(3333333333333),
-    photo: "",
-    title: "summer BBQ",
-    date: new Date(2223333333333),
-    status: "Not Going",
-  },
-];
-
 const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
+  // const [sortedList, setSortedList] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,17 +22,40 @@ const RecentEvents = () => {
       },
     })
       .then((res) => {
-        dispatch(getEventsSuccess(res.data.data.getInvitedEvents));
+        dispatch(
+          getEventsSuccess(
+            res.data.data.getInvitedEvents.sort(
+              (a, b) => b.createDateTime - a.createDateTime
+            )
+          )
+        );
       })
+      // .then((res) => {
+      //   setSortedList(
+      //     eventList.sort((a, b) => a.createDateTime - b.createDateTime)
+      //   );
+      // })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
   return (
-    <div className="recent-events-container">
-      <h3 style={{ marginLeft: "12px" }}>Newest Events</h3>
-      {!!eventList &&
-        eventList.map((ele) => <RecentCard {...ele} key={ele.id} />)}
+    <div>
+      <h3 style={{ marginLeft: "12px", marginBottom: "5px" }}>Newest Events</h3>
+      <div style={{ overflow: "scroll", height: "80vh" }}>
+        <div className="recent-events-container">
+          {!!eventList &&
+            eventList.map((ele) => (
+              <RecentCard
+                {...ele}
+                key={ele.id}
+                currentStatus={
+                  ele.users.filter((u) => `${u.id}` === `${me.id}`)[0].status
+                }
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 };

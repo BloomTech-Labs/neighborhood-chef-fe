@@ -183,7 +183,7 @@ export const formStyles = makeStyles({
 
 export const cardStyles = makeStyles((theme) => ({
   root: {
-    width: 345,
+    width: 360,
     margin: 8,
   },
   media: {
