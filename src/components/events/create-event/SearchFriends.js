@@ -17,12 +17,9 @@ const SearchFriends = ({ history }) => {
 
   useEffect(() => {
     axios
-      .post(
-        "http://neighborhoodchef-be-prod.us-east-1.elasticbeanstalk.com/graphql",
-        {
-          query: print(ALL_USERS),
-        }
-      )
+      .post(process.env.REACT_APP_URL, {
+        query: print(ALL_USERS),
+      })
       .then((res) => {
         dispatch(searchForUsersSuccess(res.data.data.getAllUsers));
       })
