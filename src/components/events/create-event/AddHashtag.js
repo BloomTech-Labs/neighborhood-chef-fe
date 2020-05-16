@@ -59,7 +59,7 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
         <button
           onClick={handleSubmit}
           disabled={!formInput.title}
-          className={!formInput.title && "inactive"}
+          className={!formInput.title ? "inactive" : ""}
           style={{
             color: "white",
             fontSize: "1.6rem",
