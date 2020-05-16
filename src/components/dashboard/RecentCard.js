@@ -128,7 +128,7 @@ const RecentCard = (props) => {
         {`@ ${time}`}
       </Typography>
       <CardContent>
-        <Typography variant="h4" align="center">
+        <Typography variant="h4" align="center" gutterBottom>
           {props.title}
         </Typography>
         <Typography variant="body1" align="center">
