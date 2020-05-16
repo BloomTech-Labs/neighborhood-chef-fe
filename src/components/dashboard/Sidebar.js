@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 //icons imports
 import { Icon } from "@iconify/react";
 import houseDoor from "@iconify/icons-bi/house-door";
@@ -64,12 +66,14 @@ const Sidebar = ({ active }) => {
   return (
     <div className="sidebar-container">
       <div>
-        <div className="left-side-header">
-          <span style={{ color: "#58D473", marginRight: "5px" }}>
-            <Icon width="1.1em" icon={chefIcon} />
-          </span>
-          <span>Neighborhood Chef</span>
-        </div>
+        <Link to="/">
+          <div className="left-side-header">
+            <span style={{ color: "#58D473", marginRight: "5px" }}>
+              <Icon width="1.1em" icon={chefIcon} />
+            </span>
+            <span>Neighborhood Chef</span>
+          </div>
+        </Link>
         <nav className="nav-container">
           {buttonList.map((ele) => (
             <SidebarButton
