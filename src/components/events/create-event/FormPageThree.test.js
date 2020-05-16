@@ -3,15 +3,14 @@ import FormPageThree from './FormPageThree.js';
 import { Formik, Form } from 'formik';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import moment from 'moment';
 
 const values = {
-  Title: 'BBQ',
-  Address: '123 ABC St.',
-  Description: 'BBQ at my house!',
-  Date: new Date(),
-  Start_Time: '6:00pm',
-  End_End: '9:00pm',
+  title: 'BBQ',
+  address: '123 ABC St.',
+  description: 'BBQ at my house!',
+  date: new Date(),
+  startTime: '6:00pm',
+  endEnd: '9:00pm',
   category_id: 1,
 };
 

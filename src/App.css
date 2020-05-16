@@ -3,7 +3,25 @@ html {
 }
 body {
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+p {
+  margin: 0;
+}
+span {
+  margin: 0;
+}
+div {
+  margin: 0;
+}
+h1 {
+  margin: 0;
+}
+h2 {
+  margin: 0;
+}
+h3 {
+  margin: 0;
 }
 a {
   text-decoration: none;
@@ -14,11 +32,20 @@ a {
   margin: 1%;
 }
 
+.component-main {
+  display: flex;
+  justify-content: space-between;
+}
+/* ---- start of Login styles ---- */
+
 .login-container {
   margin: auto;
   text-align: center;
   padding-top: 10%;
 }
+
+/* ---- start of Sidebar styles ---- */
+
 .left-side-header {
   display: flex;
   align-items: center;
@@ -26,10 +53,6 @@ a {
   font-weight: 500;
   margin-left: 5px;
   padding-top: 10px;
-}
-.component-main {
-  display: flex;
-  justify-content: space-between;
 }
 
 .nav-container {
@@ -42,15 +65,75 @@ a {
 
 .sidebar-container {
   padding-right: 20px;
-  height: 90vh;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* ---- start of Dashboard styles ---- */
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+}
+
+.header-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header-container > :last-child {
+  flex-basis: 20%;
+}
+
+.header-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+.header-icons > :first-child {
+  margin-right: 10px;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.recent-events-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.date-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-top: -14%;
+  margin-left: 5%;
+  align-self: left;
+  width: 46px;
+  align-items: center;
+}
+
+/* ---- start of View Event styles ---- */
+
 .calendar-view-main {
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .calendar-row {
@@ -83,7 +166,7 @@ a {
 }
 
 .middle-calendar {
-  width: 35%;
+  width: 45%;
   margin-right: 10%;
 }
 
@@ -106,9 +189,8 @@ a {
   flex-direction: column;
 }
 
-.header-container {
+.account-button {
   text-align: right;
-  margin: 10px 20px 20px auto;
 }
 
 .rsvp-buttons {
@@ -321,7 +403,7 @@ a {
   background: rgba(130, 223, 150, 0.5);
   border-radius: 15px;
   color: white;
-  padding: 0 50px;
+  padding: 15px 10px;
   font-size: 1.6rem;
   font-weight: bold;
   margin-top: 20px;

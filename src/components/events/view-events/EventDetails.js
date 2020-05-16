@@ -43,7 +43,7 @@ const EventDetails = () => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
       axios({
-        url: "http://localhost:5100/graphql",
+        url: process.env.REACT_APP_URL,
         method: "post",
         data: {
           query: print(USER_BY_ID),
@@ -57,7 +57,7 @@ const EventDetails = () => {
         .catch((err) => {
           console.log(err.message);
         });
-  }, [event, update]);
+  }, [event]);
 
   //dealing with date formatting things
   if (event) {

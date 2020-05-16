@@ -44,7 +44,7 @@ const CalendarView = () => {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url: "http://localhost:5100/graphql",
+      url: process.env.REACT_APP_URL,
       method: "post",
       data: {
         query: print(GET_INVITED_EVENTS),
@@ -64,32 +64,30 @@ const CalendarView = () => {
   }, [update]);
 
   return (
-    <>
+    <div className="calendar-view-main">
       {!isLoading ? (
-        <div className="calendar-view-main">
-          {!!eventsInMonth && eventsInMonth.length > 0 ? (
-            eventsInMonth.map((event) => (
-              <CalendarRow {...event} key={event.id} />
-            ))
-          ) : (
-            <div style={{ textAlign: "center" }}>
-              <h3>No events for selected month</h3>
-              <br />
-              <p>But it doesn't have to stay that way.</p>
-              <Link to="/create-event">
-                <div className={`${classes.single} ${classes.root}`}>
-                  Create New Event
-                </div>
-              </Link>
-            </div>
-          )}
-        </div>
+        !!eventsInMonth && eventsInMonth.length > 0 ? (
+          eventsInMonth.map((event) => (
+            <CalendarRow {...event} key={event.id} />
+          ))
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <h3>No events for selected month</h3>
+            <br />
+            <p>But it doesn't have to stay that way.</p>
+            <Link to="/create-event">
+              <div className={`${classes.single} ${classes.root}`}>
+                Create New Event
+              </div>
+            </Link>
+          </div>
+        )
       ) : (
         <div style={{ textAlign: "center" }}>
           <CircularProgress />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

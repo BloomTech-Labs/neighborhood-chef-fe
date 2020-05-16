@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { red } from "@material-ui/core/colors";
 
 export const buttonStyles = makeStyles({
   root: {
@@ -188,5 +189,55 @@ export const formStyles = makeStyles({
   },
   icon: {
     cursor: "pointer",
+  },
+});
+
+export const cardStyles = makeStyles((theme) => ({
+  root: {
+    width: 345,
+    margin: 8,
+  },
+  media: {
+    height: 0,
+    paddingTop: "40%",
+  },
+  expand: {
+    // transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    // transform: "rotate(180deg)",
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+}));
+
+export const textBoxStyles = makeStyles({
+  background: {
+    border: "0",
+    borderRadius: "5px",
+    background: "rgba(0,0,0,.1)",
+    width: "180px",
+    padding: "0px 5px",
+    display: "flex",
+    alignItems: "center",
+  },
+  button: {
+    background: "0",
+    cursor: "pointer",
+    border: "0",
+    width: "10%",
+  },
+  textBox: {
+    border: "0",
+    borderRadius: "10px",
+    background: "0",
+    width: "85%",
+    height: "100%",
+    fontSize: "1.5rem",
   },
 });

@@ -2,8 +2,15 @@ import {
   MAKEACTIVE,
   CHANGE_MONTH,
   CHANGE_PAGE,
+  CHANGE_NEIGHB_NAME,
   GET_EVENTS_SUCCESS,
   UPDATE_STATE,
+  CREATE_EVENT_SUCCESS,
+  ALL_USERS_SUCCESS,
+  INVITE_USER_SUCCESS,
+  FILTER_USERS_SUCCESS,
+  DELETE_INVITATION_SUCCESS,
+  RESET_INVITE_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -13,10 +20,14 @@ const initialState = {
   page: 1,
   activeCalendarEvent: null,
   selectedMonth: initialDate,
+  neighborhoodName: "My Neighborhood",
   errors: [],
   isGettingEvents: false,
   update: false,
   eventList: [],
+  newEvent: {},
+  userList: [],
+  inviteList: [],
 
   //test user data
   myUser: {
@@ -62,6 +73,41 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         page: state.page === 1 ? 2 : 1,
+      };
+    case CHANGE_NEIGHB_NAME:
+      return {
+        ...state,
+        neighborhoodName: payload,
+      };
+    case CREATE_EVENT_SUCCESS:
+      return {
+        ...state,
+        newEvent: payload,
+      };
+    case ALL_USERS_SUCCESS:
+      return {
+        ...state,
+        userList: payload,
+      };
+    case INVITE_USER_SUCCESS:
+      return {
+        ...state,
+        inviteList: payload,
+      };
+    case DELETE_INVITATION_SUCCESS:
+      return {
+        ...state,
+        inviteList: payload,
+      };
+    case FILTER_USERS_SUCCESS:
+      return {
+        ...state,
+        userList: payload,
+      };
+    case RESET_INVITE_SUCCESS:
+      return {
+        ...state,
+        inviteList: payload,
       };
     default:
       return {
