@@ -83,7 +83,7 @@ const EventDetails = () => {
         minute: "2-digit",
       })
       .toLowerCase();
-    parsedAddressURL = `https://www.google.com/maps/place/${event.address.replace(
+    parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
     )}`;
