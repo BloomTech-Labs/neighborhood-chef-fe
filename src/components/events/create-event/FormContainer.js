@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { print } from "graphql";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 import {
   createEventSuccess,
@@ -15,6 +16,7 @@ import {
   ADD_EVENT,
   UPDATE_EVENT,
 } from "../../../graphql/events/event-mutations.js";
+
 import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
 import FormPageTwo from "./FormPageTwo.js";
@@ -50,6 +52,11 @@ const FormContainer = () => {
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
+  eventToEdit.startTime = moment(eventToEdit.startTime, "HH:mm").format(
+    "hh:mma"
+  );
+  eventToEdit.endTime = moment(eventToEdit.endTime, "HH:mm").format("hh:mma");
+
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
   };
@@ -72,7 +79,14 @@ const FormContainer = () => {
 
   // populate modifiers and hashtags with saved event details if editing
   useEffect(() => {
-    if (isEditing) {
+    if (isEditing && eventToEdit) {
+      eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
+        "hh:mma"
+      );
+      eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format(
+        "hh:mma"
+      );
+
       const hashtagList = JSON.parse(eventToEdit.hashtags);
       const modifierList = JSON.parse(eventToEdit.modifiers);
       const modifierArr = modifierList.modifiers[0];
