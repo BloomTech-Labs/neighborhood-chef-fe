@@ -22,7 +22,7 @@ const EventDetails = () => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
-  const update = useSelector((state) => state.update);
+  // const update = useSelector((state) => state.update);
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
 
@@ -58,6 +58,7 @@ const EventDetails = () => {
         .catch((err) => {
           console.log(err.message);
         });
+    // eslint-disable-next-line
   }, [event]);
 
   //dealing with date formatting things

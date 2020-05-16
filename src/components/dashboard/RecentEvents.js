@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
@@ -9,7 +9,6 @@ import { getEventsSuccess } from "../../utilities/actions";
 const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
-  // const [sortedList, setSortedList] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,18 +29,21 @@ const RecentEvents = () => {
           )
         );
       })
-      // .then((res) => {
-      //   setSortedList(
-      //     eventList.sort((a, b) => a.createDateTime - b.createDateTime)
-      //   );
-      // })
       .catch((err) => {
         console.log(err.message);
       });
+    // eslint-disable-next-line
   }, []);
   return (
     <div>
-      <h3 style={{ marginLeft: "12px", marginBottom: "5px" }}>Newest Events</h3>
+      <h2
+        //with minimal elements on dashboard, moving this to center for better styling. to be moved back once feed and other components are added back
+        style={
+          { textAlign: "center" } // {{ marginLeft: "12px", marginBottom: "5px" }}
+        }
+      >
+        Newest Events
+      </h2>
       <div style={{ overflow: "scroll", height: "80vh" }}>
         <div className="recent-events-container">
           {!!eventList &&

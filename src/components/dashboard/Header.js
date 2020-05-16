@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Icon } from "@iconify/react";
-import outlineEdit from "@iconify/icons-ic/outline-edit";
+// import { Icon } from "@iconify/react";
+// import outlineEdit from "@iconify/icons-ic/outline-edit";
 
-import SearchButton from "./SearchButton";
-import AccountButton from "../account/preferences/AccountButton";
+// import SearchButton from "./SearchButton";
+// import AccountButton from "../account/preferences/AccountButton";
 import EditNeighborhood from "./EditNeighborhood";
 
 const Header = () => {
@@ -12,7 +12,6 @@ const Header = () => {
   const [isEditing, setIsEditing] = useState(false);
   return (
     <div className="header-container">
-      <div>{/*place holder for flexbox*/} </div>
       {isEditing ? (
         <EditNeighborhood
           currentName={neighborhoodName}
@@ -20,19 +19,22 @@ const Header = () => {
         />
       ) : (
         <div style={{ display: "flex" }}>
-          <h3 style={{ marginRight: "15px" }}>{neighborhoodName}</h3>
-          <span
+          <h1 style={{ width: "270px" }}>{neighborhoodName}</h1>
+          {/* need to add this to localstorage or backend storage to be actually functional */}
+          {/* <span
             onClick={() => setIsEditing(true)}
             style={{ opacity: ".65", cursor: "pointer" }}
           >
             <Icon width="1.5em" icon={outlineEdit} />
-          </span>
+          </span> */}
         </div>
       )}
-      <div className="header-icons">
-        <SearchButton />
-        <AccountButton />
-      </div>
+      {/* <div className="header-icons"> */}
+      {/* search functionality not working yet, not needed for first iteration of site */}
+      {/* <SearchButton /> */}
+      {/* account button functionality not working yet. */}
+      {/* <AccountButton /> */}
+      {/* </div> */}
     </div>
   );
 };
