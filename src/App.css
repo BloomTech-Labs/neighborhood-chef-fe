@@ -112,8 +112,13 @@ a {
 
 .recent-events-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   text-align: left;
+}
+.recent-events-container > * {
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
 .date-box {
