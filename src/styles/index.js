@@ -253,10 +253,10 @@ export const theme = createMuiTheme({
       fontSize: "1.8rem",
     },
     caption: {
-      fontSize: "1.2rem",
+      fontSize: "1.5rem",
     },
     body1: {
-      fontSize: "1.2rem",
+      fontSize: "1.7rem",
     },
   },
 });

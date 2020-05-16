@@ -107,7 +107,11 @@ const RecentCard = (props) => {
             <span style={{ opacity: ".6" }}> created an event</span>
           </Typography>
         }
-        subheader={<Typography variant="caption"> {shownTime}</Typography>}
+        subheader={
+          <Typography variant="caption">
+            <span style={{ opacity: ".6" }}>{shownTime}</span>
+          </Typography>
+        }
       />
       <CardMedia
         className={classes.media}
