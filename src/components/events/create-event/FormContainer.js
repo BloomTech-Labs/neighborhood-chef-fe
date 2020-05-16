@@ -52,10 +52,12 @@ const FormContainer = () => {
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
-  eventToEdit.startTime = moment(eventToEdit.startTime, "HH:mm").format(
+  // reformat startTime, endTime, date to autopopulate select fields when editing
+  eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
     "hh:mma"
   );
-  eventToEdit.endTime = moment(eventToEdit.endTime, "HH:mm").format("hh:mma");
+  eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format("hh:mma");
+  console.log(moment(Number("944985600000")).subtract(10, "days").calendar());
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -79,32 +81,27 @@ const FormContainer = () => {
 
   // populate modifiers and hashtags with saved event details if editing
   useEffect(() => {
-    if (isEditing && eventToEdit) {
-      eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
-        "hh:mma"
-      );
-      eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format(
-        "hh:mma"
-      );
-
+    if (isEditing) {
       const hashtagList = JSON.parse(eventToEdit.hashtags);
       const modifierList = JSON.parse(eventToEdit.modifiers);
-      const modifierArr = modifierList.modifiers[0];
 
-      function restoreSavedModifiers(arr1, arr2) {
-        let arr = [];
-        for (let i = 0; i < arr1.length; i++) {
-          for (let j = 0; j < arr2.length; j++) {
-            if (arr1[i].id === arr2[j].id) {
-              arr1[i].active = true;
-              arr.push(arr1[i]);
+      if (hashtagList !== null || modifierList !== null) {
+        const modifierArr = modifierList.modifiers[0];
+        function restoreSavedModifiers(arr1, arr2) {
+          let arr = [];
+          for (let i = 0; i < arr1.length; i++) {
+            for (let j = 0; j < arr2.length; j++) {
+              if (arr1[i].id === arr2[j].id) {
+                arr1[i].active = true;
+                arr.push(arr1[i]);
+              }
             }
+            setModifiers(arr);
           }
-          setModifiers(arr);
         }
+        restoreSavedModifiers(modifierData, modifierArr);
+        setHashtags(hashtagList.hashtags);
       }
-      restoreSavedModifiers(modifierData, modifierArr);
-      setHashtags(hashtagList.hashtags);
     }
   }, [isEditing, eventToEdit]);
 

@@ -7,8 +7,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import { useSelector } from "react-redux";
-import moment from "moment";
 
 import { cancelEdit } from "../../../utilities/actions";
 
@@ -17,16 +15,6 @@ export const scrollToTop = () => {
     top: 0,
     behavior: "smooth",
   });
-};
-
-export const convertTime = (time24) => {
-  let ts = time24;
-  let H = +ts.substr(0, 2);
-  let h = H % 12 || 12;
-  h = h < 10 ? h : h;
-  let ampm = H < 12 ? "am" : "pm";
-  ts = h + ts.substr(2, 3) + ampm;
-  return ts;
 };
 
 const FormPageOne = ({
@@ -38,8 +26,6 @@ const FormPageOne = ({
   history,
 }) => {
   const [error, setError] = useState(false);
-  const eventToEdit = useSelector((state) => state.eventToEdit);
-  const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
   const validateAndTurnPage = () => {
