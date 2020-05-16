@@ -428,6 +428,10 @@ a {
   opacity: 1;
 }
 
+.inactive {
+  opacity: 0.75;
+}
+
 /* button div form */
 .createFormButtonDiv {
   display: flex;
