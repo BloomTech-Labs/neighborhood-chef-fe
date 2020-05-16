@@ -117,7 +117,7 @@ const EventDetails = () => {
             {event.address}
           </div>
           <div style={{ padding: "20px 0px 10px 0px" }}>
-            <Typography variant="h5">
+            <Typography variant="h6">
               Will you be attending this event?
             </Typography>
             <div
