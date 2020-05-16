@@ -52,7 +52,11 @@ const CalendarView = () => {
       },
     })
       .then((res) => {
-        dispatch(getEventsSuccess(res.data.data.getInvitedEvents));
+        dispatch(
+          getEventsSuccess(
+            res.data.data.getInvitedEvents.sort((a, b) => a.date - b.date)
+          )
+        );
       })
       .catch((err) => {
         console.log(err.message);
@@ -64,29 +68,37 @@ const CalendarView = () => {
   }, [update]);
 
   return (
-    <div className="calendar-view-main">
-      {!isLoading ? (
-        !!eventsInMonth && eventsInMonth.length > 0 ? (
-          eventsInMonth.map((event) => (
-            <CalendarRow {...event} key={event.id} />
-          ))
+    <div
+      style={{
+        overflowY: "scroll",
+        width: "100%",
+        height: "80vh",
+      }}
+    >
+      <div className="calendar-view-main">
+        {!isLoading ? (
+          !!eventsInMonth && eventsInMonth.length > 0 ? (
+            eventsInMonth.map((event) => (
+              <CalendarRow {...event} key={event.id} />
+            ))
+          ) : (
+            <div style={{ textAlign: "center" }}>
+              <h3>No events for selected month</h3>
+              <br />
+              <p>But it doesn't have to stay that way.</p>
+              <Link to="/create-event">
+                <div className={`${classes.single} ${classes.root}`}>
+                  Create New Event
+                </div>
+              </Link>
+            </div>
+          )
         ) : (
           <div style={{ textAlign: "center" }}>
-            <h3>No events for selected month</h3>
-            <br />
-            <p>But it doesn't have to stay that way.</p>
-            <Link to="/create-event">
-              <div className={`${classes.single} ${classes.root}`}>
-                Create New Event
-              </div>
-            </Link>
+            <CircularProgress />
           </div>
-        )
-      ) : (
-        <div style={{ textAlign: "center" }}>
-          <CircularProgress />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
 
 export const buttonStyles = makeStyles({
@@ -183,7 +183,7 @@ export const formStyles = makeStyles({
 
 export const cardStyles = makeStyles((theme) => ({
   root: {
-    width: 345,
+    width: 360,
     margin: 8,
   },
   media: {
@@ -191,14 +191,14 @@ export const cardStyles = makeStyles((theme) => ({
     paddingTop: "40%",
   },
   expand: {
-    // transform: "rotate(0deg)",
+    transform: "rotate(0deg)",
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    // transform: "rotate(180deg)",
+    transform: "rotate(180deg)",
   },
   avatar: {
     backgroundColor: red[500],
@@ -220,6 +220,7 @@ export const textBoxStyles = makeStyles({
     cursor: "pointer",
     border: "0",
     width: "10%",
+    padding: "0 5px",
   },
   textBox: {
     border: "0",
@@ -228,5 +229,34 @@ export const textBoxStyles = makeStyles({
     width: "85%",
     height: "100%",
     fontSize: "1.5rem",
+  },
+});
+
+export const theme = createMuiTheme({
+  typography: {
+    h1: {
+      fontSize: "5rem",
+    },
+    h2: {
+      fontSize: "4.5rem",
+    },
+    h3: {
+      fontSize: "3.5rem",
+    },
+    h4: {
+      fontSize: "3rem",
+    },
+    h5: {
+      fontSize: "2.4rem",
+    },
+    h6: {
+      fontSize: "1.8rem",
+    },
+    caption: {
+      fontSize: "1.2rem",
+    },
+    body1: {
+      fontSize: "1.2rem",
+    },
   },
 });

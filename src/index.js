@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./utilities/reducers";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
+import { theme } from "./styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 // import * as serviceWorker from "./serviceWorker";
 
 const logger = createLogger();
@@ -16,7 +18,9 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>,
   rootElement
