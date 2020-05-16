@@ -38,11 +38,11 @@ const FeedCard = ({
             R
           </Avatar>
         }
-        action={
-          // <IconButton aria-label="settings">
-          //   <MoreVertIcon />
-          // </IconButton>
-        }
+        // action={
+        // <IconButton aria-label="settings">
+        //   <MoreVertIcon />
+        // </IconButton>
+        // }
         title={
           <Typography variant="h5">{`${name} commented in an event`}</Typography>
         }
