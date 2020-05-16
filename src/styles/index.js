@@ -220,6 +220,7 @@ export const textBoxStyles = makeStyles({
     cursor: "pointer",
     border: "0",
     width: "10%",
+    padding: "0 5px",
   },
   textBox: {
     border: "0",
