@@ -71,7 +71,7 @@ const CalendarView = () => {
   return (
     <div
       style={{
-        overflowY: "scroll",
+        overflowY: "auto",
         width: "100%",
         height: "80vh",
       }}
