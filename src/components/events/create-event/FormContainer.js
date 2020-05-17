@@ -23,6 +23,10 @@ import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
+import {
+  formatDate,
+  restoreSavedModifiers,
+} from "../../../utilities/functions";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -52,12 +56,7 @@ const FormContainer = () => {
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
-  // reformat startTime, endTime, date to autopopulate select fields when editing
-  eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
-    "hh:mma"
-  );
-  eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format("hh:mma");
-  console.log(moment(Number("944985600000")).subtract(10, "days").calendar());
+  // reformat eventToEdit startTime, endTime, and date to autopopulate inputs when editing
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -73,37 +72,32 @@ const FormContainer = () => {
     });
   };
 
-  // reset form on each render
+  // had to put this outside useEffect to get it to work correctly
+  if (isEditing) {
+    eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
+      "hh:mma"
+    );
+    eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format("hh:mma");
+  }
+
   useEffect(() => {
     dispatch(resetInviteSuccess([]));
     resetModifiers();
-  }, [dispatch]);
 
-  // populate modifiers and hashtags with saved event details if editing
-  useEffect(() => {
     if (isEditing) {
+      eventToEdit.date = formatDate(Number(eventToEdit.date));
       const hashtagList = JSON.parse(eventToEdit.hashtags);
       const modifierList = JSON.parse(eventToEdit.modifiers);
 
-      if (hashtagList !== null || modifierList !== null) {
+      if (modifierList !== null) {
         const modifierArr = modifierList.modifiers[0];
-        function restoreSavedModifiers(arr1, arr2) {
-          let arr = [];
-          for (let i = 0; i < arr1.length; i++) {
-            for (let j = 0; j < arr2.length; j++) {
-              if (arr1[i].id === arr2[j].id) {
-                arr1[i].active = true;
-                arr.push(arr1[i]);
-              }
-            }
-            setModifiers(arr);
-          }
-        }
-        restoreSavedModifiers(modifierData, modifierArr);
+        restoreSavedModifiers(modifierData, modifierArr, setModifiers);
+      }
+      if (hashtagList !== null) {
         setHashtags(hashtagList.hashtags);
       }
     }
-  }, [isEditing, eventToEdit]);
+  }, [isEditing, eventToEdit, dispatch]);
 
   return (
     <>
@@ -119,7 +113,7 @@ const FormContainer = () => {
               description: values.description,
               date: values.date,
               startTime: values.startTime,
-              endTime: values.endTime,
+              endTime: values.endTime ? values.endTime : null,
               category_id: values.category_id,
               // replace with variable
               user_id: 1,
@@ -152,6 +146,7 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
+            console.log(values.date);
             const newEvent = {
               ...values,
               // replace with variable
