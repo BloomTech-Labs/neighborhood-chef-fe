@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Form } from "formik";
 import AuthFields from "./AuthFields.js";
 import ProfileFields from "./ProfileFields.js";
@@ -36,7 +37,24 @@ const Register = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          alert(JSON.stringify(values, null, 2));
+          const userValues = {
+            email: values.email,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            latitude: values.location.latitude,
+            longitude: values.location.longitude,
+            gender: values.gender,
+            address: values.location.address,
+          };
+          console.log(userValues);
+          axios
+            .post(`${process.env.REACT_APP_AUTH_URL}/register`, userValues)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
           setSubmitting(false);
         }}
       >

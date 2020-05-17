@@ -16,13 +16,13 @@ const ProfileFields = (props) => {
   const queryParams = {
     country: "us",
   };
-  const [userLocation, setUserLocation] = useState();
   const [viewport, setViewport] = useState();
 
   const onSelected = (viewport, item) => {
     setViewport(viewport);
-    setUserLocation({ latitude: item.center[1], longitude: item.center[0] });
+    console.log(item);
     props.setFieldValue("location", {
+      address: item.place_name,
       latitude: item.center[1],
       longitude: item.center[0],
     });
@@ -45,13 +45,8 @@ const ProfileFields = (props) => {
         name="lastName"
         className="lastName"
       />
-      <Field
-        component={TextField}
-        name="location"
-        className="location"
-        value={userLocation}
-      />
-      <p style={{ "margin-top": "-60px" }}>Location</p>
+      <Field component={TextField} name="location" className="location" />
+      <p style={{ "margin-top": "-60px" }}>Address</p>
       <Geocoder
         {...mapAccess}
         onSelected={onSelected}
