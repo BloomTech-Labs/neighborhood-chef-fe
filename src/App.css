@@ -65,7 +65,7 @@ a {
 
 .sidebar-container {
   padding-right: 20px;
-  width: 250px;
+  width: 255px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -101,6 +101,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 }
 
 .feed-container {
@@ -133,7 +134,7 @@ a {
 .calendar-view-main {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  width: 100%;
 }
 
 .calendar-row {
@@ -141,10 +142,11 @@ a {
   border-radius: 10px;
   padding: 10px 50px;
   margin-bottom: 20px;
-  width: 100%;
+  width: (100% -100px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   cursor: pointer;
 }
 
@@ -166,8 +168,8 @@ a {
 }
 
 .middle-calendar {
-  width: 45%;
-  margin-right: 10%;
+  width: 50%;
+  margin-right: 5%;
 }
 
 .right-side-calendar {
@@ -424,6 +426,10 @@ a {
 
 .modifierActive {
   opacity: 1;
+}
+
+.inactive {
+  opacity: 0.75;
 }
 
 /* button div form */

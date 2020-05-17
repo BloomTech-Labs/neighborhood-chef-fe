@@ -58,16 +58,6 @@ const FormContainer = () => {
     });
   };
 
-  const photoHandler = () => {
-    if (photo) {
-      const data = new FormData();
-      data.append("image", photo, photo.name);
-      return data;
-    } else {
-      return null;
-    }
-  };
-
   function getBase64(photo) {
     if (photo) {
       let reader = new FileReader();
@@ -96,9 +86,10 @@ const FormContainer = () => {
         onSubmit={(values, { resetForm }) => {
           values = {
             ...values,
+            endTime: values.endTime ? values.endTime : null,
             // replace with variable
             user_id: 1,
-            hashtags: JSON.stringify({ modifiers: [...hashtags] }),
+            hashtags: JSON.stringify({ hashtags: [...hashtags] }),
             modifiers: JSON.stringify({
               modifiers: [modifiersWithoutIcon()],
             }),

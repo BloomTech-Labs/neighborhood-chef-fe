@@ -1,14 +1,16 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 //icons imports
 import { Icon } from "@iconify/react";
 import houseDoor from "@iconify/icons-bi/house-door";
 import calendarOutlined from "@iconify/icons-ant-design/calendar-outlined";
-import outlineNotifications from "@iconify/icons-ic/outline-notifications";
 import calendarPlus from "@iconify/icons-mdi/calendar-plus";
-import outlineSettings from "@iconify/icons-ic/outline-settings";
-import bxMessageSquareDots from "@iconify/icons-bx/bx-message-square-dots";
-import bxFoodMenu from "@iconify/icons-bx/bx-food-menu";
+// import outlineNotifications from "@iconify/icons-ic/outline-notifications";
+// import outlineSettings from "@iconify/icons-ic/outline-settings";
+// import bxMessageSquareDots from "@iconify/icons-bx/bx-message-square-dots";
+// import bxFoodMenu from "@iconify/icons-bx/bx-food-menu";
 import chefIcon from "@iconify/icons-whh/chef";
 
 //component import
@@ -64,12 +66,14 @@ const Sidebar = ({ active }) => {
   return (
     <div className="sidebar-container">
       <div>
-        <div className="left-side-header">
-          <span style={{ color: "#58D473", marginRight: "5px" }}>
-            <Icon width="1.1em" icon={chefIcon} />
-          </span>
-          <span>Neighborhood Chef</span>
-        </div>
+        <Link to="/">
+          <div className="left-side-header">
+            <span style={{ color: "#58D473", marginRight: "5px" }}>
+              <Icon width="1.1em" icon={chefIcon} />
+            </span>
+            <span>Neighborhood Chef</span>
+          </div>
+        </Link>
         <nav className="nav-container">
           {buttonList.map((ele) => (
             <SidebarButton

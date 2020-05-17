@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Feed from "./Feed";
+// import Feed from "./Feed";
 import RecentEvents from "./RecentEvents";
 import Header from "./Header";
 
@@ -10,8 +10,15 @@ const Dashboard = () => {
       <Sidebar active="dashboard" />
       <div className="dashboard-main">
         <Header />
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <Feed />
+        <div
+        // style={{
+        //   display: "flex",
+        //   justifyContent: "space-evenly",
+        //   alignSelf: "center",
+        // }}
+        >
+          {/* feed data is not functional, not implemented on back end yet */}
+          {/* <Feed /> */}
           <RecentEvents />
         </div>
       </div>

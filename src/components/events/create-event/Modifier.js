@@ -1,5 +1,5 @@
-import React from 'react';
-import { Icon } from '@iconify/react';
+import React from "react";
+import { Icon } from "@iconify/react";
 
 const Modifier = ({ modifier, modifiers, setModifiers }) => {
   const updateModifier = (item) => {
@@ -15,26 +15,27 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: '10px',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "10px",
+        cursor: "pointer",
       }}
     >
       <div
         onClick={() => updateModifier(modifier)}
         className={`modifierNotActive${
-          modifier.active ? ' modifierActive' : ''
+          modifier.active ? " modifierActive" : ""
         }`}
       >
         <Icon
           icon={modifier.icon}
-          style={{ fontSize: '3.5rem', color: 'white' }}
+          style={{ fontSize: "3.5rem", color: "white" }}
         />
       </div>
 
-      <p style={{ opacity: '0.3' }}>{modifier.title}</p>
+      <p style={{ opacity: "0.3" }}>{modifier.title}</p>
     </div>
   );
 };

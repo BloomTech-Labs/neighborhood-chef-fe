@@ -50,27 +50,33 @@ const shownList = [1, 2, 3];
 
 const Feed = () => {
   return (
-    <div className="feed-container">
-      <h3 style={{ marginLeft: "12px" }}>Recent Messages</h3>
-      {/* infinitescroll not currently working. disabled for now. */}
-      <InfiniteScroll
-        dataLength={feedList.length}
-        // next={fetchData}
-        hasMore={shownList.length < feedList.length}
-        loader={
-          <div style={{ textAlign: "center" }}>
-            {/* <CircularProgress /> */}
-          </div>
-        }
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>This is the end of your feed. Check back later!</b>
-          </p>
-        }
-      >
-        {!!feedList &&
-          feedList.map((ele) => <FeedCard {...ele} key={ele.name} />)}
-      </InfiniteScroll>
+    <div>
+      <h3 style={{ marginLeft: "12px", marginBottom: "5px" }}>
+        Recent Messages
+      </h3>
+      <div style={{ overflow: "scroll", height: "80vh" }}>
+        <div className="feed-container">
+          {/* infinitescroll not currently working. disabled for now. */}
+          <InfiniteScroll
+            dataLength={feedList.length}
+            // next={fetchData}
+            hasMore={shownList.length < feedList.length}
+            loader={
+              <div style={{ textAlign: "center" }}>
+                {/* <CircularProgress /> */}
+              </div>
+            }
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>This is the end of your feed. Check back later!</b>
+              </p>
+            }
+          >
+            {!!feedList &&
+              feedList.map((ele) => <FeedCard {...ele} key={ele.name} />)}
+          </InfiniteScroll>
+        </div>
+      </div>
     </div>
   );
 };

@@ -33,6 +33,6 @@ describe("Test recentcard properties", () => {
   });
 
   test("RecentCard component renders", () => {
-    expect(RecentCardComponent.getByText(/test name/i));
+    expect(RecentCardComponent.getByText(/summer BBQ/i));
   });
 });

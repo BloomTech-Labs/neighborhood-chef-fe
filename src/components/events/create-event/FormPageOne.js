@@ -31,7 +31,6 @@ const FormPageOne = ({
       values.description &&
       values.date &&
       values.startTime &&
-      values.endTime &&
       values.category_id
     ) {
       setPage(2);
@@ -97,7 +96,7 @@ const FormPageOne = ({
               onChange={handleChange}
               disableUnderline={true}
             >
-              <MenuItem></MenuItem>
+              <MenuItem value=""></MenuItem>
               <MenuItem value={"12:00am"}>12:00am</MenuItem>
               <MenuItem value={"12:30am"}>12:30am</MenuItem>
               <MenuItem value={"1:00am"}>1:00am</MenuItem>
@@ -158,7 +157,7 @@ const FormPageOne = ({
               onChange={handleChange}
               disableUnderline={true}
             >
-              <MenuItem></MenuItem>
+              <MenuItem value=""></MenuItem>
               <MenuItem value={"12:00am"}>12:00am</MenuItem>
               <MenuItem value={"12:30am"}>12:30am</MenuItem>
               <MenuItem value={"1:00am"}>1:00am</MenuItem>
@@ -219,7 +218,7 @@ const FormPageOne = ({
               onChange={handleChange}
               disableUnderline
             >
-              <MenuItem></MenuItem>
+              <MenuItem value=""></MenuItem>
               <MenuItem value={1}>BBQ</MenuItem>
               <MenuItem value={2}>Picnic</MenuItem>
               <MenuItem value={3}>Wine and Cheese</MenuItem>
@@ -235,8 +234,8 @@ const FormPageOne = ({
 
       {error && (
         <p style={{ textAlign: "center", color: "crimson" }}>
-          *Title, Address, Description, Date, Start Time, End Time and Category
-          are required
+          *Title, Address, Description, Date, Start Time, and Category are
+          required
         </p>
       )}
 
