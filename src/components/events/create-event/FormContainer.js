@@ -190,61 +190,61 @@ const FormContainer = () => {
           errors,
           resetForm,
         }) => (
-          <div className="createEventContainer">
-            <CreateEventHeader page={page} />
-            <Form className="createForm" onSubmit={handleSubmit}>
-              {page === 1 && (
-                <>
-                  <FormPageOne
-                    values={values}
-                    handleChange={handleChange}
-                    errors={errors}
-                    touched={touched}
-                    setPage={setPage}
-                    resetForm={resetForm}
-                  />
-                </>
-              )}
+            <div className="createEventContainer">
+              <CreateEventHeader page={page} />
+              <Form className="createForm" onSubmit={handleSubmit}>
+                {page === 1 && (
+                  <>
+                    <FormPageOne
+                      values={values}
+                      handleChange={handleChange}
+                      errors={errors}
+                      touched={touched}
+                      setPage={setPage}
+                      resetForm={resetForm}
+                    />
+                  </>
+                )}
 
-              {page === 2 && (
-                <>
-                  <FormPageTwo
-                    touched={touched}
-                    errors={errors}
-                    setPage={setPage}
-                    handleChange={handleChange}
-                    values={values}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                    setPhoto={setPhoto}
-                  />
-                </>
-              )}
+                {page === 2 && (
+                  <>
+                    <FormPageTwo
+                      touched={touched}
+                      errors={errors}
+                      setPage={setPage}
+                      handleChange={handleChange}
+                      values={values}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                      setPhoto={setPhoto}
+                    />
+                  </>
+                )}
 
-              {page === 3 && (
+                {page === 3 && (
+                  <>
+                    <FormPageThree
+                      setPage={setPage}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      values={values}
+                      handleSubmit={handleSubmit}
+                      errors={errors}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                    />
+                  </>
+                )}
+              </Form>
+              {page === 4 && (
                 <>
-                  <FormPageThree
-                    setPage={setPage}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    values={values}
-                    handleSubmit={handleSubmit}
-                    errors={errors}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                  />
+                  <FormPageFour />
                 </>
               )}
-            </Form>
-            {page === 4 && (
-              <>
-                <FormPageFour />
-              </>
-            )}
-          </div>
-        )}
+            </div>
+          )}
       </Formik>
     </>
   );
