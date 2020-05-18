@@ -248,8 +248,8 @@ const FormPageOne = ({
         <button
           className="createRightBtn"
           onClick={() => {
-            resetForm(initialState);
             dispatch(cancelEdit());
+            resetForm(initialState);
             history.push("/dashboard");
           }}
         >

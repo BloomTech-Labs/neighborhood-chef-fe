@@ -43,13 +43,16 @@ export const formatDate = (date) => {
 
 export const restoreSavedModifiers = (arr1, arr2, cb) => {
   let arr = [];
-  for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr2.length; j++) {
-      if (arr1[i].id === arr2[j].id) {
-        arr1[i].active = true;
-        arr.push(arr1[i]);
-      }
+  let seen = {};
+
+  arr2.forEach((mod) => {
+    seen[mod.id] = mod;
+  });
+  arr1.filter((mod) => {
+    if (mod.id in seen) {
+      mod.active = true;
+      arr.push(mod);
     }
-    cb(arr);
-  }
+  });
+  return cb(arr);
 };

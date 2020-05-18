@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 //component imports
 import Sidebar from "../../dashboard/Sidebar";
@@ -6,8 +6,16 @@ import MonthPicker from "./MonthPicker";
 import CalendarView from "./CalendarView";
 import EventDetails from "./EventDetails";
 // import AccountButton from "../../account/preferences/AccountButton";
+import { useDispatch } from "react-redux";
+import { cancelEdit } from "../../../utilities/actions";
 
 const ViewEvents = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(cancelEdit());
+  }, [dispatch]);
+
   return (
     <div className="component-main">
       <Sidebar active="view-events" />
