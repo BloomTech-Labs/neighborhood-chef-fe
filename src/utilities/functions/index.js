@@ -1,5 +1,3 @@
-import moment from "moment";
-
 export const timeAgo = (dateCreated) => {
   let showType = "";
   const elapsedTime = Math.ceil((new Date() - dateCreated) / 1000);
@@ -19,6 +17,16 @@ export const timeAgo = (dateCreated) => {
   }
   if (configuredTime !== 1) showType = showType + "s";
   return `${configuredTime} ${showType} ago`;
+};
+
+export const convertTime = (time24) => {
+  let ts = time24;
+  let H = +ts.substr(0, 2);
+  let h = H % 12 || 12;
+  h = h < 10 ? h : h;
+  let ampm = H < 12 ? "AM" : "PM";
+  ts = h + ts.substr(2, 3) + ampm;
+  return ts;
 };
 
 export const formatDate = (date) => {

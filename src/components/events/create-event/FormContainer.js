@@ -6,12 +6,14 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
+// action imports
 import {
   createEventSuccess,
   resetInviteSuccess,
   updateEventSuccess,
 } from "../../../utilities/actions/index.js";
 
+// graphql query imports
 import {
   ADD_EVENT,
   UPDATE_EVENT,
@@ -72,7 +74,7 @@ const FormContainer = () => {
     });
   };
 
-  // had to put this outside useEffect to get it to work correctly
+  // had to put this outside useEffect to get it to work without console errors
   if (isEditing) {
     eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
       "hh:mma"
@@ -81,20 +83,20 @@ const FormContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(resetInviteSuccess([]));
+    //dispatch(resetInviteSuccess([]));
     resetModifiers();
 
     if (isEditing) {
       eventToEdit.date = formatDate(Number(eventToEdit.date));
-      const hashtagList = JSON.parse(eventToEdit.hashtags);
-      const modifierList = JSON.parse(eventToEdit.modifiers);
+      const savedHashtags = JSON.parse(eventToEdit.hashtags);
+      let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
-      if (modifierList !== null) {
-        const modifierArr = modifierList.modifiers[0];
-        restoreSavedModifiers(modifierData, modifierArr, setModifiers);
+      if (Object.keys(savedModifiers).length !== 0) {
+        savedModifiers = savedModifiers.modifiers[0];
+        restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
       }
-      if (hashtagList !== null) {
-        setHashtags(hashtagList.hashtags);
+      if (Object.keys(savedHashtags).length !== 0) {
+        setHashtags(savedHashtags.hashtags);
       }
     }
   }, [isEditing, eventToEdit, dispatch]);
@@ -136,7 +138,6 @@ const FormContainer = () => {
                 },
               })
               .then((res) => {
-                console.log(res.data.data.updateEvent);
                 dispatch(updateEventSuccess(res.data.data.updateEvent));
                 setHashtags([]);
                 resetForm(initialState);
@@ -149,6 +150,7 @@ const FormContainer = () => {
             console.log(values.date);
             const newEvent = {
               ...values,
+              endTime: values.endTime ? values.endTime : null,
               // replace with variable
               user_id: 1,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),

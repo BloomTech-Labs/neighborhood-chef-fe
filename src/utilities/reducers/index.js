@@ -88,6 +88,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         newEvent: payload,
+        inviteList: payload.users,
       };
     case ALL_USERS_SUCCESS:
       return {
@@ -132,6 +133,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         isEditing: false,
         eventToEdit: {},
         newEvent: payload,
+        inviteList: payload.users,
       };
     default:
       return {

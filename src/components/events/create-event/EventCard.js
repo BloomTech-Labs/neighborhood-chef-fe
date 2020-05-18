@@ -1,19 +1,10 @@
 import React from "react";
 import moment from "moment";
 import { useSelector } from "react-redux";
+import { convertTime } from "../../../utilities/functions";
 
 const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
-
-  const convertTime = (time24) => {
-    let ts = time24;
-    let H = +ts.substr(0, 2);
-    let h = H % 12 || 12;
-    h = h < 10 ? h : h;
-    let ampm = H < 12 ? "AM" : "PM";
-    ts = h + ts.substr(2, 3) + ampm;
-    return ts;
-  };
 
   return (
     <div
