@@ -12,14 +12,13 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formInput.title !== "") {
-      const newHashtag = {
-        id: hashtags.length + 1,
-        title: formInput.title,
-      };
-      setHashtags([...hashtags, newHashtag]);
-      setFormInput({ title: "" });
-    }
+    const newHashtag = {
+      id: hashtags.length + 1,
+      title: formInput.title,
+    };
+    setHashtags([...hashtags, newHashtag]);
+    setFormInput({ title: "" });
+
   };
 
   return (
@@ -60,17 +59,18 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
         />
         <button
           onClick={handleSubmit}
+          disabled={!formInput.title}
+          className={!formInput.title ? "inactive" : ""}
           style={{
             color: "white",
             fontSize: "1.6rem",
-            background: "#C0EFCB",
+            background: "#82df96",
             borderRadius: "10px",
             border: "none",
             fontWeight: "bold",
             wordSpacing: "15px",
             cursor: "pointer",
             padding: "15px 20px",
-            opacity: "0.75",
             marginLeft: "2%",
           }}
         >

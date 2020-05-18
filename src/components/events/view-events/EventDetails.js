@@ -25,15 +25,13 @@ const EventDetails = ({ history }) => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
-  const update = useSelector((state) => state.update);
+  // const update = useSelector((state) => state.update);
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
 
   //useState hooks for local state
   const [creatorName, setCreatorName] = useState("");
-  const [currentStatus, setCurrentStatus] = useState(
-    event && event.users.filter((ele) => `${ele.id}` === `${me.id}`)[0].status
-  );
+  const [currentStatus, setCurrentStatus] = useState("");
 
   let simplifiedDate,
     displayedStartTime,
@@ -56,10 +54,14 @@ const EventDetails = ({ history }) => {
         .then((res) => {
           const data = res.data.data.getUserById;
           setCreatorName(`${data.firstName} ${data.lastName}`);
+          setCurrentStatus(
+            event.users.filter((ele) => `${ele.id}` === `${me.id}`)[0].status
+          );
         })
         .catch((err) => {
           console.log(err.message);
         });
+    // eslint-disable-next-line
   }, [event]);
 
   //dealing with date formatting things

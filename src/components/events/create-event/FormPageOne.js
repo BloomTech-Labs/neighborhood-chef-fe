@@ -239,7 +239,7 @@ const FormPageOne = ({
 
       {error && (
         <p style={{ textAlign: "center", color: "crimson" }}>
-          *Title, Address, Description, Date, Start Time and Category are
+          *Title, Address, Description, Date, Start Time, and Category are
           required
         </p>
       )}

@@ -38,11 +38,11 @@ const FeedCard = ({
             R
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        // <IconButton aria-label="settings">
+        //   <MoreVertIcon />
+        // </IconButton>
+        // }
         title={
           <Typography variant="h5">{`${name} commented in an event`}</Typography>
         }
@@ -68,7 +68,8 @@ const FeedCard = ({
         {photo && <CardMedia className={classes.media} image={photo} />}
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* buttons functionality not working */}
+        {/* <IconButton aria-label="add to favorites">
           <span style={{ marginRight: "4px" }}>
             <FavoriteIcon />
           </span>
@@ -83,7 +84,7 @@ const FeedCard = ({
           <Typography variant="caption" color="textSecondary">
             {comments_num}
           </Typography>
-        </IconButton>
+        </IconButton> */}
       </CardActions>
     </Card>
   );

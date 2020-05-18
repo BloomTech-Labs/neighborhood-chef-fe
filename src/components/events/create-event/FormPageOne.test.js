@@ -8,12 +8,12 @@ import configureStore from "redux-mock-store";
 import "@testing-library/jest-dom/extend-expect";
 
 const values = {
-  Title: "BBQ",
-  Address: "123 ABC St.",
-  Description: "BBQ at my house!",
-  Date: "May, 20, 2020",
-  Start_Time: "6:00pm",
-  End_End: "9:00pm",
+  title: "BBQ",
+  address: "123 ABC St.",
+  description: "BBQ at my house!",
+  date: "May, 20, 2020",
+  startTime: "6:00pm",
+  endTime: "9:00pm",
   category_id: 1,
 };
 

@@ -58,7 +58,6 @@ const FormContainer = () => {
   const dispatch = useDispatch();
 
   // reformat eventToEdit startTime, endTime, and date to autopopulate inputs when editing
-
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
   };
@@ -73,6 +72,7 @@ const FormContainer = () => {
     });
   };
 
+
   // had to put this outside useEffect to get it to work correctly
   if (isEditing) {
     eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
@@ -82,9 +82,25 @@ const FormContainer = () => {
       eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format(
         "hh:mma"
       );
+      eventToEdit.endTime = "";
     }
-    eventToEdit.endTime = "";
   }
+
+  function getBase64(photo) {
+    if (photo) {
+      let reader = new FileReader();
+      reader.readAsDataURL(photo);
+      reader.onload = function () {
+        return reader.result;
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
+    } else {
+      return null;
+    }
+  }
+
 
   useEffect(() => {
     resetModifiers();
@@ -149,7 +165,6 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            console.log(values.date);
             const newEvent = {
               ...values,
               endTime: values.endTime ? values.endTime : null,
