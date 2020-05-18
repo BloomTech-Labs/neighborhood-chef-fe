@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const ALL_USERS = gql`
   query getAllUsers {
@@ -166,6 +166,21 @@ export const GET_ATTENDING_EVENTS = gql`
         address
         gender
       }
+    }
+  }
+`;
+
+export const GET_UNINVITED_USERS = gql`
+  query getUninvitedUsers($id: ID!) {
+    getUninvitedUsers(id: $id) {
+      id
+      firstName
+      lastName
+      address
+      email
+      longitude
+      latitude
+      status
     }
   }
 `;

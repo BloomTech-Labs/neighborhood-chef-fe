@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { print } from "graphql";
 import axios from "axios";
 
-import { ALL_USERS } from "../../../graphql/users/user-queries.js";
+import { GET_UNINVITED_USERS } from "../../../graphql/users/user-queries.js";
 import { searchForUsersSuccess } from "../../../utilities/actions";
 import UserList from "./UserList.js";
 
@@ -19,13 +19,14 @@ const SearchFriends = ({ history }) => {
   useEffect(() => {
     axios
       .post(process.env.REACT_APP_URL, {
-        query: print(ALL_USERS),
+        query: print(GET_UNINVITED_USERS),
+        variables: { id: event.id },
       })
       .then((res) => {
-        dispatch(searchForUsersSuccess(res.data.data.getAllUsers));
+        dispatch(searchForUsersSuccess(res.data.data.getUninvitedUsers));
       })
       .catch((err) => console.log(err.message));
-  }, [dispatch]);
+  }, [dispatch, event]);
 
   // filtering userList to allow search by first name, last name and email
   useEffect(() => {

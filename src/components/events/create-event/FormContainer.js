@@ -9,7 +9,6 @@ import moment from "moment";
 // action imports
 import {
   createEventSuccess,
-  resetInviteSuccess,
   updateEventSuccess,
 } from "../../../utilities/actions/index.js";
 
@@ -74,18 +73,21 @@ const FormContainer = () => {
     });
   };
 
-  // had to put this outside useEffect to get it to work without console errors
+  // had to put this outside useEffect to get it to work correctly
   if (isEditing) {
     eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
       "hh:mma"
     );
-    eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format("hh:mma");
+    if (eventToEdit.endTime !== null) {
+      eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format(
+        "hh:mma"
+      );
+    }
+    eventToEdit.endTime = "";
   }
 
   useEffect(() => {
-    //dispatch(resetInviteSuccess([]));
     resetModifiers();
-
     if (isEditing) {
       eventToEdit.date = formatDate(Number(eventToEdit.date));
       const savedHashtags = JSON.parse(eventToEdit.hashtags);
