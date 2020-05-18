@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field } from "formik";
 import { Button, FormControlLabel, Radio } from "@material-ui/core";
 import { TextField, RadioGroup, SimpleFileUpload } from "formik-material-ui";
+import ReactMapGL from "react-map-gl";
+import Geocoder from "react-mapbox-gl-geocoder";
 
 const ProfileFields = (props) => {
+  const mapAccess = {
+    mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+  };
+  const mapStyle = {
+    width: "100%",
+    height: 600,
+  };
+  const queryParams = {
+    country: "us",
+  };
+  const [viewport, setViewport] = useState();
+
+  const onSelected = (viewport, item) => {
+    setViewport(viewport);
+    console.log(item);
+    props.setFieldValue("location", {
+      address: item.place_name,
+      latitude: item.center[1],
+      longitude: item.center[0],
+    });
+    console.log(item);
+  };
+
   return (
     <>
       <Field
@@ -20,12 +45,22 @@ const ProfileFields = (props) => {
         name="lastName"
         className="lastName"
       />
-      <Field
-        component={TextField}
-        placeholder="Location"
-        type="text"
-        name="location"
-        className="location"
+      <Field component={TextField} name="location" className="location" />
+      <p style={{ "margin-top": "-60px" }}>Address</p>
+      <Geocoder
+        {...mapAccess}
+        onSelected={onSelected}
+        viewport={viewport}
+        hideOnSelect={true}
+        queryParams={queryParams}
+        updateInputOnSelect={true}
+        className="geocoder"
+      />
+      <ReactMapGL
+        {...mapAccess}
+        {...viewport}
+        {...mapStyle}
+        onViewportChange={(newViewport) => setViewport(newViewport)}
       />
       <Field component={RadioGroup} name="gender" className="gender">
         <h3>Gender</h3>
