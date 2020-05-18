@@ -12,6 +12,7 @@ import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
 import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
+import ChangePassword from './components/account/PasswordChangePage';
 
 import Login from "./components/account/Login";
 
@@ -25,6 +26,7 @@ function App() {
           component={GenericRedirect}
         />
         <Route exact path="/" component={Dashboard} />
+        <Route path="/initialChangePassword/:string" component={ChangePassword} /> 
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
         <Route path="/create-event" component={CreateEvent} />
