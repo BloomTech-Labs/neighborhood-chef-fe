@@ -45,7 +45,7 @@ const CalendarView = () => {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url: process.env.REACT_APP_URL,
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {
         query: print(GET_INVITED_EVENTS),

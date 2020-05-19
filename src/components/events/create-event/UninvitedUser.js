@@ -24,7 +24,7 @@ const UninvitedUser = ({ user }) => {
     };
 
     axios
-      .post(process.env.REACT_APP_URL, {
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(INVITE_USER),
         variables: { input: invite },
       })
@@ -58,23 +58,23 @@ const UninvitedUser = ({ user }) => {
             alt="user avatar"
           />
         ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "50%",
-                background: "#82DF96",
-                color: "white",
-                height: "60px",
-                width: "60px",
-                marginLeft: "5%",
-                border: "4px solid #82DF96",
-              }}
-            >
-              {user.firstName.slice(0, 1)}
-            </div>
-          )}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "50%",
+              background: "#82DF96",
+              color: "white",
+              height: "60px",
+              width: "60px",
+              marginLeft: "5%",
+              border: "4px solid #82DF96",
+            }}
+          >
+            {user.firstName.slice(0, 1)}
+          </div>
+        )}
 
         <div
           style={{

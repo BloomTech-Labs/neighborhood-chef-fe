@@ -48,7 +48,7 @@ const Register = () => {
           };
           console.log(userValues);
           axios
-            .post(`${process.env.REACT_APP_AUTH_URL}/register`, userValues)
+            .post(`${process.env.REACT_APP_BASE_URL}/auth/register`, userValues)
             .then((res) => {
               console.log(res);
             })
