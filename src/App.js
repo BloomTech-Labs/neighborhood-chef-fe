@@ -12,6 +12,7 @@ import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
 import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
+import ChangePassword from './components/account/PasswordChangePage';
 
 import Login from "./components/account/Login";
 
@@ -19,13 +20,13 @@ function App() {
   return (
     <div className="app-container">
       <Switch>
-        {/*redirect depricated  in react router v6. need to use server side redirect most likely*/}
         <Route path="/login-redirect-url" component={LoginRedirect} />
         <Route
           path="/generic-redirect/:redirect_path"
           component={GenericRedirect}
         />
-        <Route exact path="/" component={Dashboard} />{" "}
+        <Route exact path="/" component={Dashboard} />
+        <Route path="/initialChangePassword/:string" component={ChangePassword} /> 
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
         <Route path="/create-event" component={CreateEvent} />

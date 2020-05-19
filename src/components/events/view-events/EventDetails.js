@@ -35,13 +35,14 @@ const EventDetails = () => {
     formattedDate,
     addStartTime,
     displayedEndTime,
-    addEndTime;
+    addEndTime,
+    parsedAddressURL;
 
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
       axios({
-        url: process.env.REACT_APP_URL,
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {
           query: print(USER_BY_ID),
@@ -82,6 +83,10 @@ const EventDetails = () => {
         minute: "2-digit",
       })
       .toLowerCase();
+    parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
+      " ",
+      "+"
+    )}`;
   }
 
   return (
@@ -114,10 +119,16 @@ const EventDetails = () => {
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={globeIcon} />
             </span>
-            {event.address}
+            <a
+              href={parsedAddressURL}
+              target="_blank"
+              style={{ color: "rgb(79, 79, 248)" }}
+            >
+              {event.address}
+            </a>
           </div>
           <div style={{ padding: "20px 0px 10px 0px" }}>
-            <Typography variant="h5">
+            <Typography variant="h6">
               Will you be attending this event?
             </Typography>
             <div

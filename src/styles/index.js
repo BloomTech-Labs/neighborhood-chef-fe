@@ -116,9 +116,20 @@ export const formStyles = makeStyles({
       "margin-left": "4%",
     },
     "& .location": {
+      visibility: "hidden",
       "margin-top": "40px",
       width: "100%",
       "text-align": "left",
+    },
+    "& .geocoder": {
+      width: "100%",
+      "margin-top": "-35px",
+      "& input": {
+        width: "100%",
+      },
+      "& .react-geocoder-item": {
+        cursor: "pointer",
+      },
     },
     "& .terms": {
       "margin-top": "40px",

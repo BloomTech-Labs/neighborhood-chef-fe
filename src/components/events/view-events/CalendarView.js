@@ -40,11 +40,12 @@ const CalendarView = () => {
           year: "numeric",
         })
     );
+  const [eventNum, setEventNum] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url: process.env.REACT_APP_URL,
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {
         query: print(GET_INVITED_EVENTS),
@@ -78,8 +79,8 @@ const CalendarView = () => {
       <div className="calendar-view-main">
         {!isLoading ? (
           !!eventsInMonth && eventsInMonth.length > 0 ? (
-            eventsInMonth.map((event) => (
-              <CalendarRow {...event} key={event.id} />
+            eventsInMonth.map((event, eventNum) => (
+              <CalendarRow {...event} key={event.id} eventNum={eventNum} />
             ))
           ) : (
             <div style={{ textAlign: "center" }}>

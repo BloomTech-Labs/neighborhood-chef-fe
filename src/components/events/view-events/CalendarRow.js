@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 
-const CalendarRow = ({ id, title, date, startTime, users }) => {
+const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
   const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
@@ -37,7 +37,9 @@ const CalendarRow = ({ id, title, date, startTime, users }) => {
 
   return (
     <div
-      className={`calendar-row ${activeEvent === id && "calendar-row-active"}`}
+      className={`calendar-row ${
+        parseInt(eventNum) % 2 === 0 && "calendar-row-even"
+      } ${activeEvent === id && "calendar-row-active"}`}
       onClick={() => dispatch(makeActive(id))}
     >
       <div style={{ width: "15%" }}>
