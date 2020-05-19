@@ -72,7 +72,7 @@ const RecentCard = (props) => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     props.user_id &&
       axios({
-        url: process.env.REACT_APP_URL,
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {
           query: print(USER_BY_ID),
@@ -187,7 +187,7 @@ const RecentCard = (props) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography variant="v6">Are you attending this event?</Typography>
+          <Typography variant="h6">Are you attending this event?</Typography>
           <div style={{ display: "flex", marginTop: "10px" }}>
             {rsvpButtons.map((ele) => (
               <StatusButton
