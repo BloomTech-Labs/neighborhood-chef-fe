@@ -23,7 +23,7 @@ const StatusButton = ({
       `event_id: ${eventId}, user_id: ${userId}, status: ${newStatus}`
     );
     axios
-      .post(process.env.REACT_APP_URL, {
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(UPDATE_INVITATION),
         variables: {
           input: {
