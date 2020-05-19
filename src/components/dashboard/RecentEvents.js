@@ -39,12 +39,12 @@ const RecentEvents = () => {
       <h2
         //with minimal elements on dashboard, moving this to center for better styling. to be moved back once feed and other components are added back
         style={
-          { textAlign: "center" } // {{ marginLeft: "12px", marginBottom: "5px" }}
+          { textAlign: "center", marginBottom: "10px" } // {{ marginLeft: "12px", marginBottom: "5px" }}
         }
       >
         Newest Events
       </h2>
-      <div style={{ overflow: "scroll", height: "80vh" }}>
+      <div style={{ overflow: "auto", height: "80vh" }}>
         <div className="recent-events-container">
           {!!eventList &&
             eventList.map((ele) => (

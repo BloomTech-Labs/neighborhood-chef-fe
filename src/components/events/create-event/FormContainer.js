@@ -146,7 +146,7 @@ const FormContainer = () => {
               photo: null,
             };
             axios
-              .post(process.env.REACT_APP_URL, {
+              .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(UPDATE_EVENT),
                 variables: {
                   id: Number(eventToEdit.id),
@@ -179,7 +179,7 @@ const FormContainer = () => {
               photo: null,
             };
             axios
-              .post(process.env.REACT_APP_URL, {
+              .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
                 variables: { input: newEvent },
               })

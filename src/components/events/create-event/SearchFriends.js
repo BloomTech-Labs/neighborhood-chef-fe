@@ -18,7 +18,7 @@ const SearchFriends = ({ history }) => {
 
   useEffect(() => {
     axios
-      .post(process.env.REACT_APP_URL, {
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(GET_UNINVITED_USERS),
         variables: { id: event.id },
       })

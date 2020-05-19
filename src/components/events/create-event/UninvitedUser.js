@@ -24,7 +24,7 @@ const UninvitedUser = ({ user }) => {
     };
 
     axios
-      .post(process.env.REACT_APP_URL, {
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(INVITE_USER),
         variables: { input: invite },
       })
