@@ -12,8 +12,8 @@ const values = {
   address: "123 ABC St.",
   description: "BBQ at my house!",
   date: "May, 20, 2020",
-  startTime: "06:00pm",
-  endTime: "09:00pm",
+  startTime: "18:00:00",
+  endTime: "21:00:00",
   category_id: 1,
 };
 

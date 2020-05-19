@@ -1,18 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
 // import Feed from "./Feed";
 import RecentEvents from "./RecentEvents";
 import Header from "./Header";
-import { useDispatch } from "react-redux";
-import { cancelEdit } from "../../utilities/actions";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(cancelEdit());
-  }, [dispatch]);
-
   return (
     <div className="dashboard-container">
       <Sidebar active="dashboard" />

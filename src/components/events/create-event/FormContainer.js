@@ -4,12 +4,12 @@ import * as Yup from "yup";
 import { print } from "graphql";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
 
 // action imports
 import {
   createEventSuccess,
   updateEventSuccess,
+  cancelEdit,
 } from "../../../utilities/actions/index.js";
 
 // graphql query imports
@@ -18,6 +18,7 @@ import {
   UPDATE_EVENT,
 } from "../../../graphql/events/event-mutations.js";
 
+// component and helper function imports
 import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
 import FormPageTwo from "./FormPageTwo.js";
@@ -87,21 +88,10 @@ const FormContainer = () => {
   }
 
   // had to pull this out of useEffect to get it to work correctly
-  if (isEditing) {
-    eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
-      "hh:mma"
-    );
-    if (eventToEdit.endTime) {
-      eventToEdit.endTime = moment(eventToEdit.endTime, "H:mm").format(
-        "hh:mma"
-      );
-    } else {
-      eventToEdit.endTime = "";
-    }
-  }
+  if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
 
+  // populate form for edit mode
   useEffect(() => {
-    resetModifiers();
     if (isEditing) {
       eventToEdit.date = formatDate(Number(eventToEdit.date));
       const savedHashtags = JSON.parse(eventToEdit.hashtags);
@@ -117,6 +107,14 @@ const FormContainer = () => {
     }
   }, [isEditing, eventToEdit, dispatch]);
 
+  // cleanup
+  useEffect(() => {
+    return () => {
+      resetModifiers();
+      dispatch(cancelEdit());
+    };
+  }, [dispatch]);
+
   return (
     <>
       <Formik
@@ -124,7 +122,7 @@ const FormContainer = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           if (isEditing) {
-            // remove id field from values
+            // remove event id field from values object
             const updatedEvent = {
               title: values.title,
               address: values.address,
@@ -133,12 +131,12 @@ const FormContainer = () => {
               startTime: values.startTime,
               endTime: values.endTime ? values.endTime : null,
               category_id: values.category_id,
-              // replace with variable
-              user_id: 1,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [modifiersWithoutIcon()],
               }),
+              // replace with dynamic variable
+              user_id: 1,
               // replace with calculated longitude and latitude
               longitude: -22.11,
               latitude: 2.11,
@@ -166,12 +164,12 @@ const FormContainer = () => {
             const newEvent = {
               ...values,
               endTime: values.endTime ? values.endTime : null,
-              // replace with variable
-              user_id: 1,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [modifiersWithoutIcon()],
               }),
+              // replace with dynamic variable
+              user_id: 1,
               // replace with calculated longitude and latitude
               longitude: -22.11,
               latitude: 2.11,
