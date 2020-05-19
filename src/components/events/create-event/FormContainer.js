@@ -86,7 +86,7 @@ const FormContainer = () => {
     }
   }
 
-  // had to put this outside useEffect to get it to work correctly without warnings
+  // had to pull this out of useEffect to get it to work correctly
   if (isEditing) {
     eventToEdit.startTime = moment(eventToEdit.startTime, "H:mm").format(
       "hh:mma"
