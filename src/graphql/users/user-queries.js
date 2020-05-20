@@ -181,10 +181,7 @@ export const GET_UNINVITED_USERS = gql`
       id
       firstName
       lastName
-      address
       email
-      longitude
-      latitude
       status
     }
   }

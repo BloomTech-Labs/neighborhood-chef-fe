@@ -64,13 +64,4 @@ export const EVENT_BY_ID = gql`
   }
 `;
 
-export const GET_UNINVITED_USERS = gql`
-  query getUninvitedUsers($id: ID!) {
-    getUninvitedUsers(id: $id) {
-      id
-      firstName
-      lastName
-      email
-    }
-  }
-`;
+
