@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Field } from "formik";
 import { useHistory } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
@@ -7,8 +6,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-
-import { cancelEdit } from "../../../utilities/actions";
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -21,11 +18,8 @@ const FormPageOne = ({
   handleChange,
   values,
   setPage,
-  resetForm,
-  initialState,
 }) => {
   const [error, setError] = useState(false);
-  const dispatch = useDispatch();
   const { push } = useHistory();
 
   const validateAndTurnPage = () => {

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import { print } from "graphql";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
-// action imports
+// redux action imports
 import {
   createEventSuccess,
   updateEventSuccess,
@@ -29,15 +28,6 @@ import {
   formatDate,
   restoreSavedModifiers,
 } from "../../../utilities/functions";
-
-const validationSchema = Yup.object({
-  title: Yup.string().required("Title is required"),
-  address: Yup.string().required("Address is required"),
-  description: Yup.string().required("Description is required"),
-  date: Yup.date().required("Date is required"),
-  startTime: Yup.string().required("Start Time is required"),
-  category_id: Yup.number().required("Category is required"),
-});
 
 const initialState = {
   title: "",
@@ -90,7 +80,6 @@ const FormContainer = () => {
   // had to pull this out of useEffect to get it to work correctly
   if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
 
-  // populate form for edit mode
   useEffect(() => {
     if (isEditing) {
       eventToEdit.date = formatDate(Number(eventToEdit.date));
@@ -119,10 +108,8 @@ const FormContainer = () => {
     <>
       <Formik
         initialValues={isEditing ? eventToEdit : initialState}
-        validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           if (isEditing) {
-            // remove event id field from values object
             const updatedEvent = {
               title: values.title,
               address: values.address,
@@ -194,68 +181,58 @@ const FormContainer = () => {
         }}
       >
         {({
-          touched,
           handleSubmit,
           handleChange,
           values,
-          errors,
-          resetForm,
         }) => (
-          <div className="createEventContainer">
-            <CreateEventHeader page={page} />
-            <Form className="createForm" onSubmit={handleSubmit}>
-              {page === 1 && (
-                <>
-                  <FormPageOne
-                    values={values}
-                    handleChange={handleChange}
-                    errors={errors}
-                    touched={touched}
-                    setPage={setPage}
-                    resetForm={resetForm}
-                  />
-                </>
-              )}
+            <div className="createEventContainer">
+              <CreateEventHeader page={page} />
+              <Form className="createForm" onSubmit={handleSubmit}>
+                {page === 1 && (
+                  <>
+                    <FormPageOne
+                      values={values}
+                      handleChange={handleChange}
+                      setPage={setPage}
+                    />
+                  </>
+                )}
 
-              {page === 2 && (
-                <>
-                  <FormPageTwo
-                    touched={touched}
-                    errors={errors}
-                    setPage={setPage}
-                    handleChange={handleChange}
-                    values={values}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                    setPhoto={setPhoto}
-                  />
-                </>
-              )}
+                {page === 2 && (
+                  <>
+                    <FormPageTwo
+                      setPage={setPage}
+                      handleChange={handleChange}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                      setPhoto={setPhoto}
+                    />
+                  </>
+                )}
 
-              {page === 3 && (
+                {page === 3 && (
+                  <>
+                    <FormPageThree
+                      setPage={setPage}
+                      hashtags={hashtags}
+                      setHashtags={setHashtags}
+                      values={values}
+                      handleSubmit={handleSubmit}
+                      modifiers={modifiers}
+                      setModifiers={setModifiers}
+                    />
+                  </>
+                )}
+              </Form>
+              {page === 4 && (
                 <>
-                  <FormPageThree
-                    setPage={setPage}
-                    hashtags={hashtags}
-                    setHashtags={setHashtags}
-                    values={values}
-                    handleSubmit={handleSubmit}
-                    errors={errors}
-                    modifiers={modifiers}
-                    setModifiers={setModifiers}
-                  />
+                  <FormPageFour />
                 </>
               )}
-            </Form>
-            {page === 4 && (
-              <>
-                <FormPageFour />
-              </>
-            )}
-          </div>
-        )}
+            </div>
+          )}
       </Formik>
     </>
   );
