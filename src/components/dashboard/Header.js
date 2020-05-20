@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import { Icon } from "@iconify/react";
 // import outlineEdit from "@iconify/icons-ic/outline-edit";
 
@@ -13,10 +14,12 @@ const Header = () => {
   return (
     <div className="header-container">
       {isEditing ? (
-        <EditNeighborhood
-          currentName={neighborhoodName}
-          setIsEditing={setIsEditing}
-        />
+        <>
+          <EditNeighborhood
+            currentName={neighborhoodName}
+            setIsEditing={setIsEditing}
+          />
+        </>
       ) : (
         <div style={{ display: "flex" }}>
           <h1 style={{ width: "270px" }}>{neighborhoodName}</h1>
@@ -29,12 +32,14 @@ const Header = () => {
           </span> */}
         </div>
       )}
-      {/* <div className="header-icons"> */}
-      {/* search functionality not working yet, not needed for first iteration of site */}
-      {/* <SearchButton /> */}
-      {/* account button functionality not working yet. */}
-      {/* <AccountButton /> */}
-      {/* </div> */}
+      <div className="header-icons">
+        <Link to={"/register"}>Register</Link>
+        <Link to={"/login"}>Login</Link>
+        {/* search functionality not working yet, not needed for first iteration of site */}
+        {/* <SearchButton /> */}
+        {/* account button functionality not working yet. */}
+        {/* <AccountButton /> */}
+      </div>
     </div>
   );
 };

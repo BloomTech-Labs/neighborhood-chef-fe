@@ -40,19 +40,23 @@ const RecentCard = (props) => {
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
   // const [liked, setLiked] = useState(false);
-  const d = new Date(parseInt(props.date));
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const shownTime = timeAgo(props.createDateTime);
-  const time = d
-    .toLocaleTimeString("en-US", {
-      hours: "numeric",
-      minutes: "2-digit",
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(parseInt(props.date)); //formats 13 digit UNIX date provided by database
+  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
+  const addStartTime = new Date(`${simplifiedDate} ${props.startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
+  const displayedStartTime = addStartTime
+    .toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
     })
-    .replace(/:\d+ /, " ");
+    .toLowerCase();
+  const d = new Date(parseInt(props.date));
+  const shownTime = timeAgo(props.createDateTime);
   const day = d.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
@@ -68,7 +72,7 @@ const RecentCard = (props) => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     props.user_id &&
       axios({
-        url: process.env.REACT_APP_URL,
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {
           query: print(USER_BY_ID),
@@ -125,7 +129,7 @@ const RecentCard = (props) => {
         </Typography>
       </div>
       <Typography variant="body1" align="center">
-        {`@ ${time}`}
+        {`@ ${displayedStartTime}`}
       </Typography>
       <CardContent>
         <Typography variant="h4" align="center" gutterBottom>
@@ -183,7 +187,7 @@ const RecentCard = (props) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography variant="v6">Are you attending this event?</Typography>
+          <Typography variant="h6">Are you attending this event?</Typography>
           <div style={{ display: "flex", marginTop: "10px" }}>
             {rsvpButtons.map((ele) => (
               <StatusButton
