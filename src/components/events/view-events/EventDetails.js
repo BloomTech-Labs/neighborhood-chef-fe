@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
@@ -21,13 +21,14 @@ import { rsvpButtons } from "../../../data/buttons";
 
 import { parseTime } from "../../../utilities/functions";
 
-const EventDetails = ({ history }) => {
+const EventDetails = () => {
   //grabbed from redux store
   const dispatch = useDispatch();
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
   // const update = useSelector((state) => state.update);
+  const { push } = useHistory();
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
 
@@ -131,7 +132,7 @@ const EventDetails = ({ history }) => {
               ))}
               <button onClick={() => {
                 dispatch(startEventEdit(event))
-                history.push("/create-event")
+                push("/create-event")
               }}>Edit</button>
             </div>
           </div>
@@ -145,4 +146,4 @@ const EventDetails = ({ history }) => {
   );
 };
 
-export default withRouter(EventDetails);
+export default EventDetails;

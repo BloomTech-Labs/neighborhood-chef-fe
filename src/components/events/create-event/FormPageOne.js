@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Field } from "formik";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
@@ -23,10 +23,10 @@ const FormPageOne = ({
   setPage,
   resetForm,
   initialState,
-  history,
 }) => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   const validateAndTurnPage = () => {
     if (
@@ -248,9 +248,7 @@ const FormPageOne = ({
         <button
           className="createRightBtn"
           onClick={() => {
-            dispatch(cancelEdit());
-            resetForm(initialState);
-            history.push("/dashboard");
+            push("/dashboard");
           }}
         >
           Cancel
@@ -267,4 +265,4 @@ const FormPageOne = ({
   );
 };
 
-export default withRouter(FormPageOne);
+export default FormPageOne;

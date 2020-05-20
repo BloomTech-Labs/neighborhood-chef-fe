@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { print } from "graphql";
 import axios from "axios";
 
@@ -9,12 +9,13 @@ import { GET_UNINVITED_USERS } from "../../../graphql/users/user-queries.js";
 import { searchForUsersSuccess } from "../../../utilities/actions";
 import UserList from "./UserList.js";
 
-const SearchFriends = ({ history }) => {
+const SearchFriends = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   let users = useSelector((state) => state.userList);
   const event = useSelector((state) => state.newEvent);
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   useEffect(() => {
     axios
@@ -123,7 +124,7 @@ const SearchFriends = ({ history }) => {
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
           <button
-            onClick={() => history.push("/view-events")}
+            onClick={() => push("/view-events")}
             style={{
               background: "#82DF96",
               padding: "15px 20px",
@@ -147,4 +148,4 @@ const SearchFriends = ({ history }) => {
   );
 };
 
-export default withRouter(SearchFriends);
+export default SearchFriends;
