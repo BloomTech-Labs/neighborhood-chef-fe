@@ -42,7 +42,6 @@ const CalendarView = () => {
           year: "numeric",
         })
     );
-  const [eventNum, setEventNum] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
