@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Field } from "formik";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
@@ -18,11 +18,9 @@ const FormPageOne = ({
   handleChange,
   values,
   setPage,
-  resetForm,
-  initialState,
-  history,
 }) => {
   const [error, setError] = useState(false);
+  const { push } = useHistory();
 
   const validateAndTurnPage = () => {
     if (
@@ -39,6 +37,7 @@ const FormPageOne = ({
       setError(true);
     }
   };
+
   return (
     <>
       <div className="createFormPage1TopRow">
@@ -97,54 +96,54 @@ const FormPageOne = ({
               disableUnderline={true}
             >
               <MenuItem value=""></MenuItem>
-              <MenuItem value={"12:00am"}>12:00am</MenuItem>
-              <MenuItem value={"12:30am"}>12:30am</MenuItem>
-              <MenuItem value={"1:00am"}>1:00am</MenuItem>
-              <MenuItem value={"1:30am"}>1:30am</MenuItem>
-              <MenuItem value={"2:00am"}>2:00am</MenuItem>
-              <MenuItem value={"2:30am"}>2:30am</MenuItem>
-              <MenuItem value={"3:00am"}>3:00am</MenuItem>
-              <MenuItem value={"3:30am"}>3:30am</MenuItem>
-              <MenuItem value={"4:00am"}>4:00am</MenuItem>
-              <MenuItem value={"4:30am"}>4:30am</MenuItem>
-              <MenuItem value={"5:00am"}>5:00am</MenuItem>
-              <MenuItem value={"5:30am"}>5:30am</MenuItem>
-              <MenuItem value={"6:00am"}>6:00am</MenuItem>
-              <MenuItem value={"6:30am"}>6:30am</MenuItem>
-              <MenuItem value={"7:00am"}>7:00am</MenuItem>
-              <MenuItem value={"7:30am"}>7:30am</MenuItem>
-              <MenuItem value={"8:00am"}>8:00am</MenuItem>
-              <MenuItem value={"8:30am"}>8:30am</MenuItem>
-              <MenuItem value={"9:00am"}>9:00am</MenuItem>
-              <MenuItem value={"9:30am"}>9:30am</MenuItem>
-              <MenuItem value={"10:00am"}>10:00am</MenuItem>
-              <MenuItem value={"10:30am"}>10:30am</MenuItem>
-              <MenuItem value={"11:00am"}>11:00am</MenuItem>
-              <MenuItem value={"11:30am"}>11:30am</MenuItem>
-              <MenuItem value={"12:00pm"}>12:00pm</MenuItem>
-              <MenuItem value={"12:30pm"}>12:30pm</MenuItem>
-              <MenuItem value={"1:00pm"}>1:00pm</MenuItem>
-              <MenuItem value={"1:30pm"}>1:30pm</MenuItem>
-              <MenuItem value={"2:00pm"}>2:00pm</MenuItem>
-              <MenuItem value={"2:30pm"}>2:30pm</MenuItem>
-              <MenuItem value={"3:00pm"}>3:00pm</MenuItem>
-              <MenuItem value={"3:30pm"}>3:30pm</MenuItem>
-              <MenuItem value={"4:00pm"}>4:00pm</MenuItem>
-              <MenuItem value={"4:30pm"}>4:30pm</MenuItem>
-              <MenuItem value={"5:00pm"}>5:00pm</MenuItem>
-              <MenuItem value={"5:30pm"}>5:30pm</MenuItem>
-              <MenuItem value={"6:00pm"}>6:00pm</MenuItem>
-              <MenuItem value={"6:30pm"}>6:30pm</MenuItem>
-              <MenuItem value={"7:00pm"}>7:00pm</MenuItem>
-              <MenuItem value={"7:30pm"}>7:30pm</MenuItem>
-              <MenuItem value={"8:00pm"}>8:00pm</MenuItem>
-              <MenuItem value={"8:30pm"}>8:30pm</MenuItem>
-              <MenuItem value={"9:00pm"}>9:00pm</MenuItem>
-              <MenuItem value={"9:30pm"}>9:30pm</MenuItem>
-              <MenuItem value={"10:00pm"}>10:00pm</MenuItem>
-              <MenuItem value={"10:30pm"}>10:30pm</MenuItem>
-              <MenuItem value={"11:00pm"}>11:00pm</MenuItem>
-              <MenuItem value={"11:30pm"}>11:30pm</MenuItem>
+              <MenuItem value={"00:00:00"}>12:00am</MenuItem>
+              <MenuItem value={"00:30:00"}>12:30am</MenuItem>
+              <MenuItem value={"01:00:00"}>1:00am</MenuItem>
+              <MenuItem value={"01:30:00"}>1:30am</MenuItem>
+              <MenuItem value={"02:00:00"}>2:00am</MenuItem>
+              <MenuItem value={"02:30:00"}>2:30am</MenuItem>
+              <MenuItem value={"03:00:00"}>3:00am</MenuItem>
+              <MenuItem value={"03:30:00"}>3:30am</MenuItem>
+              <MenuItem value={"04:00:00"}>4:00am</MenuItem>
+              <MenuItem value={"04:30:00"}>4:30am</MenuItem>
+              <MenuItem value={"05:00:00"}>5:00am</MenuItem>
+              <MenuItem value={"05:30:00"}>5:30am</MenuItem>
+              <MenuItem value={"06:00:00"}>6:00am</MenuItem>
+              <MenuItem value={"06:30:00"}>6:30am</MenuItem>
+              <MenuItem value={"07:00:00"}>7:00am</MenuItem>
+              <MenuItem value={"07:30:00"}>7:30am</MenuItem>
+              <MenuItem value={"08:00:00"}>8:00am</MenuItem>
+              <MenuItem value={"08:30:00"}>8:30am</MenuItem>
+              <MenuItem value={"09:00:00"}>9:00am</MenuItem>
+              <MenuItem value={"09:30:00"}>9:30am</MenuItem>
+              <MenuItem value={"10:00:00"}>10:00am</MenuItem>
+              <MenuItem value={"10:30:00"}>10:30am</MenuItem>
+              <MenuItem value={"11:00:00"}>11:00am</MenuItem>
+              <MenuItem value={"11:30:00"}>11:30am</MenuItem>
+              <MenuItem value={"12:00:00"}>12:00pm</MenuItem>
+              <MenuItem value={"12:30:00"}>12:30pm</MenuItem>
+              <MenuItem value={"13:00:00"}>1:00pm</MenuItem>
+              <MenuItem value={"13:30:00"}>1:30pm</MenuItem>
+              <MenuItem value={"14:00:00"}>2:00pm</MenuItem>
+              <MenuItem value={"14:30:00"}>2:30pm</MenuItem>
+              <MenuItem value={"15:00:00"}>3:00pm</MenuItem>
+              <MenuItem value={"15:30:00"}>3:30pm</MenuItem>
+              <MenuItem value={"16:00:00"}>4:00pm</MenuItem>
+              <MenuItem value={"16:30:00"}>4:30pm</MenuItem>
+              <MenuItem value={"17:00:00"}>5:00pm</MenuItem>
+              <MenuItem value={"17:30:00"}>5:30pm</MenuItem>
+              <MenuItem value={"18:00:00"}>6:00pm</MenuItem>
+              <MenuItem value={"18:30:00"}>6:30pm</MenuItem>
+              <MenuItem value={"19:00:00"}>7:00pm</MenuItem>
+              <MenuItem value={"19:30:00"}>7:30pm</MenuItem>
+              <MenuItem value={"20:00:00"}>8:00pm</MenuItem>
+              <MenuItem value={"20:30:00"}>8:30pm</MenuItem>
+              <MenuItem value={"21:00:00"}>9:00pm</MenuItem>
+              <MenuItem value={"21:30:00"}>9:30pm</MenuItem>
+              <MenuItem value={"22:00:00"}>10:00pm</MenuItem>
+              <MenuItem value={"22:30:00"}>10:30pm</MenuItem>
+              <MenuItem value={"23:00:00"}>11:00pm</MenuItem>
+              <MenuItem value={"23:30:00"}>11:30pm</MenuItem>
             </Select>
           </div>
 
@@ -158,54 +157,54 @@ const FormPageOne = ({
               disableUnderline={true}
             >
               <MenuItem value=""></MenuItem>
-              <MenuItem value={"12:00am"}>12:00am</MenuItem>
-              <MenuItem value={"12:30am"}>12:30am</MenuItem>
-              <MenuItem value={"1:00am"}>1:00am</MenuItem>
-              <MenuItem value={"1:30am"}>1:30am</MenuItem>
-              <MenuItem value={"2:00am"}>2:00am</MenuItem>
-              <MenuItem value={"2:30am"}>2:30am</MenuItem>
-              <MenuItem value={"3:00am"}>3:00am</MenuItem>
-              <MenuItem value={"3:30am"}>3:30am</MenuItem>
-              <MenuItem value={"4:00am"}>4:00am</MenuItem>
-              <MenuItem value={"4:30am"}>4:30am</MenuItem>
-              <MenuItem value={"5:00am"}>5:00am</MenuItem>
-              <MenuItem value={"5:30am"}>5:30am</MenuItem>
-              <MenuItem value={"6:00am"}>6:00am</MenuItem>
-              <MenuItem value={"6:30am"}>6:30am</MenuItem>
-              <MenuItem value={"7:00am"}>7:00am</MenuItem>
-              <MenuItem value={"7:30am"}>7:30am</MenuItem>
-              <MenuItem value={"8:00am"}>8:00am</MenuItem>
-              <MenuItem value={"8:30am"}>8:30am</MenuItem>
-              <MenuItem value={"9:00am"}>9:00am</MenuItem>
-              <MenuItem value={"9:30am"}>9:30am</MenuItem>
-              <MenuItem value={"10:00am"}>10:00am</MenuItem>
-              <MenuItem value={"10:30am"}>10:30am</MenuItem>
-              <MenuItem value={"11:00am"}>11:00am</MenuItem>
-              <MenuItem value={"11:30am"}>11:30am</MenuItem>
-              <MenuItem value={"12:00pm"}>12:00pm</MenuItem>
-              <MenuItem value={"12:30pm"}>12:30pm</MenuItem>
-              <MenuItem value={"1:00pm"}>1:00pm</MenuItem>
-              <MenuItem value={"1:30pm"}>1:30pm</MenuItem>
-              <MenuItem value={"2:00pm"}>2:00pm</MenuItem>
-              <MenuItem value={"2:30pm"}>2:30pm</MenuItem>
-              <MenuItem value={"3:00pm"}>3:00pm</MenuItem>
-              <MenuItem value={"3:30pm"}>3:30pm</MenuItem>
-              <MenuItem value={"4:00pm"}>4:00pm</MenuItem>
-              <MenuItem value={"4:30pm"}>4:30pm</MenuItem>
-              <MenuItem value={"5:00pm"}>5:00pm</MenuItem>
-              <MenuItem value={"5:30pm"}>5:30pm</MenuItem>
-              <MenuItem value={"6:00pm"}>6:00pm</MenuItem>
-              <MenuItem value={"6:30pm"}>6:30pm</MenuItem>
-              <MenuItem value={"7:00pm"}>7:00pm</MenuItem>
-              <MenuItem value={"7:30pm"}>7:30pm</MenuItem>
-              <MenuItem value={"8:00pm"}>8:00pm</MenuItem>
-              <MenuItem value={"8:30pm"}>8:30pm</MenuItem>
-              <MenuItem value={"9:00pm"}>9:00pm</MenuItem>
-              <MenuItem value={"9:30pm"}>9:30pm</MenuItem>
-              <MenuItem value={"10:00pm"}>10:00pm</MenuItem>
-              <MenuItem value={"10:30pm"}>10:30pm</MenuItem>
-              <MenuItem value={"11:00pm"}>11:00pm</MenuItem>
-              <MenuItem value={"11:30pm"}>11:30pm</MenuItem>
+              <MenuItem value={"00:00:00"}>12:00am</MenuItem>
+              <MenuItem value={"00:30:00"}>12:30am</MenuItem>
+              <MenuItem value={"01:00:00"}>1:00am</MenuItem>
+              <MenuItem value={"01:30:00"}>1:30am</MenuItem>
+              <MenuItem value={"02:00:00"}>2:00am</MenuItem>
+              <MenuItem value={"02:30:00"}>2:30am</MenuItem>
+              <MenuItem value={"03:00:00"}>3:00am</MenuItem>
+              <MenuItem value={"03:30:00"}>3:30am</MenuItem>
+              <MenuItem value={"04:00:00"}>4:00am</MenuItem>
+              <MenuItem value={"04:30:00"}>4:30am</MenuItem>
+              <MenuItem value={"05:00:00"}>5:00am</MenuItem>
+              <MenuItem value={"05:30:00"}>5:30am</MenuItem>
+              <MenuItem value={"06:00:00"}>6:00am</MenuItem>
+              <MenuItem value={"06:30:00"}>6:30am</MenuItem>
+              <MenuItem value={"07:00:00"}>7:00am</MenuItem>
+              <MenuItem value={"07:30:00"}>7:30am</MenuItem>
+              <MenuItem value={"08:00:00"}>8:00am</MenuItem>
+              <MenuItem value={"08:30:00"}>8:30am</MenuItem>
+              <MenuItem value={"09:00:00"}>9:00am</MenuItem>
+              <MenuItem value={"09:30:00"}>9:30am</MenuItem>
+              <MenuItem value={"10:00:00"}>10:00am</MenuItem>
+              <MenuItem value={"10:30:00"}>10:30am</MenuItem>
+              <MenuItem value={"11:00:00"}>11:00am</MenuItem>
+              <MenuItem value={"11:30:00"}>11:30am</MenuItem>
+              <MenuItem value={"12:00:00"}>12:00pm</MenuItem>
+              <MenuItem value={"12:30:00"}>12:30pm</MenuItem>
+              <MenuItem value={"13:00:00"}>1:00pm</MenuItem>
+              <MenuItem value={"13:30:00"}>1:30pm</MenuItem>
+              <MenuItem value={"14:00:00"}>2:00pm</MenuItem>
+              <MenuItem value={"14:30:00"}>2:30pm</MenuItem>
+              <MenuItem value={"15:00:00"}>3:00pm</MenuItem>
+              <MenuItem value={"15:30:00"}>3:30pm</MenuItem>
+              <MenuItem value={"16:00:00"}>4:00pm</MenuItem>
+              <MenuItem value={"16:30:00"}>4:30pm</MenuItem>
+              <MenuItem value={"17:00:00"}>5:00pm</MenuItem>
+              <MenuItem value={"17:30:00"}>5:30pm</MenuItem>
+              <MenuItem value={"18:00:00"}>6:00pm</MenuItem>
+              <MenuItem value={"18:30:00"}>6:30pm</MenuItem>
+              <MenuItem value={"19:00:00"}>7:00pm</MenuItem>
+              <MenuItem value={"19:30:00"}>7:30pm</MenuItem>
+              <MenuItem value={"20:00:00"}>8:00pm</MenuItem>
+              <MenuItem value={"20:30:00"}>8:30pm</MenuItem>
+              <MenuItem value={"21:00:00"}>9:00pm</MenuItem>
+              <MenuItem value={"21:30:00"}>9:30pm</MenuItem>
+              <MenuItem value={"22:00:00"}>10:00pm</MenuItem>
+              <MenuItem value={"22:30:00"}>10:30pm</MenuItem>
+              <MenuItem value={"23:00:00"}>11:00pm</MenuItem>
+              <MenuItem value={"23:30:00"}>11:30pm</MenuItem>
             </Select>
           </div>
 
@@ -243,8 +242,7 @@ const FormPageOne = ({
         <button
           className="createRightBtn"
           onClick={() => {
-            resetForm(initialState);
-            history.push("/dashboard");
+            push("/dashboard");
           }}
         >
           Cancel
@@ -261,4 +259,4 @@ const FormPageOne = ({
   );
 };
 
-export default withRouter(FormPageOne);
+export default FormPageOne;

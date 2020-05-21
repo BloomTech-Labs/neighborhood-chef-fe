@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { print } from "graphql";
 import axios from "axios";
-import { ALL_USERS } from "../../../graphql/users/user-queries.js";
+
+import { GET_UNINVITED_USERS } from "../../../graphql/users/user-queries.js";
 import { searchForUsersSuccess } from "../../../utilities/actions";
 import UserList from "./UserList.js";
 
-const SearchFriends = ({ history }) => {
+const SearchFriends = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   let users = useSelector((state) => state.userList);
   const event = useSelector((state) => state.newEvent);
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   useEffect(() => {
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-        query: print(ALL_USERS),
+        query: print(GET_UNINVITED_USERS),
+        variables: { id: event.id },
       })
       .then((res) => {
-        dispatch(searchForUsersSuccess(res.data.data.getAllUsers));
+        dispatch(searchForUsersSuccess(res.data.data.getUninvitedUsers));
       })
       .catch((err) => console.log(err.message));
-  }, [dispatch]);
+  }, [dispatch, event]);
 
   // filtering userList to allow search by first name, last name and email
   useEffect(() => {
@@ -121,7 +124,7 @@ const SearchFriends = ({ history }) => {
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
           <button
-            onClick={() => history.push("/view-events")}
+            onClick={() => push("/view-events")}
             style={{
               background: "#82DF96",
               padding: "15px 20px",
@@ -145,4 +148,4 @@ const SearchFriends = ({ history }) => {
   );
 };
 
-export default withRouter(SearchFriends);
+export default SearchFriends;

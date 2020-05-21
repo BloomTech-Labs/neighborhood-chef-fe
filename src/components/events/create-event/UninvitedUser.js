@@ -32,7 +32,7 @@ const UninvitedUser = ({ user }) => {
         dispatch(inviteUserSuccess(res.data.data.inviteUserToEvent.users));
         dispatch(filterUserListSuccess(users.filter((user) => user.id !== id)));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   };
   return (
     <div
