@@ -130,10 +130,13 @@ const EventDetails = () => {
                   key={ele.name}
                 />
               ))}
-              <button onClick={() => {
-                dispatch(startEventEdit(event))
-                push("/create-event")
-              }}>Edit</button>
+
+              {me.id === event.user_id && (
+                <button onClick={() => {
+                  dispatch(startEventEdit(event))
+                  push("/create-event")
+                }}>Edit</button>
+              )}
             </div>
           </div>
         </div>
