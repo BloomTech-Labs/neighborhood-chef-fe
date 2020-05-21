@@ -6,6 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Geocoder from "react-mapbox-gl-geocoder";
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -14,13 +15,27 @@ export const scrollToTop = () => {
   });
 };
 
-const FormPageOne = ({
-  handleChange,
-  values,
-  setPage,
-}) => {
+const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
   const [error, setError] = useState(false);
+  const [viewport, setViewport] = useState({});
   const { push } = useHistory();
+
+  const mapAccess = {
+    mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+  };
+  const queryParams = {
+    country: "us",
+  };
+
+  // Geocoder component doesn't allow placeholder without passing a component in
+  const Placeholder = (props) => <input {...props} placeholder="Address" />;
+
+  const onSelected = (viewport, item) => {
+    setViewport(viewport);
+    setFieldValue("address", item.place_name);
+    setFieldValue("latitude", item.center[1]);
+    setFieldValue("longitude", item.center[0]);
+  };
 
   const validateAndTurnPage = () => {
     if (
@@ -54,12 +69,17 @@ const FormPageOne = ({
           </div>
 
           <div className="createFormInputDiv">
-            <Field
-              type="text"
-              name="address"
-              placeholder="Location"
-              onChange={handleChange}
-              value={values.address}
+            <Geocoder
+              {...mapAccess}
+              name="location"
+              onSelected={onSelected}
+              viewport={viewport}
+              hideOnSelect={true}
+              queryParams={queryParams}
+              updateInputOnSelect={true}
+              className="locationInput"
+              inputComponent={Placeholder}
+              initialInputValue={values.address ? values.address : ""}
             />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>

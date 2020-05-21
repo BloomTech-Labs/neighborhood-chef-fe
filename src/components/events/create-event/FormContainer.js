@@ -37,6 +37,9 @@ const initialState = {
   endTime: "",
   category_id: "",
   address: "",
+  latitude: "",
+  longitude: "",
+  // location: { address: "", latitude: "", longitude: "" },
 };
 
 const FormContainer = () => {
@@ -112,23 +115,22 @@ const FormContainer = () => {
           if (isEditing) {
             const updatedEvent = {
               title: values.title,
-              address: values.address,
               description: values.description,
-              date: values.date,
-              startTime: values.startTime,
-              endTime: values.endTime ? values.endTime : null,
               category_id: values.category_id,
+              address: values.address,
+              startTime: values.startTime,
+              date: values.date,
+              endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [modifiersWithoutIcon()],
               }),
-              // replace with dynamic variable
+              longitude: values.longitude,
+              latitude: values.longitude,
+              // replace with variable
               user_id: 1,
-              // replace with calculated longitude and latitude
-              longitude: -22.11,
-              latitude: 2.11,
               // photo still not working quite right
-              photo: null,
+              photo: getBase64(photo),
             };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -149,19 +151,23 @@ const FormContainer = () => {
               .catch((err) => console.log(err));
           } else {
             const newEvent = {
-              ...values,
+              title: values.title,
+              description: values.description,
+              category_id: values.category_id,
+              address: values.address,
+              startTime: values.startTime,
+              date: values.date,
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [modifiersWithoutIcon()],
               }),
-              // replace with dynamic variable
+              longitude: values.longitude,
+              latitude: values.longitude,
+              // replace with variable
               user_id: 1,
-              // replace with calculated longitude and latitude
-              longitude: -22.11,
-              latitude: 2.11,
               // photo still not working quite right
-              photo: null,
+              photo: getBase64(photo),
             };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -180,59 +186,56 @@ const FormContainer = () => {
           }
         }}
       >
-        {({
-          handleSubmit,
-          handleChange,
-          values,
-        }) => (
-            <div className="createEventContainer">
-              <CreateEventHeader page={page} />
-              <Form className="createForm" onSubmit={handleSubmit}>
-                {page === 1 && (
-                  <>
-                    <FormPageOne
-                      values={values}
-                      handleChange={handleChange}
-                      setPage={setPage}
-                    />
-                  </>
-                )}
-
-                {page === 2 && (
-                  <>
-                    <FormPageTwo
-                      setPage={setPage}
-                      handleChange={handleChange}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                      setPhoto={setPhoto}
-                    />
-                  </>
-                )}
-
-                {page === 3 && (
-                  <>
-                    <FormPageThree
-                      setPage={setPage}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      values={values}
-                      handleSubmit={handleSubmit}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  </>
-                )}
-              </Form>
-              {page === 4 && (
+        {({ handleSubmit, handleChange, values, setFieldValue }) => (
+          <div className="createEventContainer">
+            <CreateEventHeader page={page} />
+            <Form className="createForm" onSubmit={handleSubmit}>
+              {page === 1 && (
                 <>
-                  <FormPageFour />
+                  <FormPageOne
+                    values={values}
+                    handleChange={handleChange}
+                    setPage={setPage}
+                    setFieldValue={setFieldValue}
+                  />
                 </>
               )}
-            </div>
-          )}
+
+              {page === 2 && (
+                <>
+                  <FormPageTwo
+                    setPage={setPage}
+                    handleChange={handleChange}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                    setPhoto={setPhoto}
+                  />
+                </>
+              )}
+
+              {page === 3 && (
+                <>
+                  <FormPageThree
+                    setPage={setPage}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    values={values}
+                    handleSubmit={handleSubmit}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                  />
+                </>
+              )}
+            </Form>
+            {page === 4 && (
+              <>
+                <FormPageFour />
+              </>
+            )}
+          </div>
+        )}
       </Formik>
     </>
   );
