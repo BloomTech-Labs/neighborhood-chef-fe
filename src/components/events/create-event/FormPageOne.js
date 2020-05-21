@@ -23,6 +23,7 @@ const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
   const mapAccess = {
     mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
   };
+
   const queryParams = {
     country: "us",
   };

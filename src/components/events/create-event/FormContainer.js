@@ -39,7 +39,6 @@ const initialState = {
   address: "",
   latitude: "",
   longitude: "",
-  // location: { address: "", latitude: "", longitude: "" },
 };
 
 const FormContainer = () => {
@@ -126,7 +125,7 @@ const FormContainer = () => {
                 modifiers: [modifiersWithoutIcon()],
               }),
               longitude: values.longitude,
-              latitude: values.longitude,
+              latitude: values.latitude,
               // replace with variable
               user_id: 1,
               // photo still not working quite right
@@ -151,19 +150,14 @@ const FormContainer = () => {
               .catch((err) => console.log(err));
           } else {
             const newEvent = {
-              title: values.title,
-              description: values.description,
-              category_id: values.category_id,
-              address: values.address,
-              startTime: values.startTime,
-              date: values.date,
+              ...values,
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [modifiersWithoutIcon()],
               }),
               longitude: values.longitude,
-              latitude: values.longitude,
+              latitude: values.latitude,
               // replace with variable
               user_id: 1,
               // photo still not working quite right
