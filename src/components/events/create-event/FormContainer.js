@@ -64,21 +64,6 @@ const FormContainer = () => {
     });
   };
 
-  function getBase64(photo) {
-    if (photo) {
-      let reader = new FileReader();
-      reader.readAsDataURL(photo);
-      reader.onload = function () {
-        return reader.result;
-      };
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
-    } else {
-      return null;
-    }
-  }
-
   // had to pull this out of useEffect to get it to work correctly
   if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
 
@@ -129,7 +114,7 @@ const FormContainer = () => {
               // replace with variable
               user_id: 1,
               // photo still not working quite right
-              photo: getBase64(photo),
+              photo: null,
             };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -161,7 +146,7 @@ const FormContainer = () => {
               // replace with variable
               user_id: 1,
               // photo still not working quite right
-              photo: getBase64(photo),
+              photo: null,
             };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
