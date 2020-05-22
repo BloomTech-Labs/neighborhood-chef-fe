@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import { MobileStepper } from "@material-ui/core";
 import { formStyles } from "../../styles";
+import AuthHeader from "../other/AuthHeader.js";
 
 const Register = () => {
   const currentPage = useSelector((state) => state.page);
@@ -15,6 +16,7 @@ const Register = () => {
 
   return (
     <div className={classes.registerComponent}>
+      <AuthHeader />
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -53,7 +55,7 @@ const Register = () => {
               console.log(res);
             })
             .catch((err) => {
-              console.dir({err, message: err.message, stack: err.stack});
+              console.dir({ err, message: err.message, stack: err.stack });
             });
           setSubmitting(false);
         }}
