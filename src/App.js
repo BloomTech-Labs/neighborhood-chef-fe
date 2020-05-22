@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="app-container">
       <Switch>
-        <Route path="/login-redirect-url" component={LoginRedirect} />
+        <Route path="/login-redirect-url?:query_params" component={LoginRedirect} />
         <Route
           path="/generic-redirect/:redirect_path"
           component={GenericRedirect}
