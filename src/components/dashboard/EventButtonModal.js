@@ -8,9 +8,12 @@ import MenuList from "@material-ui/core/MenuList";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconButton from "@material-ui/core/IconButton";
 
+import { useHistory } from "react-router-dom";
+
 import { modalStyles } from "../../styles";
 
-const EventButtonModal = () => {
+const EventButtonModal = ({ eventId }) => {
+  const history = useHistory();
   const modalClasses = modalStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -78,7 +81,11 @@ const EventButtonModal = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     {/*these buttons currently dont go anywhere.  todo.*/}
-                    <MenuItem onClick={handleClose}>Open Event</MenuItem>
+                    <MenuItem
+                      onClick={() => history.push(`/events/${eventId}`)}
+                    >
+                      Open Event
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>Hide Event</MenuItem>
                   </MenuList>
                 </ClickAwayListener>

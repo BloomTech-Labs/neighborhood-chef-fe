@@ -89,13 +89,7 @@ const RecentCard = (props) => {
             {props.photo ? props.photo : initials}
           </Avatar>
         }
-        //this button does not function currently. will add funtionality later
-        action={
-          <EventButtonModal />
-          // <IconButton aria-label="settings" onClick={toggleOptions}>
-          //   <MoreVertIcon />
-          // </IconButton>
-        }
+        action={<EventButtonModal eventId={props.id} />}
         title={
           <Typography variant="h6">
             {creatorName}
