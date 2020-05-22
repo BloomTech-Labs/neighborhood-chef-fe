@@ -55,7 +55,7 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
     }
   });
   return cb(arr);
-}
+};
 
 export const parseTime = (date, start, end) => {
   var options = { year: "numeric", month: "long", day: "numeric" };
