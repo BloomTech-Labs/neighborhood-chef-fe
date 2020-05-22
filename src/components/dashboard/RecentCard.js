@@ -15,12 +15,11 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
 // import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import { timeAgo } from "../../utilities/functions";
+import { timeAgo, parseTime } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
 import modernRoom from "../../assets/modernRoom.png";
@@ -32,6 +31,8 @@ import axios from "axios";
 import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
 
+import EventButtonModal from "./EventButtonModal";
+
 const RecentCard = (props) => {
   const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
@@ -39,30 +40,19 @@ const RecentCard = (props) => {
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
+  const [optionsVisible, setOptionsVisible] = useState(false);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  var options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(parseInt(props.date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate} ${props.startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  const displayedStartTime = addStartTime
-    .toLocaleTimeString([], {
-      hour: "numeric",
-      minute: "2-digit",
-    })
-    .toLowerCase();
-  const d = new Date(parseInt(props.date));
+  const timeObject = parseTime(props.date, props.startTime, props.endTime);
   const shownTime = timeAgo(props.createDateTime);
-  const day = d.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-  const dayNum = day.split(" ")[1];
-  const month = day.split(" ")[0];
+
+  const toggleOptions = () => {
+    setOptionsVisible(!optionsVisible);
+  };
 
   // const toggleLike = () => {
   //   setLiked(!liked);
@@ -100,11 +90,12 @@ const RecentCard = (props) => {
           </Avatar>
         }
         //this button does not function currently. will add funtionality later
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+        action={
+          <EventButtonModal />
+          // <IconButton aria-label="settings" onClick={toggleOptions}>
+          //   <MoreVertIcon />
+          // </IconButton>
+        }
         title={
           <Typography variant="h6">
             {creatorName}
@@ -123,13 +114,13 @@ const RecentCard = (props) => {
         title="New Event"
       />
       <div className="date-box">
-        <Typography variant="h5">{dayNum}</Typography>
+        <Typography variant="h5">{timeObject.day}</Typography>
         <Typography variant="h5" color="secondary">
-          {month}
+          {timeObject.monthShort}
         </Typography>
       </div>
       <Typography variant="body1" align="center">
-        {`@ ${displayedStartTime}`}
+        {`@ ${timeObject.startTime}`}
       </Typography>
       <CardContent>
         <Typography variant="h4" align="center" gutterBottom>

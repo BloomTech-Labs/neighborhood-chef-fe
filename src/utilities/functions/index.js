@@ -55,7 +55,7 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
     }
   });
   return cb(arr);
-}
+};
 
 export const parseTime = (date, start, end) => {
   var options = { year: "numeric", month: "long", day: "numeric" };
@@ -84,11 +84,15 @@ export const parseTime = (date, start, end) => {
   const getDay = addStartTime.toLocaleDateString("en-us", {
     day: "numeric",
   });
+  const getMonth = addStartTime.toLocaleDateString("en-us", {
+    month: "short",
+  });
 
   return {
     formattedDate: simplifiedDate,
     weekday: getWeekday,
     day: getDay,
+    monthShort: getMonth,
     startTime: displayedStartTime,
     endTime: displayedEndTime,
     unixStart: addStartTime.getTime(),
