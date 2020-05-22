@@ -74,7 +74,7 @@ const FormContainer = () => {
       let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
       if (Object.keys(savedModifiers).length !== 0) {
-        savedModifiers = savedModifiers.modifiers[0];
+        savedModifiers = savedModifiers.modifiers;
         restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
       }
       if (Object.keys(savedHashtags).length !== 0) {
@@ -107,7 +107,7 @@ const FormContainer = () => {
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
-                modifiers: [modifiersWithoutIcon()],
+                modifiers: [...modifiersWithoutIcon()],
               }),
               longitude: values.longitude,
               latitude: values.latitude,
@@ -139,7 +139,7 @@ const FormContainer = () => {
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
-                modifiers: [modifiersWithoutIcon()],
+                modifiers: [...modifiersWithoutIcon()],
               }),
               longitude: values.longitude,
               latitude: values.latitude,
