@@ -37,6 +37,8 @@ const initialState = {
   endTime: "",
   category_id: "",
   address: "",
+  latitude: "",
+  longitude: "",
 };
 
 const FormContainer = () => {
@@ -62,21 +64,6 @@ const FormContainer = () => {
     });
   };
 
-  function getBase64(photo) {
-    if (photo) {
-      let reader = new FileReader();
-      reader.readAsDataURL(photo);
-      reader.onload = function () {
-        return reader.result;
-      };
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
-    } else {
-      return null;
-    }
-  }
-
   // had to pull this out of useEffect to get it to work correctly
   if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
 
@@ -87,7 +74,7 @@ const FormContainer = () => {
       let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
       if (Object.keys(savedModifiers).length !== 0) {
-        savedModifiers = savedModifiers.modifiers[0];
+        savedModifiers = savedModifiers.modifiers;
         restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
       }
       if (Object.keys(savedHashtags).length !== 0) {
@@ -112,21 +99,20 @@ const FormContainer = () => {
           if (isEditing) {
             const updatedEvent = {
               title: values.title,
-              address: values.address,
               description: values.description,
-              date: values.date,
-              startTime: values.startTime,
-              endTime: values.endTime ? values.endTime : null,
               category_id: values.category_id,
+              address: values.address,
+              startTime: values.startTime,
+              date: values.date,
+              endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
-                modifiers: [modifiersWithoutIcon()],
+                modifiers: [...modifiersWithoutIcon()],
               }),
-              // replace with dynamic variable
+              longitude: values.longitude,
+              latitude: values.latitude,
+              // replace with variable
               user_id: 1,
-              // replace with calculated longitude and latitude
-              longitude: -22.11,
-              latitude: 2.11,
               // photo still not working quite right
               photo: null,
             };
@@ -153,13 +139,12 @@ const FormContainer = () => {
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
-                modifiers: [modifiersWithoutIcon()],
+                modifiers: [...modifiersWithoutIcon()],
               }),
-              // replace with dynamic variable
+              longitude: values.longitude,
+              latitude: values.latitude,
+              // replace with variable
               user_id: 1,
-              // replace with calculated longitude and latitude
-              longitude: -22.11,
-              latitude: 2.11,
               // photo still not working quite right
               photo: null,
             };
@@ -180,59 +165,56 @@ const FormContainer = () => {
           }
         }}
       >
-        {({
-          handleSubmit,
-          handleChange,
-          values,
-        }) => (
-            <div className="createEventContainer">
-              <CreateEventHeader page={page} />
-              <Form className="createForm" onSubmit={handleSubmit}>
-                {page === 1 && (
-                  <>
-                    <FormPageOne
-                      values={values}
-                      handleChange={handleChange}
-                      setPage={setPage}
-                    />
-                  </>
-                )}
-
-                {page === 2 && (
-                  <>
-                    <FormPageTwo
-                      setPage={setPage}
-                      handleChange={handleChange}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                      setPhoto={setPhoto}
-                    />
-                  </>
-                )}
-
-                {page === 3 && (
-                  <>
-                    <FormPageThree
-                      setPage={setPage}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                      values={values}
-                      handleSubmit={handleSubmit}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  </>
-                )}
-              </Form>
-              {page === 4 && (
+        {({ handleSubmit, handleChange, values, setFieldValue }) => (
+          <div className="createEventContainer">
+            <CreateEventHeader page={page} />
+            <Form className="createForm" onSubmit={handleSubmit}>
+              {page === 1 && (
                 <>
-                  <FormPageFour />
+                  <FormPageOne
+                    values={values}
+                    handleChange={handleChange}
+                    setPage={setPage}
+                    setFieldValue={setFieldValue}
+                  />
                 </>
               )}
-            </div>
-          )}
+
+              {page === 2 && (
+                <>
+                  <FormPageTwo
+                    setPage={setPage}
+                    handleChange={handleChange}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                    setPhoto={setPhoto}
+                  />
+                </>
+              )}
+
+              {page === 3 && (
+                <>
+                  <FormPageThree
+                    setPage={setPage}
+                    hashtags={hashtags}
+                    setHashtags={setHashtags}
+                    values={values}
+                    handleSubmit={handleSubmit}
+                    modifiers={modifiers}
+                    setModifiers={setModifiers}
+                  />
+                </>
+              )}
+            </Form>
+            {page === 4 && (
+              <>
+                <FormPageFour />
+              </>
+            )}
+          </div>
+        )}
       </Formik>
     </>
   );
