@@ -174,3 +174,15 @@ export const GET_ATTENDING_EVENTS = gql`
     }
   }
 `;
+
+export const GET_UNINVITED_USERS = gql`
+  query getUninvitedUsers($id: ID!) {
+    getUninvitedUsers(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      status
+    }
+  }
+`;

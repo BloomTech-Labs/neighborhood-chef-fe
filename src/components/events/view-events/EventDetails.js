@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
+import { startEventEdit } from "../../../utilities/actions";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
@@ -17,12 +19,16 @@ import globeIcon from "@iconify/icons-flat-color-icons/globe";
 import StatusButton from "./StatusButton";
 import { rsvpButtons } from "../../../data/buttons";
 
+import { parseTime } from "../../../utilities/functions";
+
 const EventDetails = () => {
   //grabbed from redux store
+  const dispatch = useDispatch();
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
   // const update = useSelector((state) => state.update);
+  const { push } = useHistory();
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
 
@@ -30,13 +36,7 @@ const EventDetails = () => {
   const [creatorName, setCreatorName] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
 
-  let simplifiedDate,
-    displayedStartTime,
-    formattedDate,
-    addStartTime,
-    displayedEndTime,
-    addEndTime,
-    parsedAddressURL;
+  let timeObject, parsedAddressURL;
 
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
@@ -64,25 +64,7 @@ const EventDetails = () => {
 
   //dealing with date formatting things
   if (event) {
-    var options = { year: "numeric", month: "long", day: "numeric" };
-    formattedDate = new Date(parseInt(event.date)); //formats 13 digit UNIX date provided by database
-    simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-    addStartTime = new Date(`${simplifiedDate} ${event.startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
-    if (event.endTime) {
-      addEndTime = new Date(`${simplifiedDate} ${event.endTime}`);
-      displayedEndTime = addEndTime
-        .toLocaleTimeString([], {
-          hour: "numeric",
-          minute: "2-digit",
-        })
-        .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
-    }
-    displayedStartTime = addStartTime
-      .toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit",
-      })
-      .toLowerCase();
+    timeObject = parseTime(event.date, event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
@@ -105,15 +87,15 @@ const EventDetails = () => {
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={calendarIcon} />
             </span>
-            {simplifiedDate}
+            {timeObject.formattedDate}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={clockIcon} />
             </span>
-            {`${displayedStartTime} ${
-              addEndTime ? "- " + displayedEndTime : ""
-            }`}
+            {`${timeObject.startTime} ${
+              timeObject.endTime ? "- " + timeObject.endTime : ""
+              }`}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
@@ -148,14 +130,21 @@ const EventDetails = () => {
                   key={ele.name}
                 />
               ))}
+
+              {me.id === event.user_id && (
+                <button onClick={() => {
+                  dispatch(startEventEdit(event))
+                  push("/create-event")
+                }}>Edit</button>
+              )}
             </div>
           </div>
         </div>
       ) : (
-        <div>
-          <h3>Select an event from the calendar to view the details here.</h3>
-        </div>
-      )}
+          <div>
+            <h3>Select an event from the calendar to view the details here.</h3>
+          </div>
+        )}
     </div>
   );
 };

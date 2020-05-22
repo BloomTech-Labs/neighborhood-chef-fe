@@ -19,6 +19,8 @@ import { getEventsSuccess } from "../../../utilities/actions";
 //style import
 import { buttonStyles } from "../../../styles";
 
+import { parseTime } from "../../../utilities/functions";
+
 const CalendarView = () => {
   const eventList = useSelector((state) => state.eventList);
   const update = useSelector((state) => state.update); //seemingly because of how status is nested into events, there is no direct dispatch that will force re-render of this component without the use of update state. Unsure if this is the best approach.
@@ -40,7 +42,6 @@ const CalendarView = () => {
           year: "numeric",
         })
     );
-  const [eventNum, setEventNum] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -53,11 +54,13 @@ const CalendarView = () => {
       },
     })
       .then((res) => {
-        dispatch(
-          getEventsSuccess(
-            res.data.data.getInvitedEvents.sort((a, b) => a.date - b.date)
-          )
+        const sortedByDate = res.data.data.getInvitedEvents.sort(
+          (a, b) =>
+            parseTime(a.date, a.startTime, a.endTime).unixStart -
+            parseTime(b.date, b.startTime, b.endTime).unixStart
         );
+
+        dispatch(getEventsSuccess(sortedByDate));
       })
       .catch((err) => {
         console.log(err.message);

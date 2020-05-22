@@ -53,7 +53,7 @@ const Register = () => {
               console.log(res);
             })
             .catch((err) => {
-              console.log(err.message);
+              console.dir({err, message: err.message, stack: err.stack});
             });
           setSubmitting(false);
         }}

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
+import { parseTime } from "../../../utilities/functions";
 
 const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
@@ -18,22 +19,7 @@ const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
   }
 
   //time formatting
-  var options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate}, ${startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  const getWeekday = addStartTime.toLocaleDateString("en-us", {
-    weekday: "short",
-  });
-  const getDay = addStartTime.toLocaleDateString("en-us", {
-    day: "numeric",
-  });
-  const displayedHoursMins = addStartTime
-    .toLocaleTimeString([], {
-      hour: "numeric",
-      minute: "2-digit",
-    })
-    .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
+  const timeObject = parseTime(date, startTime);
 
   return (
     <div
@@ -43,8 +29,8 @@ const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
       onClick={() => dispatch(makeActive(id))}
     >
       <div style={{ width: "15%" }}>
-        <div style={{ opacity: ".5" }}>{getWeekday}</div>
-        <div style={{ fontSize: "3rem" }}>{getDay}</div>
+        <div style={{ opacity: ".5" }}>{timeObject.weekday}</div>
+        <div style={{ fontSize: "3rem" }}>{timeObject.day}</div>
       </div>
       <div
         style={{
@@ -70,7 +56,7 @@ const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
           </span>
         </div>
       </div>
-      <div style={{ opacity: ".3", width: "20%" }}>{displayedHoursMins}</div>
+      <div style={{ opacity: ".3", width: "20%" }}>{timeObject.startTime}</div>
     </div>
   );
 };

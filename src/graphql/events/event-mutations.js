@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const ADD_EVENT = gql`
   mutation addEvent($input: NewEventInput!) {
@@ -16,6 +16,13 @@ export const ADD_EVENT = gql`
       longitude
       hashtags
       modifiers
+      users {
+        id
+        email
+        firstName
+        lastName
+        status
+      }
     }
   }
 `;
@@ -35,15 +42,12 @@ export const UPDATE_EVENT = gql`
       longitude
       hashtags
       modifiers
+      user_id
       users {
         id
         email
         firstName
         lastName
-        gender
-        address
-        latitude
-        longitude
         status
       }
     }

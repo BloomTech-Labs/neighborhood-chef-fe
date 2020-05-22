@@ -26,7 +26,7 @@ function LoginRedirect (props){
             const body = {
                 grant_type: "authorization_code",
                 client_id: "0oa9qxckmhGd2aLsZ4x6",
-                redirect_uri: "http://localhost:3000/login-redirect-url",
+                redirect_uri: `${process.env.REACT_APP_FRONT_END_BASE_URL}/login-redirect-url`,
                 code,
                 code_verifier: verifier
             }
