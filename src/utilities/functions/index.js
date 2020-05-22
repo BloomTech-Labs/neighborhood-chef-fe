@@ -58,9 +58,16 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
 };
 
 export const parseTime = (date, start, end) => {
-  var options = { year: "numeric", month: "long", day: "numeric" };
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone; //determines local time zone
+  var options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: tz,
+    timeZoneName: "short",
+  };
   const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
+  const simplifiedDate = formattedDate.toLocaleDateString("en-US", options); // reduces to just YYYY MM, DD format
   const addStartTime = new Date(`${simplifiedDate} ${start}`); // creates new date using start_time value for time, instead of 00:00:00 default
   let displayedEndTime, displayedStartTime;
   if (!!end) {

@@ -140,11 +140,9 @@ const FormContainer = () => {
               values.startTime,
               values.endTime
             );
-            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            console.log(tz);
             const newEvent = {
               ...values,
-              date: timeObject.unixStart,
+              date: timeObject.formattedDate,
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
@@ -163,6 +161,7 @@ const FormContainer = () => {
                 variables: { input: newEvent },
               })
               .then((res) => {
+                console.log(res);
                 dispatch(createEventSuccess(res.data.data.addEvent));
                 setHashtags([]);
                 resetForm(initialState);
