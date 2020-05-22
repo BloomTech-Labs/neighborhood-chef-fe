@@ -13,7 +13,7 @@ const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
     setIsFetching(true);
