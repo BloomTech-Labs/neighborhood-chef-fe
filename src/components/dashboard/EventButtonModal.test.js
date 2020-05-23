@@ -1,28 +1,30 @@
 import React from "react";
-import Header from "./Header";
+import EventButtonModal from "./EventButtonModal.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../utilities/reducers";
 import thunk from "redux-thunk";
 
+import "@testing-library/jest-dom/extend-expect";
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test header static properties", () => {
-  let HeaderComponent;
+describe("Test EventButtonModal static properties", () => {
+  let EventButtonModalComponent;
   beforeEach(() => {
-    HeaderComponent = render(
+    EventButtonModalComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <Header />
+          <EventButtonModal />
         </BrowserRouter>
       </Provider>
     );
   });
-  test("Header renders", () => {
-    const firstDiv = document.querySelector(".header-container");
-    expect(firstDiv.toBeInDocument);
+
+  test("EventButtonModal component renders", () => {
+    const buttonClass = document.querySelector(".MuiButtonBase-root");
+    expect(buttonClass.toBeInDocument);
   });
 });
