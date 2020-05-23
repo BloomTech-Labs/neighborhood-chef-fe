@@ -40,7 +40,6 @@ const RecentCard = (props) => {
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
-  const [optionsVisible, setOptionsVisible] = useState(false);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
@@ -49,10 +48,6 @@ const RecentCard = (props) => {
 
   const timeObject = parseTime(props.date, props.startTime, props.endTime);
   const shownTime = timeAgo(props.createDateTime);
-
-  const toggleOptions = () => {
-    setOptionsVisible(!optionsVisible);
-  };
 
   // const toggleLike = () => {
   //   setLiked(!liked);
