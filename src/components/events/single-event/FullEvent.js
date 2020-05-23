@@ -27,10 +27,15 @@ const FullEvent = ({ match }) => {
       });
   }, []);
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div
+      className="single-event-container"
+      style={{ display: "flex", justifyContent: "space-between" }}
+    >
       <Sidebar />
-      <h1>FullEvent data dump</h1>
-      {currentEvent ? <pre>{JSON.stringify(currentEvent, null, 2)}</pre> : ""}
+      <div className="single-event-box">
+        <h1>FullEvent data dump</h1>
+        {currentEvent ? <pre>{JSON.stringify(currentEvent, null, 2)}</pre> : ""}
+      </div>
     </div>
   );
 };
