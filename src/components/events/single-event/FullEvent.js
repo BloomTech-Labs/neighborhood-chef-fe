@@ -4,6 +4,7 @@ import axios from "axios";
 import { print } from "graphql";
 import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
+import Sidebar from "../../dashboard/Sidebar";
 
 const FullEvent = ({ match }) => {
   const eventId = parseInt(match.params.id);
@@ -26,27 +27,10 @@ const FullEvent = ({ match }) => {
       });
   }, []);
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <Sidebar />
       <h1>FullEvent data dump</h1>
-      {currentEvent ? (
-        <div>
-          <p>title: {currentEvent.title}</p>
-          <p>description: {currentEvent.description}</p>
-          <p>address: {currentEvent.address}</p>
-          <p>latitude: {currentEvent.latitude}</p>
-          <p>longitude: {currentEvent.longitude}</p>
-          <p>createDateTime: {currentEvent.createDateTime}</p>
-          <p>date: {currentEvent.date}</p>
-          <p>startTime: {currentEvent.startTime}</p>
-          <p>endTime: {currentEvent.endTime}</p>
-          <p>modifiers: {JSON.stringify(currentEvent.modifiers)}</p>
-          <p>category id: {currentEvent.category_id}</p>
-          <p>creator id: {currentEvent.user_id}</p>
-          <p>attending: {currentEvent.users && currentEvent.users.length}</p>
-        </div>
-      ) : (
-        ""
-      )}
+      {currentEvent ? <pre>{JSON.stringify(currentEvent, null, 2)}</pre> : ""}
     </div>
   );
 };
