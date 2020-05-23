@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const timeAgo = (dateCreated) => {
   let showType = "";
   const elapsedTime = Math.ceil((new Date() - dateCreated) / 1000);
@@ -58,46 +60,18 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
 };
 
 export const parseTime = (date, start, end) => {
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone; //determines local time zone
-  var options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: tz,
-    timeZoneName: "short",
-  };
-  const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-US", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate} ${start}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  let displayedEndTime, displayedStartTime;
-  if (!!end) {
-    const addEndTime = new Date(`${simplifiedDate} ${end}`);
-    displayedEndTime = addEndTime
-      .toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit",
-      })
-      .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
-  }
-  displayedStartTime = addStartTime
-    .toLocaleTimeString([], {
-      hour: "numeric",
-      minute: "2-digit",
-    })
-    .toLowerCase();
-  const getWeekday = addStartTime.toLocaleDateString("en-us", {
-    weekday: "short",
-  });
-  const getDay = addStartTime.toLocaleDateString("en-us", {
-    day: "numeric",
-  });
-
+  const d = moment.unix(parseInt(date) / 1000);
+  const reformat = moment(d).format("MMM Do, YYYY");
+  const standard = moment(d).format("YYYY-MM-DD");
+  const dtStart = moment(`${standard} ${start}`, "YYYY-MM-DD HH:mm:ss");
+  const dtEnd = moment(`${standard} ${end}`, "YYYY-MM-DD HH:mm:ss");
   return {
-    formattedDate: simplifiedDate,
-    weekday: getWeekday,
-    day: getDay,
-    startTime: displayedStartTime,
-    endTime: displayedEndTime,
-    unixStart: addStartTime.getTime(),
+    formattedDate: reformat,
+    weekday: d.format("ddd"),
+    day: d.format("DD"),
+    monthShort: d.format("MMM"),
+    startTime: dtStart.format("h:mm a"),
+    endTime: moment(dtEnd).format("h:mm a"),
+    unixStart: moment(dtStart).format("x"),
   };
 };

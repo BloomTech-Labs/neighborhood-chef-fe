@@ -20,7 +20,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import { timeAgo } from "../../utilities/functions";
+import { timeAgo, parseTime } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
 import modernRoom from "../../assets/modernRoom.png";
@@ -45,24 +45,8 @@ const RecentCard = (props) => {
     setExpanded(!expanded);
   };
 
-  var options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(parseInt(props.date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate} ${props.startTime}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  const displayedStartTime = addStartTime
-    .toLocaleTimeString([], {
-      hour: "numeric",
-      minute: "2-digit",
-    })
-    .toLowerCase();
-  const d = new Date(parseInt(props.date));
+  const timeObject = parseTime(props.date, props.startTime, props.endTime);
   const shownTime = timeAgo(props.createDateTime);
-  const day = d.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-  const dayNum = day.split(" ")[1];
-  const month = day.split(" ")[0];
 
   // const toggleLike = () => {
   //   setLiked(!liked);
@@ -123,13 +107,13 @@ const RecentCard = (props) => {
         title="New Event"
       />
       <div className="date-box">
-        <Typography variant="h5">{dayNum}</Typography>
+        <Typography variant="h5">{timeObject.day}</Typography>
         <Typography variant="h5" color="secondary">
-          {month}
+          {timeObject.monthShort}
         </Typography>
       </div>
       <Typography variant="body1" align="center">
-        {`@ ${displayedStartTime}`}
+        {`@ ${timeObject.startTime}`}
       </Typography>
       <CardContent>
         <Typography variant="h4" align="center" gutterBottom>
