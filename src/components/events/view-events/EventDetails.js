@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 //graphql imports
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
 
 //redux imports
-import { useDispatch, useSelector } from "react-redux";
-import { startEventEdit } from "../../../utilities/actions";
+import { useSelector } from "react-redux";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
@@ -29,12 +27,10 @@ import { parseTime } from "../../../utilities/functions";
 
 const EventDetails = () => {
   //grabbed from redux store
-  const dispatch = useDispatch();
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
   // const update = useSelector((state) => state.update);
-  const { push } = useHistory();
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
 
@@ -141,17 +137,6 @@ const EventDetails = () => {
                     key={ele.name}
                   />
                 ))}
-
-                {me.id === event.user_id && (
-                  <button
-                    onClick={() => {
-                      dispatch(startEventEdit(event));
-                      push("/create-event");
-                    }}
-                  >
-                    Edit
-                  </button>
-                )}
               </div>
             </div>
           </div>
