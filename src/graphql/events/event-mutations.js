@@ -4,7 +4,6 @@ export const ADD_EVENT = gql`
   mutation addEvent($input: NewEventInput!) {
     addEvent(input: $input) {
       id
-      date
       title
       description
       startTime
@@ -31,7 +30,6 @@ export const UPDATE_EVENT = gql`
   mutation updateEvent($id: ID!, $input: UpdateEventInput!) {
     updateEvent(id: $id, input: $input) {
       id
-      date
       title
       description
       startTime
@@ -58,7 +56,6 @@ export const DELETE_EVENT = gql`
   mutation removeEvent($id: ID!) {
     removeEvent(id: $id) {
       id
-      date
       title
       description
       startTime
@@ -77,7 +74,6 @@ export const INVITE_USER = gql`
   mutation inviteUserToEvent($input: EventInviteInput!) {
     inviteUserToEvent(input: $input) {
       id
-      date
       startTime
       endTime
       title
@@ -108,7 +104,6 @@ export const UPDATE_INVITATION = gql`
   mutation updateInvitation($input: UpdateInviteInput!) {
     updateInvitation(input: $input) {
       id
-      date
       startTime
       endTime
       title
@@ -139,7 +134,6 @@ export const REMOVE_INVITATION = gql`
   mutation removeInvitation($input: RemoveInviteInput!) {
     removeInvitation(input: $input) {
       id
-      date
       startTime
       endTime
       title

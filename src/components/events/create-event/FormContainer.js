@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import { print } from "graphql";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 // redux action imports
 import {
@@ -24,10 +25,7 @@ import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
-import {
-  formatDate,
-  restoreSavedModifiers,
-} from "../../../utilities/functions";
+import { restoreSavedModifiers } from "../../../utilities/functions";
 
 const initialState = {
   title: "",
@@ -69,7 +67,6 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
-      eventToEdit.date = formatDate(Number(eventToEdit.date));
       const savedHashtags = JSON.parse(eventToEdit.hashtags);
       let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
@@ -103,7 +100,6 @@ const FormContainer = () => {
               category_id: values.category_id,
               address: values.address,
               startTime: values.startTime,
-              date: values.date,
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
@@ -134,9 +130,19 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
+            let endTime;
+            let startTime = new Date(`${values.date} ${values.startTime}`);
+            if (values.endTime) {
+              endTime = new Date(`${values.date} ${values.endTime}`);
+            }
+
             const newEvent = {
-              ...values,
-              endTime: values.endTime ? values.endTime : null,
+              title: values.title,
+              description: values.description,
+              category_id: values.category_id,
+              address: values.address,
+              startTime: startTime.toISOString(),
+              endTime: values.endTime ? endTime.toISOString() : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
                 modifiers: [...modifiersWithoutIcon()],
@@ -148,6 +154,8 @@ const FormContainer = () => {
               // photo still not working quite right
               photo: null,
             };
+
+            console.log(newEvent);
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
