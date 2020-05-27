@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 //component imports
 import CalendarRow from "./CalendarRow";
@@ -31,17 +32,11 @@ const CalendarView = () => {
   const [isLoading, setIsLoading] = useState(false);
   const eventsInMonth =
     eventList &&
-    eventList.filter(
-      (ev) =>
-        new Date(parseInt(ev.date)).toLocaleDateString("en-us", {
-          month: "short",
-          year: "numeric",
-        }) ===
-        selectedMonth.toLocaleDateString("en-us", {
-          month: "short",
-          year: "numeric",
-        })
-    );
+    eventList.filter((ev) => {
+      const parsedTime = parseTime(ev.startTime, ev.endTime);
+      const eventMonth = parsedTime.monthShort;
+      return eventMonth === moment(selectedMonth).format("MMM");
+    });
 
   useEffect(() => {
     setIsLoading(true);
@@ -56,8 +51,8 @@ const CalendarView = () => {
       .then((res) => {
         const sortedByDate = res.data.data.getInvitedEvents.sort(
           (a, b) =>
-            parseTime(a.date, a.startTime, a.endTime).unixStart -
-            parseTime(b.date, b.startTime, b.endTime).unixStart
+            parseTime(a.startTime, a.endTime).unixStart -
+            parseTime(b.startTime, b.endTime).unixStart
         );
 
         dispatch(getEventsSuccess(sortedByDate));

@@ -14,7 +14,6 @@ export const ALL_USERS = gql`
       eventsOwned {
         id
         title
-        date
         description
         startTime
         endTime
@@ -53,7 +52,6 @@ export const USER_BY_ID = gql`
       longitude
       eventsOwned {
         id
-        date
         startTime
         endTime
         createDateTime
@@ -115,7 +113,6 @@ export const GET_INVITED_EVENTS = gql`
   query getInvitedEvents($id: ID!) {
     getInvitedEvents(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -147,7 +144,6 @@ export const GET_ATTENDING_EVENTS = gql`
   query getAttendingEvents($id: ID!) {
     getAttendingEvents(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime

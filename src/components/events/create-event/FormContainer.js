@@ -27,6 +27,7 @@ import { modifierData } from "./FormPageTwo.js";
 import {
   formatDate,
   restoreSavedModifiers,
+  parseTime,
 } from "../../../utilities/functions";
 
 const initialState = {
@@ -134,8 +135,14 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
+            const timeObject = parseTime(
+              new Date(`${values.date} ${values.startTime}`).getTime(),
+              values.startTime,
+              values.endTime
+            );
             const newEvent = {
               ...values,
+              date: timeObject.formattedDate,
               endTime: values.endTime ? values.endTime : null,
               hashtags: JSON.stringify({ hashtags: [...hashtags] }),
               modifiers: JSON.stringify({
@@ -154,6 +161,7 @@ const FormContainer = () => {
                 variables: { input: newEvent },
               })
               .then((res) => {
+                console.log(res);
                 dispatch(createEventSuccess(res.data.data.addEvent));
                 setHashtags([]);
                 resetForm(initialState);

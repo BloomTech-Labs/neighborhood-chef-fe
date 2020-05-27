@@ -4,7 +4,6 @@ export const ALL_EVENTS = gql`
   query getAllEvents {
     getAllEvents {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -36,7 +35,6 @@ export const EVENT_BY_ID = gql`
   query getEventById($id: ID!) {
     getEventById(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -63,5 +61,3 @@ export const EVENT_BY_ID = gql`
     }
   }
 `;
-
-
