@@ -76,7 +76,7 @@ const EventDetails = () => {
     <>
       {!!event && (
         <div style={{ position: "relative", right: "-82%", top: "10%" }}>
-          <EventButtonModal eventId={event.id} />
+          <EventButtonModal eventId={event.id} userId={me.id} />
         </div>
       )}
       <div className="event-details-container">

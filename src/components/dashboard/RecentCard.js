@@ -84,7 +84,7 @@ const RecentCard = (props) => {
             {props.photo ? props.photo : initials}
           </Avatar>
         }
-        action={<EventButtonModal eventId={props.id} />}
+        action={<EventButtonModal eventId={props.id} userId={me.id} />}
         title={
           <Typography variant="h6">
             {creatorName}

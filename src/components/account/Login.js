@@ -1,26 +1,27 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { buttonStyles } from "../../styles";
-import ls from 'local-storage';
-import { nanoid } from 'nanoid';
+import ls from "local-storage";
+import { nanoid } from "nanoid";
 import AuthHeader from "../other/AuthHeader.js";
 
-const qs = require('querystring');
-const crypto = require('crypto-browserify');
+const qs = require("querystring");
+const crypto = require("crypto-browserify");
 
 const Login = () => {
   const classes = buttonStyles();
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault();
-    ls.set('code_verifier', nanoid(43));
+    ls.set("code_verifier", nanoid(43));
 
-    const hash = crypto.createHash('sha256')
+    const hash = crypto
+      .createHash("sha256")
       .update(ls.get("code_verifier"))
-      .digest('base64')
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=/g, '');
+      .digest("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=/g, "");
     const query = {
       client_id: "0oa9qxckmhGd2aLsZ4x6",
       response_type: "code",
@@ -28,14 +29,15 @@ const Login = () => {
       redirect_uri: `${process.env.REACT_APP_FRONT_END_BASE_URL}/login-redirect-url`,
       state: "state-bsaWCD8F0dkd85REyU87",
       code_challenge_method: "S256",
-      code_challenge: hash
+      code_challenge: hash,
+    };
 
-    }
-
-    const redirectURL = `https://dev-599411.okta.com/oauth2/default/v1/authorize?${qs.stringify(query)}`;
+    const redirectURL = `https://dev-599411.okta.com/oauth2/default/v1/authorize?${qs.stringify(
+      query
+    )}`;
     console.log(hash);
     window.location.replace(`${redirectURL}`);
-  }
+  };
 
   return (
     <>
@@ -44,11 +46,10 @@ const Login = () => {
         <h1>Neighborhood Chef</h1>
         <p style={{ fontStyle: "italic" }}>Prepare to eat well</p>
 
-        {/*need to add proper okta url for login here */}
-
-        {" "}
-        <div className={`${classes.root} ${classes.single}`} onClick={handleClick}>
-          {" "}
+        <div
+          className={`${classes.root} ${classes.single}`}
+          onClick={handleClick}
+        >
           Login Securely with Okta
         </div>
 

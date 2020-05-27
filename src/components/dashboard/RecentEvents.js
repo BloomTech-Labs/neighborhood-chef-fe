@@ -10,6 +10,7 @@ const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
+  const update = useSelector((state) => state.update);
 
   useEffect(() => {
     axios({
@@ -33,7 +34,7 @@ const RecentEvents = () => {
         console.log(err.message);
       });
     // eslint-disable-next-line
-  }, []);
+  }, [update]);
   return (
     <div>
       <h2

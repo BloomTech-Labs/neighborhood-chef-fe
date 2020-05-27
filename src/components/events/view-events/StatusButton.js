@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { rsvpChange } from "../../../utilities/actions";
+import { forceUpdate } from "../../../utilities/actions";
 import { buttonStyles } from "../../../styles";
 
 import { print } from "graphql";
@@ -39,7 +39,7 @@ const StatusButton = ({
             (u) => `${u.id}` === `${userId}`
           )[0].status
         );
-        dispatch(rsvpChange());
+        dispatch(forceUpdate());
       });
   };
   return (

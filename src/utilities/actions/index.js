@@ -29,7 +29,7 @@ export const setMonth = (type) => ({
   payload: type,
 });
 
-export const rsvpChange = () => ({
+export const forceUpdate = () => ({
   type: UPDATE_STATE,
 });
 

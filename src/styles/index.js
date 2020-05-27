@@ -15,7 +15,15 @@ export const buttonStyles = makeStyles({
     color: "black",
     opacity: 0.5,
     "&:hover": {
-      background: "rgba(88, 212, 115, 0.3);",
+      background: "rgba(88, 212, 115, 0.3)",
+    },
+  },
+  warn: {
+    background: "white",
+    color: "black",
+    opacity: 0.5,
+    "&:hover": {
+      background: "#fd7c7c",
     },
   },
   active: {
