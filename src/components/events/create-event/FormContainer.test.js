@@ -11,13 +11,26 @@ const mockStore = configureStore([]);
 describe("Test FormContainer component", () => {
   let store;
   let FormContainerComponent;
+
+  const initialState = {
+    title: "",
+    description: "",
+    date: "",
+    startTime: "00:00:00",
+    endTime: "15:00:00",
+    category_id: "",
+    address: " ",
+    latitude: "",
+    longitude: "",
+  };
+
   beforeEach(() => {
     store = mockStore({});
 
     FormContainerComponent = render(
       <Router>
         <Provider store={store}>
-          <FormContainer />
+          <FormContainer initialState={initialState} />
         </Provider>
       </Router>
     );

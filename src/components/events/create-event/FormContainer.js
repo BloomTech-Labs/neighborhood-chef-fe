@@ -29,7 +29,6 @@ import { modifierData } from "./FormPageTwo.js";
 import {
   formatDate,
   restoreSavedModifiers,
-  parseTime,
 } from "../../../utilities/functions";
 
 const initialState = {
@@ -52,6 +51,7 @@ const FormContainer = () => {
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
+  const editingDate = formatDate(Number(eventToEdit.startTime));
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -67,19 +67,26 @@ const FormContainer = () => {
     });
   };
 
-  // had to pull this out of useEffect to get it to work correctly
-  if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
+  // handle startTime/endTime for editing mode
+  if (isEditing && !eventToEdit.endTime) {
+    eventToEdit.endTime = "";
+    eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
+      "HH:mm:ss"
+    );
+  } else {
+    eventToEdit.endTime = moment(parseInt(eventToEdit.endTime)).format(
+      "HH:mm:ss"
+    );
+    eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
+      "HH:mm:ss"
+    );
+  }
 
   useEffect(() => {
     if (isEditing) {
-      eventToEdit.date = formatDate(Number(eventToEdit.startTime));
-      eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
-        "HH:mm:ss"
-      );
-      eventToEdit.endTime = moment(parseInt(eventToEdit.endTime)).format(
-        "HH:mm:ss"
-      );
-      const savedHashtags = JSON.parse(eventToEdit.hashtags);
+      // create date for editing mode and restore hashtags/modifiers
+      eventToEdit.date = editingDate;
+      let savedHashtags = JSON.parse(eventToEdit.hashtags);
       let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
       if (Object.keys(savedModifiers).length !== 0) {
@@ -90,6 +97,7 @@ const FormContainer = () => {
         setHashtags(savedHashtags.hashtags);
       }
     }
+    // eslint-disable-next-line
   }, [isEditing, eventToEdit, dispatch]);
 
   // cleanup
@@ -110,7 +118,7 @@ const FormContainer = () => {
           if (values.endTime) {
             endTime = new Date(`${values.date} ${values.endTime}`);
           }
-          const updatedEvent = {
+          const event = {
             title: values.title,
             description: values.description,
             category_id: values.category_id,
@@ -134,7 +142,7 @@ const FormContainer = () => {
                 query: print(UPDATE_EVENT),
                 variables: {
                   id: Number(eventToEdit.id),
-                  input: updatedEvent,
+                  input: event,
                 },
               })
               .then((res) => {
@@ -147,28 +155,10 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            const newEvent = {
-              title: values.title,
-              description: values.description,
-              category_id: values.category_id,
-              address: values.address,
-              startTime: startTime.toISOString(),
-              endTime: values.endTime ? endTime.toISOString() : null,
-              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
-              modifiers: JSON.stringify({
-                modifiers: [...modifiersWithoutIcon()],
-              }),
-              longitude: values.longitude,
-              latitude: values.latitude,
-              // replace with variable
-              user_id: 1,
-              // photo still not working quite right
-              photo: null,
-            };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
-                variables: { input: newEvent },
+                variables: { input: event },
               })
               .then((res) => {
                 dispatch(createEventSuccess(res.data.data.addEvent));

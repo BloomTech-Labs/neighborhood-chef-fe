@@ -1,7 +1,6 @@
 import React from "react";
-import moment from "moment";
 import { useSelector } from "react-redux";
-import { convertTime, parseTime } from "../../../utilities/functions";
+import { parseTime, convertTime } from "../../../utilities/functions";
 
 const EventCard = () => {
   const values = useSelector((state) => state.newEvent);

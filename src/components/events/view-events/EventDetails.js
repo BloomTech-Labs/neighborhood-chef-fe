@@ -64,7 +64,7 @@ const EventDetails = () => {
 
   //dealing with date formatting things
   if (event) {
-    timeObject = parseTime(event.date, event.startTime, event.endTime);
+    timeObject = parseTime(event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
@@ -94,7 +94,9 @@ const EventDetails = () => {
               <Icon height="20" icon={clockIcon} />
             </span>
             {`${timeObject.startTime} ${
-              timeObject.endTime ? "- " + timeObject.endTime : ""
+              timeObject.endTime !== "Invalid date"
+                ? "- " + timeObject.endTime
+                : ""
             }`}
           </div>
           <div>
