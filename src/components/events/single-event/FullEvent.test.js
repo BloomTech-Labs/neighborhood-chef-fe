@@ -1,28 +1,29 @@
 import React from "react";
-import Header from "./Header";
+import FullEvent from "./FullEvent.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { rootReducer } from "../../utilities/reducers";
+import { rootReducer } from "../../../utilities/reducers";
 import thunk from "redux-thunk";
+
+import "@testing-library/jest-dom/extend-expect";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test header static properties", () => {
-  let HeaderComponent;
+describe("Test FullEvent static properties", () => {
+  let FullEventComponent;
   beforeEach(() => {
-    HeaderComponent = render(
+    FullEventComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <Header />
+          <FullEvent match={{ params: { id: 1 } }} />
         </BrowserRouter>
       </Provider>
     );
   });
-  test("Header renders", () => {
-    const firstDiv = document.querySelector(".header-container");
-    expect(firstDiv.toBeInDocument);
+
+  test("FullEvent component renders", () => {
+    expect(FullEventComponent.getByText(/FullEvent/i));
   });
 });

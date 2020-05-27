@@ -13,6 +13,7 @@ export const RESET_INVITE_SUCCESS = "RESET_INVITE_SUCCESS";
 export const START_EVENT_EDIT = "START_EVENT_EDIT";
 export const CANCEL_EDIT = "CANCEL_EDIT";
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
+export const SINGLE_EVENT_FETCH_SUCCESS = "SINGLE_EVENT_FETCH_SUCCESS";
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -82,5 +83,10 @@ export const cancelEdit = () => ({
 
 export const updateEventSuccess = (event) => ({
   type: UPDATE_EVENT_SUCCESS,
+  payload: event,
+});
+
+export const getSingleEvent = (event) => ({
+  type: SINGLE_EVENT_FETCH_SUCCESS,
   payload: event,
 });

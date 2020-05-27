@@ -15,7 +15,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
 // import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
@@ -32,6 +31,8 @@ import axios from "axios";
 import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
 
+import EventButtonModal from "./EventButtonModal";
+
 const RecentCard = (props) => {
   const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
@@ -39,6 +40,7 @@ const RecentCard = (props) => {
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
+  const [optionsVisible, setOptionsVisible] = useState(false);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
@@ -46,7 +48,6 @@ const RecentCard = (props) => {
   };
 
   const timeObject = parseTime(props.startTime, props.endTime);
-  console.log(timeObject);
   const shownTime = timeAgo(props.createDateTime);
 
   // const toggleLike = () => {
@@ -84,12 +85,7 @@ const RecentCard = (props) => {
             {props.photo ? props.photo : initials}
           </Avatar>
         }
-        //this button does not function currently. will add funtionality later
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+        action={<EventButtonModal eventId={props.id} />}
         title={
           <Typography variant="h6">
             {creatorName}
