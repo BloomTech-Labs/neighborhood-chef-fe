@@ -25,7 +25,12 @@ import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
-import { restoreSavedModifiers } from "../../../utilities/functions";
+
+import {
+  formatDate,
+  restoreSavedModifiers,
+  parseTime,
+} from "../../../utilities/functions";
 
 const initialState = {
   title: "",
@@ -67,6 +72,13 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
+      eventToEdit.date = formatDate(Number(eventToEdit.startTime));
+      eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
+        "HH:mm:ss"
+      );
+      eventToEdit.endTime = moment(parseInt(eventToEdit.endTime)).format(
+        "HH:mm:ss"
+      );
       const savedHashtags = JSON.parse(eventToEdit.hashtags);
       let savedModifiers = JSON.parse(eventToEdit.modifiers);
 
@@ -93,25 +105,30 @@ const FormContainer = () => {
       <Formik
         initialValues={isEditing ? eventToEdit : initialState}
         onSubmit={(values, { resetForm }) => {
+          let endTime;
+          let startTime = new Date(`${values.date} ${values.startTime}`);
+          if (values.endTime) {
+            endTime = new Date(`${values.date} ${values.endTime}`);
+          }
+          const updatedEvent = {
+            title: values.title,
+            description: values.description,
+            category_id: values.category_id,
+            address: values.address,
+            startTime: startTime.toISOString(),
+            endTime: values.endTime ? endTime.toISOString() : null,
+            hashtags: JSON.stringify({ hashtags: [...hashtags] }),
+            modifiers: JSON.stringify({
+              modifiers: [...modifiersWithoutIcon()],
+            }),
+            longitude: values.longitude,
+            latitude: values.latitude,
+            // replace with variable
+            user_id: 1,
+            // photo still not working quite right
+            photo: null,
+          };
           if (isEditing) {
-            const updatedEvent = {
-              title: values.title,
-              description: values.description,
-              category_id: values.category_id,
-              address: values.address,
-              startTime: values.startTime,
-              endTime: values.endTime ? values.endTime : null,
-              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
-              modifiers: JSON.stringify({
-                modifiers: [...modifiersWithoutIcon()],
-              }),
-              longitude: values.longitude,
-              latitude: values.latitude,
-              // replace with variable
-              user_id: 1,
-              // photo still not working quite right
-              photo: null,
-            };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(UPDATE_EVENT),
@@ -130,12 +147,6 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            let endTime;
-            let startTime = new Date(`${values.date} ${values.startTime}`);
-            if (values.endTime) {
-              endTime = new Date(`${values.date} ${values.endTime}`);
-            }
-
             const newEvent = {
               title: values.title,
               description: values.description,
@@ -154,8 +165,6 @@ const FormContainer = () => {
               // photo still not working quite right
               photo: null,
             };
-
-            console.log(newEvent);
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
