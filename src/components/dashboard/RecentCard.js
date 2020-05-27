@@ -45,7 +45,8 @@ const RecentCard = (props) => {
     setExpanded(!expanded);
   };
 
-  const timeObject = parseTime(props.date, props.startTime, props.endTime);
+  const timeObject = parseTime(props.startTime, props.endTime);
+  console.log(timeObject);
   const shownTime = timeAgo(props.createDateTime);
 
   // const toggleLike = () => {

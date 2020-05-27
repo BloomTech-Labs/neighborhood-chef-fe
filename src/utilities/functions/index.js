@@ -59,19 +59,12 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
   return cb(arr);
 };
 
-export const parseTime = (date, start, end) => {
-  const d = moment.unix(parseInt(date) / 1000);
-  const reformat = moment(d).format("MMM Do, YYYY");
-  const standard = moment(d).format("YYYY-MM-DD");
-  const dtStart = moment(`${standard} ${start}`, "YYYY-MM-DD HH:mm:ss");
-  const dtEnd = moment(`${standard} ${end}`, "YYYY-MM-DD HH:mm:ss");
-  return {
-    formattedDate: reformat,
-    weekday: d.format("ddd"),
-    day: d.format("DD"),
-    monthShort: d.format("MMM"),
-    startTime: dtStart.format("h:mm a"),
-    endTime: moment(dtEnd).format("h:mm a"),
-    unixStart: moment(dtStart).format("x"),
-  };
-};
+export const parseTime = (start, end) => ({
+  formattedDate: moment(parseInt(start)).format("MMM Do, YYYY"),
+  weekday: moment(parseInt(start)).format("ddd"),
+  day: moment(parseInt(start)).format("DD"),
+  monthShort: moment(parseInt(start)).format("MMM"),
+  startTime: moment(parseInt(start)).format("h:mm a"),
+  endTime: moment(parseInt(end)).format("h:mm a"),
+  unixStart: start,
+});

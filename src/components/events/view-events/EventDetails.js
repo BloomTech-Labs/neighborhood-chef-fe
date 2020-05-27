@@ -64,7 +64,7 @@ const EventDetails = () => {
 
   //dealing with date formatting things
   if (event) {
-    timeObject = parseTime(event.date, event.startTime, event.endTime);
+    timeObject = parseTime(event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
@@ -95,7 +95,7 @@ const EventDetails = () => {
             </span>
             {`${timeObject.startTime} ${
               timeObject.endTime ? "- " + timeObject.endTime : ""
-              }`}
+            }`}
           </div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
@@ -132,19 +132,23 @@ const EventDetails = () => {
               ))}
 
               {me.id === event.user_id && (
-                <button onClick={() => {
-                  dispatch(startEventEdit(event))
-                  push("/create-event")
-                }}>Edit</button>
+                <button
+                  onClick={() => {
+                    dispatch(startEventEdit(event));
+                    push("/create-event");
+                  }}
+                >
+                  Edit
+                </button>
               )}
             </div>
           </div>
         </div>
       ) : (
-          <div>
-            <h3>Select an event from the calendar to view the details here.</h3>
-          </div>
-        )}
+        <div>
+          <h3>Select an event from the calendar to view the details here.</h3>
+        </div>
+      )}
     </div>
   );
 };
