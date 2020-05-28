@@ -103,7 +103,6 @@ const EventButtonModal = ({ eventId, userId }) => {
                       id="menu-list-grow"
                       onKeyDown={handleListKeyDown}
                     >
-                      {/*these buttons currently dont go anywhere.  todo.*/}
                       <MenuItem
                         onClick={() => history.push(`/events/${eventId}`)}
                       >

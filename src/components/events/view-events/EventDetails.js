@@ -65,7 +65,7 @@ const EventDetails = () => {
   }, [event]);
 
   if (event) {
-    timeObject = parseTime(event.date, event.startTime, event.endTime);
+    timeObject = parseTime(event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
