@@ -40,7 +40,6 @@ const RecentCard = (props) => {
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
-  const [optionsVisible, setOptionsVisible] = useState(false);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
@@ -85,7 +84,7 @@ const RecentCard = (props) => {
             {props.photo ? props.photo : initials}
           </Avatar>
         }
-        action={<EventButtonModal eventId={props.id} />}
+        action={<EventButtonModal eventId={props.id} userId={me.id} />}
         title={
           <Typography variant="h6">
             {creatorName}

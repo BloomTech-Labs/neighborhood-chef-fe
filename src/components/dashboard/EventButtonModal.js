@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -7,12 +7,17 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconButton from "@material-ui/core/IconButton";
-
 import { useHistory } from "react-router-dom";
-
 import { modalStyles } from "../../styles";
+import axios from "axios";
+import { print } from "graphql";
+import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
+import { useDispatch } from "react-redux";
+import { deleteInvitationSuccess, forceUpdate } from "../../utilities/actions";
+import WarnRemoveModal from "./WarnRemoveModal";
 
-const EventButtonModal = ({ eventId }) => {
+const EventButtonModal = ({ eventId, userId }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const modalClasses = modalStyles();
   const [open, setOpen] = useState(false);
@@ -30,16 +35,33 @@ const EventButtonModal = ({ eventId }) => {
     setOpen(false);
   };
 
-  function handleListKeyDown(event) {
+  const handleListKeyDown = (event) => {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     }
-  }
+  };
+  const removeInvitation = () => {
+    const removeInvite = {
+      event_id: Number(eventId),
+      user_id: Number(userId),
+    };
+
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+        query: print(REMOVE_INVITATION),
+        variables: { input: removeInvite },
+      })
+      .then((res) => {
+        dispatch(deleteInvitationSuccess(res.data.data.removeInvitation.users));
+        dispatch(forceUpdate());
+      })
+      .catch((err) => console.log(err));
+  };
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);
-  React.useEffect(() => {
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
@@ -48,53 +70,56 @@ const EventButtonModal = ({ eventId }) => {
   }, [open]);
 
   return (
-    <div className={modalClasses.root}>
-      <div>
-        <IconButton
-          ref={anchorRef}
-          aria-controls={open ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          <MoreVertIcon />
-        </IconButton>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    {/*these buttons currently dont go anywhere.  todo.*/}
-                    <MenuItem
-                      onClick={() => history.push(`/events/${eventId}`)}
+    <>
+      <div className={modalClasses.root}>
+        <div>
+          <IconButton
+            ref={anchorRef}
+            aria-controls={open ? "menu-list-grow" : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+          >
+            <MoreVertIcon />
+          </IconButton>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === "bottom" ? "center top" : "center bottom",
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList
+                      autoFocusItem={open}
+                      id="menu-list-grow"
+                      onKeyDown={handleListKeyDown}
                     >
-                      Open Event
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>Hide Event</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
+                      <MenuItem
+                        onClick={() => history.push(`/events/${eventId}`)}
+                      >
+                        Open Event
+                      </MenuItem>
+                      <MenuItem>
+                        <WarnRemoveModal removeInvitation={removeInvitation} />
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default EventButtonModal;
