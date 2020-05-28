@@ -19,7 +19,7 @@ import globeIcon from "@iconify/icons-flat-color-icons/globe";
 import StatusButton from "./StatusButton";
 import { rsvpButtons } from "../../../data/buttons";
 
-import { parseTime } from "../../../utilities/functions";
+import { parseTime, convertTimeAndDate } from "../../../utilities/functions";
 
 const EventDetails = () => {
   //grabbed from redux store
@@ -70,7 +70,6 @@ const EventDetails = () => {
       "+"
     )}`;
   }
-
   return (
     <div className="event-details-container">
       {!!event ? (
@@ -136,6 +135,12 @@ const EventDetails = () => {
               {me.id === event.user_id && (
                 <button
                   onClick={() => {
+                    /* had to add date to eventToEdit object and convert start/end times here for editing 
+                    mode to allow moment functions to finish converting before the form rendered */
+                    const convertForEdit = convertTimeAndDate(event);
+                    event.date = convertForEdit.date;
+                    event.startTime = convertForEdit.startTime;
+                    event.endTime = convertForEdit.endTime;
                     dispatch(startEventEdit(event));
                     push("/create-event");
                   }}

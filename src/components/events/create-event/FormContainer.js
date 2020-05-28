@@ -3,7 +3,6 @@ import { Formik, Form } from "formik";
 import { print } from "graphql";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
 
 // redux action imports
 import {
@@ -26,10 +25,7 @@ import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
 
-import {
-  formatDate,
-  restoreSavedModifiers,
-} from "../../../utilities/functions";
+import { restoreSavedModifiers } from "../../../utilities/functions";
 
 const initialState = {
   title: "",
@@ -51,7 +47,6 @@ const FormContainer = () => {
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
-  const editingDate = formatDate(Number(eventToEdit.startTime));
 
   const resetModifiers = () => {
     return modifierData.map((mod) => (mod.active = false));
@@ -67,37 +62,21 @@ const FormContainer = () => {
     });
   };
 
-  // handle startTime/endTime for editing mode
-  if (isEditing && !eventToEdit.endTime) {
-    eventToEdit.endTime = "";
-    eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
-      "HH:mm:ss"
-    );
-  } else {
-    eventToEdit.endTime = moment(parseInt(eventToEdit.endTime)).format(
-      "HH:mm:ss"
-    );
-    eventToEdit.startTime = moment(parseInt(eventToEdit.startTime)).format(
-      "HH:mm:ss"
-    );
-  }
-
   useEffect(() => {
     if (isEditing) {
-      // create date for editing mode and restore hashtags/modifiers
-      eventToEdit.date = editingDate;
-      let savedHashtags = JSON.parse(eventToEdit.hashtags);
-      let savedModifiers = JSON.parse(eventToEdit.modifiers);
-
+      const savedHashtags = JSON.parse(eventToEdit.hashtags);
+      const savedModifiers = JSON.parse(eventToEdit.modifiers);
       if (Object.keys(savedModifiers).length !== 0) {
-        savedModifiers = savedModifiers.modifiers;
-        restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
+        restoreSavedModifiers(
+          modifierData,
+          savedModifiers.modifiers,
+          setModifiers
+        );
       }
       if (Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
       }
     }
-    // eslint-disable-next-line
   }, [isEditing, eventToEdit, dispatch]);
 
   // cleanup
@@ -113,8 +92,8 @@ const FormContainer = () => {
       <Formik
         initialValues={isEditing ? eventToEdit : initialState}
         onSubmit={(values, { resetForm }) => {
-          let endTime;
           let startTime = new Date(`${values.date} ${values.startTime}`);
+          let endTime;
           if (values.endTime) {
             endTime = new Date(`${values.date} ${values.endTime}`);
           }
