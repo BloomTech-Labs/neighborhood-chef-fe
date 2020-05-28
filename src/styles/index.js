@@ -243,6 +243,17 @@ export const textBoxStyles = makeStyles({
   },
 });
 
+export const modalStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  paper: {
+    marginRight: theme.spacing(2),
+  },
+}));
+
+/*----Theme styling for entire app-----*/
+
 export const theme = createMuiTheme({
   typography: {
     h1: {
