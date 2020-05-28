@@ -1,7 +1,6 @@
 import React from "react";
-import moment from "moment";
 import { useSelector } from "react-redux";
-import { convertTime } from "../../../utilities/functions";
+import moment from "moment";
 
 const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
@@ -55,7 +54,7 @@ const EventCard = () => {
             }}
           >
             <p style={{ color: "rgba(0, 0, 0, 0.35)", marginBottom: "22px" }}>
-              {values.date && moment(Number(values.date)).format("MMM Do YYYY")}
+              {moment(parseInt(values.startTime)).format("MMM Do, YYYY")}
               .&nbsp;
             </p>
             <div style={{ display: "flex" }}>
@@ -65,7 +64,7 @@ const EventCard = () => {
                   fontWeight: "500",
                 }}
               >
-                {convertTime(values.startTime)}&nbsp;
+                {moment(parseInt(values.startTime)).format("h:mmA")}&nbsp;
               </p>
               {values.endTime && (
                 <>
@@ -76,7 +75,7 @@ const EventCard = () => {
                       fontWeight: "500",
                     }}
                   >
-                    {convertTime(values.endTime)}
+                    {moment(parseInt(values.endTime)).format("h:mmA")}
                   </p>
                 </>
               )}
