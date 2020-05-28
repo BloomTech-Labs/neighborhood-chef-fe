@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
@@ -6,13 +6,18 @@ import { print } from "graphql";
 import { GET_INVITED_EVENTS } from "../../graphql/users/user-queries";
 import { getEventsSuccess } from "../../utilities/actions";
 
+//icon imports
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
   const update = useSelector((state) => state.update);
+  const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
+    setIsFetching(true);
     axios({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
@@ -32,6 +37,9 @@ const RecentEvents = () => {
       })
       .catch((err) => {
         console.log(err.message);
+      })
+      .then((res) => {
+        setIsFetching(false);
       });
     // eslint-disable-next-line
   }, [update]);
@@ -47,8 +55,13 @@ const RecentEvents = () => {
       </h2>
       <div style={{ overflow: "auto", height: "80vh" }}>
         <div className="recent-events-container">
-          {!!eventList &&
-            eventList.map((ele) => (
+          {isFetching ? (
+            <div style={{ textAlign: "center" }}>
+              <CircularProgress />
+            </div>
+          ) : (
+            !!eventList &&
+            eventList.map((ele, id) => (
               <RecentCard
                 {...ele}
                 key={ele.id}
@@ -56,7 +69,8 @@ const RecentEvents = () => {
                   ele.users.filter((u) => `${u.id}` === `${me.id}`)[0].status
                 }
               />
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>

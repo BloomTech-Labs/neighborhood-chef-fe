@@ -14,6 +14,7 @@ import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
 import ChangePassword from "./components/account/PasswordChangePage";
 import FullEvent from "./components/events/single-event/FullEvent";
+import CheckEmail from "./components/account/CheckEmail";
 
 import Login from "./components/account/Login";
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/notifications" component={Notifications} />
         <Route path="/messages" component={Messages} />
         <Route path="/events/:id" component={FullEvent} />
+        <Route path="/register-check-email" component={CheckEmail} />
       </Switch>
     </div>
   );
