@@ -21,6 +21,22 @@ export const timeAgo = (dateCreated) => {
   return `${configuredTime} ${showType} ago`;
 };
 
+export const restoreSavedModifiers = (arr1, arr2, cb) => {
+  let arr = [];
+  let seen = {};
+
+  arr2.forEach((mod) => {
+    seen[mod.id] = mod;
+  });
+  arr1.filter((mod) => {
+    if (mod.id in seen) {
+      mod.active = true;
+      arr.push(mod);
+    }
+  });
+  return cb(arr);
+};
+
 export const convertTime = (time24) => {
   let ts = time24;
   let H = +ts.substr(0, 2);
@@ -43,22 +59,6 @@ export const formatDate = (date) => {
   return [year, month, day].join("-");
 };
 
-export const restoreSavedModifiers = (arr1, arr2, cb) => {
-  let arr = [];
-  let seen = {};
-
-  arr2.forEach((mod) => {
-    seen[mod.id] = mod;
-  });
-  arr1.filter((mod) => {
-    if (mod.id in seen) {
-      mod.active = true;
-      arr.push(mod);
-    }
-  });
-  return cb(arr);
-};
-
 export const parseTime = (start, end) => ({
   formattedDate: moment(parseInt(start)).format("MMM Do, YYYY"),
   weekday: moment(parseInt(start)).format("ddd"),
@@ -67,4 +67,12 @@ export const parseTime = (start, end) => ({
   startTime: moment(parseInt(start)).format("h:mm a"),
   endTime: moment(parseInt(end)).format("h:mm a"),
   unixStart: start,
+});
+
+export const convertTimeAndDate = (event) => ({
+  date: moment(parseInt(event.startTime)).format("YYYY-MM-DD"),
+  startTime: moment(parseInt(event.startTime)).format("HH:mm:ss"),
+  endTime: event.endTime
+    ? moment(parseInt(event.endTime)).format("HH:mm:ss")
+    : "",
 });

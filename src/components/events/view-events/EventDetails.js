@@ -26,7 +26,6 @@ import { rsvpButtons } from "../../../data/buttons";
 import { parseTime } from "../../../utilities/functions";
 
 const EventDetails = () => {
-  //grabbed from redux store
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = useSelector((state) => state.myUser);
@@ -71,7 +70,6 @@ const EventDetails = () => {
       "+"
     )}`;
   }
-
   return (
     <>
       {!!event && (
@@ -101,7 +99,9 @@ const EventDetails = () => {
                 <Icon height="20" icon={clockIcon} />
               </span>
               {`${timeObject.startTime} ${
-                timeObject.endTime ? "- " + timeObject.endTime : ""
+                timeObject.endTime !== "Invalid date"
+                  ? "- " + timeObject.endTime
+                  : ""
               }`}
             </div>
             <div>

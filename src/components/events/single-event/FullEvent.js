@@ -6,6 +6,7 @@ import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
 import Sidebar from "../../dashboard/Sidebar";
 import { startEventEdit } from "../../../utilities/actions";
+import { convertTimeAndDate } from "../../../utilities/functions";
 
 import { useHistory } from "react-router-dom";
 
@@ -50,6 +51,12 @@ const FullEvent = ({ match }) => {
           {me.id === currentEvent.user_id && (
             <button
               onClick={() => {
+                /* had to add date to eventToEdit object and convert start/end times here for editing 
+                    mode to allow moment functions to finish converting before the form rendered */
+                const convertForEdit = convertTimeAndDate(currentEvent);
+                currentEvent.date = convertForEdit.date;
+                currentEvent.startTime = convertForEdit.startTime;
+                currentEvent.endTime = convertForEdit.endTime;
                 dispatch(startEventEdit(currentEvent));
                 push("/create-event");
               }}
