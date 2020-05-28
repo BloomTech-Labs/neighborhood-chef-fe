@@ -4,7 +4,7 @@ import SearchFriends from "./SearchFriends.js";
 
 const FormPageFour = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
       <EventCard />
       <SearchFriends />
     </div>

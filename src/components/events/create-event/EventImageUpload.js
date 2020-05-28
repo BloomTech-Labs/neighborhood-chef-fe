@@ -1,11 +1,20 @@
-import React from 'react';
+import React from "react";
 
-const EventImageUpload = ({ setPhoto }) => {
+const EventImageUpload = ({ photo, setPhoto }) => {
   const handleChange = (e) => {
+    if (e.target.files[0].size > 1500000) {
+      alert("File size is too large");
+      return;
+    }
+
     const type = e.target.files[0].type;
-    if (type === 'image/png' || type === 'image/jpeg' || type === 'image/jpg') {
-      setPhoto(e.target.files[0]);
-      console.log(e.target.files[0]);
+    if (type === "image/png" || type === "image/jpeg" || type === "image/jpg") {
+      let file = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setPhoto(reader.result);
+      };
     }
   };
 
@@ -13,10 +22,10 @@ const EventImageUpload = ({ setPhoto }) => {
     <div className="createImgDiv">
       <h5
         style={{
-          textAlign: 'left',
-          fontSize: '1.8rem',
-          marginLeft: '10px',
-          fontWeight: 'normal',
+          textAlign: "left",
+          fontSize: "1.8rem",
+          marginLeft: "10px",
+          fontWeight: "normal",
         }}
       >
         Upload a main picture for your event page.
@@ -28,7 +37,7 @@ const EventImageUpload = ({ setPhoto }) => {
           multiple={false}
           accept="image/*"
           onChange={handleChange}
-          style={{ fontSize: '1.6rem' }}
+          style={{ fontSize: "1.6rem" }}
         />
       </div>
     </div>
