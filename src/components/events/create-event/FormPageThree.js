@@ -32,10 +32,10 @@ const FormPageThree = ({
           <div style={{ display: "flex", width: "100%" }}>
             <img
               style={{
-                width: "40%",
+                maxWidth: "50%",
                 border: "8px solid #58D473",
                 borderRadius: "25px",
-                maxHeight: "250px",
+                maxHeight: "300px",
               }}
               src={photo}
               alt="bbq"

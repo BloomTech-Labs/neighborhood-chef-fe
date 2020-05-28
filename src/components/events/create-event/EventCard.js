@@ -20,10 +20,10 @@ const EventCard = () => {
         <div style={{ display: "flex", width: "100%" }}>
           <img
             style={{
-              width: "40%",
+              maxWidth: "50%",
               border: "8px solid #58D473",
               borderRadius: "25px",
-              maxHeight: "250px",
+              maxHeight: "300px",
             }}
             src={values.photo}
             alt="bbq"
@@ -49,40 +49,35 @@ const EventCard = () => {
             >
               {values.title}
             </h3>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <p style={{ color: "rgba(0, 0, 0, 0.35)" }}>
-                {moment(parseInt(values.startTime)).format("MMM Do, YYYY")}
-                .&nbsp;
+
+            <p style={{ color: "rgba(0, 0, 0, 0.35)" }}>
+              {moment(parseInt(values.startTime)).format("MMM Do, YYYY")}
+              .&nbsp;
+            </p>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  color: "#82DF96",
+                  fontWeight: "500",
+                }}
+              >
+                {moment(parseInt(values.startTime)).format("h:mmA")}&nbsp;
               </p>
-              <div style={{ display: "flex", marginTop: "5%" }}>
-                <p
-                  style={{
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {moment(parseInt(values.startTime)).format("h:mmA")}&nbsp;
-                </p>
-                {values.endTime && (
-                  <>
-                    <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
-                    <p
-                      style={{
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {moment(parseInt(values.endTime)).format("h:mmA")}
-                    </p>
-                  </>
-                )}
-              </div>
+              {values.endTime && (
+                <>
+                  <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
+                  <p
+                    style={{
+                      color: "#ea6565",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {moment(parseInt(values.endTime)).format("h:mmA")}
+                  </p>
+                </>
+              )}
             </div>
+
             <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>{values.address}</p>
           </div>
         </div>
@@ -116,39 +111,33 @@ const EventCard = () => {
             >
               {values.title}
             </h3>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <p style={{ color: "rgba(0, 0, 0, 0.35)" }}>
-                {moment(parseInt(values.startTime)).format("MMM Do, YYYY")}
-                .&nbsp;
+
+            <p style={{ color: "rgba(0, 0, 0, 0.35)" }}>
+              {moment(parseInt(values.startTime)).format("MMM Do, YYYY")}
+              .&nbsp;
+            </p>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  color: "#82DF96",
+                  fontWeight: "500",
+                }}
+              >
+                {moment(parseInt(values.startTime)).format("h:mmA")}&nbsp;
               </p>
-              <div style={{ display: "flex", marginTop: "25px" }}>
-                <p
-                  style={{
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {moment(parseInt(values.startTime)).format("h:mmA")}&nbsp;
-                </p>
-                {values.endTime && (
-                  <>
-                    <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
-                    <p
-                      style={{
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {moment(parseInt(values.endTime)).format("h:mmA")}
-                    </p>
-                  </>
-                )}
-              </div>
+              {values.endTime && (
+                <>
+                  <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>to&nbsp;</p>
+                  <p
+                    style={{
+                      color: "#ea6565",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {moment(parseInt(values.endTime)).format("h:mmA")}
+                  </p>
+                </>
+              )}
             </div>
             <p style={{ color: "rgba(0, 0, 0, 0.5)" }}>{values.address}</p>
           </div>

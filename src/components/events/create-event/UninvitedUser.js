@@ -81,6 +81,7 @@ const UninvitedUser = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             marginLeft: "5%",
+            width: "20%",
           }}
         >
           <div
@@ -112,6 +113,7 @@ const UninvitedUser = ({ user }) => {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "flex-end",
           marginLeft: "5%",
         }}
       >
