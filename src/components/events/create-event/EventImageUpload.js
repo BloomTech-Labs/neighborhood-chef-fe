@@ -54,7 +54,7 @@ const EventImageUpload = ({ photo, setPhoto }) => {
             style={{ display: "none" }}
           />
           <label
-            for="eventImageUpload"
+            htmlFor="eventImageUpload"
             style={{ display: "flex", alignItems: "center", color: "white" }}
           >
             Upload{" "}
