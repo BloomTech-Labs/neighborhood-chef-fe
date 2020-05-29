@@ -75,6 +75,7 @@ const EventImageUpload = ({ photo, setPhoto }) => {
               maxHeight: "120px",
               borderRadius: "10px",
               border: "8px solid #82df96",
+              cursor: "pointer",
             }}
           />
         )}
