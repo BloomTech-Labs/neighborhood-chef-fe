@@ -179,7 +179,6 @@ const FormContainer = () => {
                     setModifiers={setModifiers}
                     photo={photo}
                     setPhoto={setPhoto}
-                    isEditing={isEditing}
                   />
                 </>
               )}

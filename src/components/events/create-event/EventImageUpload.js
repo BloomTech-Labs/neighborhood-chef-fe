@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 
-const EventImageUpload = ({ photo, setPhoto, isEditing }) => {
+const EventImageUpload = ({ photo, setPhoto }) => {
   const handleChange = (e) => {
     if (e.target.files[0].size > 1500000) {
       alert("File size is too large");

@@ -30,16 +30,11 @@ const FormPageTwo = ({
   setModifiers,
   photo,
   setPhoto,
-  isEditing,
 }) => {
   return (
     <>
       <div className="createFormPage2Container">
-        <EventImageUpload
-          photo={photo}
-          setPhoto={setPhoto}
-          isEditing={isEditing}
-        />
+        <EventImageUpload photo={photo} setPhoto={setPhoto} />
         <AddHashtag
           hashtags={hashtags}
           setHashtags={setHashtags}
