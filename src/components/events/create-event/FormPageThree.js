@@ -29,7 +29,7 @@ const FormPageThree = ({
         }}
       >
         {photo ? (
-          <div style={{ display: "flex", width: "100%" }}>
+          <div style={{ display: "flex", width: "100%", minHeight: "200px" }}>
             <img
               style={{
                 maxWidth: "50%",

@@ -1,6 +1,8 @@
 import React from "react";
+import { Icon } from "@iconify/react";
+import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 
-const EventImageUpload = ({ photo, setPhoto }) => {
+const EventImageUpload = ({ photo, setPhoto, isEditing }) => {
   const handleChange = (e) => {
     if (e.target.files[0].size > 1500000) {
       alert("File size is too large");
@@ -30,15 +32,50 @@ const EventImageUpload = ({ photo, setPhoto }) => {
       >
         Upload a main picture for your event page.
       </h5>
-      <div className="imgUploadDiv">
-        <input
-          type="file"
-          name="file"
-          multiple={false}
-          accept="image/*"
-          onChange={handleChange}
-          style={{ fontSize: "1.6rem" }}
-        />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "70%",
+        }}
+      >
+        <div
+          className="imgUploadDiv"
+          style={photo ? { background: "#82df96" } : {}}
+        >
+          <input
+            type="file"
+            name="file"
+            id="eventImageUpload"
+            multiple={false}
+            accept="image/jpeg,image/gif,image/png, image/jpg"
+            onChange={handleChange}
+            style={{ display: "none" }}
+          />
+          <label
+            for="eventImageUpload"
+            style={{ display: "flex", alignItems: "center", color: "white" }}
+          >
+            Upload{" "}
+            <Icon
+              icon={uploadOutlined}
+              style={{ fontSize: "2.5rem", marginLeft: "10px", color: "white" }}
+            />
+          </label>
+        </div>
+        {photo && (
+          <img
+            src={photo}
+            alt="event"
+            style={{
+              maxWidth: "30%",
+              maxHeight: "120px",
+              borderRadius: "10px",
+              border: "8px solid #82df96",
+            }}
+          />
+        )}
       </div>
     </div>
   );

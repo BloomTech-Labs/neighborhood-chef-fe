@@ -409,29 +409,13 @@ a {
   align-items: flex-start;
 }
 
-.createImgDiv button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #58d473;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 15px 20px;
-  border-radius: 15px;
-  margin: 20px 20px;
-  color: white;
-  outline: none;
-  font-size: 2rem;
-  font-weight: bold;
-  width: 30%;
-}
-
 .imgUploadDiv {
   display: flex;
   align-items: center;
   background: rgba(130, 223, 150, 0.5);
   border-radius: 15px;
   color: white;
-  padding: 15px 10px;
+  padding: 15px 30px;
   font-size: 1.6rem;
   font-weight: bold;
   margin-top: 20px;
