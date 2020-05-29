@@ -7,13 +7,14 @@ const EventImageUpload = ({ photo, setPhoto }) => {
     if (e.target.files[0]) {
       if (e.target.files[0].size > 1500000) {
         alert("File size is too large");
+      } else {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setPhoto(reader.result);
+        };
       }
-      let file = e.target.files[0];
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setPhoto(reader.result);
-      };
     }
   };
 
