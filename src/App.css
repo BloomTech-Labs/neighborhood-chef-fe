@@ -423,6 +423,10 @@ a {
   margin-left: 20px;
 }
 
+.imgUploadDivActive {
+  background: #82df96;
+}
+
 .modifierNotActive {
   display: flex;
   align-items: center;

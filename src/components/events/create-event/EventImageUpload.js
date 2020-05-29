@@ -4,13 +4,10 @@ import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 
 const EventImageUpload = ({ photo, setPhoto }) => {
   const handleChange = (e) => {
-    if (e.target.files[0].size > 1500000) {
-      alert("File size is too large");
-      return;
-    }
-
-    const type = e.target.files[0].type;
-    if (type === "image/png" || type === "image/jpeg" || type === "image/jpg") {
+    if (e.target.files[0]) {
+      if (e.target.files[0].size > 1500000) {
+        alert("File size is too large");
+      }
       let file = e.target.files[0];
       let reader = new FileReader();
       reader.readAsDataURL(file);
@@ -40,22 +37,25 @@ const EventImageUpload = ({ photo, setPhoto }) => {
           width: "70%",
         }}
       >
-        <div
-          className="imgUploadDiv"
-          style={photo ? { background: "#82df96" } : {}}
-        >
+        <div>
           <input
             type="file"
             name="file"
             id="eventImageUpload"
             multiple={false}
-            accept="image/jpeg,image/gif,image/png, image/jpg"
             onChange={handleChange}
+            accept="image/jpeg,image/gif,image/png, image/jpg"
             style={{ display: "none" }}
           />
           <label
             htmlFor="eventImageUpload"
-            style={{ display: "flex", alignItems: "center", color: "white" }}
+            className={`imgUploadDiv${photo ? " imgUploadDivActive" : ""}`}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              color: "white",
+              cursor: "pointer",
+            }}
           >
             Upload{" "}
             <Icon
@@ -64,12 +64,14 @@ const EventImageUpload = ({ photo, setPhoto }) => {
             />
           </label>
         </div>
+
         {photo && (
           <img
+            onClick={() => setPhoto(null)}
             src={photo}
             alt="event"
             style={{
-              maxWidth: "30%",
+              maxWidth: "40%",
               maxHeight: "120px",
               borderRadius: "10px",
               border: "8px solid #82df96",
