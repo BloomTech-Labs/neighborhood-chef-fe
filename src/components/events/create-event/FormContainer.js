@@ -46,7 +46,7 @@ const FormContainer = () => {
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [allergenList, setAllergenList] = useState([]);
-  const [dietRestrictions, setDietRestrictions] = useState([]);
+  const [dietWarnings, setDietWarnings] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
@@ -183,8 +183,8 @@ const FormContainer = () => {
                     setPhoto={setPhoto}
                     allergenList={allergenList}
                     setAllergenList={setAllergenList}
-                    dietRestrictions={dietRestrictions}
-                    setDietRestrictions={setDietRestrictions}
+                    dietWarnings={dietWarnings}
+                    setDietWarnings={setDietWarnings}
                   />
                 </>
               )}

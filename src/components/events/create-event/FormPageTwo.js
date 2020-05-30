@@ -11,7 +11,7 @@ import EventImageUpload from "./EventImageUpload.js";
 import Modifier from "./Modifier.js";
 import AddHashtag from "./AddHashtag.js";
 import { scrollToTop } from "./FormPageOne.js";
-import AdvancedOptions from "./AdvancedOptions.js";
+import AdvancedOptions from "./advanced-options/AdvancedOptions.js";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -33,8 +33,8 @@ const FormPageTwo = ({
   setPhoto,
   allergenList,
   setAllergenList,
-  dietRestrictions,
-  setDietRestrictions,
+  dietWarnings,
+  setDietWarnings,
 }) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   return (
@@ -91,8 +91,8 @@ const FormPageTwo = ({
             <AdvancedOptions
               allergenList={allergenList}
               setAllergenList={setAllergenList}
-              dietRestrictions={dietRestrictions}
-              setDietRestrictions={setDietRestrictions}
+              dietWarnings={dietWarnings}
+              setDietWarnings={setDietWarnings}
             />
           </>
         )}
