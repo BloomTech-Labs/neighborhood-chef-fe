@@ -39,9 +39,10 @@ const InvitedUser = ({ user }) => {
       style={{
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         width: "100%",
         margin: "10px",
-        opacity: "0.3",
+        opacity: "0.5",
       }}
       key={user.id}
     >
@@ -112,8 +113,9 @@ const InvitedUser = ({ user }) => {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "flex-end",
           marginLeft: "5%",
-          width: "20%",
+          width: "30%",
         }}
       >
         <p style={{ marginRight: "3%" }}>Invited</p>

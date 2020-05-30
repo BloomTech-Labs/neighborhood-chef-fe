@@ -15,6 +15,7 @@ export const ADD_EVENT = gql`
       longitude
       hashtags
       modifiers
+      photo
       users {
         id
         email
@@ -41,6 +42,7 @@ export const UPDATE_EVENT = gql`
       hashtags
       modifiers
       user_id
+      photo
       users {
         id
         email
@@ -85,6 +87,7 @@ export const INVITE_USER = gql`
       longitude
       hashtags
       modifiers
+      photo
       users {
         id
         email
@@ -115,6 +118,7 @@ export const UPDATE_INVITATION = gql`
       longitude
       modifiers
       hashtags
+      photo
       users {
         id
         email
