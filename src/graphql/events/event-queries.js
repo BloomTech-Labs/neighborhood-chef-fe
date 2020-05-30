@@ -16,6 +16,7 @@ export const ALL_EVENTS = gql`
       longitude
       hashtags
       modifiers
+      photo
       users {
         id
         email
@@ -47,6 +48,7 @@ export const EVENT_BY_ID = gql`
       longitude
       modifiers
       hashtags
+      photo
       users {
         id
         email

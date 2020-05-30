@@ -88,13 +88,20 @@ const SearchFriends = () => {
         marginBottom: "120px",
       }}
     >
-      <div style={{ marginLeft: "5%" }}>
+      <div
+        style={{
+          marginTop: "5px",
+          marginLeft: "5%",
+        }}
+      >
         <h3
           style={{
             fontSize: "1.8rem",
             color: "#1A0F2C",
             fontWeight: "normal",
             fontStyle: "normal",
+            marginTop: "10px",
+            marginBottom: "10px",
           }}
         >
           Invite Neighbors
@@ -105,6 +112,7 @@ const SearchFriends = () => {
             fontSize: "1.6rem",
             fontWeight: "normal",
             fontStyle: "normal",
+            marginTop: "10px",
           }}
         >
           Search for neighbors by name or email.
