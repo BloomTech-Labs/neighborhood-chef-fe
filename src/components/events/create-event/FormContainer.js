@@ -77,6 +77,9 @@ const FormContainer = () => {
       if (Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
       }
+      if (eventToEdit.photo !== "null") {
+        setPhoto(eventToEdit.photo);
+      }
     }
   }, [isEditing, eventToEdit, dispatch]);
 
@@ -111,10 +114,9 @@ const FormContainer = () => {
             }),
             longitude: values.longitude,
             latitude: values.latitude,
+            photo: photo ? photo : null,
             // replace with variable
             user_id: parseInt(me.id),
-            // photo still not working quite right
-            photo: null,
           };
           if (isEditing) {
             axios
@@ -176,6 +178,7 @@ const FormContainer = () => {
                     setHashtags={setHashtags}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    photo={photo}
                     setPhoto={setPhoto}
                   />
                 </>
@@ -191,6 +194,7 @@ const FormContainer = () => {
                     handleSubmit={handleSubmit}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    photo={photo}
                   />
                 </>
               )}
