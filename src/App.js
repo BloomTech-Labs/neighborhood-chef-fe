@@ -27,7 +27,7 @@ function App() {
           path="/generic-redirect/:redirect_path"
           component={GenericRedirect}
         />
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={Login} />
         <Route
           path="/initialChangePassword/:string"
           component={ChangePassword}
