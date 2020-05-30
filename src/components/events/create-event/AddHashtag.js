@@ -18,7 +18,6 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
     };
     setHashtags([...hashtags, newHashtag]);
     setFormInput({ title: "" });
-
   };
 
   return (

@@ -41,10 +41,12 @@ const initialState = {
 
 const FormContainer = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
+  const [allergenList, setAllergenList] = useState([]);
+  const [dietRestrictions, setDietRestrictions] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
@@ -115,7 +117,6 @@ const FormContainer = () => {
             longitude: values.longitude,
             latitude: values.latitude,
             photo: photo ? photo : null,
-            // replace with variable
             user_id: parseInt(me.id),
           };
           if (isEditing) {
@@ -135,7 +136,7 @@ const FormContainer = () => {
                 setModifiers([]);
                 setPage(4);
               })
-              .catch((err) => console.log(err));
+              .catch((err) => console.log(err.message));
           } else {
             axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -180,6 +181,10 @@ const FormContainer = () => {
                     setModifiers={setModifiers}
                     photo={photo}
                     setPhoto={setPhoto}
+                    allergenList={allergenList}
+                    setAllergenList={setAllergenList}
+                    dietRestrictions={dietRestrictions}
+                    setDietRestrictions={setDietRestrictions}
                   />
                 </>
               )}

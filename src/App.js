@@ -34,7 +34,7 @@ function App() {
         />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/create-event" component={CreateEvent} />
+        <Route path="/create-event" component={CreateEvent} />
         <PrivateRoute path="/view-events" component={ViewEvents} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />

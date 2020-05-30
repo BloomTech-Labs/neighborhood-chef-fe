@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import strollerIcon from "@iconify/icons-vs/stroller";
 import baselineOutdoorGrill from "@iconify/icons-ic/baseline-outdoor-grill";
@@ -11,6 +11,7 @@ import EventImageUpload from "./EventImageUpload.js";
 import Modifier from "./Modifier.js";
 import AddHashtag from "./AddHashtag.js";
 import { scrollToTop } from "./FormPageOne.js";
+import AdvancedOptions from "./AdvancedOptions.js";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -30,7 +31,12 @@ const FormPageTwo = ({
   setModifiers,
   photo,
   setPhoto,
+  allergenList,
+  setAllergenList,
+  dietRestrictions,
+  setDietRestrictions,
 }) => {
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   return (
     <>
       <div className="createFormPage2Container">
@@ -64,6 +70,32 @@ const FormPageTwo = ({
             })}
           </div>
         </div>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
+        >
+          <h5
+            style={{
+              textAlign: "left",
+              fontSize: "1.8rem",
+              marginLeft: "10px",
+              fontWeight: "normal",
+            }}
+          >
+            Click here to add any allergy or dietary warnings, or request
+            ingredients from attendees
+          </h5>
+        </div>
+        {showAdvancedOptions && (
+          <>
+            <AdvancedOptions
+              allergenList={allergenList}
+              setAllergenList={setAllergenList}
+              dietRestrictions={dietRestrictions}
+              setDietRestrictions={setDietRestrictions}
+            />
+          </>
+        )}
       </div>
 
       <div className="createFormButtonDiv">
