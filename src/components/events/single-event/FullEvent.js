@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
@@ -20,7 +20,7 @@ const FullEvent = ({ match }) => {
   const dispatch = useDispatch();
   const currentEvent = useSelector((state) => state.currentEvent);
   useEffect(() => {
-    axios({
+    axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {

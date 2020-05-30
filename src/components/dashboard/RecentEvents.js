@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
 import { print } from "graphql";
@@ -19,7 +19,7 @@ const RecentEvents = () => {
   useEffect(() => {
     if (me) {
       setIsFetching(true);
-      axios({
+      axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {

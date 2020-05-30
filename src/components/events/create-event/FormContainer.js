@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { print } from "graphql";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 
 // redux action imports
@@ -117,7 +117,7 @@ const FormContainer = () => {
             photo: null,
           };
           if (isEditing) {
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(UPDATE_EVENT),
                 variables: {
@@ -135,7 +135,7 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
                 variables: { input: event },

@@ -24,7 +24,7 @@ import modernRoom from "../../assets/modernRoom.png";
 
 import { rsvpButtons } from "../../data/buttons";
 
-import axios from "axios";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 
 import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
@@ -54,7 +54,7 @@ const RecentCard = (props) => {
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     props.user_id &&
-      axios({
+      axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {

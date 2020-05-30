@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 
 //graphql imports
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
@@ -43,7 +43,7 @@ const EventDetails = () => {
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
-      axios({
+      axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {
