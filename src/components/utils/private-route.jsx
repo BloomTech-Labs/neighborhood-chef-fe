@@ -42,7 +42,7 @@ function PrivateRoute({ component: Component, path, ...props }) {
     };
 
     validate();
-  }, [path, props.location.search]);
+  }, [path, Component, props, push]);
 
   return finalComponent;
 }

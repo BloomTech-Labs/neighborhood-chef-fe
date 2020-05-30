@@ -49,7 +49,7 @@ const FullEvent = ({ match }) => {
           ) : (
             ""
           )}
-          {`${me.id}` == `${currentEvent.user_id}` && (
+          {`${me.id}` === `${currentEvent.user_id}` && (
             <button
               onClick={() => {
                 /* had to add date to eventToEdit object and convert start/end times here for editing 

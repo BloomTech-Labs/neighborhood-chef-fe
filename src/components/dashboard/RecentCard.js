@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { useSelector } from "react-redux";
-
 //style imports
 import { cardStyles } from "../../styles";
 import clsx from "clsx";
@@ -35,7 +33,6 @@ import EventButtonModal from "./EventButtonModal";
 
 const RecentCard = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  // const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
