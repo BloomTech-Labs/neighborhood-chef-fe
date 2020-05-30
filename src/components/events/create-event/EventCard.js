@@ -26,7 +26,7 @@ const EventCard = () => {
               maxHeight: "300px",
             }}
             src={values.photo}
-            alt="bbq"
+            alt="event"
           />
 
           <div

@@ -38,7 +38,7 @@ const FormPageThree = ({
                 maxHeight: "300px",
               }}
               src={photo}
-              alt="bbq"
+              alt="event"
             />
 
             <div
