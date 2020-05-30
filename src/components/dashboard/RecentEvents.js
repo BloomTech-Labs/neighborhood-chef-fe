@@ -10,39 +10,42 @@ import { getEventsSuccess } from "../../utilities/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const RecentEvents = () => {
-  const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  // const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
   const update = useSelector((state) => state.update);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
-    setIsFetching(true);
-    axios({
-      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-      method: "post",
-      data: {
-        query: print(GET_INVITED_EVENTS),
-        variables: { id: me.id },
-      },
-    })
-      .then((res) => {
-        dispatch(
-          getEventsSuccess(
-            res.data.data.getInvitedEvents.sort(
-              (a, b) => b.createDateTime - a.createDateTime
+    if (me) {
+      setIsFetching(true);
+      axios({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_INVITED_EVENTS),
+          variables: { id: me.id },
+        },
+      })
+        .then((res) => {
+          dispatch(
+            getEventsSuccess(
+              res.data.data.getInvitedEvents.sort(
+                (a, b) => b.createDateTime - a.createDateTime
+              )
             )
-          )
-        );
-      })
-      .catch((err) => {
-        console.log(err.message);
-      })
-      .then((res) => {
-        setIsFetching(false);
-      });
+          );
+        })
+        .catch((err) => {
+          console.log(err.message);
+        })
+        .then((res) => {
+          setIsFetching(false);
+        });
+    }
     // eslint-disable-next-line
-  }, [update]);
+  }, []);
   return (
     <div>
       <h2

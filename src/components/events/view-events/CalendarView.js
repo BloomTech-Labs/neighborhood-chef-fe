@@ -26,7 +26,8 @@ const CalendarView = () => {
   const eventList = useSelector((state) => state.eventList);
   const update = useSelector((state) => state.update); //seemingly because of how status is nested into events, there is no direct dispatch that will force re-render of this component without the use of update state. Unsure if this is the best approach.
   const selectedMonth = useSelector((state) => state.selectedMonth);
-  const me = useSelector((state) => state.myUser);
+  // const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [isLoading, setIsLoading] = useState(false);

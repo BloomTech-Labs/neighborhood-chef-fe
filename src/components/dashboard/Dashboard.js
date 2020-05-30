@@ -22,7 +22,10 @@ const Dashboard = () => {
           variables: { input: { email: decodedToken } },
         },
       }).then((res) => {
-        ls.set("user", res.data.data.getUserByEmail);
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify(res.data.data.getUserByEmail)
+        );
       });
     }
   }, []);

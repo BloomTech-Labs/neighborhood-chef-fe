@@ -28,7 +28,8 @@ import { parseTime } from "../../../utilities/functions";
 const EventDetails = () => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
-  const me = useSelector((state) => state.myUser);
+  // const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   // const update = useSelector((state) => state.update);
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);

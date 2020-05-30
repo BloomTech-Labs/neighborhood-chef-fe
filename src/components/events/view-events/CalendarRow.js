@@ -5,7 +5,8 @@ import { parseTime } from "../../../utilities/functions";
 
 const CalendarRow = ({ id, title, startTime, users, eventNum }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
-  const me = useSelector((state) => state.myUser);
+  // const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const dispatch = useDispatch();
   let status;
 

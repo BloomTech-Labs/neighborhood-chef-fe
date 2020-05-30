@@ -40,6 +40,7 @@ const initialState = {
 };
 
 const FormContainer = () => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
@@ -111,7 +112,7 @@ const FormContainer = () => {
             longitude: values.longitude,
             latitude: values.latitude,
             // replace with variable
-            user_id: 1,
+            user_id: parseInt(me.id),
             // photo still not working quite right
             photo: null,
           };

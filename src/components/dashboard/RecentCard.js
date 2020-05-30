@@ -34,7 +34,8 @@ import { print } from "graphql";
 import EventButtonModal from "./EventButtonModal";
 
 const RecentCard = (props) => {
-  const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  // const me = useSelector((state) => state.myUser);
   const classes = cardStyles();
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
