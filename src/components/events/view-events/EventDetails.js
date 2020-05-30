@@ -111,6 +111,7 @@ const EventDetails = () => {
               <a
                 href={parsedAddressURL}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ color: "rgb(79, 79, 248)" }}
               >
                 {event.address}

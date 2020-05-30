@@ -13,7 +13,6 @@ const RecentEvents = () => {
   const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
-  const update = useSelector((state) => state.update);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ const RecentEvents = () => {
         setIsFetching(false);
       });
     // eslint-disable-next-line
-  }, [update]);
+  }, []);
   return (
     <div>
       <h2
@@ -57,7 +56,7 @@ const RecentEvents = () => {
         <div className="recent-events-container">
           {isFetching ? (
             <div style={{ textAlign: "center" }}>
-              <CircularProgress />
+              <CircularProgress style={{ color: "#58D573" }} />
             </div>
           ) : (
             !!eventList &&

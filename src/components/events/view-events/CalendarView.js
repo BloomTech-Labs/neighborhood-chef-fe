@@ -24,7 +24,6 @@ import { parseTime } from "../../../utilities/functions";
 
 const CalendarView = () => {
   const eventList = useSelector((state) => state.eventList);
-  const update = useSelector((state) => state.update); //seemingly because of how status is nested into events, there is no direct dispatch that will force re-render of this component without the use of update state. Unsure if this is the best approach.
   const selectedMonth = useSelector((state) => state.selectedMonth);
   const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
@@ -54,17 +53,30 @@ const CalendarView = () => {
             parseTime(a.startTime, a.endTime).unixStart -
             parseTime(b.startTime, b.endTime).unixStart
         );
-
-        dispatch(getEventsSuccess(sortedByDate));
+        return sortedByDate;
+      })
+      .then((res) => {
+        const addStatus = res.map((ele) => {
+          return {
+            ...ele,
+            status: ele.users
+              ? ele.users.filter((user) => `${user.id}` === `${me.id}`)[0]
+                  .status
+              : null,
+          };
+        });
+        return addStatus;
+      })
+      .then((res) => {
+        dispatch(getEventsSuccess(res));
       })
       .catch((err) => {
         console.log(err.message);
       })
-      .then(function () {
+      .finally(function () {
         setIsLoading(false);
       });
-    // eslint-disable-next-line
-  }, [update]);
+  }, [dispatch, me.id]);
 
   return (
     <div
@@ -94,7 +106,7 @@ const CalendarView = () => {
           )
         ) : (
           <div style={{ textAlign: "center" }}>
-            <CircularProgress />
+            <CircularProgress style={{ color: "#58D573" }} />
           </div>
         )}
       </div>
