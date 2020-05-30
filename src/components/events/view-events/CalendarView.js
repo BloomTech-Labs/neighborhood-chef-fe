@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
@@ -25,7 +25,8 @@ import { parseTime } from "../../../utilities/functions";
 const CalendarView = () => {
   const eventList = useSelector((state) => state.eventList);
   const selectedMonth = useSelector((state) => state.selectedMonth);
-  const me = useSelector((state) => state.myUser);
+  // const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ const CalendarView = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios({
+    axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {

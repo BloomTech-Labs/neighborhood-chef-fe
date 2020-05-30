@@ -9,7 +9,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router-dom";
 import { modalStyles } from "../../styles";
-import axios from "axios";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
 import { useDispatch } from "react-redux";
@@ -47,7 +47,7 @@ const EventButtonModal = ({ eventId, userId }) => {
       user_id: Number(userId),
     };
 
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(REMOVE_INVITATION),
         variables: { input: removeInvite },

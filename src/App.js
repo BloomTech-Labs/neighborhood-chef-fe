@@ -27,21 +27,21 @@ function App() {
           path="/generic-redirect/:redirect_path"
           component={GenericRedirect}
         />
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={Login} />
         <Route
           path="/initialChangePassword/:string"
           component={ChangePassword}
         />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
-        <Route path="/create-event" component={CreateEvent} />
-        <Route path="/view-events" component={ViewEvents} />
+        <PrivateRoute path="/create-event" component={CreateEvent} />
+        <PrivateRoute path="/view-events" component={ViewEvents} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />
         <Route path="/recipes" component={Recipes} />
         <Route path="/notifications" component={Notifications} />
         <Route path="/messages" component={Messages} />
-        <Route path="/events/:id" component={FullEvent} />
+        <PrivateRoute path="/events/:id" component={FullEvent} />
         <Route path="/register-check-email" component={CheckEmail} />
       </Switch>
     </div>

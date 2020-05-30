@@ -36,11 +36,6 @@ const initialState = {
   isEditing: false,
   eventToEdit: {},
   currentEvent: {},
-
-  //test user data
-  myUser: {
-    id: 1,
-  },
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {

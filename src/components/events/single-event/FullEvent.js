@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
@@ -13,13 +13,14 @@ import { useHistory } from "react-router-dom";
 import Grow from "@material-ui/core/Grow";
 
 const FullEvent = ({ match }) => {
-  const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  // const me = useSelector((state) => state.myUser);
   const { push } = useHistory();
   const eventId = parseInt(match.params.id);
   const dispatch = useDispatch();
   const currentEvent = useSelector((state) => state.currentEvent);
   useEffect(() => {
-    axios({
+    axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {
@@ -48,7 +49,7 @@ const FullEvent = ({ match }) => {
           ) : (
             ""
           )}
-          {me.id === currentEvent.user_id && (
+          {`${me.id}` === `${currentEvent.user_id}` && (
             <button
               onClick={() => {
                 /* had to add date to eventToEdit object and convert start/end times here for editing 

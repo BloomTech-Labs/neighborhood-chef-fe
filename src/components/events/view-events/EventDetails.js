@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 
 //graphql imports
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
@@ -28,7 +28,8 @@ import { parseTime } from "../../../utilities/functions";
 const EventDetails = () => {
   const currentEventID = useSelector((state) => state.activeCalendarEvent);
   const eventList = useSelector((state) => state.eventList);
-  const me = useSelector((state) => state.myUser);
+  // const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   // const update = useSelector((state) => state.update);
 
   const event = eventList && eventList.find((ele) => ele.id === currentEventID);
@@ -42,7 +43,7 @@ const EventDetails = () => {
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     event &&
-      axios({
+      axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {

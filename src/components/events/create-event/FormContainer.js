@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { print } from "graphql";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 
 // redux action imports
@@ -40,6 +40,7 @@ const initialState = {
 };
 
 const FormContainer = () => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
@@ -115,10 +116,10 @@ const FormContainer = () => {
             latitude: values.latitude,
             photo: photo ? photo : null,
             // replace with variable
-            user_id: 1,
+            user_id: parseInt(me.id),
           };
           if (isEditing) {
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(UPDATE_EVENT),
                 variables: {
@@ -136,7 +137,7 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
                 variables: { input: event },

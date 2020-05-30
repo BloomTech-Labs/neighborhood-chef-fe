@@ -79,6 +79,46 @@ export const USER_BY_ID = gql`
   }
 `;
 
+export const USER_BY_EMAIL = gql`
+  query getUserByEmail($input: UserEmailInput!) {
+    getUserByEmail(input: $input) {
+      id
+      email
+      firstName
+      lastName
+      gender
+      address
+      latitude
+      longitude
+      eventsOwned {
+        id
+        startTime
+        endTime
+        createDateTime
+        title
+        description
+        category_id
+        user_id
+        address
+        latitude
+        longitude
+        modifiers
+        hashtags
+        users {
+          id
+          email
+          firstName
+          lastName
+          address
+          longitude
+          latitude
+          status
+        }
+      }
+    }
+  }
+`;
+
 export const GET_AUTHORED_EVENTS = gql`
   query getAuthoredEvents($id: ID!) {
     getAuthoredEvents(id: $id) {

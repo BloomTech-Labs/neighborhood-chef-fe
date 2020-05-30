@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch } from "react-redux";
 import { changeStatus } from "../../../utilities/actions";
 import { buttonStyles } from "../../../styles";
@@ -19,7 +19,7 @@ const StatusButton = ({
   const dispatch = useDispatch();
 
   const updateStatus = (newStatus) => {
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(UPDATE_INVITATION),
         variables: {
