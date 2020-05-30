@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import Grow from "@material-ui/core/Grow";
 
 const FullEvent = ({ match }) => {
-  const me = sessionStorage.getItem("user");
+  const me = JSON.parse(sessionStorage.getItem("user"));
   // const me = useSelector((state) => state.myUser);
   const { push } = useHistory();
   const eventId = parseInt(match.params.id);
@@ -49,7 +49,7 @@ const FullEvent = ({ match }) => {
           ) : (
             ""
           )}
-          {me.id === currentEvent.user_id && (
+          {`${me.id}` == `${currentEvent.user_id}` && (
             <button
               onClick={() => {
                 /* had to add date to eventToEdit object and convert start/end times here for editing 
