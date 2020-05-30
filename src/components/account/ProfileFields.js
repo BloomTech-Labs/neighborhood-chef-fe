@@ -97,7 +97,11 @@ const ProfileFields = (props) => {
         type="submit"
         disabled={props.submitting}
       >
-        {props.submitting ? <CircularProgress /> : "Submit"}
+        {props.submitting ? (
+          <CircularProgress style={{ color: "white" }} />
+        ) : (
+          "Submit"
+        )}
       </Button>
     </>
   );
