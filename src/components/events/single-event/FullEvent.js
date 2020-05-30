@@ -34,7 +34,7 @@ const FullEvent = ({ match }) => {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }, [dispatch, eventId]);
   return (
     <div
       className="single-event-container"

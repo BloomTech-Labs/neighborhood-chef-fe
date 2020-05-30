@@ -59,7 +59,7 @@ const RecentEvents = () => {
         <div className="recent-events-container">
           {isFetching ? (
             <div style={{ textAlign: "center" }}>
-              <CircularProgress />
+              <CircularProgress style={{ color: "#58D573" }} />
             </div>
           ) : (
             !!eventList &&
