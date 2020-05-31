@@ -35,6 +35,8 @@ const FormPageTwo = ({
   setAllergenList,
   dietWarnings,
   setDietWarnings,
+  ingredientList,
+  setIngredientList,
 }) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   return (
@@ -93,6 +95,8 @@ const FormPageTwo = ({
               setAllergenList={setAllergenList}
               dietWarnings={dietWarnings}
               setDietWarnings={setDietWarnings}
+              ingredientList={ingredientList}
+              setIngredientList={setIngredientList}
             />
           </>
         )}

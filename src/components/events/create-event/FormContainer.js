@@ -47,6 +47,7 @@ const FormContainer = () => {
   const [photo, setPhoto] = useState(null);
   const [allergenList, setAllergenList] = useState([]);
   const [dietWarnings, setDietWarnings] = useState([]);
+  const [ingredientList, setIngredientList] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
@@ -185,6 +186,8 @@ const FormContainer = () => {
                     setAllergenList={setAllergenList}
                     dietWarnings={dietWarnings}
                     setDietWarnings={setDietWarnings}
+                    ingredientList={ingredientList}
+                    setIngredientList={setIngredientList}
                   />
                 </>
               )}

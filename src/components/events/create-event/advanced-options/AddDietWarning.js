@@ -5,7 +5,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setDietInput({ ...dietInput, [e.target.name]: e.target.value });
+    setDietInput({ title: e.target.value });
   };
 
   const addDietRestriction = (e) => {
@@ -27,23 +27,14 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h5
-          style={{
-            textAlign: "left",
-            fontSize: "1.8rem",
-            marginLeft: "10px",
-            fontWeight: "normal",
-          }}
-        >
-          Add any diet warnings
-        </h5>
+    <>
+      <div style={{ marginTop: "55px", marginBottom: "55px" }}>
         <input
           type="text"
           name="title"
           onChange={handleChange}
           value={dietInput.title}
+          placeholder="add dietary warning"
           style={{
             fontSize: "1.6rem",
             border: "none",
@@ -81,7 +72,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

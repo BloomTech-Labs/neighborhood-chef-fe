@@ -5,7 +5,7 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setAllergyInput({ ...allergyInput, [e.target.name]: e.target.value });
+    setAllergyInput({ name: e.target.value });
   };
 
   const addAllergy = (e) => {
@@ -28,22 +28,13 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
   return (
     <>
-      <div style={{ marginTop: "55px" }}>
-        <h5
-          style={{
-            textAlign: "left",
-            fontSize: "1.8rem",
-            marginLeft: "10px",
-            fontWeight: "normal",
-          }}
-        >
-          Add any allergy warnings
-        </h5>
+      <div style={{ marginTop: "55px", marginBottom: "55px" }}>
         <input
           type="text"
           name="name"
           onChange={handleChange}
           value={allergyInput.name}
+          placeholder="add allergy warning"
           style={{
             fontSize: "1.6rem",
             border: "none",
