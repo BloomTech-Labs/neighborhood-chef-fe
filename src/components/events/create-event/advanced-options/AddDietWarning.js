@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
 const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
-  const [dietInput, setDietInput] = useState({ title: "" });
+  const [formInput, setFormInput] = useState({ title: "" });
 
   const handleChange = (e) => {
     e.preventDefault();
-    setDietInput({ title: e.target.value });
+    setFormInput({ title: e.target.value });
   };
 
-  const addDietRestriction = (e) => {
+  const addDietWarning = (e) => {
     e.preventDefault();
-    const newDietRestriction = {
+    const newDietWarning = {
       id: dietWarnings.length + 1,
-      title: dietInput.title,
+      title: formInput.title,
     };
-    setDietWarnings([...dietWarnings, newDietRestriction]);
-    setDietInput({ title: "" });
+    setDietWarnings([...dietWarnings, newDietWarning]);
+    setFormInput({ title: "" });
   };
 
-  const removeDietRestriction = (id) => {
+  const removeDietWarning = (id) => {
     setDietWarnings(
       dietWarnings.filter((diet) => {
         return diet.id !== id;
@@ -29,12 +29,21 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
   return (
     <>
       <div style={{ marginTop: "55px", marginBottom: "55px" }}>
+        <h5
+          style={{
+            textAlign: "left",
+            fontSize: "1.8rem",
+            marginLeft: "10px",
+            fontWeight: "normal",
+          }}
+        >
+          List dietary warnings
+        </h5>
         <input
           type="text"
           name="title"
           onChange={handleChange}
-          value={dietInput.title}
-          placeholder="add dietary warning"
+          value={formInput.title}
           style={{
             fontSize: "1.6rem",
             border: "none",
@@ -46,9 +55,9 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
           }}
         />
         <button
-          onClick={addDietRestriction}
-          disabled={!dietInput.title}
-          className={!dietInput.title ? "inactive" : ""}
+          onClick={addDietWarning}
+          disabled={!formInput.title}
+          className={!formInput.title ? "inactive" : ""}
           style={{
             color: "white",
             fontSize: "1.6rem",
@@ -67,7 +76,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
       </div>
       {dietWarnings.map((diet) => {
         return (
-          <div key={diet.id} onClick={() => removeDietRestriction(diet.id)}>
+          <div key={diet.id} onClick={() => removeDietWarning(diet.id)}>
             <p>{diet.title}</p>
           </div>
         );

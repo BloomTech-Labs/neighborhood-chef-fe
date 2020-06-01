@@ -84,8 +84,7 @@ const FormPageTwo = ({
               fontWeight: "normal",
             }}
           >
-            Click here to add any allergy or dietary warnings, or request
-            ingredients from attendees
+            Click here for more options
           </h5>
         </div>
         {showAdvancedOptions && (

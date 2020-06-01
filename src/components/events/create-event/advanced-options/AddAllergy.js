@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
 const AddAllergy = ({ allergenList, setAllergenList }) => {
-  const [allergyInput, setAllergyInput] = useState({ name: "" });
+  const [formInput, setFormInput] = useState({ name: "" });
 
   const handleChange = (e) => {
     e.preventDefault();
-    setAllergyInput({ name: e.target.value });
+    setFormInput({ name: e.target.value });
   };
 
   const addAllergy = (e) => {
     e.preventDefault();
     const newAllergy = {
       id: allergenList.length + 1,
-      name: allergyInput.name,
+      name: formInput.name,
     };
     setAllergenList([...allergenList, newAllergy]);
-    setAllergyInput({ name: "" });
+    setFormInput({ name: "" });
   };
 
   const removeAllergy = (id) => {
@@ -29,12 +29,21 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
   return (
     <>
       <div style={{ marginTop: "55px", marginBottom: "55px" }}>
+        <h5
+          style={{
+            textAlign: "left",
+            fontSize: "1.8rem",
+            marginLeft: "10px",
+            fontWeight: "normal",
+          }}
+        >
+          List allergy warnings
+        </h5>
         <input
           type="text"
           name="name"
           onChange={handleChange}
-          value={allergyInput.name}
-          placeholder="add allergy warning"
+          value={formInput.name}
           style={{
             fontSize: "1.6rem",
             border: "none",
@@ -47,8 +56,8 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
         />
         <button
           onClick={addAllergy}
-          disabled={!allergyInput.name}
-          className={!allergyInput.name ? "inactive" : ""}
+          disabled={!formInput.name}
+          className={!formInput.name ? "inactive" : ""}
           style={{
             color: "white",
             fontSize: "1.6rem",
