@@ -42,7 +42,8 @@ function PrivateRoute({ component: Component, path, ...props }) {
     };
 
     validate();
-  }, [path, Component, props, push]);
+    // eslint-disable-next-line
+  }, [path, Component]);
 
   return finalComponent;
 }
