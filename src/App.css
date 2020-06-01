@@ -333,7 +333,7 @@ a {
   margin: 40px 0;
 }
 
-#Start_Time {
+#greenSelect {
   display: flex;
   align-items: center;
   margin: 10px 5px;
@@ -347,7 +347,7 @@ a {
   font-size: 1.4rem;
 }
 
-#End_Time {
+#redSelect {
   display: flex;
   align-items: center;
   margin: 10px 5px;

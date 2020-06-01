@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import DietaryWarning from "./DietaryWarning.js";
+
 const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
   const [formInput, setFormInput] = useState({ title: "" });
 
@@ -74,13 +76,13 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
           Add +
         </button>
       </div>
-      {dietWarnings.map((diet) => {
-        return (
-          <div key={diet.id} onClick={() => removeDietWarning(diet.id)}>
-            <p>{diet.title}</p>
-          </div>
-        );
-      })}
+      <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
+        {dietWarnings.map((diet) => {
+          return (
+            <DietaryWarning diet={diet} removeDietWarning={removeDietWarning} />
+          );
+        })}
+      </div>
     </>
   );
 };

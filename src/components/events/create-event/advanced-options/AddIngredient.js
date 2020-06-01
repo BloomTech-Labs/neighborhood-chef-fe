@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import Ingredient from "./Ingredient.js";
+
 const AddIngredient = ({ ingredientList, setIngredientList }) => {
   const [formInput, setFormInput] = useState({
     name: "",
@@ -80,7 +82,7 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
 
             <div
               className="createFormInputDiv"
-              style={{ width: "10%", marginLeft: "5%" }}
+              style={{ width: "10%", marginLeft: "2%" }}
             >
               <input
                 type="numbers"
@@ -93,40 +95,30 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
               />
             </div>
 
-            <div className="eventTimeDiv" style={{ marginLeft: "5%" }}>
+            <div className="eventTimeDiv" style={{ marginLeft: "2%" }}>
               <label>
                 Measurement
                 <Select
                   name="measurement"
                   value={formInput.measurement}
                   onChange={handleChange}
-                  id="Start_Time"
+                  id="greenSelect"
                   disableUnderline={true}
                 >
                   <MenuItem value=""></MenuItem>
-                  <MenuItem value={"Cup"}>Cup</MenuItem>
-                  <MenuItem value={"Pint"}>Pint</MenuItem>
-                  <MenuItem value={"Quart"}>Quart</MenuItem>
-                  <MenuItem option value={"Gallon"}>
+                  <MenuItem value={"cup"}>cup</MenuItem>
+                  <MenuItem value={"pint"}>pint</MenuItem>
+                  <MenuItem value={"quart"}>quart</MenuItem>
+                  <MenuItem option value={"gallon"}>
                     gallon
                   </MenuItem>
-                  <MenuItem value={"Ounce"}>Ounce</MenuItem>
+                  <MenuItem value={"ounce"}>ounce</MenuItem>
                   <MenuItem value={"lbs"}>lbs</MenuItem>
-                  <MenuItem value={"Teaspoon"}>Teaspoon</MenuItem>
-                  <MenuItem value={"Tablespoon"}>Tablespoon</MenuItem>
+                  <MenuItem value={"teaspoon"}>teaspoon</MenuItem>
+                  <MenuItem value={"tablespoon"}>tablespoon</MenuItem>
                 </Select>
               </label>
             </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-            }}
-          >
             <button
               disabled={
                 !formInput.name || !formInput.quantity || !formInput.measurement
@@ -147,23 +139,26 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
                 fontWeight: "bold",
                 wordSpacing: "15px",
                 cursor: "pointer",
-                padding: "15px 30px",
-                marginBottom: "40px",
+                padding: "15px 10px",
+                marginLeft: "2%",
               }}
             >
               Add +
             </button>
           </div>
+
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "space-evenly",
+            }}
+          ></div>
         </div>
       </div>
       {ingredientList.map((item) => {
-        return (
-          <div key={item.id} onClick={() => removeIngredient(item.id)}>
-            <p>{item.name}</p>
-            <p>{item.quantity}</p>
-            <p>{item.measurement}</p>
-          </div>
-        );
+        return <Ingredient item={item} removeIngredient={removeIngredient} />;
       })}
     </>
   );

@@ -108,10 +108,10 @@ const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
           </div>
 
           <div className="eventTimeDiv">
-            <label htmlFor="Start_Time">The event starts at:</label>
+            <label htmlFor="greenSelect">The event starts at:</label>
             <Select
               name="startTime"
-              id="Start_Time"
+              id="greenSelect"
               value={values.startTime}
               onChange={handleChange}
               disableUnderline={true}
@@ -169,10 +169,10 @@ const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
           </div>
 
           <div className="eventTimeDiv">
-            <label htmlFor="End_Time">The event ends at:</label>
+            <label htmlFor="redSelect">The event ends at:</label>
             <Select
               name="endTime"
-              id="End_Time"
+              id="redSelect"
               value={values.endTime}
               onChange={handleChange}
               disableUnderline={true}

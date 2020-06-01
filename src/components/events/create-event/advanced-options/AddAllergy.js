@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import AllergyWarning from "./AllergyWarning.js";
+
 const AddAllergy = ({ allergenList, setAllergenList }) => {
   const [formInput, setFormInput] = useState({ name: "" });
 
@@ -74,13 +76,13 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
           Add +
         </button>
       </div>
-      {allergenList.map((allergy) => {
-        return (
-          <div key={allergy.id} onClick={() => removeAllergy(allergy.id)}>
-            <p>{allergy.name}</p>
-          </div>
-        );
-      })}
+      <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
+        {allergenList.map((allergy) => {
+          return (
+            <AllergyWarning allergy={allergy} removeAllergy={removeAllergy} />
+          );
+        })}
+      </div>
     </>
   );
 };
