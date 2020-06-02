@@ -65,8 +65,8 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
-      const savedHashtags = JSON.parse(eventToEdit.hashtags);
-      const savedModifiers = JSON.parse(eventToEdit.modifiers);
+      const savedHashtags = eventToEdit.hashtags;
+      const savedModifiers = eventToEdit.modifiers;
       if (Object.keys(savedModifiers).length !== 0) {
         restoreSavedModifiers(
           modifierData,
