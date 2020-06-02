@@ -16,6 +16,7 @@ import ChangePassword from "./components/account/PasswordChangePage";
 import FullEvent from "./components/events/single-event/FullEvent";
 
 import Login from "./components/account/Login";
+import GridStructure from "./components/gridstructure";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/notifications" component={Notifications} />
         <Route path="/messages" component={Messages} />
         <Route path="/events/:id" component={FullEvent} />
+        <Route path="/grid" component={GridStructure} />
       </Switch>
     </div>
   );
