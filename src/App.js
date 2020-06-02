@@ -34,13 +34,13 @@ function App() {
         />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
-        <Route path="/create-event" component={CreateEvent} />
+        <PrivateRoute path="/create-event" component={CreateEvent} />
         <PrivateRoute path="/view-events" component={ViewEvents} />
         <Route path="/register" component={Register} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/recipes" component={Recipes} />
-        <Route path="/notifications" component={Notifications} />
-        <Route path="/messages" component={Messages} />
+        <PrivateRoute path="/settings" component={Settings} />
+        <PrivateRoute path="/recipes" component={Recipes} />
+        <PrivateRoute path="/notifications" component={Notifications} />
+        <PrivateRoute path="/messages" component={Messages} />
         <PrivateRoute path="/events/:id" component={FullEvent} />
         <Route path="/register-check-email" component={CheckEmail} />
       </Switch>

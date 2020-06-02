@@ -39,7 +39,7 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
             fontWeight: "normal",
           }}
         >
-          List allergy warnings
+          Add allergy warnings
         </h5>
         <input
           type="text"

@@ -39,7 +39,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
             fontWeight: "normal",
           }}
         >
-          List dietary warnings
+          Add dietary warnings
         </h5>
         <input
           type="text"
