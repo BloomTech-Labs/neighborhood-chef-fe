@@ -4,6 +4,7 @@ import { Button, FormControlLabel, Radio } from "@material-ui/core";
 import { TextField, RadioGroup, SimpleFileUpload } from "formik-material-ui";
 import ReactMapGL from "react-map-gl";
 import Geocoder from "react-mapbox-gl-geocoder";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ProfileFields = (props) => {
   const mapAccess = {
@@ -96,7 +97,11 @@ const ProfileFields = (props) => {
         type="submit"
         disabled={props.submitting}
       >
-        Submit
+        {props.submitting ? (
+          <CircularProgress style={{ color: "white" }} />
+        ) : (
+          "Submit"
+        )}
       </Button>
     </>
   );

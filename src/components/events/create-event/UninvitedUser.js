@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,7 +23,7 @@ const UninvitedUser = ({ user }) => {
       status: "Approved",
     };
 
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(INVITE_USER),
         variables: { input: invite },
@@ -81,6 +81,7 @@ const UninvitedUser = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             marginLeft: "5%",
+            width: "20%",
           }}
         >
           <div
@@ -112,6 +113,7 @@ const UninvitedUser = ({ user }) => {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "flex-end",
           marginLeft: "5%",
         }}
       >

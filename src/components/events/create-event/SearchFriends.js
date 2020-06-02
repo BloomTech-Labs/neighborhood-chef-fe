@@ -3,7 +3,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { print } from "graphql";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 
 import { GET_UNINVITED_USERS } from "../../../graphql/users/user-queries.js";
 import { searchForUsersSuccess } from "../../../utilities/actions";
@@ -18,7 +18,7 @@ const SearchFriends = () => {
   const { push } = useHistory();
 
   useEffect(() => {
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(GET_UNINVITED_USERS),
         variables: { id: event.id },
@@ -88,13 +88,20 @@ const SearchFriends = () => {
         marginBottom: "120px",
       }}
     >
-      <div style={{ marginLeft: "5%" }}>
+      <div
+        style={{
+          marginTop: "5px",
+          marginLeft: "5%",
+        }}
+      >
         <h3
           style={{
             fontSize: "1.8rem",
             color: "#1A0F2C",
             fontWeight: "normal",
             fontStyle: "normal",
+            marginTop: "10px",
+            marginBottom: "10px",
           }}
         >
           Invite Neighbors
@@ -105,6 +112,7 @@ const SearchFriends = () => {
             fontSize: "1.6rem",
             fontWeight: "normal",
             fontStyle: "normal",
+            marginTop: "10px",
           }}
         >
           Search for neighbors by name or email.

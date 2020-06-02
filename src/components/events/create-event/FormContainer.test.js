@@ -11,6 +11,7 @@ const mockStore = configureStore([]);
 describe("Test FormContainer component", () => {
   let store;
   let FormContainerComponent;
+
   beforeEach(() => {
     store = mockStore({});
 

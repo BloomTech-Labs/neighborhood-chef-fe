@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const timeAgo = (dateCreated) => {
   let showType = "";
   const elapsedTime = Math.ceil((new Date() - dateCreated) / 1000);
@@ -17,6 +19,22 @@ export const timeAgo = (dateCreated) => {
   }
   if (configuredTime !== 1) showType = showType + "s";
   return `${configuredTime} ${showType} ago`;
+};
+
+export const restoreSavedModifiers = (arr1, arr2, cb) => {
+  let arr = [];
+  let seen = {};
+
+  arr2.forEach((mod) => {
+    seen[mod.id] = mod;
+  });
+  arr1.filter((mod) => {
+    if (mod.id in seen) {
+      mod.active = true;
+      arr.push(mod);
+    }
+  });
+  return cb(arr);
 };
 
 export const convertTime = (time24) => {
@@ -41,60 +59,20 @@ export const formatDate = (date) => {
   return [year, month, day].join("-");
 };
 
-export const restoreSavedModifiers = (arr1, arr2, cb) => {
-  let arr = [];
-  let seen = {};
+export const parseTime = (start, end) => ({
+  formattedDate: moment(parseInt(start)).format("MMM Do, YYYY"),
+  weekday: moment(parseInt(start)).format("ddd"),
+  day: moment(parseInt(start)).format("DD"),
+  monthShort: moment(parseInt(start)).format("MMM"),
+  startTime: moment(parseInt(start)).format("h:mm a"),
+  endTime: moment(parseInt(end)).format("h:mm a"),
+  unixStart: start,
+});
 
-  arr2.forEach((mod) => {
-    seen[mod.id] = mod;
-  });
-  arr1.filter((mod) => {
-    if (mod.id in seen) {
-      mod.active = true;
-      arr.push(mod);
-    }
-  });
-  return cb(arr);
-};
-
-export const parseTime = (date, start, end) => {
-  var options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(parseInt(date)); //formats 13 digit UNIX date provided by database
-  const simplifiedDate = formattedDate.toLocaleDateString("en-us", options); // reduces to just YYYY MM, DD format
-  const addStartTime = new Date(`${simplifiedDate} ${start}`); // creates new date using start_time value for time, instead of 00:00:00 default
-  let displayedEndTime, displayedStartTime;
-  if (!!end) {
-    const addEndTime = new Date(`${simplifiedDate} ${end}`);
-    displayedEndTime = addEndTime
-      .toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit",
-      })
-      .toLowerCase(); //formatting just time in 12 hr format with lower case am pm
-  }
-  displayedStartTime = addStartTime
-    .toLocaleTimeString([], {
-      hour: "numeric",
-      minute: "2-digit",
-    })
-    .toLowerCase();
-  const getWeekday = addStartTime.toLocaleDateString("en-us", {
-    weekday: "short",
-  });
-  const getDay = addStartTime.toLocaleDateString("en-us", {
-    day: "numeric",
-  });
-  const getMonth = addStartTime.toLocaleDateString("en-us", {
-    month: "short",
-  });
-
-  return {
-    formattedDate: simplifiedDate,
-    weekday: getWeekday,
-    day: getDay,
-    monthShort: getMonth,
-    startTime: displayedStartTime,
-    endTime: displayedEndTime,
-    unixStart: addStartTime.getTime(),
-  };
-};
+export const convertTimeAndDate = (event) => ({
+  date: moment(parseInt(event.startTime)).format("YYYY-MM-DD"),
+  startTime: moment(parseInt(event.startTime)).format("HH:mm:ss"),
+  endTime: event.endTime
+    ? moment(parseInt(event.endTime)).format("HH:mm:ss")
+    : "",
+});

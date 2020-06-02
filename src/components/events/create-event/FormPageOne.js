@@ -246,7 +246,7 @@ const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
               <MenuItem value={5}>Sunday Sports</MenuItem>
               <MenuItem value={6}>Kids Play Date</MenuItem>
               <MenuItem value={7}>Puppy Play Date</MenuItem>
-              <MenuItem value={8}>Puppy Play Date</MenuItem>
+              <MenuItem value={8}>Cat Play Date</MenuItem>
             </Select>
           </div>
         </div>

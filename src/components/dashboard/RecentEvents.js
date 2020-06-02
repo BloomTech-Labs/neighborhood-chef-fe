@@ -1,37 +1,48 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
 import { print } from "graphql";
 import { GET_INVITED_EVENTS } from "../../graphql/users/user-queries";
 import { getEventsSuccess } from "../../utilities/actions";
 
+//icon imports
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const RecentEvents = () => {
-  const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  // const me = useSelector((state) => state.myUser);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
+  const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
-    axios({
-      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-      method: "post",
-      data: {
-        query: print(GET_INVITED_EVENTS),
-        variables: { id: me.id },
-      },
-    })
-      .then((res) => {
-        dispatch(
-          getEventsSuccess(
-            res.data.data.getInvitedEvents.sort(
-              (a, b) => b.createDateTime - a.createDateTime
-            )
-          )
-        );
+    if (me) {
+      setIsFetching(true);
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_INVITED_EVENTS),
+          variables: { id: me.id },
+        },
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+        .then((res) => {
+          dispatch(
+            getEventsSuccess(
+              res.data.data.getInvitedEvents.sort(
+                (a, b) => b.createDateTime - a.createDateTime
+              )
+            )
+          );
+        })
+        .catch((err) => {
+          console.log(err.message);
+        })
+        .then((res) => {
+          setIsFetching(false);
+        });
+    }
     // eslint-disable-next-line
   }, []);
   return (
@@ -46,8 +57,13 @@ const RecentEvents = () => {
       </h2>
       <div style={{ overflow: "auto", height: "80vh" }}>
         <div className="recent-events-container">
-          {!!eventList &&
-            eventList.map((ele) => (
+          {isFetching ? (
+            <div style={{ textAlign: "center" }}>
+              <CircularProgress style={{ color: "#58D573" }} />
+            </div>
+          ) : (
+            !!eventList &&
+            eventList.map((ele, id) => (
               <RecentCard
                 {...ele}
                 key={ele.id}
@@ -55,7 +71,8 @@ const RecentEvents = () => {
                   ele.users.filter((u) => `${u.id}` === `${me.id}`)[0].status
                 }
               />
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>

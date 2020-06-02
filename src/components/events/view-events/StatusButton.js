@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch } from "react-redux";
-import { rsvpChange } from "../../../utilities/actions";
+import { changeStatus } from "../../../utilities/actions";
 import { buttonStyles } from "../../../styles";
 
 import { print } from "graphql";
@@ -19,10 +19,7 @@ const StatusButton = ({
   const dispatch = useDispatch();
 
   const updateStatus = (newStatus) => {
-    console.log(
-      `event_id: ${eventId}, user_id: ${userId}, status: ${newStatus}`
-    );
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(UPDATE_INVITATION),
         variables: {
@@ -34,12 +31,11 @@ const StatusButton = ({
         },
       })
       .then((res) => {
-        setStatus(
-          res.data.data.updateInvitation.users.filter(
-            (u) => `${u.id}` === `${userId}`
-          )[0].status
-        );
-        dispatch(rsvpChange());
+        const newStatus = res.data.data.updateInvitation.users.filter(
+          (u) => `${u.id}` === `${userId}`
+        )[0].status;
+        setStatus(newStatus);
+        dispatch(changeStatus(eventId, newStatus));
       });
   };
   return (

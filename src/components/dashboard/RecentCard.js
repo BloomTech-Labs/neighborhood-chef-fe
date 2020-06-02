@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { useSelector } from "react-redux";
-
 //style imports
 import { cardStyles } from "../../styles";
 import clsx from "clsx";
@@ -26,7 +24,7 @@ import modernRoom from "../../assets/modernRoom.png";
 
 import { rsvpButtons } from "../../data/buttons";
 
-import axios from "axios";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 
 import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
@@ -34,25 +32,20 @@ import { print } from "graphql";
 import EventButtonModal from "./EventButtonModal";
 
 const RecentCard = (props) => {
-  const me = useSelector((state) => state.myUser);
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
-  const [optionsVisible, setOptionsVisible] = useState(false);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const timeObject = parseTime(props.date, props.startTime, props.endTime);
+  const timeObject = parseTime(props.startTime, props.endTime);
   const shownTime = timeAgo(props.createDateTime);
-
-  const toggleOptions = () => {
-    setOptionsVisible(!optionsVisible);
-  };
 
   // const toggleLike = () => {
   //   setLiked(!liked);
@@ -61,7 +54,7 @@ const RecentCard = (props) => {
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
     props.user_id &&
-      axios({
+      axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
         data: {
@@ -89,7 +82,7 @@ const RecentCard = (props) => {
             {props.photo ? props.photo : initials}
           </Avatar>
         }
-        action={<EventButtonModal eventId={props.id} />}
+        action={<EventButtonModal eventId={props.id} userId={me.id} />}
         title={
           <Typography variant="h6">
             {creatorName}

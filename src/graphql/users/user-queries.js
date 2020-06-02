@@ -14,7 +14,6 @@ export const ALL_USERS = gql`
       eventsOwned {
         id
         title
-        date
         description
         startTime
         endTime
@@ -53,7 +52,46 @@ export const USER_BY_ID = gql`
       longitude
       eventsOwned {
         id
-        date
+        startTime
+        endTime
+        createDateTime
+        title
+        description
+        category_id
+        user_id
+        address
+        latitude
+        longitude
+        modifiers
+        hashtags
+        users {
+          id
+          email
+          firstName
+          lastName
+          address
+          longitude
+          latitude
+          status
+        }
+      }
+    }
+  }
+`;
+
+export const USER_BY_EMAIL = gql`
+  query getUserByEmail($input: UserEmailInput!) {
+    getUserByEmail(input: $input) {
+      id
+      email
+      firstName
+      lastName
+      gender
+      address
+      latitude
+      longitude
+      eventsOwned {
+        id
         startTime
         endTime
         createDateTime
@@ -115,7 +153,6 @@ export const GET_INVITED_EVENTS = gql`
   query getInvitedEvents($id: ID!) {
     getInvitedEvents(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -147,7 +184,6 @@ export const GET_ATTENDING_EVENTS = gql`
   query getAttendingEvents($id: ID!) {
     getAttendingEvents(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime

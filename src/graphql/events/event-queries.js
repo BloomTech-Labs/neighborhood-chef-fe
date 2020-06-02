@@ -4,7 +4,6 @@ export const ALL_EVENTS = gql`
   query getAllEvents {
     getAllEvents {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -17,6 +16,7 @@ export const ALL_EVENTS = gql`
       longitude
       hashtags
       modifiers
+      photo
       users {
         id
         email
@@ -36,7 +36,6 @@ export const EVENT_BY_ID = gql`
   query getEventById($id: ID!) {
     getEventById(id: $id) {
       id
-      date
       startTime
       endTime
       createDateTime
@@ -49,6 +48,7 @@ export const EVENT_BY_ID = gql`
       longitude
       modifiers
       hashtags
+      photo
       users {
         id
         email
@@ -63,5 +63,3 @@ export const EVENT_BY_ID = gql`
     }
   }
 `;
-
-

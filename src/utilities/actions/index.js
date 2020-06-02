@@ -14,6 +14,7 @@ export const START_EVENT_EDIT = "START_EVENT_EDIT";
 export const CANCEL_EDIT = "CANCEL_EDIT";
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
 export const SINGLE_EVENT_FETCH_SUCCESS = "SINGLE_EVENT_FETCH_SUCCESS";
+export const UPDATE_STATUS = "UPDATE_STATUS";
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -29,8 +30,16 @@ export const setMonth = (type) => ({
   payload: type,
 });
 
-export const rsvpChange = () => ({
+export const forceUpdate = () => ({
   type: UPDATE_STATE,
+});
+
+export const changeStatus = (eventId, newStatus) => ({
+  type: UPDATE_STATUS,
+  payload: {
+    eventId: eventId,
+    newStatus: newStatus,
+  },
 });
 
 export const changePage = () => ({

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { print } from "graphql";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 
 // redux action imports
@@ -24,10 +24,8 @@ import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
-import {
-  formatDate,
-  restoreSavedModifiers,
-} from "../../../utilities/functions";
+
+import { restoreSavedModifiers } from "../../../utilities/functions";
 
 const initialState = {
   title: "",
@@ -42,6 +40,7 @@ const initialState = {
 };
 
 const FormContainer = () => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
@@ -64,21 +63,22 @@ const FormContainer = () => {
     });
   };
 
-  // had to pull this out of useEffect to get it to work correctly
-  if (isEditing && !eventToEdit.endTime) eventToEdit.endTime = "";
-
   useEffect(() => {
     if (isEditing) {
-      eventToEdit.date = formatDate(Number(eventToEdit.date));
       const savedHashtags = JSON.parse(eventToEdit.hashtags);
-      let savedModifiers = JSON.parse(eventToEdit.modifiers);
-
+      const savedModifiers = JSON.parse(eventToEdit.modifiers);
       if (Object.keys(savedModifiers).length !== 0) {
-        savedModifiers = savedModifiers.modifiers;
-        restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
+        restoreSavedModifiers(
+          modifierData,
+          savedModifiers.modifiers,
+          setModifiers
+        );
       }
       if (Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
+      }
+      if (eventToEdit.photo !== "null") {
+        setPhoto(eventToEdit.photo);
       }
     }
   }, [isEditing, eventToEdit, dispatch]);
@@ -96,32 +96,35 @@ const FormContainer = () => {
       <Formik
         initialValues={isEditing ? eventToEdit : initialState}
         onSubmit={(values, { resetForm }) => {
+          let startTime = new Date(`${values.date} ${values.startTime}`);
+          let endTime;
+          if (values.endTime) {
+            endTime = new Date(`${values.date} ${values.endTime}`);
+          }
+          const event = {
+            title: values.title,
+            description: values.description,
+            category_id: values.category_id,
+            address: values.address,
+            startTime: startTime.toISOString(),
+            endTime: values.endTime ? endTime.toISOString() : null,
+            hashtags: JSON.stringify({ hashtags: [...hashtags] }),
+            modifiers: JSON.stringify({
+              modifiers: [...modifiersWithoutIcon()],
+            }),
+            longitude: values.longitude,
+            latitude: values.latitude,
+            photo: photo ? photo : null,
+            // replace with variable
+            user_id: parseInt(me.id),
+          };
           if (isEditing) {
-            const updatedEvent = {
-              title: values.title,
-              description: values.description,
-              category_id: values.category_id,
-              address: values.address,
-              startTime: values.startTime,
-              date: values.date,
-              endTime: values.endTime ? values.endTime : null,
-              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
-              modifiers: JSON.stringify({
-                modifiers: [...modifiersWithoutIcon()],
-              }),
-              longitude: values.longitude,
-              latitude: values.latitude,
-              // replace with variable
-              user_id: 1,
-              // photo still not working quite right
-              photo: null,
-            };
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(UPDATE_EVENT),
                 variables: {
                   id: Number(eventToEdit.id),
-                  input: updatedEvent,
+                  input: event,
                 },
               })
               .then((res) => {
@@ -134,24 +137,10 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err));
           } else {
-            const newEvent = {
-              ...values,
-              endTime: values.endTime ? values.endTime : null,
-              hashtags: JSON.stringify({ hashtags: [...hashtags] }),
-              modifiers: JSON.stringify({
-                modifiers: [...modifiersWithoutIcon()],
-              }),
-              longitude: values.longitude,
-              latitude: values.latitude,
-              // replace with variable
-              user_id: 1,
-              // photo still not working quite right
-              photo: null,
-            };
-            axios
+            axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
-                variables: { input: newEvent },
+                variables: { input: event },
               })
               .then((res) => {
                 dispatch(createEventSuccess(res.data.data.addEvent));
@@ -189,6 +178,7 @@ const FormContainer = () => {
                     setHashtags={setHashtags}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    photo={photo}
                     setPhoto={setPhoto}
                   />
                 </>
@@ -204,6 +194,7 @@ const FormContainer = () => {
                     handleSubmit={handleSubmit}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    photo={photo}
                   />
                 </>
               )}

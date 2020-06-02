@@ -3,23 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 import { parseTime } from "../../../utilities/functions";
 
-const CalendarRow = ({ id, title, date, startTime, users, eventNum }) => {
+const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
   const activeEvent = useSelector((state) => state.activeCalendarEvent);
-  const me = useSelector((state) => state.myUser);
   const dispatch = useDispatch();
-  let status;
 
-  //find status
-
-  if (users) {
-    const tempArray = users.filter((user) => `${user.id}` === `${me.id}`);
-    if (tempArray.length > 0) {
-      status = tempArray[0].status;
-    }
-  }
-
-  //time formatting
-  const timeObject = parseTime(date, startTime);
+  const timeObject = parseTime(startTime, null);
 
   return (
     <div

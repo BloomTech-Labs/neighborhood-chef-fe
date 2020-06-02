@@ -4,13 +4,14 @@ import { Formik, Form } from "formik";
 import AuthFields from "./AuthFields.js";
 import ProfileFields from "./ProfileFields.js";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { MobileStepper } from "@material-ui/core";
 import { formStyles } from "../../styles";
 import AuthHeader from "../other/AuthHeader.js";
 
 const Register = () => {
+  const history = useHistory();
   const currentPage = useSelector((state) => state.page);
   const classes = formStyles();
 
@@ -53,11 +54,13 @@ const Register = () => {
             .post(`${process.env.REACT_APP_BASE_URL}/auth/register`, userValues)
             .then((res) => {
               console.log(res);
+              setSubmitting(false);
+              history.push("/register-check-email");
             })
             .catch((err) => {
+              setSubmitting(false);
               console.dir({ err, message: err.message, stack: err.stack });
             });
-          setSubmitting(false);
         }}
       >
         {({ isSubmitting, setFieldValue }) => (
@@ -74,7 +77,7 @@ const Register = () => {
         )}
       </Formik>
       <p>
-        Already have an account?{" "}
+        Already have an account?
         <Link to="/login" className="loginLink">
           Login
         </Link>

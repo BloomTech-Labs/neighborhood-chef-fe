@@ -15,6 +15,7 @@ import {
   CANCEL_EDIT,
   UPDATE_EVENT_SUCCESS,
   SINGLE_EVENT_FETCH_SUCCESS,
+  UPDATE_STATUS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -35,11 +36,6 @@ const initialState = {
   isEditing: false,
   eventToEdit: {},
   currentEvent: {},
-
-  //test user data
-  myUser: {
-    id: 1,
-  },
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -75,6 +71,16 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         update: !state.update,
+      };
+    case UPDATE_STATUS:
+      const newListWithChange = state.eventList.map((ele) => {
+        if (`${ele.id}` === `${payload.eventId}`)
+          ele.status = payload.newStatus;
+        return ele;
+      });
+      return {
+        ...state,
+        eventList: newListWithChange,
       };
     case CHANGE_PAGE:
       return {

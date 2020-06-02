@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import checkmarkIcon from "@iconify/icons-gridicons/checkmark";
 import { print } from "graphql";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 
 import {
   deleteInvitationSuccess,
@@ -23,7 +23,7 @@ const InvitedUser = ({ user }) => {
       user_id: Number(user.id),
     };
 
-    axios
+    axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(REMOVE_INVITATION),
         variables: { input: removeInvite },
@@ -39,9 +39,10 @@ const InvitedUser = ({ user }) => {
       style={{
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         width: "100%",
         margin: "10px",
-        opacity: "0.3",
+        opacity: "0.5",
       }}
       key={user.id}
     >
@@ -112,8 +113,9 @@ const InvitedUser = ({ user }) => {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "flex-end",
           marginLeft: "5%",
-          width: "20%",
+          width: "30%",
         }}
       >
         <p style={{ marginRight: "3%" }}>Invited</p>
