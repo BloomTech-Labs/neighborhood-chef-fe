@@ -190,17 +190,19 @@ a {
 
 .event-details-container {
   background: #f2f2f2;
+  padding: 10px;
   height: 90%;
-  margin: 10px;
-  padding: 20px 50px;
   border-radius: 10px;
 }
 
-.single-event {
-  height: 100%;
+.event-details-card {
+  height: 90%;
+  margin: 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  max-width: 300px;
 }
 
 .account-button {
@@ -243,6 +245,10 @@ a {
   padding: 20px;
   border-radius: 10px;
   height: 85vh;
+}
+
+.hidden {
+  display: none;
 }
 
 /* ---- start of CreateEvent styles ---- */

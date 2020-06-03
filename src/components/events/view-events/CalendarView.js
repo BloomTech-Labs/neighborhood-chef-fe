@@ -25,8 +25,8 @@ import { parseTime } from "../../../utilities/functions";
 const CalendarView = () => {
   const eventList = useSelector((state) => state.eventList);
   const selectedMonth = useSelector((state) => state.selectedMonth);
-  // const me = useSelector((state) => state.myUser);
   const me = JSON.parse(sessionStorage.getItem("user"));
+  const update = useSelector((state) => state.update);
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +77,7 @@ const CalendarView = () => {
       .finally(function () {
         setIsLoading(false);
       });
-  }, [dispatch, me.id]);
+  }, [dispatch, me.id, update]);
 
   return (
     <div

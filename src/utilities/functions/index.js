@@ -64,6 +64,7 @@ export const parseTime = (start, end) => ({
   weekday: moment(parseInt(start)).format("ddd"),
   day: moment(parseInt(start)).format("DD"),
   monthShort: moment(parseInt(start)).format("MMM"),
+  monthYear: moment(parseInt(start)).format("MMM YYYY"),
   startTime: moment(parseInt(start)).format("h:mm a"),
   endTime: moment(parseInt(end)).format("h:mm a"),
   unixStart: start,

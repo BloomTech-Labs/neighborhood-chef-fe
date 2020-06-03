@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 
 //icon imports
 import { Icon } from "@iconify/react";
@@ -26,17 +28,15 @@ import { rsvpButtons } from "../../../data/buttons";
 import { parseTime } from "../../../utilities/functions";
 
 const EventDetails = () => {
-  const currentEventID = useSelector((state) => state.activeCalendarEvent);
+  const currentEventId = useSelector((state) => state.activeEvent);
   const eventList = useSelector((state) => state.eventList);
-  // const me = useSelector((state) => state.myUser);
   const me = JSON.parse(sessionStorage.getItem("user"));
-  // const update = useSelector((state) => state.update);
 
-  const event = eventList && eventList.find((ele) => ele.id === currentEventID);
+  const event = eventList && eventList.find((ele) => ele.id === currentEventId);
 
-  //useState hooks for local state
   const [creatorName, setCreatorName] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
+  const [participants, setParticipants] = useState([]);
 
   let timeObject, parsedAddressURL;
 
@@ -57,6 +57,9 @@ const EventDetails = () => {
           setCurrentStatus(
             event.users.filter((ele) => `${ele.id}` === `${me.id}`)[0].status
           );
+          setParticipants(
+            event.users.filter((user) => user.status === "Going")
+          );
         })
         .catch((err) => {
           console.log(err.message);
@@ -72,83 +75,76 @@ const EventDetails = () => {
     )}`;
   }
   return (
-    <>
+    <div className="event-details-container">
       {!!event && (
-        <div style={{ position: "relative", right: "-82%", top: "10%" }}>
-          <EventButtonModal eventId={event.id} userId={me.id} />
-        </div>
-      )}
-      <div className="event-details-container">
-        {!!event ? (
-          <div className="single-event">
-            <div>
-              <Typography variant="h3">{event.title}</Typography>
-              <p style={{ fontStyle: "italic", opacity: ".3" }}>
-                created by {creatorName}
-              </p>
-            </div>
-            <p style={{ opacity: ".3" }}> {event.description}</p>
-            <div>Confirmed Participants: {event.users.length}</div>
-            <div>
-              <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
-                <Icon height="20" icon={calendarIcon} />
-              </span>
-              {timeObject.formattedDate}
-            </div>
-            <div>
-              <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
-                <Icon height="20" icon={clockIcon} />
-              </span>
-              {`${timeObject.startTime} ${
-                timeObject.endTime !== "Invalid date"
-                  ? "- " + timeObject.endTime
-                  : ""
-              }`}
-            </div>
-            <div>
-              <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
-                <Icon height="20" icon={globeIcon} />
-              </span>
-              <a
-                href={parsedAddressURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "rgb(79, 79, 248)" }}
-              >
-                {event.address}
-              </a>
-            </div>
-            <div style={{ padding: "20px 0px 10px 0px" }}>
-              <Typography variant="h6">
-                Will you be attending this event?
+        <Card className="event-details-card">
+          <CardHeader
+            action={<EventButtonModal eventId={event.id} userId={me.id} />}
+            title={<Typography variant="h3">{event.title}</Typography>}
+            subheader={
+              <Typography variant="caption">
+                <span style={{ opacity: ".6" }}>created by </span>
+                {creatorName}
               </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  paddingTop: "10px",
-                }}
-              >
-                {rsvpButtons.map((ele) => (
-                  <StatusButton
-                    {...ele}
-                    eventStatus={currentStatus}
-                    eventId={event.id}
-                    userId={me.id}
-                    setStatus={setCurrentStatus}
-                    key={ele.name}
-                  />
-                ))}
-              </div>
+            }
+          />
+          <p style={{ opacity: ".5" }}> {event.description}</p>
+          <div>Confirmed Participants: {participants.length}</div>
+          <div>
+            <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
+              <Icon height="20" icon={calendarIcon} />
+            </span>
+            {timeObject.formattedDate}
+          </div>
+          <div>
+            <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
+              <Icon height="20" icon={clockIcon} />
+            </span>
+            {`${timeObject.startTime} ${
+              timeObject.endTime !== "Invalid date"
+                ? "- " + timeObject.endTime
+                : ""
+            }`}
+          </div>
+          <div>
+            <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
+              <Icon height="20" icon={globeIcon} />
+            </span>
+            <a
+              href={parsedAddressURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgb(79, 79, 248)" }}
+            >
+              {event.address}
+            </a>
+          </div>
+          <div style={{ padding: "20px 0px 10px 0px" }}>
+            <Typography variant="h6">
+              Will you be attending this event?
+            </Typography>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                paddingTop: "10px",
+              }}
+            >
+              {rsvpButtons.map((ele) => (
+                <StatusButton
+                  {...ele}
+                  eventStatus={currentStatus}
+                  eventId={event.id}
+                  userId={me.id}
+                  setStatus={setCurrentStatus}
+                  key={ele.name}
+                />
+              ))}
             </div>
           </div>
-        ) : (
-          <div>
-            <h3>Select an event from the calendar to view the details here.</h3>
-          </div>
-        )}
-      </div>
-    </>
+        </Card>
+      )}
+    </div>
   );
 };
 

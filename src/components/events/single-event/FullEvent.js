@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom";
 
 import Grow from "@material-ui/core/Grow";
 
+import EventDetails from "../view-events/EventDetails";
+
 const FullEvent = ({ match }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   // const me = useSelector((state) => state.myUser);
@@ -43,9 +45,9 @@ const FullEvent = ({ match }) => {
       <Sidebar />
       <Grow in style={{ transformOrigin: "200 200 200" }}>
         <div className="single-event-box">
-          <h1>FullEvent data dump</h1>
           {currentEvent ? (
-            <pre>{JSON.stringify(currentEvent, null, 2)}</pre>
+            // <pre>{JSON.stringify(currentEvent, null, 2)}</pre>
+            <EventDetails />
           ) : (
             ""
           )}

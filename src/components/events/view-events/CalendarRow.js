@@ -4,7 +4,7 @@ import { makeActive } from "../../../utilities/actions";
 import { parseTime } from "../../../utilities/functions";
 
 const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
-  const activeEvent = useSelector((state) => state.activeCalendarEvent);
+  const activeEvent = useSelector((state) => state.activeEvent);
   const dispatch = useDispatch();
 
   const timeObject = parseTime(startTime, null);

@@ -23,8 +23,8 @@ const initialDate = new Date();
 const initialState = {
   loginCredentials: {},
   page: 1,
-  activeCalendarEvent: null,
-  selectedMonth: initialDate,
+  activeEvent: null,
+  selectedMonth: initialDate.setDate(15),
   neighborhoodName: "My Neighborhood",
   errors: [],
   isGettingEvents: false,
@@ -50,7 +50,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
     case MAKEACTIVE:
       return {
         ...state,
-        activeCalendarEvent: payload,
+        activeEvent: payload,
       };
     case CHANGE_MONTH:
       const tempDate = new Date(state.selectedMonth);

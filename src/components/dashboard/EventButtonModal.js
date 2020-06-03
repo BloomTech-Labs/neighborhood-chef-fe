@@ -13,7 +13,11 @@ import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
 import { useDispatch } from "react-redux";
-import { deleteInvitationSuccess, forceUpdate } from "../../utilities/actions";
+import {
+  deleteInvitationSuccess,
+  forceUpdate,
+  makeActive,
+} from "../../utilities/actions";
 import WarnRemoveModal from "./WarnRemoveModal";
 
 const EventButtonModal = ({ eventId, userId }) => {
@@ -104,7 +108,10 @@ const EventButtonModal = ({ eventId, userId }) => {
                       onKeyDown={handleListKeyDown}
                     >
                       <MenuItem
-                        onClick={() => history.push(`/events/${eventId}`)}
+                        onClick={() => {
+                          dispatch(makeActive(eventId));
+                          history.push(`/events/${eventId}`);
+                        }}
                       >
                         Open Event
                       </MenuItem>
