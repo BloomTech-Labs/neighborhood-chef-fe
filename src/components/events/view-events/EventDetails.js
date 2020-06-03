@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
+import { cardStyles } from "../../../styles";
 
 //icon imports
 import { Icon } from "@iconify/react";
@@ -28,6 +29,7 @@ import { rsvpButtons } from "../../../data/buttons";
 import { parseTime } from "../../../utilities/functions";
 
 const EventDetails = () => {
+  const classes = cardStyles();
   const currentEventId = useSelector((state) => state.activeEvent);
   const eventList = useSelector((state) => state.eventList);
   const me = JSON.parse(sessionStorage.getItem("user"));
@@ -77,7 +79,7 @@ const EventDetails = () => {
   return (
     <div className="event-details-container">
       {!!event && (
-        <Card className="event-details-card">
+        <Card className={`${classes.root} ${classes.fullEvent}`}>
           <CardHeader
             action={<EventButtonModal eventId={event.id} userId={me.id} />}
             title={<Typography variant="h3">{event.title}</Typography>}

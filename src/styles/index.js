@@ -202,8 +202,24 @@ export const formStyles = makeStyles({
 
 export const cardStyles = makeStyles((theme) => ({
   root: {
-    width: 360,
+    maxWidth: 350,
+    minWidth: 200,
     margin: 8,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  fullEvent: {
+    height: "92%",
+    padding: "15px",
+  },
+  participants: {
+    maxHeight: 200,
+  },
+  particExpand: {
+    display: "flex",
+    flexDirection: "column",
+    overflow: "auto",
   },
   media: {
     height: 0,

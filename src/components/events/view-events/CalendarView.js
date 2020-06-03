@@ -96,7 +96,6 @@ const CalendarView = () => {
           ) : (
             <div style={{ textAlign: "center" }}>
               <h3>No events for selected month</h3>
-              <br />
               <p>But it doesn't have to stay that way.</p>
               <Link to="/create-event">
                 <div className={`${classes.single} ${classes.root}`}>

@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import Grow from "@material-ui/core/Grow";
 
 import EventDetails from "../view-events/EventDetails";
+import ParticipantCard from "./ParticipantsCard";
 
 const FullEvent = ({ match }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
@@ -46,8 +47,10 @@ const FullEvent = ({ match }) => {
       <Grow in style={{ transformOrigin: "200 200 200" }}>
         <div className="single-event-box">
           {currentEvent ? (
-            // <pre>{JSON.stringify(currentEvent, null, 2)}</pre>
-            <EventDetails />
+            <>
+              <EventDetails />
+              <ParticipantCard />
+            </>
           ) : (
             ""
           )}
