@@ -66,14 +66,6 @@ const Sidebar = ({ active }) => {
   return (
     <div className="sidebar-container">
       <div>
-        <Link to="/">
-          <div className="left-side-header">
-            <span style={{ color: "#58D473", marginRight: "5px" }}>
-              <Icon width="1.1em" icon={chefIcon} />
-            </span>
-            <span>Neighborhood Chef</span>
-          </div>
-        </Link>
         <nav className="nav-container">
           {buttonList.map((ele) => (
             <SidebarButton
