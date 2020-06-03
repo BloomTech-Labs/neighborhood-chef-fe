@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Sidebar active="dashboard" />
+      
       <div className="dashboard-main">
         <Header />
         <div

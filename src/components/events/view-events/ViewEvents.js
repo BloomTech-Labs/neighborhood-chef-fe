@@ -10,7 +10,7 @@ import EventDetails from "./EventDetails";
 const ViewEvents = () => {
   return (
     <div className="component-main">
-      <Sidebar active="view-events" />
+
       <div className="middle-calendar">
         <MonthPicker />
         <CalendarView />
