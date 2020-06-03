@@ -14,6 +14,7 @@ import Grow from "@material-ui/core/Grow";
 
 import EventDetails from "../view-events/EventDetails";
 import ParticipantCard from "./ParticipantsCard";
+import ShareCard from "./ShareCard";
 
 const FullEvent = ({ match }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
@@ -50,6 +51,7 @@ const FullEvent = ({ match }) => {
             <>
               <EventDetails />
               <ParticipantCard />
+              <ShareCard />
             </>
           ) : (
             ""

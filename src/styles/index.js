@@ -238,6 +238,37 @@ export const cardStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  share: { maxHeight: 200 },
+  shareButtons: {
+    color: (props) => {
+      if (props.name === "Facebook") {
+        return "#3965FF";
+      }
+      if (props.name === "Twitter") {
+        return "#55ACEE";
+      }
+      if (props.name === "Text") {
+        return "#2ddd53";
+      }
+      if (props.name === "Email") {
+        return "#5192f3";
+      }
+    },
+    background: (props) => {
+      if (props.name === "Facebook") {
+        return "#E5F0FF";
+      }
+      if (props.name === "Twitter") {
+        return "#D9EFFF";
+      }
+      if (props.name === "Text") {
+        return "#ebfff5";
+      }
+      if (props.name === "Email") {
+        return "#e0e6ff";
+      }
+    },
+  },
 }));
 
 export const textBoxStyles = makeStyles({
