@@ -33,10 +33,10 @@ function App() {
           path="/initialChangePassword/:string"
           component={ChangePassword}
         />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={GridStructure} />
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/create-event" component={CreateEvent} />
-        <PrivateRoute path="/view-events" component={ViewEvents} />
+        <PrivateRoute path="/create-event" component={GridStructure} />
+        <PrivateRoute path="/view-events" component={GridStructure} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />
         <Route path="/recipes" component={Recipes} />
