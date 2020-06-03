@@ -13,6 +13,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import MessageIcon from "@material-ui/icons/Message";
+import LinkIcon from "@material-ui/icons/Link";
 
 const shareButtons = [
   {
@@ -42,21 +43,42 @@ const ParticipantCard = (props) => {
         <Typography variant="h6" align="left">
           Share
         </Typography>
-        <CardContent style={{ display: "flex" }}>
-          {shareButtons.map((b) => {
-            return (
-              <Avatar
-                title={b.name}
-                aria-label={b.name}
-                className={cardStyles({ name: b.name }).shareButtons}
-              >
-                <b.icon fontSize="large" />
+        <CardContent
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "10px",
+            }}
+          >
+            {shareButtons.map((b) => {
+              return (
+                <Avatar
+                  title={b.name}
+                  aria-label={b.name}
+                  className={cardStyles({ name: b.name }).shareButtons}
+                >
+                  <b.icon fontSize="large" />
+                </Avatar>
+              );
+            })}
+          </div>
+
+          <div style={{ display: "flex" }}>
+            <Typography
+              variant="caption"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              Copy Link:
+              <Avatar style={{ marginLeft: "10px" }}>
+                <LinkIcon fontSize="large" />
               </Avatar>
-            );
-          })}
-          <div>
-            <Typography variant="body1">Copy Link:</Typography>
-            <input disabled placeholder="ourneighborhoodchef.com" />
+            </Typography>
           </div>
         </CardContent>
       </Card>

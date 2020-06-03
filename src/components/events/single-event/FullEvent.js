@@ -15,6 +15,7 @@ import Grow from "@material-ui/core/Grow";
 import EventDetails from "../view-events/EventDetails";
 import ParticipantCard from "./ParticipantsCard";
 import ShareCard from "./ShareCard";
+import CommentsCard from "./CommentsCard";
 
 const FullEvent = ({ match }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
@@ -40,18 +41,27 @@ const FullEvent = ({ match }) => {
       });
   }, [dispatch, eventId]);
   return (
-    <div
-      className="single-event-container"
-      style={{ display: "flex", justifyContent: "space-between" }}
-    >
+    <div className="single-event-container">
       <Sidebar />
       <Grow in style={{ transformOrigin: "200 200 200" }}>
         <div className="single-event-box">
           {currentEvent ? (
             <>
               <EventDetails />
-              <ParticipantCard />
-              <ShareCard />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <div style={{ display: "flex" }}>
+                  <ParticipantCard />
+                  <ShareCard />
+                </div>
+                <CommentsCard />
+              </div>
             </>
           ) : (
             ""
