@@ -6,6 +6,7 @@
     "@iconify/icons-ant-design": "^1.0.8",
     "@iconify/icons-bi": "^1.0.0",
     "@iconify/icons-bx": "^1.0.3",
+    "@iconify/icons-entypo": "^1.0.5",
     "@iconify/icons-flat-color-icons": "^1.0.5",
     "@iconify/icons-gridicons": "^1.0.6",
     "@iconify/icons-heroicons": "^1.0.0",
@@ -20,6 +21,7 @@
     "@mapbox/react-geocoder": "^2.5.0",
     "@material-ui/core": "^4.9.11",
     "@material-ui/icons": "^4.9.1",
+    "@okta/okta-react": "^3.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -52,7 +54,7 @@
     "yup": "^0.28.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
