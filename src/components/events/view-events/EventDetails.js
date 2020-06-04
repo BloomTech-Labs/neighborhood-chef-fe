@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 
+//react router imports
+import { useLocation } from "react-router-dom";
+
 //graphql imports
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
+import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 
 //redux imports
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleEvent, makeActive } from "../../../utilities/actions";
 
 //style imports
 import Typography from "@material-ui/core/Typography";
@@ -29,13 +34,14 @@ import { rsvpButtons } from "../../../data/buttons";
 import { parseTime } from "../../../utilities/functions";
 
 const EventDetails = () => {
+  const location = useLocation();
+  const thisURL = location.pathname.split("/");
+  const dispatch = useDispatch();
   const classes = cardStyles();
-  const currentEventId = useSelector((state) => state.activeEvent);
-  const eventList = useSelector((state) => state.eventList);
+  const idFromStore = useSelector((state) => state.activeEvent);
+  const currentEventId = thisURL.length > 2 ? thisURL[2] : idFromStore;
   const me = JSON.parse(sessionStorage.getItem("user"));
-
-  const event = eventList && eventList.find((ele) => ele.id === currentEventId);
-
+  const event = useSelector((state) => state.currentEvent);
   const [creatorName, setCreatorName] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
   const [participants, setParticipants] = useState([]);
@@ -44,7 +50,7 @@ const EventDetails = () => {
 
   useEffect(() => {
     //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
-    event &&
+    if (Object.keys(event).length > 0) {
       axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
         method: "post",
@@ -66,19 +72,40 @@ const EventDetails = () => {
         .catch((err) => {
           console.log(err.message);
         });
+    }
+
     // eslint-disable-next-line
   }, [event]);
 
-  if (event) {
+  useEffect(() => {
+    axiosWithAuth()({
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+      method: "post",
+      data: {
+        query: print(EVENT_BY_ID),
+        variables: { id: currentEventId },
+      },
+    })
+      .then((res) => {
+        dispatch(getSingleEvent(res.data.data.getEventById));
+        dispatch(makeActive(currentEventId));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [dispatch, currentEventId]);
+
+  if (Object.keys(event).length > 0) {
     timeObject = parseTime(event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
       " ",
       "+"
     )}`;
   }
+
   return (
     <div className="event-details-container">
-      {!!event && (
+      {Object.keys(event).length > 0 && (
         <Card className={`${classes.root} ${classes.fullEvent}`}>
           <CardHeader
             action={<EventButtonModal eventId={event.id} userId={me.id} />}

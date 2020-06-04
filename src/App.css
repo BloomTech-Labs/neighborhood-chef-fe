@@ -239,11 +239,11 @@ a {
 /* ---- start of SingleEvent styles ---- */
 
 .single-event-box {
-  width: 100%;
   background: #f2f2f2;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
-  height: 85vh;
+  height: calc(100% - 20px);
+  width: 100%;
   display: flex;
 }
 

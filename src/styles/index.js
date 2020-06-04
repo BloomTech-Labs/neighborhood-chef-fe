@@ -208,15 +208,15 @@ export const cardStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    height: "100%",
+    padding: "10px",
   },
   fullEvent: {
-    height: "100%",
-    padding: "15px",
+    height: "calc(100% - 36px)",
     maxWidth: "100%",
   },
   participants: {
     height: 150,
-    padding: "10px",
     width: "100%",
   },
   particExpand: {
@@ -241,7 +241,7 @@ export const cardStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-  share: { maxHeight: 150, padding: "10px", width: "100%" },
+  share: { maxHeight: 150 },
   shareButtons: {
     cursor: "pointer",
     color: (props) => {
@@ -274,7 +274,7 @@ export const cardStyles = makeStyles((theme) => ({
     },
   },
   comments: {
-    height: "100%",
+    height: "calc(100%-20px)",
     maxWidth: "100%",
   },
 }));

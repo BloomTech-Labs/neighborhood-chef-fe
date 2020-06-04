@@ -4,8 +4,7 @@ import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
-import Sidebar from "../../dashboard/Sidebar";
-import { startEventEdit } from "../../../utilities/actions";
+import { startEventEdit, makeActive } from "../../../utilities/actions";
 import { convertTimeAndDate } from "../../../utilities/functions";
 
 import { useHistory } from "react-router-dom";
@@ -19,7 +18,6 @@ import CommentsCard from "./CommentsCard";
 
 const FullEvent = ({ match }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  // const me = useSelector((state) => state.myUser);
   const { push } = useHistory();
   const eventId = parseInt(match.params.id);
   const dispatch = useDispatch();
@@ -35,6 +33,7 @@ const FullEvent = ({ match }) => {
     })
       .then((res) => {
         dispatch(getSingleEvent(res.data.data.getEventById));
+        dispatch(makeActive(eventId));
       })
       .catch((err) => {
         console.log(err.message);
@@ -42,7 +41,6 @@ const FullEvent = ({ match }) => {
   }, [dispatch, eventId]);
   return (
     <div className="single-event-container">
-      <Sidebar />
       <Grow in style={{ transformOrigin: "200 200 200" }}>
         <div className="single-event-box">
           {currentEvent ? (
