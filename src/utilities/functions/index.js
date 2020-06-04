@@ -76,3 +76,16 @@ export const convertTimeAndDate = (event) => ({
     ? moment(parseInt(event.endTime)).format("HH:mm:ss")
     : "",
 });
+
+export const isEventFavorite = (arr, id) => {
+  const seen = {};
+  arr.forEach((event) => {
+    if (event.id === id) {
+      seen[event.id] = event;
+    }
+  });
+  if (seen[id]) {
+    return true;
+  }
+  return false;
+};

@@ -8,13 +8,28 @@ import MenuList from "@material-ui/core/MenuList";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router-dom";
+import { print } from "graphql";
+import { useDispatch, useSelector } from "react-redux";
+
 import { modalStyles } from "../../styles";
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
-import { print } from "graphql";
-import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
-import { useDispatch } from "react-redux";
-import { deleteInvitationSuccess, forceUpdate } from "../../utilities/actions";
 import WarnRemoveModal from "./WarnRemoveModal";
+import { isEventFavorite } from "../../utilities/functions";
+
+// graphql imports
+import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
+import {
+  ADD_FAVORITE_EVENT,
+  REMOVE_FAVORITE_EVENT,
+} from "../../graphql/users/user-mutations";
+
+// action imports
+import {
+  deleteInvitationSuccess,
+  forceUpdate,
+  addFavoriteEventSuccess,
+  removeFavoriteEventSuccess,
+} from "../../utilities/actions";
 
 const EventButtonModal = ({ eventId, userId }) => {
   const dispatch = useDispatch();
@@ -22,6 +37,8 @@ const EventButtonModal = ({ eventId, userId }) => {
   const modalClasses = modalStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const favoriteEvents = useSelector((state) => state.favoriteEvents);
+  const checkIfFavorite = isEventFavorite(favoriteEvents, eventId);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -41,6 +58,7 @@ const EventButtonModal = ({ eventId, userId }) => {
       setOpen(false);
     }
   };
+
   const removeInvitation = () => {
     const removeInvite = {
       event_id: Number(eventId),
@@ -55,6 +73,40 @@ const EventButtonModal = ({ eventId, userId }) => {
       .then((res) => {
         dispatch(deleteInvitationSuccess(res.data.data.removeInvitation.users));
         dispatch(forceUpdate());
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const addFavoriteEvent = () => {
+    const favoriteEvent = {
+      event_id: Number(eventId),
+      user_id: Number(userId),
+    };
+
+    axiosWithAuth()
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+        query: print(ADD_FAVORITE_EVENT),
+        variables: { input: favoriteEvent },
+      })
+      .then((res) => {
+        dispatch(addFavoriteEventSuccess(res.data.data.addFavoriteEvent));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const removeFavoriteEvent = () => {
+    const removeFavorite = {
+      event_id: Number(eventId),
+      user_id: Number(userId),
+    };
+
+    axiosWithAuth()
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+        query: print(REMOVE_FAVORITE_EVENT),
+        variables: { input: removeFavorite },
+      })
+      .then((res) => {
+        dispatch(removeFavoriteEventSuccess(res.data.data.removeFavoriteEvent));
       })
       .catch((err) => console.log(err));
   };
@@ -111,6 +163,15 @@ const EventButtonModal = ({ eventId, userId }) => {
                       <MenuItem>
                         <WarnRemoveModal removeInvitation={removeInvitation} />
                       </MenuItem>
+                      {!checkIfFavorite ? (
+                        <MenuItem onClick={() => addFavoriteEvent()}>
+                          Add To Favorite List
+                        </MenuItem>
+                      ) : (
+                        <MenuItem onClick={() => removeFavoriteEvent()}>
+                          Remove From Favorite List
+                        </MenuItem>
+                      )}
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
