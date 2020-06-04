@@ -64,22 +64,6 @@ const FullEvent = ({ match }) => {
           ) : (
             ""
           )}
-          {`${me.id}` === `${currentEvent.user_id}` && (
-            <button
-              onClick={() => {
-                /* had to add date to eventToEdit object and convert start/end times here for editing 
-                    mode to allow moment functions to finish converting before the form rendered */
-                const convertForEdit = convertTimeAndDate(currentEvent);
-                currentEvent.date = convertForEdit.date;
-                currentEvent.startTime = convertForEdit.startTime;
-                currentEvent.endTime = convertForEdit.endTime;
-                dispatch(startEventEdit(currentEvent));
-                push("/create-event");
-              }}
-            >
-              Edit
-            </button>
-          )}
         </div>
       </Grow>
     </div>
