@@ -38,9 +38,9 @@ export const buttonStyles = makeStyles({
   },
   single: {
     cursor: "pointer",
+    margin: "0 auto",
     textAlign: "center",
-    width: "200px",
-    margin: "auto",
+    lineHeight: "35px",
     background: "#58D573",
     color: "white",
     "& a": {
@@ -241,7 +241,7 @@ export const cardStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-  share: { maxHeight: 150 },
+  share: { maxHeight: 150, width: "100%" },
   shareButtons: {
     cursor: "pointer",
     color: (props) => {
