@@ -40,7 +40,12 @@ const ParticipantCard = (props) => {
         <Typography variant="h6" align="left">
           Comments
         </Typography>
-        <CardContent style={{ display: "flex", flexDirection: "column" }}>
+        <CardContent
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           {comments &&
             comments.map((comment) => {
               return <p>{comment}</p>;

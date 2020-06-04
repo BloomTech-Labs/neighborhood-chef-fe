@@ -276,6 +276,7 @@ export const cardStyles = makeStyles((theme) => ({
   comments: {
     height: "calc(100%-20px)",
     maxWidth: "100%",
+    maxHeight: "calc(100%-20px)",
   },
 }));
 
