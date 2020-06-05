@@ -60,42 +60,44 @@ const FormPageThree = ({
               >
                 {values.title}
               </h3>
-              <div style={{ display: "flex" }}>
+              <div className="formPageThreeDateDiv">
                 <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
                   {values.date && moment(values.date).format("MMM Do YYYY")}
                   .&nbsp;
                 </p>
-                <p
-                  style={{
-                    fontSize: "1.6rem",
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {convertTime(values.startTime)}&nbsp;
-                </p>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p
+                    style={{
+                      fontSize: "1.6rem",
+                      color: "#82DF96",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {convertTime(values.startTime)}&nbsp;
+                  </p>
 
-                {values.endTime && (
-                  <>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      to&nbsp;
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {convertTime(values.endTime)}
-                    </p>
-                  </>
-                )}
+                  {values.endTime && (
+                    <>
+                      <p
+                        style={{
+                          fontSize: "1.6rem",
+                          color: "rgba(0, 0, 0, 0.5)",
+                        }}
+                      >
+                        to&nbsp;
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "1.6rem",
+                          color: "#ea6565",
+                          fontWeight: "500",
+                        }}
+                      >
+                        {convertTime(values.endTime)}
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
               <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
                 {values.address}
@@ -130,42 +132,43 @@ const FormPageThree = ({
               >
                 {values.title}
               </h3>
-              <div style={{ display: "flex" }}>
+              <div className="formPageThreeDateDiv">
                 <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
                   {values.date && moment(values.date).format("MMM Do YYYY")}
                   .&nbsp;
                 </p>
-                <p
-                  style={{
-                    fontSize: "1.6rem",
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {convertTime(values.startTime)}&nbsp;
-                </p>
-
-                {values.endTime && (
-                  <>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      to&nbsp;
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {convertTime(values.endTime)}
-                    </p>
-                  </>
-                )}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p
+                    style={{
+                      fontSize: "1.6rem",
+                      color: "#82DF96",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {convertTime(values.startTime)}&nbsp;
+                  </p>
+                  {values.endTime && (
+                    <>
+                      <p
+                        style={{
+                          fontSize: "1.6rem",
+                          color: "rgba(0, 0, 0, 0.5)",
+                        }}
+                      >
+                        to&nbsp;
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "1.6rem",
+                          color: "#ea6565",
+                          fontWeight: "500",
+                        }}
+                      >
+                        {convertTime(values.endTime)}
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
               <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
                 {values.address}

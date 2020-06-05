@@ -247,18 +247,12 @@ a {
 
 /* ---- start of CreateEvent styles ---- */
 
-.createFormError {
-  color: crimson;
-  font-size: 1.6rem;
-  margin-top: -10px;
-}
-
 .createEventContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75%;
+  width: 96%;
 }
 
 .createForm {
@@ -276,8 +270,28 @@ a {
   justify-content: center;
 }
 
+@media (max-width: 1000px) {
+  .createFormPage1TopRow {
+    flex-direction: column;
+  }
+}
+
 .createFormPage1LeftContainer {
   width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1LeftContainer {
+    width: 90%;
+    margin-left: 8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1LeftContainer {
+    align-items: center;
+    width: 90%;
+  }
 }
 
 .createFormInputDiv {
@@ -319,9 +333,21 @@ a {
   width: 92%;
 }
 
+@media (max-width: 1000px) {
+  .createFormTextArea {
+    width: 92%;
+  }
+}
+
 .createFormPage1RightContainer {
   width: 40%;
   margin-left: 8%;
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1RightContainer {
+    width: 90%;
+  }
 }
 
 .eventTimeDiv {
@@ -455,6 +481,16 @@ a {
   margin-bottom: 40px;
 }
 
+@media (max-width: 1000px) {
+  .createFormButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
 .createRightBtn {
   display: flex;
   align-items: center;
@@ -471,6 +507,12 @@ a {
   width: 15%;
 }
 
+@media (max-width: 1000px) {
+  .createRightBtn {
+    width: 35%;
+  }
+}
+
 .createLeftBtn {
   display: flex;
   align-items: center;
@@ -485,6 +527,25 @@ a {
   font-size: 2rem;
   font-weight: bold;
   width: 15%;
+}
+
+@media (max-width: 1000px) {
+  .createLeftBtn {
+    width: 35%;
+  }
+}
+
+.formPageThreeDateDiv {
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .formPageThreeDateDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px;
+  }
 }
 
 /* -- CreateFormHeader styles ---*/
