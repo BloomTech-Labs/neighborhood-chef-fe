@@ -27,7 +27,6 @@ const styles = makeStyles({
     },
     "Variable":{
         gridArea: "Variable",
-        border: "2px solid black"
     },
     "Variable-Shifted" : { 
         "grid-area": "2 / 2 / 3 / 4" 

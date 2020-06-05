@@ -9,7 +9,6 @@ const styles = makeStyles(theme => ({
     "container": {
         width: "20vw",
         height: "10vh",
-        border: "2px solid black",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
