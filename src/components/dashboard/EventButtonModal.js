@@ -38,7 +38,7 @@ const EventButtonModal = ({ eventId, userId }) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const favoriteEvents = useSelector((state) => state.favoriteEvents);
-  const checkIfFavorite = isEventFavorite(favoriteEvents, eventId);
+  const isFavorite = isEventFavorite(favoriteEvents, eventId);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -78,7 +78,7 @@ const EventButtonModal = ({ eventId, userId }) => {
   };
 
   const addFavoriteEvent = () => {
-    const favoriteEvent = {
+    const addFavorite = {
       event_id: Number(eventId),
       user_id: Number(userId),
     };
@@ -86,7 +86,7 @@ const EventButtonModal = ({ eventId, userId }) => {
     axiosWithAuth()
       .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
         query: print(ADD_FAVORITE_EVENT),
-        variables: { input: favoriteEvent },
+        variables: { input: addFavorite },
       })
       .then((res) => {
         dispatch(addFavoriteEventSuccess(res.data.data.addFavoriteEvent));
@@ -163,7 +163,7 @@ const EventButtonModal = ({ eventId, userId }) => {
                       <MenuItem>
                         <WarnRemoveModal removeInvitation={removeInvitation} />
                       </MenuItem>
-                      {!checkIfFavorite ? (
+                      {!isFavorite ? (
                         <MenuItem onClick={() => addFavoriteEvent()}>
                           Add To Favorite List
                         </MenuItem>

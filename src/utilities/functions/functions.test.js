@@ -33,13 +33,13 @@ describe("Test functions index.js file", () => {
     expect(isEventFavorite(favoriteEvents, 3)).toBe(false);
   });
 
-  test("24 hour times will be converted to 12 hour times", () => {
+  test("24 hour time will be converted to 12 hour time", () => {
     expect(convertTime("18:00:00")).toBe("6:00PM");
     expect(convertTime("03:30:00")).toBe("3:30AM");
     expect(convertTime("23:30:00")).toBe("11:30PM");
   });
 
-  test("date/time strings will be converted to object with date, startTime, and endTime keys", () => {
+  test("date/time strings will be converted to object with date, startTime, and endTime key/value pairs", () => {
     const convertedTimes = convertTimeAndDate(eventTimes);
     expect(convertedTimes.date).toBe("2020-06-26");
     expect(convertedTimes.startTime).toEqual("17:30:00");
@@ -54,5 +54,6 @@ describe("Test functions index.js file", () => {
     );
     expect(restoredModifiers.length).toBe(2);
     expect(restoredModifiers[0].icon).toBeDefined();
+    expect(restoredModifiers[1].icon).toBeDefined();
   });
 });

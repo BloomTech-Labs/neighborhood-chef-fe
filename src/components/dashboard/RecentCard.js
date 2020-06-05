@@ -13,11 +13,12 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useSelector } from "react-redux";
 // import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import { timeAgo, parseTime } from "../../utilities/functions";
+import { timeAgo, parseTime, isEventFavorite } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
 import modernRoom from "../../assets/modernRoom.png";
@@ -30,6 +31,7 @@ import { USER_BY_ID } from "../../graphql/users/user-queries";
 import { print } from "graphql";
 
 import EventButtonModal from "./EventButtonModal";
+import Emoji from "../other/Emoji";
 
 const RecentCard = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
@@ -38,6 +40,8 @@ const RecentCard = (props) => {
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
   const [initials, setInitials] = useState("");
+  const favoriteEvents = useSelector((state) => state.favoriteEvents);
+  const isFavorite = isEventFavorite(favoriteEvents, props.id);
   // const [liked, setLiked] = useState(false);
 
   const handleExpandClick = () => {
@@ -150,6 +154,11 @@ const RecentCard = (props) => {
         {/* <Typography variant="caption" color="textSecondary">
           RSVP
         </Typography> */}
+        {isFavorite && (
+          <div style={{ fontSize: "2.5rem" }}>
+            <Emoji label="star" symbol="⭐" />
+          </div>
+        )}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
