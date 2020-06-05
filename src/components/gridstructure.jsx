@@ -3,10 +3,12 @@ import Header from './header';
 import Sidebar from './dashboard/Sidebar';
 import Logo from './logo';
 import VariableMainContent from './variableMainContent';
+import ProfileDrawerContent from './profileDrawerContent';
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { useLocation } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import clsx from 'clsx';
+
 
 const styles = makeStyles({
     "grid-container":{
@@ -133,7 +135,7 @@ function GridStructure (props){
                     paper: classes.Drawer
                 }}
                 >
-                    <p onClick={closeDrawer}>I am a Drawer</p>
+                    <ProfileDrawerContent closeDrawer={closeDrawer} />
                 </Drawer>
             </div>
         </div>
