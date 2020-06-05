@@ -27,3 +27,6 @@ yarn.lock
 
 #environment variables
 .env
+
+#Debug log
+debug.log
