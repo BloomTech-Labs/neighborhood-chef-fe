@@ -117,7 +117,7 @@ function GridStructure (props){
                 <Logo />
             </div>
             <div className={clsx({[classes["Header"]]: (!open), [classes["Header-Shifted"]]: open})}>
-                <Header openDrawer={openDrawer}/>
+                <Header openDrawer={openDrawer} open={open}/>
             </div>
             <div className={clsx({[classes["Sidebar"]]: (!open), [classes["Sidebar-Shifted"]]: open})}>
                 <Sidebar active={urlLocation}/>

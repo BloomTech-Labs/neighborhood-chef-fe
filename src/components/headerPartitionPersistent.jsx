@@ -38,7 +38,7 @@ function PersistentHeader (props){
         <section className={classes["container"]} >
             <Icon icon={bxBell} />
             <Icon icon={magnifyingGlass} />
-            <Avatar onClick={props.openDrawer} className={classes["avatar"]} alt="Picture User Avatar" src="#" /> 
+            <Avatar onClick={props.openDrawer} style={props.open ? {display: "none"} : {display: 'flex'}} className={classes["avatar"]} alt="Picture User Avatar" src="#" /> 
         </section>
     );
 }
