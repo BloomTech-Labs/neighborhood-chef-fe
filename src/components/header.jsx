@@ -23,7 +23,7 @@ function Header (props) {
     return (
         <div className={classes["container"]}>
             <VariableHeader className={classes["header-variable"]}/>
-            <PersistentHeader className={classes["header-persistent"]}/> 
+            <PersistentHeader openDrawer={props.openDrawer} className={classes["header-persistent"]}/> 
         </div>
     );
 }

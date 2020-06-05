@@ -57,13 +57,23 @@ function GridStructure (props){
         setUrlLocation(location.pathname.split("/")[1]);
     }, [location]);
 
+    const [ open, setOpen ] = useState(false);
+
+    const openDrawer = () => {
+        setOpen(true);
+    }
+
+    const closeDrawer = () => {
+        setOpen(false);
+    }
+
     return (
         <div className={classes["grid-container"]}>
             <div className={classes["Logo"]} >
                 <Logo />
             </div>
-            <div className={classes["Header"]}>
-                <Header/>
+            <div className={clsx({[classes["Header"]]: (!open), [classes["Header-Shifted"]]: open})}>
+                <Header openDrawer={openDrawer}/>
             </div>
             <div className={classes["Sidebar"]}>
                 <Sidebar active={urlLocation}/>
