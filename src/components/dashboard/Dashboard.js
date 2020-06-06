@@ -5,6 +5,25 @@ import Header from "./Header";
 
 
 const Dashboard = () => {
+  useEffect(() => {
+    if (ls.get("access_token")) {
+      const token = ls.get("access_token");
+      const decodedToken = jwt(token).sub;
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(USER_BY_EMAIL),
+          variables: { input: { email: decodedToken } },
+        },
+      }).then((res) => {
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify(res.data.data.getUserByEmail)
+        );
+      });
+    }
+  }, []);
 
   return (
     <div className="dashboard-container">
