@@ -42,11 +42,13 @@ export const buttonStyles = makeStyles({
     },
   },
   single: {
+    label: { fontSize: "2rem" },
     cursor: "pointer",
     margin: "0 auto",
     textAlign: "center",
     lineHeight: "35px",
     background: "#58D573",
+    fontSize: "2rem",
     color: "white",
     "& a": {
       color: "white",
@@ -232,7 +234,9 @@ export const cardStyles = makeStyles((theme) => ({
   landingPage: {
     width: "70%",
     maxWidth: 450,
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
+    height: "auto",
+    maxHeight: "100%",
   },
   media: {
     height: 0,
@@ -330,6 +334,16 @@ export const modalStyles = makeStyles((theme) => ({
 
 export const theme = responsiveFontSizes(
   createMuiTheme({
+    overrides: {
+      MuiButton: {
+        root: {
+          "&$disabled": {
+            opacity: ".4",
+            background: "rgba(88, 212, 115, 0.6)",
+          },
+        },
+      },
+    },
     typography: {
       h1: {
         fontSize: "5rem",

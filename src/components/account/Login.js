@@ -47,47 +47,25 @@ const Login = () => {
   return (
     <>
       <AuthHeader />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "50vw",
-            height: "70vh",
-            padding: "20px 0px",
-            textAlign: "center",
-            alignSelf: "center",
-          }}
-        >
+      <div className="landing-page-container">
+        <div className="landing-page-left">
           <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
-            <CardHeader
-              title={
-                <Typography variant="h6">Login to Neighborhood Chef</Typography>
-              }
-              subheader={
-                <Typography variant="caption">
-                  <span style={{ opacity: ".6" }}>
-                    Choose to eat comfortably
-                  </span>
-                </Typography>
-              }
-            />
             <CardContent>
+              <Typography variant="h3">Login to Neighborhood Chef</Typography>
+              <Typography style={{ marginTop: "20px" }} variant="caption">
+                <span style={{ opacity: ".6" }}>Choose to eat comfortably</span>
+              </Typography>
               <div
+                style={{ marginTop: "20px" }}
                 className={`${buttonClass.root} ${buttonClass.single}`}
                 onClick={handleClick}
               >
-                Login Securely with Okta
+                <Typography variant="h5">Login Securely with Okta</Typography>
               </div>
             </CardContent>
           </Card>
         </div>
-        <div style={{ height: "90vh", width: "50vw" }}>
+        <div className="landing-page-right">
           <img src={food} alt="food community" height="100%" width="100%" />
         </div>
       </div>
