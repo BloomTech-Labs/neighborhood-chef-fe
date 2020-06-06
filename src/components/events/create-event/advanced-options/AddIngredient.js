@@ -107,13 +107,20 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
                 >
                   <MenuItem value=""></MenuItem>
                   <MenuItem value={"cup"}>cup</MenuItem>
-                  <MenuItem value={"pint"}>pint</MenuItem>
-                  <MenuItem value={"quart"}>quart</MenuItem>
+                  <MenuItem value={"cups"}>cups</MenuItem>
                   <MenuItem value={"gallon"}>gallon</MenuItem>
-                  <MenuItem value={"ounce"}>ounce</MenuItem>
+                  <MenuItem value={"gallons"}>gallons</MenuItem>
                   <MenuItem value={"lbs"}>lbs</MenuItem>
+                  <MenuItem value={"ounce"}>ounce</MenuItem>
+                  <MenuItem value={"ounces"}>ounces</MenuItem>
+                  <MenuItem value={"pint"}>pint</MenuItem>
+                  <MenuItem value={"pints"}>pints</MenuItem>
+                  <MenuItem value={"quart"}>quart</MenuItem>
+                  <MenuItem value={"quarts"}>quarts</MenuItem>
                   <MenuItem value={"teaspoon"}>teaspoon</MenuItem>
+                  <MenuItem value={"teaspoons"}>teaspoons</MenuItem>
                   <MenuItem value={"tablespoon"}>tablespoon</MenuItem>
+                  <MenuItem value={"tablespoon"}>tablespoons</MenuItem>
                 </Select>
               </label>
             </div>

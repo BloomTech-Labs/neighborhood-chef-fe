@@ -42,7 +42,6 @@ const initialState = {
 const FormContainer = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const page = useSelector((state) => state.page);
-  // const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -69,7 +68,6 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
-      dispatch(setPage(1));
       const savedHashtags = eventToEdit.hashtags;
       const savedModifiers = eventToEdit.modifiers;
       if (Object.keys(savedModifiers).length !== 0) {
@@ -93,6 +91,7 @@ const FormContainer = () => {
     return () => {
       resetModifiers();
       dispatch(cancelEdit());
+      dispatch(setPage(1));
     };
   }, [dispatch]);
 
