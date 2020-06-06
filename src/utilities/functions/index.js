@@ -28,7 +28,7 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
   arr2.forEach((mod) => {
     seen[mod.id] = mod;
   });
-  arr1.filter((mod) => {
+  arr1.forEach((mod) => {
     if (mod.id in seen) {
       mod.active = true;
       arr.push(mod);
@@ -64,6 +64,7 @@ export const parseTime = (start, end) => ({
   weekday: moment(parseInt(start)).format("ddd"),
   day: moment(parseInt(start)).format("DD"),
   monthShort: moment(parseInt(start)).format("MMM"),
+  monthYear: moment(parseInt(start)).format("MMM YYYY"),
   startTime: moment(parseInt(start)).format("h:mm a"),
   endTime: moment(parseInt(end)).format("h:mm a"),
   unixStart: start,
@@ -76,3 +77,16 @@ export const convertTimeAndDate = (event) => ({
     ? moment(parseInt(event.endTime)).format("HH:mm:ss")
     : "",
 });
+
+export const isEventFavorite = (arr, id) => {
+  const seen = {};
+  arr.forEach((event) => {
+    if (event.id === id) {
+      seen[event.id] = event;
+    }
+  });
+  if (seen[id]) {
+    return true;
+  }
+  return false;
+};

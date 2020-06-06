@@ -5,9 +5,10 @@ import Hashtag from "./Hashtag.js";
 import Modifier from "./Modifier.js";
 import { scrollToTop } from "./FormPageOne.js";
 import { convertTime } from "../../../utilities/functions";
+import { useDispatch } from "react-redux";
+import { setPage } from "../../../utilities/actions";
 
 const FormPageThree = ({
-  setPage,
   values,
   hashtags,
   setHashtags,
@@ -16,6 +17,7 @@ const FormPageThree = ({
   setModifiers,
   photo,
 }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <div
@@ -261,7 +263,7 @@ const FormPageThree = ({
         <button
           className="createRightBtn"
           onClick={() => {
-            setPage(2);
+            dispatch(setPage(2));
             scrollToTop();
           }}
         >

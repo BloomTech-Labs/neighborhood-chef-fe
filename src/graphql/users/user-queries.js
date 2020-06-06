@@ -222,3 +222,36 @@ export const GET_UNINVITED_USERS = gql`
     }
   }
 `;
+
+export const GET_FAVORITE_EVENTS = gql`
+  query getFavoriteEvents($id: ID!) {
+    getFavoriteEvents(id: $id) {
+      id
+      startTime
+      endTime
+      title
+      description
+      category_id
+      user_id
+      address
+      latitude
+      longitude
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+        pets
+        allergens
+        dietaryRestrictions
+        dietaryPreferences
+        children
+      }
+    }
+  }
+`;

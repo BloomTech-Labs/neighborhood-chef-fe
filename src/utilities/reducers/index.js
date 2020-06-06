@@ -16,6 +16,10 @@ import {
   UPDATE_EVENT_SUCCESS,
   SINGLE_EVENT_FETCH_SUCCESS,
   UPDATE_STATUS,
+  GET_FAVORITE_EVENTS_SUCCESS,
+  ADD_FAVORITE_EVENT_SUCCESS,
+  REMOVE_FAVORITE_EVENT_SUCCESS,
+  SET_PAGE,
 } from "../actions";
 
 const initialDate = new Date();
@@ -23,8 +27,8 @@ const initialDate = new Date();
 const initialState = {
   loginCredentials: {},
   page: 1,
-  activeCalendarEvent: null,
-  selectedMonth: initialDate,
+  activeEvent: null,
+  selectedMonth: initialDate.setDate(15),
   neighborhoodName: "My Neighborhood",
   errors: [],
   isGettingEvents: false,
@@ -36,6 +40,7 @@ const initialState = {
   isEditing: false,
   eventToEdit: {},
   currentEvent: {},
+  favoriteEvents: [],
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -50,7 +55,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
     case MAKEACTIVE:
       return {
         ...state,
-        activeCalendarEvent: payload,
+        activeEvent: payload,
       };
     case CHANGE_MONTH:
       const tempDate = new Date(state.selectedMonth);
@@ -147,6 +152,26 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         currentEvent: payload,
+      };
+    case GET_FAVORITE_EVENTS_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
+      };
+    case ADD_FAVORITE_EVENT_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
+      };
+    case REMOVE_FAVORITE_EVENT_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
+      };
+    case SET_PAGE:
+      return {
+        ...state,
+        page: payload,
       };
     default:
       return {

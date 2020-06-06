@@ -38,9 +38,9 @@ export const buttonStyles = makeStyles({
   },
   single: {
     cursor: "pointer",
+    margin: "0 auto",
     textAlign: "center",
-    width: "200px",
-    margin: "auto",
+    lineHeight: "35px",
     background: "#58D573",
     color: "white",
     "& a": {
@@ -202,8 +202,26 @@ export const formStyles = makeStyles({
 
 export const cardStyles = makeStyles((theme) => ({
   root: {
-    width: 360,
+    maxWidth: 350,
+    minWidth: 200,
     margin: 8,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100%",
+    padding: "10px",
+  },
+  fullEvent: {
+    height: "calc(100% - 36px)",
+  },
+  participants: {
+    height: 150,
+    width: "100%",
+  },
+  particExpand: {
+    display: "flex",
+    flexDirection: "column",
+    overflow: "auto",
   },
   media: {
     height: 0,
@@ -221,6 +239,43 @@ export const cardStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  share: { maxHeight: 150, width: "100%" },
+  shareButtons: {
+    cursor: "pointer",
+    color: (props) => {
+      if (props.name === "Facebook") {
+        return "#3965FF";
+      }
+      if (props.name === "Twitter") {
+        return "#55ACEE";
+      }
+      if (props.name === "Text") {
+        return "#2ddd53";
+      }
+      if (props.name === "Email") {
+        return "#5192f3";
+      }
+    },
+    background: (props) => {
+      if (props.name === "Facebook") {
+        return "#E5F0FF";
+      }
+      if (props.name === "Twitter") {
+        return "#D9EFFF";
+      }
+      if (props.name === "Text") {
+        return "#ebfff5";
+      }
+      if (props.name === "Email") {
+        return "#e0e6ff";
+      }
+    },
+  },
+  comments: {
+    height: "calc(100%-20px)",
+    maxWidth: "100%",
+    maxHeight: "calc(100%-20px)",
   },
 }));
 

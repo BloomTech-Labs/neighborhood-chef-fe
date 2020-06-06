@@ -15,6 +15,10 @@ export const CANCEL_EDIT = "CANCEL_EDIT";
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
 export const SINGLE_EVENT_FETCH_SUCCESS = "SINGLE_EVENT_FETCH_SUCCESS";
 export const UPDATE_STATUS = "UPDATE_STATUS";
+export const GET_FAVORITE_EVENTS_SUCCESS = "GET_FAVORITE_EVENTS";
+export const ADD_FAVORITE_EVENT_SUCCESS = "ADD_FAVORITE_EVENT_SUCCESS";
+export const REMOVE_FAVORITE_EVENT_SUCCESS = "REMOVE_FAVORITE_EVENT_SUCCESS";
+export const SET_PAGE = "SET_PAGE";
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -98,4 +102,24 @@ export const updateEventSuccess = (event) => ({
 export const getSingleEvent = (event) => ({
   type: SINGLE_EVENT_FETCH_SUCCESS,
   payload: event,
+});
+
+export const getFavoriteEventsSuccess = (events) => ({
+  type: GET_FAVORITE_EVENTS_SUCCESS,
+  payload: events,
+});
+
+export const addFavoriteEventSuccess = (events) => ({
+  type: ADD_FAVORITE_EVENT_SUCCESS,
+  payload: events,
+});
+
+export const removeFavoriteEventSuccess = (events) => ({
+  type: REMOVE_FAVORITE_EVENT_SUCCESS,
+  payload: events,
+});
+
+export const setPage = (page) => ({
+  type: SET_PAGE,
+  payload: page,
 });
