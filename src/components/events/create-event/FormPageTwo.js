@@ -11,7 +11,7 @@ import EventImageUpload from "./EventImageUpload.js";
 import Modifier from "./Modifier.js";
 import AddHashtag from "./AddHashtag.js";
 import { scrollToTop } from "./FormPageOne.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
 
 export const modifierData = [
@@ -33,7 +33,6 @@ const FormPageTwo = ({
   setPhoto,
 }) => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.page);
   return (
     <>
       <div className="createFormPage2Container">

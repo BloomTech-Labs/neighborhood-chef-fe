@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import { useSelector } from "react-redux";
 
 import MonthPicker from "./events/view-events/MonthPicker";
 import CreateEventHeader from "./events/create-event/CreateEventHeader";
@@ -19,6 +20,7 @@ const styles = makeStyles({
 });
 
 function VariableHeader(props) {
+  const event = useSelector((state) => state.currentEvent);
   const classes = styles();
   const location = useLocation();
   const [urlLocation, setUrlLocation] = useState(
@@ -32,7 +34,7 @@ function VariableHeader(props) {
     case "dashboard":
       return (
         <section className={classes["container"]}>
-          <Typography variant="h3">My Neighborhood</Typography>
+          <Typography variant="h4">My Neighborhood</Typography>
         </section>
       );
     case "create-event":
@@ -50,7 +52,7 @@ function VariableHeader(props) {
     case "events":
       return (
         <section className={classes["container"]}>
-          <Typography>Variable</Typography>
+          <Typography variant="h4">{event.title ? event.title : ""}</Typography>
         </section>
       );
     default:

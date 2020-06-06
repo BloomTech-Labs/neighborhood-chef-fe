@@ -19,7 +19,6 @@ import {
 } from "../../../graphql/events/event-mutations.js";
 
 // component and helper function imports
-import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
 import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
@@ -158,7 +157,6 @@ const FormContainer = () => {
       >
         {({ handleSubmit, handleChange, values, setFieldValue }) => (
           <div className="createEventContainer">
-            {/* <CreateEventHeader page={page} /> */}
             <Form className="createForm" onSubmit={handleSubmit}>
               {page === 1 && (
                 <>

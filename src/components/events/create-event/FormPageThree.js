@@ -5,7 +5,7 @@ import Hashtag from "./Hashtag.js";
 import Modifier from "./Modifier.js";
 import { scrollToTop } from "./FormPageOne.js";
 import { convertTime } from "../../../utilities/functions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
 
 const FormPageThree = ({
@@ -18,7 +18,6 @@ const FormPageThree = ({
   photo,
 }) => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.page);
   return (
     <>
       <div

@@ -1,5 +1,3 @@
-import { REMOVE_FAVORITE_EVENT } from "../../graphql/users/user-mutations";
-
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const CHANGE_PAGE = "CHANGE_PAGE";
