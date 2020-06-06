@@ -247,18 +247,12 @@ a {
 
 /* ---- start of CreateEvent styles ---- */
 
-.createFormError {
-  color: crimson;
-  font-size: 1.6rem;
-  margin-top: -10px;
-}
-
 .createEventContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75%;
+  width: 96%;
 }
 
 .createForm {
