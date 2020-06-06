@@ -79,7 +79,11 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
         {allergenList.map((allergy) => {
           return (
-            <AllergyWarning allergy={allergy} removeAllergy={removeAllergy} />
+            <AllergyWarning
+              allergy={allergy}
+              removeAllergy={removeAllergy}
+              key={allergy.id}
+            />
           );
         })}
       </div>

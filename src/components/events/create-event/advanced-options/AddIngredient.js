@@ -159,7 +159,13 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
         {ingredientList.map((item) => {
-          return <Ingredient item={item} removeIngredient={removeIngredient} />;
+          return (
+            <Ingredient
+              item={item}
+              removeIngredient={removeIngredient}
+              key={item.id}
+            />
+          );
         })}
       </div>
     </>

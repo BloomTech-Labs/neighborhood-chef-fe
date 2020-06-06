@@ -79,7 +79,11 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
         {dietWarnings.map((diet) => {
           return (
-            <DietaryWarning diet={diet} removeDietWarning={removeDietWarning} />
+            <DietaryWarning
+              diet={diet}
+              removeDietWarning={removeDietWarning}
+              key={diet.id}
+            />
           );
         })}
       </div>
