@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const ADD_USER = gql`
   mutation addUser($input: NewUserInput!) {
@@ -40,6 +40,72 @@ export const DELETE_USER = gql`
       longitude
       gender
       address
+    }
+  }
+`;
+
+export const ADD_FAVORITE_EVENT = gql`
+  mutation addFavoriteEvent($input: NewFavoriteEventInput!) {
+    addFavoriteEvent(input: $input) {
+      id
+      startTime
+      endTime
+      title
+      description
+      category_id
+      user_id
+      address
+      latitude
+      longitude
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+        pets
+        allergens
+        dietaryRestrictions
+        dietaryPreferences
+        children
+      }
+    }
+  }
+`;
+
+export const REMOVE_FAVORITE_EVENT = gql`
+  mutation removeFavoriteEvent($input: RemoveFavoriteEventInput!) {
+    removeFavoriteEvent(input: $input) {
+      id
+      startTime
+      endTime
+      title
+      description
+      category_id
+      user_id
+      address
+      latitude
+      longitude
+      users {
+        id
+        email
+        firstName
+        lastName
+        longitude
+        latitude
+        status
+        address
+        gender
+        pets
+        allergens
+        dietaryRestrictions
+        dietaryPreferences
+        children
+      }
     }
   }
 `;

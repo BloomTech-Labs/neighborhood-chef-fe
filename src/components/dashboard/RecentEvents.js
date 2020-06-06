@@ -3,8 +3,14 @@ import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useSelector, useDispatch } from "react-redux";
 import RecentCard from "./RecentCard";
 import { print } from "graphql";
-import { GET_INVITED_EVENTS } from "../../graphql/users/user-queries";
-import { getEventsSuccess } from "../../utilities/actions";
+import {
+  GET_INVITED_EVENTS,
+  GET_FAVORITE_EVENTS,
+} from "../../graphql/users/user-queries";
+import {
+  getEventsSuccess,
+  getFavoriteEventsSuccess,
+} from "../../utilities/actions";
 
 //icon imports
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -45,6 +51,29 @@ const RecentEvents = () => {
     }
     // eslint-disable-next-line
   }, [update]);
+
+
+
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_FAVORITE_EVENTS),
+          variables: { id: me.id },
+        },
+      })
+        .then((res) => {
+          dispatch(getFavoriteEventsSuccess(res.data.data.getFavoriteEvents));
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div>
       <h2

@@ -16,6 +16,9 @@ import {
   UPDATE_EVENT_SUCCESS,
   SINGLE_EVENT_FETCH_SUCCESS,
   UPDATE_STATUS,
+  GET_FAVORITE_EVENTS_SUCCESS,
+  ADD_FAVORITE_EVENT_SUCCESS,
+  REMOVE_FAVORITE_EVENT_SUCCESS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -36,6 +39,7 @@ const initialState = {
   isEditing: false,
   eventToEdit: {},
   currentEvent: {},
+  favoriteEvents: [],
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -147,6 +151,21 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         currentEvent: payload,
+      };
+    case GET_FAVORITE_EVENTS_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
+      };
+    case ADD_FAVORITE_EVENT_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
+      };
+    case REMOVE_FAVORITE_EVENT_SUCCESS:
+      return {
+        ...state,
+        favoriteEvents: payload,
       };
     default:
       return {
