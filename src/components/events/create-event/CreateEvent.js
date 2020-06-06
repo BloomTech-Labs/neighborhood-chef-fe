@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../../dashboard/Sidebar";
 import FormContainer from "./FormContainer";
 
 const CreateEvent = () => {

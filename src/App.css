@@ -151,7 +151,7 @@ a {
 .calendar-view-main {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding-top: 10px;
 }
 
 .calendar-row {
@@ -177,8 +177,6 @@ a {
 }
 
 .month-picker-container {
-  margin-top: 10px;
-  margin-bottom: 40px;
   background: #f2f2f2;
   border-radius: 10px;
   padding: 10px;
@@ -197,23 +195,12 @@ a {
 }
 
 .right-side-calendar {
-  width: 30%;
-}
-
-.event-details-container {
-  background: #f2f2f2;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.event-details-card {
-  height: 100%;
-  margin: 10px;
-  padding: 10px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  max-width: 300px;
+  background: #f2f2f2;
+  height: 85vh;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .account-button {

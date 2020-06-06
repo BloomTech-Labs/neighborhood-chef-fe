@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
-
 //style imports
 import { cardStyles } from "../../../styles";
 import Card from "@material-ui/core/Card";

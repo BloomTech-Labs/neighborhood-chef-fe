@@ -1,5 +1,3 @@
-import { REMOVE_FAVORITE_EVENT } from "../../graphql/users/user-mutations";
-
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const CHANGE_PAGE = "CHANGE_PAGE";
@@ -20,6 +18,7 @@ export const UPDATE_STATUS = "UPDATE_STATUS";
 export const GET_FAVORITE_EVENTS_SUCCESS = "GET_FAVORITE_EVENTS";
 export const ADD_FAVORITE_EVENT_SUCCESS = "ADD_FAVORITE_EVENT_SUCCESS";
 export const REMOVE_FAVORITE_EVENT_SUCCESS = "REMOVE_FAVORITE_EVENT_SUCCESS";
+export const SET_PAGE = "SET_PAGE";
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -119,4 +118,9 @@ export const addFavoriteEventSuccess = (events) => ({
 export const removeFavoriteEventSuccess = (events) => ({
   type: REMOVE_FAVORITE_EVENT_SUCCESS,
   payload: events,
+});
+
+export const setPage = (page) => ({
+  type: SET_PAGE,
+  payload: page,
 });

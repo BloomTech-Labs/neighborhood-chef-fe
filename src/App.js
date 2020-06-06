@@ -5,15 +5,11 @@ import PrivateRoute from "./components/utils/private-route";
 import GenericRedirect from "./components/utils/generic-redirect";
 import LoginRedirect from "./components/utils/login-redirect";
 import Register from "./components/account/Register.js";
-import ViewEvents from "./components/events/view-events/ViewEvents";
-import CreateEvent from "./components/events/create-event/CreateEvent";
-import Dashboard from "./components/dashboard/Dashboard";
 import Settings from "./components/other/Settings";
 import Recipes from "./components/other/Recipes";
 import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
 import ChangePassword from "./components/account/PasswordChangePage";
-import FullEvent from "./components/events/single-event/FullEvent";
 import CheckEmail from "./components/account/CheckEmail";
 
 import Login from "./components/account/Login";
