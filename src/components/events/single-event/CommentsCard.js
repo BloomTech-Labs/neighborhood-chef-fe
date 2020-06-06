@@ -18,12 +18,6 @@ const ParticipantCard = (props) => {
     "Test comment asdasdasd",
   ]);
 
-  const makeInitials = (user) => {
-    return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
-      .slice(0, 1)
-      .toUpperCase()}`;
-  };
-
   const handleChange = (e) => {
     setNewComment(e.target.value);
   };

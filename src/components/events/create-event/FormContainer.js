@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import { print } from "graphql";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
+import { setPage } from "../../../utilities/actions";
 
 // redux action imports
 import {
@@ -18,7 +19,6 @@ import {
 } from "../../../graphql/events/event-mutations.js";
 
 // component and helper function imports
-import CreateEventHeader from "./CreateEventHeader.js";
 import FormPageOne from "./FormPageOne.js";
 import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
@@ -41,7 +41,8 @@ const initialState = {
 
 const FormContainer = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  const [page, setPage] = useState(1);
+  const page = useSelector((state) => state.page);
+  // const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -68,6 +69,7 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
+      dispatch(setPage(1));
       const savedHashtags = eventToEdit.hashtags;
       const savedModifiers = eventToEdit.modifiers;
       if (Object.keys(savedModifiers).length !== 0) {
@@ -140,7 +142,7 @@ const FormContainer = () => {
                 resetForm(initialState);
                 resetModifiers();
                 setModifiers([]);
-                setPage(4);
+                dispatch(setPage(4));
               })
               .catch((err) => console.log(err.message));
           } else {
@@ -156,7 +158,7 @@ const FormContainer = () => {
                 resetForm(initialState);
                 resetModifiers();
                 setModifiers([]);
-                setPage(4);
+                dispatch(setPage(4));
               })
               .catch((err) => console.log(err.message));
           }
@@ -164,14 +166,12 @@ const FormContainer = () => {
       >
         {({ handleSubmit, handleChange, values, setFieldValue }) => (
           <div className="createEventContainer">
-            <CreateEventHeader page={page} />
             <Form className="createForm" onSubmit={handleSubmit}>
               {page === 1 && (
                 <>
                   <FormPageOne
                     values={values}
                     handleChange={handleChange}
-                    setPage={setPage}
                     setFieldValue={setFieldValue}
                   />
                 </>
@@ -180,7 +180,6 @@ const FormContainer = () => {
               {page === 2 && (
                 <>
                   <FormPageTwo
-                    setPage={setPage}
                     handleChange={handleChange}
                     hashtags={hashtags}
                     setHashtags={setHashtags}
@@ -201,7 +200,6 @@ const FormContainer = () => {
               {page === 3 && (
                 <>
                   <FormPageThree
-                    setPage={setPage}
                     hashtags={hashtags}
                     setHashtags={setHashtags}
                     values={values}

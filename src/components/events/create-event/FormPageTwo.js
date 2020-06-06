@@ -12,6 +12,8 @@ import Modifier from "./Modifier.js";
 import AddHashtag from "./AddHashtag.js";
 import { scrollToTop } from "./FormPageOne.js";
 import AdvancedOptions from "./advanced-options/AdvancedOptions.js";
+import { useDispatch } from "react-redux";
+import { setPage } from "../../../utilities/actions";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -26,7 +28,6 @@ const FormPageTwo = ({
   hashtags,
   setHashtags,
   removeHashtag,
-  setPage,
   modifiers,
   setModifiers,
   photo,
@@ -39,6 +40,8 @@ const FormPageTwo = ({
   setIngredientList,
 }) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="createFormPage2Container">
@@ -105,7 +108,7 @@ const FormPageTwo = ({
         <button
           className="createRightBtn"
           onClick={() => {
-            setPage(1);
+            dispatch(setPage(1));
             scrollToTop();
           }}
         >
@@ -114,7 +117,7 @@ const FormPageTwo = ({
         <button
           className="createLeftBtn"
           onClick={() => {
-            setPage(3);
+            dispatch(setPage(3));
             scrollToTop();
           }}
         >

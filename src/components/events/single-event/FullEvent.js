@@ -4,10 +4,7 @@ import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
 import { getSingleEvent } from "../../../utilities/actions";
-import { startEventEdit, makeActive } from "../../../utilities/actions";
-import { convertTimeAndDate } from "../../../utilities/functions";
-
-import { useHistory } from "react-router-dom";
+import { makeActive } from "../../../utilities/actions";
 
 import Grow from "@material-ui/core/Grow";
 
@@ -17,8 +14,6 @@ import ShareCard from "./ShareCard";
 import CommentsCard from "./CommentsCard";
 
 const FullEvent = ({ match }) => {
-  const me = JSON.parse(sessionStorage.getItem("user"));
-  const { push } = useHistory();
   const eventId = parseInt(match.params.id);
   const dispatch = useDispatch();
   const currentEvent = useSelector((state) => state.currentEvent);
