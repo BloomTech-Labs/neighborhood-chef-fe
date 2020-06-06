@@ -47,8 +47,9 @@ export const changeStatus = (eventId, newStatus) => ({
   },
 });
 
-export const changePage = () => ({
+export const changePage = (page) => ({
   type: CHANGE_PAGE,
+  payload: page,
 });
 
 export const changeNeighborhoodName = (newName) => ({

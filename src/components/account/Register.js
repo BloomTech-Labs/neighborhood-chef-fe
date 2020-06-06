@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { MobileStepper } from "@material-ui/core";
-import { formStyles, cardStyles } from "../../styles";
+import { cardStyles } from "../../styles";
 import AuthHeader from "../other/AuthHeader.js";
 
 import Card from "@material-ui/core/Card";
@@ -19,8 +19,6 @@ import food from "../../assets/food.jpg";
 const Register = () => {
   const history = useHistory();
   const currentPage = useSelector((state) => state.page);
-  const formClasses = formStyles();
-
   const cardClass = cardStyles();
 
   return (
@@ -81,10 +79,7 @@ const Register = () => {
                 }}
               >
                 {({ isSubmitting, setFieldValue }) => (
-                  <Form
-                    style={{ display: "flex", flexDirection: "column" }}
-                    // className={formClasses.registerForm}
-                  >
+                  <Form style={{ display: "flex", flexDirection: "column" }}>
                     {currentPage === 1 && <AuthFields />}
                     {currentPage === 2 && (
                       <ProfileFields

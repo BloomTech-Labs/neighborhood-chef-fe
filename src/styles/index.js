@@ -237,6 +237,7 @@ export const cardStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     height: "auto",
     maxHeight: "100%",
+    overflow: "auto",
   },
   media: {
     height: 0,

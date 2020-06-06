@@ -89,7 +89,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
     case CHANGE_PAGE:
       return {
         ...state,
-        page: state.page === 1 ? 2 : 1,
+        page: payload,
       };
     case CHANGE_NEIGHB_NAME:
       return {

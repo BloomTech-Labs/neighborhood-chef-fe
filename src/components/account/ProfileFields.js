@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Field } from "formik";
-import { Button, FormControlLabel, Radio } from "@material-ui/core";
-import { TextField, RadioGroup, SimpleFileUpload } from "formik-material-ui";
+import { Button } from "@material-ui/core";
+import { TextField, SimpleFileUpload } from "formik-material-ui";
 import ReactMapGL from "react-map-gl";
 import Geocoder from "react-mapbox-gl-geocoder";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -18,6 +18,7 @@ const ProfileFields = (props) => {
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [gender, setGender] = useState("");
+  const [errors, setErrors] = useState("");
   const mapAccess = {
     mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
   };
@@ -32,6 +33,7 @@ const ProfileFields = (props) => {
 
   const handleChange = (e) => {
     setGender(e.target.value);
+    props.setFieldValue("gender", e.target.value);
   };
 
   const onSelected = (viewport, item) => {
@@ -43,6 +45,12 @@ const ProfileFields = (props) => {
     });
   };
 
+  useEffect(() => {
+    return () => {
+      dispatch(changePage(1));
+    };
+  }, []);
+
   return (
     <>
       <Field
@@ -52,6 +60,7 @@ const ProfileFields = (props) => {
         name="firstName"
         className="firstName"
         label="First Name"
+        required
       />
       <Field
         style={{ marginTop: "10px" }}
@@ -60,12 +69,14 @@ const ProfileFields = (props) => {
         name="lastName"
         className="lastName"
         label="Last Name"
+        required
       />
       <Field
         style={{ marginTop: "10px" }}
         component={TextField}
         name="location"
         label="Address"
+        required
       >
         <Geocoder
           {...mapAccess}
@@ -85,7 +96,7 @@ const ProfileFields = (props) => {
         {...mapStyle}
         onViewportChange={(newViewport) => setViewport(newViewport)}
       /> */}
-      <Field style={{ marginTop: "10px" }} component={FormControl}>
+      <Field style={{ marginTop: "10px" }} component={FormControl} required>
         <InputLabel id="gender-label">Gender</InputLabel>
         <Select
           labelId="gender-label"
@@ -115,7 +126,7 @@ const ProfileFields = (props) => {
       >
         <Button
           className={`${classes.root} ${classes.notActive}`}
-          onClick={() => dispatch(changePage())}
+          onClick={() => dispatch(changePage(1))}
         >
           <Typography variant="h5">Back</Typography>
         </Button>
@@ -124,7 +135,7 @@ const ProfileFields = (props) => {
           variant="contained"
           color="primary"
           type="submit"
-          disabled={props.submitting}
+          disabled={props.submitting || errors}
         >
           <Typography variant="h5">
             {props.submitting ? (

@@ -35,6 +35,7 @@ const AuthFields = (props) => {
         className="email"
         InputProps={{ onKeyUp: checkValues }}
         label="Email"
+        required
       />
       <label style={{ marginTop: "10px" }} className="terms">
         <Field
@@ -49,7 +50,7 @@ const AuthFields = (props) => {
         style={{ marginTop: "10px" }}
         className={`${buttonClass.root} ${buttonClass.active}`}
         onClick={() => {
-          dispatch(changePage());
+          dispatch(changePage(2));
         }}
         disabled={buttonDisable}
       >
