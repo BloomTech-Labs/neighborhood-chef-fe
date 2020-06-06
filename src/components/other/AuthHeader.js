@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import chefIcon from "@iconify/icons-whh/chef";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import { buttonStyles } from "../../styles";
 
 const AuthHeader = () => {
+  const location = useLocation();
+  const [url, setUrl] = useState(location.pathname.split("/")[1]);
+  const classes = buttonStyles();
   const { push } = useHistory();
   return (
     <div
@@ -21,7 +25,7 @@ const AuthHeader = () => {
     >
       <div>
         <Link to="/">
-          <div className="left-side-header">
+          <div className="left-side-header" style={{ width: "200px" }}>
             <span style={{ color: "#58D473", marginRight: "5px" }}>
               <Icon width="1.1em" icon={chefIcon} />
             </span>
@@ -37,10 +41,10 @@ const AuthHeader = () => {
         }}
       >
         <Link to="/">
-          <Typography>Community</Typography>
+          <Typography color="textSecondary">Community</Typography>
         </Link>
         <Link to="/">
-          <Typography>About Us</Typography>
+          <Typography color="textSecondary">About Us</Typography>
         </Link>
       </div>
       <div
@@ -52,21 +56,31 @@ const AuthHeader = () => {
           marginRight: "3%",
         }}
       >
-        <Link to="/login">Login</Link>
         <button
-          style={{
-            background: "#58D473",
-            color: "white",
-            borderRadius: "10px",
-            padding: "15px 30px",
-            marginLeft: "60px",
-            fontSize: "1.6rem",
-            outline: "none",
-            border: "none",
-          }}
+          className={`${classes.root} ${
+            url === "login" || !url ? classes.active : classes.notActive
+          }`}
+          onClick={() => push("/login")}
+        >
+          <Typography>Login</Typography>
+        </button>
+        <button
+          className={`${classes.root} ${
+            url === "register" ? classes.active : classes.notActive
+          }`}
+          // style={{
+          //   background: "#58D473",
+          //   color: "white",
+          //   borderRadius: "10px",
+          //   padding: "15px 30px",
+          //   marginLeft: "60px",
+          //   fontSize: "1.6rem",
+          //   outline: "none",
+          //   border: "none",
+          // }}
           onClick={() => push("/register")}
         >
-          Register
+          <Typography>Register</Typography>
         </button>
       </div>
     </div>
