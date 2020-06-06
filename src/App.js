@@ -17,6 +17,7 @@ import FullEvent from "./components/events/single-event/FullEvent";
 import CheckEmail from "./components/account/CheckEmail";
 
 import Login from "./components/account/Login";
+import GridStructure from "./components/gridstructure";
 
 function App() {
   return (
@@ -32,16 +33,17 @@ function App() {
           path="/initialChangePassword/:string"
           component={ChangePassword}
         />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={GridStructure} />
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/create-event" component={CreateEvent} />
-        <PrivateRoute path="/view-events" component={ViewEvents} />
+        <PrivateRoute path="/create-event" component={GridStructure} />
+        <PrivateRoute path="/view-events" component={GridStructure} />
         <Route path="/register" component={Register} />
-        <PrivateRoute path="/settings" component={Settings} />
-        <PrivateRoute path="/recipes" component={Recipes} />
-        <PrivateRoute path="/notifications" component={Notifications} />
-        <PrivateRoute path="/messages" component={Messages} />
-        <PrivateRoute path="/events/:id" component={FullEvent} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/recipes" component={Recipes} />
+        <Route path="/notifications" component={Notifications} />
+        <Route path="/messages" component={Messages} />
+        <Route path="/grid" component={GridStructure} />
+        <PrivateRoute path="/events/:id" component={GridStructure} />
         <Route path="/register-check-email" component={CheckEmail} />
       </Switch>
     </div>
