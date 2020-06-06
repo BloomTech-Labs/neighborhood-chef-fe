@@ -6,7 +6,6 @@ const styles = makeStyles({
     "container": {
         width: "100%",
         height: "10vh",
-        border: "2px solid black"
     }
 });
 
