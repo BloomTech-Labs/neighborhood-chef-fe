@@ -224,6 +224,10 @@ export const cardStyles = makeStyles((theme) => ({
     flexDirection: "column",
     overflow: "auto",
   },
+  landingPage: {
+    width: "50%",
+    justifyContent: "space-evenly",
+  },
   media: {
     height: 0,
     paddingTop: "40%",

@@ -1,15 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { buttonStyles } from "../../styles";
+import { buttonStyles, cardStyles } from "../../styles";
 import ls from "local-storage";
 import { nanoid } from "nanoid";
 import AuthHeader from "../other/AuthHeader.js";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import food from "../../assets/food.jpg";
 
 const qs = require("querystring");
 const crypto = require("crypto-browserify");
 
 const Login = () => {
-  const classes = buttonStyles();
+  const cardClass = cardStyles();
+  const buttonClass = buttonStyles();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -42,22 +47,48 @@ const Login = () => {
   return (
     <>
       <AuthHeader />
-      <div className="login-container">
-        <h1>Neighborhood Chef</h1>
-        <p style={{ fontStyle: "italic" }}>Prepare to eat well</p>
-
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div
-          className={`${classes.root} ${classes.single}`}
-          onClick={handleClick}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "50vw",
+            height: "70vh",
+            padding: "20px 0px",
+            textAlign: "center",
+            alignSelf: "center",
+          }}
         >
-          Login Securely with Okta
+          <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
+            <CardHeader
+              title={
+                <Typography variant="h6">Login to Neighborhood Chef</Typography>
+              }
+              subheader={
+                <Typography variant="caption">
+                  <span style={{ opacity: ".6" }}>
+                    Choose to eat comfortably
+                  </span>
+                </Typography>
+              }
+            />
+            <CardContent>
+              <div
+                className={`${buttonClass.root} ${buttonClass.single}`}
+                onClick={handleClick}
+              >
+                Login Securely with Okta
+              </div>
+            </CardContent>
+          </Card>
         </div>
-
-        <div style={{ marginTop: "10px" }}>
-          Don't have an account?{" "}
-          <span className="green-link">
-            <Link to="/register">Register now.</Link>
-          </span>
+        <div style={{ height: "90vh", width: "50vw" }}>
+          <img src={food} alt="food community" height="100%" width="100%" />
         </div>
       </div>
     </>

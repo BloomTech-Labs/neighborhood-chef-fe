@@ -3,6 +3,7 @@ import chefIcon from "@iconify/icons-whh/chef";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 
 const AuthHeader = () => {
   const { push } = useHistory();
@@ -14,9 +15,8 @@ const AuthHeader = () => {
         justifyContent: "space-between",
         alignItems: "center",
         boxShadow: "0px 4px 50px rgba(0, 0, 0, 0.06)",
-        height: "100px",
+        height: "10vh",
         width: "100vw",
-        marginBottom: "20px",
       }}
     >
       <div>
@@ -27,6 +27,20 @@ const AuthHeader = () => {
             </span>
             <span>Neighborhood Chef</span>
           </div>
+        </Link>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          width: "100%",
+        }}
+      >
+        <Link to="/">
+          <Typography>Community</Typography>
+        </Link>
+        <Link to="/">
+          <Typography>About Us</Typography>
         </Link>
       </div>
       <div
