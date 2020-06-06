@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 //style imports
 import { cardStyles } from "../../../styles";
@@ -11,7 +11,6 @@ import Avatar from "@material-ui/core/Avatar";
 
 const ParticipantCard = (props) => {
   const classes = cardStyles();
-  const [expanded, setExpanded] = useState(false);
   const currentEvent = useSelector((state) => state.currentEvent);
 
   const makeInitials = (user) => {

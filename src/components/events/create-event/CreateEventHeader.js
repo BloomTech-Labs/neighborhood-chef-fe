@@ -4,8 +4,10 @@ import pencilIcon from "@iconify/icons-mdi/pencil";
 import createIcon from "@iconify/icons-gridicons/create";
 import shareIcon from "@iconify/icons-icons8/share";
 import shapeOutline from "@iconify/icons-mdi/shape-outline";
+import { useSelector } from "react-redux";
 
-const CreateEventHeader = ({ page }) => {
+const CreateEventHeader = () => {
+  const page = useSelector((state) => state.page);
   return (
     <div
       style={{

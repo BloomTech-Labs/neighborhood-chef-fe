@@ -6,7 +6,11 @@ import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { USER_BY_EMAIL } from "../../graphql/users/user-queries";
 
-function GenericRedirect (props){
+
+function GenericRedirect(props) {
+  const { push } = useHistory();
+  const { redirect_path } = useParams();
+
 
     const getInitialUserData = () => {
         const token = ls.get("access_token");
@@ -38,6 +42,7 @@ function GenericRedirect (props){
     else { redirectOnLoginSuccess(); }
 
     return null
+
 }
 
-export default GenericRedirect
+export default GenericRedirect;

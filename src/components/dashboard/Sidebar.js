@@ -1,17 +1,12 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 //icons imports
-import { Icon } from "@iconify/react";
 import houseDoor from "@iconify/icons-bi/house-door";
 import calendarOutlined from "@iconify/icons-ant-design/calendar-outlined";
 import calendarPlus from "@iconify/icons-mdi/calendar-plus";
-// import outlineNotifications from "@iconify/icons-ic/outline-notifications";
 // import outlineSettings from "@iconify/icons-ic/outline-settings";
 // import bxMessageSquareDots from "@iconify/icons-bx/bx-message-square-dots";
 // import bxFoodMenu from "@iconify/icons-bx/bx-food-menu";
-import chefIcon from "@iconify/icons-whh/chef";
 
 //component import
 import SidebarButton from "./SidebarButton";
@@ -29,12 +24,6 @@ const buttonList = [
     text: "Calendar",
     icon: calendarOutlined,
   },
-  // {
-  //   active: false,
-  //   link: "notifications",
-  //   text: "Notifications",
-  //   icon: outlineNotifications,
-  // },
   {
     active: false,
     link: "create-event",

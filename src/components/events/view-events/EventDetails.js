@@ -105,7 +105,7 @@ const EventDetails = () => {
 
   return (
     <div className="event-details-container">
-      {Object.keys(event).length > 0 && (
+      {Object.keys(event).length > 0 ? (
         <Card className={`${classes.root} ${classes.fullEvent}`}>
           <CardHeader
             action={<EventButtonModal eventId={event.id} userId={me.id} />}
@@ -172,6 +172,10 @@ const EventDetails = () => {
             </div>
           </div>
         </Card>
+      ) : (
+        <Typography variant="h6" style={{ padding: "10px" }}>
+          Please select an event to view its details here
+        </Typography>
       )}
     </div>
   );
