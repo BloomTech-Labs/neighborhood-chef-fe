@@ -7,6 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Geocoder from "react-mapbox-gl-geocoder";
+import { useDispatch, useSelector } from "react-redux";
+import { setPage } from "../../../utilities/actions";
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -15,10 +17,12 @@ export const scrollToTop = () => {
   });
 };
 
-const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
+const FormPageOne = ({ handleChange, values, setFieldValue }) => {
   const [error, setError] = useState(false);
   const [viewport, setViewport] = useState({});
   const { push } = useHistory();
+  const dispatch = useDispatch();
+  const page = useSelector((state) => state.page);
 
   const mapAccess = {
     mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
@@ -47,7 +51,7 @@ const FormPageOne = ({ handleChange, values, setPage, setFieldValue }) => {
       values.startTime &&
       values.category_id
     ) {
-      setPage(2);
+      dispatch(setPage(2));
       scrollToTop();
     } else {
       setError(true);

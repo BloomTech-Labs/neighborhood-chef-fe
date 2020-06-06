@@ -19,6 +19,7 @@ import {
   GET_FAVORITE_EVENTS_SUCCESS,
   ADD_FAVORITE_EVENT_SUCCESS,
   REMOVE_FAVORITE_EVENT_SUCCESS,
+  SET_PAGE,
 } from "../actions";
 
 const initialDate = new Date();
@@ -166,6 +167,11 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favoriteEvents: payload,
+      };
+    case SET_PAGE:
+      return {
+        ...state,
+        page: payload,
       };
     default:
       return {

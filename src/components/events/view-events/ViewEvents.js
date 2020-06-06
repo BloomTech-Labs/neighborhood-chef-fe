@@ -9,7 +9,7 @@ const ViewEvents = () => {
   return (
     <div className="component-main">
       <div className="middle-calendar">
-        <MonthPicker />
+        {/* <MonthPicker /> */}
         <CalendarView />
       </div>
       <div className="right-side-calendar">
