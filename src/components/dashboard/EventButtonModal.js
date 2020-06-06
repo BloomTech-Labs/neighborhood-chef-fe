@@ -12,13 +12,25 @@ import { modalStyles } from "../../styles";
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
-import { useDispatch } from "react-redux";
-import { deleteInvitationSuccess, forceUpdate } from "../../utilities/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteInvitationSuccess,
+  forceUpdate,
+  makeActive,
+  startEventEdit,
+} from "../../utilities/actions";
+import { useLocation } from "react-router-dom";
+import { convertTimeAndDate } from "../../utilities/functions";
+
 import WarnRemoveModal from "./WarnRemoveModal";
 
 const EventButtonModal = ({ eventId, userId }) => {
+  const location = useLocation();
+  const thisURL = location.pathname.split("/");
   const dispatch = useDispatch();
   const history = useHistory();
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  const currentEvent = useSelector((state) => state.currentEvent);
   const modalClasses = modalStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -103,11 +115,35 @@ const EventButtonModal = ({ eventId, userId }) => {
                       id="menu-list-grow"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem
-                        onClick={() => history.push(`/events/${eventId}`)}
-                      >
-                        Open Event
-                      </MenuItem>
+                      {thisURL.length > 2 ? (
+                        `${me.id}` === `${currentEvent.user_id}` && (
+                          <MenuItem
+                            onClick={() => {
+                              /* had to add date to eventToEdit object and convert start/end times here for editing 
+                                mode to allow moment functions to finish converting before the form rendered */
+                              const convertForEdit = convertTimeAndDate(
+                                currentEvent
+                              );
+                              currentEvent.date = convertForEdit.date;
+                              currentEvent.startTime = convertForEdit.startTime;
+                              currentEvent.endTime = convertForEdit.endTime;
+                              dispatch(startEventEdit(currentEvent));
+                              history.push("/create-event");
+                            }}
+                          >
+                            Edit Event
+                          </MenuItem>
+                        )
+                      ) : (
+                        <MenuItem
+                          onClick={() => {
+                            dispatch(makeActive(eventId));
+                            history.push(`/events/${eventId}`);
+                          }}
+                        >
+                          Open Event
+                        </MenuItem>
+                      )}
                       <MenuItem>
                         <WarnRemoveModal removeInvitation={removeInvitation} />
                       </MenuItem>

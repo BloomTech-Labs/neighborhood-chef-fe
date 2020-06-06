@@ -43,7 +43,7 @@ function App() {
         <Route path="/notifications" component={Notifications} />
         <Route path="/messages" component={Messages} />
         <Route path="/grid" component={GridStructure} />
-        <PrivateRoute path="/events/:id" component={FullEvent} />
+        <PrivateRoute path="/events/:id" component={GridStructure} />
         <Route path="/register-check-email" component={CheckEmail} />
       </Switch>
     </div>

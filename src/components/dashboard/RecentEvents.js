@@ -17,7 +17,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const RecentEvents = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  // const me = useSelector((state) => state.myUser);
+  const update = useSelector((state) => state.update);
   const eventList = useSelector((state) => state.eventList);
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(true);
@@ -45,12 +45,14 @@ const RecentEvents = () => {
         .catch((err) => {
           console.log(err.message);
         })
-        .then((res) => {
+        .finally((res) => {
           setIsFetching(false);
         });
     }
     // eslint-disable-next-line
-  }, []);
+  }, [update]);
+
+
 
   useEffect(() => {
     if (me) {

@@ -9,6 +9,13 @@ import { useLocation } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import clsx from 'clsx';
 
+//kyles imports 
+import ls from "local-storage";
+import jwt from "jwt-decode";
+import { USER_BY_EMAIL } from "../graphql/users/user-queries";
+import { axiosWithAuth } from "../utilities/axiosWithAuth";
+import { print } from "graphql";
+
 
 const styles = makeStyles({
     "grid-container":{
@@ -51,14 +58,15 @@ const styles = makeStyles({
         alignItems: "center",
         justifyContent: "flex-start",
 
-        "& *": {
-            width: "100%",
 
-            "&:first-child": {
-                width: "20%"
-            },
+    "& *": {
+      width: "100%",
 
-            "&:last-child": {
+      "&:first-child": {
+        width: "20%",
+      },
+
+      "&:last-child": {
                 width: "115%"
             }
         }
@@ -88,17 +96,41 @@ const styles = makeStyles({
     "Drawer": {
         width: "25vw"
     }
+
 });
 
-function GridStructure (props){
+function GridStructure(props) {
+  const classes = styles();
 
-    const classes = styles();
+  const location = useLocation();
+  const [urlLocation, setUrlLocation] = useState(
+    location.pathname.split("/")[1]
+  );
+  useEffect(() => {
+    setUrlLocation(location.pathname.split("/")[1]);
+  }, [location]);
 
-    const location = useLocation();
-    const [urlLocation, setUrlLocation ] = useState(location.pathname.split("/")[1]);
-    useEffect(() => {
-        setUrlLocation(location.pathname.split("/")[1]);
-    }, [location]);
+  useEffect(() => {
+    if (ls.get("access_token")) {
+      const token = ls.get("access_token");
+      const decodedToken = jwt(token).sub;
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(USER_BY_EMAIL),
+          variables: { input: { email: decodedToken } },
+        },
+      })
+        .then((res) => {
+          sessionStorage.setItem(
+            "user",
+            JSON.stringify(res.data.data.getUserByEmail)
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
     const [ open, setOpen ] = useState(false);
 
@@ -122,7 +154,7 @@ function GridStructure (props){
                 <Sidebar active={urlLocation}/>
             </div>
             <div className={clsx({[classes["Variable"]]: (!open), [classes["Variable-Shifted"]]: open})}>
-                <VariableMainContent />
+                <VariableMainContent {...props} />
             </div>
             <div className={clsx({[classes["Drawer-Container"]]: open})}>
                 <Drawer
@@ -139,6 +171,7 @@ function GridStructure (props){
             </div>
         </div>
     );
+
 }
 
 export default GridStructure;

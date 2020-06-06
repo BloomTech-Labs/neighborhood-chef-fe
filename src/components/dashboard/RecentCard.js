@@ -114,7 +114,9 @@ const RecentCard = (props) => {
           const data = res.data.data.getUserById;
           setCreatorName(`${data.firstName} ${data.lastName}`);
           setInitials(
-            `${data.firstName.slice(0, 1)}${data.lastName.slice(0, 1)}`
+            `${data.firstName.slice(0, 1).toUpperCase()}${data.lastName
+              .slice(0, 1)
+              .toUpperCase()}`
           );
         })
         .catch((err) => {
