@@ -89,6 +89,7 @@ const FormContainer = () => {
     return () => {
       resetModifiers();
       dispatch(cancelEdit());
+      dispatch(setPage(1));
     };
   }, [dispatch]);
 

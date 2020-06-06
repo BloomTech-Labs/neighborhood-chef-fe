@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import ls from 'local-storage';
 import jwt from "jwt-decode";
@@ -12,36 +11,33 @@ function GenericRedirect(props) {
   const { redirect_path } = useParams();
 
 
-    const getInitialUserData = () => {
-        const token = ls.get("access_token");
-        const decodedToken = jwt(token).sub;
-        axiosWithAuth()({
-          url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-          method: "post",
-          data: {
-            query: print(USER_BY_EMAIL),
-            variables: { input: { email: decodedToken } },
-          },
-        }).then((res) => {
-          sessionStorage.setItem(
-            "user",
-            JSON.stringify(res.data.data.getUserByEmail)
-          );
-        });
-    }
+  const getInitialUserData = () => {
+    const token = ls.get("access_token");
+    const decodedToken = jwt(token).sub;
+    axiosWithAuth()({
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+      method: "post",
+      data: {
+        query: print(USER_BY_EMAIL),
+        variables: { input: { email: decodedToken } },
+      },
+    }).then((res) => {
+      sessionStorage.setItem(
+        "user",
+        JSON.stringify(res.data.data.getUserByEmail)
+      );
+    });
+  }
 
-    const redirectOnLoginSuccess = async () => {
-        await getInitialUserData();
-        push(`/${redirect_path}`); 
-    }
+  const redirectOnLoginSuccess = async () => {
+    await getInitialUserData();
+    push(`/${redirect_path}`);
+  }
 
-    const { push } = useHistory();
-    const { redirect_path } = useParams();
+  if (!ls.get('access_token')) { push(`/generic-redirect/${redirect_path}`); }
+  else { redirectOnLoginSuccess(); }
 
-    if(!ls.get('access_token')) { push(`/generic-redirect/${redirect_path}`); }
-    else { redirectOnLoginSuccess(); }
-
-    return null
+  return null
 
 }
 
