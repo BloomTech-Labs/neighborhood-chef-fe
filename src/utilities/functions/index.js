@@ -28,7 +28,7 @@ export const restoreSavedModifiers = (arr1, arr2, cb) => {
   arr2.forEach((mod) => {
     seen[mod.id] = mod;
   });
-  arr1.filter((mod) => {
+  arr1.forEach((mod) => {
     if (mod.id in seen) {
       mod.active = true;
       arr.push(mod);
