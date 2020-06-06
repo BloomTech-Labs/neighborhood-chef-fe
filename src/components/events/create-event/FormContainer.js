@@ -41,7 +41,7 @@ const initialState = {
 
 const FormContainer = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -119,7 +119,12 @@ const FormContainer = () => {
             latitude: values.latitude,
             photo: photo ? photo : null,
             user_id: parseInt(me.id),
+            // uncomment once migration is in place
+            // allergens: JSON.stringify({ allergens: [...allergenList] }),
+            // dietWarnings: JSON.stringify({ dietWarnings: [...dietWarnings] }),
+            // ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
           };
+
           if (isEditing) {
             axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
