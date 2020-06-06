@@ -185,13 +185,14 @@ a {
 }
 
 .right-side-calendar {
-  width: 30%;
+  display: flex;
 }
 
 .event-details-container {
   background: #f2f2f2;
-  height: 100%;
+  height: 90%;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .event-details-card {

@@ -213,7 +213,7 @@ export const cardStyles = makeStyles((theme) => ({
   },
   fullEvent: {
     height: "calc(100% - 36px)",
-    maxWidth: "100%",
+    // maxWidth: "100%",
   },
   participants: {
     height: 150,
