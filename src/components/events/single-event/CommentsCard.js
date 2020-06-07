@@ -68,7 +68,6 @@ const ParticipantCard = (props) => {
             <button
               type="submit"
               className={`${buttonClass.root} ${buttonClass.single}`}
-              style={{ width: "30%" }}
             >
               Add Comment
             </button>

@@ -7,6 +7,8 @@ import { red } from "@material-ui/core/colors";
 
 export const buttonStyles = makeStyles({
   root: {
+    display: "flex",
+    alignItems: "center",
     textTransform: "none",
     margin: "3px",
     marginBottom: "8px",
@@ -42,11 +44,9 @@ export const buttonStyles = makeStyles({
     },
   },
   single: {
-    label: { fontSize: "2rem" },
-    cursor: "pointer",
+    justifyContent: "center",
     margin: "0 auto",
     textAlign: "center",
-    lineHeight: "35px",
     background: "#58D573",
     fontSize: "2rem",
     color: "white",

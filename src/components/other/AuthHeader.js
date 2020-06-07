@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import chefIcon from "@iconify/icons-whh/chef";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { buttonStyles } from "../../styles";
 
 const AuthHeader = () => {
   const location = useLocation();
-  const [url, setUrl] = useState(location.pathname.split("/")[1]);
+  const url = location.pathname.split("/")[1];
   const classes = buttonStyles();
   const { push } = useHistory();
   return (

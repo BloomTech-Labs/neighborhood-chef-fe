@@ -1,8 +1,11 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
+import { buttonStyles } from "../../../styles";
+import Typography from "@material-ui/core/Typography";
 
-const EventImageUpload = ({ photo, setPhoto }) => {
+const EventImageUpload = ({ photo, setPhoto, title }) => {
+  const classes = buttonStyles();
   const imageSizeLimit = 1500000;
 
   const handleChange = (e) => {
@@ -22,16 +25,7 @@ const EventImageUpload = ({ photo, setPhoto }) => {
 
   return (
     <div className="createImgDiv">
-      <h5
-        style={{
-          textAlign: "left",
-          fontSize: "1.8rem",
-          marginLeft: "10px",
-          fontWeight: "normal",
-        }}
-      >
-        Upload a main picture for your event page.
-      </h5>
+      <Typography style={{ margin: "10px 0" }}>{title}</Typography>
       <div
         style={{
           display: "flex",
@@ -52,15 +46,9 @@ const EventImageUpload = ({ photo, setPhoto }) => {
           />
           <label
             htmlFor="eventImageUpload"
-            className={`imgUploadDiv${photo ? " imgUploadDivActive" : ""}`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-              cursor: "pointer",
-            }}
+            className={`${classes.root} ${classes.active}`}
           >
-            Upload{" "}
+            Upload
             <Icon
               icon={uploadOutlined}
               style={{ fontSize: "2.5rem", marginLeft: "10px", color: "white" }}
@@ -77,7 +65,7 @@ const EventImageUpload = ({ photo, setPhoto }) => {
               maxWidth: "40%",
               maxHeight: "120px",
               borderRadius: "10px",
-              border: "8px solid #82df96",
+              border: "4px solid #82df96",
               cursor: "pointer",
             }}
           />

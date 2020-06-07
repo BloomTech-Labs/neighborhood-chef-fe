@@ -56,6 +56,7 @@ const Register = () => {
                     longitude: values.location.longitude,
                     gender: values.gender,
                     address: values.location.address,
+                    photo: values.photo,
                   };
                   console.log(userValues);
                   axios

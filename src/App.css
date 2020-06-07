@@ -24,6 +24,10 @@ h2 {
 h3 {
   margin: 0;
 }
+h4,
+h5 {
+  margin: 0;
+}
 a {
   text-decoration: none;
   color: black;
@@ -51,11 +55,37 @@ a {
   height: 80vh;
   text-align: center;
   align-self: center;
+  /* position: relative; */
+  /* z-index: 1; */
 }
 
 .landing-page-right {
   height: 90vh;
   width: 50vw;
+}
+
+.react-geocoder {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  width: 28vw;
+}
+
+.react-geocoder > input {
+  width: 80%;
+  border: 0;
+  height: 20px;
+}
+
+.react-geocoder-results {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.react-geocoder-results > * {
+  margin: 2px 0;
 }
 
 /* ---- start of Sidebar styles ---- */
@@ -412,7 +442,7 @@ a {
 .createImgDiv {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .imgUploadDiv {
@@ -421,12 +451,10 @@ a {
   background: rgba(130, 223, 150, 0.5);
   border-radius: 15px;
   color: white;
-  padding: 15px 30px;
+  padding: 10px 15px;
   font-size: 1.6rem;
   font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
+  margin: "5px 10px 10px 10px";
 }
 
 .imgUploadDivActive {
