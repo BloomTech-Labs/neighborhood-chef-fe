@@ -25,7 +25,7 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
 
   return (
     <div className="createImgDiv">
-      <Typography style={{ margin: "10px 0" }}>{title}</Typography>
+      <Typography style={{ margin: "10px 0px" }}>{title}</Typography>
       <div
         style={{
           display: "flex",
@@ -46,12 +46,13 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
           />
           <label
             htmlFor="eventImageUpload"
-            className={`${classes.root} ${classes.active}`}
+            className={`${classes.root} ${classes.notActive}`}
+            style={{ border: "1px solid rgba(0,0,0,.5)" }}
           >
             Upload
             <Icon
               icon={uploadOutlined}
-              style={{ fontSize: "2.5rem", marginLeft: "10px", color: "white" }}
+              style={{ fontSize: "2.5rem", marginLeft: "10px" }}
             />
           </label>
         </div>
@@ -65,7 +66,7 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
               maxWidth: "40%",
               maxHeight: "120px",
               borderRadius: "10px",
-              border: "4px solid #82df96",
+              border: "2px solid rgba(0,0,0,.4)",
               cursor: "pointer",
             }}
           />

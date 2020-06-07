@@ -49,6 +49,7 @@ const ProfileFields = (props) => {
   };
 
   const onSelected = (viewport, item) => {
+    setMapOpen(true);
     setLongLat({ longitude: viewport.longitude, latitude: viewport.latitude });
     setViewport(viewport);
     props.setFieldValue("location", {
