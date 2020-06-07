@@ -53,6 +53,9 @@ export const buttonStyles = makeStyles({
     "& a": {
       color: "white",
     },
+    "&:hover": {
+      background: "#58D573",
+    },
   },
   rsvpRoot: {
     height: "30px",
