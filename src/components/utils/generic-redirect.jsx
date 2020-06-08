@@ -25,8 +25,9 @@ function GenericRedirect(props) {
       sessionStorage.setItem(
         "user",
         JSON.stringify(res.data.data.getUserByEmail)
-        push(`/${redirect_path}`);
+        
       );
+      push(`/${redirect_path}`);
     });
   }
 
