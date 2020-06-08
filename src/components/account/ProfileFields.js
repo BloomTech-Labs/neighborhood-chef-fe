@@ -10,22 +10,24 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
-import { buttonStyles } from "../../styles";
+import { buttonStyles, textBoxStyles } from "../../styles";
 import { changePage } from "../../utilities/actions";
 import Typography from "@material-ui/core/Typography";
 import EventImageUpload from "../events/create-event/EventImageUpload";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import MapIcon from "@material-ui/icons/Map";
 import IconButton from "@material-ui/core/IconButton";
 import RoomIcon from "@material-ui/icons/Room";
 
 const ProfileFields = (props) => {
+  const textBoxClass = textBoxStyles();
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [gender, setGender] = useState("");
   const [photo, setPhoto] = useState(null);
   const [mapOpen, setMapOpen] = useState(false);
+  let addressInput;
+  const [focusAddress, setFocusAddress] = useState(false);
+  const [addressValue, setAddressValue] = useState("");
   const changePhoto = (photo) => {
     setPhoto(photo);
     props.setFieldValue("photo", photo);
@@ -60,6 +62,19 @@ const ProfileFields = (props) => {
   };
 
   useEffect(() => {
+    let inputList = document.getElementsByTagName("input");
+    addressInput = inputList[2];
+
+    addressInput.classList.add(textBoxClass.addressInput);
+    addressInput.addEventListener("focusin", () => {
+      setFocusAddress(true);
+    });
+    addressInput.addEventListener("focusout", () => {
+      setFocusAddress(false);
+    });
+  }, []);
+
+  useEffect(() => {
     return () => {
       dispatch(changePage(1));
     };
@@ -86,26 +101,26 @@ const ProfileFields = (props) => {
         required
       />
 
-      <FormControl required style={{ marginTop: "10px" }}>
-        <InputLabel htmlFor="location-form">Address</InputLabel>
-        <Input
-          id="location-form"
-          name="address"
-          value=" "
-          // disabled
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle show map"
-                onClick={() => setMapOpen(!mapOpen)}
-              >
-                <MapIcon />
-              </IconButton>
-            </InputAdornment>
+      <form className="geocoder-container">
+        <label
+          className={
+            textBoxStyles({
+              isFocus: focusAddress,
+              addressValue: document.getElementsByTagName("input")[2]
+                ? document.getElementsByTagName("input")[2].value
+                : null,
+            }).addressLabel
           }
-        ></Input>
-      </FormControl>
-      <div style={{ marginTop: "-25px", width: "100%" }}>
+        >
+          <Typography variant="v5">Address*</Typography>
+        </label>
+        <IconButton
+          className={textBoxClass.icon}
+          aria-label="toggle show map"
+          onClick={() => setMapOpen(!mapOpen)}
+        >
+          <MapIcon />
+        </IconButton>
         <Geocoder
           {...mapAccess}
           name="location"
@@ -116,7 +131,7 @@ const ProfileFields = (props) => {
           queryParams={queryParams}
           updateInputOnSelect={true}
         />
-      </div>
+      </form>
 
       <ReactMapGL
         className={mapOpen ? "" : "hidden"}
@@ -125,7 +140,6 @@ const ProfileFields = (props) => {
         {...viewport}
         {...mapStyle}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        // mapStyle="mapbox://styles/mapbox/dark-v9"
         onViewportChange={(newViewport) => setViewport(newViewport)}
       >
         {longLat && mapOpen && (

@@ -55,8 +55,6 @@ a {
   height: 80vh;
   text-align: center;
   align-self: center;
-  /* position: relative; */
-  /* z-index: 1; */
 }
 
 .landing-page-right {
@@ -64,18 +62,23 @@ a {
   width: 50vw;
 }
 
-.react-geocoder {
+.geocoder-container {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 2;
-  width: 28vw;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-.react-geocoder > input {
-  width: 80%;
-  border: 0;
-  height: 20px;
+/* .geocoder-container > label {
+  position: relative;
+  top: 10px;
+  left: -112px;
+  z-index: 1;
+} */
+
+.react-geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 31vw;
 }
 
 .react-geocoder-results {

@@ -322,6 +322,45 @@ export const textBoxStyles = makeStyles({
     height: "100%",
     fontSize: "1.5rem",
   },
+  addressInput: {
+    marginTop: "35px",
+    fontSize: "1.5rem",
+    display: "block",
+    position: "relative",
+    border: 0,
+    borderBottom: "1px solid rgba(0,0,0,.5)",
+    width: "100%",
+    background: 0,
+    zIndex: 3,
+    transition: "all .2s ease",
+    "&:focus": {
+      outline: "none",
+      borderBottom: "2px solid #4051b5",
+      "&:hover": {
+        borderBottom: "2px solid #4051b5",
+      },
+    },
+    "&:hover": {
+      borderBottom: "2px solid rgba(0,0,0,.8)",
+    },
+  },
+  addressLabel: {
+    letterSpacing: ".5px",
+    transition: "all .2s ease",
+    position: "relative",
+    fontSize: ({ isFocus, addressValue }) =>
+      (isFocus || addressValue) && "12px",
+    top: ({ isFocus, addressValue }) =>
+      isFocus || addressValue ? "12px" : "30px",
+    color: ({ isFocus }) => (isFocus ? "#4051b5" : "rgba(0,0,0,.5)"),
+    zIndex: 1,
+  },
+  icon: {
+    position: "relative",
+    top: "20px",
+    left: "60%",
+    zIndex: 5,
+  },
 });
 
 export const modalStyles = makeStyles((theme) => ({
