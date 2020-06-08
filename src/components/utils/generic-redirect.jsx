@@ -11,7 +11,7 @@ function GenericRedirect(props) {
   const { redirect_path } = useParams();
 
 
-  const getInitialUserData = () => {
+  const getInitialUserDataAndRedirectOnSuccess = () => {
     const token = ls.get("access_token");
     const decodedToken = jwt(token).sub;
     axiosWithAuth()({
@@ -25,17 +25,14 @@ function GenericRedirect(props) {
       sessionStorage.setItem(
         "user",
         JSON.stringify(res.data.data.getUserByEmail)
+        push(`/${redirect_path}`);
       );
     });
   }
 
-  const redirectOnLoginSuccess = async () => {
-    await getInitialUserData();
-    push(`/${redirect_path}`);
-  }
 
   if (!ls.get('access_token')) { push(`/generic-redirect/${redirect_path}`); }
-  else { redirectOnLoginSuccess(); }
+  else { getInitialUserDataAndRedirectOnSuccess(); }
 
   return null
 
