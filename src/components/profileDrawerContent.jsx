@@ -2,7 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles'
-
+import ls from 'local-storage';
+import qs from 'querystring';
 
 const styles = makeStyles(theme => {
 
@@ -82,11 +83,34 @@ function ProfileDrawerContent (props) {
 
     const classes = styles();
 
+    const logout = async (e) => {
+        e.preventDefault();
+        
+        try {
+
+            const idToken = ls.get('id_token');
+            const url = `https://dev-599411.okta.com/oauth2/default/v1/logout`;
+
+            const body = {
+                id_token_hint: idToken,
+                post_logout_redirect_uri: process.env.REACT_APP_FRONT_END_BASE_URL
+            }
+
+            localStorage.clear();
+            sessionStorage.clear();
+
+            window.location.replace(`${url}?${qs.stringify(body)}`);
+            
+        } catch(err) {
+            console.dir(err);
+        }
+    };
+
     return (
         <section className={classes.container}>
             <div className={classes["top-content-container"]}>
                 <Typography variant="h5" onClick={props.closeDrawer}>{"> Profile"}</Typography>
-                <Typography variant="p">Logout</Typography>
+                <Typography onClick={logout}>Logout</Typography>
             </div>
             <div className={classes["avatar-container"]}>
                 <Avatar className={classes.avatar} src="#" alt="Profile Avatar" />
