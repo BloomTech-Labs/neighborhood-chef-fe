@@ -16,6 +16,19 @@ const styles = makeStyles(theme => {
             height: "100vh",
             overflowY: "scroll"
         },
+        "top-content-container": {
+            display: "flex",
+            alignItems: "center",
+
+            "& *:first-child": {
+                flexBasis: "85%"
+            },
+
+            "& *:last-child": {
+                flexBasis: "15%"
+            }
+
+        },
         "avatar-container": {
             display: "flex",
             flexDirection: "column",
@@ -71,7 +84,10 @@ function ProfileDrawerContent (props) {
 
     return (
         <section className={classes.container}>
-            <Typography variant="h5" onClick={props.closeDrawer}>{"> Profile"}</Typography>
+            <div className={classes["top-content-container"]}>
+                <Typography variant="h5" onClick={props.closeDrawer}>{"> Profile"}</Typography>
+                <Typography variant="p">Logout</Typography>
+            </div>
             <div className={classes["avatar-container"]}>
                 <Avatar className={classes.avatar} src="#" alt="Profile Avatar" />
                 <Typography>First Last</Typography>
