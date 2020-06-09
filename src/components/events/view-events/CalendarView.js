@@ -15,7 +15,7 @@ import { print } from "graphql";
 import { GET_INVITED_EVENTS } from "../../../graphql/users/user-queries";
 
 //action imports
-import { getEventsSuccess } from "../../../utilities/actions";
+import { getEventsSuccess, makeActive } from "../../../utilities/actions";
 
 //style import
 import { buttonStyles } from "../../../styles";
@@ -78,6 +78,10 @@ const CalendarView = () => {
         setIsLoading(false);
       });
   }, [dispatch, me.id, update]);
+
+  useEffect(() => {
+    return () => dispatch(makeActive(null));
+  }, [dispatch]);
 
   return (
     <div

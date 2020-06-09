@@ -95,6 +95,13 @@ const EventDetails = () => {
       });
   }, [dispatch, currentEventId]);
 
+  useEffect(() => {
+    return () => {
+      dispatch(makeActive(null));
+      dispatch(getSingleEvent({}));
+    };
+  }, [dispatch]);
+
   if (Object.keys(event).length > 0) {
     timeObject = parseTime(event.startTime, event.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(

@@ -1,15 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { buttonStyles } from "../../styles";
+import { buttonStyles, cardStyles } from "../../styles";
 import ls from "local-storage";
 import { nanoid } from "nanoid";
 import AuthHeader from "../other/AuthHeader.js";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import food from "../../assets/food.jpg";
 
 const qs = require("querystring");
 const crypto = require("crypto-browserify");
 
 const Login = () => {
-  const classes = buttonStyles();
+  const cardClass = cardStyles();
+  const buttonClass = buttonStyles();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -42,22 +46,26 @@ const Login = () => {
   return (
     <>
       <AuthHeader />
-      <div className="login-container">
-        <h1>Neighborhood Chef</h1>
-        <p style={{ fontStyle: "italic" }}>Prepare to eat well</p>
-
-        <div
-          className={`${classes.root} ${classes.single}`}
-          onClick={handleClick}
-        >
-          Login Securely with Okta
+      <div className="landing-page-container">
+        <div className="landing-page-left">
+          <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
+            <CardContent>
+              <Typography variant="h3">Login to Neighborhood Chef</Typography>
+              <Typography style={{ marginTop: "20px" }} variant="caption">
+                <span style={{ opacity: ".6" }}>Choose to eat comfortably</span>
+              </Typography>
+              <div
+                style={{ marginTop: "20px" }}
+                className={`${buttonClass.root} ${buttonClass.single}`}
+                onClick={handleClick}
+              >
+                <Typography variant="h5">Login Securely with Okta</Typography>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-
-        <div style={{ marginTop: "10px" }}>
-          Don't have an account?{" "}
-          <span className="green-link">
-            <Link to="/register">Register now.</Link>
-          </span>
+        <div className="landing-page-right">
+          <img src={food} alt="food community" height="100%" width="100%" />
         </div>
       </div>
     </>
