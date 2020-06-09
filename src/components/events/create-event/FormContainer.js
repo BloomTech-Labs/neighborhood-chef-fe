@@ -67,25 +67,29 @@ const FormContainer = () => {
 
   useEffect(() => {
     if (isEditing) {
-      const savedHashtags = eventToEdit.hashtags.hashtags;
-      const savedModifiers = eventToEdit.modifiers.modifiers;
-      const savedAllergens = eventToEdit.allergenWarnings.allergenWarnings;
-      const savedDietWarnings = eventToEdit.dietaryWarnings.dietaryWarnings;
+      const savedHashtags = eventToEdit.hashtags;
+      const savedModifiers = eventToEdit.modifiers;
+      const savedAllergens = eventToEdit.allergenWarnings;
+      const savedDietWarnings = eventToEdit.dietaryWarnings;
 
       if (Object.keys(savedModifiers).length !== 0) {
-        restoreSavedModifiers(modifierData, savedModifiers, setModifiers);
+        restoreSavedModifiers(
+          modifierData,
+          savedModifiers.modifiers,
+          setModifiers
+        );
       }
 
       if (Object.keys(savedHashtags).length !== 0) {
-        setHashtags(savedHashtags);
+        setHashtags(savedHashtags.hashtags);
       }
 
       if (Object.keys(savedAllergens).length !== 0) {
-        setAllergenList(savedAllergens);
+        setAllergenList(savedAllergens.allergenWarnings);
       }
 
       if (Object.keys(savedDietWarnings).length !== 0) {
-        setDietWarnings(savedDietWarnings);
+        setDietWarnings(savedDietWarnings.dietaryWarnings);
       }
 
       if (eventToEdit.photo !== "null") {

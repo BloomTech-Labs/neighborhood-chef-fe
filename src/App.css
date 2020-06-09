@@ -75,11 +75,11 @@ a {
   z-index: 1;
 } */
 
-.react-geocoder {
+/* .react-geocoder {
   position: absolute;
   z-index: 1;
   width: 31vw;
-}
+} */
 
 .react-geocoder-results {
   background: white;
@@ -335,6 +335,10 @@ a {
   border-radius: 15px;
   outline: none;
   font-size: 1.6rem;
+  width: 90%;
+}
+
+.locationInput {
   width: 90%;
 }
 

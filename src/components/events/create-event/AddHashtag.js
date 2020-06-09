@@ -29,8 +29,7 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "flexStart",
-          marginTop: "60px",
-          marginBottom: "40px",
+          marginTop: "25px",
         }}
       >
         <input

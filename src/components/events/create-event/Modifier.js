@@ -21,6 +21,7 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
         justifyContent: "center",
         margin: "10px",
         cursor: "pointer",
+        width: "118px",
       }}
     >
       <div

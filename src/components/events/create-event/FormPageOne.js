@@ -72,21 +72,19 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
             <CreateIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
 
-          <div className="createFormInputDiv" style={{ padding: "15px 15px" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Geocoder
-                {...mapAccess}
-                name="location"
-                onSelected={onSelected}
-                viewport={viewport}
-                hideOnSelect={true}
-                queryParams={queryParams}
-                updateInputOnSelect={true}
-                inputComponent={Placeholder}
-                initialInputValue={values.address ? values.address : ""}
-                className="locationInput"
-              />
-            </div>
+          <div className="createFormInputDiv">
+            <Geocoder
+              {...mapAccess}
+              name="location"
+              onSelected={onSelected}
+              viewport={viewport}
+              hideOnSelect={true}
+              queryParams={queryParams}
+              updateInputOnSelect={true}
+              inputComponent={Placeholder}
+              initialInputValue={values.address ? values.address : ""}
+              className="locationInput"
+            />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
 
