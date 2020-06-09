@@ -70,6 +70,9 @@ const FormContainer = () => {
     if (isEditing) {
       const savedHashtags = eventToEdit.hashtags;
       const savedModifiers = eventToEdit.modifiers;
+      const savedAllergens = eventToEdit.allergenWarnings;
+      const savedDietWarnings = eventToEdit.dietWarnings;
+
       if (Object.keys(savedModifiers).length !== 0) {
         restoreSavedModifiers(
           modifierData,
@@ -77,9 +80,19 @@ const FormContainer = () => {
           setModifiers
         );
       }
+
       if (Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
       }
+
+      if (Object.keys(savedAllergens).length !== 0) {
+        setAllergenList(savedAllergens);
+      }
+
+      if (Object.keys(savedDietWarnings).length !== 0) {
+        setDietWarnings(savedDietWarnings);
+      }
+
       if (eventToEdit.photo !== "null") {
         setPhoto(eventToEdit.photo);
       }
@@ -121,9 +134,9 @@ const FormContainer = () => {
             photo: photo ? photo : null,
             user_id: parseInt(me.id),
             // uncomment once migration is in place
-            // allergens: JSON.stringify({ allergens: [...allergenList] }),
-            // dietWarnings: JSON.stringify({ dietWarnings: [...dietWarnings] }),
-            // ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
+            allergens: JSON.stringify({ allergens: [...allergenList] }),
+            dietWarnings: JSON.stringify({ dietWarnings: [...dietWarnings] }),
+            ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
           };
 
           if (isEditing) {

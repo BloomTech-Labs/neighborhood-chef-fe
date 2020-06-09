@@ -81,12 +81,13 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
               hideOnSelect={true}
               queryParams={queryParams}
               updateInputOnSelect={true}
-              className="locationInput"
               inputComponent={Placeholder}
               initialInputValue={values.address ? values.address : ""}
+              className="locationInput"
             />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
+
           <Field
             as="textarea"
             name="description"
