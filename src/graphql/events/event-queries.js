@@ -16,6 +16,8 @@ export const ALL_EVENTS = gql`
       longitude
       hashtags
       modifiers
+      allergenWarnings
+      dietaryWarnings
       photo
       users {
         id
@@ -48,6 +50,8 @@ export const EVENT_BY_ID = gql`
       longitude
       modifiers
       hashtags
+      allergenWarnings
+      dietaryWarnings
       photo
       users {
         id

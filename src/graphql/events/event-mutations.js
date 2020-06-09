@@ -15,6 +15,8 @@ export const ADD_EVENT = gql`
       longitude
       hashtags
       modifiers
+      allergenWarnings
+      dietaryWarnings
       photo
       users {
         id
@@ -41,6 +43,8 @@ export const UPDATE_EVENT = gql`
       longitude
       hashtags
       modifiers
+      allergenWarnings
+      dietaryWarnings
       user_id
       photo
       users {
@@ -68,6 +72,8 @@ export const DELETE_EVENT = gql`
       longitude
       hashtags
       modifiers
+      allergenWarnings
+      dietaryWarnings
     }
   }
 `;
@@ -87,6 +93,8 @@ export const INVITE_USER = gql`
       longitude
       hashtags
       modifiers
+      allergenWarnings
+      dietaryWarnings
       photo
       users {
         id
@@ -118,6 +126,8 @@ export const UPDATE_INVITATION = gql`
       longitude
       modifiers
       hashtags
+      allergenWarnings
+      dietaryWarnings
       photo
       users {
         id
@@ -149,6 +159,8 @@ export const REMOVE_INVITATION = gql`
       longitude
       modifiers
       hashtags
+      allergenWarnings
+      dietaryWarnings
       users {
         id
         email
