@@ -13,7 +13,7 @@ const AdvancedOptions = ({
   setIngredientList,
 }) => {
   return (
-    <>
+    <div>
       <AddAllergy
         allergenList={allergenList}
         setAllergenList={setAllergenList}
@@ -26,7 +26,7 @@ const AdvancedOptions = ({
         ingredientList={ingredientList}
         setIngredientList={setIngredientList}
       />
-    </>
+    </div>
   );
 };
 

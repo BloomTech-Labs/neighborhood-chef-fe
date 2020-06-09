@@ -14,6 +14,8 @@ import { scrollToTop } from "./FormPageOne.js";
 import AdvancedOptions from "./advanced-options/AdvancedOptions.js";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
+import { showOptions } from "../../../utilities/functions";
+import Typography from "@material-ui/core/Typography";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -39,7 +41,9 @@ const FormPageTwo = ({
   ingredientList,
   setIngredientList,
 }) => {
-  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(
+    showOptions(allergenList, dietWarnings)
+  );
   const dispatch = useDispatch();
 
   return (
@@ -56,16 +60,7 @@ const FormPageTwo = ({
           removeHashtag={removeHashtag}
         />
         <div>
-          <h5
-            style={{
-              textAlign: "left",
-              fontSize: "1.8rem",
-              marginLeft: "10px",
-              fontWeight: "normal",
-            }}
-          >
-            Pick modifiers for your event.
-          </h5>
+          <Typography>Pick modifiers for your event.</Typography>
           <div style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}>
             {modifierData.map((modifier) => {
               return (
@@ -83,16 +78,9 @@ const FormPageTwo = ({
           style={{ cursor: "pointer" }}
           onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
         >
-          <h5
-            style={{
-              textAlign: "left",
-              fontSize: "1.8rem",
-              marginLeft: "10px",
-              fontWeight: "normal",
-            }}
-          >
+          <Typography style={{ marginTop: "15px" }}>
             Click here for more options
-          </h5>
+          </Typography>
         </div>
         {showAdvancedOptions && (
           <>

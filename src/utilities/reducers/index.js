@@ -26,7 +26,7 @@ const initialDate = new Date();
 
 const initialState = {
   loginCredentials: {},
-  page: 1,
+  page: 2,
   activeEvent: null,
   selectedMonth: initialDate.setDate(15),
   neighborhoodName: "My Neighborhood",

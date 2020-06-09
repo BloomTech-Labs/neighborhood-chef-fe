@@ -90,3 +90,10 @@ export const isEventFavorite = (arr, id) => {
   }
   return false;
 };
+
+export const showOptions = (arr1, arr2) => {
+  if (arr1.length > 0 || arr2.length > 0) {
+    return true;
+  }
+  return false;
+};

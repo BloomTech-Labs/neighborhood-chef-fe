@@ -12,9 +12,8 @@ const AllergyWarning = ({ allergy, removeAllergy }) => {
         background: "#ea6565",
         opacity: "0.75",
         borderRadius: "10px",
-        marginTop: "20px",
+        marginTop: "10px",
         marginRight: "20px",
-        marginBottom: "20px",
         color: "white",
         fontSize: "1.6rem",
         width: "auto",
@@ -24,7 +23,17 @@ const AllergyWarning = ({ allergy, removeAllergy }) => {
         cursor: "pointer",
       }}
     >
-      {allergy.name}
+      <p style={{ wordWrap: "break-word" }}>{allergy.name}</p>
+      <span
+        style={{
+          cursor: "pointer",
+          fontWeight: "bold",
+          marginLeft: "10px",
+        }}
+        onClick={() => removeAllergy(allergy.id)}
+      >
+        x
+      </span>
     </div>
   );
 };

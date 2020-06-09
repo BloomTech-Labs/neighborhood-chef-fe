@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from "@material-ui/core/Typography";
 
 import Ingredient from "./Ingredient.js";
 
@@ -33,17 +34,10 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
   };
 
   return (
-    <>
-      <h5
-        style={{
-          textAlign: "left",
-          fontSize: "1.8rem",
-          marginLeft: "10px",
-          fontWeight: "normal",
-        }}
-      >
+    <div style={{ marginTop: "55px" }}>
+      <Typography style={{ marginBottom: "10px" }}>
         Request for guests to bring ingredients
-      </h5>
+      </Typography>
       <div
         style={{
           display: "flex",
@@ -174,7 +168,7 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

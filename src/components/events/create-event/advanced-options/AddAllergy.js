@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Typography from "@material-ui/core/Typography";
 
 import AllergyWarning from "./AllergyWarning.js";
 
@@ -30,17 +31,8 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
   return (
     <>
-      <div style={{ marginTop: "55px", marginBottom: "55px" }}>
-        <h5
-          style={{
-            textAlign: "left",
-            fontSize: "1.8rem",
-            marginLeft: "10px",
-            fontWeight: "normal",
-          }}
-        >
-          Add allergy warnings
-        </h5>
+      <div style={{ marginTop: "55px" }}>
+        <Typography>Add allergy warnings</Typography>
         <input
           type="text"
           name="name"
