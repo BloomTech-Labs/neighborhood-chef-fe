@@ -26,7 +26,7 @@ const initialDate = new Date();
 
 const initialState = {
   loginCredentials: {},
-  page: 1,
+  page: 2,
   activeEvent: null,
   selectedMonth: initialDate.setDate(15),
   neighborhoodName: "My Neighborhood",
@@ -90,7 +90,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
     case CHANGE_PAGE:
       return {
         ...state,
-        page: state.page === 1 ? 2 : 1,
+        page: payload,
       };
     case CHANGE_NEIGHB_NAME:
       return {

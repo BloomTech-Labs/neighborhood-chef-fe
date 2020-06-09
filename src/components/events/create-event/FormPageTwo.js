@@ -45,7 +45,11 @@ const FormPageTwo = ({
   return (
     <>
       <div className="createFormPage2Container">
-        <EventImageUpload photo={photo} setPhoto={setPhoto} />
+        <EventImageUpload
+          photo={photo}
+          setPhoto={setPhoto}
+          title="Upload a main picture for your event page"
+        />
         <AddHashtag
           hashtags={hashtags}
           setHashtags={setHashtags}

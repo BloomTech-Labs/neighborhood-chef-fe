@@ -1,8 +1,11 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
+import { buttonStyles } from "../../../styles";
+import Typography from "@material-ui/core/Typography";
 
-const EventImageUpload = ({ photo, setPhoto }) => {
+const EventImageUpload = ({ photo, setPhoto, title }) => {
+  const classes = buttonStyles();
   const imageSizeLimit = 1500000;
 
   const handleChange = (e) => {
@@ -22,16 +25,9 @@ const EventImageUpload = ({ photo, setPhoto }) => {
 
   return (
     <div className="createImgDiv">
-      <h5
-        style={{
-          textAlign: "left",
-          fontSize: "1.8rem",
-          marginLeft: "10px",
-          fontWeight: "normal",
-        }}
-      >
-        Upload a main picture for your event page.
-      </h5>
+      <Typography style={{ margin: "10px 0px", textAlign: "left" }}>
+        {title}
+      </Typography>
       <div
         style={{
           display: "flex",
@@ -47,23 +43,18 @@ const EventImageUpload = ({ photo, setPhoto }) => {
             id="eventImageUpload"
             multiple={false}
             onChange={handleChange}
-            accept="image/jpeg,image/gif,image/png, image/jpg"
+            accept="image/jpeg, image/gif, image/png, image/jpg"
             style={{ display: "none" }}
           />
           <label
             htmlFor="eventImageUpload"
-            className={`imgUploadDiv${photo ? " imgUploadDivActive" : ""}`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-              cursor: "pointer",
-            }}
+            className={`${classes.root} ${classes.notActive}`}
+            style={{ border: "1px solid rgba(0,0,0,.5)" }}
           >
-            Upload{" "}
+            Upload
             <Icon
               icon={uploadOutlined}
-              style={{ fontSize: "2.5rem", marginLeft: "10px", color: "white" }}
+              style={{ fontSize: "2.5rem", marginLeft: "10px" }}
             />
           </label>
         </div>
@@ -77,7 +68,7 @@ const EventImageUpload = ({ photo, setPhoto }) => {
               maxWidth: "40%",
               maxHeight: "120px",
               borderRadius: "10px",
-              border: "8px solid #82df96",
+              border: "2px solid rgba(0,0,0,.4)",
               cursor: "pointer",
             }}
           />

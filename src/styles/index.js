@@ -1,14 +1,21 @@
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createMuiTheme,
+  responsiveFontSizes,
+} from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
 
 export const buttonStyles = makeStyles({
   root: {
+    display: "flex",
+    alignItems: "center",
     textTransform: "none",
     margin: "3px",
     marginBottom: "8px",
     border: 0,
     borderRadius: 6,
     padding: "8px 20px",
+    cursor: "pointer",
   },
   notActive: {
     background: "white",
@@ -37,14 +44,17 @@ export const buttonStyles = makeStyles({
     },
   },
   single: {
-    cursor: "pointer",
+    justifyContent: "center",
     margin: "0 auto",
     textAlign: "center",
-    lineHeight: "35px",
     background: "#58D573",
+    fontSize: "2rem",
     color: "white",
     "& a": {
       color: "white",
+    },
+    "&:hover": {
+      background: "#58D573",
     },
   },
   rsvpRoot: {
@@ -223,6 +233,14 @@ export const cardStyles = makeStyles((theme) => ({
     flexDirection: "column",
     overflow: "auto",
   },
+  landingPage: {
+    width: "70%",
+    maxWidth: 450,
+    justifyContent: "space-between",
+    height: "auto",
+    maxHeight: "100%",
+    overflow: "auto",
+  },
   media: {
     height: 0,
     paddingTop: "40%",
@@ -304,6 +322,45 @@ export const textBoxStyles = makeStyles({
     height: "100%",
     fontSize: "1.5rem",
   },
+  addressInput: {
+    marginTop: "35px",
+    fontSize: "1.5rem",
+    display: "block",
+    position: "relative",
+    border: 0,
+    borderBottom: "1px solid rgba(0,0,0,.5)",
+    width: "100%",
+    background: 0,
+    zIndex: 3,
+    transition: "all .2s ease",
+    "&:focus": {
+      outline: "none",
+      borderBottom: "2px solid #4051b5",
+      "&:hover": {
+        borderBottom: "2px solid #4051b5",
+      },
+    },
+    "&:hover": {
+      borderBottom: "2px solid rgba(0,0,0,.8)",
+    },
+  },
+  addressLabel: {
+    letterSpacing: ".5px",
+    transition: "all .2s ease",
+    position: "relative",
+    fontSize: ({ isFocus, addressValue }) =>
+      (isFocus || addressValue) && "12px",
+    top: ({ isFocus, addressValue }) =>
+      isFocus || addressValue ? "12px" : "30px",
+    color: ({ isFocus }) => (isFocus ? "#4051b5" : "rgba(0,0,0,.5)"),
+    zIndex: 1,
+  },
+  icon: {
+    position: "relative",
+    top: "20px",
+    left: "60%",
+    zIndex: 5,
+  },
 });
 
 export const modalStyles = makeStyles((theme) => ({
@@ -317,31 +374,46 @@ export const modalStyles = makeStyles((theme) => ({
 
 /*----Theme styling for entire app-----*/
 
-export const theme = createMuiTheme({
-  typography: {
-    h1: {
-      fontSize: "5rem",
+export const theme = responsiveFontSizes(
+  createMuiTheme({
+    overrides: {
+      MuiButton: {
+        root: {
+          "&$disabled": {
+            opacity: ".4",
+            background: "rgba(88, 212, 115, 0.6)",
+          },
+        },
+      },
     },
-    h2: {
-      fontSize: "4.5rem",
+    typography: {
+      h1: {
+        fontSize: "5rem",
+      },
+      h2: {
+        fontSize: "4.5rem",
+      },
+      h3: {
+        fontSize: "3.5rem",
+      },
+      h4: {
+        fontSize: "3rem",
+      },
+      h5: {
+        fontSize: "2.4rem",
+      },
+      h6: {
+        fontSize: "1.8rem",
+      },
+      caption: {
+        fontSize: "1.5rem",
+      },
+      body1: {
+        fontSize: "1.7rem",
+      },
     },
-    h3: {
-      fontSize: "3.5rem",
+    palette: {
+      textSecondary: { color: "rgba(0, 0, 0, 0.6)" },
     },
-    h4: {
-      fontSize: "3rem",
-    },
-    h5: {
-      fontSize: "2.4rem",
-    },
-    h6: {
-      fontSize: "1.8rem",
-    },
-    caption: {
-      fontSize: "1.5rem",
-    },
-    body1: {
-      fontSize: "1.7rem",
-    },
-  },
-});
+  })
+);

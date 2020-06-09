@@ -6,6 +6,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const ParticipantCard = (props) => {
   const classes = cardStyles();
@@ -65,13 +66,12 @@ const ParticipantCard = (props) => {
               onChange={handleChange}
               value={newComment}
             />
-            <button
+            <Button
               type="submit"
               className={`${buttonClass.root} ${buttonClass.single}`}
-              style={{ width: "30%" }}
             >
               Add Comment
-            </button>
+            </Button>
           </form>
         </CardContent>
       </Card>
