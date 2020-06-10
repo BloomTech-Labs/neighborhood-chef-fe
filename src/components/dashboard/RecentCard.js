@@ -177,7 +177,12 @@ const RecentCard = (props) => {
           </Typography>
         }
       />
-      {props.photo !== "null" ? (
+
+      {/*If you need to remove functionality of events showing custom uploaded images on dashboard, 
+      change REACT_APP_ALLOW_USER_IMG variable within .env file */}
+
+      {props.photo !== "null" &&
+      process.env.REACT_APP_ALLOW_USER_IMG === "1" ? (
         <CardMedia
           style={{ height: 130 }}
           component="img"
