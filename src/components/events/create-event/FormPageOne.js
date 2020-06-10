@@ -81,12 +81,13 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
               hideOnSelect={true}
               queryParams={queryParams}
               updateInputOnSelect={true}
-              className="locationInput"
               inputComponent={Placeholder}
               initialInputValue={values.address ? values.address : ""}
+              className="locationInput"
             />
             <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
           </div>
+
           <Field
             as="textarea"
             name="description"
@@ -111,10 +112,10 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
           </div>
 
           <div className="eventTimeDiv">
-            <label htmlFor="Start_Time">The event starts at:</label>
+            <label htmlFor="greenSelect">The event starts at:</label>
             <Select
               name="startTime"
-              id="Start_Time"
+              id="greenSelect"
               value={values.startTime}
               onChange={handleChange}
               disableUnderline={true}
@@ -172,10 +173,10 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
           </div>
 
           <div className="eventTimeDiv">
-            <label htmlFor="End_Time">The event ends at:</label>
+            <label htmlFor="redSelect">The event ends at:</label>
             <Select
               name="endTime"
-              id="End_Time"
+              id="redSelect"
               value={values.endTime}
               onChange={handleChange}
               disableUnderline={true}

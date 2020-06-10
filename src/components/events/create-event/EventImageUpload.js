@@ -25,7 +25,11 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
 
   return (
     <div className="createImgDiv">
-      <Typography style={{ margin: "10px 0px" }}>{title}</Typography>
+      <Typography
+        style={{ marginTop: "10px", marginBottom: "25px", textAlign: "left" }}
+      >
+        {title}
+      </Typography>
       <div
         style={{
           display: "flex",
@@ -41,7 +45,7 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
             id="eventImageUpload"
             multiple={false}
             onChange={handleChange}
-            accept="image/jpeg,image/gif,image/png, image/jpg"
+            accept="image/jpeg, image/gif, image/png, image/jpg"
             style={{ display: "none" }}
           />
           <label

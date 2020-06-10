@@ -1,16 +1,27 @@
-import React from 'react';
-import CreateEventHeader from './CreateEventHeader.js';
-import { render } from '@testing-library/react';
+import React from "react";
+import CreateEventHeader from "./CreateEventHeader.js";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
+import { render } from "@testing-library/react";
 
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
-describe('Test CreateEventHeader component', () => {
+const mockStore = configureStore([]);
+
+describe("Test CreateEventHeader component", () => {
   let CreateEventHeaderComponent;
+  let store;
+
   beforeEach(() => {
-    CreateEventHeaderComponent = render(<CreateEventHeader />);
+    store = mockStore({});
+    CreateEventHeaderComponent = render(
+      <Provider store={store}>
+        <CreateEventHeader />
+      </Provider>
+    );
   });
 
-  test('CreateEventHeader renders', () => {
+  test("CreateEventHeader renders", () => {
     expect(CreateEventHeaderComponent.getByText(/Create/i));
   });
 });
