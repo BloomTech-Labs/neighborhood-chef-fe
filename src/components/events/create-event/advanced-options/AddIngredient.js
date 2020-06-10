@@ -100,21 +100,22 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
                   disableUnderline={true}
                 >
                   <MenuItem value=""></MenuItem>
-                  <MenuItem value={"cup"}>cup</MenuItem>
-                  <MenuItem value={"cups"}>cups</MenuItem>
-                  <MenuItem value={"gallon"}>gallon</MenuItem>
-                  <MenuItem value={"gallons"}>gallons</MenuItem>
-                  <MenuItem value={"lbs"}>lbs</MenuItem>
-                  <MenuItem value={"ounce"}>ounce</MenuItem>
-                  <MenuItem value={"ounces"}>ounces</MenuItem>
-                  <MenuItem value={"pint"}>pint</MenuItem>
-                  <MenuItem value={"pints"}>pints</MenuItem>
-                  <MenuItem value={"quart"}>quart</MenuItem>
-                  <MenuItem value={"quarts"}>quarts</MenuItem>
-                  <MenuItem value={"teaspoon"}>teaspoon</MenuItem>
-                  <MenuItem value={"teaspoons"}>teaspoons</MenuItem>
-                  <MenuItem value={"tablespoon"}>tablespoon</MenuItem>
-                  <MenuItem value={"tablespoon"}>tablespoons</MenuItem>
+                  <MenuItem value={"Cup"}>Cup</MenuItem>
+                  <MenuItem value={"Cups"}>Cups</MenuItem>
+                  <MenuItem value={"Gallon"}>Gallon</MenuItem>
+                  <MenuItem value={"Gallons"}>Gallons</MenuItem>
+                  <MenuItem value={"Pound"}>Pound</MenuItem>
+                  <MenuItem value={"Pounds"}>Pounds</MenuItem>
+                  <MenuItem value={"Ounce"}>Ounce</MenuItem>
+                  <MenuItem value={"Ounces"}>Ounces</MenuItem>
+                  <MenuItem value={"Pint"}>Pint</MenuItem>
+                  <MenuItem value={"Pints"}>Pints</MenuItem>
+                  <MenuItem value={"Quart"}>Quart</MenuItem>
+                  <MenuItem value={"Quarts"}>Quarts</MenuItem>
+                  <MenuItem value={"Teaspoon"}>Teaspoon</MenuItem>
+                  <MenuItem value={"Teaspoons"}>Teaspoons</MenuItem>
+                  <MenuItem value={"Tablespoon"}>Tablespoon</MenuItem>
+                  <MenuItem value={"Tablespoon"}>Tablespoons</MenuItem>
                 </Select>
               </label>
             </div>
