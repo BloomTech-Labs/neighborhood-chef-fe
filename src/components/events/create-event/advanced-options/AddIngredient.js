@@ -100,14 +100,14 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
                   disableUnderline={true}
                 >
                   <MenuItem value=""></MenuItem>
-                  <MenuItem value={"Cup(s)"}>Cup(s)</MenuItem>
-                  <MenuItem value={"Gallon(s)"}>Gallon(s)</MenuItem>
-                  <MenuItem value={"Pound(s)"}>Pound(s)</MenuItem>
-                  <MenuItem value={"Ounce(s)"}>Ounce(s)</MenuItem>
-                  <MenuItem value={"Pint(s)"}>Pint(s)</MenuItem>
-                  <MenuItem value={"Quart(s)"}>Quart(s)</MenuItem>
-                  <MenuItem value={"Teaspoon(s)"}>Teaspoon(s)</MenuItem>
-                  <MenuItem value={"Tablespoon(s)"}>Tablespoon(s)</MenuItem>
+                  <MenuItem value={"Cups"}>Cup(s)</MenuItem>
+                  <MenuItem value={"Gallons"}>Gallon(s)</MenuItem>
+                  <MenuItem value={"Pounds"}>Pound(s)</MenuItem>
+                  <MenuItem value={"Ounces"}>Ounce(s)</MenuItem>
+                  <MenuItem value={"Pints"}>Pint(s)</MenuItem>
+                  <MenuItem value={"Quarts"}>Quart(s)</MenuItem>
+                  <MenuItem value={"Teaspoons"}>Teaspoon(s)</MenuItem>
+                  <MenuItem value={"Tablespoons"}>Tablespoon(s)</MenuItem>
                 </Select>
               </label>
             </div>
