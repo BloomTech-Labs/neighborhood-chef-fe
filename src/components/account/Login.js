@@ -49,13 +49,13 @@ const Login = () => {
       <div className="landing-page-container">
         <div className="landing-page-left">
           <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
-            <CardContent>
+            <CardContent style={{ marginTop: "2%" }}>
               <Typography variant="h3">Login to Neighborhood Chef</Typography>
               <Typography style={{ marginTop: "20px" }} variant="caption">
                 <span style={{ opacity: ".6" }}>Choose to eat comfortably</span>
               </Typography>
               <div
-                style={{ marginTop: "20px" }}
+                style={{ marginTop: "10%" }}
                 className={`${buttonClass.root} ${buttonClass.single}`}
                 onClick={handleClick}
               >

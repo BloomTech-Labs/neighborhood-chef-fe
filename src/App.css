@@ -64,7 +64,7 @@ a {
 
 .geocoder-container {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -75,20 +75,19 @@ a {
   z-index: 1;
 } */
 
-/* .react-geocoder {
-  position: absolute;
-  z-index: 1;
+/* 
+.react-geocoder {
+  position: absolute; 
+  z-index: 1; 
   width: 31vw;
 } */
 
 .react-geocoder-results {
+  display: relative;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.4);
   cursor: pointer;
-}
-
-.react-geocoder-results > * {
-  margin: 2px 0;
+  z-index: 5;
 }
 
 /* ---- start of Sidebar styles ---- */
@@ -442,6 +441,27 @@ a {
 }
 
 /* page two */
+.createImgDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.imgUploadDiv {
+  display: flex;
+  align-items: center;
+  background: rgba(130, 223, 150, 0.5);
+  border-radius: 15px;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: "5px 10px 10px 10px";
+}
+
+.imgUploadDivActive {
+  background: #82df96;
+}
 
 .modifierNotActive {
   display: flex;

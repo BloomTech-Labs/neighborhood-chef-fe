@@ -23,13 +23,16 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
 
   return (
     <div style={{ margin: "15px 0" }}>
-      <Typography>Add some hashtags for your event.</Typography>
+      <Typography style={{ marginTop: "25px", marginBottom: "25px" }}>
+        Add some hashtags for your event.
+      </Typography>
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "flexStart",
           marginTop: "25px",
+          marginBottom: "25px",
         }}
       >
         <input

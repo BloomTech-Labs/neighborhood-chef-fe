@@ -31,7 +31,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
 
   return (
     <>
-      <div style={{ marginTop: "55px" }}>
+      <div style={{ marginTop: "55px", marginBottom: "25px" }}>
         <Typography>Add dietary warnings</Typography>
         <input
           type="text"

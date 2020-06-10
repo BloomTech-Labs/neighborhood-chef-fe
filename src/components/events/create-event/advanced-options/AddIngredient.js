@@ -34,7 +34,7 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
   };
 
   return (
-    <div style={{ marginTop: "55px" }}>
+    <div style={{ marginTop: "55px", marginBottom: "25px" }}>
       <Typography style={{ marginBottom: "10px" }}>
         Request for guests to bring ingredients
       </Typography>

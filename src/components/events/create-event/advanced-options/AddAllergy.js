@@ -31,7 +31,7 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
   return (
     <>
-      <div style={{ marginTop: "55px" }}>
+      <div style={{ marginTop: "55px", marginBottom: "25px" }}>
         <Typography>Add allergy warnings</Typography>
         <input
           type="text"

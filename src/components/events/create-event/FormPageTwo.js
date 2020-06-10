@@ -60,7 +60,9 @@ const FormPageTwo = ({
           removeHashtag={removeHashtag}
         />
         <div>
-          <Typography>Pick modifiers for your event.</Typography>
+          <Typography style={{ margin: "25px 0" }}>
+            Pick modifiers for your event.
+          </Typography>
           <div style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}>
             {modifierData.map((modifier) => {
               return (
@@ -79,11 +81,11 @@ const FormPageTwo = ({
           onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
         >
           {showAdvancedOptions ? (
-            <Typography style={{ marginTop: "15px" }}>
+            <Typography style={{ marginTop: "25px" }}>
               Click here to hide additional options
             </Typography>
           ) : (
-            <Typography style={{ marginTop: "15px" }}>
+            <Typography style={{ marginTop: "25px" }}>
               Click here to add additional options
             </Typography>
           )}

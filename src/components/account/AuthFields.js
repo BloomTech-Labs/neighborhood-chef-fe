@@ -28,7 +28,7 @@ const AuthFields = (props) => {
   return (
     <>
       <Field
-        style={{ marginTop: "10px" }}
+        style={{ marginTop: "10%" }}
         component={TextField}
         type="email"
         name="email"
@@ -37,7 +37,7 @@ const AuthFields = (props) => {
         label="Email"
         required
       />
-      <label style={{ marginTop: "10px" }} className="terms">
+      <label style={{ marginTop: "10%" }} className="terms">
         <Field
           component={Checkbox}
           type="checkbox"
@@ -47,7 +47,7 @@ const AuthFields = (props) => {
         I accept the terms and conditions.
       </label>
       <Button
-        style={{ marginTop: "10px" }}
+        style={{ marginTop: "10%" }}
         className={`${buttonClass.root} ${buttonClass.active}`}
         onClick={() => {
           dispatch(changePage(2));

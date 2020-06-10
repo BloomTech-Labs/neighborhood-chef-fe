@@ -323,15 +323,14 @@ export const textBoxStyles = makeStyles({
     fontSize: "1.5rem",
   },
   addressInput: {
-    marginTop: "35px",
-    fontSize: "1.5rem",
-    display: "block",
     position: "relative",
+    marginTop: "35px",
+    fontSize: "1.7rem",
+    display: "block",
     border: 0,
     borderBottom: "1px solid rgba(0,0,0,.5)",
-    width: "100%",
+    width: "99%",
     background: 0,
-    zIndex: 3,
     transition: "all .2s ease",
     "&:focus": {
       outline: "none",
@@ -343,23 +342,22 @@ export const textBoxStyles = makeStyles({
     "&:hover": {
       borderBottom: "2px solid rgba(0,0,0,.8)",
     },
+    zIndex: 2,
   },
   addressLabel: {
     letterSpacing: ".5px",
     transition: "all .2s ease",
     position: "relative",
-    fontSize: ({ isFocus, addressValue }) =>
-      (isFocus || addressValue) && "12px",
     top: ({ isFocus, addressValue }) =>
-      isFocus || addressValue ? "12px" : "30px",
+      isFocus || addressValue ? "57px" : "67px",
     color: ({ isFocus }) => (isFocus ? "#4051b5" : "rgba(0,0,0,.5)"),
-    zIndex: 1,
   },
   icon: {
     position: "relative",
-    top: "20px",
-    left: "60%",
-    zIndex: 5,
+    top: "60px",
+    left: ({ isFocus, addressValue }) =>
+      isFocus || addressValue ? "71%" : "67%",
+    zIndex: 3,
   },
 });
 
@@ -410,6 +408,9 @@ export const theme = responsiveFontSizes(
       },
       body1: {
         fontSize: "1.7rem",
+      },
+      body2: {
+        fontSize: "1.2rem",
       },
     },
     palette: {

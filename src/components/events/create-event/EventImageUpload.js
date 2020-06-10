@@ -25,7 +25,9 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
 
   return (
     <div className="createImgDiv">
-      <Typography style={{ margin: "10px 0px", textAlign: "left" }}>
+      <Typography
+        style={{ marginTop: "10px", marginBottom: "25px", textAlign: "left" }}
+      >
         {title}
       </Typography>
       <div
