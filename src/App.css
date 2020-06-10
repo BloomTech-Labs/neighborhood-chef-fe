@@ -64,7 +64,7 @@ a {
 
 .geocoder-container {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -74,21 +74,19 @@ a {
   left: -112px;
   z-index: 1;
 } */
-
+/* 
 .react-geocoder {
-  position: absolute;
-  z-index: 1;
+  position: absolute; 
+  z-index: 1; 
   width: 31vw;
-}
+} */
 
 .react-geocoder-results {
+  display: relative;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.4);
   cursor: pointer;
-}
-
-.react-geocoder-results > * {
-  margin: 2px 0;
+  z-index: 5;
 }
 
 /* ---- start of Sidebar styles ---- */
@@ -445,7 +443,7 @@ a {
 .createImgDiv {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .imgUploadDiv {

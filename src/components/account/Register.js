@@ -27,7 +27,7 @@ const Register = () => {
       <div className="landing-page-container">
         <div className="landing-page-left">
           <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
-            <CardContent>
+            <CardContent style={{ marginTop: "2%" }}>
               <Typography variant="h4">Create a new account with us</Typography>
               <Typography variant="caption" color="textSecondary">
                 Start eating well while making friends!
@@ -109,7 +109,7 @@ const Register = () => {
           </Card>
         </div>
         <div className="landing-page-right">
-          <img src={food} alt="food community" height="100%" width="100%" />
+          <img src={food} alt="food community" height="100%" />
         </div>
       </div>
     </div>
