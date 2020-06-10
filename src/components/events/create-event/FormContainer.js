@@ -72,7 +72,7 @@ const FormContainer = () => {
       const savedAllergens = eventToEdit.allergenWarnings;
       const savedDietWarnings = eventToEdit.dietaryWarnings;
 
-      if (savedHashtags && Object.keys(savedModifiers).length !== 0) {
+      if (savedModifiers && Object.keys(savedModifiers).length !== 0) {
         restoreSavedModifiers(
           modifierData,
           savedModifiers.modifiers,
@@ -80,7 +80,7 @@ const FormContainer = () => {
         );
       }
 
-      if (savedModifiers && Object.keys(savedHashtags).length !== 0) {
+      if (savedHashtags && Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
       }
 
