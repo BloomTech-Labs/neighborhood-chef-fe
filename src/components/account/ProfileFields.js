@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Field } from "formik";
 import { Button } from "@material-ui/core";
@@ -25,9 +25,17 @@ const ProfileFields = (props) => {
   const [gender, setGender] = useState("");
   const [photo, setPhoto] = useState(null);
   const [mapOpen, setMapOpen] = useState(false);
-  let addressInput;
+  let inputField;
   const [focusAddress, setFocusAddress] = useState(false);
-  const [addressValue, setAddressValue] = useState("");
+  const addressLabel = useRef();
+  const geoInput = useRef();
+
+  const moveFocus = (e) => {
+    e.preventDefault();
+    setFocusAddress(true);
+    addressLabel.current.focus();
+  };
+
   const changePhoto = (photo) => {
     setPhoto(photo);
     props.setFieldValue("photo", photo);
@@ -37,12 +45,12 @@ const ProfileFields = (props) => {
   };
   const mapStyle = {
     width: "40vw",
-    height: "50vh",
+    height: "70vh",
   };
   const queryParams = {
     country: "us",
   };
-  const [viewport, setViewport] = useState();
+  const [viewport, setViewport] = useState(Window.innerWidth);
   const [longLat, setLongLat] = useState("");
 
   const handleChange = (e) => {
@@ -63,15 +71,17 @@ const ProfileFields = (props) => {
 
   useEffect(() => {
     let inputList = document.getElementsByTagName("input");
-    addressInput = inputList[2];
+    // geoInput.current = inputList[2];
+    geoInput.current = inputList[2];
 
-    addressInput.classList.add(textBoxClass.addressInput);
-    addressInput.addEventListener("focusin", () => {
+    geoInput.current.classList.add(textBoxClass.addressInput);
+    geoInput.current.addEventListener("focusin", () => {
       setFocusAddress(true);
     });
-    addressInput.addEventListener("focusout", () => {
+    geoInput.current.addEventListener("focusout", () => {
       setFocusAddress(false);
     });
+    addressLabel.current = geoInput.current;
   }, []);
 
   useEffect(() => {
@@ -101,26 +111,47 @@ const ProfileFields = (props) => {
         required
       />
 
-      <form className="geocoder-container">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          marginTop: "-12%",
+        }}
+      >
         <label
           className={
             textBoxStyles({
               isFocus: focusAddress,
-              addressValue: document.getElementsByTagName("input")[2]
-                ? document.getElementsByTagName("input")[2].value
-                : null,
+              addressValue: geoInput.current ? geoInput.current.value : null,
             }).addressLabel
           }
+          onClick={moveFocus}
         >
-          <Typography variant="v5">Address*</Typography>
+          <Typography
+            variant={
+              focusAddress || (geoInput.current && geoInput.current.value)
+                ? "body2"
+                : "h6"
+            }
+          >
+            Address*
+          </Typography>
         </label>
         <IconButton
-          className={textBoxClass.icon}
+          className={
+            textBoxStyles({
+              isFocus: focusAddress,
+              addressValue: geoInput.current ? geoInput.current.value : null,
+            }).icon
+          }
           aria-label="toggle show map"
           onClick={() => setMapOpen(!mapOpen)}
         >
           <MapIcon />
         </IconButton>
+      </div>
+
+      <div className="geocoder-container">
         <Geocoder
           {...mapAccess}
           name="location"
@@ -131,11 +162,11 @@ const ProfileFields = (props) => {
           queryParams={queryParams}
           updateInputOnSelect={true}
         />
-      </form>
+      </div>
 
       <ReactMapGL
         className={mapOpen ? "" : "hidden"}
-        style={{ position: "absolute", right: 40, top: 100 }}
+        style={{ position: "absolute", right: 50, top: 120 }}
         {...mapAccess}
         {...viewport}
         {...mapStyle}
@@ -149,7 +180,7 @@ const ProfileFields = (props) => {
         )}
       </ReactMapGL>
       <Field
-        style={{ marginTop: "30px", marginBottom: "10px" }}
+        style={{ marginTop: "10px", marginBottom: "10px" }}
         component={FormControl}
         required
       >
