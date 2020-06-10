@@ -78,9 +78,15 @@ const FormPageTwo = ({
           style={{ cursor: "pointer" }}
           onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
         >
-          <Typography style={{ marginTop: "15px" }}>
-            Click here for more options
-          </Typography>
+          {showAdvancedOptions ? (
+            <Typography style={{ marginTop: "15px" }}>
+              Click here to hide additional options
+            </Typography>
+          ) : (
+            <Typography style={{ marginTop: "15px" }}>
+              Click here to add additional options
+            </Typography>
+          )}
         </div>
         {showAdvancedOptions && (
           <>
