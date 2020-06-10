@@ -100,22 +100,14 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
                   disableUnderline={true}
                 >
                   <MenuItem value=""></MenuItem>
-                  <MenuItem value={"Cup"}>Cup</MenuItem>
-                  <MenuItem value={"Cups"}>Cups</MenuItem>
-                  <MenuItem value={"Gallon"}>Gallon</MenuItem>
-                  <MenuItem value={"Gallons"}>Gallons</MenuItem>
-                  <MenuItem value={"Pound"}>Pound</MenuItem>
-                  <MenuItem value={"Pounds"}>Pounds</MenuItem>
-                  <MenuItem value={"Ounce"}>Ounce</MenuItem>
-                  <MenuItem value={"Ounces"}>Ounces</MenuItem>
-                  <MenuItem value={"Pint"}>Pint</MenuItem>
-                  <MenuItem value={"Pints"}>Pints</MenuItem>
-                  <MenuItem value={"Quart"}>Quart</MenuItem>
-                  <MenuItem value={"Quarts"}>Quarts</MenuItem>
-                  <MenuItem value={"Teaspoon"}>Teaspoon</MenuItem>
-                  <MenuItem value={"Teaspoons"}>Teaspoons</MenuItem>
-                  <MenuItem value={"Tablespoon"}>Tablespoon</MenuItem>
-                  <MenuItem value={"Tablespoon"}>Tablespoons</MenuItem>
+                  <MenuItem value={"Cup(s)"}>Cup(s)</MenuItem>
+                  <MenuItem value={"Gallon(s)"}>Gallon(s)</MenuItem>
+                  <MenuItem value={"Pound(s)"}>Pound(s)</MenuItem>
+                  <MenuItem value={"Ounce(s)"}>Ounce(s)</MenuItem>
+                  <MenuItem value={"Pint(s)"}>Pint(s)</MenuItem>
+                  <MenuItem value={"Quart(s)"}>Quart(s)</MenuItem>
+                  <MenuItem value={"Teaspoon(s)"}>Teaspoon(s)</MenuItem>
+                  <MenuItem value={"Tablespoon(s)"}>Tablespoon(s)</MenuItem>
                 </Select>
               </label>
             </div>
