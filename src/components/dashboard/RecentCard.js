@@ -22,6 +22,14 @@ import { timeAgo, parseTime, isEventFavorite } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
 import modernRoom from "../../assets/modernRoom.png";
+import bbq from "../../assets/bbq.jpg";
+import cats from "../../assets/cats.jpg";
+import dogs from "../../assets/dogs.jpg";
+import kids from "../../assets/kids.jpg";
+import picnic from "../../assets/picnic.jpg";
+import sports from "../../assets/sports.jpg";
+import wineCheese from "../../assets/wine-cheese.jpg";
+import fullCourse from "../../assets/full-course.jpg";
 
 import { rsvpButtons } from "../../data/buttons";
 
@@ -44,6 +52,7 @@ import EventButtonModal from "./EventButtonModal";
 import Emoji from "../other/Emoji";
 
 const RecentCard = (props) => {
+  console.log(props);
   const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
   const dispatch = useDispatch();
@@ -80,6 +89,29 @@ const RecentCard = (props) => {
         dispatch(addFavoriteEventSuccess(res.data.data.addFavoriteEvent));
       })
       .catch((err) => console.log(err));
+  };
+
+  const choosePicture = () => {
+    switch (props["category_id"]) {
+      case 1:
+        return bbq;
+      case 2:
+        return picnic;
+      case 3:
+        return wineCheese;
+      case 4:
+        return fullCourse;
+      case 5:
+        return sports;
+      case 6:
+        return kids;
+      case 7:
+        return dogs;
+      case 8:
+        return cats;
+      default:
+        return modernRoom;
+    }
   };
 
   const removeFavoriteEvent = () => {
@@ -129,7 +161,7 @@ const RecentCard = (props) => {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.photo ? props.photo : initials}
+            {initials}
           </Avatar>
         }
         action={<EventButtonModal eventId={props.id} userId={me.id} />}
@@ -145,11 +177,20 @@ const RecentCard = (props) => {
           </Typography>
         }
       />
-      <CardMedia
-        className={classes.media}
-        image={modernRoom}
-        title="New Event"
-      />
+      {props.photo !== "null" ? (
+        <CardMedia
+          style={{ height: 130 }}
+          component="img"
+          src={props.photo}
+          title="New Event"
+        />
+      ) : (
+        <CardMedia
+          className={classes.media}
+          image={choosePicture()}
+          title="New Event"
+        />
+      )}
       <div className="date-box">
         <Typography variant="h5">{timeObject.day}</Typography>
         <Typography variant="h5" color="secondary">
