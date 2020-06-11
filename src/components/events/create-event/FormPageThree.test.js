@@ -1,44 +1,52 @@
-import React from 'react';
-import FormPageThree from './FormPageThree.js';
-import { Formik, Form } from 'formik';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import React from "react";
+import FormPageThree from "./FormPageThree.js";
+import { Formik, Form } from "formik";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import configureStore from "redux-mock-store";
+import { Provider } from "react-redux";
+
+const mockStore = configureStore([]);
 
 const values = {
-  title: 'BBQ',
-  address: '123 ABC St.',
-  description: 'BBQ at my house!',
+  title: "BBQ",
+  address: "123 ABC St.",
+  description: "BBQ at my house!",
   date: new Date(),
-  startTime: '6:00pm',
-  endEnd: '9:00pm',
+  startTime: "6:00pm",
+  endEnd: "9:00pm",
   category_id: 1,
 };
 
 const handleChange = jest.fn();
 
-describe('Test FormPageThree component', () => {
+describe("Test FormPageThree component", () => {
+  let store;
   let FormPageThreeComponent;
   beforeEach(() => {
+    store = mockStore({});
     FormPageThreeComponent = render(
-      <Formik>
-        <Form>
-          <FormPageThree
-            values={values}
-            handleChange={handleChange}
-            modifiers={{
-              id: 1,
-              title: '18+',
-              icon: 'bottle icon',
-              active: false,
-            }}
-            hashtags={{ id: 1, title: '#hashtag' }}
-          />
-        </Form>
-      </Formik>
+      <Provider store={store}>
+        <Formik>
+          <Form>
+            <FormPageThree
+              values={values}
+              handleChange={handleChange}
+              modifiers={{
+                id: 1,
+                title: "18+",
+                icon: "bottle icon",
+                active: false,
+              }}
+              hashtags={{ id: 1, title: "#hashtag" }}
+            />
+          </Form>
+        </Formik>
+      </Provider>
     );
   });
 
-  test('FormPageThree component renders', () => {
+  test("FormPageThree component renders", () => {
     expect(FormPageThreeComponent).toBeDefined();
     expect(
       FormPageThreeComponent.getByText(

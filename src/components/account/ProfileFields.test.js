@@ -1,5 +1,6 @@
 import React from "react";
-import CreateEventHeader from "./CreateEventHeader.js";
+import { Formik } from "formik";
+import ProfileFields from "./ProfileFields.js";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { render } from "@testing-library/react";
@@ -8,23 +9,25 @@ import "@testing-library/jest-dom/extend-expect";
 
 const mockStore = configureStore([]);
 
-describe("Test CreateEventHeader static properties", () => {
+describe("Test ProfileFields static properties", () => {
   let store;
-  let CreateEventHeaderComponent;
+  let ProfileFieldsComponent;
 
   beforeEach(() => {
     store = mockStore({});
 
-    CreateEventHeaderComponent = render(
+    ProfileFieldsComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <CreateEventHeader />
+          <Formik>
+            <ProfileFields setFieldValue={() => {}} submitting={false} />
+          </Formik>
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("CreateEventHeader renders", () => {
-    expect(CreateEventHeaderComponent.getByText(/Create/i));
+  test("ProfileFields renders", () => {
+    expect(ProfileFieldsComponent.getByText(/Submit/i));
   });
 });
