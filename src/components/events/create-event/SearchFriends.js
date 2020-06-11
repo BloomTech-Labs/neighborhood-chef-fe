@@ -86,14 +86,10 @@ const SearchFriends = () => {
         borderRadius: "25px",
         marginTop: "40px",
         marginBottom: "120px",
+        padding: "30px",
       }}
     >
-      <div
-        style={{
-          marginTop: "5px",
-          marginLeft: "5%",
-        }}
-      >
+      <div>
         <h3
           style={{
             fontSize: "1.8rem",
@@ -119,7 +115,7 @@ const SearchFriends = () => {
         </p>
       </div>
 
-      <div style={{ marginLeft: "5%" }}>
+      <div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div className="createFormInputDiv" style={{ width: "70%" }}>
             <input

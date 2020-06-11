@@ -47,7 +47,7 @@ const EventCard = () => {
         >
           <h3
             style={{
-              fontSize: "1.8rem",
+              fontSize: "2.5rem",
               fontWeight: "500",
               color: "#1A0F2C",
               marginBottom: "5px",
