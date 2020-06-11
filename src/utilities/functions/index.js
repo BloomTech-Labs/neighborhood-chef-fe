@@ -1,5 +1,15 @@
 import moment from "moment";
 
+import modernRoom from "../../assets/modernRoom.png";
+import bbq from "../../assets/bbq.jpg";
+import cats from "../../assets/cats.jpg";
+import dogs from "../../assets/dogs.jpg";
+import kids from "../../assets/kids.jpg";
+import picnic from "../../assets/picnic.jpg";
+import sports from "../../assets/sports.jpg";
+import wineCheese from "../../assets/wine-cheese.jpg";
+import fullCourse from "../../assets/full-course.jpg";
+
 export const timeAgo = (dateCreated) => {
   let showType = "";
   const elapsedTime = Math.ceil((new Date() - dateCreated) / 1000);
@@ -96,4 +106,27 @@ export const showOptions = (arr1, arr2) => {
     return true;
   }
   return false;
+};
+
+export const chooseDefaultPicture = (category_id) => {
+  switch (category_id) {
+    case 1:
+      return bbq;
+    case 2:
+      return picnic;
+    case 3:
+      return wineCheese;
+    case 4:
+      return fullCourse;
+    case 5:
+      return sports;
+    case 6:
+      return kids;
+    case 7:
+      return dogs;
+    case 8:
+      return cats;
+    default:
+      return modernRoom;
+  }
 };
