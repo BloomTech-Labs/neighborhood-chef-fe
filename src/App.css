@@ -592,6 +592,20 @@ a {
 
 /* -- CreateFormHeader styles ---*/
 
+.createFormHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .createFormHeaderContainer {
+    display: none;
+  }
+}
+
 .createFormHeaderNotActive {
   display: flex;
   align-items: center;
@@ -600,6 +614,12 @@ a {
 
 .createFormHeaderActive {
   color: #0c0c41;
+}
+
+@media (max-width: 900px) {
+  .hideHeaderH3 {
+    display: none;
+  }
 }
 
 /* -- CreateForm Advanced options --*/
@@ -621,4 +641,135 @@ a {
   padding: 12px 20px;
   cursor: pointer;
 }
+
+.addIngredientInputContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 1100px) {
+  .addIngredientInputContainer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1100px) {
+  .addIngredientInputContainer {
+    flex-direction: column;
+  }
+}
+
+.ingredientLeftDiv {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 1100px) {
+  .ingredientLeftDiv {
+    width: 90%;
+  }
+}
+
+.ingredientInputName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  padding: 10px 15px;
+  width: 50%;
+  height: 38px;
+  font-size: 1.6rem;
+  margin-left: 2%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientInputName {
+    margin: 10px 0;
+  }
+}
+
+.ingredientInputQuantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  padding: 10px 15px;
+  width: 20%;
+  height: 38px;
+  font-size: 1.6rem;
+  margin-left: 2%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientInputQuantity {
+    margin: 10px 0;
+  }
+}
+
+.ingredientRightDiv {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 1100px) {
+  .ingredientRightDiv {
+    width: 90%;
+  }
+}
+
+.ingredientMeasurementDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  width: 64%;
+  margin-right: 3%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientMeasurementDiv {
+    width: 54%;
+    margin: 10px 0;
+  }
+}
+
+#measurementSelect {
+  display: flex;
+  align-items: center;
+  margin: 10px 5px;
+  background: #58d573;
+  opacity: 0.75;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-bottom: none;
+  font-size: 1.4rem;
+}
+
+.ingredientButton {
+  color: white;
+  font-size: 1.6rem;
+  background: #82df96;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  word-spacing: 15px;
+  cursor: pointer;
+  padding: 15px 10px;
+  height: 54px;
+  width: 20%;
+}
+
 /* -----End of CreateEvent styles------- */

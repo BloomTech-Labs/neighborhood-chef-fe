@@ -47,56 +47,38 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
           borderRadius: "15px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div className="createFormInputDiv" style={{ width: "30%" }}>
-              <input
-                type="text"
-                name="name"
-                value={formInput.name}
-                onChange={handleChange}
-                placeholder="Ingredient"
-              />
-            </div>
+        <div className="addIngredientInputContainer">
+          <div className="ingredientLeftDiv">
+            <input
+              type="text"
+              name="name"
+              value={formInput.name}
+              onChange={handleChange}
+              placeholder="Ingredient"
+              className="ingredientInputName"
+            />
 
-            <div
-              className="createFormInputDiv"
-              style={{ width: "10%", marginLeft: "2%" }}
-            >
-              <input
-                type="numbers"
-                name="quantity"
-                value={formInput.quantity}
-                onChange={handleChange}
-                min="0"
-                step="0.01"
-                placeholder="Quantity"
-              />
-            </div>
+            <input
+              type="numbers"
+              name="quantity"
+              value={formInput.quantity}
+              onChange={handleChange}
+              min="0"
+              step="0.01"
+              placeholder="Quantity"
+              className="ingredientInputQuantity"
+            />
+          </div>
 
-            <div className="eventTimeDiv" style={{ marginLeft: "2%" }}>
+          <div className="ingredientRightDiv">
+            <div className="ingredientMeasurementDiv">
               <label>
                 Measurement
                 <Select
                   name="measurement"
                   value={formInput.measurement}
                   onChange={handleChange}
-                  id="greenSelect"
+                  id="measurementSelect"
                   disableUnderline={true}
                 >
                   <MenuItem value=""></MenuItem>
@@ -118,36 +100,15 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
               }
               className={
                 !formInput.name || !formInput.quantity || !formInput.measurement
-                  ? "inactive"
-                  : ""
+                  ? "inactive ingredientButton"
+                  : "ingredientButton"
               }
               type="button"
               onClick={submitIngredient}
-              style={{
-                color: "white",
-                fontSize: "1.6rem",
-                background: "#82df96",
-                borderRadius: "10px",
-                border: "none",
-                fontWeight: "bold",
-                wordSpacing: "15px",
-                cursor: "pointer",
-                padding: "15px 10px",
-                marginLeft: "2%",
-              }}
             >
               Add +
             </button>
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-            }}
-          ></div>
         </div>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
