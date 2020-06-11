@@ -11,6 +11,7 @@ describe("Test EventImageUpload component", () => {
   });
 
   test("EventImageUpload component renders", () => {
+    expect(EventImageUploadComponent).toBeDefined();
     expect(EventImageUploadComponent.getByText(/Upload/i));
   });
 });

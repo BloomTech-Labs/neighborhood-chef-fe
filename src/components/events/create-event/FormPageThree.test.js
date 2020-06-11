@@ -1,12 +1,10 @@
 import React from "react";
 import FormPageThree from "./FormPageThree.js";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import { Formik, Form } from "formik";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import configureStore from "redux-mock-store";
-import { Provider } from "react-redux";
-
-const mockStore = configureStore([]);
 
 const values = {
   title: "BBQ",
@@ -19,10 +17,11 @@ const values = {
 };
 
 const handleChange = jest.fn();
+const mockStore = configureStore([]);
 
 describe("Test FormPageThree component", () => {
-  let store;
   let FormPageThreeComponent;
+  let store;
   beforeEach(() => {
     store = mockStore({});
     FormPageThreeComponent = render(

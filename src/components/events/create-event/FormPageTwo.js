@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import strollerIcon from "@iconify/icons-vs/stroller";
 import baselineOutdoorGrill from "@iconify/icons-ic/baseline-outdoor-grill";
@@ -11,8 +11,11 @@ import EventImageUpload from "./EventImageUpload.js";
 import Modifier from "./Modifier.js";
 import AddHashtag from "./AddHashtag.js";
 import { scrollToTop } from "./FormPageOne.js";
+import AdvancedOptions from "./advanced-options/AdvancedOptions.js";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
+import { showOptions } from "../../../utilities/functions";
+import Typography from "@material-ui/core/Typography";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -31,8 +34,18 @@ const FormPageTwo = ({
   setModifiers,
   photo,
   setPhoto,
+  allergenList,
+  setAllergenList,
+  dietWarnings,
+  setDietWarnings,
+  ingredientList,
+  setIngredientList,
 }) => {
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(
+    showOptions(allergenList, dietWarnings)
+  );
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="createFormPage2Container">
@@ -47,16 +60,9 @@ const FormPageTwo = ({
           removeHashtag={removeHashtag}
         />
         <div>
-          <h5
-            style={{
-              textAlign: "left",
-              fontSize: "1.8rem",
-              marginLeft: "10px",
-              fontWeight: "normal",
-            }}
-          >
+          <Typography style={{ margin: "25px 0" }}>
             Pick modifiers for your event.
-          </h5>
+          </Typography>
           <div style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}>
             {modifierData.map((modifier) => {
               return (
@@ -70,6 +76,32 @@ const FormPageTwo = ({
             })}
           </div>
         </div>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
+        >
+          {showAdvancedOptions ? (
+            <Typography style={{ marginTop: "25px" }}>
+              Click here to hide additional options
+            </Typography>
+          ) : (
+            <Typography style={{ marginTop: "25px" }}>
+              Click here to add additional options
+            </Typography>
+          )}
+        </div>
+        {showAdvancedOptions && (
+          <>
+            <AdvancedOptions
+              allergenList={allergenList}
+              setAllergenList={setAllergenList}
+              dietWarnings={dietWarnings}
+              setDietWarnings={setDietWarnings}
+              ingredientList={ingredientList}
+              setIngredientList={setIngredientList}
+            />
+          </>
+        )}
       </div>
 
       <div className="createFormButtonDiv">

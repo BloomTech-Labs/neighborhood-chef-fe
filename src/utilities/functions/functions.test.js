@@ -4,6 +4,7 @@ import {
   convertTimeAndDate,
   isEventFavorite,
   restoreSavedModifiers,
+  showOptions,
 } from "./index";
 
 import { modifierData } from "../../components/events/create-event/FormPageTwo.js";
@@ -55,5 +56,11 @@ describe("Test functions index.js file", () => {
     expect(restoredModifiers.length).toBe(2);
     expect(restoredModifiers[0].icon).toBeDefined();
     expect(restoredModifiers[1].icon).toBeDefined();
+  });
+
+  test("show options returns true if either array has length greater than 0", () => {
+    expect(showOptions([1, 2], [])).toBe(true);
+    expect(showOptions([], [1, 2])).toBe(true);
+    expect(showOptions([], [])).toBe(false);
   });
 });

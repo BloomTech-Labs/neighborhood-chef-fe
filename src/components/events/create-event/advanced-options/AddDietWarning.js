@@ -1,45 +1,43 @@
 import React, { useState } from "react";
-
-import Hashtag from "./Hashtag";
 import Typography from "@material-ui/core/Typography";
 
-const AddHashtag = ({ hashtags, setHashtags }) => {
+import DietaryWarning from "./DietaryWarning.js";
+
+const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
   const [formInput, setFormInput] = useState({ title: "" });
 
   const handleChange = (e) => {
     e.preventDefault();
-    setFormInput({ ...formInput, [e.target.name]: e.target.value });
+    setFormInput({ title: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const addDietWarning = (e) => {
     e.preventDefault();
-    const newHashtag = {
-      id: hashtags.length + 1,
+    const newDietWarning = {
+      id: dietWarnings.length + 1,
       title: formInput.title,
     };
-    setHashtags([...hashtags, newHashtag]);
+    setDietWarnings([...dietWarnings, newDietWarning]);
     setFormInput({ title: "" });
   };
 
+  const removeDietWarning = (id) => {
+    setDietWarnings(
+      dietWarnings.filter((diet) => {
+        return diet.id !== id;
+      })
+    );
+  };
+
   return (
-    <div style={{ margin: "15px 0" }}>
-      <Typography style={{ marginTop: "25px", marginBottom: "25px" }}>
-        Add some hashtags for your event.
-      </Typography>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flexStart",
-          marginTop: "25px",
-          marginBottom: "25px",
-        }}
-      >
+    <>
+      <div style={{ marginTop: "55px", marginBottom: "25px" }}>
+        <Typography>Add dietary warnings</Typography>
         <input
           type="text"
           name="title"
-          value={formInput.title}
           onChange={handleChange}
+          value={formInput.title}
           style={{
             fontSize: "1.6rem",
             border: "none",
@@ -51,7 +49,7 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
           }}
         />
         <button
-          onClick={handleSubmit}
+          onClick={addDietWarning}
           disabled={!formInput.title}
           className={!formInput.title ? "inactive" : ""}
           style={{
@@ -71,19 +69,18 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
         </button>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
-        {hashtags.map((hashtag) => {
+        {dietWarnings.map((diet) => {
           return (
-            <Hashtag
-              key={hashtag.id}
-              hashtag={hashtag}
-              hashtags={hashtags}
-              setHashtags={setHashtags}
+            <DietaryWarning
+              diet={diet}
+              removeDietWarning={removeDietWarning}
+              key={diet.id}
             />
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 
-export default AddHashtag;
+export default AddDietRestriction;

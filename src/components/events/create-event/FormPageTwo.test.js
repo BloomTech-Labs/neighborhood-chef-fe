@@ -1,18 +1,19 @@
 import React from "react";
 import FormPageTwo from "./FormPageTwo.js";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import { Formik, Form } from "formik";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import configureStore from "redux-mock-store";
-import { Provider } from "react-redux";
-
-const mockStore = configureStore([]);
 
 const handleChange = jest.fn();
 
+const mockStore = configureStore([]);
+
 describe("Test FormPageTwo component", () => {
-  let store;
   let FormPageTwoComponent;
+  let store;
+
   beforeEach(() => {
     store = mockStore({});
     FormPageTwoComponent = render(
@@ -22,6 +23,8 @@ describe("Test FormPageTwo component", () => {
             <FormPageTwo
               handleChange={handleChange}
               hashtags={[{ id: 1, title: "#hashtags" }]}
+              allergenList={[]}
+              dietWarnings={[]}
             />
           </Form>
         </Formik>
