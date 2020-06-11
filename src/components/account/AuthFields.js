@@ -4,23 +4,20 @@ import { useDispatch } from "react-redux";
 import { changePage } from "../../utilities/actions";
 import { TextField } from "formik-material-ui";
 import { Checkbox, Button } from "@material-ui/core";
+import { buttonStyles } from "../../styles";
+import Typography from "@material-ui/core/Typography";
 
 const AuthFields = (props) => {
+  const buttonClass = buttonStyles();
   const dispatch = useDispatch();
   const [buttonDisable, setButtonDisable] = useState(true);
 
   const checkValues = (e) => {
     const email = document.querySelector("input[name='email']").value;
-    const password = document.querySelector("input[name='password']").value;
-    const confirmPassword = document.querySelector(
-      "input[name='confirmPassword']"
-    ).value;
     const terms = document.querySelector("input[type='checkbox']").checked;
     if (
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email) &&
-      password &&
-      terms === true &&
-      confirmPassword === password
+      terms === true
     ) {
       setButtonDisable(false);
     } else {
@@ -31,30 +28,16 @@ const AuthFields = (props) => {
   return (
     <>
       <Field
+        style={{ marginTop: "10%" }}
         component={TextField}
         type="email"
         name="email"
-        placeholder="Email"
         className="email"
         InputProps={{ onKeyUp: checkValues }}
+        label="Email"
+        required
       />
-      <Field
-        component={TextField}
-        type="password"
-        name="password"
-        placeholder="Password"
-        className="password"
-        InputProps={{ onKeyUp: checkValues }}
-      />
-      <Field
-        component={TextField}
-        type="password"
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        className="confirmPassword"
-        InputProps={{ onKeyUp: checkValues }}
-      />
-      <label className="terms">
+      <label style={{ marginTop: "10%" }} className="terms">
         <Field
           component={Checkbox}
           type="checkbox"
@@ -64,14 +47,14 @@ const AuthFields = (props) => {
         I accept the terms and conditions.
       </label>
       <Button
-        variant="contained"
-        color="primary"
+        style={{ marginTop: "10%" }}
+        className={`${buttonClass.root} ${buttonClass.active}`}
         onClick={() => {
-          dispatch(changePage());
+          dispatch(changePage(2));
         }}
         disabled={buttonDisable}
       >
-        Next
+        <Typography variant="h5">Continue registering</Typography>
       </Button>
     </>
   );

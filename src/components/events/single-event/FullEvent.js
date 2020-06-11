@@ -18,22 +18,24 @@ const FullEvent = ({ match }) => {
   const dispatch = useDispatch();
   const currentEvent = useSelector((state) => state.currentEvent);
   useEffect(() => {
-    axiosWithAuth()({
-      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-      method: "post",
-      data: {
-        query: print(EVENT_BY_ID),
-        variables: { id: eventId },
-      },
-    })
-      .then((res) => {
-        dispatch(getSingleEvent(res.data.data.getEventById));
-        dispatch(makeActive(eventId));
+    if (eventId)
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(EVENT_BY_ID),
+          variables: { id: eventId },
+        },
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+        .then((res) => {
+          dispatch(getSingleEvent(res.data.data.getEventById));
+          dispatch(makeActive(eventId));
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
   }, [dispatch, eventId]);
+
   return (
     <div className="single-event-container">
       <Grow in style={{ transformOrigin: "200 200 200" }}>

@@ -165,6 +165,7 @@ export const GET_INVITED_EVENTS = gql`
       longitude
       modifiers
       hashtags
+      photo
       users {
         id
         email

@@ -24,7 +24,6 @@ import FormPageTwo from "./FormPageTwo.js";
 import FormPageThree from "./FormPageThree.js";
 import FormPageFour from "./FormPageFour.js";
 import { modifierData } from "./FormPageTwo.js";
-
 import { restoreSavedModifiers } from "../../../utilities/functions";
 
 const initialState = {
@@ -45,6 +44,9 @@ const FormContainer = () => {
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
+  const [allergenList, setAllergenList] = useState([]);
+  const [dietWarnings, setDietWarnings] = useState([]);
+  const [ingredientList, setIngredientList] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
@@ -67,16 +69,29 @@ const FormContainer = () => {
     if (isEditing) {
       const savedHashtags = eventToEdit.hashtags;
       const savedModifiers = eventToEdit.modifiers;
-      if (Object.keys(savedModifiers).length !== 0) {
+      const savedAllergens = eventToEdit.allergenWarnings;
+      const savedDietWarnings = eventToEdit.dietaryWarnings;
+
+      if (savedModifiers && Object.keys(savedModifiers).length !== 0) {
         restoreSavedModifiers(
           modifierData,
           savedModifiers.modifiers,
           setModifiers
         );
       }
-      if (Object.keys(savedHashtags).length !== 0) {
+
+      if (savedHashtags && Object.keys(savedHashtags).length !== 0) {
         setHashtags(savedHashtags.hashtags);
       }
+
+      if (savedAllergens && Object.keys(savedAllergens).length !== 0) {
+        setAllergenList(savedAllergens.allergenWarnings);
+      }
+
+      if (savedDietWarnings && Object.keys(savedDietWarnings).length !== 0) {
+        setDietWarnings(savedDietWarnings.dietaryWarnings);
+      }
+
       if (eventToEdit.photo !== "null") {
         setPhoto(eventToEdit.photo);
       }
@@ -116,9 +131,17 @@ const FormContainer = () => {
             longitude: values.longitude,
             latitude: values.latitude,
             photo: photo ? photo : null,
-            // replace with variable
             user_id: parseInt(me.id),
+            // uncomment once migration is in place
+            allergenWarnings: JSON.stringify({
+              allergenWarnings: [...allergenList],
+            }),
+            dietaryWarnings: JSON.stringify({
+              dietaryWarnings: [...dietWarnings],
+            }),
+            //ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
           };
+
           if (isEditing) {
             axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -136,7 +159,7 @@ const FormContainer = () => {
                 setModifiers([]);
                 dispatch(setPage(4));
               })
-              .catch((err) => console.log(err));
+              .catch((err) => console.log(err.message));
           } else {
             axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
@@ -144,6 +167,7 @@ const FormContainer = () => {
                 variables: { input: event },
               })
               .then((res) => {
+                console.log(res);
                 dispatch(createEventSuccess(res.data.data.addEvent));
                 setHashtags([]);
                 resetForm(initialState);
@@ -178,6 +202,12 @@ const FormContainer = () => {
                     setModifiers={setModifiers}
                     photo={photo}
                     setPhoto={setPhoto}
+                    allergenList={allergenList}
+                    setAllergenList={setAllergenList}
+                    dietWarnings={dietWarnings}
+                    setDietWarnings={setDietWarnings}
+                    ingredientList={ingredientList}
+                    setIngredientList={setIngredientList}
                   />
                 </>
               )}

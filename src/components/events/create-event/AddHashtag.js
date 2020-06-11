@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Hashtag from "./Hashtag";
+import Typography from "@material-ui/core/Typography";
 
 const AddHashtag = ({ hashtags, setHashtags }) => {
   const [formInput, setFormInput] = useState({ title: "" });
@@ -18,28 +19,20 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
     };
     setHashtags([...hashtags, newHashtag]);
     setFormInput({ title: "" });
-
   };
 
   return (
     <div style={{ margin: "15px 0" }}>
-      <h5
-        style={{
-          textAlign: "left",
-          fontSize: "1.8rem",
-          marginLeft: "10px",
-          fontWeight: "normal",
-        }}
-      >
+      <Typography style={{ marginTop: "25px", marginBottom: "25px" }}>
         Add some hashtags for your event.
-      </h5>
+      </Typography>
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "flexStart",
-          marginTop: "60px",
-          marginBottom: "40px",
+          marginTop: "25px",
+          marginBottom: "25px",
         }}
       >
         <input
