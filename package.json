@@ -68,9 +68,6 @@
       "!**/__tests__/**",
       "!**/index.js",
       "!**/serviceWorker.js"
-    ],
-    "setupFiles": [
-      "jest-localstorage-mock"
     ]
   },
   "eslintConfig": {
@@ -89,7 +86,6 @@
     ]
   },
   "devDependencies": {
-    "jest-localstorage-mock": "^2.4.2",
     "react-test-renderer": "^16.13.1"
   }
 }
