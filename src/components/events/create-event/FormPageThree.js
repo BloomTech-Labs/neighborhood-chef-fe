@@ -4,9 +4,9 @@ import moment from "moment";
 import Hashtag from "./Hashtag.js";
 import Modifier from "./Modifier.js";
 import { scrollToTop } from "./FormPageOne.js";
-import { convertTime } from "../../../utilities/functions";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
+import { convertTime, chooseDefaultPicture } from "../../../utilities/functions";
 
 const FormPageThree = ({
   values,
@@ -28,153 +28,82 @@ const FormPageThree = ({
           boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
           borderRadius: "25px",
           marginTop: "40px",
+          padding: "30px",
         }}
       >
-        {photo ? (
-          <div style={{ display: "flex", width: "100%", minHeight: "200px" }}>
-            <img
-              style={{
-                maxWidth: "50%",
-                border: "8px solid #58D473",
-                borderRadius: "25px",
-                maxHeight: "300px",
-              }}
-              src={photo}
-              alt="event"
-            />
+        <div style={{ display: "flex", width: "100%", minHeight: "200px" }}>
+          <img
+            style={{
+              maxWidth: "50%",
+              border: "8px solid #58D473",
+              borderRadius: "25px",
+              maxHeight: "300px",
+            }}
+            src={photo || chooseDefaultPicture(values.category_id)}
+            alt="Event Page 3 Img"
+          />
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                marginLeft: "30px",
-                textAlign: "left",
-                width: "50%",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "500",
-                  color: "#1A0F2C",
-                }}
-              >
-                {values.title}
-              </h3>
-              <div style={{ display: "flex" }}>
-                <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-                  {values.date && moment(values.date).format("MMM Do YYYY")}
-                  .&nbsp;
-                </p>
-                <p
-                  style={{
-                    fontSize: "1.6rem",
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {convertTime(values.startTime)}&nbsp;
-                </p>
-
-                {values.endTime && (
-                  <>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      to&nbsp;
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {convertTime(values.endTime)}
-                    </p>
-                  </>
-                )}
-              </div>
-              <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-                {values.address}
-              </p>
-            </div>
-          </div>
-        ) : (
           <div
             style={{
               display: "flex",
-              width: "100%",
-              justifyContent: "spaceEvenly",
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              marginLeft: "30px",
+              textAlign: "left",
+              width: "50%",
             }}
           >
-            <div
+            <h3
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                marginLeft: "30px",
-                textAlign: "left",
-                width: "50%",
-                height: "150px",
+                fontSize: "2.5rem",
+                fontWeight: "500",
+                color: "#1A0F2C",
               }}
             >
-              <h3
+              {values.title}
+            </h3>
+            <div style={{ display: "flex" }}>
+              <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
+                {values.date && moment(values.date).format("MMM Do YYYY")}
+                .&nbsp;
+              </p>
+              <p
                 style={{
-                  fontSize: "1.8rem",
+                  fontSize: "1.6rem",
+                  color: "#82DF96",
                   fontWeight: "500",
-                  color: "#1A0F2C",
                 }}
               >
-                {values.title}
-              </h3>
-              <div style={{ display: "flex" }}>
-                <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-                  {values.date && moment(values.date).format("MMM Do YYYY")}
-                  .&nbsp;
-                </p>
-                <p
-                  style={{
-                    fontSize: "1.6rem",
-                    color: "#82DF96",
-                    fontWeight: "500",
-                  }}
-                >
-                  {convertTime(values.startTime)}&nbsp;
-                </p>
-
-                {values.endTime && (
-                  <>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      to&nbsp;
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "1.6rem",
-                        color: "#ea6565",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {convertTime(values.endTime)}
-                    </p>
-                  </>
-                )}
-              </div>
-              <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-                {values.address}
+                {convertTime(values.startTime)}&nbsp;
               </p>
+
+              {values.endTime && (
+                <>
+                  <p
+                    style={{
+                      fontSize: "1.6rem",
+                      color: "rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    to&nbsp;
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "1.6rem",
+                      color: "#ea6565",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {convertTime(values.endTime)}
+                  </p>
+                </>
+              )}
             </div>
+            <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
+              {values.address}
+            </p>
           </div>
-        )}
+        </div>
 
         <div
           style={{
@@ -193,7 +122,7 @@ const FormPageThree = ({
                 marginLeft: "3%",
               }}
             >
-              <p style={{ fontWeight: "500", fontSize: "1.6rem" }}>Hashtags</p>
+              <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>Hashtags</h4>
               <div
                 style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}
               >
@@ -222,9 +151,9 @@ const FormPageThree = ({
                 marginLeft: "3%",
               }}
             >
-              <p style={{ fontWeight: "500", fontSize: "1.6rem" }}>
+              <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
                 Modifications
-              </p>
+              </h4>
               <div
                 style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}
               >

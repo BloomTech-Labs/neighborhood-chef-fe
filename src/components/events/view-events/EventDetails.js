@@ -17,6 +17,7 @@ import { getSingleEvent, makeActive } from "../../../utilities/actions";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
 import { cardStyles } from "../../../styles";
 
 //icon imports
@@ -31,7 +32,7 @@ import EventButtonModal from "../../dashboard/EventButtonModal";
 
 //data/function imports
 import { rsvpButtons } from "../../../data/buttons";
-import { parseTime } from "../../../utilities/functions";
+import { parseTime, chooseDefaultPicture } from "../../../utilities/functions";
 
 const EventDetails = () => {
   const location = useLocation();
@@ -45,6 +46,8 @@ const EventDetails = () => {
   const [creatorName, setCreatorName] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
   const [participants, setParticipants] = useState([]);
+
+  const photo = event.photo !== "null" ? event.photo : chooseDefaultPicture(event.category_id);
 
   let timeObject, parsedAddressURL;
 
@@ -68,6 +71,7 @@ const EventDetails = () => {
           setParticipants(
             event.users.filter((user) => user.status === "Going")
           );
+          // console.log("event", event);
         })
         .catch((err) => {
           console.log(err.message);
@@ -78,21 +82,23 @@ const EventDetails = () => {
   }, [event]);
 
   useEffect(() => {
-    axiosWithAuth()({
-      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-      method: "post",
-      data: {
-        query: print(EVENT_BY_ID),
-        variables: { id: currentEventId },
-      },
-    })
-      .then((res) => {
-        dispatch(getSingleEvent(res.data.data.getEventById));
-        dispatch(makeActive(currentEventId));
+    if (currentEventId) {
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(EVENT_BY_ID),
+          variables: { id: currentEventId },
+        },
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+        .then((res) => {
+          dispatch(getSingleEvent(res.data.data.getEventById));
+          dispatch(makeActive(currentEventId));
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   }, [dispatch, currentEventId]);
 
   useEffect(() => {
@@ -123,6 +129,12 @@ const EventDetails = () => {
                 {creatorName}
               </Typography>
             }
+          />
+          <CardMedia
+            style={{ height: 130 }}
+            component="img"
+            src={photo}
+            title="Event Details Photo"
           />
           <p style={{ opacity: ".5" }}> {event.description}</p>
           <div>Confirmed Participants: {participants.length}</div>
