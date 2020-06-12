@@ -21,11 +21,11 @@ const ParticipantCard = (props) => {
 
   return (
     <>
-      {currentEvent.users ? (
-        <Card className={`${classes.root} ${classes.participants}`}>
-          <Typography variant="h6" align="left">
-            Attending:
-          </Typography>
+      <Card className={`${classes.root} ${classes.participants}`}>
+        <Typography variant="h6" align="left">
+          Attending:
+        </Typography>
+        {currentEvent.users ? (
           <CardContent style={{ display: "flex" }}>
             {currentEvent.users.map((user) => {
               return (
@@ -39,8 +39,8 @@ const ParticipantCard = (props) => {
               );
             })}
           </CardContent>
-        </Card>
-      ) : null}
+        ) : null}
+      </Card>
     </>
   );
 };

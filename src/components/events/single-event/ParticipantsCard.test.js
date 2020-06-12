@@ -1,30 +1,29 @@
 import React from "react";
-import ViewEvents from "./ViewEvents.js";
+import ParticipantsCard from "./ParticipantsCard.js";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../../utilities/reducers";
 import thunk from "redux-thunk";
 
+import "@testing-library/jest-dom/extend-expect";
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-describe("Test view event static properties", () => {
-  let ViewEventsComponent;
+describe("Test ParticipantsCard static properties", () => {
+  let ParticipantsCardComponent;
   beforeEach(() => {
-    sessionStorage.setItem("user", JSON.stringify({ id: 1 }));
-    ViewEventsComponent = render(
+    ParticipantsCardComponent = render(
       <Provider store={store}>
         <BrowserRouter>
-          <ViewEvents />
+          <ParticipantsCard />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  test("ViewEvents component renders", () => {
-    const firstDiv = document.querySelector(".middle-calendar");
-    expect(firstDiv.toBeInDocument);
+  test("ParticipantsCard component renders", () => {
+    expect(ParticipantsCardComponent.getByText(/attending/i));
   });
 });

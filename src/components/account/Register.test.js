@@ -24,6 +24,6 @@ describe("Test register static properties", () => {
   });
 
   test("Register component renders", () => {
-    expect(RegisterComponent.getByText(/Sign up below/i));
+    expect(RegisterComponent.getByText(/Create a new account with us/i));
   });
 });
