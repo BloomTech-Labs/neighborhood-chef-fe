@@ -43,7 +43,7 @@ const ParticipantCard = (props) => {
         >
           {comments &&
             comments.map((comment) => {
-              return <p>{comment}</p>;
+              return <p key={comment}>{comment}</p>;
             })}
         </CardContent>
         <CardContent>

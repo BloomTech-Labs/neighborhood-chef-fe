@@ -52,7 +52,6 @@ import EventButtonModal from "./EventButtonModal";
 import Emoji from "../other/Emoji";
 
 const RecentCard = (props) => {
-  console.log(props);
   const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
   const dispatch = useDispatch();
