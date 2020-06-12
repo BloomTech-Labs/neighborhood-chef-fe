@@ -30,6 +30,7 @@ const ParticipantCard = (props) => {
             {currentEvent.users.map((user) => {
               return (
                 <Avatar
+                  key={user.id}
                   title={`${user.firstName} ${user.lastName}`}
                   aria-label="recipe"
                   className={classes.avatar}

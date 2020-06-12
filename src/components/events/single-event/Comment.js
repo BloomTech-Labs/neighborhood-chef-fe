@@ -6,6 +6,7 @@ import { print } from "graphql";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { cardStyles } from "../../../styles";
 import Avatar from "@material-ui/core/Avatar";
+import { parseTime } from "../../../utilities/functions";
 
 const makeInitials = (user) => {
   return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
@@ -14,6 +15,7 @@ const makeInitials = (user) => {
 };
 
 const Comment = (props) => {
+  const timeObject = parseTime(props.date_created);
   const classes = cardStyles();
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -52,6 +54,13 @@ const Comment = (props) => {
           {!user.photo && user && makeInitials(user)}
         </Avatar>
         <Typography>{user && `${user.firstName} ${user.lastName}`}</Typography>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          style={{ marginLeft: "20px" }}
+        >
+          {timeObject.commentTime}
+        </Typography>
       </div>
       <Typography> {props.description}</Typography>
       <div style={{ display: "flex" }}>

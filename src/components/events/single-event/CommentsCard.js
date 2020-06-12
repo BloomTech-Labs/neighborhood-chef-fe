@@ -19,6 +19,7 @@ const CommentsCard = (props) => {
       user_id: 2,
       event_id: 2,
       parent: -1,
+      root: -1,
       date_created: 1593217800000,
       description: "I'm so excited for this, you have no idea!",
     },
@@ -27,9 +28,19 @@ const CommentsCard = (props) => {
       user_id: 1,
       event_id: 2,
       parent: 1,
+      root: 1,
       date_created: 1594217800000,
       description:
         "me too! I'm going to bring my kids, too. I'll see you there.",
+    },
+    {
+      id: 3,
+      user_id: 2,
+      event_id: 2,
+      parent: 2,
+      root: 1,
+      date_created: 1594317800000,
+      description: "Sweet!! :)",
     },
   ]);
 
@@ -70,7 +81,7 @@ const CommentsCard = (props) => {
   };
 
   return (
-    <div style={{ overflow: "auto", height: "61.5vh" }}>
+    <div>
       <Card className={`${classes.root} ${classes.comments}`}>
         <Typography variant="h6" align="left">
           Comments
@@ -79,9 +90,15 @@ const CommentsCard = (props) => {
           style={{
             display: "flex",
             flexDirection: "column",
+            overflowY: "auto",
+            height: "35.5vh",
+            maxHeight: "35.5vh",
           }}
         >
-          {comments && comments.map((comment) => <Comment {...comment} />)}
+          {comments &&
+            comments.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))}
         </CardContent>
         <CardContent>
           <form

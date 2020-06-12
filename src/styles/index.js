@@ -291,9 +291,9 @@ export const cardStyles = makeStyles((theme) => ({
     },
   },
   comments: {
-    height: "calc(100%-20px)",
+    height: "calc(100% - 30px)",
     maxWidth: "100%",
-    maxHeight: "calc(100%-20px)",
+    maxHeight: "calc(100% - 30px)",
   },
 }));
 
