@@ -7,16 +7,30 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Comment from "./Comment";
 
-const ParticipantCard = (props) => {
+const CommentsCard = (props) => {
   const classes = cardStyles();
   const buttonClass = buttonStyles();
   const [newComment, setNewComment] = useState("");
   const [comments, setComments] = useState([
-    "Test comment one",
-    "Test comment 2",
-    "Test comment tres",
-    "Test comment asdasdasd",
+    {
+      id: 1,
+      user_id: 2,
+      event_id: 2,
+      parent: -1,
+      date_created: 1593217800000,
+      description: "I'm so excited for this, you have no idea!",
+    },
+    {
+      id: 2,
+      user_id: 1,
+      event_id: 2,
+      parent: 1,
+      date_created: 1594217800000,
+      description:
+        "me too! I'm going to bring my kids, too. I'll see you there.",
+    },
   ]);
 
   const handleChange = (e) => {
@@ -25,12 +39,38 @@ const ParticipantCard = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setComments([...comments, newComment]);
+    setComments([
+      ...comments,
+      {
+        id: 1,
+        user_id: 2,
+        event_id: 2,
+        parent: -1,
+        date_created: 1593217800000,
+        description: newComment,
+      },
+    ]); //placeholder values for keys, will need to get from state or database
+
     setNewComment("");
+
+    // axiosWithAuth()({
+    //   url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+    //   method: "post",
+    //   data: {
+    //     query: print(NEW_COMMENT),
+    //     variables: { comment: e.target.value },
+    //   },
+    // })
+    //   .then((res) => {
+    //     //add comments to state
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
 
   return (
-    <>
+    <div style={{ overflow: "auto", height: "61.5vh" }}>
       <Card className={`${classes.root} ${classes.comments}`}>
         <Typography variant="h6" align="left">
           Comments
@@ -41,10 +81,7 @@ const ParticipantCard = (props) => {
             flexDirection: "column",
           }}
         >
-          {comments &&
-            comments.map((comment) => {
-              return <p key={comment}>{comment}</p>;
-            })}
+          {comments && comments.map((comment) => <Comment {...comment} />)}
         </CardContent>
         <CardContent>
           <form
@@ -75,8 +112,8 @@ const ParticipantCard = (props) => {
           </form>
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 };
 
-export default ParticipantCard;
+export default CommentsCard;
