@@ -97,7 +97,11 @@ const CommentsCard = (props) => {
         >
           {comments &&
             comments.map((comment) => (
-              <Comment key={comment.id} {...comment} />
+              <Comment
+                key={comment.id}
+                setComments={setComments}
+                {...comment}
+              />
             ))}
         </CardContent>
         <CardContent>
@@ -116,7 +120,7 @@ const CommentsCard = (props) => {
               id="outlined-basic"
               variant="outlined"
               placeholder="Write a comment..."
-              style={{ width: "50%" }}
+              style={{ width: "60%" }}
               onChange={handleChange}
               value={newComment}
             />

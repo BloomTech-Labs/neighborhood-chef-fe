@@ -8,6 +8,9 @@ import { cardStyles } from "../../../styles";
 import Avatar from "@material-ui/core/Avatar";
 import { parseTime } from "../../../utilities/functions";
 
+import ReplyButton from "./ReplyButton";
+import ReactButton from "./ReactButton";
+
 const makeInitials = (user) => {
   return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
     .slice(0, 1)
@@ -37,7 +40,14 @@ const Comment = (props) => {
       });
   }, []);
   return (
-    <div style={{ marginBottom: "10px" }}>
+    <div
+      style={{
+        marginBottom: "10px",
+        border: "1px solid rgba(0,0,0,.1)",
+        borderRadius: "10px",
+        padding: "5px",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -49,23 +59,34 @@ const Comment = (props) => {
           aria-label="avatar"
           className={classes.avatar}
           src={user.photo}
-          style={{ marginRight: "10px", width: "30px", height: "30px" }}
+          style={{ marginRight: "10px", width: "26px", height: "26px" }}
         >
           {!user.photo && user && makeInitials(user)}
         </Avatar>
         <Typography>{user && `${user.firstName} ${user.lastName}`}</Typography>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          style={{ marginLeft: "20px" }}
-        >
+      </div>
+      <Typography variant="caption" style={{ marginLeft: "17px" }}>
+        {props.description}
+      </Typography>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ display: "flex" }}>
+          <ReplyButton
+            name={`${user.firstName} ${user.lastName}`}
+            description={props.description}
+          />
+          <ReactButton name={`${user.firstName} ${user.lastName}`} />
+          {/* <Button onClick={openReply}>Reply</Button>
+          <Button onClick={openReact}>React</Button> */}
+        </div>
+        <Typography variant="body2" color="textSecondary">
           {timeObject.commentTime}
         </Typography>
-      </div>
-      <Typography> {props.description}</Typography>
-      <div style={{ display: "flex" }}>
-        <Button>Reply</Button>
-        <Button>React</Button>
       </div>
     </div>
   );
