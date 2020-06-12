@@ -20,7 +20,7 @@ import {
   startEventEdit,
 } from "../../utilities/actions";
 import { useLocation } from "react-router-dom";
-import { convertTimeAndDate } from "../../utilities/functions";
+import { parseTime } from "../../utilities/functions";
 
 import WarnRemoveModal from "./WarnRemoveModal";
 
@@ -34,6 +34,7 @@ const EventButtonModal = ({ eventId, userId }) => {
   const modalClasses = modalStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const timeObject = parseTime(currentEvent.startTime, currentEvent.endTime);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -121,12 +122,9 @@ const EventButtonModal = ({ eventId, userId }) => {
                             onClick={() => {
                               /* had to add date to eventToEdit object and convert start/end times here for editing 
                                 mode to allow moment functions to finish converting before the form rendered */
-                              const convertForEdit = convertTimeAndDate(
-                                currentEvent
-                              );
-                              currentEvent.date = convertForEdit.date;
-                              currentEvent.startTime = convertForEdit.startTime;
-                              currentEvent.endTime = convertForEdit.endTime;
+                              currentEvent.date = timeObject.formDate;
+                              currentEvent.startTime = timeObject.formStartTime;
+                              currentEvent.endTime = timeObject.formEndTime;
                               dispatch(startEventEdit(currentEvent));
                               history.push("/create-event");
                             }}
