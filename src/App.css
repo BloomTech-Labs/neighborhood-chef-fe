@@ -646,7 +646,7 @@ a {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 @media (max-width: 1100px) {
@@ -658,18 +658,6 @@ a {
 @media (max-width: 1100px) {
   .addIngredientInputContainer {
     flex-direction: column;
-  }
-}
-
-.ingredientLeftDiv {
-  display: flex;
-  width: 50%;
-  justify-content: space-evenly;
-}
-
-@media (max-width: 1100px) {
-  .ingredientLeftDiv {
-    width: 90%;
   }
 }
 
@@ -681,15 +669,16 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 50%;
+  width: 30%;
   height: 38px;
   font-size: 1.6rem;
-  margin-left: 2%;
+  outline: none;
 }
 
 @media (max-width: 1100px) {
   .ingredientInputName {
     margin: 10px 0;
+    width: 80%;
   }
 }
 
@@ -701,28 +690,16 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 20%;
+  width: 8%;
   height: 38px;
   font-size: 1.6rem;
-  margin-left: 2%;
+  outline: none;
 }
 
 @media (max-width: 1100px) {
   .ingredientInputQuantity {
     margin: 10px 0;
-  }
-}
-
-.ingredientRightDiv {
-  display: flex;
-  width: 50%;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-@media (max-width: 1100px) {
-  .ingredientRightDiv {
-    width: 90%;
+    width: 80%;
   }
 }
 
@@ -733,13 +710,12 @@ a {
   border: 2px solid #f0f0f0;
   border-radius: 15px;
   margin: 40px 0;
-  width: 64%;
-  margin-right: 3%;
+  width: 33%;
 }
 
 @media (max-width: 1100px) {
   .ingredientMeasurementDiv {
-    width: 54%;
+    width: 84%;
     margin: 10px 0;
   }
 }
@@ -758,6 +734,13 @@ a {
   font-size: 1.4rem;
 }
 
+@media (max-width: 1100px) {
+  #measurementSelect {
+    padding: 10px 40px;
+    justify-content: flex-start;
+  }
+}
+
 .ingredientButton {
   color: white;
   font-size: 1.6rem;
@@ -769,7 +752,15 @@ a {
   cursor: pointer;
   padding: 15px 10px;
   height: 54px;
-  width: 20%;
+  width: 12%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientButton {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: 25%;
+  }
 }
 
 /* -----End of CreateEvent styles------- */

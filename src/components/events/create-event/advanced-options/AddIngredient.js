@@ -48,67 +48,63 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
         }}
       >
         <div className="addIngredientInputContainer">
-          <div className="ingredientLeftDiv">
-            <input
-              type="text"
-              name="name"
-              value={formInput.name}
-              onChange={handleChange}
-              placeholder="Ingredient"
-              className="ingredientInputName"
-            />
+          <input
+            type="text"
+            name="name"
+            value={formInput.name}
+            onChange={handleChange}
+            placeholder="Ingredient"
+            className="ingredientInputName"
+          />
 
-            <input
-              type="numbers"
-              name="quantity"
-              value={formInput.quantity}
-              onChange={handleChange}
-              min="0"
-              step="0.01"
-              placeholder="Quantity"
-              className="ingredientInputQuantity"
-            />
+          <input
+            type="numbers"
+            name="quantity"
+            value={formInput.quantity}
+            onChange={handleChange}
+            min="0"
+            step="0.01"
+            placeholder="Quantity"
+            className="ingredientInputQuantity"
+          />
+
+          <div className="ingredientMeasurementDiv">
+            <label>
+              Measurement
+              <Select
+                name="measurement"
+                value={formInput.measurement}
+                onChange={handleChange}
+                id="measurementSelect"
+                disableUnderline={true}
+              >
+                <MenuItem value=""></MenuItem>
+                <MenuItem value={"Cups"}>Cup(s)</MenuItem>
+                <MenuItem value={"Gallons"}>Gallon(s)</MenuItem>
+                <MenuItem value={"Pounds"}>Pound(s)</MenuItem>
+                <MenuItem value={"Ounces"}>Ounce(s)</MenuItem>
+                <MenuItem value={"Pints"}>Pint(s)</MenuItem>
+                <MenuItem value={"Quarts"}>Quart(s)</MenuItem>
+                <MenuItem value={"Teaspoons"}>Teaspoon(s)</MenuItem>
+                <MenuItem value={"Tablespoons"}>Tablespoon(s)</MenuItem>
+              </Select>
+            </label>
           </div>
 
-          <div className="ingredientRightDiv">
-            <div className="ingredientMeasurementDiv">
-              <label>
-                Measurement
-                <Select
-                  name="measurement"
-                  value={formInput.measurement}
-                  onChange={handleChange}
-                  id="measurementSelect"
-                  disableUnderline={true}
-                >
-                  <MenuItem value=""></MenuItem>
-                  <MenuItem value={"Cups"}>Cup(s)</MenuItem>
-                  <MenuItem value={"Gallons"}>Gallon(s)</MenuItem>
-                  <MenuItem value={"Pounds"}>Pound(s)</MenuItem>
-                  <MenuItem value={"Ounces"}>Ounce(s)</MenuItem>
-                  <MenuItem value={"Pints"}>Pint(s)</MenuItem>
-                  <MenuItem value={"Quarts"}>Quart(s)</MenuItem>
-                  <MenuItem value={"Teaspoons"}>Teaspoon(s)</MenuItem>
-                  <MenuItem value={"Tablespoons"}>Tablespoon(s)</MenuItem>
-                </Select>
-              </label>
-            </div>
-
-            <button
-              disabled={
-                !formInput.name || !formInput.quantity || !formInput.measurement
-              }
-              className={
-                !formInput.name || !formInput.quantity || !formInput.measurement
-                  ? "inactive ingredientButton"
-                  : "ingredientButton"
-              }
-              type="button"
-              onClick={submitIngredient}
-            >
-              Add +
-            </button>
-          </div>
+          <button
+            disabled={
+              !formInput.name || !formInput.quantity || !formInput.measurement
+            }
+            className={
+              !formInput.name || !formInput.quantity || !formInput.measurement
+                ? "inactive ingredientButton"
+                : "ingredientButton"
+            }
+            type="button"
+            onClick={submitIngredient}
+          >
+            Add +
+          </button>
         </div>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
