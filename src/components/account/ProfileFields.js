@@ -25,7 +25,6 @@ const ProfileFields = (props) => {
   const [gender, setGender] = useState("");
   const [photo, setPhoto] = useState(null);
   const [mapOpen, setMapOpen] = useState(false);
-  let inputField;
   const [focusAddress, setFocusAddress] = useState(false);
   const addressLabel = useRef();
   const geoInput = useRef();

@@ -7,10 +7,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { buttonStyles } from "../../../styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-const ReplyButton = ({ name, description, addComment }) => {
+const ReplyButton = ({ name, description, addReply }) => {
   const classes = buttonStyles();
   const [open, setOpen] = useState(false);
+  const [reply, setReply] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,6 +20,13 @@ const ReplyButton = ({ name, description, addComment }) => {
 
   const handleClose = () => {
     setOpen(false);
+    setReply("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addReply(reply);
+    handleClose();
   };
 
   return (
@@ -34,31 +43,34 @@ const ReplyButton = ({ name, description, addComment }) => {
           <DialogContentText id="alert-dialog-description">
             {description}
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="comment"
-            type="text"
-            fullWidth
-            placeholder="Write comment..."
-            style={{ minWidth: "300px" }}
-          />
+          <form onSubmit={handleSubmit}>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              fullWidth
+              placeholder="Write comment..."
+              style={{ minWidth: "300px" }}
+              value={reply}
+              onChange={(e) => setReply(e.target.value)}
+            />
+          </form>
         </DialogContent>
-        <DialogActions>
-          <span
+        <DialogActions style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
             className={`${classes.root} ${classes.warn}`}
-            style={{ cursor: "pointer" }}
             onClick={handleClose}
           >
-            Cancel
-          </span>
-          <span
-            className={`${classes.root} ${classes.notActive}`}
-            style={{ cursor: "pointer" }}
-            onClick={addComment}
+            <Typography>Cancel</Typography>
+          </Button>
+          <Button
+            disabled={!reply}
+            className={`${classes.root} ${classes.single}`}
+            type="submit"
+            onClick={handleSubmit}
           >
-            Submit
-          </span>
+            <Typography>Submit</Typography>
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

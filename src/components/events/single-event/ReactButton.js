@@ -6,19 +6,21 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { buttonStyles } from "../../../styles";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 
 //icon imports
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import bxLaugh from "@iconify/icons-bx/bx-laugh";
 import bxSad from "@iconify/icons-bx/bx-sad";
 import bxAngry from "@iconify/icons-bx/bx-angry";
 import bxHappy from "@iconify/icons-bx/bx-happy";
 
-const ReactButton = ({ name, addReaction }) => {
+const ReactButton = ({ name, toggleEmoji }) => {
   const classes = buttonStyles();
   const [open, setOpen] = useState(false);
 
@@ -45,25 +47,73 @@ const ReactButton = ({ name, addReaction }) => {
         <DialogContent>
           <DialogContentText
             id="alert-dialog-description"
-            style={{ display: "flex", justifyContent: "space-evenly" }}
+            style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <FavoriteBorderOutlinedIcon fontSize="large" />
-            <ThumbUpOutlinedIcon fontSize="large" />
-            <ThumbDownOutlinedIcon fontSize="large" />
-            <Icon icon={bxHappy} height="1.5em" />
-            <Icon icon={bxLaugh} height="1.5em" />
-            <Icon icon={bxSad} height="1.5em" />
-            <Icon icon={bxAngry} height="1.5em" />
+            <IconButton
+              onClick={() => {
+                toggleEmoji("heart");
+                handleClose();
+              }}
+            >
+              <FavoriteBorderOutlinedIcon fontSize="large" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("thumbsUp");
+                handleClose();
+              }}
+            >
+              <ThumbUpOutlinedIcon fontSize="large" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("thumbsDown");
+                handleClose();
+              }}
+            >
+              <ThumbDownOutlinedIcon fontSize="large" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("Happy");
+                handleClose();
+              }}
+            >
+              <Icon icon={bxHappy} height="1.5em" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("Laugh");
+                handleClose();
+              }}
+            >
+              <Icon icon={bxLaugh} height="1.5em" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("Sad");
+                handleClose();
+              }}
+            >
+              <Icon icon={bxSad} height="1.5em" />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                toggleEmoji("Angry");
+                handleClose();
+              }}
+            >
+              <Icon icon={bxAngry} height="1.5em" />
+            </IconButton>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <span
+          <Button
             className={`${classes.root} ${classes.warn}`}
-            style={{ cursor: "pointer" }}
             onClick={handleClose}
           >
-            Cancel
-          </span>
+            <Typography>Cancel</Typography>
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

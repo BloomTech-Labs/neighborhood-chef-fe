@@ -5,8 +5,12 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { buttonStyles } from "../../styles";
+import { useLocation, useHistory } from "react-router-dom";
 
 const WarnRemoveModal = ({ removeInvitation }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const thisURL = location.pathname.split("/");
   const classes = buttonStyles();
   const [open, setOpen] = useState(false);
 
@@ -36,7 +40,7 @@ const WarnRemoveModal = ({ removeInvitation }) => {
             event invites you again.
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ display: "flex", justifyContent: "flex-end" }}>
           <span
             className={`${classes.root} ${classes.notActive}`}
             style={{ cursor: "pointer" }}
@@ -47,7 +51,12 @@ const WarnRemoveModal = ({ removeInvitation }) => {
           <span
             className={`${classes.root} ${classes.warn}`}
             style={{ cursor: "pointer" }}
-            onClick={removeInvitation}
+            onClick={() => {
+              removeInvitation();
+              handleClose();
+              (thisURL[1] === "events" || thisURL[1] === "view-events") &&
+                history.push("/dashboard");
+            }}
           >
             Delete
           </span>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { USER_BY_ID } from "../../../graphql/users/user-queries";
 import { print } from "graphql";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
@@ -18,9 +17,33 @@ const makeInitials = (user) => {
 };
 
 const Comment = (props) => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const timeObject = parseTime(props.date_created);
   const classes = cardStyles();
   const [user, setUser] = useState("");
+  const [emojiSelected, setEmojiSelected] = useState(""); //placeholder local state until we have database support for comments
+
+  const toggleEmoji = (emoji) => {
+    if (emojiSelected === emoji) setEmojiSelected("");
+    else setEmojiSelected(emoji);
+  };
+
+  const addReply = (message) => {
+    props.setComments([
+      ...props.comments,
+      {
+        id: props.idCounter,
+        user_id: me.id,
+        event_id: props.eventId,
+        parent: props.id,
+        root: props.root,
+        date_created: new Date().getTime(),
+        description: message,
+      },
+    ]);
+    props.setIdCounter(props.idCounter + 1);
+  };
+
   useEffect(() => {
     axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
@@ -41,12 +64,11 @@ const Comment = (props) => {
   }, []);
   return (
     <div
-      style={{
-        marginBottom: "10px",
-        border: "1px solid rgba(0,0,0,.1)",
-        borderRadius: "10px",
-        padding: "5px",
-      }}
+      className={
+        props.parent < 0
+          ? classes.singleCommentParent
+          : classes.singleCommentChild
+      }
     >
       <div
         style={{
@@ -63,7 +85,9 @@ const Comment = (props) => {
         >
           {!user.photo && user && makeInitials(user)}
         </Avatar>
-        <Typography>{user && `${user.firstName} ${user.lastName}`}</Typography>
+        <Typography variant="body1">
+          {user && `${user.firstName} ${user.lastName}`}
+        </Typography>
       </div>
       <Typography variant="caption" style={{ marginLeft: "17px" }}>
         {props.description}
@@ -79,10 +103,13 @@ const Comment = (props) => {
           <ReplyButton
             name={`${user.firstName} ${user.lastName}`}
             description={props.description}
+            addReply={addReply}
           />
-          <ReactButton name={`${user.firstName} ${user.lastName}`} />
-          {/* <Button onClick={openReply}>Reply</Button>
-          <Button onClick={openReact}>React</Button> */}
+          <ReactButton
+            name={`${user.firstName} ${user.lastName}`}
+            toggleEmoji={toggleEmoji}
+            emojiSelected={emojiSelected}
+          />
         </div>
         <Typography variant="body2" color="textSecondary">
           {timeObject.commentTime}
