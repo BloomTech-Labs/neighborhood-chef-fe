@@ -27,12 +27,12 @@ export const modifierData = [
 ];
 
 const FormPageTwo = ({
+  values,
   hashtags,
   setHashtags,
   removeHashtag,
   modifiers,
   setModifiers,
-  photo,
   setPhoto,
   allergenList,
   setAllergenList,
@@ -50,9 +50,9 @@ const FormPageTwo = ({
     <>
       <div className="createFormPage2Container">
         <EventImageUpload
-          photo={photo}
+          values={values}
           setPhoto={setPhoto}
-          title="Upload a main picture for your event page"
+          title="Upload a main picture for your event page if you don't want to use the category default"
         />
         <AddHashtag
           hashtags={hashtags}
