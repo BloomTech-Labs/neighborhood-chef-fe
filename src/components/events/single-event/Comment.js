@@ -61,6 +61,7 @@ const Comment = (props) => {
       .catch((err) => {
         console.log(err.message);
       });
+    // eslint-disable-next-line
   }, []);
   return (
     <div
