@@ -31,10 +31,11 @@ const ParticipantCard = (props) => {
               return (
                 <Avatar
                   title={`${user.firstName} ${user.lastName}`}
-                  aria-label="recipe"
+                  aria-label="avatar"
                   className={classes.avatar}
+                  src={user.photo}
                 >
-                  {user.photo ? user.photo : makeInitials(user)}
+                  {!user.photo && makeInitials(user)}
                 </Avatar>
               );
             })}

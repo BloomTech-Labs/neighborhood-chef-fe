@@ -74,7 +74,8 @@ const InvitedUser = ({ user }) => {
               border: "4px solid #82DF96",
             }}
           >
-            {user.firstName.slice(0, 1)}{user.lastName.slice(0, 1)}
+            {user.firstName.slice(0, 1)}
+            {user.lastName.slice(0, 1)}
           </div>
         )}
 
@@ -94,7 +95,9 @@ const InvitedUser = ({ user }) => {
               lineStyle: "normal",
             }}
           >
-            <p>{user.firstName}&nbsp;{user.lastName}</p>
+            <p>
+              {user.firstName}&nbsp;{user.lastName}
+            </p>
           </div>
           <p
             style={{
@@ -108,9 +111,7 @@ const InvitedUser = ({ user }) => {
           </p>
         </div>
       </div>
-      <div style={{ width: "50px" }}>
-        Invited
-      </div>
+      <div style={{ width: "50px" }}>Invited</div>
       <div
         style={{
           display: "flex",

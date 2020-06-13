@@ -22,6 +22,7 @@ const FeedCard = ({
   photo,
   message,
 }) => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const [collapseMessage, setCollapseMessage] = useState(
     message && message.length > 100 ? message.substring(0, 99) + "..." : ""
   );
@@ -34,9 +35,11 @@ const FeedCard = ({
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
+          <Avatar
+            aria-label="recipe"
+            src={me.photo}
+            className={classes.avatar}
+          />
         }
         // action={
         // <IconButton aria-label="settings">

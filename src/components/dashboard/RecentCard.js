@@ -18,7 +18,12 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import { timeAgo, parseTime, isEventFavorite, chooseDefaultPicture } from "../../utilities/functions";
+import {
+  timeAgo,
+  parseTime,
+  isEventFavorite,
+  chooseDefaultPicture,
+} from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
 
@@ -128,8 +133,8 @@ const RecentCard = (props) => {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {initials}
+          <Avatar aria-label="recipe" src={me.photo} className={classes.avatar}>
+            {!me.photo && initials}
           </Avatar>
         }
         action={<EventButtonModal eventId={props.id} userId={me.id} />}

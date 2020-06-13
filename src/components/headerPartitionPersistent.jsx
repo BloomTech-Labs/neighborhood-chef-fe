@@ -30,6 +30,7 @@ const styles = makeStyles((theme) => ({
 }));
 
 function PersistentHeader(props) {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = styles();
 
   return (
@@ -41,7 +42,7 @@ function PersistentHeader(props) {
         style={props.open ? { display: "none" } : { display: "flex" }}
         className={classes["avatar"]}
         alt="Picture User Avatar"
-        src="#"
+        src={me.photo}
       />
     </section>
   );
