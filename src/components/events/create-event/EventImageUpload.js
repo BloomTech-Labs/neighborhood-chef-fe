@@ -3,20 +3,24 @@ import { Icon } from "@iconify/react";
 import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 import { buttonStyles } from "../../../styles";
 import Typography from "@material-ui/core/Typography";
+import { useLocation } from "react-router-dom";
 
 import { chooseDefaultPicture } from "../../../utilities/functions";
 
-const EventImageUpload = ({ values, setPhoto, title }) => {
+const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
+  const location = useLocation();
+  const thisURL = location.pathname.split("/");
   // console.log(`EventImageUpload -> values`, values);
   const classes = buttonStyles();
   const imageSizeLimit = 1500000;
-
   let photo;
-  if (values) {
-    photo = values.photo !== "null" && values.photo !== undefined ?
-      values.photo : chooseDefaultPicture(values.category_id);
+  if (values && thisURL[1] === "create-event") {
+    photo =
+      values.photo !== "null" && values.photo !== undefined
+        ? values.photo
+        : chooseDefaultPicture(values.category_id);
     // console.log('Initial photo', photo);
-  }
+  } else if (avatar) photo = avatar;
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -27,8 +31,7 @@ const EventImageUpload = ({ values, setPhoto, title }) => {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-          photo = values.photo = reader.result;
-          setPhoto(photo);
+          setPhoto(reader.result);
           // console.log('Photo changed!', photo);
         };
       }
@@ -73,7 +76,7 @@ const EventImageUpload = ({ values, setPhoto, title }) => {
           </label>
         </div>
 
-        {(
+        {photo && (
           <img
             onClick={() => setPhoto(null)}
             src={photo}

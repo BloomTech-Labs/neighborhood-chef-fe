@@ -23,7 +23,7 @@ const ProfileFields = (props) => {
   const dispatch = useDispatch();
   const classes = buttonStyles();
   const [gender, setGender] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState("");
   const [mapOpen, setMapOpen] = useState(false);
   // let inputField;
   const [focusAddress, setFocusAddress] = useState(false);
@@ -199,7 +199,7 @@ const ProfileFields = (props) => {
         </Select>
       </Field>
       <EventImageUpload
-        photo={photo}
+        avatar={photo}
         setPhoto={changePhoto}
         title="Upload a picture for your avatar (optional)"
       />
