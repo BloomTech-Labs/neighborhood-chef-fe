@@ -377,12 +377,6 @@ a {
   width: 92%;
 }
 
-@media (max-width: 1000px) {
-  .createFormTextArea {
-    width: 92%;
-  }
-}
-
 .createFormPage1RightContainer {
   width: 40%;
   margin-left: 8%;
