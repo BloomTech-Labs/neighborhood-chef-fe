@@ -500,8 +500,8 @@ a {
   align-items: center;
   justify-content: center;
   background: #82df96;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   opacity: 0.5;
 }
@@ -512,6 +512,15 @@ a {
 
 .inactive {
   opacity: 0.75;
+}
+
+/* FormPageThree three styles */
+
+.modifierContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 30px 0;
 }
 
 /* button div form */
@@ -677,7 +686,8 @@ a {
 
 @media (max-width: 1100px) {
   .ingredientInputName {
-    margin: 10px 0;
+    margin-top: 25px;
+    margin-bottom: 10px;
     width: 80%;
   }
 }
@@ -759,7 +769,19 @@ a {
   .ingredientButton {
     margin-top: 8px;
     margin-bottom: 20px;
-    width: 25%;
+    width: 20%;
+  }
+}
+
+.ingredientListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientListContainer {
+    width: 80%;
   }
 }
 

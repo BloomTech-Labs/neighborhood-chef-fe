@@ -58,14 +58,12 @@ const Register = () => {
                     address: values.location.address,
                     photo: values.photo,
                   };
-                  console.log(userValues);
                   axios
                     .post(
                       `${process.env.REACT_APP_BASE_URL}/auth/register`,
                       userValues
                     )
                     .then((res) => {
-                      console.log(res);
                       setSubmitting(false);
                       history.push("/register-check-email");
                     })

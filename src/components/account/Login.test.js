@@ -15,7 +15,7 @@ describe("Test login static properties", () => {
   });
 
   test("Login component renders", () => {
-    expect(LoginComponent.getByText(/prepare to eat well/i));
+    expect(LoginComponent.getByText(/Login to Neighborhood Chef/i));
   });
   test("Okta redirect button renders", () => {
     expect(LoginComponent.getByText(/login Securely with okta/i));

@@ -25,7 +25,7 @@ const ProfileFields = (props) => {
   const [gender, setGender] = useState("");
   const [photo, setPhoto] = useState(null);
   const [mapOpen, setMapOpen] = useState(false);
-  let inputField;
+  // let inputField;
   const [focusAddress, setFocusAddress] = useState(false);
   const addressLabel = useRef();
   const geoInput = useRef();
@@ -82,6 +82,7 @@ const ProfileFields = (props) => {
       setFocusAddress(false);
     });
     addressLabel.current = geoInput.current;
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

@@ -16,13 +16,14 @@ const testData = {
   date_created: new Date(2222222222222),
   photo: "",
   title: "summer BBQ",
-  date: new Date(2223333333333),
+  startTime: new Date(2223333333333),
   status: "Not Going",
 };
 
 describe("Test recentcard properties", () => {
   let RecentCardComponent;
   beforeEach(() => {
+    sessionStorage.setItem("user", JSON.stringify({ id: 1 }));
     RecentCardComponent = render(
       <Provider store={store}>
         <BrowserRouter>

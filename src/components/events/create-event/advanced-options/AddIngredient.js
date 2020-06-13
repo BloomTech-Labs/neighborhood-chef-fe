@@ -107,7 +107,7 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
           </button>
         </div>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
+      <div className="ingredientListContainer">
         {ingredientList.map((item) => {
           return (
             <Ingredient

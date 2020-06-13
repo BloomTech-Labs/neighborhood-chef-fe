@@ -16,7 +16,6 @@ describe("Test FormPageTwo component", () => {
 
   beforeEach(() => {
     store = mockStore({});
-
     FormPageTwoComponent = render(
       <Provider store={store}>
         <Formik>

@@ -25,7 +25,7 @@ const Hashtag = ({ hashtag, hashtags, setHashtags }) => {
         padding: "12px 20px",
       }}
     >
-      <p style={{ wordWrap: "break-word" }}>{hashtag.title}</p>
+      <p style={{ wordWrap: "break-word" }}>#{hashtag.title}</p>
       <span
         style={{
           cursor: "pointer",

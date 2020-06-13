@@ -1,5 +1,15 @@
 import moment from "moment";
 
+import modernRoom from "../../assets/modernRoom.png";
+import bbq from "../../assets/bbq.jpg";
+import cats from "../../assets/cats.jpg";
+import dogs from "../../assets/dogs.jpg";
+import kids from "../../assets/kids.jpg";
+import picnic from "../../assets/picnic.jpg";
+import sports from "../../assets/sports.jpg";
+import wineCheese from "../../assets/wine-cheese.jpg";
+import fullCourse from "../../assets/full-course.jpg";
+
 export const timeAgo = (dateCreated) => {
   let showType = "";
   const elapsedTime = Math.ceil((new Date() - dateCreated) / 1000);
@@ -68,14 +78,9 @@ export const parseTime = (start, end) => ({
   startTime: moment(parseInt(start)).format("h:mm a"),
   endTime: moment(parseInt(end)).format("h:mm a"),
   unixStart: start,
-});
-
-export const convertTimeAndDate = (event) => ({
-  date: moment(parseInt(event.startTime)).format("YYYY-MM-DD"),
-  startTime: moment(parseInt(event.startTime)).format("HH:mm:ss"),
-  endTime: event.endTime
-    ? moment(parseInt(event.endTime)).format("HH:mm:ss")
-    : "",
+  formDate: moment(parseInt(start)).format("YYYY-MM-DD"),
+  formStartTime: moment(parseInt(start)).format("HH:mm:ss"),
+  formEndTime: end ? moment(parseInt(end)).format("HH:mm:ss") : "",
 });
 
 export const isEventFavorite = (arr, id) => {
@@ -96,4 +101,27 @@ export const showOptions = (arr1, arr2) => {
     return true;
   }
   return false;
+};
+
+export const chooseDefaultPicture = (category_id) => {
+  switch (category_id) {
+    case 1:
+      return bbq;
+    case 2:
+      return picnic;
+    case 3:
+      return wineCheese;
+    case 4:
+      return fullCourse;
+    case 5:
+      return sports;
+    case 6:
+      return kids;
+    case 7:
+      return dogs;
+    case 8:
+      return cats;
+    default:
+      return modernRoom;
+  }
 };

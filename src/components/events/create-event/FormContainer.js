@@ -161,6 +161,7 @@ const FormContainer = () => {
               })
               .catch((err) => console.log(err.message));
           } else {
+            event.createDateTime = new Date().toISOString();
             axiosWithAuth()
               .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_EVENT),
@@ -195,12 +196,12 @@ const FormContainer = () => {
               {page === 2 && (
                 <>
                   <FormPageTwo
+                    values={values}
                     handleChange={handleChange}
                     hashtags={hashtags}
                     setHashtags={setHashtags}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
-                    photo={photo}
                     setPhoto={setPhoto}
                     allergenList={allergenList}
                     setAllergenList={setAllergenList}
@@ -222,6 +223,11 @@ const FormContainer = () => {
                     modifiers={modifiers}
                     setModifiers={setModifiers}
                     photo={photo}
+                    allergenList={allergenList}
+                    setAllergenList={setAllergenList}
+                    dietWarnings={dietWarnings}
+                    setDietWarnings={setDietWarnings}
+                    ingredientList={ingredientList}
                   />
                 </>
               )}

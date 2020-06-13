@@ -12,18 +12,18 @@ import "@testing-library/jest-dom/extend-expect";
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 describe("Test month picker properties", () => {

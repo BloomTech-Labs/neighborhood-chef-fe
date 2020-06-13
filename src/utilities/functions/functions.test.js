@@ -40,13 +40,6 @@ describe("Test functions index.js file", () => {
     expect(convertTime("23:30:00")).toBe("11:30PM");
   });
 
-  test("date/time strings will be converted to object with date, startTime, and endTime key/value pairs", () => {
-    const convertedTimes = convertTimeAndDate(eventTimes);
-    expect(convertedTimes.date).toBe("2020-06-26");
-    expect(convertedTimes.startTime).toEqual("17:30:00");
-    expect(convertedTimes.endTime).toEqual("22:30:00");
-  });
-
   test("test if modifiers are restored with icon added back", () => {
     const restoredModifiers = restoreSavedModifiers(
       modifierData,

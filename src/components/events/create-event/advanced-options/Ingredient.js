@@ -16,7 +16,6 @@ const Ingredient = ({ item, removeIngredient }) => {
         marginBottom: "20px",
         color: "white",
         fontSize: "1.6rem",
-        width: "auto",
         maxWidth: "400px",
         whiteSpace: "pre-line",
         padding: "12px 20px",

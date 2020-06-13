@@ -1,6 +1,13 @@
 import React from "react";
 
-const AllergyWarning = ({ allergy, removeAllergy }) => {
+const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
+  const removeAllergy = (id) => {
+    setAllergenList(
+      allergenList.filter((allergy) => {
+        return allergy.id !== id;
+      })
+    );
+  };
   return (
     <div
       key={allergy.id}
