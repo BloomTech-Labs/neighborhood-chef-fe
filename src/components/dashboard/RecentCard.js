@@ -18,18 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import { timeAgo, parseTime, isEventFavorite } from "../../utilities/functions";
+import { timeAgo, parseTime, isEventFavorite, chooseDefaultPicture } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
-import modernRoom from "../../assets/modernRoom.png";
-import bbq from "../../assets/bbq.jpg";
-import cats from "../../assets/cats.jpg";
-import dogs from "../../assets/dogs.jpg";
-import kids from "../../assets/kids.jpg";
-import picnic from "../../assets/picnic.jpg";
-import sports from "../../assets/sports.jpg";
-import wineCheese from "../../assets/wine-cheese.jpg";
-import fullCourse from "../../assets/full-course.jpg";
 
 import { rsvpButtons } from "../../data/buttons";
 
@@ -52,6 +43,7 @@ import EventButtonModal from "./EventButtonModal";
 import Emoji from "../other/Emoji";
 
 const RecentCard = (props) => {
+  // console.log(`RecentCard -> props`, props);
   const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
   const dispatch = useDispatch();
@@ -88,29 +80,6 @@ const RecentCard = (props) => {
         dispatch(addFavoriteEventSuccess(res.data.data.addFavoriteEvent));
       })
       .catch((err) => console.log(err));
-  };
-
-  const choosePicture = () => {
-    switch (props["category_id"]) {
-      case 1:
-        return bbq;
-      case 2:
-        return picnic;
-      case 3:
-        return wineCheese;
-      case 4:
-        return fullCourse;
-      case 5:
-        return sports;
-      case 6:
-        return kids;
-      case 7:
-        return dogs;
-      case 8:
-        return cats;
-      default:
-        return modernRoom;
-    }
   };
 
   const removeFavoriteEvent = () => {
@@ -177,8 +146,8 @@ const RecentCard = (props) => {
         }
       />
 
-      {/*If you need to remove functionality of events showing custom uploaded images on dashboard, 
-      change REACT_APP_ALLOW_USER_IMG variable within .env file */}
+      {/* If you need to disable functionality of events showing custom uploaded images on 
+      dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
 
       {props.photo !== "null" &&
       process.env.REACT_APP_ALLOW_USER_IMG === "1" ? (
@@ -186,13 +155,13 @@ const RecentCard = (props) => {
           style={{ height: 130 }}
           component="img"
           src={props.photo}
-          title="New Event"
+          title="Recent Card Event Photo"
         />
       ) : (
         <CardMedia
           className={classes.media}
-          image={choosePicture()}
-          title="New Event"
+          image={chooseDefaultPicture(props.category_id)}
+          title="Recent Card Event Photo"
         />
       )}
       <div className="date-box">

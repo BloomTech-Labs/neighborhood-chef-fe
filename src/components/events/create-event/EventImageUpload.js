@@ -4,9 +4,19 @@ import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 import { buttonStyles } from "../../../styles";
 import Typography from "@material-ui/core/Typography";
 
-const EventImageUpload = ({ photo, setPhoto, title }) => {
+import { chooseDefaultPicture } from "../../../utilities/functions";
+
+const EventImageUpload = ({ values, setPhoto, title }) => {
+  // console.log(`EventImageUpload -> values`, values);
   const classes = buttonStyles();
   const imageSizeLimit = 1500000;
+
+  let photo;
+  if (values) {
+    photo = values.photo !== "null" && values.photo !== undefined ?
+      values.photo : chooseDefaultPicture(values.category_id);
+    // console.log('Initial photo', photo);
+  }
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -17,7 +27,9 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-          setPhoto(reader.result);
+          photo = values.photo = reader.result;
+          setPhoto(photo);
+          // console.log('Photo changed!', photo);
         };
       }
     }
@@ -61,11 +73,11 @@ const EventImageUpload = ({ photo, setPhoto, title }) => {
           </label>
         </div>
 
-        {photo && (
+        {(
           <img
             onClick={() => setPhoto(null)}
             src={photo}
-            alt="event"
+            alt="Event Img Upload"
             style={{
               maxWidth: "40%",
               maxHeight: "120px",

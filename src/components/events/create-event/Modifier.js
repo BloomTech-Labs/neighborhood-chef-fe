@@ -32,11 +32,11 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
       >
         <Icon
           icon={modifier.icon}
-          style={{ fontSize: "3.5rem", color: "white" }}
+          style={{ fontSize: "2.5rem", color: "white" }}
         />
       </div>
 
-      <p style={{ opacity: "0.3" }}>{modifier.title}</p>
+      <p style={{ opacity: "0.3", paddingTop: "10px" }}>{modifier.title}</p>
     </div>
   );
 };
