@@ -132,13 +132,13 @@ const FormContainer = () => {
             latitude: values.latitude,
             photo: photo ? photo : null,
             user_id: parseInt(me.id),
-            // uncomment once migration is in place
             allergenWarnings: JSON.stringify({
               allergenWarnings: [...allergenList],
             }),
             dietaryWarnings: JSON.stringify({
               dietaryWarnings: [...dietWarnings],
             }),
+            // uncomment once migration is in place
             //ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
           };
 
@@ -168,7 +168,6 @@ const FormContainer = () => {
                 variables: { input: event },
               })
               .then((res) => {
-                console.log(res);
                 dispatch(createEventSuccess(res.data.data.addEvent));
                 setHashtags([]);
                 resetForm(initialState);
@@ -228,6 +227,7 @@ const FormContainer = () => {
                     dietWarnings={dietWarnings}
                     setDietWarnings={setDietWarnings}
                     ingredientList={ingredientList}
+                    setIngredientList={setIngredientList}
                   />
                 </>
               )}

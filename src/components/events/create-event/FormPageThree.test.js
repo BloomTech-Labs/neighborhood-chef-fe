@@ -31,13 +31,18 @@ describe("Test FormPageThree component", () => {
             <FormPageThree
               values={values}
               handleChange={handleChange}
-              modifiers={{
-                id: 1,
-                title: "18+",
-                icon: "bottle icon",
-                active: false,
-              }}
-              hashtags={{ id: 1, title: "#hashtag" }}
+              modifiers={[
+                {
+                  id: 1,
+                  title: "18+",
+                  icon: "bottle icon",
+                  active: false,
+                },
+              ]}
+              hashtags={[{ id: 1, title: "#hashtag" }]}
+              dietWarnings={[]}
+              allergenList={[]}
+              ingredientList={[]}
             />
           </Form>
         </Formik>

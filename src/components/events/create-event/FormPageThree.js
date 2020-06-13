@@ -1,13 +1,11 @@
 import React from "react";
 import moment from "moment";
 
-import Hashtag from "./Hashtag.js";
-import Modifier from "./Modifier.js";
-import AllergyWarning from "./advanced-options/AllergyWarning.js";
-import DietaryWarning from "./advanced-options/DietaryWarning.js";
+import DisplayEventModifiers from "./DisplayEventModifiers.js";
 import { scrollToTop } from "./FormPageOne.js";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
+
 import {
   convertTime,
   chooseDefaultPicture,
@@ -25,6 +23,7 @@ const FormPageThree = ({
   dietWarnings,
   setDietWarnings,
   ingredientList,
+  setIngredientList,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -114,147 +113,18 @@ const FormPageThree = ({
           </div>
         </div>
 
-        <div className="modifierContainer">
-          <div style={{ display: "flex", marginTop: "30px", width: "100%" }}>
-            {hashtags.length > 0 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  width: "45%",
-                  marginLeft: "3%",
-                }}
-              >
-                <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-                  Hashtags
-                </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    flexFlow: "row wrap",
-                  }}
-                >
-                  {hashtags.map((hashtag) => {
-                    return (
-                      <Hashtag
-                        key={hashtag.id}
-                        hashtag={hashtag}
-                        hashtags={hashtags}
-                        setHashtags={setHashtags}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {modifiers.length > 0 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  width: "45%",
-                  marginLeft: "3%",
-                }}
-              >
-                <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-                  Modifications
-                </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    flexFlow: "row wrap",
-                  }}
-                >
-                  {modifiers.map((modifier) => {
-                    return (
-                      <Modifier
-                        key={modifier.id}
-                        modifier={modifier}
-                        modifiers={modifiers}
-                        setModifiers={setModifiers}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div style={{ display: "flex", marginTop: "30px", width: "100%" }}>
-            {allergenList.length > 0 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  width: "45%",
-                  marginLeft: "3%",
-                }}
-              >
-                <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-                  Allergens
-                </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    flexFlow: "row wrap",
-                  }}
-                >
-                  {allergenList.map((allergy) => {
-                    return (
-                      <AllergyWarning
-                        key={allergy.id}
-                        allergy={allergy}
-                        allergenList={allergenList}
-                        setAllergenList={setAllergenList}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {dietWarnings.length > 0 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  width: "45%",
-                  marginLeft: "3%",
-                }}
-              >
-                <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-                  Dietary Warnings
-                </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    flexFlow: "row wrap",
-                  }}
-                >
-                  {dietWarnings.map((diet) => {
-                    return (
-                      <DietaryWarning
-                        key={diet.id}
-                        diet={diet}
-                        dietWarnings={dietWarnings}
-                        setDietWarnings={setDietWarnings}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <DisplayEventModifiers
+          hashtags={hashtags}
+          setHashtags={setHashtags}
+          modifiers={modifiers}
+          setModifiers={setModifiers}
+          allergenList={allergenList}
+          setAllergenList={setAllergenList}
+          dietWarnings={dietWarnings}
+          setDietWarnings={setDietWarnings}
+          ingredientList={ingredientList}
+          setIngredientList={setIngredientList}
+        />
       </div>
 
       <h3
