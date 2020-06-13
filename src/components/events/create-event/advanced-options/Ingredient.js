@@ -1,6 +1,10 @@
 import React from "react";
 
-const Ingredient = ({ item, removeIngredient }) => {
+const Ingredient = ({ item, ingredientList, setIngredientList }) => {
+  const removeIngredient = (id) => {
+    setIngredientList(ingredientList.filter((item) => item.id !== id));
+  };
+
   return (
     <div
       key={item.id}

@@ -29,10 +29,6 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
     setFormInput({ name: "", quantity: "", measurement: "" });
   };
 
-  const removeIngredient = (id) => {
-    setIngredientList(ingredientList.filter((item) => item.id !== id));
-  };
-
   return (
     <div style={{ marginTop: "55px", marginBottom: "25px" }}>
       <Typography style={{ marginBottom: "10px" }}>
@@ -112,8 +108,9 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
           return (
             <Ingredient
               item={item}
-              removeIngredient={removeIngredient}
               key={item.id}
+              ingredientList={ingredientList}
+              setIngredientList={setIngredientList}
             />
           );
         })}

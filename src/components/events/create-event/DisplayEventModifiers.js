@@ -9,17 +9,9 @@ import Ingredient from "./advanced-options/Ingredient.js";
 const DisplayEventModifiers = (props) => {
   return (
     <div className="modifierContainer">
-      <div style={{ display: "flex", marginTop: "30px", width: "100%" }}>
+      <div className="modifierRowContainer">
         {props.hashtags.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              width: "45%",
-              marginLeft: "3%",
-            }}
-          >
+          <div className="individualModifierContainer">
             <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>Hashtags</h4>
             <div
               style={{
@@ -43,15 +35,7 @@ const DisplayEventModifiers = (props) => {
         )}
 
         {props.modifiers.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              width: "45%",
-              marginLeft: "3%",
-            }}
-          >
+          <div className="individualModifierContainer">
             <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
               Modifications
             </h4>
@@ -77,18 +61,12 @@ const DisplayEventModifiers = (props) => {
         )}
       </div>
 
-      <div style={{ display: "flex", marginTop: "30px", width: "100%" }}>
+      <div className="modifierRowContainer">
         {props.allergenList.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              width: "45%",
-              marginLeft: "3%",
-            }}
-          >
-            <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>Allergens</h4>
+          <div className="individualModifierContainer">
+            <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
+              Allergy Warnings
+            </h4>
             <div
               style={{
                 display: "flex",
@@ -111,15 +89,7 @@ const DisplayEventModifiers = (props) => {
         )}
 
         {props.dietWarnings.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              width: "45%",
-              marginLeft: "3%",
-            }}
-          >
+          <div className="individualModifierContainer">
             <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
               Dietary Warnings
             </h4>
@@ -147,14 +117,8 @@ const DisplayEventModifiers = (props) => {
 
       {props.ingredientList.length > 0 && (
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            width: "45%",
-            marginTop: "30px",
-            marginLeft: "3%",
-          }}
+          style={{ marginTop: "50px", width: "80%" }}
+          className="individualModifierContainer"
         >
           <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
             Requested Ingredients
