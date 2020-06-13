@@ -11,10 +11,13 @@ const EventImageUpload = ({ values, setPhoto, title }) => {
   const classes = buttonStyles();
   const imageSizeLimit = 1500000;
 
-  let photo = values.photo !== "null" && values.photo !== undefined ?
-    values.photo : chooseDefaultPicture(values.category_id);
-  // console.log('Initial photo', photo);
-  
+  let photo;
+  if (values) {
+    photo = values.photo !== "null" && values.photo !== undefined ?
+      values.photo : chooseDefaultPicture(values.category_id);
+    // console.log('Initial photo', photo);
+  }
+
   const handleChange = (e) => {
     if (e.target.files[0]) {
       if (e.target.files[0].size > imageSizeLimit) {
