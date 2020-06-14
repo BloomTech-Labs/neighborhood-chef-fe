@@ -18,6 +18,10 @@ import MapIcon from "@material-ui/icons/Map";
 import IconButton from "@material-ui/core/IconButton";
 import RoomIcon from "@material-ui/icons/Room";
 import AddAllergens from "./AddAllergens.js";
+import AddDietaryRestrictions from "./AddDietaryRestrictions.js";
+import AddDietaryPreferences from "./AddDietaryPreferences.js";
+import AddChildren from "./AddChildren.js";
+import AddPets from "./AddPets.js";
 
 const ProfileFields = (props) => {
   const textBoxClass = textBoxStyles();
@@ -219,17 +223,14 @@ const ProfileFields = (props) => {
         touched={props.touched}
         handleBlur={props.handleBlur}
         handleChange={props.handleChange}
-        className="restriction"
+      />
+      <AddDietaryRestrictions
+        values={props.values}
+        touched={props.touched}
+        handleBlur={props.handleBlur}
+        handleChange={props.handleChange}
       />
       <Divider style={{ marginTop: 20, marginBottom: 20 }} />
-      <Field
-        style={{ marginTop: "10px", display: "none" }}
-        component={TextField}
-        type="text"
-        name="dietaryRestrictions"
-        className="dietaryRestrictions restriction"
-        label="Dietary Restrictions"
-      />
       <Field
         style={{ marginTop: "10px", display: "none" }}
         component={TextField}

@@ -33,7 +33,13 @@ const Register = () => {
                 Start eating well while making friends!
               </Typography>
               <Formik
-                initialValues={{ allergens: [] }}
+                initialValues={{
+                  allergens: [],
+                  dietaryRestrictions: [],
+                  dietaryPreferences: [],
+                  children: [],
+                  pets: [],
+                }}
                 validate={(values) => {
                   const errors = {};
                   if (!values.email) {
