@@ -5,18 +5,18 @@ import { Button } from "@material-ui/core";
 import { buttonStyles } from "../../styles";
 import Typography from "@material-ui/core/Typography";
 
-const AddAllergens = (props) => {
+const AddDietaryPreferences = (props) => {
   const classes = buttonStyles();
 
   return (
-    <FieldArray name="allergens">
+    <FieldArray name="dietaryPreferences">
       {({ push, remove }) => (
         <div
           className="restriction"
           style={{ marginTop: "10px", display: "none" }}
         >
-          <Typography>Allergens</Typography>
-          {props.values.allergens.map((allergen, index) => {
+          <Typography>Dietary Restrictions</Typography>
+          {props.values.dietaryPreferences.map((dietaryPreference, index) => {
             return (
               <div key={index}>
                 <Field
@@ -24,9 +24,9 @@ const AddAllergens = (props) => {
                   className={classes.field}
                   margin="normal"
                   variant="outlined"
-                  label="Allergen"
-                  name={`allergens[${index}]`}
-                  value={allergen}
+                  label="Dietary Preference"
+                  name={`dietaryPreferences[${index}]`}
+                  value={dietaryPreference}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                 />
@@ -49,7 +49,7 @@ const AddAllergens = (props) => {
             variant="outlined"
             onClick={() => push("")}
           >
-            Add Allergen
+            Add Dietary Preference
           </Button>
         </div>
       )}
@@ -57,4 +57,4 @@ const AddAllergens = (props) => {
   );
 };
 
-export default AddAllergens;
+export default AddDietaryPreferences;

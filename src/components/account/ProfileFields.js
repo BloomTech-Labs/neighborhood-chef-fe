@@ -218,27 +218,10 @@ const ProfileFields = (props) => {
       >
         Add more info
       </Typography>
-      <AddAllergens
-        values={props.values}
-        touched={props.touched}
-        handleBlur={props.handleBlur}
-        handleChange={props.handleChange}
-      />
-      <AddDietaryRestrictions
-        values={props.values}
-        touched={props.touched}
-        handleBlur={props.handleBlur}
-        handleChange={props.handleChange}
-      />
+      <AddAllergens values={props.values} />
+      <AddDietaryRestrictions values={props.values} />
+      <AddDietaryPreferences values={props.values} />
       <Divider style={{ marginTop: 20, marginBottom: 20 }} />
-      <Field
-        style={{ marginTop: "10px", display: "none" }}
-        component={TextField}
-        type="text"
-        name="dietaryPreferences"
-        className="dietaryPreferences restriction"
-        label="Dietary Preferences"
-      />
       <Field
         style={{ marginTop: "10px", display: "none" }}
         component={TextField}
