@@ -79,6 +79,7 @@ const ParticipantCard = (props) => {
               const TagName = Components[b.name];
               return (
                 <span
+                  key={b.name}
                   title={b.name}
                   className={cardStyles({ name: b.name }).shareButtons}
                 >

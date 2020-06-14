@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import uploadOutlined from "@iconify/icons-ant-design/upload-outlined";
 import { buttonStyles } from "../../../styles";
@@ -9,12 +9,12 @@ import { chooseDefaultPicture } from "../../../utilities/functions";
 
 const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
   const location = useLocation();
-  const thisURL = location.pathname.split("/");
+  const thisURL = location.pathname.split("/")[1];
   // console.log(`EventImageUpload -> values`, values);
   const classes = buttonStyles();
   const imageSizeLimit = 1500000;
   let photo;
-  if (values && thisURL[1] === "create-event") {
+  if (values && thisURL === "create-event") {
     photo =
       values.photo !== "null" && values.photo !== undefined
         ? values.photo

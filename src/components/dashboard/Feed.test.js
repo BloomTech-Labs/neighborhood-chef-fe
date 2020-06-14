@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 describe("Test Feed static properties", () => {
   let FeedComponent;
   beforeEach(() => {
+    sessionStorage.setItem("user", JSON.stringify({ id: 1 }));
     FeedComponent = render(
       <BrowserRouter>
         <Feed />
