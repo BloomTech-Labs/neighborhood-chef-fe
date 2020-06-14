@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
+import grayBox from "../../assets/grayBox.png";
+
 import {
   timeAgo,
   parseTime,
@@ -133,7 +135,11 @@ const RecentCard = (props) => {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" src={me.photo} className={classes.avatar}>
+          <Avatar
+            aria-label="recipe"
+            src={me.photo || grayBox}
+            className={classes.avatar}
+          >
             {!me.photo && initials}
           </Avatar>
         }

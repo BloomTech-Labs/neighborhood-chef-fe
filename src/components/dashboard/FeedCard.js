@@ -11,8 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-
-import { timeAgo } from "../../utilities/functions";
+import { timeAgo, makeInitials } from "../../utilities/functions";
 
 const FeedCard = ({
   name,
@@ -37,9 +36,11 @@ const FeedCard = ({
         avatar={
           <Avatar
             aria-label="recipe"
-            src={me.photo}
+            src={me.photo !== "null" ? me.photo : null}
             className={classes.avatar}
-          />
+          >
+            {me.photo === "null" && <Typography>{makeInitials(me)}</Typography>}
+          </Avatar>
         }
         // action={
         // <IconButton aria-label="settings">

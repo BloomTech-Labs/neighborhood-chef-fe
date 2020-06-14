@@ -2,6 +2,11 @@ import React from "react";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { useDispatch, useSelector } from "react-redux";
+import { cardStyles, buttonStyles } from "../../../styles";
+import Typography from "@material-ui/core/Typography";
+import { makeInitials } from "../../../utilities/functions";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
 
 import {
   inviteUserSuccess,
@@ -11,6 +16,8 @@ import {
 import { INVITE_USER } from "../../../graphql/events/event-mutations.js";
 
 const UninvitedUser = ({ user }) => {
+  const buttonClasses = buttonStyles();
+  const classes = cardStyles();
   const dispatch = useDispatch();
   const event = useSelector((state) => state.newEvent);
   let users = useSelector((state) => state.userList);
@@ -46,37 +53,15 @@ const UninvitedUser = ({ user }) => {
       key={user.id}
     >
       <div style={{ display: "flex", alignItems: "center", width: "80%" }}>
-        {user.photo ? (
-          <img
-            style={{
-              borderRadius: "50%",
-              height: "60px",
-              width: "60px",
-              marginLeft: "5%",
-              border: "4px solid #82DF96",
-            }}
-            src={user.photo}
-            alt="user avatar"
-          />
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "50%",
-              background: "#82DF96",
-              color: "white",
-              height: "60px",
-              width: "60px",
-              marginLeft: "5%",
-              border: "4px solid #82DF96",
-            }}
-          >
-            {user.firstName.slice(0, 1)}
-            {user.lastName.slice(0, 1)}
-          </div>
-        )}
+        <Avatar
+          aria-label="avatar"
+          className={classes.avatar}
+          src={user.photo === "null" ? null : user.photo}
+        >
+          {user.photo === "null" && (
+            <Typography>{makeInitials(user)}</Typography>
+          )}
+        </Avatar>
 
         <div
           style={{
@@ -121,22 +106,12 @@ const UninvitedUser = ({ user }) => {
           width: "60px",
         }}
       >
-        <button
+        <IconButton
+          className={buttonClasses.icon}
           onClick={() => inviteUser(user.id)}
-          style={{
-            textAlign: "center",
-            background: "#E8E8E8",
-            width: "60px",
-            height: "60px",
-            color: "white",
-            borderRadius: "50%",
-            fontSize: "4rem",
-            fontWeight: "bold",
-            outline: "none",
-          }}
         >
-          +
-        </button>
+          <Typography variant="h5">+</Typography>
+        </IconButton>
       </div>
     </div>
   );

@@ -75,21 +75,17 @@ const ParticipantCard = (props) => {
               marginBottom: "10px",
             }}
           >
-            {/* <FacebookShareButton url={url}>
-              <FacebookIcon />
-            </FacebookShareButton> */}
             {shareButtons.map((b) => {
               const TagName = Components[b.name];
               return (
-                <TagName url={url} hashtag="#neighborhoodchef" key={b.name}>
-                  <IconButton
-                    title={b.name}
-                    aria-label={b.name}
-                    className={cardStyles({ name: b.name }).shareButtons}
-                  >
+                <span
+                  title={b.name}
+                  className={cardStyles({ name: b.name }).shareButtons}
+                >
+                  <TagName url={url} hashtag="#neighborhoodchef" key={b.name}>
                     <b.icon fontSize="large" />
-                  </IconButton>
-                </TagName>
+                  </TagName>
+                </span>
               );
             })}
           </div>

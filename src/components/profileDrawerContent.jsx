@@ -4,6 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import ls from "local-storage";
 import qs from "querystring";
+import { makeInitials } from "../utilities/functions";
 
 const styles = makeStyles((theme) => {
   return {
@@ -104,17 +105,25 @@ function ProfileDrawerContent(props) {
   return (
     <section className={classes.container}>
       <div className={classes["top-content-container"]}>
-        <Typography variant="h5" onClick={props.closeDrawer}>
-          {"> Profile"}
+        <Typography onClick={logout} style={{ cursor: "pointer" }}>
+          Logout
         </Typography>
-        <Typography onClick={logout}>Logout</Typography>
+        <Typography
+          variant="h5"
+          onClick={props.closeDrawer}
+          style={{ cursor: "pointer" }}
+        >
+          {">"}
+        </Typography>
       </div>
       <div className={classes["avatar-container"]}>
         <Avatar
           className={classes.avatar}
-          src={me.photo}
+          src={me.photo !== "null" ? me.photo : null}
           alt="Profile Avatar"
-        />
+        >
+          {me.photo === "null" && <Typography>{makeInitials(me)}</Typography>}
+        </Avatar>
         <Typography>First Last</Typography>
         <Typography>Edit Profile</Typography>
       </div>
