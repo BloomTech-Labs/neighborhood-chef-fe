@@ -33,7 +33,7 @@ const Register = () => {
                 Start eating well while making friends!
               </Typography>
               <Formik
-                initialValues={{ email: "" }}
+                initialValues={{ allergens: [] }}
                 validate={(values) => {
                   const errors = {};
                   if (!values.email) {
@@ -57,33 +57,44 @@ const Register = () => {
                     gender: values.gender,
                     address: values.location.address,
                     photo: values.photo,
+                    allergens: JSON.stringify(values.allergens),
+                    dietaryRestrictions: JSON.stringify(
+                      values.dietaryRestrictions
+                    ),
+                    dietaryPreferences: JSON.stringify(
+                      values.dietaryPreferences
+                    ),
+                    children: JSON.stringify(values.children),
+                    pets: JSON.stringify(values.pets),
                   };
-                  axios
-                    .post(
-                      `${process.env.REACT_APP_BASE_URL}/auth/register`,
-                      userValues
-                    )
-                    .then((res) => {
-                      setSubmitting(false);
-                      history.push("/register-check-email");
-                    })
-                    .catch((err) => {
-                      setSubmitting(false);
-                      console.dir({
-                        err,
-                        message: err.message,
-                        stack: err.stack,
-                      });
-                    });
+                  console.log(userValues);
+                  // axios
+                  //   .post(
+                  //     `${process.env.REACT_APP_BASE_URL}/auth/register`,
+                  //     userValues
+                  //   )
+                  //   .then((res) => {
+                  //     setSubmitting(false);
+                  //     history.push("/register-check-email");
+                  //   })
+                  //   .catch((err) => {
+                  //     setSubmitting(false);
+                  //     console.dir({
+                  //       err,
+                  //       message: err.message,
+                  //       stack: err.stack,
+                  //     });
+                  //   });
                 }}
               >
-                {({ isSubmitting, setFieldValue }) => (
+                {({ isSubmitting, setFieldValue, values }) => (
                   <Form style={{ display: "flex", flexDirection: "column" }}>
                     {currentPage === 1 && <AuthFields />}
                     {currentPage === 2 && (
                       <ProfileFields
                         submitting={isSubmitting}
                         setFieldValue={setFieldValue}
+                        values={values}
                       />
                     )}
                   </Form>
