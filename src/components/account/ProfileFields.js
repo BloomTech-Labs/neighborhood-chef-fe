@@ -221,15 +221,8 @@ const ProfileFields = (props) => {
       <AddAllergens values={props.values} />
       <AddDietaryRestrictions values={props.values} />
       <AddDietaryPreferences values={props.values} />
+      <AddChildren values={props.values} />
       <Divider style={{ marginTop: 20, marginBottom: 20 }} />
-      <Field
-        style={{ marginTop: "10px", display: "none" }}
-        component={TextField}
-        type="text"
-        name="children"
-        className="children restriction"
-        label="Children"
-      />
       <Field
         style={{ marginTop: "10px", display: "none" }}
         component={TextField}
