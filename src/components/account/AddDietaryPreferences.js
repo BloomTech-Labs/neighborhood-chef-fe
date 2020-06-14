@@ -15,7 +15,7 @@ const AddDietaryPreferences = (props) => {
           className="restriction"
           style={{ marginTop: "10px", display: "none" }}
         >
-          <Typography>Dietary Restrictions</Typography>
+          <Typography>Dietary Preferences</Typography>
           {props.values.dietaryPreferences.map((dietaryPreference, index) => {
             return (
               <div key={index}>
