@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 //style imports
 import { cardStyles } from "../../styles";
@@ -157,53 +158,55 @@ const RecentCard = (props) => {
         }
       />
 
-      {/* If you need to disable functionality of events showing custom uploaded images on 
-      dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
-
-      {props.photo !== "null" &&
-      process.env.REACT_APP_ALLOW_USER_IMG === "1" ? (
-        <CardMedia
-          style={{ height: 130 }}
-          component="img"
-          src={props.photo}
-          title="Recent Card Event Photo"
-        />
-      ) : (
-        <CardMedia
-          className={classes.media}
-          image={chooseDefaultPicture(props.category_id)}
-          title="Recent Card Event Photo"
-        />
-      )}
-      <div className="date-box">
-        <Typography variant="h5">{timeObject.day}</Typography>
-        <Typography variant="h5" color="secondary">
-          {timeObject.monthShort}
-        </Typography>
-      </div>
-      <Typography variant="body1" align="center">
-        {`@ ${timeObject.startTime}`}
-      </Typography>
-      <CardContent>
-        <Typography variant="h4" align="center" gutterBottom>
-          {props.title}
-        </Typography>
+      <Link to={"/events/"+props.id}>
+        {/* If you need to disable functionality of events showing custom uploaded images on 
+        dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
+        {props.photo !== "null" &&
+        process.env.REACT_APP_ALLOW_USER_IMG === "1" ? (
+          <CardMedia
+            style={{ height: 130 }}
+            component="img"
+            src={props.photo}
+            title="Recent Card Event Photo"
+          />
+        ) : (
+          <CardMedia
+            className={classes.media}
+            image={chooseDefaultPicture(props.category_id)}
+            title="Recent Card Event Photo"
+          />
+        )}
+        <div className="date-box">
+          <Typography variant="h5">{timeObject.day}</Typography>
+          <Typography variant="h5" color="secondary">
+            {timeObject.monthShort}
+          </Typography>
+        </div>
         <Typography variant="body1" align="center">
-          <span
-            style={
-              currentStatus === "Not Going"
-                ? { color: "rgba(232, 64, 64, .75)" }
-                : currentStatus === "Maybe"
-                ? { color: "rgba(255, 169, 40, .75)" }
-                : currentStatus === "Going"
-                ? { color: "rgba(33, 186, 66, .75)" }
-                : { color: "rgba(0,0,0, .3)" }
-            }
-          >
-            {currentStatus || "undecided"}
-          </span>
+          {`@ ${timeObject.startTime}`}
         </Typography>
-      </CardContent>
+        <CardContent>
+          <Typography variant="h4" align="center" gutterBottom>
+            {/* <Link to={"/events/"+props.id}>{props.title}</Link> */}
+            {props.title}
+          </Typography>
+          <Typography variant="body1" align="center">
+            <span
+              style={
+                currentStatus === "Not Going"
+                  ? { color: "rgba(232, 64, 64, .75)" }
+                  : currentStatus === "Maybe"
+                  ? { color: "rgba(255, 169, 40, .75)" }
+                  : currentStatus === "Going"
+                  ? { color: "rgba(33, 186, 66, .75)" }
+                  : { color: "rgba(0,0,0, .3)" }
+              }
+            >
+              {currentStatus || "undecided"}
+            </span>
+          </Typography>
+        </CardContent>
+      </Link>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites" onClick={() => toggleLike()}>
           <span>
