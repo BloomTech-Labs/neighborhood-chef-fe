@@ -512,21 +512,8 @@ a {
 
 .modifierContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
-}
-
-.modifierRowContainer {
-  display: flex;
-  margin-top: 30px;
-  width: 100%;
-}
-
-@media (max-width: 800px) {
-  .modifierRowContainer {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 .individualModifierContainer {
@@ -534,6 +521,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   width: 45%;
+  margin-top: 30px;
   margin-left: 3%;
 }
 
