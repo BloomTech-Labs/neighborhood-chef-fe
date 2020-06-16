@@ -3,7 +3,6 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from "@material-ui/core/styles";
-import { red } from "@material-ui/core/colors";
 
 export const buttonStyles = makeStyles({
   root: {
@@ -69,6 +68,19 @@ export const buttonStyles = makeStyles({
   rsvpActive: {
     border: "1px solid black",
     opacity: "1",
+  },
+  icon: {
+    background: "#E8E8E8",
+    width: "45px",
+    height: "45px",
+  },
+  iconGreen: {
+    background: "#58D573",
+    width: "45px",
+    height: "45px",
+    "&:hover": {
+      background: "#58D573",
+    },
   },
 });
 
@@ -254,10 +266,19 @@ export const cardStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: "#e8e8e8",
+    color: "black",
+    letterSpacing: "3px",
   },
   share: { maxHeight: 150, width: "100%" },
   shareButtons: {
+    width: "40px",
+    height: "40px",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    justifyContent: "center",
+    borderRadius: 180,
     cursor: "pointer",
     color: (props) => {
       if (props.name === "Facebook") {
@@ -286,6 +307,9 @@ export const cardStyles = makeStyles((theme) => ({
       if (props.name === "Email") {
         return "#e0e6ff";
       }
+    },
+    "&:hover": {
+      background: "#f8f8f8",
     },
   },
   comments: {

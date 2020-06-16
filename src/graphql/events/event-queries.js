@@ -29,6 +29,7 @@ export const ALL_EVENTS = gql`
         status
         address
         gender
+        photo
       }
     }
   }
@@ -63,6 +64,7 @@ export const EVENT_BY_ID = gql`
         status
         address
         gender
+        photo
       }
     }
   }

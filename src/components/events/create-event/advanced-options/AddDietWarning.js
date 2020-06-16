@@ -21,14 +21,6 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
     setFormInput({ title: "" });
   };
 
-  const removeDietWarning = (id) => {
-    setDietWarnings(
-      dietWarnings.filter((diet) => {
-        return diet.id !== id;
-      })
-    );
-  };
-
   return (
     <>
       <div style={{ marginTop: "55px", marginBottom: "25px" }}>
@@ -73,8 +65,9 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
           return (
             <DietaryWarning
               diet={diet}
-              removeDietWarning={removeDietWarning}
               key={diet.id}
+              dietWarnings={dietWarnings}
+              setDietWarnings={setDietWarnings}
             />
           );
         })}

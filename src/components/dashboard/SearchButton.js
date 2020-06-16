@@ -11,11 +11,9 @@ const SearchButton = () => {
     const listener = (evt) => {
       const searchBox = Array.from(document.querySelectorAll(".search-box"));
       let targetElement = evt.target; // clicked element
-      console.log(searchBox);
 
       do {
         searchBox.forEach((e) => {
-          console.log(e, targetElement);
           if (e == targetElement) return;
         });
         // Go up the DOM
@@ -23,7 +21,6 @@ const SearchButton = () => {
       } while (targetElement);
 
       // This is a click outside.
-      console.log("outside");
       setIsSearching(false);
     };
     document.addEventListener("click", listener);
@@ -48,9 +45,7 @@ const SearchButton = () => {
       return;
     };
     cards.forEach((card) => recurseDoc(card, card));
-    console.log(rawList);
     const removeDup = [...new Set(rawList)];
-    console.log(removeDup);
   };
   return (
     <div className="search-box">

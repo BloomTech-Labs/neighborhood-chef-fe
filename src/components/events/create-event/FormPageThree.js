@@ -1,21 +1,29 @@
 import React from "react";
 import moment from "moment";
 
-import Hashtag from "./Hashtag.js";
-import Modifier from "./Modifier.js";
+import DisplayEventModifiers from "./DisplayEventModifiers.js";
 import { scrollToTop } from "./FormPageOne.js";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
-import { convertTime, chooseDefaultPicture } from "../../../utilities/functions";
+
+import {
+  convertTime,
+  chooseDefaultPicture,
+} from "../../../utilities/functions";
 
 const FormPageThree = ({
   values,
   hashtags,
   setHashtags,
-  removeHashtag,
   modifiers,
   setModifiers,
   photo,
+  allergenList,
+  setAllergenList,
+  dietWarnings,
+  setDietWarnings,
+  ingredientList,
+  setIngredientList,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -105,72 +113,18 @@ const FormPageThree = ({
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            margin: "30px 0",
-          }}
-        >
-          {hashtags.length > 0 && (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                width: "45%",
-                marginLeft: "3%",
-              }}
-            >
-              <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>Hashtags</h4>
-              <div
-                style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}
-              >
-                {hashtags.map((hashtag) => {
-                  return (
-                    <Hashtag
-                      key={hashtag.id}
-                      hashtag={hashtag}
-                      removeModifier={removeHashtag}
-                      hashtags={hashtags}
-                      setHashtags={setHashtags}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {modifiers.length > 0 && (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                width: "45%",
-                marginLeft: "3%",
-              }}
-            >
-              <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-                Modifications
-              </h4>
-              <div
-                style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}
-              >
-                {modifiers.map((modifier) => {
-                  return (
-                    <Modifier
-                      key={modifier.id}
-                      modifier={modifier}
-                      modifiers={modifiers}
-                      setModifiers={setModifiers}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
+        <DisplayEventModifiers
+          hashtags={hashtags}
+          setHashtags={setHashtags}
+          modifiers={modifiers}
+          setModifiers={setModifiers}
+          allergenList={allergenList}
+          setAllergenList={setAllergenList}
+          dietWarnings={dietWarnings}
+          setDietWarnings={setDietWarnings}
+          ingredientList={ingredientList}
+          setIngredientList={setIngredientList}
+        />
       </div>
 
       <h3

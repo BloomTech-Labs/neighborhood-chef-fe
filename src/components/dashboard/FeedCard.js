@@ -11,8 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-
-import { timeAgo } from "../../utilities/functions";
+import { timeAgo, makeInitials } from "../../utilities/functions";
 
 const FeedCard = ({
   name,
@@ -22,6 +21,7 @@ const FeedCard = ({
   photo,
   message,
 }) => {
+  const me = JSON.parse(sessionStorage.getItem("user"));
   const [collapseMessage, setCollapseMessage] = useState(
     message && message.length > 100 ? message.substring(0, 99) + "..." : ""
   );
@@ -34,8 +34,12 @@ const FeedCard = ({
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+          <Avatar
+            aria-label="recipe"
+            src={me.photo !== "null" ? me.photo : null}
+            className={classes.avatar}
+          >
+            {me.photo === "null" && <Typography>{makeInitials(me)}</Typography>}
           </Avatar>
         }
         // action={
