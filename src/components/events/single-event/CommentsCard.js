@@ -17,7 +17,7 @@ const CommentsCard = (props) => {
   const [organizedComments, setOrganizedComments] = useState([]);
 
   /* Placeholder local state until we have database support for comments */
-  const [idCounter, setIdCounter] = useState("4");
+  const [idCounter, setIdCounter] = useState(4);
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -69,6 +69,8 @@ const CommentsCard = (props) => {
     ]); //placeholder values for keys, will need to get from state or database
     setIdCounter(idCounter + 1);
     setNewComment("");
+
+    console.log(comments);
 
     // axiosWithAuth()({
     //   url: `${process.env.REACT_APP_BASE_URL}/graphql`,
