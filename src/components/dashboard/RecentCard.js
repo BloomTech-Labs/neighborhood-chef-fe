@@ -19,13 +19,12 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Icon } from "@iconify/react";
 // import smHeart from "@iconify/icons-heroicons/sm-heart";
 
-import grayBox from "../../assets/grayBox.png";
-
 import {
   timeAgo,
   parseTime,
   isEventFavorite,
   chooseDefaultPicture,
+  makeInitials,
 } from "../../utilities/functions";
 
 import StatusButton from "../events/view-events/StatusButton";
@@ -58,7 +57,6 @@ const RecentCard = (props) => {
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
   const [creatorName, setCreatorName] = useState("");
-  const [initials, setInitials] = useState("");
   const favoriteEvents = useSelector((state) => state.favoriteEvents);
   const isFavorite = isEventFavorite(favoriteEvents, props.id);
   // const [liked, setLiked] = useState(false);
@@ -121,11 +119,6 @@ const RecentCard = (props) => {
         .then((res) => {
           const data = res.data.data.getUserById;
           setCreatorName(`${data.firstName} ${data.lastName}`);
-          setInitials(
-            `${data.firstName.slice(0, 1).toUpperCase()}${data.lastName
-              .slice(0, 1)
-              .toUpperCase()}`
-          );
         })
         .catch((err) => {
           console.log(err.message);
@@ -137,11 +130,15 @@ const RecentCard = (props) => {
       <CardHeader
         avatar={
           <Avatar
-            aria-label="recipe"
-            src={me.photo || grayBox}
+            key={me.id}
+            title={`${me.firstName} ${me.lastName}`}
+            aria-label="avatar"
             className={classes.avatar}
+            src={me.photo === "null" ? null : me.photo}
           >
-            {!me.photo && initials}
+            {me.photo === "null" && (
+              <Typography>{makeInitials(me)}</Typography>
+            )}
           </Avatar>
         }
         action={<EventButtonModal eventId={props.id} userId={me.id} />}
