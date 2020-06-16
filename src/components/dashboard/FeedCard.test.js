@@ -22,6 +22,7 @@ const testData = {
 
 describe("Test feedcard properties", () => {
   let FeedCardComponent;
+  sessionStorage.setItem("user", JSON.stringify({ id: 1 }));
   beforeEach(() => {
     FeedCardComponent = render(
       <Provider store={store}>

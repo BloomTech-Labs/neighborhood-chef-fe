@@ -9,14 +9,7 @@ import { useSelector } from "react-redux";
 const CreateEventHeader = () => {
   const page = useSelector((state) => state.page);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
+    <div className="createFormHeaderContainer">
       <div
         className={`createFormHeaderNotActive${
           page === 1 ? " createFormHeaderActive" : ""
@@ -24,6 +17,7 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={pencilIcon}
+          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Details</h3>
@@ -35,6 +29,7 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={shapeOutline}
+          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Preferences</h3>
@@ -46,6 +41,7 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={createIcon}
+          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Create</h3>
@@ -57,6 +53,7 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={shareIcon}
+          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Share</h3>

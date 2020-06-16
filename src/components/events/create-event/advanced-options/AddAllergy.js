@@ -21,14 +21,6 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
     setFormInput({ name: "" });
   };
 
-  const removeAllergy = (id) => {
-    setAllergenList(
-      allergenList.filter((allergy) => {
-        return allergy.id !== id;
-      })
-    );
-  };
-
   return (
     <>
       <div style={{ marginTop: "55px", marginBottom: "25px" }}>
@@ -73,8 +65,9 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
           return (
             <AllergyWarning
               allergy={allergy}
-              removeAllergy={removeAllergy}
               key={allergy.id}
+              allergenList={allergenList}
+              setAllergenList={setAllergenList}
             />
           );
         })}

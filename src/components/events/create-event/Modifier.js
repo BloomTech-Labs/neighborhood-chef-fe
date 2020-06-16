@@ -19,7 +19,7 @@ const Modifier = ({ modifier, modifiers, setModifiers }) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        margin: "10px",
+        margin: "5px",
         cursor: "pointer",
         width: "118px",
       }}

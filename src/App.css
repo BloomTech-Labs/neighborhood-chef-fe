@@ -320,8 +320,28 @@ a {
   justify-content: center;
 }
 
+@media (max-width: 1000px) {
+  .createFormPage1TopRow {
+    flex-direction: column;
+  }
+}
+
 .createFormPage1LeftContainer {
   width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1LeftContainer {
+    width: 90%;
+    margin-left: 8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1LeftContainer {
+    align-items: center;
+    width: 90%;
+  }
 }
 
 .createFormInputDiv {
@@ -363,9 +383,21 @@ a {
   width: 92%;
 }
 
+@media (max-width: 1000px) {
+  .createFormTextArea {
+    width: 94%;
+  }
+}
+
 .createFormPage1RightContainer {
   width: 40%;
   margin-left: 8%;
+}
+
+@media (max-width: 1000px) {
+  .createFormPage1RightContainer {
+    width: 90%;
+  }
 }
 
 .eventTimeDiv {
@@ -488,6 +520,32 @@ a {
   opacity: 0.75;
 }
 
+/* FormPageThree three styles */
+
+.modifierContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.individualModifierContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 45%;
+  margin-top: 30px;
+  margin-left: 3%;
+}
+
+@media (max-width: 800px) {
+  .individualModifierContainer {
+    margin-top: 25px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /* button div form */
 .createFormButtonDiv {
   display: flex;
@@ -495,6 +553,16 @@ a {
   margin-top: 40px;
   margin-right: 1%;
   margin-bottom: 40px;
+}
+
+@media (max-width: 1000px) {
+  .createFormButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 .createRightBtn {
@@ -513,6 +581,12 @@ a {
   width: 15%;
 }
 
+@media (max-width: 1000px) {
+  .createRightBtn {
+    width: 35%;
+  }
+}
+
 .createLeftBtn {
   display: flex;
   align-items: center;
@@ -529,7 +603,40 @@ a {
   width: 15%;
 }
 
+@media (max-width: 1000px) {
+  .createLeftBtn {
+    width: 35%;
+  }
+}
+
+.formPageThreeDateDiv {
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .formPageThreeDateDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px;
+  }
+}
+
 /* -- CreateFormHeader styles ---*/
+
+.createFormHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .createFormHeaderContainer {
+    display: none;
+  }
+}
 
 .createFormHeaderNotActive {
   display: flex;
@@ -539,6 +646,12 @@ a {
 
 .createFormHeaderActive {
   color: #0c0c41;
+}
+
+@media (max-width: 900px) {
+  .hideIcon {
+    display: none;
+  }
 }
 
 /* -- CreateForm Advanced options --*/
@@ -560,4 +673,139 @@ a {
   padding: 12px 20px;
   cursor: pointer;
 }
+
+.addIngredientInputContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 1100px) {
+  .addIngredientInputContainer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1100px) {
+  .addIngredientInputContainer {
+    flex-direction: column;
+  }
+}
+
+.ingredientInputName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  padding: 10px 15px;
+  width: 30%;
+  height: 38px;
+  font-size: 1.6rem;
+  outline: none;
+}
+
+@media (max-width: 1100px) {
+  .ingredientInputName {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width: 80%;
+  }
+}
+
+.ingredientInputQuantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  padding: 10px 15px;
+  width: 8%;
+  height: 38px;
+  font-size: 1.6rem;
+  outline: none;
+}
+
+@media (max-width: 1100px) {
+  .ingredientInputQuantity {
+    margin: 10px 0;
+    width: 80%;
+  }
+}
+
+.ingredientMeasurementDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  margin: 40px 0;
+  width: 33%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientMeasurementDiv {
+    width: 84%;
+    margin: 10px 0;
+  }
+}
+
+#measurementSelect {
+  display: flex;
+  align-items: center;
+  margin: 10px 5px;
+  background: #58d573;
+  opacity: 0.75;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-bottom: none;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 1100px) {
+  #measurementSelect {
+    padding: 10px 40px;
+    justify-content: flex-start;
+  }
+}
+
+.ingredientButton {
+  color: white;
+  font-size: 1.6rem;
+  background: #82df96;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  word-spacing: 15px;
+  cursor: pointer;
+  padding: 15px 10px;
+  height: 54px;
+  width: 12%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientButton {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: 20%;
+  }
+}
+
+.ingredientListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+@media (max-width: 1100px) {
+  .ingredientListContainer {
+    width: 80%;
+  }
+}
+
 /* -----End of CreateEvent styles------- */

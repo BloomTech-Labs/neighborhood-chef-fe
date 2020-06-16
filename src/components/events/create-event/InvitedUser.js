@@ -4,6 +4,11 @@ import checkmarkIcon from "@iconify/icons-gridicons/checkmark";
 import { print } from "graphql";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
+import { cardStyles, buttonStyles } from "../../../styles";
+import Typography from "@material-ui/core/Typography";
+import { makeInitials } from "../../../utilities/functions";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
 
 import {
   deleteInvitationSuccess,
@@ -13,6 +18,8 @@ import {
 import { REMOVE_INVITATION } from "../../../graphql/events/event-mutations.js";
 
 const InvitedUser = ({ user }) => {
+  const buttonClasses = buttonStyles();
+  const classes = cardStyles();
   const dispatch = useDispatch();
   const event = useSelector((state) => state.newEvent);
   let users = useSelector((state) => state.userList);
@@ -47,36 +54,15 @@ const InvitedUser = ({ user }) => {
       key={user.id}
     >
       <div style={{ display: "flex", alignItems: "center", width: "80%" }}>
-        {user.photo ? (
-          <img
-            style={{
-              borderRadius: "50%",
-              height: "60px",
-              width: "60px",
-              marginLeft: "5%",
-              border: "4px solid #82DF96",
-            }}
-            src={user.photo}
-            alt="user avatar"
-          />
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "50%",
-              background: "#82DF96",
-              color: "white",
-              height: "60px",
-              width: "60px",
-              marginLeft: "5%",
-              border: "4px solid #82DF96",
-            }}
-          >
-            {user.firstName.slice(0, 1)}{user.lastName.slice(0, 1)}
-          </div>
-        )}
+        <Avatar
+          aria-label="avatar"
+          className={classes.avatar}
+          src={user.photo === "null" ? null : user.photo}
+        >
+          {user.photo === "null" && (
+            <Typography>{makeInitials(user)}</Typography>
+          )}
+        </Avatar>
 
         <div
           style={{
@@ -94,7 +80,9 @@ const InvitedUser = ({ user }) => {
               lineStyle: "normal",
             }}
           >
-            <p>{user.firstName}&nbsp;{user.lastName}</p>
+            <p>
+              {user.firstName}&nbsp;{user.lastName}
+            </p>
           </div>
           <p
             style={{
@@ -108,9 +96,7 @@ const InvitedUser = ({ user }) => {
           </p>
         </div>
       </div>
-      <div style={{ width: "50px" }}>
-        Invited
-      </div>
+      <div style={{ width: "50px" }}>Invited</div>
       <div
         style={{
           display: "flex",
@@ -119,21 +105,9 @@ const InvitedUser = ({ user }) => {
           width: "60px",
         }}
       >
-        <div
+        <IconButton
+          className={buttonClasses.iconGreen}
           onClick={() => deleteInvitation(user)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            background: "#58D473",
-            width: "60px",
-            height: "60px",
-            color: "white",
-            borderRadius: "50%",
-            fontSize: "2rem",
-            outline: "none",
-          }}
         >
           <Icon
             icon={checkmarkIcon}
@@ -143,7 +117,7 @@ const InvitedUser = ({ user }) => {
               fontWeight: "bold",
             }}
           />
-        </div>
+        </IconButton>
       </div>
     </div>
   );
