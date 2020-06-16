@@ -27,6 +27,7 @@ const ParticipantCard = (props) => {
               console.log(user.photo);
               return (
                 <Avatar
+                  key={user.id}
                   title={`${user.firstName} ${user.lastName}`}
                   aria-label="avatar"
                   className={classes.avatar}

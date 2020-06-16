@@ -44,10 +44,8 @@ export const buttonStyles = makeStyles({
   },
   single: {
     justifyContent: "center",
-    margin: "0 auto",
     textAlign: "center",
     background: "#58D573",
-    fontSize: "2rem",
     color: "white",
     "& a": {
       color: "white",
@@ -315,9 +313,22 @@ export const cardStyles = makeStyles((theme) => ({
     },
   },
   comments: {
-    height: "calc(100%-20px)",
+    height: "calc(100% - 30px)",
     maxWidth: "100%",
-    maxHeight: "calc(100%-20px)",
+    maxHeight: "calc(100% - 30px)",
+  },
+  singleCommentParent: {
+    marginBottom: "10px",
+    border: "1px solid rgba(0,0,0,.2)",
+    borderRadius: "10px",
+    padding: "5px",
+  },
+  singleCommentChild: {
+    marginBottom: "10px",
+    border: "1px solid rgba(0,0,0,.1)",
+    borderRadius: "10px",
+    padding: "5px",
+    marginLeft: "35px",
   },
 }));
 
