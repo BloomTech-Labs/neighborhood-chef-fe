@@ -84,7 +84,7 @@ const SearchFriends = () => {
         border: "2px solid #F3F3F3",
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
-        marginTop: "40px",
+        marginTop: "15px",
         marginBottom: "120px",
         padding: "30px",
       }}
