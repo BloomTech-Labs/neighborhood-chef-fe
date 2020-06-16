@@ -122,7 +122,7 @@ const Register = () => {
             </CardActions>
           </Card>
         </div>
-        <div className="landing-page-right">
+        <div className="landing-page-right" style={{ overflow: "hidden" }}>
           <img src={food} alt="food community" height="100%" />
         </div>
       </div>
