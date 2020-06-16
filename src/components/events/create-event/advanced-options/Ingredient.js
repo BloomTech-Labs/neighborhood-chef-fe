@@ -1,6 +1,10 @@
 import React from "react";
 
-const Ingredient = ({ item, removeIngredient }) => {
+const Ingredient = ({ item, ingredientList, setIngredientList }) => {
+  const removeIngredient = (id) => {
+    setIngredientList(ingredientList.filter((item) => item.id !== id));
+  };
+
   return (
     <div
       key={item.id}
@@ -16,7 +20,6 @@ const Ingredient = ({ item, removeIngredient }) => {
         marginBottom: "20px",
         color: "white",
         fontSize: "1.6rem",
-        width: "auto",
         maxWidth: "400px",
         whiteSpace: "pre-line",
         padding: "12px 20px",
