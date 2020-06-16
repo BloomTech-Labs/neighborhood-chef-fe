@@ -47,7 +47,10 @@ const EventDetails = () => {
   const [currentStatus, setCurrentStatus] = useState("");
   const [participants, setParticipants] = useState([]);
 
-  const photo = event.photo !== "null" ? event.photo : chooseDefaultPicture(event.category_id);
+  const photo =
+    event.photo !== "null"
+      ? event.photo
+      : chooseDefaultPicture(event.category_id);
 
   let timeObject, parsedAddressURL;
 
@@ -186,6 +189,7 @@ const EventDetails = () => {
                   userId={me.id}
                   setStatus={setCurrentStatus}
                   key={ele.name}
+                  setParticipants={setParticipants}
                 />
               ))}
             </div>
