@@ -24,6 +24,7 @@ export const ADD_EVENT = gql`
         firstName
         lastName
         status
+        photo
       }
     }
   }
@@ -53,6 +54,7 @@ export const UPDATE_EVENT = gql`
         firstName
         lastName
         status
+        photo
       }
     }
   }
@@ -106,6 +108,7 @@ export const INVITE_USER = gql`
         latitude
         longitude
         status
+        photo
       }
     }
   }
@@ -139,6 +142,7 @@ export const UPDATE_INVITATION = gql`
         latitude
         longitude
         status
+        photo
       }
     }
   }
@@ -171,6 +175,7 @@ export const REMOVE_INVITATION = gql`
         latitude
         longitude
         status
+        photo
       }
     }
   }

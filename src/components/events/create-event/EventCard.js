@@ -6,7 +6,7 @@ import { chooseDefaultPicture } from "../../../utilities/functions";
 
 const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
-  console.log(`EventCard -> values`, values);
+  // console.log(`EventCard -> values`, values);
 
   const photo =
     values.photo !== "null"

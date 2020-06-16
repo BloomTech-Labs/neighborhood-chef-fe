@@ -9,15 +9,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 
+import { makeInitials } from "../../../utilities/functions";
+
 const ParticipantCard = (props) => {
   const classes = cardStyles();
   const currentEvent = useSelector((state) => state.currentEvent);
-
-  const makeInitials = (user) => {
-    return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
-      .slice(0, 1)
-      .toUpperCase()}`;
-  };
 
   return (
     <>
@@ -28,13 +24,17 @@ const ParticipantCard = (props) => {
         {currentEvent.users ? (
           <CardContent style={{ display: "flex" }}>
             {currentEvent.users.map((user) => {
+              console.log(user.photo);
               return (
                 <Avatar
                   title={`${user.firstName} ${user.lastName}`}
-                  aria-label="recipe"
+                  aria-label="avatar"
                   className={classes.avatar}
+                  src={user.photo === "null" ? null : user.photo}
                 >
-                  {user.photo ? user.photo : makeInitials(user)}
+                  {user.photo === "null" && (
+                    <Typography>{makeInitials(user)}</Typography>
+                  )}
                 </Avatar>
               );
             })}

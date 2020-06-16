@@ -11,12 +11,14 @@ export const ALL_USERS = gql`
       address
       latitude
       longitude
+      photo
       eventsOwned {
         id
         title
         description
         startTime
         endTime
+        photo
         createDateTime
         address
         latitude
@@ -33,6 +35,7 @@ export const ALL_USERS = gql`
           longitude
           latitude
           status
+          photo
         }
       }
     }
@@ -50,12 +53,14 @@ export const USER_BY_ID = gql`
       address
       latitude
       longitude
+      photo
       eventsOwned {
         id
         startTime
         endTime
         createDateTime
         title
+        photo
         description
         category_id
         user_id
@@ -73,6 +78,7 @@ export const USER_BY_ID = gql`
           longitude
           latitude
           status
+          photo
         }
       }
     }
@@ -90,6 +96,7 @@ export const USER_BY_EMAIL = gql`
       address
       latitude
       longitude
+      photo
       eventsOwned {
         id
         startTime
@@ -113,6 +120,7 @@ export const USER_BY_EMAIL = gql`
           longitude
           latitude
           status
+          photo
         }
       }
     }
@@ -132,6 +140,7 @@ export const GET_AUTHORED_EVENTS = gql`
       latitude
       longitude
       user_id
+      photo
       modifiers
       hashtags
       users {
@@ -144,6 +153,7 @@ export const GET_AUTHORED_EVENTS = gql`
         status
         address
         gender
+        photo
       }
     }
   }
@@ -176,6 +186,7 @@ export const GET_INVITED_EVENTS = gql`
         status
         address
         gender
+        photo
       }
     }
   }
@@ -193,6 +204,7 @@ export const GET_ATTENDING_EVENTS = gql`
       category_id
       user_id
       address
+      photo
       latitude
       longitude
       modifiers
@@ -207,6 +219,7 @@ export const GET_ATTENDING_EVENTS = gql`
         status
         address
         gender
+        photo
       }
     }
   }
@@ -220,6 +233,7 @@ export const GET_UNINVITED_USERS = gql`
       lastName
       email
       status
+      photo
     }
   }
 `;
@@ -235,6 +249,7 @@ export const GET_FAVORITE_EVENTS = gql`
       category_id
       user_id
       address
+      photo
       latitude
       longitude
       users {
@@ -252,6 +267,7 @@ export const GET_FAVORITE_EVENTS = gql`
         dietaryRestrictions
         dietaryPreferences
         children
+        photo
       }
     }
   }

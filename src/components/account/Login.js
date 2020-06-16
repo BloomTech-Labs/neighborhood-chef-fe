@@ -39,7 +39,6 @@ const Login = () => {
     const redirectURL = `https://dev-599411.okta.com/oauth2/default/v1/authorize?${qs.stringify(
       query
     )}`;
-    console.log(hash);
     window.location.replace(`${redirectURL}`);
   };
 

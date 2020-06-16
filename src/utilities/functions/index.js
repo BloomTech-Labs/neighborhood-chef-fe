@@ -125,3 +125,9 @@ export const chooseDefaultPicture = (category_id) => {
       return modernRoom;
   }
 };
+
+export const makeInitials = (user) => {
+  return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
+    .slice(0, 1)
+    .toUpperCase()}`;
+};
