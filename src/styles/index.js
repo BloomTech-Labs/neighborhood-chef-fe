@@ -250,6 +250,8 @@ export const cardStyles = makeStyles((theme) => ({
     height: "auto",
     maxHeight: "100%",
     overflow: "auto",
+    alignItems: "center",
+    alignSelf: "center",
   },
   media: {
     height: 0,
