@@ -20,7 +20,17 @@ describe("Test ProfileFields static properties", () => {
       <Provider store={store}>
         <BrowserRouter>
           <Formik>
-            <ProfileFields setFieldValue={() => {}} submitting={false} />
+            <ProfileFields
+              setFieldValue={() => {}}
+              submitting={false}
+              values={{
+                allergens: [],
+                dietaryRestrictions: [],
+                dietaryPreferences: [],
+                children: [],
+                pets: [],
+              }}
+            />
           </Formik>
         </BrowserRouter>
       </Provider>

@@ -33,7 +33,13 @@ const Register = () => {
                 Start eating well while making friends!
               </Typography>
               <Formik
-                initialValues={{ email: "" }}
+                initialValues={{
+                  allergens: [],
+                  dietaryRestrictions: [],
+                  dietaryPreferences: [],
+                  children: [],
+                  pets: [],
+                }}
                 validate={(values) => {
                   const errors = {};
                   if (!values.email) {
@@ -57,6 +63,15 @@ const Register = () => {
                     gender: values.gender,
                     address: values.location.address,
                     photo: values.photo,
+                    allergens: JSON.stringify(values.allergens),
+                    dietaryRestrictions: JSON.stringify(
+                      values.dietaryRestrictions
+                    ),
+                    dietaryPreferences: JSON.stringify(
+                      values.dietaryPreferences
+                    ),
+                    children: JSON.stringify(values.children),
+                    pets: JSON.stringify(values.pets),
                   };
                   axios
                     .post(
@@ -77,13 +92,14 @@ const Register = () => {
                     });
                 }}
               >
-                {({ isSubmitting, setFieldValue }) => (
+                {({ isSubmitting, setFieldValue, values }) => (
                   <Form style={{ display: "flex", flexDirection: "column" }}>
                     {currentPage === 1 && <AuthFields />}
                     {currentPage === 2 && (
                       <ProfileFields
                         submitting={isSubmitting}
                         setFieldValue={setFieldValue}
+                        values={values}
                       />
                     )}
                   </Form>

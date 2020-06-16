@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Field } from "formik";
-import { Button } from "@material-ui/core";
+import { Divider, Button } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import ReactMapGL, { Marker } from "react-map-gl";
 import Geocoder from "react-mapbox-gl-geocoder";
@@ -17,6 +17,11 @@ import EventImageUpload from "../events/create-event/EventImageUpload";
 import MapIcon from "@material-ui/icons/Map";
 import IconButton from "@material-ui/core/IconButton";
 import RoomIcon from "@material-ui/icons/Room";
+import AddAllergens from "./AddAllergens.js";
+import AddDietaryRestrictions from "./AddDietaryRestrictions.js";
+import AddDietaryPreferences from "./AddDietaryPreferences.js";
+import AddChildren from "./AddChildren.js";
+import AddPets from "./AddPets.js";
 
 const ProfileFields = (props) => {
   const textBoxClass = textBoxStyles();
@@ -25,7 +30,6 @@ const ProfileFields = (props) => {
   const [gender, setGender] = useState("");
   const [photo, setPhoto] = useState(null);
   const [mapOpen, setMapOpen] = useState(false);
-  // let inputField;
   const [focusAddress, setFocusAddress] = useState(false);
   const addressLabel = useRef();
   const geoInput = useRef();
@@ -82,7 +86,6 @@ const ProfileFields = (props) => {
       setFocusAddress(false);
     });
     addressLabel.current = geoInput.current;
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -203,6 +206,24 @@ const ProfileFields = (props) => {
         setPhoto={changePhoto}
         title="Upload a picture for your avatar (optional)"
       />
+      <Typography
+        onClick={() => {
+          let restrictions = document.querySelectorAll(".restriction");
+          restrictions.forEach((restriction) => {
+            restriction.style.display === "none"
+              ? (restriction.style.display = "inherit")
+              : (restriction.style.display = "none");
+          });
+        }}
+      >
+        Add more info
+      </Typography>
+      <AddAllergens values={props.values} />
+      <AddDietaryRestrictions values={props.values} />
+      <AddDietaryPreferences values={props.values} />
+      <AddChildren values={props.values} />
+      <AddPets values={props.values} />
+      <Divider style={{ marginTop: 20, marginBottom: 20 }} />
 
       <div
         style={{
