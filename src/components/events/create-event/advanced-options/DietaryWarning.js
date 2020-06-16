@@ -1,6 +1,14 @@
 import React from "react";
 
-const DietaryWarning = ({ diet, removeDietWarning }) => {
+const DietaryWarning = ({ diet, dietWarnings, setDietWarnings }) => {
+  const removeDietWarning = (id) => {
+    setDietWarnings(
+      dietWarnings.filter((diet) => {
+        return diet.id !== id;
+      })
+    );
+  };
+
   return (
     <div key={diet.id} className="warning">
       <p style={{ wordWrap: "break-word" }}>{diet.title}</p>

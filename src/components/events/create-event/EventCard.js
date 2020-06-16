@@ -8,7 +8,10 @@ const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
   console.log(`EventCard -> values`, values);
 
-  const photo = values.photo !== "null" ? values.photo : chooseDefaultPicture(values.category_id);
+  const photo =
+    values.photo !== "null"
+      ? values.photo
+      : chooseDefaultPicture(values.category_id);
 
   return (
     <div
@@ -22,7 +25,14 @@ const EventCard = () => {
         padding: "30px",
       }}
     >
-      <div style={{ display: "flex", width: "100%", minHeight: "200px", flexDirection: "row" }}>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          minHeight: "200px",
+          flexDirection: "row",
+        }}
+      >
         <img
           style={{
             maxWidth: "50%",
