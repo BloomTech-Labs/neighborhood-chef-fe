@@ -70,8 +70,6 @@ const CommentsCard = (props) => {
     setIdCounter(idCounter + 1);
     setNewComment("");
 
-    console.log(comments);
-
     // axiosWithAuth()({
     //   url: `${process.env.REACT_APP_BASE_URL}/graphql`,
     //   method: "post",
