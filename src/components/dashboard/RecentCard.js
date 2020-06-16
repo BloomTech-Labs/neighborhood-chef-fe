@@ -56,6 +56,7 @@ const RecentCard = (props) => {
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
+  const [creatorData, setCreatorData] = useState({});
   const [creatorName, setCreatorName] = useState("");
   const favoriteEvents = useSelector((state) => state.favoriteEvents);
   const isFavorite = isEventFavorite(favoriteEvents, props.id);
@@ -106,7 +107,8 @@ const RecentCard = (props) => {
   };
 
   useEffect(() => {
-    //get creator name when event loads.  This is a rough and inefficient way to do this, especially if there ends up being protected queries
+    //get creator name & photo when event loads.
+    //This is a rough and inefficient way to do this, especially if there ends up being protected queries
     props.user_id &&
       axiosWithAuth()({
         url: `${process.env.REACT_APP_BASE_URL}/graphql`,
@@ -118,6 +120,7 @@ const RecentCard = (props) => {
       })
         .then((res) => {
           const data = res.data.data.getUserById;
+          setCreatorData(data);
           setCreatorName(`${data.firstName} ${data.lastName}`);
         })
         .catch((err) => {
@@ -125,19 +128,20 @@ const RecentCard = (props) => {
         });
     // eslint-disable-next-line
   }, []);
+
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar
-            key={me.id}
-            title={`${me.firstName} ${me.lastName}`}
+            key={creatorData.id}
+            title={creatorName}
             aria-label="avatar"
             className={classes.avatar}
-            src={me.photo === "null" ? null : me.photo}
+            src={creatorData.photo === "null" ? null : creatorData.photo}
           >
-            {me.photo === "null" && (
-              <Typography>{makeInitials(me)}</Typography>
+            {creatorData.photo === "null" && (
+              <Typography>{makeInitials(creatorData)}</Typography>
             )}
           </Avatar>
         }
