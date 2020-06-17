@@ -506,12 +506,6 @@ a {
 }
 
 /* page two */
-.createFormPage2Container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 90%;
-}
 
 @media (max-width: 1278px) {
   .createFormPage2Container {
@@ -600,13 +594,6 @@ a {
   min-height: 200px;
 }
 
-/* @media (max-width: 1000px) {
-  .pageThreeCard {
-    align-items: center;
-    justify-content: center;
-  }
-} */
-
 .modifierContainer {
   display: flex;
   flex-wrap: wrap;
@@ -622,12 +609,10 @@ a {
   margin-left: 3%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .individualModifierContainer {
     margin-top: 25px;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
   }
 }
 
@@ -639,12 +624,30 @@ a {
   width: 100%;
 }
 
-@media (max-width: 1275px) {
+@media (max-width: 1280px) {
   .formPageFourContainer {
     justify-content: center;
     align-items: center;
     width: 90%;
     margin-left: 7%;
+  }
+}
+
+.searchFriendsBtn {
+  background: #82df96;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-left: 5%;
+  color: white;
+  outline: none;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 15%;
+}
+
+@media (max-width: 800px) {
+  .searchFriendsBtn {
+    width: 25%;
   }
 }
 
@@ -711,7 +714,7 @@ a {
   }
 }
 
-.formPageThreeDateDiv {
+/* .formPageThreeDateDiv {
   display: flex;
 }
 
@@ -722,7 +725,7 @@ a {
     justify-content: space-evenly;
     height: 150px;
   }
-}
+} */
 
 /* -- CreateFormHeader styles ---*/
 
@@ -804,7 +807,7 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 30%;
+  width: 25%;
   height: 38px;
   font-size: 1.6rem;
   outline: none;
@@ -826,7 +829,7 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 8%;
+  width: 12%;
   height: 38px;
   font-size: 1.6rem;
   outline: none;

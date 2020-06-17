@@ -130,17 +130,7 @@ const SearchFriends = () => {
           </div>
           <button
             onClick={() => push("/view-events")}
-            style={{
-              background: "#82DF96",
-              padding: "15px 20px",
-              borderRadius: "5px",
-              marginLeft: "5%",
-              color: "white",
-              outline: "none",
-              fontSize: "2rem",
-              fontWeight: "bold",
-              width: "15%",
-            }}
+            className="searchFriendsBtn"
           >
             Done
           </button>
