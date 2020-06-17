@@ -58,7 +58,7 @@
   "scripts": {
     "start": " BROWSER=none react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject",
     "coverage": "CI=true yarn test --coverage --watchAll=false || true"
   },
