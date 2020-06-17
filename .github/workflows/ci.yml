@@ -11,16 +11,23 @@ on:
 # The jobs that will be run, usually in parallel
 jobs:
   tests:
-    name: Run Tests
+    name: Tests
     runs-on: ubuntu-latest
     steps:
-      # A GitHub action for checking out the current branch
+      - name: Make .env file
+        # A GitHub action for creating a .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.REACT_APP_MAPBOX_ACCESS_TOKEN }}
+
+      - name: Run Tests
+        # A GitHub action for checking out the current branch
       - uses: actions/checkout@master
-      # A GitHub action to setup Node.js
+        # A GitHub action to setup Node.js
       - uses: actions/setup-node@master
         with:
           node-version: "12"
-      # Run the yarn install command before proceeding
+        # Run the yarn install command before proceeding
       - run: yarn install
       - run: yarn test
 
