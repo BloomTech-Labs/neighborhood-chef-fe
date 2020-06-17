@@ -56,14 +56,17 @@ const AuthHeader = () => {
           marginRight: "3%",
         }}
       >
-        <button
-          className={`${classes.root} ${
-            url === "login" || !url ? classes.active : classes.notActive
-          }`}
-          onClick={() => push("/login")}
-        >
-          <Typography>Login</Typography>
-        </button>
+        {location.pathname !== "/login" && (
+          <button
+            className={`${classes.root} ${
+              url === "login" || !url ? classes.active : classes.notActive
+            }`}
+            onClick={() => push("/login")}
+          >
+            <Typography>Login</Typography>
+          </button>
+        )}
+
         <button
           className={`${classes.root} ${
             url === "register" ? classes.active : classes.notActive

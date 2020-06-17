@@ -70,7 +70,7 @@ const FullEvent = ({ match }) => {
                   <ParticipantCard />
                   <ShareCard />
                 </div>
-                <CommentsCard />
+                <CommentsCard eventId={eventId} />
               </div>
             </>
           ) : (

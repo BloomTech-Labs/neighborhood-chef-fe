@@ -77,6 +77,7 @@ export const parseTime = (start, end) => ({
   monthYear: moment(parseInt(start)).format("MMM YYYY"),
   startTime: moment(parseInt(start)).format("h:mm a"),
   endTime: moment(parseInt(end)).format("h:mm a"),
+  commentTime: moment(parseInt(start)).format("MMM Do, h:mm a"),
   unixStart: start,
   formDate: moment(parseInt(start)).format("YYYY-MM-DD"),
   formStartTime: moment(parseInt(start)).format("HH:mm:ss"),
