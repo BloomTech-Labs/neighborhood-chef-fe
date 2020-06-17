@@ -2,41 +2,16 @@
 name: build
 
 # What conditions trigger the workflow
-#  In this case, all pushes and pull requests
-on: [push, pull_request]
+#  In this case, pull requests
+on: [pull_request]
 
 # The jobs that will be run, usually in parallel
 jobs:
-  # A job to generate and publish code coverage
-  coverage:
-    # A more descriptive name of the job
-    name: Test and publish test coverage
-    # The OS on which the job will run
+  tests:
+    name: Run Tests
     runs-on: ubuntu-latest
-    # The steps for the job, executed in sequence
     steps:
-      # A GitHub action for checking out the current branch
-      - uses: actions/checkout@master
-      # A GitHub action to setup Node.js
-      - uses: actions/setup-node@master
-        with:
-          node-version: "12"
-      # Run the yarn install command before proceeding
-      - run: yarn install
-      # A GitHub action for running tests and publishing coverage
-      - uses: paambaati/codeclimate-action@v2.4.0
-        env:
-          # An environment variable, the value is a GitHub repo secret
-          CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
-
-        with:
-          # Run our `coverage` script in our `package.json`
-          coverageCommand: yarn run coverage
-          # By default, this looks for a `coverage` folder in the root of your project, but you may need to change this
-          coverageLocations: "./coverage/clover.xml:clover"
-          debug: true
-
-      # Send a build notification email
+      - run: yarn test
       - name: Send email
         uses: dawidd6/action-send-mail@v2.2.0
         with:
@@ -58,3 +33,31 @@ jobs:
           from: Neighborhood Chef <${{secrets.MAIL_USERNAME}}>
           # Optional content type (defaults to text/plain):
           content_type: text/html
+
+  # A job to generate and publish code coverage
+  coverage:
+    # A more descriptive name of the job
+    name: Determine and publish test coverage
+    # The OS on which the job will run
+    runs-on: ubuntu-latest
+    # The steps for the job, executed in sequence
+    steps:
+      # A GitHub action for checking out the current branch
+      - uses: actions/checkout@master
+      # A GitHub action to setup Node.js
+      - uses: actions/setup-node@master
+        with:
+          node-version: "12"
+      # Run the yarn install command before proceeding
+      - run: yarn install
+      # A GitHub action for running tests and publishing coverage
+      - uses: paambaati/codeclimate-action@v2.4.0
+        env:
+          # An environment variable, the value is a GitHub repo secret
+          CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
+        with:
+          # Run our `coverage` script in our `package.json`
+          coverageCommand: yarn run coverage
+          # By default, this looks for a `coverage` folder in the root of your project, but you may need to change this
+          coverageLocations: "./coverage/clover.xml:clover"
+          debug: true
