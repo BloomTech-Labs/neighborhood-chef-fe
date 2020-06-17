@@ -24,6 +24,6 @@ describe("Test FullEvent static properties", () => {
   });
 
   test("FullEvent component renders", () => {
-    expect(FullEventComponent.getByText(/event/i));
+    expect(FullEventComponent.getAllByText(/event/i));
   });
 });
