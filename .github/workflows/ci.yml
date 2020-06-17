@@ -11,7 +11,7 @@ on:
 # The jobs that will be run, usually in parallel
 jobs:
   tests:
-    name: Tests
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Make .env file
