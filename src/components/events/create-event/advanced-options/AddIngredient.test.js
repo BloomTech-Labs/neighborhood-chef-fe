@@ -24,7 +24,7 @@ describe("Test AddIngredient component", () => {
     expect(AddIngredientComponent).toBeDefined();
     expect(
       AddIngredientComponent.getByText(
-        /Request for guests to bring ingredients/i
+        /List ingredients provided and requested for guests to bring/i
       )
     );
     expect(AddIngredientComponent.getByText(/Milk/i));

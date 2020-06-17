@@ -20,7 +20,7 @@ const AddIngredient = ({ ingredientList, setIngredientList, deletedIngredientsLi
     e.preventDefault();
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
   };
- 
+
   const [requested, setRequested] = useState(false);
 
   const eventToEdit = useSelector((state) => state.eventToEdit);
