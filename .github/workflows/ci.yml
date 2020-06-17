@@ -24,12 +24,13 @@ jobs:
         # A GitHub action for checking out the current branch
         uses: actions/checkout@master
 
-      - name: Install node and packages
+      - name: Install node
         # A GitHub action to setup Node.js
         uses: actions/setup-node@master
         with:
           node-version: "12"
-        # Run the yarn install command before proceeding
+
+      - name: Install packages
         run: yarn install
 
       - name: Run Tests
