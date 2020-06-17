@@ -30,10 +30,25 @@ const FullEvent = ({ match }) => {
         .then((res) => {
           dispatch(getSingleEvent(res.data.data.getEventById));
           dispatch(makeActive(eventId));
-        })
+
+          axiosWithAuth()({
+            url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+            method: "post",
+            data: {
+              query: print(GET_EVENT_INGREDIENTS_BY_ID),
+              variables: { event_id: eventId },
+            },
+          })
+          .then((res) => {
+            dispatch(setCurrentIngredients(res.data.data.getIngredientsByEventId));
+          })
+          .catch((err) => {
+            console.dir(err);
+          })
         .catch((err) => {
           console.log(err.message);
         });
+      })
   }, [dispatch, eventId]);
 
   return (
