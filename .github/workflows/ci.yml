@@ -11,7 +11,7 @@ on:
 # The jobs that will be run, usually in parallel
 jobs:
   tests:
-    name: Run Tests
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Make .env file
@@ -20,7 +20,7 @@ jobs:
         with:
           envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.REACT_APP_MAPBOX_ACCESS_TOKEN }}
 
-      - name: Run Tests
+      - name: Checkout branch, install node and packages
         # A GitHub action for checking out the current branch
       - uses: actions/checkout@master
         # A GitHub action to setup Node.js
@@ -28,8 +28,10 @@ jobs:
         with:
           node-version: "12"
         # Run the yarn install command before proceeding
-      - run: yarn install
-      - run: yarn test
+        run: yarn install
+
+      - name: Run Tests
+        run: yarn test
 
       - name: Determine and publish test coverage
         # A GitHub action for running tests and publishing coverage
