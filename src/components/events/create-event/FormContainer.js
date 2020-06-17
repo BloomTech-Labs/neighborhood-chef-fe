@@ -264,11 +264,33 @@ const FormContainer = () => {
               })
               .then((res) => {
                 dispatch(createEventSuccess(res.data.data.addEvent));
-                setHashtags([]);
-                resetForm(initialState);
-                resetModifiers();
-                setModifiers([]);
-                dispatch(setPage(4));
+
+                const formattedIngredientsList = ingredientList.map(ingredient => {
+                  return {...ingredient, event_id: Number(res.data.data.addEvent.id)}
+                });
+
+                console.log(ingredientList);
+
+                axiosWithAuth()
+                  .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                    query: print(ADD_EVENT_INGREDIENTS),
+                    variables: {
+                        input: {
+                          ingredients: formattedIngredientsList
+                        }
+                    },
+                  })
+                  .then( res => {
+                    console.log(res.data);
+                    setHashtags([]);
+                    resetForm(initialState);
+                    resetModifiers();
+                    setModifiers([]);
+                    dispatch(setPage(4));
+                  })
+                  .catch((err) => console.dir(err));
+
+
               })
               .catch((err) => console.log(err.message));
           }
