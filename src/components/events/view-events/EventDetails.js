@@ -140,7 +140,7 @@ const EventDetails = () => {
             title="Event Details Photo"
           />
           <p style={{ opacity: ".5" }}> {event.description}</p>
-          <div>Confirmed Participants: {participants.length}</div>
+          <div>Confirmed Attending: {participants.length}</div>
           <div>
             <span style={{ marginRight: "5px", verticalAlign: "middle" }}>
               <Icon height="20" icon={calendarIcon} />
