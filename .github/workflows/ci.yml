@@ -14,22 +14,6 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Make .env file
-        # A GitHub action for creating a .env file
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.REACT_APP_MAPBOX_ACCESS_TOKEN }}
-
-      - name: Show .env file
-        uses: pCYSl5EDgo/cat@master
-        id: showFile
-        with:
-          path: .env
-
-      - run: echo $FILE
-        env:
-          FILE: ${{ steps.showFile.outputs.text }}
-
       - name: Checkout branch
         # A GitHub action for checking out the current branch
         uses: actions/checkout@master
