@@ -262,7 +262,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
       </div>
 
       {error && (
-        <p style={{ textAlign: "center", color: "crimson" }}>
+        <p style={{ textAlign: "center", color: "crimson", width: "90%" }}>
           *Title, Address, Description, Date, Start Time, and Category are
           required
         </p>

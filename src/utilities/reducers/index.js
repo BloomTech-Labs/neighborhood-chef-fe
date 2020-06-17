@@ -20,14 +20,14 @@ import {
   ADD_FAVORITE_EVENT_SUCCESS,
   REMOVE_FAVORITE_EVENT_SUCCESS,
   SET_PAGE,
-  SET_CURRENT_INGREIDENTS
+  SET_CURRENT_INGREIDENTS,
 } from "../actions";
 
 const initialDate = new Date();
 
 const initialState = {
   loginCredentials: {},
-  page: 1,
+  page: 2,
   activeEvent: null,
   selectedMonth: initialDate.setDate(15),
   neighborhoodName: "My Neighborhood",
@@ -175,12 +175,12 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         page: payload,
       };
 
-    case SET_CURRENT_INGREIDENTS: 
-        return {
-          ...state,
-          currentEventIngredients: payload
-        };
-    
+    case SET_CURRENT_INGREIDENTS:
+      return {
+        ...state,
+        currentEventIngredients: payload,
+      };
+
     default:
       return {
         ...state,

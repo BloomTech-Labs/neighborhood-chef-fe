@@ -87,6 +87,7 @@ const SearchFriends = () => {
         marginTop: "15px",
         marginBottom: "120px",
         padding: "30px",
+        width: "90%",
       }}
     >
       <div>
@@ -117,7 +118,7 @@ const SearchFriends = () => {
 
       <div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div className="createFormInputDiv" style={{ width: "70%" }}>
+          <div className="createFormInputDiv" style={{ width: "60%" }}>
             <input
               type="text"
               name="search"

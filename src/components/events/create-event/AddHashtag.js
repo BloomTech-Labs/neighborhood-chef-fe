@@ -23,7 +23,9 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
 
   return (
     <div style={{ margin: "15px 0" }}>
-      <Typography style={{ marginTop: "25px", marginBottom: "25px" }}>
+      <Typography
+        style={{ marginTop: "25px", marginBottom: "25px", width: "100%" }}
+      >
         Add some hashtags for your event.
       </Typography>
       <div
