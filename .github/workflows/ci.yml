@@ -11,6 +11,14 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
+      # A GitHub action for checking out the current branch
+      - uses: actions/checkout@master
+      # A GitHub action to setup Node.js
+      - uses: actions/setup-node@master
+        with:
+          node-version: "12"
+      # Run the yarn install command before proceeding
+      - run: yarn install
       - run: yarn test
       - name: Send email
         uses: dawidd6/action-send-mail@v2.2.0
