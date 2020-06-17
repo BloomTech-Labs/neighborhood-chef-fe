@@ -8,12 +8,9 @@ const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
       })
     );
   };
+
   return (
-    <div
-      key={allergy.id}
-      onClick={() => removeAllergy(allergy.id)}
-      className="warning"
-    >
+    <div key={allergy.id} className="warning">
       <p style={{ wordWrap: "break-word" }}>{allergy.name}</p>
       <span
         style={{
