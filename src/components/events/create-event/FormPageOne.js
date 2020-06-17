@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Geocoder from "react-mapbox-gl-geocoder";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../utilities/actions";
+import moment from "moment";
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -22,6 +23,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
   const [viewport, setViewport] = useState({});
   const { push } = useHistory();
   const dispatch = useDispatch();
+  const today = moment().format("YYYY-MM-DD");
 
   const mapAccess = {
     mapboxApiAccessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
@@ -107,7 +109,10 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
               id="eventFormDate"
               value={values.date}
               onChange={handleChange}
-              InputProps={{ disableUnderline: true }}
+              InputProps={{
+                inputProps: { min: today },
+                disableUnderline: true,
+              }}
             />
           </div>
 
