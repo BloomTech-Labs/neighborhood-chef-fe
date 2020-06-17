@@ -16,84 +16,99 @@ import { USER_BY_EMAIL } from "../graphql/users/user-queries";
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
 import { print } from "graphql";
 
-const styles = makeStyles({
-  "grid-container": {
+const styles = makeStyles( theme => {
+ return (  
+ { 
+    "grid-container": {
     display: "grid",
     "grid-template-columns": "2fr 8fr",
     "grid-template-rows": "1fr 9fr",
     gap: "1px 1px",
     "grid-template-areas": ' "Logo Header" "Sidebar Variable" ',
     height: "100vh",
-  },
-  "grid-container-shifted": {
-    display: "grid",
-    "grid-template-columns": "2fr 2fr 2fr 2fr",
-    "grid-template-rows": "1fr 9fr",
-    gap: "1px 1px",
-  },
-  Variable: {
-    gridArea: "Variable",
-  },
-  "Variable-Shifted": {
-    "grid-area": "2 / 2 / 3 / 4",
-  },
-  Header: {
-    gridArea: "Header",
-    height: "10vh",
-  },
-  "Header-Shifted": {
-    "grid-area": "1 / 2 / 2 / 4",
-  },
-  Sidebar: {
-    gridArea: "Sidebar",
-    paddingLeft: "5%",
-  },
-  "Sidebar-Shifted": {
-    "grid-area": "2 / 1 / 3 / 2",
-  },
-  Logo: {
-    gridArea: "Logo",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
 
-    "& *": {
-      width: "100%",
+    [theme.breakpoints.down("md")] : {
+      "grid-template-columns": "1fr",
+      "grid-template-rows": "1fr 1fr 8fr",
+      "gap": "1px 1px",
+      "grid-template-areas": '"Logo" "Header" "Variable"',
+    }
+    },
+    "grid-container-shifted": {
+      display: "grid",
+      "grid-template-columns": "2fr 2fr 2fr 2fr",
+      "grid-template-rows": "1fr 9fr",
+      gap: "1px 1px",
+    },
+    Variable: {
+      gridArea: "Variable",
+    },
+    "Variable-Shifted": {
+      "grid-area": "2 / 2 / 3 / 4",
+    },
+    Header: {
+      gridArea: "Header",
+      height: "10vh",
+    },
+    "Header-Shifted": {
+      "grid-area": "1 / 2 / 2 / 4",
+    },
+    Sidebar: {
+      gridArea: "Sidebar",
+      paddingLeft: "5%",
 
-      "&:first-child": {
-        width: "20%",
-      },
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+        visibility: "none"
+      }
+    },
+    "Sidebar-Shifted": {
+      "grid-area": "2 / 1 / 3 / 2",
+    },
+    Logo: {
+      gridArea: "Logo",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-start",
 
-      "&:last-child": {
-        width: "115%",
+      "& *": {
+        width: "100%",
+
+        "&:first-child": {
+          width: "20%",
+        },
+
+        "&:last-child": {
+          width: "115%",
+        },
       },
     },
-  },
-  "Logo-Shifted": {
-    "grid-area": "1 / 1 / 2 / 2",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    "Logo-Shifted": {
+      "grid-area": "1 / 1 / 2 / 2",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-start",
 
-    "& *": {
-      width: "100%",
+      "& *": {
+        width: "100%",
 
-      "&:first-child": {
-        width: "20%",
-      },
+        "&:first-child": {
+          width: "20%",
+        },
 
-      "&:last-child": {
-        width: "115%",
+        "&:last-child": {
+          width: "115%",
+        },
       },
     },
-  },
-  "Drawer-Container": {
-    "grid-area": "1 / 4 / 3 / 5",
-    width: "25vw",
-  },
-  Drawer: {
-    width: "25vw",
-  },
+    "Drawer-Container": {
+      "grid-area": "1 / 4 / 3 / 5",
+      width: "25vw",
+    },
+    Drawer: {
+      width: "25vw",
+    },
+  })
 });
 
 function GridStructure(props) {
