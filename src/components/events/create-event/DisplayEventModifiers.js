@@ -112,7 +112,7 @@ const DisplayEventModifiers = (props) => {
       {props.ingredientList.length > 0 && (
         <div className="individualModifierContainer">
           <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-            Requested Ingredients
+            Ingredients
           </h4>
           <div
             style={{
