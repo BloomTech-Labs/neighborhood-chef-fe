@@ -62,7 +62,7 @@ const FormPageTwo = ({
           removeHashtag={removeHashtag}
         />
         <div>
-          <Typography style={{ margin: "25px 0" }}>
+          <Typography style={{ margin: "10px 0" }}>
             Pick modifiers for your event.
           </Typography>
           <div style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}>

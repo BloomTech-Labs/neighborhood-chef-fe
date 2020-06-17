@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { useDispatch } from "react-redux";
 import { changeStatus } from "../../../utilities/actions";
 import { buttonStyles } from "../../../styles";
+import { useLocation } from "react-router-dom";
 
 import { print } from "graphql";
 import { UPDATE_INVITATION } from "../../../graphql/events/event-mutations";
@@ -14,9 +15,11 @@ const StatusButton = ({
   eventId,
   userId,
   setStatus,
+  setParticipants,
 }) => {
   const classes = buttonStyles();
   const dispatch = useDispatch();
+  let location = useLocation();
 
   const updateStatus = (newStatus) => {
     axiosWithAuth()
@@ -36,6 +39,16 @@ const StatusButton = ({
         )[0].status;
         setStatus(newStatus);
         dispatch(changeStatus(eventId, newStatus));
+
+        if (
+          location.pathname === `/events/${eventId}` ||
+          location.pathname === "/view-events"
+        ) {
+          const attendees = res.data.data.updateInvitation.users.filter(
+            (user) => user.status === "Going"
+          );
+          setParticipants(attendees);
+        }
       });
   };
   return (
