@@ -69,3 +69,16 @@ export const EVENT_BY_ID = gql`
     }
   }
 `;
+
+export const GET_EVENT_INGREDIENTS_BY_ID = gql`
+query 
+getIngredientsByEventId($event_id: Int!) {
+  getIngredientsByEventId(event_id: $event_id) {
+    id
+    event_id
+    description
+    requested
+    user_id
+  }
+}
+` ;

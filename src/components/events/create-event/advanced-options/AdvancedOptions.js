@@ -11,6 +11,8 @@ const AdvancedOptions = ({
   setDietWarnings,
   ingredientList,
   setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList
 }) => {
   return (
     <div>
@@ -25,6 +27,8 @@ const AdvancedOptions = ({
       <AddIngredient
         ingredientList={ingredientList}
         setIngredientList={setIngredientList}
+        deletedIngredientsList={deletedIngredientsList}
+        setDeletedIngredientsList={setDeletedIngredientsList}
       />
     </div>
   );
