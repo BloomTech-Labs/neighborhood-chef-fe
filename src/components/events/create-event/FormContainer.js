@@ -160,12 +160,99 @@ const FormContainer = () => {
                 },
               })
               .then((res) => {
+
                 dispatch(updateEventSuccess(res.data.data.updateEvent));
+                
+                const addedIngredients = ingredientList.filter( ingredient => {
+                  return ingredient.id === undefined
+                });
+
+                if(addedIngredients.length < 1 && deletedIngredientsList.length < 1){
+
                 setHashtags([]);
                 resetForm(initialState);
                 resetModifiers();
                 setModifiers([]);
                 dispatch(setPage(4));
+                }
+                else {
+
+                  if(addedIngredients.length > 0) {
+
+                    const formattedIngredientsList = ingredientList.map(ingredient => {
+                        return {...ingredient, event_id: Number(res.data.data.updateEvent.id)}
+                      });
+
+                    axiosWithAuth()
+                    .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                      query: print(ADD_EVENT_INGREDIENTS),
+                      variables: {
+                          input: {
+                            ingredients: formattedIngredientsList
+                          }
+                      },
+                    })
+                    .then( res => {
+
+                      if(deletedIngredientsList.length > 0) {
+
+                        deletedIngredientsList.forEach(async (ingredient) => {
+                          try {   
+                            const response = await axiosWithAuth().post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                                query: print(DELETE_EVENT_INGREDIENT),
+                                variables: {
+                                  id: ingredient.id
+                                },
+                              });
+                              console.log(response)
+                            } catch(err) {
+                              console.dir(err);
+                            }
+                        });
+
+                        console.log(res.data);
+                        setHashtags([]);
+                        resetForm(initialState);
+                        resetModifiers();
+                        setModifiers([]);
+                        dispatch(setPage(4));
+                
+                    } else {
+
+                        console.log(res.data);
+                        setHashtags([]);
+                        resetForm(initialState);
+                        resetModifiers();
+                        setModifiers([]);
+                        dispatch(setPage(4));
+                    }
+                    })
+                    .catch((err) => console.dir(err));
+
+                  } else {
+
+                    deletedIngredientsList.forEach(async (ingredient) => {
+                      try {   
+                        const response = await axiosWithAuth().post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                            query: print(DELETE_EVENT_INGREDIENT),
+                            variables: {
+                              id: ingredient.id
+                            },
+                          });
+                          console.log(response)
+                        } catch(err) {
+                          console.dir(err);
+                        }
+                    });
+
+                    setHashtags([]);
+                    resetForm(initialState);
+                    resetModifiers();
+                    setModifiers([]);
+                    dispatch(setPage(4));
+
+                  }
+                }
               })
               .catch((err) => console.log(err.message));
           } else {
