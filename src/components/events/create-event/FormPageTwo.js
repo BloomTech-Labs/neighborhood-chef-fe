@@ -40,6 +40,8 @@ const FormPageTwo = ({
   setDietWarnings,
   ingredientList,
   setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList
 }) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(
     showOptions(allergenList, dietWarnings)
@@ -99,6 +101,8 @@ const FormPageTwo = ({
               setDietWarnings={setDietWarnings}
               ingredientList={ingredientList}
               setIngredientList={setIngredientList}
+              deletedIngredientsList={deletedIngredientsList}
+              setDeletedIngredientsList={setDeletedIngredientsList}
             />
           </>
         )}
