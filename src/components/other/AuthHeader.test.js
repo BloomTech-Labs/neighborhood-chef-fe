@@ -15,7 +15,7 @@ describe("Test AuthHeader component", () => {
   });
   test.only("AuthHeader component renders", () => {
     expect(AuthHeaderComponent.getByText(/Register/i));
-    expect(AuthHeaderComponent.getByText(/Login/i));
+    expect(AuthHeaderComponent.getByText(/Neighborhood Chef/i));
     expect(AuthHeaderComponent).toBeDefined();
   });
 });
