@@ -44,9 +44,8 @@ function PersistentHeader(props) {
       <Icon icon={magnifyingGlass} />
       <Avatar
         onClick={props.openDrawer}
-        style={props.open ? { display: "none" } : { display: "flex" }}
+        style={props.open ? { display: "none" } : { display: "flex", border: "2px solid rgba(88, 212, 115, 0.3)" }}
         className={cardClasses.avatar}
-        style={{ border: "2px solid rgba(88, 212, 115, 0.3)" }}
         alt="Picture User Avatar"
         src={me.photo !== "null" ? me.photo : null}
       >

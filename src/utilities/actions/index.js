@@ -1,4 +1,4 @@
-import { ADD_EVENT_INGREDIENTS } from "../../graphql/events/event-mutations";
+// import { ADD_EVENT_INGREDIENTS } from "../../graphql/events/event-mutations";
 
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";

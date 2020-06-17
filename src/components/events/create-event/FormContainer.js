@@ -104,6 +104,7 @@ const FormContainer = () => {
         setIngredientList(ingredientsToEdit);
       }
     }
+    // eslint-disable-next-line
   }, [isEditing, eventToEdit, dispatch]);
 
   // cleanup
