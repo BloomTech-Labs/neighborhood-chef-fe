@@ -16,6 +16,8 @@ import {
 import {
   ADD_EVENT,
   UPDATE_EVENT,
+  ADD_EVENT_INGREDIENTS,
+  DELETE_EVENT_INGREDIENT
 } from "../../../graphql/events/event-mutations.js";
 
 // component and helper function imports
@@ -47,7 +49,9 @@ const FormContainer = () => {
   const [allergenList, setAllergenList] = useState([]);
   const [dietWarnings, setDietWarnings] = useState([]);
   const [ingredientList, setIngredientList] = useState([]);
+  const [deletedIngredientsList, setDeletedIngredientsList] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
+  const ingredientsToEdit = useSelector(state => state.currentEventIngredients);
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
@@ -94,6 +98,10 @@ const FormContainer = () => {
 
       if (eventToEdit.photo !== "null") {
         setPhoto(eventToEdit.photo);
+      }
+
+      if (ingredientsToEdit && ingredientsToEdit.length > 0) {
+        setIngredientList(ingredientsToEdit);
       }
     }
   }, [isEditing, eventToEdit, dispatch]);
@@ -208,6 +216,8 @@ const FormContainer = () => {
                     setDietWarnings={setDietWarnings}
                     ingredientList={ingredientList}
                     setIngredientList={setIngredientList}
+                    deletedIngredientsList={deletedIngredientsList}
+                    setDeletedIngredientsList={setDeletedIngredientsList}
                   />
                 </>
               )}

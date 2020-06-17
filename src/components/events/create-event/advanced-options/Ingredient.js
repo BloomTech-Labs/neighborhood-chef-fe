@@ -1,14 +1,17 @@
 import React from "react";
 
-const Ingredient = ({ item, ingredientList, setIngredientList }) => {
-  const removeIngredient = (id) => {
-    setIngredientList(ingredientList.filter((item) => item.id !== id));
+const Ingredient = ({ item, ingredientList, setIngredientList, deletedIngredientsList, setDeletedIngredientsList, index }) => {
+  const removeIngredient = (index) => {
+
+    if(ingredientList[index].id !== undefined) {
+      setDeletedIngredientsList([...deletedIngredientsList, ingredientList[index]]);
+    }
+    setIngredientList(ingredientList.filter((_, i) => i !== index));
   };
 
   return (
     <div
-      key={item.id}
-      onClick={() => removeIngredient(item.id)}
+      onClick={() => removeIngredient(index)}
       style={{
         display: "flex",
         alignItems: "center",

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
-import { EVENT_BY_ID } from "../../../graphql/events/event-queries";
-import { getSingleEvent } from "../../../utilities/actions";
+import { EVENT_BY_ID, GET_EVENT_INGREDIENTS_BY_ID } from "../../../graphql/events/event-queries";
+import { getSingleEvent, setCurrentIngredients } from "../../../utilities/actions";
 import { makeActive } from "../../../utilities/actions";
 
 import Grow from "@material-ui/core/Grow";

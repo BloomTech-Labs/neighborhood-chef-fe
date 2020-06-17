@@ -104,13 +104,16 @@ const AddIngredient = ({ ingredientList, setIngredientList }) => {
         </div>
       </div>
       <div className="ingredientListContainer">
-        {ingredientList.map((item) => {
+        {ingredientList.map((item, index) => {
           return (
             <Ingredient
               item={item}
-              key={item.id}
+              index={index}
+              key={index}
               ingredientList={ingredientList}
               setIngredientList={setIngredientList}
+              deletedIngredientsList={deletedIngredientsList}
+              setDeletedIngredientsList={setDeletedIngredientsList}
             />
           );
         })}
