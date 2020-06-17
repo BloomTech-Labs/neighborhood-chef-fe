@@ -2,19 +2,26 @@ import React from "react";
 import AdvancedOptions from "./AdvancedOptions.js";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "../../../../utilities/reducers/";
+import thunk from "redux-thunk";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 import "@testing-library/jest-dom/extend-expect";
 
 const allergenList = [{ id: 1, name: "Shellfish" }];
 const dietWarnings = [{ id: 1, title: "Keto" }];
 const ingredientList = [
-  { id: 1, name: "Milk", quantity: 1, measurement: "Gallon" },
+  { description: "Milk 1 Gallon" },
 ];
 
 describe("Test AdvanedOptions component", () => {
   let AdvancedOptionsComponent;
   beforeEach(() => {
     AdvancedOptionsComponent = render(
+    <Provider store={store}>
       <BrowserRouter>
         <AdvancedOptions
           allergenList={allergenList}
@@ -22,6 +29,7 @@ describe("Test AdvanedOptions component", () => {
           ingredientList={ingredientList}
         />
       </BrowserRouter>
+    </Provider>
     );
   });
 
@@ -29,6 +37,6 @@ describe("Test AdvanedOptions component", () => {
     expect(AdvancedOptionsComponent).toBeDefined();
     expect(AdvancedOptionsComponent.getByText(/Shellfish/i));
     expect(AdvancedOptionsComponent.getByText(/Keto/i));
-    expect(AdvancedOptionsComponent.getByText(/Gallon/i));
+    expect(AdvancedOptionsComponent.getByText(/Milk 1 Gallon/i));
   });
 });
