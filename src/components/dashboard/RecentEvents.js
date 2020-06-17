@@ -20,7 +20,6 @@ const RecentEvents = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const update = useSelector((state) => state.update);
   const eventList = useSelector((state) => state.eventList);
-  console.log(eventList);
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(true);
 

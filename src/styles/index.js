@@ -313,6 +313,9 @@ export const cardStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "#f8f8f8",
     },
+    accountEvent: {
+      maxHeight: "300px",
+    },
   },
   comments: {
     height: "calc(100% - 30px)",
@@ -422,13 +425,13 @@ export const theme = responsiveFontSizes(
       },
     },
     breakpoints: {
-      values:{
+      values: {
         xs: 0,
         sm: 600,
         md: 700,
         lg: 1280,
         xl: 1920,
-      }
+      },
     },
     typography: {
       h1: {

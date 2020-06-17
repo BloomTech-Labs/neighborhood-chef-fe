@@ -1,23 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+
+import { Icon } from "@iconify/react";
+import logoutIcon from "@iconify/icons-heroicons-outline/logout";
+import closeRectangle from "@iconify/icons-jam/close-rectangle";
 
 import ls from "local-storage";
 import qs from "querystring";
@@ -25,34 +17,27 @@ import qs from "querystring";
 import { makeInitials } from "../../utilities/functions";
 import { cardStyles } from "../../styles";
 
-const drawerWidth = 300;
+import AccountEventCard from "./AccountEventCard";
+
+const drawerWidth = 320;
 
 const styles = makeStyles((theme) => {
   return {
     container: {
       display: "flex",
       flexDirection: "column",
+      paddingTop: "3.5vh",
       padding: "0 5%",
+      height: "100vh",
       background: "lightgrey",
-      overflowY: "auto",
-    },
-    "top-content-container": {
-      display: "flex",
-      alignItems: "center",
-
-      "& *:first-child": {
-        flexBasis: "85%",
-      },
-
-      "& *:last-child": {
-        flexBasis: "15%",
-      },
+      overflowY: "scroll",
     },
     "avatar-container": {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      marginTop: "2%",
     },
     avatar: {
       width: theme.spacing(13),
@@ -74,7 +59,7 @@ const styles = makeStyles((theme) => {
     },
     "bottom-content-container": {
       "& section": {
-        minHeight: "20vh",
+        // minHeight: "20vh",
         background: "white",
         margin: "4% 0",
         borderRadius: "10px",
@@ -85,12 +70,17 @@ const styles = makeStyles((theme) => {
       marginBottom: "5%",
 
       "& h6:first-child": {
+        fontWeight: "bold",
         flexBasis: "75%",
       },
 
       "& h6:last-child": {
+        color: "dark-gray",
         flexBasis: "25%",
       },
+    },
+    "bottom-content-card": {
+      padding: "5px",
     },
   };
 });
@@ -145,8 +135,8 @@ const AccountDrawer = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const cardClasses = cardStyles();
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -154,6 +144,14 @@ const AccountDrawer = (props) => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const sortList = (list) => {
+    return list.sort((a, b) => a.startTime - b.startTime);
+  };
+
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
   };
 
   const logout = async (e) => {
@@ -208,18 +206,39 @@ const AccountDrawer = (props) => {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronLeftIcon fontSize="large" />
-            ) : (
-              <ChevronRightIcon fontSize="large" />
-            )}
-          </IconButton>
-        </div>
         <section className={styleClasses.container}>
+          <div
+            className={styleClasses.drawerHeader}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <Button
+              className={`${styleClasses.root} ${styleClasses.notActive}`}
+              onClick={logout}
+            >
+              <span style={{ marginRight: "5px" }}>
+                <Icon height="20" icon={logoutIcon} />
+              </span>
+              <Typography variant="caption">Logout</Typography>
+            </Button>
+            <Button
+              className={`${styleClasses.root} ${styleClasses.notActive}`}
+              onClick={handleDrawerClose}
+            >
+              <span style={{ marginRight: "5px" }}>
+                <Icon height="20" icon={closeRectangle} />
+              </span>
+              <Typography variant="caption">Close</Typography>
+            </Button>
+          </div>
+
           <div className={styleClasses["avatar-container"]}>
             <Avatar
+              aria-label="avatar"
               className={styleClasses.avatar}
               src={me.photo !== "null" ? me.photo : null}
               alt="Profile Avatar"
@@ -228,32 +247,66 @@ const AccountDrawer = (props) => {
                 <Typography>{makeInitials(me)}</Typography>
               )}
             </Avatar>
-            <Typography>First Last</Typography>
-            <Typography>Edit Profile</Typography>
-            <Typography onClick={logout} style={{ cursor: "pointer" }}>
-              Logout
+            <Typography>
+              {me.firstName} {me.lastName}
             </Typography>
+            <Typography>Edit Profile</Typography>
           </div>
           <div className={styleClasses["middle-content-container"]}>
-            <Typography variant="h6">Description</Typography>
+            <Typography variant="h6">Details</Typography>
             <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium debitis voluptatum nisi iste?
+              Pets:
+              {me.pets ? (
+                me.pets.map((pet) => (
+                  <Typography component="span" key={pet}>
+                    {pet}
+                  </Typography>
+                ))
+              ) : (
+                <Typography component="span">No pets</Typography>
+              )}
             </Typography>
-            <Typography variant="h6">Dietary Restrictions</Typography>
             <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium debitis voluptatum nisi iste?
+              Kids:
+              {me.kids ? (
+                me.kids.map((kid) => (
+                  <Typography component="span" key={kid}>
+                    {kid}
+                  </Typography>
+                ))
+              ) : (
+                <Typography component="span">No kids</Typography>
+              )}
+            </Typography>
+            <Typography>Address: {me.address} </Typography>
+            <Typography>Gender: {me.gender}</Typography>
+            <Typography variant="h6">Dietary Preferences</Typography>
+            <Typography>
+              {me.dietaryPreferences ? (
+                me.dietaryPreferences.map((pref) => (
+                  <Typography>{pref}</Typography>
+                ))
+              ) : (
+                <Typography> No dietary preferences</Typography>
+              )}
             </Typography>
           </div>
-          <div className={styleClasses["bottom-content-container"]}>
+          <div>
             <div className={styleClasses["bottom-header-container"]}>
-              <Typography variant="h6">Posts and Events</Typography>
-              <Typography variant="h6">See all</Typography>
+              <Typography variant="h6">My Events</Typography>
+
+              <Button onClick={toggleShowAll}>
+                {showAll ? "Show less" : "Show all"}
+              </Button>
             </div>
-            <section>card</section>
-            <section>card</section>
-            <section>card</section>
+            {me.eventsOwned ? (
+              sortList(me.eventsOwned).map(
+                (event, ind) =>
+                  (showAll || ind < 3) && <AccountEventCard event={event} />
+              )
+            ) : (
+              <Typography>No created events</Typography>
+            )}
           </div>
         </section>
       </Drawer>
