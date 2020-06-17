@@ -40,7 +40,10 @@ const StatusButton = ({
         setStatus(newStatus);
         dispatch(changeStatus(eventId, newStatus));
 
-        if (location.pathname === `/events/${eventId}`) {
+        if (
+          location.pathname === `/events/${eventId}` ||
+          location.pathname === "/view-events"
+        ) {
           const attendees = res.data.data.updateInvitation.users.filter(
             (user) => user.status === "Going"
           );
