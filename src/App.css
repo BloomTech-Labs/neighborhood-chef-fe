@@ -308,7 +308,6 @@ a {
 .createForm {
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
   width: 100%;
 }
 
@@ -550,9 +549,8 @@ a {
 .createFormButtonDiv {
   display: flex;
   justify-content: flex-end;
-  margin-top: 40px;
   margin-right: 1%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 1000px) {

@@ -35,7 +35,7 @@ const FormPageThree = ({
           border: "2px solid #F3F3F3",
           boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
           borderRadius: "25px",
-          marginTop: "40px",
+          marginTop: "10px",
           padding: "30px",
         }}
       >
@@ -132,7 +132,7 @@ const FormPageThree = ({
           fontSize: "1.8rem",
           fontWeight: "500",
           color: "#1A0F2C",
-          margin: "60px 0",
+          margin: "20px 0",
         }}
       >
         Double check if your event details are correct. Once finished, click
