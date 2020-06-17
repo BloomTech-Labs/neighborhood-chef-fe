@@ -189,6 +189,7 @@ const EventDetails = () => {
                   userId={me.id}
                   setStatus={setCurrentStatus}
                   key={ele.name}
+                  setParticipants={setParticipants}
                 />
               ))}
             </div>
