@@ -11,6 +11,7 @@ import {
   getEventsSuccess,
   getFavoriteEventsSuccess,
 } from "../../utilities/actions";
+import Typography from "@material-ui/core/Typography";
 
 //icon imports
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -19,6 +20,7 @@ const RecentEvents = () => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const update = useSelector((state) => state.update);
   const eventList = useSelector((state) => state.eventList);
+  console.log(eventList);
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(true);
 
@@ -34,13 +36,14 @@ const RecentEvents = () => {
         },
       })
         .then((res) => {
-          dispatch(
-            getEventsSuccess(
-              res.data.data.getInvitedEvents.sort(
-                (a, b) => b.createDateTime - a.createDateTime
-              )
-            )
+          const sorted = res.data.data.getInvitedEvents.sort(
+            (a, b) => b.createDateTime - a.createDateTime
           );
+          const limitSet = sorted.slice(
+            0,
+            process.env.REACT_APP_DASHBOARD_EVENT_LIMIT
+          );
+          dispatch(getEventsSuccess(limitSet));
         })
         .catch((err) => {
           console.log(err.message);
@@ -51,8 +54,6 @@ const RecentEvents = () => {
     }
     // eslint-disable-next-line
   }, [update]);
-
-
 
   useEffect(() => {
     if (me) {
@@ -90,8 +91,7 @@ const RecentEvents = () => {
             <div style={{ textAlign: "center" }}>
               <CircularProgress style={{ color: "#58D573" }} />
             </div>
-          ) : (
-            !!eventList &&
+          ) : eventList.length > 0 ? (
             eventList.map((ele, id) => (
               <RecentCard
                 {...ele}
@@ -101,6 +101,10 @@ const RecentEvents = () => {
                 }
               />
             ))
+          ) : (
+            <Typography style={{ marginTop: "20px" }}>
+              No recently created events.
+            </Typography>
           )}
         </div>
       </div>

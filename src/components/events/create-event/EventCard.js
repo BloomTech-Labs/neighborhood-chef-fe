@@ -21,7 +21,6 @@ const EventCard = () => {
         border: "2px solid #F3F3F3",
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
-        marginTop: "40px",
         padding: "30px",
       }}
     >

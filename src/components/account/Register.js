@@ -26,7 +26,10 @@ const Register = () => {
       <AuthHeader />
       <div className="landing-page-container">
         <div className="landing-page-left">
-          <Card className={`${cardClass.root} ${cardClass.landingPage}`}>
+          <Card
+            className={`${cardClass.root} ${cardClass.landingPage}`}
+            style={{ overflowY: "auto" }}
+          >
             <CardContent style={{ marginTop: "2%" }}>
               <Typography variant="h4">Create a new account with us</Typography>
               <Typography variant="caption" color="textSecondary">
@@ -122,7 +125,7 @@ const Register = () => {
             </CardActions>
           </Card>
         </div>
-        <div className="landing-page-right">
+        <div className="landing-page-right" style={{ overflow: "hidden" }}>
           <img src={food} alt="food community" height="100%" />
         </div>
       </div>

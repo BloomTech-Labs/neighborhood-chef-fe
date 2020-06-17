@@ -9,20 +9,24 @@ const UserList = ({ event, filteredList }) => {
 
   return (
     <>
-      {invitedList.map((user) => {
-        return (
-          Number(user.id) !== event.user_id && (
-            <InvitedUser key={user.id} user={user} />
-          )
-        );
-      })}
-      {filteredList.map((user) => {
-        return (
-          Number(user.id) !== event.user_id && (
-            <UninvitedUser key={user.id} user={user} />
-          )
-        );
-      })}
+      {invitedList
+        .sort((a, b) => a.firstName.localeCompare(b.firstName))
+        .map((user) => {
+          return (
+            Number(user.id) !== event.user_id && (
+              <InvitedUser key={user.id} user={user} />
+            )
+          );
+        })}
+      {filteredList
+        .sort((a, b) => a.firstName.localeCompare(b.firstName))
+        .map((user) => {
+          return (
+            Number(user.id) !== event.user_id && (
+              <UninvitedUser key={user.id} user={user} />
+            )
+          );
+        })}
     </>
   );
 };
