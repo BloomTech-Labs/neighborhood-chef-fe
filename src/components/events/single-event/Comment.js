@@ -79,12 +79,16 @@ const Comment = (props) => {
         }}
       >
         <Avatar
+          key={user.id}
+          title={`${user.firstName} ${user.lastName}`}
           aria-label="avatar"
           className={classes.avatar}
-          src={user.photo !== "null" ? user.photo : null}
-          style={{ marginRight: "10px", width: "26px", height: "26px" }}
+          src={user.photo === "null" ? null : user.photo}
+          style={{ marginRight: "5px", width: "26px", height: "26px" }}
         >
-          {!user.photo && user && makeInitials(user)}
+          {user.photo === "null" && (
+            <Typography>{makeInitials(user)}</Typography>
+          )}
         </Avatar>
         {user && (
           <Typography variant="body1">
