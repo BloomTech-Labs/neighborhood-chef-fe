@@ -29,10 +29,7 @@ const Ingredient = ({ item, ingredientList, setIngredientList, deletedIngredient
         cursor: "pointer",
       }}
     >
-      <p>{item.quantity}&nbsp;</p>
-      <p>{item.measurement}&nbsp;</p>
-      <p>of</p>&nbsp;
-      <p>{item.name}&nbsp;</p>
+      <p>{item.description}</p>
     </div>
   );
 };
