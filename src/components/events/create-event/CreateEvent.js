@@ -3,7 +3,7 @@ import FormContainer from "./FormContainer";
 
 const CreateEvent = () => {
   return (
-    <div className="component-main">
+    <div className="create-event-main">
       <FormContainer />
     </div>
   );
