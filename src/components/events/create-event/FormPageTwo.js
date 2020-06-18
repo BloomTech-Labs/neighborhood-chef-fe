@@ -17,6 +17,9 @@ import { setPage } from "../../../utilities/actions";
 import { showOptions } from "../../../utilities/functions";
 import Typography from "@material-ui/core/Typography";
 
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
   { id: 2, title: "Kid-Friendly", icon: strollerIcon, active: false },
@@ -83,12 +86,12 @@ const FormPageTwo = ({
           onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
         >
           {showAdvancedOptions ? (
-            <Typography style={{ marginTop: "25px" }}>
-              Click here to hide additional options
+            <Typography style={{ marginTop: "25px", fontWeight: "bold" }}>
+              Click here to hide additional options <ArrowDropDownIcon />
             </Typography>
           ) : (
-            <Typography style={{ marginTop: "25px" }}>
-              Click here to add additional options
+            <Typography style={{ marginTop: "25px", fontWeight: "bold" }}>
+              Click here to show additional options <ArrowRightIcon />
             </Typography>
           )}
         </div>

@@ -52,7 +52,7 @@ const AddIngredient = ({
   return (
     <div style={{ marginTop: "55px", marginBottom: "25px" }}>
       <Typography style={{ marginBottom: "10px" }}>
-        Request for guests to bring ingredients
+        List ingredients provided and requested for guests to bring
       </Typography>
       <div
         style={{
@@ -61,7 +61,7 @@ const AddIngredient = ({
           alignItems: "center",
           border: "2px solid #f0f0f0",
           borderRadius: "15px",
-          padding: "10px",
+          padding: "0 20px",
         }}
       >
         <div className="addIngredientInputContainer">
