@@ -1,10 +1,20 @@
 import React from "react";
 
-const Ingredient = ({ item, ingredientList, setIngredientList, deletedIngredientsList, setDeletedIngredientsList, index }) => {
+const Ingredient = ({
+  item,
+  ingredientList,
+  setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList,
+  index,
+}) => {
   const removeIngredient = (index) => {
-
-    if(ingredientList[index].id !== undefined) {
-      setDeletedIngredientsList([...deletedIngredientsList, ingredientList[index]]);
+    console.log(index);
+    if (ingredientList[index].id !== undefined) {
+      setDeletedIngredientsList([
+        ...deletedIngredientsList,
+        ingredientList[index],
+      ]);
     }
     setIngredientList(ingredientList.filter((_, i) => i !== index));
   };

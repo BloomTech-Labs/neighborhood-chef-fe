@@ -52,8 +52,8 @@ describe("Test functions index.js file", () => {
   });
 
   test("show options returns true if either array has length greater than 0", () => {
-    expect(showOptions([1, 2], [])).toBe(true);
-    expect(showOptions([], [1, 2])).toBe(true);
-    expect(showOptions([], [])).toBe(false);
+    expect(showOptions([1, 2], [], [])).toBe(true);
+    expect(showOptions([], [1, 2], [])).toBe(true);
+    expect(showOptions([], [], [])).toBe(false);
   });
 });

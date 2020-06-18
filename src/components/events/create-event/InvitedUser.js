@@ -90,8 +90,8 @@ const InvitedUser = ({ user }) => {
               opacity: "0.3",
             }}
           >
-            {user.email.length > 35
-              ? user.email.slice(0, 35) + "..."
+            {user.email.length > 21
+              ? user.email.slice(0, 21) + "..."
               : user.email}
           </p>
         </div>

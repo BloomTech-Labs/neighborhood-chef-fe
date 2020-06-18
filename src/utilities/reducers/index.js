@@ -20,7 +20,7 @@ import {
   ADD_FAVORITE_EVENT_SUCCESS,
   REMOVE_FAVORITE_EVENT_SUCCESS,
   SET_PAGE,
-  SET_CURRENT_INGREIDENTS
+  SET_CURRENT_INGREIDENTS,
 } from "../actions";
 
 const initialDate = new Date();
@@ -175,12 +175,12 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         page: payload,
       };
 
-    case SET_CURRENT_INGREIDENTS: 
-        return {
-          ...state,
-          currentEventIngredients: payload
-        };
-    
+    case SET_CURRENT_INGREIDENTS:
+      return {
+        ...state,
+        currentEventIngredients: payload,
+      };
+
     default:
       return {
         ...state,
