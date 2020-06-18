@@ -63,15 +63,16 @@ a {
 }
 
 @media (max-width: 700px) {
-  .landing-page-right {
+  .landing-page-right,
+  .register-map,
+  .overlays {
     display: none;
   }
   .landing-page-left {
     width: 100vw;
   }
-  .register-map,
-  .overlays {
-    display: none;
+  .toggle-map {
+    visibility: hidden;
   }
 }
 

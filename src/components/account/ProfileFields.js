@@ -146,12 +146,12 @@ const ProfileFields = (props) => {
           </Typography>
         </label>
         <IconButton
-          className={
+          className={`${
             textBoxStyles({
               isFocus: focusAddress,
               addressValue: geoInput.current ? geoInput.current.value : null,
             }).icon
-          }
+          } toggle-map`}
           aria-label="toggle show map"
           onClick={() => setMapOpen(!mapOpen)}
         >
