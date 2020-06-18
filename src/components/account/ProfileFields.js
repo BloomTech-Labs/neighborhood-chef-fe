@@ -173,7 +173,7 @@ const ProfileFields = (props) => {
       </div>
 
       <ReactMapGL
-        className={mapOpen ? "" : "hidden"}
+        className={`${mapOpen ? "" : "hidden"} register-map`}
         style={{ position: "absolute", right: 50, top: 120 }}
         {...mapAccess}
         {...viewport}
