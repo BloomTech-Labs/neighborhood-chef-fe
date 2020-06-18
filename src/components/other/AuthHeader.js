@@ -9,7 +9,7 @@ import { buttonStyles } from "../../styles";
 const AuthHeader = () => {
   const location = useLocation();
   const url = location.pathname.split("/")[1];
-  const classes = buttonStyles();
+  const buttonClass = buttonStyles();
   const { push } = useHistory();
   return (
     <div
@@ -40,12 +40,29 @@ const AuthHeader = () => {
           width: "100%",
         }}
       >
-        <Link to="/">
-          <Typography color="textSecondary">Community</Typography>
-        </Link>
-        <Link to="/">
-          <Typography color="textSecondary">About Us</Typography>
-        </Link>
+        <button
+          className={`${buttonClass.root} ${
+            url === "community" ? buttonClass.active : buttonClass.notActive
+          }`}
+          onClick={() => push("#/community")}
+        >
+          <Typography>Community</Typography>
+        </button>
+        
+        <button
+          className={`${buttonClass.root} ${
+            url === "about" ? buttonClass.active : buttonClass.notActive
+          }`}
+          onClick={() => push("#/about")}
+        >
+          <Typography>About&nbsp;Us</Typography>
+        </button>
+
+        <div>&nbsp;</div>
+
+        <div>&nbsp;</div>
+
+        <div>&nbsp;</div>
       </div>
       <div
         style={{
@@ -58,9 +75,7 @@ const AuthHeader = () => {
       >
         {url !== "login" && url !== "" && (
           <button
-            className={`${classes.root} ${
-              url === "login" || !url ? classes.active : classes.notActive
-            }`}
+            className={`${buttonClass.root} ${buttonClass.single}`}
             onClick={() => push("/login")}
           >
             <Typography>Login</Typography>
@@ -69,19 +84,7 @@ const AuthHeader = () => {
 
         {url !== "register" && (
           <button
-            className={`${classes.root} ${
-              url === "register" ? classes.active : classes.notActive
-            }`}
-            // style={{
-            //   background: "#58D473",
-            //   color: "white",
-            //   borderRadius: "10px",
-            //   padding: "15px 30px",
-            //   marginLeft: "60px",
-            //   fontSize: "1.6rem",
-            //   outline: "none",
-            //   border: "none",
-            // }}
+            className={`${buttonClass.root} ${buttonClass.single}`}
             onClick={() => push("/register")}
           >
             <Typography>Register</Typography>
