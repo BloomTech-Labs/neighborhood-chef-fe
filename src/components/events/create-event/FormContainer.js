@@ -106,7 +106,7 @@ const FormContainer = () => {
         setIngredientList(ingredientsToEdit);
       }
     }
-    // eslint-disable-next-line
+    //eslint-disable-next-line
   }, [isEditing, eventToEdit, dispatch]);
 
   // cleanup
@@ -149,8 +149,6 @@ const FormContainer = () => {
             dietaryWarnings: JSON.stringify({
               dietaryWarnings: [...dietWarnings],
             }),
-            // uncomment once migration is in place
-            //ingredients: JSON.stringify({ ingredients: [...ingredientList] }),
           };
 
           if (isEditing) {
@@ -180,7 +178,7 @@ const FormContainer = () => {
                   dispatch(setPage(4));
                 } else {
                   if (addedIngredients.length > 0) {
-                    const formattedIngredientsList = ingredientList.map(
+                    const formattedIngredientsList = addedIngredients.map(
                       (ingredient) => {
                         return {
                           ...ingredient,
@@ -216,15 +214,12 @@ const FormContainer = () => {
                               console.dir(err);
                             }
                           });
-
-                          console.log(res.data);
                           setHashtags([]);
                           resetForm(initialState);
                           resetModifiers();
                           setModifiers([]);
                           dispatch(setPage(4));
                         } else {
-                          console.log(res.data);
                           setHashtags([]);
                           resetForm(initialState);
                           resetModifiers();
@@ -279,8 +274,6 @@ const FormContainer = () => {
                   }
                 );
 
-                console.log(ingredientList);
-
                 axiosWithAuth()
                   .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                     query: print(ADD_EVENT_INGREDIENTS),
@@ -291,7 +284,6 @@ const FormContainer = () => {
                     },
                   })
                   .then((res) => {
-                    console.log(res.data);
                     setHashtags([]);
                     resetForm(initialState);
                     resetModifiers();
@@ -355,6 +347,8 @@ const FormContainer = () => {
                     setDietWarnings={setDietWarnings}
                     ingredientList={ingredientList}
                     setIngredientList={setIngredientList}
+                    deletedIngredientsList={deletedIngredientsList}
+                    setDeletedIngredientsList={setDeletedIngredientsList}
                   />
                 </>
               )}

@@ -22,6 +22,7 @@ const EventCard = () => {
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
         padding: "30px",
+        width: "90%",
       }}
     >
       <div
