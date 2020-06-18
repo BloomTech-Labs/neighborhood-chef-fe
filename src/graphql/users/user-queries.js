@@ -122,6 +122,7 @@ export const USER_BY_EMAIL = gql`
         category_id
         user_id
         address
+        photo
         latitude
         longitude
         modifiers
