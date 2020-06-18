@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 import { parseTime } from "../../../utilities/functions";
+import Typography from "@material-ui/core/Typography";
 
 const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
   const activeEvent = useSelector((state) => state.activeEvent);
@@ -17,8 +18,8 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
       onClick={() => dispatch(makeActive(id))}
     >
       <div style={{ width: "15%" }}>
-        <div style={{ opacity: ".5" }}>{timeObject.weekday}</div>
-        <div style={{ fontSize: "3rem" }}>{timeObject.day}</div>
+        <Typography color="textSecondary">{timeObject.weekday}</Typography>
+        <Typography variant="h4">{timeObject.day}</Typography>
       </div>
       <div
         style={{
@@ -27,9 +28,11 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
           width: "65%",
         }}
       >
-        <div style={{ opacity: ".5" }}>{title}</div>
+        <Typography color="textSecondary">{title}</Typography>
         <div>
-          <span
+          <Typography
+            variant="caption"
+            component="span"
             style={
               status === "Not Going"
                 ? { color: "rgba(232, 64, 64, .75)" }
@@ -41,10 +44,12 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
             }
           >
             {status || "undecided"}
-          </span>
+          </Typography>
         </div>
       </div>
-      <div style={{ opacity: ".3", width: "20%" }}>{timeObject.startTime}</div>
+      <Typography variant="caption" color="textSecondary">
+        {timeObject.startTime}
+      </Typography>
     </div>
   );
 };

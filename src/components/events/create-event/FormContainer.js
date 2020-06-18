@@ -214,7 +214,6 @@ const FormContainer = () => {
                               console.dir(err);
                             }
                           });
-
                           setHashtags([]);
                           resetForm(initialState);
                           resetModifiers();
