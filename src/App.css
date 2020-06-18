@@ -176,6 +176,7 @@ a {
   align-self: left;
   width: 46px;
   align-items: center;
+  position: relative;
 }
 
 /* ---- start of View Event styles ---- */
