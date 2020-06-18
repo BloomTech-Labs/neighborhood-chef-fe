@@ -2,21 +2,29 @@ import React from "react";
 import AddIngredient from "./AddIngredient.js";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "../../../../utilities/reducers/";
+import thunk from "redux-thunk";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 import "@testing-library/jest-dom/extend-expect";
 
 const ingredientArray = [
-  { id: 1, name: "Milk", quantity: 1, measurement: "Gallon" },
-  { id: 2, title: "Butter", quantity: 2, measurement: "Tablespoons" },
+  { description: "Milk 1 gallon" },
+  { description: "Butter 2 Tablespoons" },
 ];
 
 describe("Test AddIngredient component", () => {
   let AddIngredientComponent;
   beforeEach(() => {
     AddIngredientComponent = render(
-      <BrowserRouter>
-        <AddIngredient ingredientList={ingredientArray} />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AddIngredient ingredientList={ingredientArray} />
+        </BrowserRouter>
+      </Provider>
     );
   });
 
@@ -24,11 +32,9 @@ describe("Test AddIngredient component", () => {
     expect(AddIngredientComponent).toBeDefined();
     expect(
       AddIngredientComponent.getByText(
-        /Request for guests to bring ingredients/i
+        /List ingredients provided and requested for guests to bring/i
       )
     );
-    expect(AddIngredientComponent.getByText(/Milk/i));
-    expect(AddIngredientComponent.getByText(/Tablespoons/i));
-    expect(AddIngredientComponent.getByText(/Tablespoons/i));
+    expect(AddIngredientComponent.getByText(/Milk 1 gallon/i));
   });
 });

@@ -5,26 +5,24 @@ import { BrowserRouter } from "react-router-dom";
 
 import "@testing-library/jest-dom/extend-expect";
 
-const ingredient = {
-  id: 1,
-  quantity: 2,
-  measurement: "Gallons",
-  name: "Milk",
-};
+const ingredient = [{
+  description: "Milk 2 gallons"
+}];
 
 describe("Test Ingredient component", () => {
   let IngredientComponent;
   beforeEach(() => {
     IngredientComponent = render(
       <BrowserRouter>
-        <Ingredient item={ingredient} />
+        <Ingredient key={0} index={0} item={ingredient[0]} />
       </BrowserRouter>
     );
   });
 
+  console.log(IngredientComponent)
+
   test("ingredient component renders with text from props", () => {
     expect(IngredientComponent).toBeDefined();
-    expect(IngredientComponent.getByText(/Milk/i));
-    expect(IngredientComponent.getByText(/Gallons/i));
+    expect(IngredientComponent.getByText(/Milk 2 gallons/));
   });
 });
