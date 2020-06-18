@@ -672,9 +672,15 @@ a {
 
 @media (max-width: 800px) {
   .pageThreeText {
-    width: 96%;
+    width: 82%;
     margin-top: 10px;
     height: 100px;
+  }
+}
+
+@media (max-width: 695px) {
+  .pageThreeText {
+    width: 96%;
   }
 }
 
@@ -795,7 +801,7 @@ a {
   }
 }
 
-/* button div form */
+/* create event button div */
 .createFormButtonDiv {
   display: flex;
   justify-content: flex-end;
@@ -862,7 +868,7 @@ a {
 
 .createFormHeaderContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
