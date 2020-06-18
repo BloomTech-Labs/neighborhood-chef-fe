@@ -337,7 +337,7 @@ a {
 
 @media (max-width: 1278px) {
   .createFormPage1LeftContainer {
-    padding-left: 60px;
+    margin-left: 7%;
   }
 }
 
@@ -347,8 +347,6 @@ a {
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    padding-left: 0;
-    margin-left: 6%;
   }
 }
 
@@ -519,7 +517,7 @@ a {
 
 @media (max-width: 1278px) {
   .createFormPage2Container {
-    margin-left: 8%;
+    margin-left: 5%;
   }
 }
 
@@ -734,7 +732,7 @@ a {
 
 .createFormHeaderContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 95%;
   margin-bottom: 20px;
@@ -746,7 +744,7 @@ a {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 750px) {
   .createFormHeaderContainer {
     display: none;
   }
@@ -761,12 +759,6 @@ a {
 .createFormHeaderActive {
   color: #0c0c41;
 }
-
-/* @media (max-width: 900px) {
-  .hideIcon {
-    display: none;
-  }
-} */
 
 /* -- CreateForm Advanced options --*/
 

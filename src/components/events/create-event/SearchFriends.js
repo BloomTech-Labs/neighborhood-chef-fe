@@ -118,7 +118,7 @@ const SearchFriends = () => {
 
       <div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div className="createFormInputDiv" style={{ width: "60%" }}>
+          <div className="createFormInputDiv" style={{ width: "70%" }}>
             <input
               type="text"
               name="search"
