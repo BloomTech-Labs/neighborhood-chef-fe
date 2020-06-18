@@ -197,7 +197,7 @@ const EventDetails = () => {
         </Card>
       ) : (
         <Typography variant="h6" style={{ padding: "10px" }}>
-          Please select an event to view its details here
+          Please select an event to view its details
         </Typography>
       )}
     </div>
