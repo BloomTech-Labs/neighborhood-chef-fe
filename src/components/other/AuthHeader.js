@@ -56,32 +56,37 @@ const AuthHeader = () => {
           marginRight: "3%",
         }}
       >
-        <button
-          className={`${classes.root} ${
-            url === "login" || !url ? classes.active : classes.notActive
-          }`}
-          onClick={() => push("/login")}
-        >
-          <Typography>Login</Typography>
-        </button>
-        <button
-          className={`${classes.root} ${
-            url === "register" ? classes.active : classes.notActive
-          }`}
-          // style={{
-          //   background: "#58D473",
-          //   color: "white",
-          //   borderRadius: "10px",
-          //   padding: "15px 30px",
-          //   marginLeft: "60px",
-          //   fontSize: "1.6rem",
-          //   outline: "none",
-          //   border: "none",
-          // }}
-          onClick={() => push("/register")}
-        >
-          <Typography>Register</Typography>
-        </button>
+        {url !== "login" && url !== "" && (
+          <button
+            className={`${classes.root} ${
+              url === "login" || !url ? classes.active : classes.notActive
+            }`}
+            onClick={() => push("/login")}
+          >
+            <Typography>Login</Typography>
+          </button>
+        )}
+
+        {url !== "register" && (
+          <button
+            className={`${classes.root} ${
+              url === "register" ? classes.active : classes.notActive
+            }`}
+            // style={{
+            //   background: "#58D473",
+            //   color: "white",
+            //   borderRadius: "10px",
+            //   padding: "15px 30px",
+            //   marginLeft: "60px",
+            //   fontSize: "1.6rem",
+            //   outline: "none",
+            //   border: "none",
+            // }}
+            onClick={() => push("/register")}
+          >
+            <Typography>Register</Typography>
+          </button>
+        )}
       </div>
     </div>
   );

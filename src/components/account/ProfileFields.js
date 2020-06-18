@@ -89,6 +89,7 @@ const ProfileFields = (props) => {
       addressLabel.current.focus();
     });
     addressLabel.current = geoInput.current;
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

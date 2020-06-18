@@ -1,14 +1,24 @@
 import React from "react";
+
+//material-ui styles imports
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+
 import ls from "local-storage";
 import qs from "querystring";
+
 import { makeInitials } from "../utilities/functions";
+
+//icons imports
+import { Icon } from "@iconify/react";
+import logoutIcon from '@iconify/icons-heroicons-outline/logout';
+import closeRectangle from '@iconify/icons-jam/close-rectangle';
 
 const styles = makeStyles((theme) => {
   return {
-    container: {
+    "container": {
       display: "flex",
       flexDirection: "column",
       paddingTop: "3.5vh",
@@ -17,18 +27,6 @@ const styles = makeStyles((theme) => {
       height: "100vh",
       overflowY: "scroll",
     },
-    "top-content-container": {
-      display: "flex",
-      alignItems: "center",
-
-      "& *:first-child": {
-        flexBasis: "85%",
-      },
-
-      "& *:last-child": {
-        flexBasis: "15%",
-      },
-    },
     "avatar-container": {
       display: "flex",
       flexDirection: "column",
@@ -36,7 +34,7 @@ const styles = makeStyles((theme) => {
       justifyContent: "center",
       marginTop: "2%",
     },
-    avatar: {
+    "avatar": {
       width: theme.spacing(13),
       height: theme.spacing(13),
       fontSize: "200%",
@@ -67,12 +65,17 @@ const styles = makeStyles((theme) => {
       marginBottom: "5%",
 
       "& h6:first-child": {
+        fontWeight: "bold",
         flexBasis: "75%",
       },
 
       "& h6:last-child": {
+        color: "dark-gray",
         flexBasis: "25%",
       },
+    },
+    "bottom-content-card": {
+      padding: "5px",
     },
   };
 });
@@ -104,27 +107,36 @@ function ProfileDrawerContent(props) {
 
   return (
     <section className={classes.container}>
-      <div className={classes["top-content-container"]}>
-        <Typography onClick={logout} style={{ cursor: "pointer" }}>
-          Logout
-        </Typography>
-        <Typography
-          variant="h5"
-          onClick={props.closeDrawer}
-          style={{ cursor: "pointer" }}
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "100%" }}>
+        <Button
+          className={`${classes.root} ${classes.notActive}`}
+          onClick={logout}
         >
-          {">"}
-        </Typography>
+          <span style={{ marginRight: "5px" }}>
+            <Icon height="20" icon={logoutIcon} />
+          </span>
+          <Typography variant="caption">Logout</Typography>
+        </Button>
+        <Button
+          className={`${classes.root} ${classes.notActive}`}
+          onClick={props.closeDrawer}
+        >
+          <span style={{ marginRight: "5px" }}>
+            <Icon height="20" icon={closeRectangle} />
+          </span>
+          <Typography variant="caption">Close</Typography>
+        </Button>
       </div>
       <div className={classes["avatar-container"]}>
         <Avatar
+          aria-label="avatar"
           className={classes.avatar}
           src={me.photo !== "null" ? me.photo : null}
           alt="Profile Avatar"
         >
           {me.photo === "null" && <Typography>{makeInitials(me)}</Typography>}
         </Avatar>
-        <Typography>First Last</Typography>
+        <Typography>{me.firstName} {me.lastName}</Typography>
         <Typography>Edit Profile</Typography>
       </div>
       <div className={classes["middle-content-container"]}>
@@ -144,9 +156,9 @@ function ProfileDrawerContent(props) {
           <Typography variant="h6">Posts and Events</Typography>
           <Typography variant="h6">See all</Typography>
         </div>
-        <section>card</section>
-        <section>card</section>
-        <section>card</section>
+        <section className={classes["bottom-content-card"]}>card</section>
+        <section className={classes["bottom-content-card"]}>card</section>
+        <section className={classes["bottom-content-card"]}>card</section>
       </div>
     </section>
   );

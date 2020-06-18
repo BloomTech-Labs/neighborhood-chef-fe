@@ -180,3 +180,30 @@ export const REMOVE_INVITATION = gql`
     }
   }
 `;
+
+export const ADD_EVENT_INGREDIENTS = gql`
+mutation addEventIngredients($input: EventIngredientsInput!) {
+
+  addEventIngredients(input: $input) {
+    id 
+    event_id 
+    description 
+    requested
+    user_id
+  } 
+}
+`;
+
+export const DELETE_EVENT_INGREDIENT = gql`
+mutation
+removeEventIngredient($id: ID!) {
+
+  removeEventIngredient(id: $id) {
+    id 
+    event_id 
+    description 
+    requested
+    user_id
+  }
+}
+`;

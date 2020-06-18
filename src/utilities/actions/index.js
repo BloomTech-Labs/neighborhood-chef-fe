@@ -1,3 +1,5 @@
+// import { ADD_EVENT_INGREDIENTS } from "../../graphql/events/event-mutations";
+
 export const MAKEACTIVE = "MAKEACTIVE";
 export const CHANGE_MONTH = "CHANGE_MONTH";
 export const CHANGE_PAGE = "CHANGE_PAGE";
@@ -19,6 +21,7 @@ export const GET_FAVORITE_EVENTS_SUCCESS = "GET_FAVORITE_EVENTS";
 export const ADD_FAVORITE_EVENT_SUCCESS = "ADD_FAVORITE_EVENT_SUCCESS";
 export const REMOVE_FAVORITE_EVENT_SUCCESS = "REMOVE_FAVORITE_EVENT_SUCCESS";
 export const SET_PAGE = "SET_PAGE";
+export const SET_CURRENT_INGREIDENTS = "SET_CURRENT_INGREIDENTS"; 
 
 export const getEventsSuccess = (events) => ({
   type: GET_EVENTS_SUCCESS,
@@ -124,3 +127,10 @@ export const setPage = (page) => ({
   type: SET_PAGE,
   payload: page,
 });
+
+export const setCurrentIngredients = ingredients => ({
+  type: SET_CURRENT_INGREIDENTS,
+  payload: ingredients
+});
+
+
