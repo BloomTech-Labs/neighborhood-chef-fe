@@ -13,15 +13,18 @@ const AddAllergens = (props) => {
       {({ push, remove }) => (
         <div
           className="restriction"
-          style={{ marginTop: "10px", display: "none" }}
+          style={{
+            marginTop: "10px",
+            display: "none",
+            flexDirection: "column",
+          }}
         >
           <Typography>Allergens</Typography>
           {props.values.allergens.map((allergen, index) => {
             return (
-              <div key={index}>
+              <div key={index} style={{ display: "flex" }}>
                 <Field
                   component={TextField}
-                  className={classes.field}
                   margin="normal"
                   variant="outlined"
                   label="Allergen"
@@ -31,7 +34,7 @@ const AddAllergens = (props) => {
                   onBlur={props.handleBlur}
                 />
                 <Button
-                  className={classes.button}
+                  className={classes.root}
                   margin="none"
                   type="button"
                   color="secondary"

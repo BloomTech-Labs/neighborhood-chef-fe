@@ -85,6 +85,9 @@ const ProfileFields = (props) => {
     geoInput.current.addEventListener("focusout", () => {
       setFocusAddress(false);
     });
+    geoInput.current.addEventListener("change", (e) => {
+      addressLabel.current.focus();
+    });
     addressLabel.current = geoInput.current;
   }, []);
 
@@ -211,7 +214,7 @@ const ProfileFields = (props) => {
           let restrictions = document.querySelectorAll(".restriction");
           restrictions.forEach((restriction) => {
             restriction.style.display === "none"
-              ? (restriction.style.display = "inherit")
+              ? (restriction.style.display = "flex")
               : (restriction.style.display = "none");
           });
         }}
