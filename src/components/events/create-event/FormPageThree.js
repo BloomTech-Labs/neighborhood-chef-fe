@@ -24,22 +24,25 @@ const FormPageThree = ({
   setDietWarnings,
   ingredientList,
   setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList,
 }) => {
   const dispatch = useDispatch();
   return (
-    <>
-      <div
+    <div className="formPageThreeContainer">
+      <h3
         style={{
-          display: "flex",
-          flexDirection: "column",
-          border: "2px solid #F3F3F3",
-          boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
-          borderRadius: "25px",
-          marginTop: "10px",
-          padding: "30px",
+          fontSize: "1.8rem",
+          fontWeight: "500",
+          color: "#1A0F2C",
+          margin: "20px 0",
         }}
       >
-        <div style={{ display: "flex", width: "100%", minHeight: "200px" }}>
+        Double check if your event details are correct. Once finished, click
+        done.
+      </h3>
+      <div className="formPageThreeCardContainter">
+        <div className="pageThreeCard">
           <img
             style={{
               maxWidth: "50%",
@@ -124,20 +127,10 @@ const FormPageThree = ({
           setDietWarnings={setDietWarnings}
           ingredientList={ingredientList}
           setIngredientList={setIngredientList}
+          deletedIngredientsList={deletedIngredientsList}
+          setDeletedIngredientsList={setDeletedIngredientsList}
         />
       </div>
-
-      <h3
-        style={{
-          fontSize: "1.8rem",
-          fontWeight: "500",
-          color: "#1A0F2C",
-          margin: "20px 0",
-        }}
-      >
-        Double check if your event details are correct. Once finished, click
-        done.
-      </h3>
 
       <div className="createFormButtonDiv">
         <button
@@ -153,7 +146,7 @@ const FormPageThree = ({
           Done
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
