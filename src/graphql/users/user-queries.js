@@ -12,6 +12,11 @@ export const ALL_USERS = gql`
       latitude
       longitude
       photo
+      allergens
+      dietaryRestrictions
+      dietaryPreferences
+      children
+      pets
       eventsOwned {
         id
         title
@@ -54,6 +59,11 @@ export const USER_BY_ID = gql`
       latitude
       longitude
       photo
+      allergens
+      dietaryRestrictions
+      dietaryPreferences
+      children
+      pets
       eventsOwned {
         id
         startTime
@@ -97,6 +107,11 @@ export const USER_BY_EMAIL = gql`
       latitude
       longitude
       photo
+      allergens
+      dietaryRestrictions
+      dietaryPreferences
+      children
+      pets
       eventsOwned {
         id
         startTime
@@ -107,6 +122,7 @@ export const USER_BY_EMAIL = gql`
         category_id
         user_id
         address
+        photo
         latitude
         longitude
         modifiers
