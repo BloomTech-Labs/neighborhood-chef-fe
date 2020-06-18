@@ -42,18 +42,18 @@ const AuthHeader = () => {
       >
         <button
           className={`${buttonClass.root} ${
-            url === "community" || !url ? buttonClass.active : buttonClass.notActive
+            url === "community" ? buttonClass.active : buttonClass.notActive
           }`}
-          onClick={() => push("/community")}
+          onClick={() => push("#/community")}
         >
           <Typography>Community</Typography>
         </button>
         
         <button
           className={`${buttonClass.root} ${
-            url === "about" || !url ? buttonClass.active : buttonClass.notActive
+            url === "about" ? buttonClass.active : buttonClass.notActive
           }`}
-          onClick={() => push("/about")}
+          onClick={() => push("#/about")}
         >
           <Typography>About&nbsp;Us</Typography>
         </button>
