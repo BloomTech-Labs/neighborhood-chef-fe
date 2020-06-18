@@ -134,7 +134,7 @@ const AddIngredient = ({
             type="button"
             onClick={submitIngredient}
           >
-            Add +
+            Add
           </button>
         </div>
       </div>

@@ -313,14 +313,14 @@ a {
 
 /* page one */
 
-.createFormPage1TopRow {
+.createFormPage1Container {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 @media (max-width: 800px) {
-  .createFormPage1TopRow {
+  .createFormPage1Container {
     flex-direction: column;
     width: 95%;
   }
@@ -328,7 +328,12 @@ a {
 
 .createFormPage1LeftContainer {
   width: 50%;
-  padding-left: 30px;
+}
+
+@media (max-width: 1278px) {
+  .createFormPage1LeftContainer {
+    padding-left: 60px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -570,6 +575,12 @@ a {
   }
 }
 
+@media (max-width: 800px) {
+  .formPageThreeContainer {
+    margin-left: 0;
+  }
+}
+
 .formPageThreeCardContainter {
   display: flex;
   flex-direction: column;
@@ -624,7 +635,7 @@ a {
   width: 100%;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1278px) {
   .formPageFourContainer {
     justify-content: center;
     align-items: center;
@@ -655,7 +666,7 @@ a {
 .createFormButtonDiv {
   display: flex;
   justify-content: flex-end;
-  margin-right: 1%;
+  margin-right: 5%;
   margin-bottom: 20px;
   width: 100%;
 }
@@ -714,33 +725,25 @@ a {
   }
 }
 
-/* .formPageThreeDateDiv {
-  display: flex;
-}
-
-@media (max-width: 1000px) {
-  .formPageThreeDateDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 150px;
-  }
-} */
-
 /* -- CreateFormHeader styles ---*/
 
 .createFormHeaderContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 95%;
   margin-bottom: 20px;
+}
+
+@media (max-width: 1278px) {
+  .createFormHeaderContainer {
+    width: 86%;
+  }
 }
 
 @media (max-width: 800px) {
   .createFormHeaderContainer {
     display: none;
-    width: 80%;
   }
 }
 
@@ -754,11 +757,11 @@ a {
   color: #0c0c41;
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .hideIcon {
     display: none;
   }
-}
+} */
 
 /* -- CreateForm Advanced options --*/
 

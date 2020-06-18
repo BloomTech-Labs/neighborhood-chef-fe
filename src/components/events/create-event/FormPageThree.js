@@ -24,6 +24,8 @@ const FormPageThree = ({
   setDietWarnings,
   ingredientList,
   setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -125,6 +127,8 @@ const FormPageThree = ({
           setDietWarnings={setDietWarnings}
           ingredientList={ingredientList}
           setIngredientList={setIngredientList}
+          deletedIngredientsList={deletedIngredientsList}
+          setDeletedIngredientsList={setDeletedIngredientsList}
         />
       </div>
 

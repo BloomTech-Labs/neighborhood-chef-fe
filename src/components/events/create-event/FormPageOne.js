@@ -61,7 +61,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
 
   return (
     <>
-      <div className="createFormPage1TopRow">
+      <div className="createFormPage1Container">
         <div className="createFormPage1LeftContainer">
           <div className="createFormInputDiv">
             <Field

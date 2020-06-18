@@ -91,8 +91,8 @@ const UninvitedUser = ({ user }) => {
               opacity: "0.3",
             }}
           >
-            {user.email.length > 25
-              ? user.email.slice(0, 25) + "..."
+            {user.email.length > 27
+              ? user.email.slice(0, 27) + "..."
               : user.email}
           </p>
         </div>

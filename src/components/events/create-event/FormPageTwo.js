@@ -41,10 +41,10 @@ const FormPageTwo = ({
   ingredientList,
   setIngredientList,
   deletedIngredientsList,
-  setDeletedIngredientsList
+  setDeletedIngredientsList,
 }) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(
-    showOptions(allergenList, dietWarnings)
+    showOptions(allergenList, dietWarnings, ingredientList)
   );
   const dispatch = useDispatch();
 
