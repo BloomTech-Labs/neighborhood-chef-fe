@@ -210,8 +210,11 @@ const ProfileFields = (props) => {
         setPhoto={changePhoto}
         title="Upload a picture for your avatar (optional)"
       />
-      <Typography
-        onClick={() => {
+      <Button
+        onClick={(e) => {
+          e.target.innerHTML === "Add More Info"
+            ? (e.target.innerHTML = "See Less Info")
+            : (e.target.innerHTML = "Add More Info");
           let restrictions = document.querySelectorAll(".restriction");
           restrictions.forEach((restriction) => {
             restriction.style.display === "none"
@@ -219,9 +222,10 @@ const ProfileFields = (props) => {
               : (restriction.style.display = "none");
           });
         }}
+        className={classes.root}
       >
-        Add more info
-      </Typography>
+        <Typography variant="h6">Add More Info</Typography>
+      </Button>
       <AddAllergens values={props.values} />
       <AddDietaryRestrictions values={props.values} />
       <AddDietaryPreferences values={props.values} />

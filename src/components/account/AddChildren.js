@@ -13,12 +13,19 @@ const AddChildren = (props) => {
       {({ push, remove }) => (
         <div
           className="restriction"
-          style={{ marginTop: "10px", display: "none" }}
+          style={{
+            marginTop: "10px",
+            display: "none",
+            flexDirection: "column",
+          }}
         >
           <Typography>Children</Typography>
           {props.values.children.map((child, index) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Field
                   component={TextField}
                   className={classes.field}

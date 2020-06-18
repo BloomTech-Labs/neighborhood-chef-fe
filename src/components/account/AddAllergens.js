@@ -22,7 +22,10 @@ const AddAllergens = (props) => {
           <Typography>Allergens</Typography>
           {props.values.allergens.map((allergen, index) => {
             return (
-              <div key={index} style={{ display: "flex" }}>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Field
                   component={TextField}
                   margin="normal"
@@ -30,11 +33,9 @@ const AddAllergens = (props) => {
                   label="Allergen"
                   name={`allergens[${index}]`}
                   value={allergen}
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
                 />
                 <Button
-                  className={classes.root}
+                  className={classes.button}
                   margin="none"
                   type="button"
                   color="secondary"

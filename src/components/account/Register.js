@@ -76,23 +76,7 @@ const Register = () => {
                     children: JSON.stringify(values.children),
                     pets: JSON.stringify(values.pets),
                   };
-                  axios
-                    .post(
-                      `${process.env.REACT_APP_BASE_URL}/auth/register`,
-                      userValues
-                    )
-                    .then((res) => {
-                      setSubmitting(false);
-                      history.push("/register-check-email");
-                    })
-                    .catch((err) => {
-                      setSubmitting(false);
-                      console.dir({
-                        err,
-                        message: err.message,
-                        stack: err.stack,
-                      });
-                    });
+                  console.log(userValues);
                 }}
               >
                 {({ isSubmitting, setFieldValue, values }) => (

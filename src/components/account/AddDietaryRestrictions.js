@@ -13,12 +13,19 @@ const AddDietaryRestrictions = (props) => {
       {({ push, remove }) => (
         <div
           className="restriction"
-          style={{ marginTop: "10px", display: "none" }}
+          style={{
+            marginTop: "10px",
+            display: "none",
+            flexDirection: "column",
+          }}
         >
           <Typography>Dietary Restrictions</Typography>
           {props.values.dietaryRestrictions.map((dietaryRestriction, index) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Field
                   component={TextField}
                   className={classes.field}
