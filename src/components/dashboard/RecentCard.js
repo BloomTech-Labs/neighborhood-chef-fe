@@ -130,7 +130,7 @@ const RecentCard = (props) => {
   }, []);
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{ margin: 15 }}>
       <CardHeader
         avatar={
           <Avatar
@@ -159,7 +159,7 @@ const RecentCard = (props) => {
         }
       />
 
-      <Link to={"/events/"+props.id}>
+      <Link to={"/events/" + props.id}>
         {/* If you need to disable functionality of events showing custom uploaded images on 
         dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
         {props.photo !== "null" &&

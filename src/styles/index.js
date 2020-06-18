@@ -313,9 +313,18 @@ export const cardStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "#f8f8f8",
     },
-    accountEvent: {
-      maxHeight: "300px",
-    },
+  },
+  accountEvent: {
+    maxHeight: 300,
+    maxWidth: 350,
+    minWidth: 200,
+    margin: 8,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "10px",
+    cursor: "pointer",
+    textAlign: "center",
   },
   comments: {
     height: "calc(100% - 30px)",

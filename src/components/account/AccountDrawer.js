@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+// import { useTheme } from "@material-ui/core/styles";
+// import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { Icon } from "@iconify/react";
 import logoutIcon from "@iconify/icons-heroicons-outline/logout";
@@ -98,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    height: "100vh",
   },
   drawerPaper: {
     width: drawerWidth,
@@ -137,6 +137,9 @@ const AccountDrawer = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  // 700 breakpoint.  next 2 lines can be used for mobile responsive changes.  currently not used.
+  // const theme = useTheme();
+  // const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -152,6 +155,13 @@ const AccountDrawer = (props) => {
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
+  };
+
+  const startEditAvatar = () => {
+    //Todo
+  };
+  const startEditProfile = () => {
+    //Todo
   };
 
   const logout = async (e) => {
@@ -177,7 +187,6 @@ const AccountDrawer = (props) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <Avatar
         onClick={handleDrawerOpen}
         className={`${cardClasses.avatar} 
@@ -238,6 +247,7 @@ const AccountDrawer = (props) => {
 
           <div className={styleClasses["avatar-container"]}>
             <Avatar
+              onClick={startEditAvatar}
               aria-label="avatar"
               className={styleClasses.avatar}
               src={me.photo !== "null" ? me.photo : null}
@@ -247,19 +257,22 @@ const AccountDrawer = (props) => {
                 <Typography>{makeInitials(me)}</Typography>
               )}
             </Avatar>
-            <Typography>
+            <Typography variant="h5">
               {me.firstName} {me.lastName}
             </Typography>
-            <Typography>Edit Profile</Typography>
           </div>
           <div className={styleClasses["middle-content-container"]}>
-            <Typography variant="h6">Details</Typography>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="h6">Details</Typography>
+              <Button onClick={startEditProfile}>Edit Profile</Button>
+            </div>
+
             <Typography>
-              Pets:
+              {"Pets: "}
               {me.pets ? (
-                me.pets.map((pet) => (
+                me.pets.map((pet, ind) => (
                   <Typography component="span" key={pet}>
-                    {pet}
+                    {ind < me.pets.length ? `${pet}, ` : `${pet}.`}
                   </Typography>
                 ))
               ) : (
@@ -267,11 +280,11 @@ const AccountDrawer = (props) => {
               )}
             </Typography>
             <Typography>
-              Kids:
+              {"Kids: "}
               {me.kids ? (
-                me.kids.map((kid) => (
+                me.kids.map((kid, ind) => (
                   <Typography component="span" key={kid}>
-                    {kid}
+                    {ind < me.kids.length ? `${kid}, ` : `${kid}.`}
                   </Typography>
                 ))
               ) : (
@@ -283,8 +296,12 @@ const AccountDrawer = (props) => {
             <Typography variant="h6">Dietary Preferences</Typography>
             <Typography>
               {me.dietaryPreferences ? (
-                me.dietaryPreferences.map((pref) => (
-                  <Typography>{pref}</Typography>
+                me.dietaryPreferences.map((pref, ind) => (
+                  <Typography>
+                    {ind < me.dietaryPreferences.length
+                      ? `${pref}, `
+                      : `${pref}.`}
+                  </Typography>
                 ))
               ) : (
                 <Typography> No dietary preferences</Typography>

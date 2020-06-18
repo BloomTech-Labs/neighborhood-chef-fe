@@ -17,7 +17,7 @@ import {
   ADD_EVENT,
   UPDATE_EVENT,
   ADD_EVENT_INGREDIENTS,
-  DELETE_EVENT_INGREDIENT
+  DELETE_EVENT_INGREDIENT,
 } from "../../../graphql/events/event-mutations.js";
 
 // component and helper function imports
@@ -51,7 +51,9 @@ const FormContainer = () => {
   const [ingredientList, setIngredientList] = useState([]);
   const [deletedIngredientsList, setDeletedIngredientsList] = useState([]);
   const eventToEdit = useSelector((state) => state.eventToEdit);
-  const ingredientsToEdit = useSelector(state => state.currentEventIngredients);
+  const ingredientsToEdit = useSelector(
+    (state) => state.currentEventIngredients
+  );
   const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
 
@@ -104,6 +106,7 @@ const FormContainer = () => {
         setIngredientList(ingredientsToEdit);
       }
     }
+    // eslint-disable-next-line
   }, [isEditing, eventToEdit, dispatch]);
 
   // cleanup
@@ -160,89 +163,92 @@ const FormContainer = () => {
                 },
               })
               .then((res) => {
-
                 dispatch(updateEventSuccess(res.data.data.updateEvent));
-                
-                const addedIngredients = ingredientList.filter( ingredient => {
-                  return ingredient.id === undefined
+
+                const addedIngredients = ingredientList.filter((ingredient) => {
+                  return ingredient.id === undefined;
                 });
 
-                if(addedIngredients.length < 1 && deletedIngredientsList.length < 1){
-
-                setHashtags([]);
-                resetForm(initialState);
-                resetModifiers();
-                setModifiers([]);
-                dispatch(setPage(4));
-                }
-                else {
-
-                  if(addedIngredients.length > 0) {
-
-                    const formattedIngredientsList = ingredientList.map(ingredient => {
-                        return {...ingredient, event_id: Number(res.data.data.updateEvent.id)}
-                      });
+                if (
+                  addedIngredients.length < 1 &&
+                  deletedIngredientsList.length < 1
+                ) {
+                  setHashtags([]);
+                  resetForm(initialState);
+                  resetModifiers();
+                  setModifiers([]);
+                  dispatch(setPage(4));
+                } else {
+                  if (addedIngredients.length > 0) {
+                    const formattedIngredientsList = ingredientList.map(
+                      (ingredient) => {
+                        return {
+                          ...ingredient,
+                          event_id: Number(res.data.data.updateEvent.id),
+                        };
+                      }
+                    );
 
                     axiosWithAuth()
-                    .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                      query: print(ADD_EVENT_INGREDIENTS),
-                      variables: {
+                      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                        query: print(ADD_EVENT_INGREDIENTS),
+                        variables: {
                           input: {
-                            ingredients: formattedIngredientsList
-                          }
-                      },
-                    })
-                    .then( res => {
-
-                      if(deletedIngredientsList.length > 0) {
-
-                        deletedIngredientsList.forEach(async (ingredient) => {
-                          try {   
-                            const response = await axiosWithAuth().post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                                query: print(DELETE_EVENT_INGREDIENT),
-                                variables: {
-                                  id: ingredient.id
-                                },
-                              });
-                              console.log(response)
-                            } catch(err) {
+                            ingredients: formattedIngredientsList,
+                          },
+                        },
+                      })
+                      .then((res) => {
+                        if (deletedIngredientsList.length > 0) {
+                          deletedIngredientsList.forEach(async (ingredient) => {
+                            try {
+                              const response = await axiosWithAuth().post(
+                                `${process.env.REACT_APP_BASE_URL}/graphql`,
+                                {
+                                  query: print(DELETE_EVENT_INGREDIENT),
+                                  variables: {
+                                    id: ingredient.id,
+                                  },
+                                }
+                              );
+                              console.log(response);
+                            } catch (err) {
                               console.dir(err);
                             }
-                        });
+                          });
 
-                        console.log(res.data);
-                        setHashtags([]);
-                        resetForm(initialState);
-                        resetModifiers();
-                        setModifiers([]);
-                        dispatch(setPage(4));
-                
-                    } else {
-
-                        console.log(res.data);
-                        setHashtags([]);
-                        resetForm(initialState);
-                        resetModifiers();
-                        setModifiers([]);
-                        dispatch(setPage(4));
-                    }
-                    })
-                    .catch((err) => console.dir(err));
-
+                          console.log(res.data);
+                          setHashtags([]);
+                          resetForm(initialState);
+                          resetModifiers();
+                          setModifiers([]);
+                          dispatch(setPage(4));
+                        } else {
+                          console.log(res.data);
+                          setHashtags([]);
+                          resetForm(initialState);
+                          resetModifiers();
+                          setModifiers([]);
+                          dispatch(setPage(4));
+                        }
+                      })
+                      .catch((err) => console.dir(err));
                   } else {
-
                     deletedIngredientsList.forEach(async (ingredient) => {
-                      try {   
-                        const response = await axiosWithAuth().post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+                      try {
+                        const response = await axiosWithAuth().post(
+                          `${process.env.REACT_APP_BASE_URL}/graphql`,
+                          {
                             query: print(DELETE_EVENT_INGREDIENT),
                             variables: {
-                              id: ingredient.id
+                              id: ingredient.id,
                             },
-                          });
-                          console.log(response)
-                        } catch(err) {
-                          console.dir(err);
-                        }
+                          }
+                        );
+                        console.log(response);
+                      } catch (err) {
+                        console.dir(err);
+                      }
                     });
 
                     setHashtags([]);
@@ -250,7 +256,6 @@ const FormContainer = () => {
                     resetModifiers();
                     setModifiers([]);
                     dispatch(setPage(4));
-
                   }
                 }
               })
@@ -265,9 +270,14 @@ const FormContainer = () => {
               .then((res) => {
                 dispatch(createEventSuccess(res.data.data.addEvent));
 
-                const formattedIngredientsList = ingredientList.map(ingredient => {
-                  return {...ingredient, event_id: Number(res.data.data.addEvent.id)}
-                });
+                const formattedIngredientsList = ingredientList.map(
+                  (ingredient) => {
+                    return {
+                      ...ingredient,
+                      event_id: Number(res.data.data.addEvent.id),
+                    };
+                  }
+                );
 
                 console.log(ingredientList);
 
@@ -275,12 +285,12 @@ const FormContainer = () => {
                   .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                     query: print(ADD_EVENT_INGREDIENTS),
                     variables: {
-                        input: {
-                          ingredients: formattedIngredientsList
-                        }
+                      input: {
+                        ingredients: formattedIngredientsList,
+                      },
                     },
                   })
-                  .then( res => {
+                  .then((res) => {
                     console.log(res.data);
                     setHashtags([]);
                     resetForm(initialState);
@@ -289,8 +299,6 @@ const FormContainer = () => {
                     dispatch(setPage(4));
                   })
                   .catch((err) => console.dir(err));
-
-
               })
               .catch((err) => console.log(err.message));
           }

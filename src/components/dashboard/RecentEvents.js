@@ -76,15 +76,23 @@ const RecentEvents = () => {
 
   return (
     <div>
-      <h2
+      <Typography
+        variant="h4"
         //with minimal elements on dashboard, moving this to center for better styling. to be moved back once feed and other components are added back
         style={
           { textAlign: "center", marginBottom: "10px" } // {{ marginLeft: "12px", marginBottom: "5px" }}
         }
       >
         Newest Events
-      </h2>
-      <div style={{ overflow: "auto", height: "80vh" }}>
+      </Typography>
+      <div
+        style={{
+          overflow: "auto",
+          height: "80vh",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div className="recent-events-container">
           {isFetching ? (
             <div style={{ textAlign: "center" }}>
