@@ -189,6 +189,7 @@ a {
   align-self: left;
   width: 46px;
   align-items: center;
+  position: relative;
 }
 
 /* ---- start of View Event styles ---- */
@@ -641,7 +642,7 @@ a {
 
 .createFormHeaderContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   margin-bottom: 20px;

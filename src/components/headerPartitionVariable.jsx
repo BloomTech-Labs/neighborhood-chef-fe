@@ -14,8 +14,9 @@ const styles = makeStyles({
     height: "10vh",
     textAlign: "center",
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "flex-start",
     paddingTop: "10px",
+    paddingLeft: "20px",
   },
 });
 

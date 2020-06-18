@@ -3,11 +3,8 @@ import Header from "./header";
 import Sidebar from "./dashboard/Sidebar";
 import Logo from "./logo";
 import VariableMainContent from "./variableMainContent";
-import ProfileDrawerContent from "./profileDrawerContent";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
-import Drawer from "@material-ui/core/Drawer";
-import clsx from "clsx";
 
 //kyles imports
 import ls from "local-storage";
@@ -16,42 +13,29 @@ import { USER_BY_EMAIL } from "../graphql/users/user-queries";
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
 import { print } from "graphql";
 
-const styles = makeStyles( theme => {
- return (  
- { 
+const styles = makeStyles((theme) => {
+  return {
     "grid-container": {
-    display: "grid",
-    "grid-template-columns": "2fr 8fr",
-    "grid-template-rows": "1fr 9fr",
-    gap: "1px 1px",
-    "grid-template-areas": ' "Logo Header" "Sidebar Variable" ',
-    height: "100vh",
-
-    [theme.breakpoints.down("md")] : {
-      "grid-template-columns": "1fr",
-      "grid-template-rows": "1fr 1fr 8fr",
-      "gap": "1px 1px",
-      "grid-template-areas": '"Logo" "Header" "Variable"',
-    }
-    },
-    "grid-container-shifted": {
       display: "grid",
-      "grid-template-columns": "2fr 2fr 2fr 2fr",
+      "grid-template-columns": "2fr 8fr",
       "grid-template-rows": "1fr 9fr",
       gap: "1px 1px",
+      "grid-template-areas": ' "Logo Header" "Sidebar Variable" ',
+      height: "100vh",
+
+      [theme.breakpoints.down("md")]: {
+        "grid-template-columns": "1fr",
+        "grid-template-rows": "1fr 1fr 8fr",
+        gap: "1px 1px",
+        "grid-template-areas": '"Logo" "Header" "Variable"',
+      },
     },
     Variable: {
       gridArea: "Variable",
     },
-    "Variable-Shifted": {
-      "grid-area": "2 / 2 / 3 / 4",
-    },
     Header: {
       gridArea: "Header",
       height: "10vh",
-    },
-    "Header-Shifted": {
-      "grid-area": "1 / 2 / 2 / 4",
     },
     Sidebar: {
       gridArea: "Sidebar",
@@ -59,32 +43,11 @@ const styles = makeStyles( theme => {
 
       [theme.breakpoints.down("md")]: {
         display: "none",
-        visibility: "none"
-      }
-    },
-    "Sidebar-Shifted": {
-      "grid-area": "2 / 1 / 3 / 2",
+        visibility: "none",
+      },
     },
     Logo: {
       gridArea: "Logo",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-start",
-
-      "& *": {
-        width: "100%",
-
-        "&:first-child": {
-          width: "20%",
-        },
-
-        "&:last-child": {
-          width: "115%",
-        },
-      },
-    },
-    "Logo-Shifted": {
-      "grid-area": "1 / 1 / 2 / 2",
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
@@ -108,12 +71,11 @@ const styles = makeStyles( theme => {
     Drawer: {
       width: "25vw",
     },
-  })
+  };
 });
 
 function GridStructure(props) {
   const classes = styles();
-
   const location = useLocation();
   const [urlLocation, setUrlLocation] = useState(
     location.pathname.split("/")[1]
@@ -144,67 +106,19 @@ function GridStructure(props) {
     }
   }, []);
 
-  const [open, setOpen] = useState(false);
-
-  const openDrawer = () => {
-    setOpen(true);
-  };
-
-  const closeDrawer = () => {
-    setOpen(false);
-  };
-
   return (
-    <div
-      className={clsx({
-        [classes["grid-container"]]: !open,
-        [classes["grid-container-shifted"]]: open,
-      })}
-    >
-      <div
-        className={clsx({
-          [classes["Logo"]]: !open,
-          [classes["Logo-Shifted"]]: open,
-        })}
-      >
+    <div className={classes["grid-container"]}>
+      <div className={classes["Logo"]}>
         <Logo />
       </div>
-      <div
-        className={clsx({
-          [classes["Header"]]: !open,
-          [classes["Header-Shifted"]]: open,
-        })}
-      >
-        <Header openDrawer={openDrawer} open={open} />
+      <div className={classes["Header"]}>
+        <Header />
       </div>
-      <div
-        className={clsx({
-          [classes["Sidebar"]]: !open,
-          [classes["Sidebar-Shifted"]]: open,
-        })}
-      >
+      <div className={classes["Sidebar"]}>
         <Sidebar active={urlLocation} />
       </div>
-      <div
-        className={clsx({
-          [classes["Variable"]]: !open,
-          [classes["Variable-Shifted"]]: open,
-        })}
-      >
+      <div className={classes["Variable"]}>
         <VariableMainContent {...props} />
-      </div>
-      <div className={clsx({ [classes["Drawer-Container"]]: open })}>
-        <Drawer
-          variant="persistent"
-          open={open}
-          anchor="right"
-          className={clsx({ [classes["Drawer"]]: open })}
-          classes={{
-            paper: classes.Drawer,
-          }}
-        >
-          <ProfileDrawerContent closeDrawer={closeDrawer} />
-        </Drawer>
       </div>
     </div>
   );
