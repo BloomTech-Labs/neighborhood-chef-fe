@@ -220,7 +220,7 @@ a {
 }
 
 .middle-calendar {
-  width: 50%;
+  width: 60%;
   margin-right: 5%;
   display: flex;
   flex-direction: column;
@@ -233,6 +233,10 @@ a {
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
+}
+
+.event-details-container {
+  max-width: 386px;
 }
 
 .account-button {
@@ -741,7 +745,8 @@ a {
   border: 2px solid #f0f0f0;
   border-radius: 15px;
   margin: 40px 0;
-  width: 33%;
+  min-width: 15%;
+  padding: 0 15px;
 }
 
 @media (max-width: 1100px) {
@@ -783,7 +788,7 @@ a {
   cursor: pointer;
   padding: 15px 10px;
   height: 54px;
-  width: 12%;
+  width: 10%;
 }
 
 @media (max-width: 1100px) {
