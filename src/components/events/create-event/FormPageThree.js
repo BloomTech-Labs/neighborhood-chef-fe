@@ -11,68 +11,37 @@ import {
   chooseDefaultPicture,
 } from "../../../utilities/functions";
 
-const FormPageThree = ({
-  values,
-  hashtags,
-  setHashtags,
-  modifiers,
-  setModifiers,
-  photo,
-  allergenList,
-  setAllergenList,
-  dietWarnings,
-  setDietWarnings,
-  ingredientList,
-  setIngredientList,
-}) => {
+const FormPageThree = (props) => {
   const dispatch = useDispatch();
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          border: "2px solid #F3F3F3",
-          boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
-          borderRadius: "25px",
-          marginTop: "10px",
-          padding: "30px",
-        }}
-      >
-        <div style={{ display: "flex", width: "100%", minHeight: "200px" }}>
+    <div className="formPageThreeContainer">
+      <h3>
+        Double check if your event details are correct. Once finished, click
+        done.
+      </h3>
+      <div className="formPageThreeCardContainter">
+        <div className="pageThreeCard">
           <img
-            style={{
-              maxWidth: "50%",
-              border: "8px solid #58D473",
-              borderRadius: "25px",
-              maxHeight: "300px",
-            }}
-            src={photo || chooseDefaultPicture(values.category_id)}
+            className="pageThreeImg"
+            src={props.photo || chooseDefaultPicture(props.values.category_id)}
             alt="Event Page 3 Img"
           />
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-evenly",
-              marginLeft: "30px",
-              textAlign: "left",
-              width: "50%",
-            }}
-          >
+          <div className="pageThreeText">
             <h3
               style={{
                 fontSize: "2.5rem",
                 fontWeight: "500",
                 color: "#1A0F2C",
+                margin: "0",
               }}
             >
-              {values.title}
+              {props.values.title}
             </h3>
             <div style={{ display: "flex" }}>
               <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-                {values.date && moment(values.date).format("MMM Do YYYY")}
+                {props.values.date &&
+                  moment(props.values.date).format("MMM Do YYYY")}
                 .&nbsp;
               </p>
               <p
@@ -82,10 +51,10 @@ const FormPageThree = ({
                   fontWeight: "500",
                 }}
               >
-                {convertTime(values.startTime)}&nbsp;
+                {convertTime(props.values.startTime)}&nbsp;
               </p>
 
-              {values.endTime && (
+              {props.values.endTime && (
                 <>
                   <p
                     style={{
@@ -102,42 +71,32 @@ const FormPageThree = ({
                       fontWeight: "500",
                     }}
                   >
-                    {convertTime(values.endTime)}
+                    {convertTime(props.values.endTime)}
                   </p>
                 </>
               )}
             </div>
             <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
-              {values.address}
+              {props.values.address}
             </p>
           </div>
         </div>
 
         <DisplayEventModifiers
-          hashtags={hashtags}
-          setHashtags={setHashtags}
-          modifiers={modifiers}
-          setModifiers={setModifiers}
-          allergenList={allergenList}
-          setAllergenList={setAllergenList}
-          dietWarnings={dietWarnings}
-          setDietWarnings={setDietWarnings}
-          ingredientList={ingredientList}
-          setIngredientList={setIngredientList}
+          hashtags={props.hashtags}
+          setHashtags={props.setHashtags}
+          modifiers={props.modifiers}
+          setModifiers={props.setModifiers}
+          allergenList={props.allergenList}
+          setAllergenList={props.setAllergenList}
+          dietWarnings={props.dietWarnings}
+          setDietWarnings={props.setDietWarnings}
+          ingredientList={props.ingredientList}
+          setIngredientList={props.setIngredientList}
+          deletedIngredientsList={props.deletedIngredientsList}
+          setDeletedIngredientsList={props.setDeletedIngredientsList}
         />
       </div>
-
-      <h3
-        style={{
-          fontSize: "1.8rem",
-          fontWeight: "500",
-          color: "#1A0F2C",
-          margin: "20px 0",
-        }}
-      >
-        Double check if your event details are correct. Once finished, click
-        done.
-      </h3>
 
       <div className="createFormButtonDiv">
         <button
@@ -153,7 +112,7 @@ const FormPageThree = ({
           Done
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

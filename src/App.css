@@ -330,31 +330,37 @@ a {
 
 /* ---- start of CreateEvent styles ---- */
 
+.create-event-main {
+  display: flex;
+  justify-content: center;
+}
+
 .createEventContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 96%;
 }
 
 .createForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 /* page one */
 
-.createFormPage1TopRow {
+.createFormPage1Container {
   display: flex;
-  justify-content: flex-end;
   justify-content: center;
+  width: 100%;
 }
 
-@media (max-width: 1000px) {
-  .createFormPage1TopRow {
+@media (max-width: 800px) {
+  .createFormPage1Container {
     flex-direction: column;
+    width: 95%;
   }
 }
 
@@ -362,16 +368,17 @@ a {
   width: 50%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1278px) {
   .createFormPage1LeftContainer {
-    width: 90%;
-    margin-left: 8%;
+    margin-left: 5%;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createFormPage1LeftContainer {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 90%;
   }
 }
@@ -384,6 +391,12 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
+}
+
+@media (max-width: 800px) {
+  .createFormInputDiv {
+    margin: 20px 0;
+  }
 }
 
 .createFormInputDiv input {
@@ -410,25 +423,37 @@ a {
   border: 2px dashed #f0f0f0;
   border-radius: 15px;
   outline: none;
-  padding: 15px 15px;
+  padding: 10px 12px;
   font-size: 1.6rem;
-  width: 92%;
+  width: 94%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createFormTextArea {
-    width: 94%;
+    width: 95%;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .createFormTextArea {
+    width: 93%;
+    margin: 20px 0;
   }
 }
 
 .createFormPage1RightContainer {
   width: 40%;
-  margin-left: 8%;
+  margin-left: 5%;
+  padding-right: 30px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createFormPage1RightContainer {
+    display: flex;
+    flex-direction: column;
     width: 90%;
+    padding-right: 0;
   }
 }
 
@@ -439,6 +464,12 @@ a {
   border: 2px solid #f0f0f0;
   border-radius: 15px;
   margin: 40px 0;
+}
+
+@media (max-width: 800px) {
+  .eventTimeDiv {
+    margin: 20px 0;
+  }
 }
 
 #greenSelect {
@@ -479,6 +510,12 @@ a {
   padding: 7px 0;
 }
 
+@media (max-width: 800px) {
+  .eventDateDiv {
+    margin: 20px 0;
+  }
+}
+
 #eventFormDate {
   border: none;
   border-radius: 15px;
@@ -498,6 +535,12 @@ a {
   padding: 7px;
 }
 
+@media (max-width: 800px) {
+  .categoryDiv {
+    margin: 20px 0;
+  }
+}
+
 #category_id {
   display: flex;
   align-items: center;
@@ -511,6 +554,17 @@ a {
 }
 
 /* page two */
+
+.createFormPage2Container {
+  width: 96%;
+}
+
+@media (max-width: 1278px) {
+  .createFormPage2Container {
+    width: 90%;
+  }
+}
+
 .createImgDiv {
   display: flex;
   flex-direction: column;
@@ -554,6 +608,110 @@ a {
 
 /* FormPageThree three styles */
 
+.formPageThreeContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1278px) {
+  .formPageThreeContainer {
+    width: 85%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.formPageThreeContainer h3 {
+  text-align: left;
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #1a0f2c;
+  margin: 5px 0;
+}
+
+@media (max-width: 1278px) {
+  .formPageThreeContainer h3 {
+    margin-left: 4%;
+  }
+}
+
+@media (max-width: 600px) {
+  @media (max-width: 1278px) {
+    .formPageThreeContainer h3 {
+      margin-left: 0;
+    }
+  }
+}
+
+.formPageThreeCardContainter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #f3f3f3;
+  box-shadow: 0px 4px 15px rgba(179, 179, 179, 0.1);
+  border-radius: 25px;
+  margin-top: 10px;
+  padding: 30px;
+  width: 90%;
+}
+
+@media (max-width: 800px) {
+  .formPageThreeCardContainter {
+    width: 90%;
+  }
+}
+
+.pageThreeCard {
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+}
+
+@media (max-width: 800px) {
+  .pageThreeCard {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.pageThreeImg {
+  max-width: 50%;
+  border: 8px solid #58d473;
+  border-radius: 25px;
+  max-height: 300px;
+}
+
+@media (max-width: 800px) {
+  .pageThreeImg {
+    max-width: 90%;
+  }
+}
+
+.pageThreeText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .pageThreeText {
+    width: 82%;
+    margin-top: 10px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 695px) {
+  .pageThreeText {
+    width: 96%;
+  }
+}
+
 .modifierContainer {
   display: flex;
   flex-wrap: wrap;
@@ -569,24 +727,118 @@ a {
   margin-left: 3%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .individualModifierContainer {
     margin-top: 25px;
-    width: 80%;
+    width: 100%;
+  }
+}
+
+/* page four style */
+
+.formPageFourContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (max-width: 1278px) {
+  .formPageFourContainer {
     justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+
+.pageFourCard {
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+}
+
+@media (max-width: 600px) {
+  .pageFourCard {
+    flex-direction: column;
     align-items: center;
   }
 }
 
-/* button div form */
+.pageFourImg {
+  max-width: 50%;
+  border: 8px solid #58d473;
+  border-radius: 25px;
+  max-height: 300px;
+}
+
+@media (max-width: 600px) {
+  .pageFourImg {
+    max-width: 90%;
+  }
+}
+
+.pageFourText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .pageFourText {
+    width: 96%;
+    margin-top: 10px;
+    height: 100px;
+  }
+}
+
+.searchFriendsBtn {
+  background: #82df96;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-left: 5%;
+  color: white;
+  outline: none;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 15%;
+}
+
+@media (max-width: 800px) {
+  .searchFriendsBtn {
+    width: 25%;
+  }
+}
+
+.pageFourText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .pageFourText {
+    width: 96%;
+    margin-top: 10px;
+    height: 120px;
+  }
+}
+
+/* create event button div */
 .createFormButtonDiv {
   display: flex;
   justify-content: flex-end;
-  margin-right: 1%;
+  margin-right: 5%;
   margin-bottom: 20px;
+  width: 100%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createFormButtonDiv {
     display: flex;
     justify-content: center;
@@ -612,9 +864,9 @@ a {
   width: 15%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createRightBtn {
-    width: 35%;
+    width: 30%;
   }
 }
 
@@ -634,22 +886,9 @@ a {
   width: 15%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .createLeftBtn {
-    width: 35%;
-  }
-}
-
-.formPageThreeDateDiv {
-  display: flex;
-}
-
-@media (max-width: 1000px) {
-  .formPageThreeDateDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 150px;
+    width: 30%;
   }
 }
 
@@ -657,13 +896,19 @@ a {
 
 .createFormHeaderContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1278px) {
+  .createFormHeaderContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) {
   .createFormHeaderContainer {
     display: none;
   }
@@ -677,12 +922,6 @@ a {
 
 .createFormHeaderActive {
   color: #0c0c41;
-}
-
-@media (max-width: 900px) {
-  .hideIcon {
-    display: none;
-  }
 }
 
 /* -- CreateForm Advanced options --*/
@@ -732,7 +971,7 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 30%;
+  width: 25%;
   height: 38px;
   font-size: 1.6rem;
   outline: none;
@@ -754,7 +993,7 @@ a {
   border-radius: 15px;
   margin: 40px 0;
   padding: 10px 15px;
-  width: 8%;
+  width: 12%;
   height: 38px;
   font-size: 1.6rem;
   outline: none;
@@ -780,7 +1019,7 @@ a {
 
 @media (max-width: 1100px) {
   .ingredientMeasurementDiv {
-    width: 84%;
+    width: 80%;
     margin: 10px 0;
   }
 }
