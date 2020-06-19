@@ -21,10 +21,11 @@ export const UPDATE_USER = gql`
       email
       firstName
       lastName
-      latitude
-      longitude
       gender
       address
+      latitude
+      longitude
+      photo
     }
   }
 `;

@@ -21,6 +21,7 @@ import {
   REMOVE_FAVORITE_EVENT_SUCCESS,
   SET_PAGE,
   SET_CURRENT_INGREIDENTS,
+  SAVE_USER_UPDATE_INFO
 } from "../actions";
 
 const initialDate = new Date();
@@ -42,6 +43,7 @@ const initialState = {
   eventToEdit: {},
   currentEvent: {},
   favoriteEvents: [],
+  savedUserUpdateInfo: {}
 };
 
 export const rootReducer = (state = initialState, { type, payload }) => {
@@ -175,12 +177,49 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         page: payload,
       };
 
-    case SET_CURRENT_INGREIDENTS:
-      return {
-        ...state,
-        currentEventIngredients: payload,
-      };
+    case SET_CURRENT_INGREIDENTS: 
+        return {
+          ...state,
+          currentEventIngredients: payload
+        };
+    
+    case SAVE_USER_UPDATE_INFO:
+    
+      const userInfo = JSON.parse(sessionStorage.getItem('user'));
 
+      const formattedUserinfo = {
+        firstName: userInfo.firstName, 
+          lastName: userInfo.lastName,  
+          latitude: userInfo.latitude, 
+          longitude: userInfo.longitude, 
+          gender: userInfo.gender
+      }
+
+      console.log(Object.values(payload));
+      console.log(formattedUserinfo);
+
+      const compareInputToCurrentUserData = Object.values(formattedUserinfo).filter(attribute => {
+
+        return Object.values(payload).includes(attribute);
+      })
+      console.log("here1", compareInputToCurrentUserData);
+      if(Object.values(state.savedUserUpdateInfo).length === 0 ||
+        compareInputToCurrentUserData.length < Object.values(formattedUserinfo).length + 1
+        ){
+
+        console.log("here");
+          return {
+            ...state,
+            savedUserUpdateInfo: {
+              ...state.savedUserUpdateInfo,
+              ...payload
+            }
+          }
+      }
+      else {
+        return state
+      }
+    
     default:
       return {
         ...state,
