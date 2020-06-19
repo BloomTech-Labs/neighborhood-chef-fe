@@ -111,9 +111,7 @@ const DisplayEventModifiers = (props) => {
 
       {props.ingredientList.length > 0 && (
         <div className="individualModifierContainer">
-          <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>
-            Ingredients
-          </h4>
+          <h4 style={{ fontWeight: "500", fontSize: "2rem" }}>Ingredients</h4>
           <div
             style={{
               display: "flex",
@@ -121,13 +119,16 @@ const DisplayEventModifiers = (props) => {
               flexFlow: "row wrap",
             }}
           >
-            {props.ingredientList.map((item) => {
+            {props.ingredientList.map((item, index) => {
               return (
                 <Ingredient
-                  key={item.id}
+                  index={index}
+                  key={index}
                   item={item}
                   ingredientList={props.ingredientList}
                   setIngredientList={props.setIngredientList}
+                  deletedIngredientsList={props.deletedIngredientsList}
+                  setDeletedIngredientsList={props.setDeletedIngredientsList}
                 />
               );
             })}

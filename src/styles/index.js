@@ -224,19 +224,24 @@ export const cardStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 350,
     minWidth: 200,
-    margin: 8,
+    margin: "8px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "100%",
+    height: "calc(100% - 36px)",
+    width: "calc(100% - 36px)",
     padding: "10px",
+    //these next two lines hide scrollbars on cards
+    "&::-webkit-scrollbar": { display: "none" },
+    "-ms-overflow-style": "none",
   },
   fullEvent: {
-    height: "calc(100% - 36px)",
+    maxWidth: "100%",
   },
   participants: {
     height: 150,
     width: "100%",
+    maxWidth: "100%",
   },
   particExpand: {
     display: "flex",
@@ -272,7 +277,11 @@ export const cardStyles = makeStyles((theme) => ({
     color: "black",
     letterSpacing: "3px",
   },
-  share: { maxHeight: 150, width: "100%" },
+  share: {
+    maxHeight: 150,
+    width: "100%",
+    maxWidth: "100%",
+  },
   shareButtons: {
     width: "40px",
     height: "40px",
@@ -314,10 +323,20 @@ export const cardStyles = makeStyles((theme) => ({
       background: "#f8f8f8",
     },
   },
+  accountEvent: {
+    maxHeight: 300,
+    maxWidth: 350,
+    minWidth: 200,
+    margin: 8,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "10px",
+    cursor: "pointer",
+    textAlign: "center",
+  },
   comments: {
-    height: "calc(100% - 30px)",
     maxWidth: "100%",
-    maxHeight: "calc(100% - 30px)",
   },
   singleCommentParent: {
     marginBottom: "10px",
@@ -422,13 +441,13 @@ export const theme = responsiveFontSizes(
       },
     },
     breakpoints: {
-      values:{
+      values: {
         xs: 0,
         sm: 600,
         md: 700,
         lg: 1280,
         xl: 1920,
-      }
+      },
     },
     typography: {
       h1: {

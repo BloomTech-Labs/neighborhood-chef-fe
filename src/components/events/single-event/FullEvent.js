@@ -2,8 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { print } from "graphql";
-import { EVENT_BY_ID, GET_EVENT_INGREDIENTS_BY_ID } from "../../../graphql/events/event-queries";
-import { getSingleEvent, setCurrentIngredients } from "../../../utilities/actions";
+import {
+  EVENT_BY_ID,
+  GET_EVENT_INGREDIENTS_BY_ID,
+} from "../../../graphql/events/event-queries";
+import {
+  getSingleEvent,
+  setCurrentIngredients,
+} from "../../../utilities/actions";
 import { makeActive } from "../../../utilities/actions";
 
 import Grow from "@material-ui/core/Grow";
@@ -26,29 +32,30 @@ const FullEvent = ({ match }) => {
           query: print(EVENT_BY_ID),
           variables: { id: eventId },
         },
-      })
-        .then((res) => {
-          dispatch(getSingleEvent(res.data.data.getEventById));
-          dispatch(makeActive(eventId));
+      }).then((res) => {
+        dispatch(getSingleEvent(res.data.data.getEventById));
+        dispatch(makeActive(eventId));
 
-          axiosWithAuth()({
-            url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-            method: "post",
-            data: {
-              query: print(GET_EVENT_INGREDIENTS_BY_ID),
-              variables: { event_id: eventId },
-            },
-          })
+        axiosWithAuth()({
+          url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+          method: "post",
+          data: {
+            query: print(GET_EVENT_INGREDIENTS_BY_ID),
+            variables: { event_id: eventId },
+          },
+        })
           .then((res) => {
-            dispatch(setCurrentIngredients(res.data.data.getIngredientsByEventId));
+            dispatch(
+              setCurrentIngredients(res.data.data.getIngredientsByEventId)
+            );
           })
           .catch((err) => {
             console.dir(err);
           })
-        .catch((err) => {
-          console.log(err.message);
-        });
-      })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      });
   }, [dispatch, eventId]);
 
   return (
@@ -58,19 +65,14 @@ const FullEvent = ({ match }) => {
           {currentEvent ? (
             <>
               <EventDetails />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <div style={{ display: "flex" }}>
+              <div className="single-event-right-column">
+                <div className="single-event-top-row">
                   <ParticipantCard />
                   <ShareCard />
                 </div>
-                <CommentsCard eventId={eventId} />
+                <div className="single-event-comment-card">
+                  <CommentsCard eventId={eventId} />
+                </div>
               </div>
             </>
           ) : (
