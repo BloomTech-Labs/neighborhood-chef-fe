@@ -40,6 +40,7 @@ const FormPageTwo = (props) => {
       <div className="createFormPage2Container">
         <EventImageUpload
           values={props.values}
+          avatar={props.photo}
           setPhoto={props.setPhoto}
           title="Upload a main picture for your event page if you don't want to use the category default"
         />
