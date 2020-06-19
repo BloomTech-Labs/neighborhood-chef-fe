@@ -318,6 +318,7 @@ const FormContainer = () => {
                     setHashtags={setHashtags}
                     modifiers={modifiers}
                     setModifiers={setModifiers}
+                    photo={photo}
                     setPhoto={setPhoto}
                     allergenList={allergenList}
                     setAllergenList={setAllergenList}
