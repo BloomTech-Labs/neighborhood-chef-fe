@@ -12,7 +12,7 @@ const styles = makeStyles((theme) => ({
     width: "20vw",
     height: "10vh",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   icons: {
     alignSelf: "center",
