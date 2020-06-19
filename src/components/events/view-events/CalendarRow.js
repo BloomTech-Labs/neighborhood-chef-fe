@@ -3,10 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeActive } from "../../../utilities/actions";
 import { parseTime } from "../../../utilities/functions";
 import Typography from "@material-ui/core/Typography";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useHistory } from "react-router-dom";
 
 const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
   const activeEvent = useSelector((state) => state.activeEvent);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const timeObject = parseTime(startTime, null);
 
@@ -15,7 +21,14 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
       className={`calendar-row ${
         parseInt(eventNum) % 2 === 0 && "calendar-row-even"
       } ${activeEvent === id && "calendar-row-active"}`}
-      onClick={() => dispatch(makeActive(id))}
+      onClick={
+        matches
+          ? () => {
+              history.push(`/events/${id}`);
+              history.go();
+            }
+          : () => dispatch(makeActive(id))
+      }
     >
       <div style={{ width: "15%" }}>
         <Typography color="textSecondary">{timeObject.weekday}</Typography>
