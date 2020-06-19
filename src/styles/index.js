@@ -230,6 +230,9 @@ export const cardStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     height: "100%",
     padding: "10px",
+    //these next two lines hide scrollbars on cards
+    "&::-webkit-scrollbar": { display: "none" },
+    "-ms-overflow-style": "none",
   },
   fullEvent: {
     height: "calc(100% - 36px)",

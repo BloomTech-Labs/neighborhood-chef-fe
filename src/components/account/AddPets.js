@@ -13,12 +13,19 @@ const AddPets = (props) => {
       {({ push, remove }) => (
         <div
           className="restriction"
-          style={{ marginTop: "10px", display: "none" }}
+          style={{
+            marginTop: "10px",
+            display: "none",
+            flexDirection: "column",
+          }}
         >
           <Typography>Pets</Typography>
           {props.values.pets.map((pet, index) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Field
                   component={TextField}
                   className={classes.field}
