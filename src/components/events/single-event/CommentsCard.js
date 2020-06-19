@@ -105,26 +105,28 @@ const CommentsCard = (props) => {
         <Typography variant="h6" align="left">
           Comments
         </Typography>
-        <CardContent
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            overflowY: "auto",
-            height: "35.5vh",
-            maxHeight: "35.5vh",
-          }}
-        >
-          {organizedComments &&
-            organizedComments.map((comment) => (
-              <Comment
-                key={comment.id}
-                setComments={setComments}
-                comments={comments}
-                {...comment}
-                setIdCounter={setIdCounter}
-                idCounter={idCounter}
-              />
-            ))}
+        <CardContent>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              overflowY: "auto",
+              height: "35vh",
+              maxHeight: "35vh",
+            }}
+          >
+            {organizedComments &&
+              organizedComments.map((comment) => (
+                <Comment
+                  key={comment.id}
+                  setComments={setComments}
+                  comments={comments}
+                  {...comment}
+                  setIdCounter={setIdCounter}
+                  idCounter={idCounter}
+                />
+              ))}
+          </div>
         </CardContent>
         <CardContent>
           <form

@@ -249,10 +249,11 @@ a {
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
+  max-width: 400px;
 }
 
 .event-details-container {
-  max-width: 386px;
+  width: 100%;
 }
 
 .account-button {
@@ -306,6 +307,20 @@ a {
   height: 100%;
 }
 
+.single-event-right-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.single-event-top-row {
+  display: flex;
+}
+
+.single-event-comment-card {
+}
+
 .hidden {
   display: none;
 }
@@ -313,6 +328,19 @@ a {
 .emoji-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+@media (max-width: 700px) {
+  .single-event-container,
+  .single-event-box,
+  .single-event-top-row {
+    flex-wrap: wrap;
+  }
+
+  .single-event-box {
+    max-height: 100%;
+    height: 100%;
+  }
 }
 
 /* ---- start of CreateEvent styles ---- */
