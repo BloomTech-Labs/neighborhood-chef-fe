@@ -17,7 +17,6 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={pencilIcon}
-          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Details</h3>
@@ -29,7 +28,6 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={shapeOutline}
-          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Preferences</h3>
@@ -41,7 +39,6 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={createIcon}
-          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Create</h3>
@@ -53,7 +50,6 @@ const CreateEventHeader = () => {
       >
         <Icon
           icon={shareIcon}
-          className="hideIcon"
           style={{ fontSize: "2.5rem", marginRight: "5px" }}
         />
         <h3>Share</h3>
