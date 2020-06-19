@@ -89,7 +89,7 @@ const ProfileFields = (props) => {
       addressLabel.current.focus();
     });
     addressLabel.current = geoInput.current;
-    // <!-- Just an absolute hack to get the phamtom double-parent div to hide on mobile (ruled by media query in app.css) - please forgive / improve -->
+    // <!-- Just an absolute hack to get the phantom double-parent div to hide on mobile (ruled by media query in app.css) - please forgive / improve -->
     var registerMapParent = document.getElementsByClassName("register-map")[0]
       .parentElement.parentElement;
     registerMapParent.className = "register-map";
