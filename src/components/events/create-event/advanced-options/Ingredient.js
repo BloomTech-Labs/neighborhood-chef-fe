@@ -9,7 +9,6 @@ const Ingredient = ({
   index,
 }) => {
   const removeIngredient = (index) => {
-    console.log(index);
     if (ingredientList[index].id !== undefined) {
       setDeletedIngredientsList([
         ...deletedIngredientsList,

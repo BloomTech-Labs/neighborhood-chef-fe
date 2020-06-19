@@ -302,6 +302,11 @@ a {
 
 /* ---- start of CreateEvent styles ---- */
 
+.create-event-main {
+  display: flex;
+  justify-content: center;
+}
+
 .createEventContainer {
   display: flex;
   flex-direction: column;
@@ -337,7 +342,7 @@ a {
 
 @media (max-width: 1278px) {
   .createFormPage1LeftContainer {
-    margin-left: 7%;
+    margin-left: 5%;
   }
 }
 
@@ -402,9 +407,16 @@ a {
   }
 }
 
+@media (max-width: 600px) {
+  .createFormTextArea {
+    width: 93%;
+    margin: 20px 0;
+  }
+}
+
 .createFormPage1RightContainer {
   width: 40%;
-  margin-left: 6%;
+  margin-left: 5%;
   padding-right: 30px;
 }
 
@@ -515,9 +527,12 @@ a {
 
 /* page two */
 
+.createFormPage2Container {
+  width: 96%;
+}
+
 @media (max-width: 1278px) {
   .createFormPage2Container {
-    margin-left: 4%;
     width: 90%;
   }
 }
@@ -569,19 +584,36 @@ a {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 @media (max-width: 1278px) {
   .formPageThreeContainer {
     width: 85%;
-    margin-left: 6%;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 800px) {
-  .formPageThreeContainer {
-    margin-left: 0;
+.formPageThreeContainer h3 {
+  text-align: left;
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #1a0f2c;
+  margin: 5px 0;
+}
+
+@media (max-width: 1278px) {
+  .formPageThreeContainer h3 {
+    margin-left: 4%;
+  }
+}
+
+@media (max-width: 600px) {
+  @media (max-width: 1278px) {
+    .formPageThreeContainer h3 {
+      margin-left: 0;
+    }
   }
 }
 
@@ -607,6 +639,49 @@ a {
   display: flex;
   width: 100%;
   min-height: 200px;
+}
+
+@media (max-width: 800px) {
+  .pageThreeCard {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.pageThreeImg {
+  max-width: 50%;
+  border: 8px solid #58d473;
+  border-radius: 25px;
+  max-height: 300px;
+}
+
+@media (max-width: 800px) {
+  .pageThreeImg {
+    max-width: 90%;
+  }
+}
+
+.pageThreeText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .pageThreeText {
+    width: 82%;
+    margin-top: 10px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 695px) {
+  .pageThreeText {
+    width: 96%;
+  }
 }
 
 .modifierContainer {
@@ -644,7 +719,50 @@ a {
     justify-content: center;
     align-items: center;
     width: 90%;
-    margin-left: 7%;
+    margin-left: 5%;
+  }
+}
+
+.pageFourCard {
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+}
+
+@media (max-width: 600px) {
+  .pageFourCard {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.pageFourImg {
+  max-width: 50%;
+  border: 8px solid #58d473;
+  border-radius: 25px;
+  max-height: 300px;
+}
+
+@media (max-width: 600px) {
+  .pageFourImg {
+    max-width: 90%;
+  }
+}
+
+.pageFourText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .pageFourText {
+    width: 96%;
+    margin-top: 10px;
+    height: 100px;
   }
 }
 
@@ -666,7 +784,24 @@ a {
   }
 }
 
-/* button div form */
+.pageFourText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  text-align: left;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .pageFourText {
+    width: 96%;
+    margin-top: 10px;
+    height: 120px;
+  }
+}
+
+/* create event button div */
 .createFormButtonDiv {
   display: flex;
   justify-content: flex-end;
@@ -733,7 +868,7 @@ a {
 
 .createFormHeaderContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
@@ -741,7 +876,7 @@ a {
 
 @media (max-width: 1278px) {
   .createFormHeaderContainer {
-    width: 86%;
+    width: 100%;
   }
 }
 
@@ -856,7 +991,7 @@ a {
 
 @media (max-width: 1100px) {
   .ingredientMeasurementDiv {
-    width: 84%;
+    width: 80%;
     margin: 10px 0;
   }
 }

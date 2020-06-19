@@ -17,8 +17,8 @@ import { setPage } from "../../../utilities/actions";
 import { showOptions } from "../../../utilities/functions";
 import Typography from "@material-ui/core/Typography";
 
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 export const modifierData = [
   { id: 1, title: "BBQ", icon: baselineOutdoorGrill, active: false },
@@ -29,25 +29,9 @@ export const modifierData = [
   { id: 6, title: "Vegetarian", icon: foodApple, active: false },
 ];
 
-const FormPageTwo = ({
-  values,
-  hashtags,
-  setHashtags,
-  removeHashtag,
-  modifiers,
-  setModifiers,
-  setPhoto,
-  allergenList,
-  setAllergenList,
-  dietWarnings,
-  setDietWarnings,
-  ingredientList,
-  setIngredientList,
-  deletedIngredientsList,
-  setDeletedIngredientsList,
-}) => {
+const FormPageTwo = (props) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(
-    showOptions(allergenList, dietWarnings, ingredientList)
+    showOptions(props.allergenList, props.dietWarnings, props.ingredientList)
   );
   const dispatch = useDispatch();
 
@@ -55,14 +39,14 @@ const FormPageTwo = ({
     <>
       <div className="createFormPage2Container">
         <EventImageUpload
-          values={values}
-          setPhoto={setPhoto}
+          values={props.values}
+          setPhoto={props.setPhoto}
           title="Upload a main picture for your event page if you don't want to use the category default"
         />
         <AddHashtag
-          hashtags={hashtags}
-          setHashtags={setHashtags}
-          removeHashtag={removeHashtag}
+          hashtags={props.hashtags}
+          setHashtags={props.setHashtags}
+          removeHashtag={props.removeHashtag}
         />
         <div>
           <Typography style={{ margin: "10px 0" }}>
@@ -74,8 +58,8 @@ const FormPageTwo = ({
                 <Modifier
                   key={modifier.id}
                   modifier={modifier}
-                  modifiers={modifiers}
-                  setModifiers={setModifiers}
+                  modifiers={props.modifiers}
+                  setModifiers={props.setModifiers}
                 />
               );
             })}
@@ -98,14 +82,14 @@ const FormPageTwo = ({
         {showAdvancedOptions && (
           <>
             <AdvancedOptions
-              allergenList={allergenList}
-              setAllergenList={setAllergenList}
-              dietWarnings={dietWarnings}
-              setDietWarnings={setDietWarnings}
-              ingredientList={ingredientList}
-              setIngredientList={setIngredientList}
-              deletedIngredientsList={deletedIngredientsList}
-              setDeletedIngredientsList={setDeletedIngredientsList}
+              allergenList={props.allergenList}
+              setAllergenList={props.setAllergenList}
+              dietWarnings={props.dietWarnings}
+              setDietWarnings={props.setDietWarnings}
+              ingredientList={props.ingredientList}
+              setIngredientList={props.setIngredientList}
+              deletedIngredientsList={props.deletedIngredientsList}
+              setDeletedIngredientsList={props.setDeletedIngredientsList}
             />
           </>
         )}
