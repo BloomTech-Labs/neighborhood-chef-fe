@@ -209,7 +209,7 @@ const FormContainer = () => {
                                   },
                                 }
                               );
-                              console.log(response);
+                              // console.log(response);
                             } catch (err) {
                               console.dir(err);
                             }
@@ -240,7 +240,7 @@ const FormContainer = () => {
                             },
                           }
                         );
-                        console.log(response);
+                        // console.log(response);
                       } catch (err) {
                         console.dir(err);
                       }
