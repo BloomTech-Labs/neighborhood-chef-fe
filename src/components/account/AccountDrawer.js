@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
+import { print } from "graphql";
+import { GET_AUTHORED_EVENTS } from "../../graphql/users/user-queries";
+
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -139,9 +143,29 @@ const AccountDrawer = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [myList, setMyList] = useState(me.eventsOwned);
   // 700 breakpoint.  next 2 lines can be used for mobile responsive changes.  currently not used.
   // const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_AUTHORED_EVENTS),
+          variables: { id: me.id },
+        },
+      })
+        .then((res) => {
+          setMyList(sortList(res.data.data.getAuthoredEvents));
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  });
 
   const [modalIsOpen, setModelIsOpen] = useState(false);
 
@@ -274,37 +298,37 @@ const AccountDrawer = (props) => {
               <Button onClick={toggleModalOpen}>Edit Profile</Button>
             </div>
 
-            <Typography>
+            <div>
               {"Pets: "}
               {me.pets ? (
                 me.pets.map((pet, ind) => (
-                  <Typography component="span" key={pet}>
+                  <Typography component="span" key={ind}>
                     {ind < me.pets.length - 1 ? `${pet}, ` : `${pet}.`}
                   </Typography>
                 ))
               ) : (
                 <Typography component="span">No pets</Typography>
               )}
-            </Typography>
-            <Typography>
+            </div>
+            <div>
               {"Children: "}
               {me.children ? (
                 me.children.map((kid, ind) => (
-                  <Typography component="span" key={kid}>
+                  <Typography component="span" key={ind}>
                     {ind < me.children.length - 1 ? `${kid}, ` : `${kid}.`}
                   </Typography>
                 ))
               ) : (
                 <Typography component="span">No children</Typography>
               )}
-            </Typography>
+            </div>
             <Typography>Address: {me.address} </Typography>
             <Typography>Gender: {me.gender}</Typography>
             <Typography variant="h6">Dietary Preferences</Typography>
-            <Typography>
+            <div>
               {me.dietaryPreferences ? (
                 me.dietaryPreferences.map((pref, ind) => (
-                  <Typography>
+                  <Typography key={ind}>
                     {ind < me.dietaryPreferences.length - 1
                       ? `${pref}, `
                       : `${pref}.`}
@@ -313,7 +337,7 @@ const AccountDrawer = (props) => {
               ) : (
                 <Typography> No dietary preferences</Typography>
               )}
-            </Typography>
+            </div>
           </div>
           <div>
             <div className={styleClasses["bottom-header-container"]}>
@@ -323,10 +347,12 @@ const AccountDrawer = (props) => {
                 {showAll ? "Show less" : "Show all"}
               </Button>
             </div>
-            {me.eventsOwned ? (
-              sortList(me.eventsOwned).map(
+            {myList ? (
+              sortList(myList).map(
                 (event, ind) =>
-                  (showAll || ind < 3) && <AccountEventCard event={event} />
+                  (showAll || ind < 3) && (
+                    <AccountEventCard event={event} key={ind} />
+                  )
               )
             ) : (
               <Typography>No created events</Typography>
