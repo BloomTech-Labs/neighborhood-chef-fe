@@ -26,12 +26,12 @@ function PersistentHeader(props) {
 
   return (
     <section className={classes.container}>
-      <Typography variant="h5" className={classes.icons}>
+      {/* <Typography variant="h5" className={classes.icons}>
         <Icon icon={bxBell} />
       </Typography>
       <Typography variant="h5" className={classes.icons}>
         <Icon icon={magnifyingGlass} />
-      </Typography>
+      </Typography> */}
 
       <AccountDrawer {...props} />
     </section>

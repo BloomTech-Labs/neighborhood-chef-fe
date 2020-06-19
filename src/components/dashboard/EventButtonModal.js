@@ -95,6 +95,7 @@ const EventButtonModal = ({ eventId, userId }) => {
             <MoreVertIcon />
           </IconButton>
           <Popper
+            placement="bottom-start"
             open={open}
             anchorEl={anchorRef.current}
             role={undefined}
