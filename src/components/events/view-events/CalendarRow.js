@@ -12,7 +12,7 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const timeObject = parseTime(startTime, null);
 
@@ -27,7 +27,9 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
               history.push(`/events/${id}`);
               history.go();
             }
-          : () => dispatch(makeActive(id))
+          : () => {
+              dispatch(makeActive(id));
+            }
       }
     >
       <div style={{ width: "15%" }}>
