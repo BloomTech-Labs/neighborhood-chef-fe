@@ -145,6 +145,10 @@ const AccountDrawer = (props) => {
 
   const [modalIsOpen, setModelIsOpen] = useState(false);
 
+  const ReffedModalContent = React.forwardRef((props, ref) => (
+    <UserEditModalContent {...props} ref={ref} />
+  ))
+  
   const toggleModalOpen = e => {
     setModelIsOpen(!modalIsOpen);
   }
@@ -195,12 +199,12 @@ const AccountDrawer = (props) => {
 
   return (
     <div className={classes.root}>
-      <Modal 
+      <Modal
       open={modalIsOpen}
       onClose={toggleModalOpen}
       >
-        <UserEditModalContent toggleOpen={toggleModalOpen}/>
-      </Modal>
+          <ReffedModalContent toggleOpen={toggleModalOpen}/>
+      </ Modal>
       <Avatar
         onClick={handleDrawerOpen}
         className={`${cardClasses.avatar} 
