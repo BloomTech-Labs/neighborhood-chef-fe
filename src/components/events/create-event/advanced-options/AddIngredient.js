@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
-import Checkbox from '@material-ui/core/Checkbox';
+import Checkbox from "@material-ui/core/Checkbox";
 import Ingredient from "./Ingredient.js";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { useSelector } from 'react-redux';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { useSelector } from "react-redux";
 
-
-const AddIngredient = ({ ingredientList, setIngredientList, deletedIngredientsList, setDeletedIngredientsList }) => {
+const AddIngredient = ({
+  ingredientList,
+  setIngredientList,
+  deletedIngredientsList,
+  setDeletedIngredientsList,
+}) => {
   const [formInput, setFormInput] = useState({
     name: "",
     quantity: "",
     measurement: "",
   });
-
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -27,20 +30,19 @@ const AddIngredient = ({ ingredientList, setIngredientList, deletedIngredientsLi
 
   const submitIngredient = (e) => {
     e.preventDefault();
-    
+
     let newIngredient;
 
-    eventToEdit.id ? 
-    newIngredient = {
-      description: `${formInput.name} ${formInput.quantity} ${formInput.measurement}`,
-      requested,
-      event_id: eventToEdit.id
-    } 
-    :
-    newIngredient = {
-      description: `${formInput.name} ${formInput.quantity} ${formInput.measurement}`,
-      requested, 
-    }
+    eventToEdit.id
+      ? (newIngredient = {
+          description: `${formInput.name} ${formInput.quantity} ${formInput.measurement}`,
+          requested,
+          event_id: eventToEdit.id,
+        })
+      : (newIngredient = {
+          description: `${formInput.name} ${formInput.quantity} ${formInput.measurement}`,
+          requested,
+        });
 
     setIngredientList([...ingredientList, newIngredient]);
     setFormInput({ name: "", quantity: "", measurement: "" });
@@ -106,11 +108,18 @@ const AddIngredient = ({ ingredientList, setIngredientList, deletedIngredientsLi
             </label>
           </div>
 
-          <FormControlLabel 
+          <FormControlLabel
             value="start"
             label="Requested"
             labelPlacement="start"
-            control={<Checkbox checked={requested} onChange={() => { setRequested(!requested) }} />}
+            control={
+              <Checkbox
+                checked={requested}
+                onChange={() => {
+                  setRequested(!requested);
+                }}
+              />
+            }
           />
 
           <button
@@ -125,7 +134,7 @@ const AddIngredient = ({ ingredientList, setIngredientList, deletedIngredientsLi
             type="button"
             onClick={submitIngredient}
           >
-            Add +
+            Add
           </button>
         </div>
       </div>

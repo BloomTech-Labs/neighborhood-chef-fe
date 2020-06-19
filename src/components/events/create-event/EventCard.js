@@ -22,38 +22,12 @@ const EventCard = () => {
         boxShadow: "0px 4px 15px rgba(179, 179, 179, 0.1)",
         borderRadius: "25px",
         padding: "30px",
+        width: "90%",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          minHeight: "200px",
-          flexDirection: "row",
-        }}
-      >
-        <img
-          style={{
-            maxWidth: "50%",
-            border: "8px solid #58D473",
-            borderRadius: "25px",
-            maxHeight: "300px",
-          }}
-          src={photo}
-          alt="Event Card Img"
-        />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            marginLeft: "30px",
-            textAlign: "left",
-            width: "50%",
-            fontSize: "1.6rem",
-            height: "200px",
-          }}
-        >
+      <div className="pageFourCard">
+        <img className="pageFourImg" src={photo} alt="Event Card Img" />
+        <div className="pageFourText">
           <h3
             style={{
               fontSize: "2.5rem",

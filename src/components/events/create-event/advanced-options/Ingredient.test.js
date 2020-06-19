@@ -5,9 +5,11 @@ import { BrowserRouter } from "react-router-dom";
 
 import "@testing-library/jest-dom/extend-expect";
 
-const ingredient = [{
-  description: "Milk 2 gallons"
-}];
+const ingredient = [
+  {
+    description: "Milk 2 gallons",
+  },
+];
 
 describe("Test Ingredient component", () => {
   let IngredientComponent;
@@ -18,8 +20,6 @@ describe("Test Ingredient component", () => {
       </BrowserRouter>
     );
   });
-
-  console.log(IngredientComponent)
 
   test("ingredient component renders with text from props", () => {
     expect(IngredientComponent).toBeDefined();

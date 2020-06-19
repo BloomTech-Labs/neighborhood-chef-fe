@@ -34,8 +34,8 @@ const CalendarView = () => {
     eventList &&
     eventList.filter((ev) => {
       const parsedTime = parseTime(ev.startTime, ev.endTime);
-      const eventMonth = parsedTime.monthShort;
-      return eventMonth === moment(selectedMonth).format("MMM");
+      const eventMonth = parsedTime.monthYear;
+      return eventMonth === moment(selectedMonth).format("MMM YYYY");
     });
 
   useEffect(() => {
