@@ -89,6 +89,11 @@ const ProfileFields = (props) => {
       addressLabel.current.focus();
     });
     addressLabel.current = geoInput.current;
+    // <!-- Just an absolute hack to get the phamtom double-parent div to hide on mobile (ruled by media query in app.css) - please forgive / improve -->
+    var registerMapParent = document.getElementsByClassName("register-map")[0]
+      .parentElement.parentElement;
+    registerMapParent.className = "register-map";
+    // <!--End absolute hack -->
     // eslint-disable-next-line
   }, []);
 
@@ -174,7 +179,12 @@ const ProfileFields = (props) => {
 
       <ReactMapGL
         className={`${mapOpen ? "" : "hidden"} register-map`}
-        style={{ position: "absolute", right: 50, top: 120 }}
+        id="register-map"
+        style={{
+          position: "absolute",
+          right: 50,
+          top: 120,
+        }}
         {...mapAccess}
         {...viewport}
         {...mapStyle}
