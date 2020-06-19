@@ -5,7 +5,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Modal from '@material-ui/core/Modal';
+import Modal from "@material-ui/core/Modal";
 // import { useTheme } from "@material-ui/core/styles";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -20,7 +20,7 @@ import { makeInitials } from "../../utilities/functions";
 import { cardStyles } from "../../styles";
 
 import AccountEventCard from "./AccountEventCard";
-import UserEditModalContent from '../UserEditModalContent.jsx'
+import UserEditModalContent from "../UserEditModalContent.jsx";
 
 const drawerWidth = 320;
 
@@ -145,9 +145,9 @@ const AccountDrawer = (props) => {
 
   const [modalIsOpen, setModelIsOpen] = useState(false);
 
-  const toggleModalOpen = e => {
+  const toggleModalOpen = (e) => {
     setModelIsOpen(!modalIsOpen);
-  }
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -166,9 +166,6 @@ const AccountDrawer = (props) => {
   };
 
   const startEditAvatar = () => {
-    //Todo
-  };
-  const startEditProfile = () => {
     //Todo
   };
 
@@ -195,11 +192,8 @@ const AccountDrawer = (props) => {
 
   return (
     <div className={classes.root}>
-      <Modal 
-      open={modalIsOpen}
-      onClose={toggleModalOpen}
-      >
-        <UserEditModalContent toggleOpen={toggleModalOpen}/>
+      <Modal open={modalIsOpen} onClose={toggleModalOpen}>
+        <UserEditModalContent toggleOpen={toggleModalOpen} />
       </Modal>
       <Avatar
         onClick={handleDrawerOpen}
@@ -231,7 +225,6 @@ const AccountDrawer = (props) => {
       >
         <section className={styleClasses.container}>
           <div
-            className={styleClasses.drawerHeader}
             style={{
               display: "flex",
               flexDirection: "row",
@@ -286,7 +279,7 @@ const AccountDrawer = (props) => {
               {me.pets ? (
                 me.pets.map((pet, ind) => (
                   <Typography component="span" key={pet}>
-                    {ind < me.pets.length ? `${pet}, ` : `${pet}.`}
+                    {ind < me.pets.length - 1 ? `${pet}, ` : `${pet}.`}
                   </Typography>
                 ))
               ) : (
@@ -294,15 +287,15 @@ const AccountDrawer = (props) => {
               )}
             </Typography>
             <Typography>
-              {"Kids: "}
-              {me.kids ? (
-                me.kids.map((kid, ind) => (
+              {"Children: "}
+              {me.children ? (
+                me.children.map((kid, ind) => (
                   <Typography component="span" key={kid}>
-                    {ind < me.kids.length ? `${kid}, ` : `${kid}.`}
+                    {ind < me.children.length - 1 ? `${kid}, ` : `${kid}.`}
                   </Typography>
                 ))
               ) : (
-                <Typography component="span">No kids</Typography>
+                <Typography component="span">No children</Typography>
               )}
             </Typography>
             <Typography>Address: {me.address} </Typography>
@@ -312,7 +305,7 @@ const AccountDrawer = (props) => {
               {me.dietaryPreferences ? (
                 me.dietaryPreferences.map((pref, ind) => (
                   <Typography>
-                    {ind < me.dietaryPreferences.length
+                    {ind < me.dietaryPreferences.length - 1
                       ? `${pref}, `
                       : `${pref}.`}
                   </Typography>

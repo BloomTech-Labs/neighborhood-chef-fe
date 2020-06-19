@@ -322,7 +322,7 @@ export const cardStyles = makeStyles((theme) => ({
     },
   },
   accountEvent: {
-    maxHeight: 300,
+    maxHeight: 200,
     maxWidth: 350,
     minWidth: 200,
     margin: 8,
