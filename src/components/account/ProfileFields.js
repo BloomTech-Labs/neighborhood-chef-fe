@@ -85,7 +85,15 @@ const ProfileFields = (props) => {
     geoInput.current.addEventListener("focusout", () => {
       setFocusAddress(false);
     });
+    geoInput.current.addEventListener("change", (e) => {
+      addressLabel.current.focus();
+    });
     addressLabel.current = geoInput.current;
+    // <!-- Just an absolute hack to get the phantom double-parent div to hide on mobile (ruled by media query in app.css) - please forgive / improve -->
+    var registerMapParent = document.getElementsByClassName("register-map")[0]
+      .parentElement.parentElement;
+    registerMapParent.className = "register-map";
+    // <!--End absolute hack -->
     // eslint-disable-next-line
   }, []);
 
@@ -143,12 +151,12 @@ const ProfileFields = (props) => {
           </Typography>
         </label>
         <IconButton
-          className={
+          className={`${
             textBoxStyles({
               isFocus: focusAddress,
               addressValue: geoInput.current ? geoInput.current.value : null,
             }).icon
-          }
+          } toggle-map`}
           aria-label="toggle show map"
           onClick={() => setMapOpen(!mapOpen)}
         >
@@ -170,8 +178,13 @@ const ProfileFields = (props) => {
       </div>
 
       <ReactMapGL
-        className={mapOpen ? "" : "hidden"}
-        style={{ position: "absolute", right: 50, top: 120 }}
+        className={`${mapOpen ? "" : "hidden"} register-map`}
+        id="register-map"
+        style={{
+          position: "absolute",
+          right: 50,
+          top: 120,
+        }}
         {...mapAccess}
         {...viewport}
         {...mapStyle}
@@ -207,18 +220,22 @@ const ProfileFields = (props) => {
         setPhoto={changePhoto}
         title="Upload a picture for your avatar (optional)"
       />
-      <Typography
-        onClick={() => {
+      <Button
+        onClick={(e) => {
+          e.target.innerHTML === "Add More Info"
+            ? (e.target.innerHTML = "See Less Info")
+            : (e.target.innerHTML = "Add More Info");
           let restrictions = document.querySelectorAll(".restriction");
           restrictions.forEach((restriction) => {
             restriction.style.display === "none"
-              ? (restriction.style.display = "inherit")
+              ? (restriction.style.display = "flex")
               : (restriction.style.display = "none");
           });
         }}
+        className={classes.root}
       >
-        Add more info
-      </Typography>
+        <Typography variant="h6">Add More Info</Typography>
+      </Button>
       <AddAllergens values={props.values} />
       <AddDietaryRestrictions values={props.values} />
       <AddDietaryPreferences values={props.values} />
