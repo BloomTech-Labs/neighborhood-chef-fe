@@ -14,10 +14,11 @@ const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
   const classes = buttonStyles();
   const imageSizeLimit = 1500000;
   let photo;
+
   if (values && thisURL === "create-event") {
     photo =
-      values.photo !== "null" && values.photo !== undefined
-        ? values.photo
+      avatar !== "null" && avatar !== null
+        ? avatar
         : chooseDefaultPicture(values.category_id);
     // console.log('Initial photo', photo);
   } else if (avatar) photo = avatar;
