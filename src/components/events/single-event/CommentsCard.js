@@ -100,7 +100,7 @@ const CommentsCard = (props) => {
   }, [comments]);
 
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <Card className={`${classes.root} ${classes.comments}`}>
         <Typography variant="h6" align="left">
           Comments

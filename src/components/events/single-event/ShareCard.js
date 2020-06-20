@@ -66,6 +66,7 @@ const ParticipantCard = (props) => {
           style={{
             display: "flex",
             flexDirection: "column",
+            padding: "5px",
           }}
         >
           <div

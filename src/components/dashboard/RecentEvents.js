@@ -99,7 +99,7 @@ const RecentEvents = () => {
               <CircularProgress style={{ color: "#58D573" }} />
             </div>
           ) : eventList.length > 0 ? (
-            eventList.map((ele, id) => (
+            eventList.map((ele) => (
               <RecentCard
                 {...ele}
                 key={ele.id}

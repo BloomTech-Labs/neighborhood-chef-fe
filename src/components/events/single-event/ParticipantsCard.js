@@ -29,7 +29,7 @@ const ParticipantCard = (props) => {
           <CardContent style={{ display: "flex" }}>
             <AvatarGroup max={4}>
               {attending.map((user) => {
-                console.log(user.photo);
+                // console.log(user.photo);
                 return (
                   <Avatar
                     key={user.id}

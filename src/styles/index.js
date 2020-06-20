@@ -228,25 +228,23 @@ export const cardStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "calc(100% - 36px)",
     width: "calc(100% - 36px)",
     padding: "10px",
+    overflowY: "auto",
     //these next two lines hide scrollbars on cards
     "&::-webkit-scrollbar": { display: "none" },
     "-ms-overflow-style": "none",
   },
+
   fullEvent: {
     maxWidth: "100%",
+    height: "calc(100% - 36px)",
   },
   participants: {
-    height: 150,
+    maxHeight: 150,
     width: "100%",
     maxWidth: "100%",
-  },
-  particExpand: {
-    display: "flex",
-    flexDirection: "column",
-    overflow: "auto",
+    justifyContent: "flex-start",
   },
   landingPage: {
     width: "70%",
@@ -324,7 +322,7 @@ export const cardStyles = makeStyles((theme) => ({
     },
   },
   accountEvent: {
-    maxHeight: 300,
+    maxHeight: 200,
     maxWidth: 350,
     minWidth: 200,
     margin: 8,
@@ -334,9 +332,11 @@ export const cardStyles = makeStyles((theme) => ({
     padding: "10px",
     cursor: "pointer",
     textAlign: "center",
+    height: "calc(100% - 36px)",
   },
   comments: {
     maxWidth: "100%",
+    height: "calc(100% - 36px)",
   },
   singleCommentParent: {
     marginBottom: "10px",

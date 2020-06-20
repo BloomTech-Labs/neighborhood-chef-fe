@@ -147,6 +147,7 @@ export const GET_AUTHORED_EVENTS = gql`
   query getAuthoredEvents($id: ID!) {
     getAuthoredEvents(id: $id) {
       id
+      category_id
       startTime
       endTime
       createDateTime
