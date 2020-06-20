@@ -54,6 +54,21 @@ const Register = () => {
                   ) {
                     errors.email = "Invalid email address";
                   }
+                  if (!values.firstName) {
+                    errors.firstName = "Required";
+                  }
+                  if (!values.lastName) {
+                    errors.lastName = "Required";
+                  }
+                  if (!values.latitude) {
+                    errors.latitude = "Required";
+                  }
+                  if (!values.longitude) {
+                    errors.longitude = "Required";
+                  }
+                  if (!values.address) {
+                    errors.address = "Required";
+                  }
                   return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
