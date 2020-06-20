@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
+import { print } from "graphql";
+import { GET_AUTHORED_EVENTS } from "../../graphql/users/user-queries";
+
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Modal from '@material-ui/core/Modal';
+import Modal from "@material-ui/core/Modal";
 // import { useTheme } from "@material-ui/core/styles";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -20,7 +24,7 @@ import { makeInitials } from "../../utilities/functions";
 import { cardStyles } from "../../styles";
 
 import AccountEventCard from "./AccountEventCard";
-import UserEditModalContent from '../UserEditModalContent.jsx'
+import UserEditModalContent from "../UserEditModalContent.jsx";
 
 const drawerWidth = 320;
 
@@ -139,15 +143,35 @@ const AccountDrawer = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [myList, setMyList] = useState(me.eventsOwned);
   // 700 breakpoint.  next 2 lines can be used for mobile responsive changes.  currently not used.
   // const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_AUTHORED_EVENTS),
+          variables: { id: me.id },
+        },
+      })
+        .then((res) => {
+          setMyList(sortList(res.data.data.getAuthoredEvents));
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  });
+
   const [modalIsOpen, setModelIsOpen] = useState(false);
 
-  const toggleModalOpen = e => {
+  const toggleModalOpen = (e) => {
     setModelIsOpen(!modalIsOpen);
-  }
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -166,9 +190,6 @@ const AccountDrawer = (props) => {
   };
 
   const startEditAvatar = () => {
-    //Todo
-  };
-  const startEditProfile = () => {
     //Todo
   };
 
@@ -195,11 +216,8 @@ const AccountDrawer = (props) => {
 
   return (
     <div className={classes.root}>
-      <Modal 
-      open={modalIsOpen}
-      onClose={toggleModalOpen}
-      >
-        <UserEditModalContent toggleOpen={toggleModalOpen}/>
+      <Modal open={modalIsOpen} onClose={toggleModalOpen}>
+        <UserEditModalContent toggleOpen={toggleModalOpen} />
       </Modal>
       <Avatar
         onClick={handleDrawerOpen}
@@ -231,7 +249,6 @@ const AccountDrawer = (props) => {
       >
         <section className={styleClasses.container}>
           <div
-            className={styleClasses.drawerHeader}
             style={{
               display: "flex",
               flexDirection: "row",
@@ -281,38 +298,38 @@ const AccountDrawer = (props) => {
               <Button onClick={toggleModalOpen}>Edit Profile</Button>
             </div>
 
-            <Typography>
+            <div>
               {"Pets: "}
               {me.pets ? (
                 me.pets.map((pet, ind) => (
-                  <Typography component="span" key={pet}>
-                    {ind < me.pets.length ? `${pet}, ` : `${pet}.`}
+                  <Typography component="span" key={ind}>
+                    {ind < me.pets.length - 1 ? `${pet}, ` : `${pet}.`}
                   </Typography>
                 ))
               ) : (
                 <Typography component="span">No pets</Typography>
               )}
-            </Typography>
-            <Typography>
-              {"Kids: "}
-              {me.kids ? (
-                me.kids.map((kid, ind) => (
-                  <Typography component="span" key={kid}>
-                    {ind < me.kids.length ? `${kid}, ` : `${kid}.`}
+            </div>
+            <div>
+              {"Children: "}
+              {me.children ? (
+                me.children.map((kid, ind) => (
+                  <Typography component="span" key={ind}>
+                    {ind < me.children.length - 1 ? `${kid}, ` : `${kid}.`}
                   </Typography>
                 ))
               ) : (
-                <Typography component="span">No kids</Typography>
+                <Typography component="span">No children</Typography>
               )}
-            </Typography>
+            </div>
             <Typography>Address: {me.address} </Typography>
             <Typography>Gender: {me.gender}</Typography>
             <Typography variant="h6">Dietary Preferences</Typography>
-            <Typography>
+            <div>
               {me.dietaryPreferences ? (
                 me.dietaryPreferences.map((pref, ind) => (
-                  <Typography>
-                    {ind < me.dietaryPreferences.length
+                  <Typography key={ind}>
+                    {ind < me.dietaryPreferences.length - 1
                       ? `${pref}, `
                       : `${pref}.`}
                   </Typography>
@@ -320,7 +337,7 @@ const AccountDrawer = (props) => {
               ) : (
                 <Typography> No dietary preferences</Typography>
               )}
-            </Typography>
+            </div>
           </div>
           <div>
             <div className={styleClasses["bottom-header-container"]}>
@@ -330,10 +347,12 @@ const AccountDrawer = (props) => {
                 {showAll ? "Show less" : "Show all"}
               </Button>
             </div>
-            {me.eventsOwned ? (
-              sortList(me.eventsOwned).map(
+            {myList ? (
+              sortList(myList).map(
                 (event, ind) =>
-                  (showAll || ind < 3) && <AccountEventCard event={event} />
+                  (showAll || ind < 3) && (
+                    <AccountEventCard event={event} key={ind} />
+                  )
               )
             ) : (
               <Typography>No created events</Typography>
