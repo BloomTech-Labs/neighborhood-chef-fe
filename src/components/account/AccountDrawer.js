@@ -5,6 +5,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import Modal from '@material-ui/core/Modal';
 // import { useTheme } from "@material-ui/core/styles";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -19,6 +20,7 @@ import { makeInitials } from "../../utilities/functions";
 import { cardStyles } from "../../styles";
 
 import AccountEventCard from "./AccountEventCard";
+import UserEditModalContent from '../UserEditModalContent.jsx'
 
 const drawerWidth = 320;
 
@@ -141,6 +143,12 @@ const AccountDrawer = (props) => {
   // const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.down("md"));
 
+  const [modalIsOpen, setModelIsOpen] = useState(false);
+
+  const toggleModalOpen = e => {
+    setModelIsOpen(!modalIsOpen);
+  }
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -187,6 +195,12 @@ const AccountDrawer = (props) => {
 
   return (
     <div className={classes.root}>
+      <Modal 
+      open={modalIsOpen}
+      onClose={toggleModalOpen}
+      >
+        <UserEditModalContent toggleOpen={toggleModalOpen}/>
+      </Modal>
       <Avatar
         onClick={handleDrawerOpen}
         className={`${cardClasses.avatar} 
@@ -264,7 +278,7 @@ const AccountDrawer = (props) => {
           <div className={styleClasses["middle-content-container"]}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="h6">Details</Typography>
-              <Button onClick={startEditProfile}>Edit Profile</Button>
+              <Button onClick={toggleModalOpen}>Edit Profile</Button>
             </div>
 
             <Typography>
