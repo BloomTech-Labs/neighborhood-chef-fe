@@ -340,6 +340,7 @@ a {
 }
 
 .single-event-comment-card {
+  height: 100%;
 }
 
 .hidden {

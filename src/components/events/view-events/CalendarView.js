@@ -98,7 +98,17 @@ const CalendarView = () => {
               <CalendarRow {...event} key={event.id} eventNum={eventNum} />
             ))
           ) : (
-            <div style={{ textAlign: "center" }}>
+            <div
+              style={{
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "center",
+                height: "20vh",
+                marginTop: "10%",
+              }}
+            >
               <h3>No events for selected month</h3>
               <p>But it doesn't have to stay that way.</p>
               <Link to="/create-event">

@@ -134,7 +134,7 @@ const EventDetails = () => {
             }
           />
           <CardMedia
-            style={{ height: 130 }}
+            style={{ maxHeight: "40%" }}
             component="img"
             src={photo}
             title="Event Details Photo"

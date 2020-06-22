@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Icon } from "@iconify/react";
-import bxBell from "@iconify/icons-bx/bx-bell";
-import magnifyingGlass from "@iconify/icons-entypo/magnifying-glass";
-import Typography from "@material-ui/core/Typography";
+// import { Icon } from "@iconify/react";
+// import bxBell from "@iconify/icons-bx/bx-bell";
+// import magnifyingGlass from "@iconify/icons-entypo/magnifying-glass";
+// import Typography from "@material-ui/core/Typography";
 
 import AccountDrawer from "./account/AccountDrawer";
 
@@ -12,7 +12,7 @@ const styles = makeStyles((theme) => ({
     width: "20vw",
     height: "10vh",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   icons: {
     alignSelf: "center",
@@ -26,12 +26,12 @@ function PersistentHeader(props) {
 
   return (
     <section className={classes.container}>
-      <Typography variant="h5" className={classes.icons}>
+      {/* <Typography variant="h5" className={classes.icons}>
         <Icon icon={bxBell} />
       </Typography>
       <Typography variant="h5" className={classes.icons}>
         <Icon icon={magnifyingGlass} />
-      </Typography>
+      </Typography> */}
 
       <AccountDrawer {...props} />
     </section>
