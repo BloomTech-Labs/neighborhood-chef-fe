@@ -115,9 +115,13 @@ function UserEditModalContent (props) {
 
     useEffect(() => {
 
-        const inputList = document.getElementsByTagName("input");
+        console.log("here");
 
-        geoInput.current = inputList[3];
+        const geocoder = document.querySelector(".geocoder-container");
+
+        console.log(geocoder);
+
+        geoInput.current = geocoder.children[0].children[0];
         
         geoInput.current.name = "address";
 
