@@ -130,7 +130,7 @@ const RecentCard = (props) => {
   }, []);
 
   return (
-    <Card className={classes.root} style={{ margin: 15 }}>
+    <Card className={`${classes.root} ${classes.dashboard}`}>
       <CardHeader
         avatar={
           <Avatar
@@ -165,7 +165,7 @@ const RecentCard = (props) => {
         {props.photo !== "null" &&
         process.env.REACT_APP_ALLOW_USER_IMG === "1" ? (
           <CardMedia
-            style={{ height: 130 }}
+            style={{ maxHeight: "40%" }}
             component="img"
             src={props.photo}
             title="Recent Card Event Photo"
@@ -186,9 +186,8 @@ const RecentCard = (props) => {
         <Typography variant="body1" align="center">
           {`@ ${timeObject.startTime}`}
         </Typography>
-        <CardContent>
-          <Typography variant="h4" align="center" gutterBottom>
-            {/* <Link to={"/events/"+props.id}>{props.title}</Link> */}
+        <CardContent style={{ padding: "5px" }}>
+          <Typography variant="h4" align="center">
             {props.title}
           </Typography>
           <Typography variant="body1" align="center">
@@ -209,26 +208,6 @@ const RecentCard = (props) => {
         </CardContent>
       </Link>
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites" onClick={() => toggleLike()}>
-          <span>
-            {liked ? (
-              <Icon icon={smHeart} color="red" />
-            ) : (
-              <Icon icon={smHeart} />
-            )}
-          </span>
-          <Typography variant="caption" color="textSecondary"></Typography>
-        </IconButton>
-
-        <IconButton aria-label="share">
-          <span>
-            <ChatBubbleIcon />
-          </span>
-          <Typography variant="caption" color="textSecondary"></Typography>
-        </IconButton> */}
-        {/* <Typography variant="caption" color="textSecondary">
-          RSVP
-        </Typography> */}
         {!isFavorite ? (
           <div
             style={{ fontSize: "2.5rem", cursor: "pointer" }}
