@@ -61,13 +61,13 @@ const Register = () => {
                   if (!values.lastName) {
                     errors.lastName = "Required";
                   }
-                  if (!values.latitude) {
+                  if (!values.location.latitude) {
                     errors.latitude = "Required";
                   }
-                  if (!values.longitude) {
+                  if (!values.location.longitude) {
                     errors.longitude = "Required";
                   }
-                  if (!values.address) {
+                  if (!values.location.address) {
                     errors.address = "Required";
                   }
                   return errors;
