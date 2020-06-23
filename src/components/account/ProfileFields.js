@@ -200,7 +200,6 @@ const ProfileFields = (props) => {
       <Field
         style={{ marginTop: "10px", marginBottom: "10px" }}
         component={FormControl}
-        required
       >
         <InputLabel id="gender-label">Gender</InputLabel>
         <Select
