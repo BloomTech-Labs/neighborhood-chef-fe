@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./header";
 import Sidebar from "./dashboard/Sidebar";
 import Logo from "./logo";
+import ResponsiveMenu from './other/ResponsiveMenu';
 import VariableMainContent from "./variableMainContent";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
@@ -23,11 +24,11 @@ const styles = makeStyles((theme) => {
       "grid-template-areas": ' "Logo Header" "Sidebar Variable" ',
       height: "100vh",
 
-      [theme.breakpoints.down("md")]: {
-        "grid-template-columns": "1fr",
-        "grid-template-rows": "1fr 1fr 8fr",
-        gap: "1px 1px",
-        "grid-template-areas": '"Logo" "Header" "Variable"',
+      [theme.breakpoints.down("960")]: {
+        height: "100%",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column"
       },
     },
     Variable: {
@@ -41,7 +42,7 @@ const styles = makeStyles((theme) => {
       gridArea: "Sidebar",
       paddingLeft: "5%",
 
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("960")]: {
         display: "none",
         visibility: "none",
       },
@@ -63,6 +64,14 @@ const styles = makeStyles((theme) => {
           width: "115%",
         },
       },
+
+      [theme.breakpoints.down("960")]: {
+        
+        "&  a > div:first-child": {
+          paddingTop: "3%",
+          marginLeft: "25%"
+        }
+      }
     },
     "Drawer-Container": {
       "grid-area": "1 / 4 / 3 / 5",
@@ -71,6 +80,23 @@ const styles = makeStyles((theme) => {
     Drawer: {
       width: "25vw",
     },
+    hamburgerMenu: {
+
+      display: "none",
+      visibility: "none",
+
+      [theme.breakpoints.down('960')]: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100vw",
+        position:"sticky",
+        bottom:"0",
+        height:"10vh",
+        "z-index": 2,
+        background: "white"
+      }
+    }
   };
 });
 
@@ -108,6 +134,7 @@ function GridStructure(props) {
 
   return (
     <div className={classes["grid-container"]}>
+
       <div className={classes["Logo"]}>
         <Logo />
       </div>
@@ -119,6 +146,9 @@ function GridStructure(props) {
       </div>
       <div className={classes["Variable"]}>
         <VariableMainContent {...props} />
+      </div>
+      <div className={classes["hamburgerMenu"]} >
+        <ResponsiveMenu />
       </div>
     </div>
   );
