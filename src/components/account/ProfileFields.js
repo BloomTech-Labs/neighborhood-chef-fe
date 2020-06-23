@@ -243,6 +243,9 @@ const ProfileFields = (props) => {
       <AddPets values={props.values} />
       <Divider style={{ marginTop: 20, marginBottom: 20 }} />
 
+      {props.errMessage && (
+        <p style={{ color: "crimson" }}>{props.errMessage}</p>
+      )}
       <div
         style={{
           marginTop: "10px",
