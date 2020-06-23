@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Formik, Form } from "formik";
 import AuthFields from "./AuthFields.js";
@@ -20,6 +20,7 @@ const Register = () => {
   const history = useHistory();
   const currentPage = useSelector((state) => state.page);
   const cardClass = cardStyles();
+  const [errMessage, setErrMessage] = useState("");
 
   return (
     <div>
@@ -60,13 +61,13 @@ const Register = () => {
                   if (!values.lastName) {
                     errors.lastName = "Required";
                   }
-                  if (!values.latitude) {
+                  if (!values.location.latitude) {
                     errors.latitude = "Required";
                   }
-                  if (!values.longitude) {
+                  if (!values.location.longitude) {
                     errors.longitude = "Required";
                   }
-                  if (!values.address) {
+                  if (!values.location.address) {
                     errors.address = "Required";
                   }
                   return errors;
@@ -102,6 +103,7 @@ const Register = () => {
                     })
                     .catch((err) => {
                       setSubmitting(false);
+                      setErrMessage(err.response.data.message);
                       console.dir({
                         err,
                         message: err.message,
@@ -118,6 +120,7 @@ const Register = () => {
                         submitting={isSubmitting}
                         setFieldValue={setFieldValue}
                         values={values}
+                        errMessage={errMessage}
                       />
                     )}
                   </Form>
