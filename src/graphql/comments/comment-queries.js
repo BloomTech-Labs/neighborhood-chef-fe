@@ -9,11 +9,13 @@ export const ALL_EVENT_COMMENTS = gql`
       parent_id
       root_id
       dateCreated
-      description
+      comment
       user {
         id
+        email
         firstName
         lastName
+        photo
       }
     }
   }
@@ -28,7 +30,7 @@ export const ADD_COMMENT = gql`
       parent_id
       root_id
       dateCreated
-      description
+      comment
       user {
         id
         email
@@ -49,7 +51,7 @@ export const UPDATE_COMMENT = gql`
       parent_id
       root_id
       dateCreated
-      description
+      comment
       user {
         id
         email
@@ -70,7 +72,7 @@ export const REMOVE_COMMENT = gql`
       parent_id
       root_id
       dateCreated
-      description
+      comment
       user {
         id
         email
