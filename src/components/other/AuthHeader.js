@@ -23,13 +23,13 @@ const AuthHeader = () => {
         width: "100vw",
       }}
     >
-      <div>
+      <div style={{ paddingLeft: "10px" }}>
         <Link to="/">
           <div className="left-side-header" style={{ width: "200px" }}>
             <span style={{ color: "#58D473", marginRight: "5px" }}>
               <Icon width="1.1em" icon={chefIcon} />
             </span>
-            <span>Neighborhood Chef</span>
+            <span style={{ paddingLeft: "10px" }}>Neighborhood Chef</span>
           </div>
         </Link>
       </div>
@@ -42,18 +42,18 @@ const AuthHeader = () => {
       >
         <button
           className={`${buttonClass.root} ${
-            url === "community" ? buttonClass.active : buttonClass.notActive
+            url !== "community" && buttonClass.notActive
           }`}
-          onClick={() => push("#/community")}
+          onClick={() => push("/community")}
         >
           <Typography>Community</Typography>
         </button>
-        
+
         <button
           className={`${buttonClass.root} ${
-            url === "about" ? buttonClass.active : buttonClass.notActive
+            url !== "about" && buttonClass.notActive
           }`}
-          onClick={() => push("#/about")}
+          onClick={() => push("/about")}
         >
           <Typography>About&nbsp;Us</Typography>
         </button>

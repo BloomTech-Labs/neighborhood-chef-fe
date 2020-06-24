@@ -11,6 +11,8 @@ import Notifications from "./components/other/Notifications";
 import Messages from "./components/other/Messages";
 import ChangePassword from "./components/account/PasswordChangePage";
 import CheckEmail from "./components/account/CheckEmail";
+import AboutUs from "./components/other/AboutUs";
+import Community from "./components/other/Community";
 
 import Login from "./components/account/Login";
 import GridStructure from "./components/gridstructure";
@@ -41,6 +43,8 @@ function App() {
         <Route path="/grid" component={GridStructure} />
         <PrivateRoute path="/events/:id" component={GridStructure} />
         <Route path="/register-check-email" component={CheckEmail} />
+        <Route path="/community" component={Community} />
+        <Route path="/about" component={AboutUs} />
       </Switch>
     </div>
   );
