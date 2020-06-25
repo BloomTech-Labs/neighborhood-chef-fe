@@ -9,6 +9,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Comment from "./Comment";
 
+import { ALL_EVENT_COMMENTS } from "../../../graphql/comments/comment-queries";
+import { print } from "graphql";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
+
 const CommentsCard = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
@@ -18,36 +22,22 @@ const CommentsCard = (props) => {
 
   /* Placeholder local state until we have database support for comments */
   const [idCounter, setIdCounter] = useState(4);
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user_id: 2,
-      event_id: props.eventId,
-      parent: -1,
-      root: 1,
-      date_created: 1593217800000,
-      description: "I'm so excited for this, you have no idea!",
-    },
-    {
-      id: 2,
-      user_id: 1,
-      event_id: props.eventId,
-      parent: 1,
-      root: 1,
-      date_created: 1594217800000,
-      description:
-        "me too! I'm going to bring my kids, too. I'll see you there.",
-    },
-    {
-      id: 3,
-      user_id: 2,
-      event_id: props.eventId,
-      parent: 2,
-      root: 1,
-      date_created: 1594317800000,
-      description: "Sweet!! :)",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()
+        .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+          query: print(ALL_EVENT_COMMENTS),
+          variables: { id: props.eventId },
+        })
+        .then((res) => {
+          const commentList = res.data.data.getEventComments;
+          setComments(commentList);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [me]);
 
   const handleChange = (e) => {
     setNewComment(e.target.value);
