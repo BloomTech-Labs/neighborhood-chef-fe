@@ -60,6 +60,7 @@ const FullEvent = ({ match }) => {
 
   useEffect(() => {
     return () => dispatch(makeActive(null));
+    // eslint-disable-next-line
   }, []);
 
   return (
