@@ -96,7 +96,6 @@ const EventDetails = () => {
       })
         .then((res) => {
           dispatch(getSingleEvent(res.data.data.getEventById));
-          dispatch(makeActive(currentEventId));
         })
         .catch((err) => {
           console.log(err.message);
@@ -121,7 +120,7 @@ const EventDetails = () => {
 
   return (
     <div className="event-details-container">
-      {Object.keys(event).length > 0 ? (
+      {Object.keys(event).length > 0 && (thisURL.length > 2 || idFromStore) ? (
         <Card className={`${classes.root} ${classes.fullEvent}`}>
           <CardHeader
             action={<EventButtonModal eventId={event.id} userId={me.id} />}

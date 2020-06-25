@@ -58,6 +58,10 @@ const FullEvent = ({ match }) => {
       });
   }, [dispatch, eventId]);
 
+  useEffect(() => {
+    return () => dispatch(makeActive(null));
+  }, []);
+
   return (
     <div className="single-event-container">
       <Grow in style={{ transformOrigin: "200 200 200" }}>
