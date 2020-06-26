@@ -1,5 +1,8 @@
 import React from "react";
-import { buttonStyles, cardStyles } from "../../styles";
+import {
+  // buttonStyles,
+  cardStyles
+} from "../../styles";
 import AuthHeader from "./AuthHeader.js";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,7 +11,7 @@ import food from "../../assets/food.jpg";
 
 const AboutUs = () => {
   const cardClass = cardStyles();
-  const buttonClass = buttonStyles();
+  // const buttonClass = buttonStyles();
 
   return (
     <>

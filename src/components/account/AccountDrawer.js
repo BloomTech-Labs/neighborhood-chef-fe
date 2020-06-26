@@ -165,6 +165,7 @@ const AccountDrawer = (props) => {
           console.log(err.message);
         });
     }
+    // eslint-disable-next-line
   }, []);
 
   const [modalIsOpen, setModelIsOpen] = useState(false);
