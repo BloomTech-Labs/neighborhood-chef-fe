@@ -9,91 +9,73 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Comment from "./Comment";
 
+import {
+  ALL_EVENT_COMMENTS,
+  ADD_COMMENT,
+} from "../../../graphql/comments/comment-queries";
+import { print } from "graphql";
+import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
+
 const CommentsCard = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const classes = cardStyles();
   const buttonClass = buttonStyles();
-  const [newComment, setNewComment] = useState("");
+  const [newCommentWords, setNewCommentWords] = useState("");
   const [organizedComments, setOrganizedComments] = useState([]);
+  const [comments, setComments] = useState([]);
 
-  /* Placeholder local state until we have database support for comments */
-  const [idCounter, setIdCounter] = useState(4);
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user_id: 2,
-      event_id: props.eventId,
-      parent: -1,
-      root: 1,
-      date_created: 1593217800000,
-      description: "I'm so excited for this, you have no idea!",
-    },
-    {
-      id: 2,
-      user_id: 1,
-      event_id: props.eventId,
-      parent: 1,
-      root: 1,
-      date_created: 1594217800000,
-      description:
-        "me too! I'm going to bring my kids, too. I'll see you there.",
-    },
-    {
-      id: 3,
-      user_id: 2,
-      event_id: props.eventId,
-      parent: 2,
-      root: 1,
-      date_created: 1594317800000,
-      description: "Sweet!! :)",
-    },
-  ]);
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()
+        .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+          query: print(ALL_EVENT_COMMENTS),
+          variables: { id: props.eventId },
+        })
+        .then((res) => {
+          const commentList = res.data.data.getEventComments;
+          setComments(commentList);
+        })
+        .catch((err) => console.dir(err));
+    }
+  }, []);
 
   const handleChange = (e) => {
-    setNewComment(e.target.value);
+    setNewCommentWords(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setComments([
-      ...comments,
-      {
-        id: idCounter,
-        user_id: me.id,
-        event_id: props.eventId,
-        parent: -1,
-        root: idCounter,
-        date_created: new Date().getTime(),
-        description: newComment,
-      },
-    ]); //placeholder values for keys, will need to get from state or database
-    setIdCounter(idCounter + 1);
-    setNewComment("");
+    const commentObject = {
+      user_id: Number(me.id),
+      event_id: Number(props.eventId),
+      parent_id: -1,
+      root_id: -1,
+      dateCreated: new Date().toISOString(),
+      comment: newCommentWords,
+    };
 
-    // axiosWithAuth()({
-    //   url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-    //   method: "post",
-    //   data: {
-    //     query: print(NEW_COMMENT),
-    //     variables: { comment: e.target.value },
-    //   },
-    // })
-    //   .then((res) => {
-    //     //add comments to state
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
+    axiosWithAuth()({
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+      method: "post",
+      data: {
+        query: print(ADD_COMMENT),
+        variables: { input: commentObject },
+      },
+    })
+      .then((res) => {
+        setComments([...comments, res.data.data.addComment]);
+      })
+      .catch((err) => {
+        console.dir(err.message);
+      });
+
+    setNewCommentWords("");
   };
 
   useEffect(() => {
     if (comments) {
       const sorted = comments.sort((a, b) => {
-        if (a.root === b.root) {
-          if (a.parent === b.parent) {
-            return a.date_created - b.date_created;
-          } else return a.parent - b.parent;
-        } else return a.root - b.root;
+        return a - b; //sorting not setup yet
       });
       setOrganizedComments(sorted);
     }
@@ -122,8 +104,6 @@ const CommentsCard = (props) => {
                   setComments={setComments}
                   comments={comments}
                   {...comment}
-                  setIdCounter={setIdCounter}
-                  idCounter={idCounter}
                 />
               ))}
           </div>
@@ -146,11 +126,11 @@ const CommentsCard = (props) => {
               placeholder="Write a comment..."
               style={{ width: "60%" }}
               onChange={handleChange}
-              value={newComment}
+              value={newCommentWords}
             />
             <Button
               type="submit"
-              disabled={!newComment}
+              disabled={!newCommentWords}
               className={`${buttonClass.root} ${buttonClass.single}`}
             >
               <Typography>Add Comment</Typography>

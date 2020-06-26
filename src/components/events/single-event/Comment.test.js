@@ -8,10 +8,16 @@ const testComment = {
   id: 1,
   user_id: 2,
   event_id: 1,
-  parent: -1,
-  root: 1,
+  parent_id: -1,
+  root_id: 1,
   date_created: 1593217800000,
-  description: "I'm so excited for this, you have no idea!",
+  comment: "I'm so excited for this, you have no idea!",
+  user: {
+    id: 1,
+    firstName: "test",
+    lastName: "name",
+    photo: "null",
+  },
 };
 
 describe("Test Comment static properties", () => {
@@ -22,6 +28,6 @@ describe("Test Comment static properties", () => {
   });
 
   test("Comment component renders description passed via props", () => {
-    expect(CommentComponent.getByText(testComment.description));
+    expect(CommentComponent.getByText(testComment.comment));
   });
 });

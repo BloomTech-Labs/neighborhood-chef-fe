@@ -9,6 +9,9 @@ import { parseTime } from "../../../utilities/functions";
 
 import ReplyButton from "./ReplyButton";
 import ReactButton from "./ReactButton";
+import ShowEmoji from "./ShowEmoji";
+
+import { ADD_COMMENT } from "../../../graphql/comments/comment-queries";
 
 const makeInitials = (user) => {
   return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
@@ -18,9 +21,9 @@ const makeInitials = (user) => {
 
 const Comment = (props) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
-  const timeObject = parseTime(props.date_created);
+  const timeObject = parseTime(props.dateCreated);
   const classes = cardStyles();
-  const [user, setUser] = useState("");
+  const user = props.user;
   const [emojiSelected, setEmojiSelected] = useState(""); //placeholder local state until we have database support for comments
 
   const toggleEmoji = (emoji) => {
@@ -29,47 +32,37 @@ const Comment = (props) => {
   };
 
   const addReply = (message) => {
-    props.setComments([
-      ...props.comments,
-      {
-        id: props.idCounter,
-        user_id: me.id,
-        event_id: props.eventId,
-        parent: props.id,
-        root: props.root,
-        date_created: new Date().getTime(),
-        description: message,
-      },
-    ]);
-    props.setIdCounter(props.idCounter + 1);
-  };
-
-  useEffect(() => {
+    const replyObject = {
+      user_id: Number(me.id),
+      event_id: Number(props.event_id),
+      parent_id: Number(props.id),
+      root_id: props.root_id === -1 ? Number(props.id) : Number(props.root_id),
+      dateCreated: new Date().toISOString(),
+      comment: message,
+    };
     axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
       method: "post",
       data: {
-        query: print(USER_BY_ID),
-        variables: { id: props.user_id },
+        query: print(ADD_COMMENT),
+        variables: { input: replyObject },
       },
     })
       .then((res) => {
-        const data = res.data.data.getUserById;
-        setUser(data);
-        // setCreatorName(`${data.firstName} ${data.lastName}`);
+        props.setComments([...props.comments, res.data.data.addComment]);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.dir(err.message);
       });
-    // eslint-disable-next-line
-  }, []);
+  };
+
   return (
     <div
-      className={
-        props.parent < 0
-          ? classes.singleCommentParent
-          : classes.singleCommentChild
-      }
+      className={classes.singleCommentParent}
+      // props.parent_id < 0
+      //   ? classes.singleCommentParent
+      //   : classes.singleCommentChild
+      // }
     >
       <div
         style={{
@@ -97,7 +90,7 @@ const Comment = (props) => {
         )}
       </div>
       <Typography variant="caption" style={{ marginLeft: "17px" }}>
-        {props.description}
+        {props.comment}
       </Typography>
       <div
         style={{
@@ -109,7 +102,7 @@ const Comment = (props) => {
         <div style={{ display: "flex" }}>
           <ReplyButton
             name={`${user.firstName} ${user.lastName}`}
-            description={props.description}
+            description={props.comment}
             addReply={addReply}
           />
           <ReactButton
@@ -117,6 +110,7 @@ const Comment = (props) => {
             toggleEmoji={toggleEmoji}
             emojiSelected={emojiSelected}
           />
+          <ShowEmoji emojiSelected={emojiSelected} />
         </div>
         <Typography variant="body2" color="textSecondary">
           {timeObject.commentTime}
