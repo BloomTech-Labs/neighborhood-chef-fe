@@ -145,7 +145,7 @@ const RecentCard = (props) => {
             )}
           </Avatar>
         }
-        action={<EventButtonModal eventId={props.id} userId={me.id} />}
+        action={<EventButtonModal eventId={props.id} userId={props.user_id} />}
         title={
           <Typography variant="h6">
             {creatorName}

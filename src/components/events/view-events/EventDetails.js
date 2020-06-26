@@ -123,7 +123,9 @@ const EventDetails = () => {
       {Object.keys(event).length > 0 && (thisURL.length > 2 || idFromStore) ? (
         <Card className={`${classes.root} ${classes.fullEvent}`}>
           <CardHeader
-            action={<EventButtonModal eventId={event.id} userId={me.id} />}
+            action={
+              <EventButtonModal eventId={event.id} userId={event.user_id} />
+            }
             title={<Typography variant="h3">{event.title}</Typography>}
             subheader={
               <Typography variant="caption">
