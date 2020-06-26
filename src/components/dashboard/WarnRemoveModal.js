@@ -7,7 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { buttonStyles } from "../../styles";
 import { useLocation, useHistory } from "react-router-dom";
 
-const WarnRemoveModal = ({ removeInvitation }) => {
+const WarnRemoveModal = ({ isOwner, deleteEvent, removeInvitation }) => {
   const history = useHistory();
   const location = useLocation();
   const thisURL = location.pathname.split("/");
@@ -24,7 +24,9 @@ const WarnRemoveModal = ({ removeInvitation }) => {
 
   return (
     <div>
-      <div onClick={handleClickOpen}>Remove Event</div>
+      <div onClick={handleClickOpen}>
+        {isOwner ? "Delete Event" : "Remove Event"}
+      </div>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -32,12 +34,15 @@ const WarnRemoveModal = ({ removeInvitation }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to remove this event from your view? "}
+          {isOwner
+            ? "Are you sure you want to delete this event?"
+            : "Are you sure you want to remove this event from your view? "}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You will not be able to see it unless the original owner of the
-            event invites you again.
+            {isOwner
+              ? "You cannot undo this action."
+              : "You will not be able to see it unless the original owner of the event invites you again."}
           </DialogContentText>
         </DialogContent>
         <DialogActions style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -52,7 +57,7 @@ const WarnRemoveModal = ({ removeInvitation }) => {
             className={`${classes.root} ${classes.warn}`}
             style={{ cursor: "pointer" }}
             onClick={() => {
-              removeInvitation();
+              isOwner ? deleteEvent() : removeInvitation();
               handleClose();
               (thisURL[1] === "events" || thisURL[1] === "view-events") &&
                 history.push("/dashboard");

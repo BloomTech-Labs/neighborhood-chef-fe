@@ -11,7 +11,10 @@ import { useHistory } from "react-router-dom";
 import { modalStyles } from "../../styles";
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
-import { REMOVE_INVITATION } from "../../graphql/events/event-mutations";
+import {
+  REMOVE_INVITATION,
+  DELETE_EVENT,
+} from "../../graphql/events/event-mutations";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteInvitationSuccess,
@@ -32,6 +35,7 @@ const EventButtonModal = ({ eventId, userId }) => {
   const me = JSON.parse(sessionStorage.getItem("user"));
   const currentEvent = useSelector((state) => state.currentEvent);
   const modalClasses = modalStyles();
+  const isOwner = Number(me.id) === Number(userId);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const timeObject = parseTime(currentEvent.startTime, currentEvent.endTime);
@@ -54,10 +58,22 @@ const EventButtonModal = ({ eventId, userId }) => {
       setOpen(false);
     }
   };
+
+  const deleteEvent = () => {
+    axiosWithAuth()
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+        query: print(DELETE_EVENT),
+        variables: { id: eventId },
+      })
+      .then((res) => {
+        dispatch(forceUpdate());
+      })
+      .catch((err) => console.log(err));
+  };
   const removeInvitation = () => {
     const removeInvite = {
       event_id: Number(eventId),
-      user_id: Number(userId),
+      user_id: Number(me.id),
     };
 
     axiosWithAuth()
@@ -144,7 +160,11 @@ const EventButtonModal = ({ eventId, userId }) => {
                         </MenuItem>
                       )}
                       <MenuItem>
-                        <WarnRemoveModal removeInvitation={removeInvitation} />
+                        <WarnRemoveModal
+                          isOwner={isOwner}
+                          deleteEvent={deleteEvent}
+                          removeInvitation={removeInvitation}
+                        />
                       </MenuItem>
                     </MenuList>
                   </ClickAwayListener>

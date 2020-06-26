@@ -14,6 +14,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 describe("Test EventButtonModal static properties", () => {
   let EventButtonModalComponent;
   beforeEach(() => {
+    sessionStorage.setItem("user", JSON.stringify({ id: 1 }));
     EventButtonModalComponent = render(
       <Provider store={store}>
         <BrowserRouter>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { print } from "graphql";
 import { GET_AUTHORED_EVENTS } from "../../graphql/users/user-queries";
+import { useSelector } from "react-redux";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -144,9 +145,7 @@ const AccountDrawer = (props) => {
   const [open, setOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [myList, setMyList] = useState(me.eventsOwned);
-  // 700 breakpoint.  next 2 lines can be used for mobile responsive changes.  currently not used.
-  // const theme = useTheme();
-  // const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const update = useSelector((state) => state.update);
 
   useEffect(() => {
     if (me) {
@@ -166,7 +165,7 @@ const AccountDrawer = (props) => {
         });
     }
     // eslint-disable-next-line
-  }, []);
+  }, [update]);
 
   const [modalIsOpen, setModelIsOpen] = useState(false);
 
