@@ -21,7 +21,7 @@ const styles = makeStyles({
     textAlign: "center",
     display: "flex",
     justifyContent: "flex-start",
-    paddingTop: "10px",
+    // paddingTop: "10px",
     paddingLeft: "20px",
     alignItems: "center",
   },
