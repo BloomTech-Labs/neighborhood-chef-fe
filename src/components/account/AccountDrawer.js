@@ -232,6 +232,8 @@ const AccountDrawer = (props) => {
           border: "2px solid rgba(88, 212, 115, 0.3)",
           cursor: "pointer",
           alignSelf: "center",
+          display: "flex",
+          alignItems: "center",
         }}
         alt="Picture User Avatar"
         src={me.photo !== "null" ? me.photo : null}

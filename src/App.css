@@ -41,6 +41,7 @@ a {
   display: flex;
   justify-content: space-between;
 }
+
 /* ---- start of Landing Page styles ---- */
 
 .landing-page-container {
@@ -113,6 +114,11 @@ a {
   font-size: 1.7rem;
   font-weight: 500;
   margin-left: 5px;
+}
+@media (max-width: 700px) {
+  .left-side-header {
+    margin-top: 10px;
+  }
 }
 
 .nav-container {

@@ -13,6 +13,8 @@ const styles = makeStyles((theme) => ({
     height: "10vh",
     display: "flex",
     justifyContent: "flex-end",
+    display: "flex",
+    alignItems: "center",
   },
   icons: {
     alignSelf: "center",
