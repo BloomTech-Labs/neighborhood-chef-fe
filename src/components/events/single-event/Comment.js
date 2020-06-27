@@ -122,7 +122,7 @@ const Comment = (props) => {
           style={{ marginRight: "5px", width: "26px", height: "26px" }}
         >
           {user.photo === "null" && (
-            <Typography>{makeInitials(user)}</Typography>
+            <Typography variant="body2">{makeInitials(user)}</Typography>
           )}
         </Avatar>
         {user && (

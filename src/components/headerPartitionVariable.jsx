@@ -8,6 +8,12 @@ import { useSelector } from "react-redux";
 import MonthPicker from "./events/view-events/MonthPicker";
 import CreateEventHeader from "./events/create-event/CreateEventHeader";
 
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Logo from "./logo";
+import { Icon } from "@iconify/react";
+import chefIcon from "@iconify/icons-whh/chef";
+
 const styles = makeStyles({
   container: {
     width: "100%",
@@ -15,8 +21,9 @@ const styles = makeStyles({
     textAlign: "center",
     display: "flex",
     justifyContent: "flex-start",
-    paddingTop: "10px",
+    // paddingTop: "10px",
     paddingLeft: "20px",
+    alignItems: "center",
   },
 });
 
@@ -27,6 +34,8 @@ function VariableHeader(props) {
   const [urlLocation, setUrlLocation] = useState(
     location.pathname.split("/")[1]
   );
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
   useEffect(() => {
     setUrlLocation(location.pathname.split("/")[1]);
   }, [location]);
@@ -35,25 +44,45 @@ function VariableHeader(props) {
     case "dashboard":
       return (
         <section className={classes["container"]}>
-          <Typography variant="h4">My Neighborhood</Typography>
+          {matches ? (
+            <Logo />
+          ) : (
+            <Typography variant="h4">My Neighborhood</Typography>
+          )}
         </section>
       );
     case "create-event":
       return (
         <section className={classes["container"]}>
-          <CreateEventHeader />
+          {matches ? <Logo /> : <CreateEventHeader />}
         </section>
       );
     case "view-events":
       return (
         <section className={classes["container"]}>
+          {matches && (
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                color: "#58D473",
+                marginRight: "10px",
+              }}
+            >
+              <Icon width="1.1em" icon={chefIcon} />
+            </span>
+          )}
           <MonthPicker />
         </section>
       );
     case "events":
       return (
         <section className={classes["container"]}>
-          <Typography variant="h4">{event.title ? event.title : ""}</Typography>
+          {matches ? (
+            <Logo />
+          ) : (
+            <Typography variant="h4">Event Details</Typography>
+          )}
         </section>
       );
     default:
