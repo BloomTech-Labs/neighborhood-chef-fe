@@ -37,6 +37,7 @@ const CommentsCard = (props) => {
         })
         .catch((err) => console.dir(err));
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleChange = (e) => {

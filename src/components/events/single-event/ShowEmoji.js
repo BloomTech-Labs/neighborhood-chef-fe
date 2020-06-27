@@ -10,9 +10,9 @@ import bxSad from "@iconify/icons-bx/bx-sad";
 import bxAngry from "@iconify/icons-bx/bx-angry";
 import bxHappy from "@iconify/icons-bx/bx-happy";
 
-const ShowEmoji = ({ emojiSelected }) => {
+const ShowEmoji = ({ item }) => {
   const returnEmoji = () => {
-    switch (emojiSelected) {
+    switch (item.reaction) {
       case "heart":
         return (
           <div style={{ color: "pink" }}>
@@ -55,9 +55,12 @@ const ShowEmoji = ({ emojiSelected }) => {
             <Icon icon={bxAngry} height="1.5em" />
           </div>
         );
+      default:
+        break;
     }
   };
-  return <div>{emojiSelected && returnEmoji()}</div>;
+
+  return <div>{item && returnEmoji()}</div>;
 };
 
 export default ShowEmoji;

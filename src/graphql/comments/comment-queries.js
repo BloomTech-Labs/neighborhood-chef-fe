@@ -83,3 +83,23 @@ export const REMOVE_COMMENT = gql`
     }
   }
 `;
+
+export const GET_COMMENT_REACTIONS = gql`
+  query getCommentReactions($id: ID!) {
+    getCommentReactions(id: $id) {
+      user_id
+      comment_id
+      reaction
+    }
+  }
+`;
+
+export const HANDLE_REACTION = gql`
+  mutation handleReactions($input: ReactionInput!) {
+    handleReaction(input: $input) {
+      comment_id
+      user_id
+      reaction
+    }
+  }
+`;

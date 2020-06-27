@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
-import { USER_BY_ID } from "../../../graphql/users/user-queries";
+import {
+  GET_COMMENT_REACTIONS,
+  HANDLE_REACTION,
+} from "../../../graphql/comments/comment-queries";
 import { print } from "graphql";
 import { axiosWithAuth } from "../../../utilities/axiosWithAuth";
 import { cardStyles } from "../../../styles";
@@ -24,11 +27,50 @@ const Comment = (props) => {
   const timeObject = parseTime(props.dateCreated);
   const classes = cardStyles();
   const user = props.user;
-  const [emojiSelected, setEmojiSelected] = useState(""); //placeholder local state until we have database support for comments
+  const [reactions, setReactions] = useState([]);
+
+  useEffect(() => {
+    if (me) {
+      axiosWithAuth()({
+        url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+        method: "post",
+        data: {
+          query: print(GET_COMMENT_REACTIONS),
+          variables: { id: Number(props.id) },
+        },
+      })
+        .then((res) => {
+          setReactions(res.data.data.getCommentReactions);
+        })
+        .catch((err) => {
+          console.dir(err.message);
+        });
+    }
+
+    //eslint-disable-next-line
+  }, []);
 
   const toggleEmoji = (emoji) => {
-    if (emojiSelected === emoji) setEmojiSelected("");
-    else setEmojiSelected(emoji);
+    axiosWithAuth()({
+      url: `${process.env.REACT_APP_BASE_URL}/graphql`,
+      method: "post",
+      data: {
+        query: print(HANDLE_REACTION),
+        variables: {
+          input: {
+            comment_id: Number(props.id),
+            user_id: Number(me.id),
+            reaction: emoji,
+          },
+        },
+      },
+    })
+      .then((res) => {
+        setReactions(res.data.data.handleReaction);
+      })
+      .catch((err) => {
+        console.dir(err.message);
+      });
   };
 
   const addReply = (message) => {
@@ -108,9 +150,10 @@ const Comment = (props) => {
           <ReactButton
             name={`${user.firstName} ${user.lastName}`}
             toggleEmoji={toggleEmoji}
-            emojiSelected={emojiSelected}
           />
-          <ShowEmoji emojiSelected={emojiSelected} />
+          {reactions.map((item, index) => {
+            return <ShowEmoji key={index} item={item} />;
+          })}
         </div>
         <Typography variant="body2" color="textSecondary">
           {timeObject.commentTime}
