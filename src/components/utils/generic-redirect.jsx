@@ -1,4 +1,5 @@
 import { useHistory, useParams } from "react-router-dom";
+import React from "react";
 import ls from "local-storage";
 import jwt from "jwt-decode";
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
@@ -34,7 +35,7 @@ function GenericRedirect(props) {
     getInitialUserDataAndRedirectOnSuccess();
   }
 
-  return null;
+  return <p>sup</p>;
 }
 
 export default GenericRedirect;
