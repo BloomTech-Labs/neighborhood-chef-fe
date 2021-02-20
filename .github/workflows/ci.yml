@@ -1,6 +1,5 @@
 # The name of the workflow
 name: build
-
 # What conditions trigger the workflow
 #  In this case, pull requests on master branch
 on:
@@ -12,6 +11,7 @@ on:
 jobs:
   tests:
     name: Tests
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -35,6 +35,7 @@ jobs:
         uses: paambaati/codeclimate-action@v2.4.0
         env:
           # An environment variable, the value is a GitHub repo secret
+          REACT_APP_MAPBOX_ACCESS_TOKEN: ${{secrets.REACT_APP_MAPBOX_ACCESS_TOKEN}}
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
         with:
           # Run our `coverage` script in our `package.json`
