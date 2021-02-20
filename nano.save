@@ -1,0 +1,1084 @@
+2021-02-20T11:49:49.820074+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely 
+additional logging output above. 2021-02-20T11:49:49.828131+00:00 app[web.1]: 2021-02-20T11:49:49.828355+00:00 
+app[web.1]: npm ERR! A complete log of this run can be found in: 2021-02-20T11:49:49.828508+00:00 app[web.1]: 
+npm ERR!  /app/.npm/_logs/2021-02-20T11_49_49_820Z-debug.log 2021-02-20T11:49:49.884631+00:00 heroku[web.1]: 
+Process exited with status 1 2021-02-20T11:49:49.953316+00:00 heroku[web.1]: State changed from starting to 
+crashed 2021-02-20T12:22:00.803001+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T12:22:06.163053+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T12:22:08.567917+00:00 app[web.1]: 2021-02-20T12:22:08.567936+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T12:22:08.567936+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T12:22:08.567937+00:00 app[web.1]: 2021-02-20T12:22:08.951637+00:00 app[web.1]: Using environment: 
+production 2021-02-20T12:22:09.167593+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T12:22:09.167595+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T12:22:09.167596+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T12:22:09.167597+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T12:22:09.167597+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T12:22:09.167598+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T12:22:09.167601+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T12:22:09.167602+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T12:22:09.167602+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T12:22:09.167602+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T12:22:09.180658+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T12:22:09.181407+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T12:22:09.190012+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T12:22:09.190479+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T12:22:09.190843+00:00 app[web.1]: npm ERR! 2021-02-20T12:22:09.191121+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T12:22:09.191441+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T12:22:09.202085+00:00 app[web.1]: 2021-02-20T12:22:09.202472+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T12:22:09.202658+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T12_22_09_193Z-debug.log 2021-02-20T12:22:09.255772+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T12:22:09.321047+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T13:04:19.411206+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T13:04:28.864020+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T13:04:33.036676+00:00 app[web.1]: 2021-02-20T13:04:33.036719+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T13:04:33.036720+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T13:04:33.036720+00:00 app[web.1]: 2021-02-20T13:04:34.194623+00:00 app[web.1]: Using environment: 
+production 2021-02-20T13:04:34.571918+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T13:04:34.571955+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T13:04:34.571956+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T13:04:34.571957+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T13:04:34.571957+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T13:04:34.571958+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T13:04:34.571958+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T13:04:34.571959+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T13:04:34.571959+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T13:04:34.571959+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T13:04:34.599377+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T13:04:34.600063+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T13:04:34.617658+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T13:04:34.617898+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T13:04:34.618200+00:00 app[web.1]: npm ERR! 2021-02-20T13:04:34.618426+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T13:04:34.618697+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T13:04:34.628325+00:00 app[web.1]: 2021-02-20T13:04:34.632409+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T13:04:34.632631+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T13_04_34_619Z-debug.log 2021-02-20T13:04:34.710970+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T13:04:34.779834+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T14:26:18.801302+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T14:26:25.111632+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T14:26:27.604806+00:00 app[web.1]: 2021-02-20T14:26:27.604824+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T14:26:27.604825+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T14:26:27.604826+00:00 app[web.1]: 2021-02-20T14:26:27.935709+00:00 app[web.1]: Using environment: 
+production 2021-02-20T14:26:28.071150+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T14:26:28.071151+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T14:26:28.071153+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T14:26:28.071154+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T14:26:28.071154+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T14:26:28.071155+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T14:26:28.071155+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T14:26:28.071156+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T14:26:28.071156+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T14:26:28.071156+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T14:26:28.081355+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T14:26:28.081624+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T14:26:28.086783+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T14:26:28.086875+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T14:26:28.087727+00:00 app[web.1]: npm ERR! 2021-02-20T14:26:28.087800+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T14:26:28.087870+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T14:26:28.137138+00:00 app[web.1]: 2021-02-20T14:26:28.137322+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T14:26:28.137405+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T14_26_28_088Z-debug.log 2021-02-20T14:26:28.175140+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T14:26:28.224171+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T16:34:14.611940+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=838f13ac-0504-444f-8584-cdbd9d4cac3e fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T16:34:15.028123+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=f35e4063-053c-46ae-a869-c573a7aaabed fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T16:35:55.963417+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET 
+path="/" host=nhcredux-be.herokuapp.com request_id=3dd5e59d-8109-4d28-a7cc-f11495499072 fwd="67.252.14.32" dyno= 
+connect= service= status=503 bytes= protocol=https 2021-02-20T16:35:56.192909+00:00 heroku[router]: at=error 
+code=H10 desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=835ab8a2-2213-4b92-8774-c4487b4d5654 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T16:47:04.806170+00:00 heroku[router]: at=error code=H10 desc="App crashed" 
+method=OPTIONS path="//graphql" host=nhcredux-be.herokuapp.com request_id=cdabf93a-8578-4338-8e63-42d801d9d3b8 
+fwd="67.252.14.32" dyno= connect= service= status=503 bytes= protocol=https 2021-02-20T16:48:11.841416+00:00 
+heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=nhcredux-be.herokuapp.com 
+request_id=2e0b215b-033f-4f27-9991-4ae090c3d151 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T16:48:12.077597+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET 
+path="/favicon.ico" host=nhcredux-be.herokuapp.com request_id=0af61215-c7e8-4a46-8ddb-43c1fdf48726 
+fwd="67.252.14.32" dyno= connect= service= status=503 bytes= protocol=https 2021-02-20T16:57:00.040739+00:00 
+app[api]: Release v4 created by user merrifield48@gmail.com 2021-02-20T16:57:00.040739+00:00 app[api]: Set 
+NODE_ENV config vars by user merrifield48@gmail.com 2021-02-20T16:57:01.790096+00:00 heroku[web.1]: State 
+changed from crashed to starting 2021-02-20T16:57:08.553325+00:00 heroku[web.1]: Starting process with command 
+`npm start` 2021-02-20T16:57:11.694857+00:00 app[web.1]: 2021-02-20T16:57:11.694897+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T16:57:11.694904+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T16:57:11.694905+00:00 app[web.1]: 2021-02-20T16:57:12.353911+00:00 app[web.1]: Using environment: 
+production 2021-02-20T16:57:12.557913+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T16:57:12.557915+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T16:57:12.557917+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T16:57:12.557918+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T16:57:12.557918+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T16:57:12.557919+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T16:57:12.557925+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T16:57:12.557926+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T16:57:12.557927+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T16:57:12.557927+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T16:57:12.587590+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T16:57:12.588335+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T16:57:12.599514+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T16:57:12.600534+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T16:57:12.600827+00:00 app[web.1]: npm ERR! 2021-02-20T16:57:12.601175+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T16:57:12.602069+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T16:57:12.614988+00:00 app[web.1]: 2021-02-20T16:57:12.616373+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T16:57:12.616567+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T16_57_12_606Z-debug.log 2021-02-20T16:57:12.714102+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T16:57:12.823194+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T16:57:12.826961+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T16:57:24.606547+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T16:57:28.613458+00:00 app[web.1]: 2021-02-20T16:57:28.613511+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T16:57:28.613512+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T16:57:28.613513+00:00 app[web.1]: 2021-02-20T16:57:29.581755+00:00 app[web.1]: Using environment: 
+production 2021-02-20T16:57:30.155869+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T16:57:30.155882+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T16:57:30.155883+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T16:57:30.155884+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T16:57:30.155884+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T16:57:30.155885+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T16:57:30.155885+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T16:57:30.155889+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T16:57:30.155889+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T16:57:30.155890+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T16:57:30.184406+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T16:57:30.185119+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T16:57:30.197074+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T16:57:30.197407+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T16:57:30.197760+00:00 app[web.1]: npm ERR! 2021-02-20T16:57:30.198023+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T16:57:30.198314+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T16:57:30.216498+00:00 app[web.1]: 2021-02-20T16:57:30.216960+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T16:57:30.217233+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T16_57_30_199Z-debug.log 2021-02-20T16:57:30.291358+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T16:57:30.378363+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T16:58:49.104573+00:00 app[api]: Running release v5 commands by user merrifield48@gmail.com 
+2021-02-20T16:58:49.104573+00:00 app[api]: Attach DATABASE (@ref:postgresql-trapezoidal-82155) by user 
+merrifield48@gmail.com 2021-02-20T16:58:49.115562+00:00 app[api]: Release v6 created by user 
+merrifield48@gmail.com 2021-02-20T16:58:49.115562+00:00 app[api]: @ref:postgresql-trapezoidal-82155 completed 
+provisioning, setting DATABASE_URL. by user merrifield48@gmail.com 2021-02-20T16:58:49.892344+00:00 
+heroku[web.1]: State changed from crashed to starting 2021-02-20T16:58:55.430583+00:00 heroku[web.1]: Starting 
+process with command `npm start` 2021-02-20T16:58:58.134216+00:00 app[web.1]: 2021-02-20T16:58:58.134236+00:00 
+app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T16:58:58.134237+00:00 app[web.1]: > npx knex 
+migrate:latest 2021-02-20T16:58:58.134237+00:00 app[web.1]: 2021-02-20T16:58:58.599561+00:00 app[web.1]: Using 
+environment: production 2021-02-20T16:58:58.757860+00:00 app[web.1]: Error: Unable to acquire a connection 
+2021-02-20T16:58:58.757862+00:00 app[web.1]: at Client_PG.acquireConnection 
+(/app/node_modules/knex/lib/client.js:339:13) 2021-02-20T16:58:58.757863+00:00 app[web.1]: at 
+Runner.ensureConnection (/app/node_modules/knex/lib/runner.js:264:8) 2021-02-20T16:58:58.757864+00:00 
+app[web.1]: at Runner.run (/app/node_modules/knex/lib/runner.js:26:12) 2021-02-20T16:58:58.757865+00:00 
+app[web.1]: at SchemaBuilder.Target.then (/app/node_modules/knex/lib/interface.js:22:43) 
+2021-02-20T16:58:58.757865+00:00 app[web.1]: at ensureTable 
+(/app/node_modules/knex/lib/migrate/table-creator.js:13:6) 2021-02-20T16:58:58.757865+00:00 app[web.1]: at 
+listCompleted (/app/node_modules/knex/lib/migrate/migration-list-resolver.js:12:9) 
+2021-02-20T16:58:58.757866+00:00 app[web.1]: at Object.listAllAndCompleted 
+(/app/node_modules/knex/lib/migrate/migration-list-resolver.js:28:5) 2021-02-20T16:58:58.757866+00:00 
+app[web.1]: at Migrator.latest (/app/node_modules/knex/lib/migrate/Migrator.js:64:57) 
+2021-02-20T16:58:58.757867+00:00 app[web.1]: at Command.<anonymous> (/app/node_modules/knex/bin/cli.js:171:55) 
+2021-02-20T16:58:58.770852+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T16:58:58.771123+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T16:58:58.776288+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T16:58:58.776451+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T16:58:58.776634+00:00 app[web.1]: npm ERR! 2021-02-20T16:58:58.776768+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T16:58:58.776904+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T16:58:58.785971+00:00 app[web.1]: 2021-02-20T16:58:58.786290+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T16:58:58.786579+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T16_58_58_778Z-debug.log 2021-02-20T16:58:58.839174+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T16:58:58.913439+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:01:01.239271+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:01:00.817042+00:00 app[api]: Set POSTGRES_CONNECTION_STRING config vars by user 
+merrifield48@gmail.com 2021-02-20T17:01:00.817042+00:00 app[api]: Release v7 created by user 
+merrifield48@gmail.com 2021-02-20T17:01:06.430593+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:01:09.567930+00:00 app[web.1]: 2021-02-20T17:01:09.567947+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:01:09.567947+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:01:09.567947+00:00 app[web.1]: 2021-02-20T17:01:09.962084+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:01:10.211787+00:00 app[web.1]: error: no pg_hba.conf entry for host "3.88.111.196", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:01:10.211790+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:01:10.211790+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:01:10.211791+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:01:10.211792+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:01:10.211794+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:01:10.211795+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:01:10.211795+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:01:10.211796+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:01:10.211796+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:01:10.224821+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:01:10.225090+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:01:10.230490+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:01:10.230639+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:01:10.230836+00:00 app[web.1]: npm ERR! 2021-02-20T17:01:10.232022+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:01:10.232190+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:01:10.238977+00:00 app[web.1]: 2021-02-20T17:01:10.239222+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:01:10.239364+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_01_10_233Z-debug.log 2021-02-20T17:01:10.295489+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:01:10.378016+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:01:48.846295+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:01:48.549173+00:00 app[api]: Release v8 created by user merrifield48@gmail.com 
+2021-02-20T17:01:48.549173+00:00 app[api]: Set POSTGRES_PORT config vars by user merrifield48@gmail.com 
+2021-02-20T17:01:57.743770+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:02:01.708210+00:00 app[web.1]: 2021-02-20T17:02:01.708228+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:02:01.708228+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:02:01.708229+00:00 app[web.1]: 2021-02-20T17:02:02.827109+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:02:03.255872+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.229.22.155", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:02:03.255888+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:02:03.255888+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:02:03.255889+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:02:03.255889+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:02:03.255890+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:02:03.255891+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:02:03.255891+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:02:03.255892+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:02:03.255892+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:02:03.325334+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:02:03.326021+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:02:03.338591+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:02:03.339084+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:02:03.339374+00:00 app[web.1]: npm ERR! 2021-02-20T17:02:03.339681+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:02:03.340041+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:02:03.348070+00:00 app[web.1]: 2021-02-20T17:02:03.352743+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:02:03.352988+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_02_03_341Z-debug.log 2021-02-20T17:02:03.443477+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:02:03.540380+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:02:18.776457+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:02:18.505243+00:00 app[api]: Set PORT config vars by user merrifield48@gmail.com 
+2021-02-20T17:02:18.505243+00:00 app[api]: Release v9 created by user merrifield48@gmail.com 
+2021-02-20T17:02:24.937477+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:02:27.300935+00:00 app[web.1]: 2021-02-20T17:02:27.300954+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:02:27.300955+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:02:27.300955+00:00 app[web.1]: 2021-02-20T17:02:27.650284+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:02:27.839213+00:00 app[web.1]: error: no pg_hba.conf entry for host "35.172.178.9", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:02:27.839221+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:02:27.839222+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:02:27.839223+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:02:27.839224+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:02:27.839225+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:02:27.839226+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:02:27.839226+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:02:27.839227+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:02:27.839227+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:02:27.850151+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:02:27.850474+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:02:27.855529+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:02:27.855623+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:02:27.855757+00:00 app[web.1]: npm ERR! 2021-02-20T17:02:27.855906+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:02:27.856043+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:02:27.864503+00:00 app[web.1]: 2021-02-20T17:02:27.864641+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:02:27.864701+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_02_27_857Z-debug.log 2021-02-20T17:02:27.933217+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:02:28.026273+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:03:53.186159+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:03:52.666608+00:00 app[api]: Set POSTGRES_ADMIN_USER config vars by user merrifield48@gmail.com 
+2021-02-20T17:03:52.666608+00:00 app[api]: Release v10 created by user merrifield48@gmail.com 
+2021-02-20T17:03:58.416660+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:04:01.024376+00:00 app[web.1]: 2021-02-20T17:04:01.024400+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:04:01.024401+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:04:01.024401+00:00 app[web.1]: 2021-02-20T17:04:01.438153+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:04:01.628588+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.82.127.131", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:04:01.628591+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:04:01.628591+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:04:01.628592+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:04:01.628593+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:04:01.628593+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:04:01.628594+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:04:01.628595+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:04:01.628595+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:04:01.628596+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:04:01.641546+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:04:01.641950+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:04:01.647756+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:04:01.647871+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:04:01.648026+00:00 app[web.1]: npm ERR! 2021-02-20T17:04:01.648150+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:04:01.648272+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:04:01.653927+00:00 app[web.1]: 2021-02-20T17:04:01.654165+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:04:01.654287+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_04_01_648Z-debug.log 2021-02-20T17:04:01.711946+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:04:01.773932+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:04:22.750753+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:04:22.368764+00:00 app[api]: Set POSTGRES_ADMIN_PASSWORD config vars by user 
+merrifield48@gmail.com 2021-02-20T17:04:22.368764+00:00 app[api]: Release v11 created by user 
+merrifield48@gmail.com 2021-02-20T17:04:27.611660+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:04:29.367224+00:00 app[web.1]: 2021-02-20T17:04:29.367237+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:04:29.367237+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:04:29.367238+00:00 app[web.1]: 2021-02-20T17:04:29.681648+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:04:29.866846+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.227.116.112", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:04:29.866853+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:04:29.866854+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:04:29.866855+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:04:29.866855+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:04:29.866860+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:04:29.866861+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:04:29.866861+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:04:29.866861+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:04:29.866862+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:04:29.878085+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:04:29.878345+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:04:29.883281+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:04:29.883367+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:04:29.883475+00:00 app[web.1]: npm ERR! 2021-02-20T17:04:29.883545+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:04:29.883616+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:04:29.889065+00:00 app[web.1]: 2021-02-20T17:04:29.889191+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:04:29.889262+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_04_29_885Z-debug.log 2021-02-20T17:04:29.950625+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:04:30.040535+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:05:34.493395+00:00 app[api]: Set POSTGRES_HOSTNAME config vars by user merrifield48@gmail.com 
+2021-02-20T17:05:35.567517+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:05:34.493395+00:00 app[api]: Release v12 created by user merrifield48@gmail.com 
+2021-02-20T17:05:45.436389+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:05:49.326893+00:00 app[web.1]: 2021-02-20T17:05:49.326918+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:05:49.326918+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:05:49.326919+00:00 app[web.1]: 2021-02-20T17:05:50.534160+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:05:51.133487+00:00 app[web.1]: error: no pg_hba.conf entry for host "18.208.193.212", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:05:51.133502+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:05:51.133503+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:05:51.133504+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:05:51.133504+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:05:51.133505+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:05:51.133506+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:05:51.133506+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:05:51.133507+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:05:51.133507+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:05:51.152006+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:05:51.155021+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:05:51.166682+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:05:51.166838+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:05:51.167004+00:00 app[web.1]: npm ERR! 2021-02-20T17:05:51.167128+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:05:51.167270+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:05:51.190559+00:00 app[web.1]: 2021-02-20T17:05:51.190888+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:05:51.191062+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_05_51_176Z-debug.log 2021-02-20T17:05:51.298655+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:05:51.369176+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:06:01.566828+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:06:00.998626+00:00 app[api]: Set EMAIL_HASH_SECRET config vars by user merrifield48@gmail.com 
+2021-02-20T17:06:00.998626+00:00 app[api]: Release v13 created by user merrifield48@gmail.com 
+2021-02-20T17:06:06.955305+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:06:09.458855+00:00 app[web.1]: 2021-02-20T17:06:09.458875+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:06:09.458876+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:06:09.458876+00:00 app[web.1]: 2021-02-20T17:06:09.915472+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:06:10.198722+00:00 app[web.1]: error: no pg_hba.conf entry for host "52.91.199.240", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:06:10.198794+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:06:10.198794+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:06:10.198795+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:06:10.198795+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:06:10.198795+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:06:10.198796+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:06:10.198796+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:06:10.198796+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:06:10.198797+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:06:10.212681+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:06:10.213049+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:06:10.218371+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:06:10.218521+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:06:10.218678+00:00 app[web.1]: npm ERR! 2021-02-20T17:06:10.218817+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:06:10.221810+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:06:10.232712+00:00 app[web.1]: 2021-02-20T17:06:10.233197+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:06:10.233402+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_06_10_222Z-debug.log 2021-02-20T17:06:10.284599+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:06:10.356706+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:06:16.670968+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:06:16.490372+00:00 app[api]: Set EMAIL_SERVICE_PROVIDER config vars by user merrifield48@gmail.com 
+2021-02-20T17:06:16.490372+00:00 app[api]: Release v14 created by user merrifield48@gmail.com 
+2021-02-20T17:06:23.788773+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:06:27.260980+00:00 app[web.1]: 2021-02-20T17:06:27.261005+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:06:27.261005+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:06:27.261006+00:00 app[web.1]: 2021-02-20T17:06:28.023076+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:06:28.335449+00:00 app[web.1]: error: no pg_hba.conf entry for host "3.89.156.21", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:06:28.335466+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:06:28.335467+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:06:28.335468+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:06:28.335468+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:06:28.335469+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:06:28.335470+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:06:28.335470+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:06:28.335470+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:06:28.335471+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:06:28.352130+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:06:28.352547+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:06:28.362730+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:06:28.362944+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:06:28.363093+00:00 app[web.1]: npm ERR! 2021-02-20T17:06:28.363202+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:06:28.363356+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:06:28.373366+00:00 app[web.1]: 2021-02-20T17:06:28.373648+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:06:28.373806+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_06_28_364Z-debug.log 2021-02-20T17:06:28.468085+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:06:28.551337+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:06:42.648516+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:06:42.497087+00:00 app[api]: Set EMAIL_NAME config vars by user merrifield48@gmail.com 
+2021-02-20T17:06:42.497087+00:00 app[api]: Release v15 created by user merrifield48@gmail.com 
+2021-02-20T17:06:51.894112+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:06:55.767628+00:00 app[web.1]: 2021-02-20T17:06:55.767645+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:06:55.767646+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:06:55.767646+00:00 app[web.1]: 2021-02-20T17:06:56.753188+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:06:57.140134+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.243.231.59", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:06:57.140150+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:06:57.140150+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:06:57.140151+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:06:57.140151+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:06:57.140152+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:06:57.140153+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:06:57.140153+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:06:57.140153+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:06:57.140154+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:06:57.170422+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:06:57.170809+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:06:57.181490+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:06:57.181716+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:06:57.181922+00:00 app[web.1]: npm ERR! 2021-02-20T17:06:57.182103+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:06:57.182273+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:06:57.202732+00:00 app[web.1]: 2021-02-20T17:06:57.203066+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:06:57.203271+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_06_57_183Z-debug.log 2021-02-20T17:06:57.284115+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:06:57.352256+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:07:14.051166+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:07:13.625735+00:00 app[api]: Set EMAIL_PASS config vars by user merrifield48@gmail.com 
+2021-02-20T17:07:13.625735+00:00 app[api]: Release v16 created by user merrifield48@gmail.com 
+2021-02-20T17:07:21.588482+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:07:24.886513+00:00 app[web.1]: 2021-02-20T17:07:24.886541+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:07:24.886541+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:07:24.886541+00:00 app[web.1]: 2021-02-20T17:07:25.405561+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:07:25.660906+00:00 app[web.1]: error: no pg_hba.conf entry for host "35.172.139.34", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:07:25.660929+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:07:25.660929+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:07:25.660930+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:07:25.660930+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:07:25.660931+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:07:25.660932+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:07:25.660932+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:07:25.660932+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:07:25.660933+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:07:25.681275+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:07:25.681822+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:07:25.689926+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:07:25.690157+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:07:25.690343+00:00 app[web.1]: npm ERR! 2021-02-20T17:07:25.690519+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:07:25.690729+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:07:25.700311+00:00 app[web.1]: 2021-02-20T17:07:25.700600+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:07:25.700778+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_07_25_692Z-debug.log 2021-02-20T17:07:25.752616+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:07:25.849552+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:07:41.365780+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:07:41.192825+00:00 app[api]: Release v17 created by user merrifield48@gmail.com 
+2021-02-20T17:07:41.192825+00:00 app[api]: Set OKTA_API_TOKEN config vars by user merrifield48@gmail.com 
+2021-02-20T17:07:46.703639+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:07:49.046864+00:00 app[web.1]: 2021-02-20T17:07:49.046891+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:07:49.046891+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:07:49.046891+00:00 app[web.1]: 2021-02-20T17:07:49.451126+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:07:49.667603+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.228.162.119", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:07:49.667605+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:07:49.667606+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:07:49.667607+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:07:49.667607+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:07:49.667608+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:07:49.667609+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:07:49.667610+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:07:49.667610+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:07:49.667611+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:07:49.680287+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:07:49.680633+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:07:49.687365+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:07:49.687522+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:07:49.687666+00:00 app[web.1]: npm ERR! 2021-02-20T17:07:49.687780+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:07:49.687900+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:07:49.695329+00:00 app[web.1]: 2021-02-20T17:07:49.695563+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:07:49.695712+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_07_49_688Z-debug.log 2021-02-20T17:07:49.739815+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:07:49.794626+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:08:04.343964+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:08:03.967266+00:00 app[api]: Release v18 created by user merrifield48@gmail.com 
+2021-02-20T17:08:03.967266+00:00 app[api]: Set OKTA_BASE_URL config vars by user merrifield48@gmail.com 
+2021-02-20T17:08:09.992532+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:08:12.485220+00:00 app[web.1]: 2021-02-20T17:08:12.485253+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:08:12.485257+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:08:12.485257+00:00 app[web.1]: 2021-02-20T17:08:12.850912+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:08:13.045568+00:00 app[web.1]: error: no pg_hba.conf entry for host "3.95.169.136", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:08:13.045569+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:08:13.045570+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:08:13.045571+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:08:13.045571+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:08:13.045572+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:08:13.045572+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:08:13.045572+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:08:13.045573+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:08:13.045573+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:08:13.057942+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:08:13.058249+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:08:13.063975+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:08:13.064046+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:08:13.064147+00:00 app[web.1]: npm ERR! 2021-02-20T17:08:13.064214+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:08:13.064288+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:08:13.073474+00:00 app[web.1]: 2021-02-20T17:08:13.073733+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:08:13.073880+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_08_13_064Z-debug.log 2021-02-20T17:08:13.121250+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:08:13.176912+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:08:13.180816+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:08:22.183354+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:08:25.799402+00:00 app[web.1]: 2021-02-20T17:08:25.799474+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:08:25.799476+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:08:25.799476+00:00 app[web.1]: 2021-02-20T17:08:26.335423+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:08:26.661176+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.239.0.87", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:08:26.661195+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:08:26.661195+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:08:26.661196+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:08:26.661196+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:08:26.661197+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:08:26.661198+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:08:26.661198+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:08:26.661199+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:08:26.661199+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:08:26.746370+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:08:26.746869+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:08:26.771381+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:08:26.771641+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:08:26.771960+00:00 app[web.1]: npm ERR! 2021-02-20T17:08:26.772241+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:08:26.772488+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:08:26.796175+00:00 app[web.1]: 2021-02-20T17:08:26.802782+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:08:26.802991+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_08_26_773Z-debug.log 2021-02-20T17:08:26.898051+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:08:27.012941+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:09:22.704344+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:09:22.521974+00:00 app[api]: Set OKTA_GROUP_ID config vars by user merrifield48@gmail.com 
+2021-02-20T17:09:22.521974+00:00 app[api]: Release v19 created by user merrifield48@gmail.com 
+2021-02-20T17:09:28.143233+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:09:30.592323+00:00 app[web.1]: 2021-02-20T17:09:30.592398+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:09:30.592402+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:09:30.592413+00:00 app[web.1]: 2021-02-20T17:09:31.032544+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:09:31.234198+00:00 app[web.1]: error: no pg_hba.conf entry for host "18.212.116.239", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:09:31.234200+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:09:31.234201+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:09:31.234202+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:09:31.234203+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:09:31.234204+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:09:31.234205+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:09:31.234205+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:09:31.234206+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:09:31.234206+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:09:31.246450+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:09:31.246774+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:09:31.252015+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:09:31.252105+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:09:31.252234+00:00 app[web.1]: npm ERR! 2021-02-20T17:09:31.252322+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:09:31.252415+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:09:31.265955+00:00 app[web.1]: 2021-02-20T17:09:31.266237+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:09:31.266344+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_09_31_254Z-debug.log 2021-02-20T17:09:31.315163+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:09:31.371021+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:10:16.143821+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:10:15.975588+00:00 app[api]: Set PASSWORD_CHANGE_REDIRECT config vars by user 
+merrifield48@gmail.com 2021-02-20T17:10:15.975588+00:00 app[api]: Release v20 created by user 
+merrifield48@gmail.com 2021-02-20T17:10:23.753628+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:10:27.495224+00:00 app[web.1]: 2021-02-20T17:10:27.495240+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:10:27.495240+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:10:27.495241+00:00 app[web.1]: 2021-02-20T17:10:28.159930+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:10:28.540165+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.81.88.55", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:10:28.540180+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:10:28.540180+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:10:28.540181+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:10:28.540182+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:10:28.540182+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:10:28.540183+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:10:28.540183+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:10:28.540184+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:10:28.540184+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:10:28.559816+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:10:28.560454+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:10:28.569868+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:10:28.570051+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:10:28.570275+00:00 app[web.1]: npm ERR! 2021-02-20T17:10:28.570461+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:10:28.570633+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:10:28.580766+00:00 app[web.1]: 2021-02-20T17:10:28.582898+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:10:28.583124+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_10_28_573Z-debug.log 2021-02-20T17:10:28.655483+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:10:28.738000+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:11:19.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:12:18.160576+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:12:17.774854+00:00 app[api]: Release v21 created by user merrifield48@gmail.com 
+2021-02-20T17:12:17.774854+00:00 app[api]: Deploy e93c2071 by user merrifield48@gmail.com 
+2021-02-20T17:12:23.000000+00:00 app[api]: Build succeeded 2021-02-20T17:12:24.619063+00:00 heroku[web.1]: 
+Starting process with command `npm start` 2021-02-20T17:12:26.839362+00:00 app[web.1]: 
+2021-02-20T17:12:26.839379+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:12:26.839380+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:12:26.839381+00:00 
+app[web.1]: 2021-02-20T17:12:27.171288+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:12:27.370386+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.207.241.245", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:12:27.370387+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:12:27.370388+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:12:27.370391+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:12:27.370391+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:12:27.370392+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:12:27.370393+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:12:27.370393+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:12:27.370394+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:12:27.370394+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:12:27.382202+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:12:27.382477+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:12:27.388457+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:12:27.388540+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:12:27.388645+00:00 app[web.1]: npm ERR! 2021-02-20T17:12:27.389528+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:12:27.389590+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:12:27.393894+00:00 app[web.1]: 2021-02-20T17:12:27.394025+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:12:27.394083+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_12_27_390Z-debug.log 2021-02-20T17:12:27.448446+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:12:27.512943+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:12:28.886960+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=f93d2c7f-2382-4a10-91e9-4675351ea036 fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:12:29.115719+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=71df2580-b821-44f6-b8c3-00162df588a1 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:12:52.827851+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:12:52.484238+00:00 app[api]: Release v22 created by user merrifield48@gmail.com 
+2021-02-20T17:12:52.484238+00:00 app[api]: Set BACKEND_BASE_URL config vars by user merrifield48@gmail.com 
+2021-02-20T17:13:00.259364+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:13:03.582010+00:00 app[web.1]: 2021-02-20T17:13:03.582023+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:13:03.582024+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:13:03.582025+00:00 app[web.1]: 2021-02-20T17:13:04.059387+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:13:04.290499+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.239.247.183", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:13:04.290511+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:13:04.290511+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:13:04.290513+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:13:04.290514+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:13:04.290515+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:13:04.290517+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:13:04.290517+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:13:04.290517+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:13:04.290518+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:13:04.305156+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:13:04.305530+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:13:04.313093+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:13:04.313204+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:13:04.313352+00:00 app[web.1]: npm ERR! 2021-02-20T17:13:04.313441+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:13:04.313537+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:13:04.325849+00:00 app[web.1]: 2021-02-20T17:13:04.326053+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:13:04.326161+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_13_04_315Z-debug.log 2021-02-20T17:13:04.377334+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:13:04.439310+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:13:12.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:14:12.944822+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:14:12.722764+00:00 app[api]: Release v23 created by user merrifield48@gmail.com 
+2021-02-20T17:14:12.722764+00:00 app[api]: Deploy e93c2071 by user merrifield48@gmail.com 
+2021-02-20T17:14:18.000000+00:00 app[api]: Build succeeded 2021-02-20T17:14:21.935670+00:00 heroku[web.1]: 
+Starting process with command `npm start` 2021-02-20T17:14:26.189454+00:00 app[web.1]: 
+2021-02-20T17:14:26.189558+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:14:26.189565+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:14:26.189570+00:00 
+app[web.1]: 2021-02-20T17:14:27.805602+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:14:28.635434+00:00 app[web.1]: error: no pg_hba.conf entry for host "3.94.121.223", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:14:28.635447+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:14:28.635447+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:14:28.635448+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:14:28.635448+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:14:28.635449+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:14:28.635449+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:14:28.635450+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:14:28.635450+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:14:28.635450+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:14:28.659658+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:14:28.660504+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:14:28.678706+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:14:28.697068+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:14:28.697376+00:00 app[web.1]: npm ERR! 2021-02-20T17:14:28.697575+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:14:28.697767+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:14:28.708413+00:00 app[web.1]: 2021-02-20T17:14:28.712665+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:14:28.712843+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_14_28_698Z-debug.log 2021-02-20T17:14:28.785558+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:14:28.864127+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:15:44.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:16:38.318653+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:16:38.114567+00:00 app[api]: Deploy e93c2071 by user merrifield48@gmail.com 
+2021-02-20T17:16:38.114567+00:00 app[api]: Release v24 created by user merrifield48@gmail.com 
+2021-02-20T17:16:44.078617+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:16:43.000000+00:00 app[api]: Build succeeded 2021-02-20T17:16:49.813607+00:00 app[web.1]: 
+2021-02-20T17:16:49.813614+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:16:49.813615+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:16:49.813615+00:00 
+app[web.1]: 2021-02-20T17:16:50.364312+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:16:50.633128+00:00 app[web.1]: error: no pg_hba.conf entry for host "18.207.212.70", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:16:50.633145+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:16:50.633145+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:16:50.633146+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:16:50.633147+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:16:50.633147+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:16:50.633148+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:16:50.633148+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:16:50.633168+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:16:50.633169+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:16:50.650223+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:16:50.650817+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:16:50.660998+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:16:50.661097+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:16:50.661320+00:00 app[web.1]: npm ERR! 2021-02-20T17:16:50.661385+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:16:50.661515+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:16:50.670424+00:00 app[web.1]: 2021-02-20T17:16:50.670635+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:16:50.670755+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_16_50_662Z-debug.log 2021-02-20T17:16:50.800546+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:16:50.867219+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:16:52.648038+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=576a8492-8cae-49ac-ba3c-395bd7776a73 fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:16:52.867748+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=709e073a-8909-4443-959b-8f9febc59bcb fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:21:00.135645+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:20:59.903466+00:00 app[api]: Release v25 created by user merrifield48@gmail.com 
+2021-02-20T17:20:59.903466+00:00 app[api]: Set POSTGRES_CONNECTION_STRING config vars by user 
+merrifield48@gmail.com 2021-02-20T17:21:09.469666+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:21:13.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:21:13.944946+00:00 app[web.1]: 2021-02-20T17:21:13.944967+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:21:13.944967+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:21:13.944968+00:00 app[web.1]: 2021-02-20T17:21:15.212002+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:21:16.152715+00:00 app[web.1]: Error: self signed certificate 
+2021-02-20T17:21:16.152735+00:00 app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 
+2021-02-20T17:21:16.152736+00:00 app[web.1]: at TLSSocket.emit (events.js:315:20) 
+2021-02-20T17:21:16.152736+00:00 app[web.1]: at TLSSocket._finishInit (_tls_wrap.js:932:8) 
+2021-02-20T17:21:16.152736+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:706:12) 
+2021-02-20T17:21:16.241001+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T17:21:16.241798+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T17:21:16.267185+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T17:21:16.267515+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T17:21:16.267858+00:00 app[web.1]: npm ERR! 2021-02-20T17:21:16.268112+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:21:16.268402+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:21:16.285460+00:00 app[web.1]: 2021-02-20T17:21:16.285873+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:21:16.286065+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_21_16_269Z-debug.log 2021-02-20T17:21:16.399556+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:21:16.687475+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:21:16.692355+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:21:24.316921+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:21:27.620540+00:00 app[web.1]: 2021-02-20T17:21:27.620556+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:21:27.620557+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:21:27.620557+00:00 app[web.1]: 2021-02-20T17:21:28.269205+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:21:28.627075+00:00 app[web.1]: Error: self signed certificate 
+2021-02-20T17:21:28.627084+00:00 app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 
+2021-02-20T17:21:28.627085+00:00 app[web.1]: at TLSSocket.emit (events.js:315:20) 
+2021-02-20T17:21:28.627085+00:00 app[web.1]: at TLSSocket._finishInit (_tls_wrap.js:932:8) 
+2021-02-20T17:21:28.627086+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:706:12) 
+2021-02-20T17:21:28.640361+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T17:21:28.640632+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T17:21:28.648436+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T17:21:28.648590+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T17:21:28.649169+00:00 app[web.1]: npm ERR! 2021-02-20T17:21:28.649170+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:21:28.649173+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:21:28.657789+00:00 app[web.1]: 2021-02-20T17:21:28.657928+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:21:28.657999+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_21_28_649Z-debug.log 2021-02-20T17:21:28.714518+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:21:28.803462+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:22:08.253675+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:22:07.710133+00:00 app[api]: Deploy e93c2071 by user merrifield48@gmail.com 
+2021-02-20T17:22:07.710133+00:00 app[api]: Release v26 created by user merrifield48@gmail.com 
+2021-02-20T17:22:13.000000+00:00 app[api]: Build succeeded 2021-02-20T17:22:16.039747+00:00 heroku[web.1]: 
+Starting process with command `npm start` 2021-02-20T17:22:18.499901+00:00 app[web.1]: 
+2021-02-20T17:22:18.499916+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:22:18.499917+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:22:18.499917+00:00 
+app[web.1]: 2021-02-20T17:22:19.015662+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:22:19.288456+00:00 app[web.1]: Error: self signed certificate 2021-02-20T17:22:19.288474+00:00 
+app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 2021-02-20T17:22:19.288475+00:00 app[web.1]: at 
+TLSSocket.emit (events.js:315:20) 2021-02-20T17:22:19.288475+00:00 app[web.1]: at TLSSocket._finishInit 
+(_tls_wrap.js:932:8) 2021-02-20T17:22:19.288476+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone 
+(_tls_wrap.js:706:12) 2021-02-20T17:22:19.306098+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:22:19.306488+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:22:19.315574+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:22:19.315706+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:22:19.315861+00:00 app[web.1]: npm ERR! 2021-02-20T17:22:19.315981+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:22:19.316077+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:22:19.323995+00:00 app[web.1]: 2021-02-20T17:22:19.324603+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:22:19.324751+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_22_19_318Z-debug.log 2021-02-20T17:22:19.401272+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:22:19.501226+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:22:29.662744+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=ea3e0de2-2d4d-488c-b0e3-b3714c74c86e fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:22:29.907451+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=7671ff76-da80-4f93-8915-4191a1936cb5 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:30:54.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:31:55.013465+00:00 app[api]: Release v27 created by user merrifield48@gmail.com 
+2021-02-20T17:31:55.013465+00:00 app[api]: Deploy 4c59b0f6 by user merrifield48@gmail.com 
+2021-02-20T17:31:55.763806+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:32:00.000000+00:00 app[api]: Build succeeded 2021-02-20T17:32:04.761562+00:00 heroku[web.1]: 
+Starting process with command `npm start` 2021-02-20T17:32:09.916119+00:00 app[web.1]: 
+2021-02-20T17:32:09.916139+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:32:09.916140+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:32:09.916140+00:00 
+app[web.1]: 2021-02-20T17:32:11.107433+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:32:11.723721+00:00 app[web.1]: Error: self signed certificate 2021-02-20T17:32:11.723731+00:00 
+app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 2021-02-20T17:32:11.723732+00:00 app[web.1]: at 
+TLSSocket.emit (events.js:315:20) 2021-02-20T17:32:11.723732+00:00 app[web.1]: at TLSSocket._finishInit 
+(_tls_wrap.js:932:8) 2021-02-20T17:32:11.723733+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone 
+(_tls_wrap.js:706:12) 2021-02-20T17:32:11.773279+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:32:11.773281+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:32:11.785194+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:32:11.786135+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:32:11.786306+00:00 app[web.1]: npm ERR! 2021-02-20T17:32:11.786460+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:32:11.786607+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:32:12.930014+00:00 app[web.1]: 2021-02-20T17:32:12.930239+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:32:12.935694+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_32_11_787Z-debug.log 2021-02-20T17:32:13.024122+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:32:13.155497+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:35:10.969878+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:35:17.058342+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:35:19.842891+00:00 app[web.1]: 2021-02-20T17:35:19.842916+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:35:19.842917+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:35:19.842917+00:00 app[web.1]: 2021-02-20T17:35:20.404187+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:35:20.689541+00:00 app[web.1]: Error: self signed certificate 
+2021-02-20T17:35:20.689552+00:00 app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 
+2021-02-20T17:35:20.689553+00:00 app[web.1]: at TLSSocket.emit (events.js:315:20) 
+2021-02-20T17:35:20.689553+00:00 app[web.1]: at TLSSocket._finishInit (_tls_wrap.js:932:8) 
+2021-02-20T17:35:20.689554+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:706:12) 
+2021-02-20T17:35:20.704705+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T17:35:20.705126+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T17:35:20.712315+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T17:35:20.712392+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T17:35:20.712504+00:00 app[web.1]: npm ERR! 2021-02-20T17:35:20.712573+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:35:20.712640+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:35:20.786275+00:00 app[web.1]: 2021-02-20T17:35:20.786474+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:35:20.786578+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_35_20_713Z-debug.log 2021-02-20T17:35:20.853885+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:35:20.924591+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:46:31.325193+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=501f16a0-5dd8-4f55-b8ab-708aebb67410 fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:46:31.531822+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=3c11d73d-3f08-483f-9257-726358bb26a4 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:49:55.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:50:50.511392+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:50:50.309424+00:00 app[api]: Release v28 created by user merrifield48@gmail.com 
+2021-02-20T17:50:50.309424+00:00 app[api]: Deploy 4c59b0f6 by user merrifield48@gmail.com 
+2021-02-20T17:50:55.790731+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:50:55.000000+00:00 app[api]: Build succeeded 2021-02-20T17:50:58.436594+00:00 app[web.1]: 
+2021-02-20T17:50:58.436611+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:50:58.436612+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:50:58.436613+00:00 
+app[web.1]: 2021-02-20T17:50:58.867938+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:50:59.160134+00:00 app[web.1]: Error: self signed certificate 2021-02-20T17:50:59.160144+00:00 
+app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 2021-02-20T17:50:59.160145+00:00 app[web.1]: at 
+TLSSocket.emit (events.js:315:20) 2021-02-20T17:50:59.160145+00:00 app[web.1]: at TLSSocket._finishInit 
+(_tls_wrap.js:932:8) 2021-02-20T17:50:59.160145+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone 
+(_tls_wrap.js:706:12) 2021-02-20T17:50:59.179388+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:50:59.179750+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:50:59.188499+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:50:59.188652+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:50:59.188804+00:00 app[web.1]: npm ERR! 2021-02-20T17:50:59.188959+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:50:59.189078+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:50:59.199858+00:00 app[web.1]: 2021-02-20T17:50:59.200086+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:50:59.200216+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_50_59_189Z-debug.log 2021-02-20T17:50:59.244516+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:50:59.310827+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:50:59.314258+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:51:09.546840+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:51:14.733958+00:00 app[web.1]: 2021-02-20T17:51:14.734047+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:51:14.734049+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:51:14.734049+00:00 app[web.1]: 2021-02-20T17:51:16.249329+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:51:16.854310+00:00 app[web.1]: Error: self signed certificate 
+2021-02-20T17:51:16.854328+00:00 app[web.1]: at TLSSocket.onConnectSecure (_tls_wrap.js:1497:34) 
+2021-02-20T17:51:16.854329+00:00 app[web.1]: at TLSSocket.emit (events.js:315:20) 
+2021-02-20T17:51:16.854329+00:00 app[web.1]: at TLSSocket._finishInit (_tls_wrap.js:932:8) 
+2021-02-20T17:51:16.854329+00:00 app[web.1]: at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:706:12) 
+2021-02-20T17:51:16.909861+00:00 app[web.1]: npm ERR! code ELIFECYCLE 2021-02-20T17:51:16.910437+00:00 
+app[web.1]: npm ERR! errno 1 2021-02-20T17:51:16.922322+00:00 app[web.1]: npm ERR! neighborhood-chef-be@0.0.1 
+prestart: `npx knex migrate:latest` 2021-02-20T17:51:16.922495+00:00 app[web.1]: npm ERR! Exit status 1 
+2021-02-20T17:51:16.922713+00:00 app[web.1]: npm ERR! 2021-02-20T17:51:16.922835+00:00 app[web.1]: npm ERR! 
+Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:51:16.922995+00:00 app[web.1]: npm ERR! 
+This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:51:16.935199+00:00 app[web.1]: 2021-02-20T17:51:16.935216+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:51:16.935288+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_51_16_924Z-debug.log 2021-02-20T17:51:17.025246+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:51:17.170897+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:51:18.403144+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=38cfd193-936e-4019-97db-b1f1fd70a57a fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:51:18.622642+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=e5f47e7b-0b64-4c7f-a83a-df08e5d24d40 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:53:22.935530+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:53:22.717219+00:00 app[api]: Release v29 created by user merrifield48@gmail.com 
+2021-02-20T17:53:22.717219+00:00 app[api]: Set POSTGRES_CONNECTION_STRING config vars by user 
+merrifield48@gmail.com 2021-02-20T17:53:27.527106+00:00 heroku[web.1]: Restarting 
+2021-02-20T17:53:27.248500+00:00 app[api]: Set POSTGRES_CONNECTION_STRING config vars by user 
+merrifield48@gmail.com 2021-02-20T17:53:27.248500+00:00 app[api]: Release v30 created by user 
+merrifield48@gmail.com 2021-02-20T17:53:28.822594+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:53:31.665141+00:00 app[web.1]: 2021-02-20T17:53:31.665156+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:53:31.665156+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:53:31.665157+00:00 app[web.1]: 2021-02-20T17:53:32.141814+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:53:32.409736+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.209.221.243", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:53:32.409745+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:53:32.409745+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:53:32.409746+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:53:32.409746+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:53:32.409746+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:53:32.409748+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:53:32.409749+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:53:32.409749+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:53:32.409749+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:53:32.431429+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:53:32.431946+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:53:32.445206+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:53:32.445438+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:53:32.445668+00:00 app[web.1]: npm ERR! 2021-02-20T17:53:32.445848+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:53:32.446022+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:53:32.834907+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T17:53:32.828296+00:00 app[web.1]: 2021-02-20T17:53:32.828760+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:53:32.829067+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_53_32_447Z-debug.log 2021-02-20T17:53:32.888053+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:53:35.175768+00:00 app[web.1]: 2021-02-20T17:53:35.175791+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T17:53:35.175792+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T17:53:35.175792+00:00 app[web.1]: 2021-02-20T17:53:35.533847+00:00 app[web.1]: Using environment: 
+production 2021-02-20T17:53:35.717062+00:00 app[web.1]: error: no pg_hba.conf entry for host "34.227.82.255", 
+user "rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:53:35.717065+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:53:35.717066+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:53:35.717067+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:53:35.717067+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:53:35.717068+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:53:35.717069+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:53:35.717070+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:53:35.717070+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:53:35.717070+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:53:35.728611+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:53:35.728918+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:53:35.735532+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:53:35.735618+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:53:35.735724+00:00 app[web.1]: npm ERR! 2021-02-20T17:53:35.735795+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:53:35.735836+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:53:35.742315+00:00 app[web.1]: 2021-02-20T17:53:35.742452+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:53:35.742519+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_53_35_736Z-debug.log 2021-02-20T17:53:35.791444+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:53:35.863469+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:54:05.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T17:55:00.457720+00:00 app[api]: Deploy 4c59b0f6 by user merrifield48@gmail.com 
+2021-02-20T17:55:00.457720+00:00 app[api]: Release v31 created by user merrifield48@gmail.com 
+2021-02-20T17:55:01.691931+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T17:55:05.000000+00:00 app[api]: Build succeeded 2021-02-20T17:55:07.822409+00:00 heroku[web.1]: 
+Starting process with command `npm start` 2021-02-20T17:55:10.581981+00:00 app[web.1]: 
+2021-02-20T17:55:10.582009+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T17:55:10.582010+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T17:55:10.582010+00:00 
+app[web.1]: 2021-02-20T17:55:11.055868+00:00 app[web.1]: Using environment: production 
+2021-02-20T17:55:11.308448+00:00 app[web.1]: error: no pg_hba.conf entry for host "54.196.70.73", user 
+"rvdfcpmnmmjmek", database "desnfuooqme54e", SSL off 2021-02-20T17:55:11.308456+00:00 app[web.1]: at 
+Parser.parseErrorMessage (/app/node_modules/pg-protocol/dist/parser.js:278:15) 2021-02-20T17:55:11.308456+00:00 
+app[web.1]: at Parser.handlePacket (/app/node_modules/pg-protocol/dist/parser.js:126:29) 
+2021-02-20T17:55:11.308457+00:00 app[web.1]: at Parser.parse 
+(/app/node_modules/pg-protocol/dist/parser.js:39:38) 2021-02-20T17:55:11.308457+00:00 app[web.1]: at 
+Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:10:42) 2021-02-20T17:55:11.308457+00:00 
+app[web.1]: at Socket.emit (events.js:315:20) 2021-02-20T17:55:11.308458+00:00 app[web.1]: at addChunk 
+(internal/streams/readable.js:309:12) 2021-02-20T17:55:11.308458+00:00 app[web.1]: at readableAddChunk 
+(internal/streams/readable.js:284:9) 2021-02-20T17:55:11.308458+00:00 app[web.1]: at Socket.Readable.push 
+(internal/streams/readable.js:223:10) 2021-02-20T17:55:11.308459+00:00 app[web.1]: at TCP.onStreamRead 
+(internal/stream_base_commons.js:188:23) 2021-02-20T17:55:11.323025+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T17:55:11.323549+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T17:55:11.329822+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 prestart: `npx knex migrate:latest` 2021-02-20T17:55:11.329955+00:00 app[web.1]: 
+npm ERR! Exit status 1 2021-02-20T17:55:11.330113+00:00 app[web.1]: npm ERR! 2021-02-20T17:55:11.330241+00:00 
+app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 prestart script. 2021-02-20T17:55:11.330364+00:00 
+app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above. 
+2021-02-20T17:55:11.338408+00:00 app[web.1]: 2021-02-20T17:55:11.338628+00:00 app[web.1]: npm ERR! A complete 
+log of this run can be found in: 2021-02-20T17:55:11.338763+00:00 app[web.1]: npm ERR!  
+/app/.npm/_logs/2021-02-20T17_55_11_331Z-debug.log 2021-02-20T17:55:11.401128+00:00 heroku[web.1]: Process 
+exited with status 1 2021-02-20T17:55:11.467280+00:00 heroku[web.1]: State changed from starting to crashed 
+2021-02-20T17:55:26.632355+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" 
+host=nhcredux-be.herokuapp.com request_id=ab65a84e-21fc-41cd-b923-ff412b96f975 fwd="67.252.14.32" dyno= connect= 
+service= status=503 bytes= protocol=https 2021-02-20T17:55:26.853031+00:00 heroku[router]: at=error code=H10 
+desc="App crashed" method=GET path="/favicon.ico" host=nhcredux-be.herokuapp.com 
+request_id=fa7b0951-0de4-4b40-a6e2-713f31033b0d fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T17:59:54.000000+00:00 app[api]: Build started by user merrifield48@gmail.com 
+2021-02-20T18:00:53.406641+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T18:00:53.097913+00:00 app[api]: Release v32 created by user merrifield48@gmail.com 
+2021-02-20T18:00:53.097913+00:00 app[api]: Deploy 66165485 by user merrifield48@gmail.com 
+2021-02-20T18:00:58.892262+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T18:00:58.000000+00:00 app[api]: Build succeeded 2021-02-20T18:01:01.963524+00:00 app[web.1]: 
+2021-02-20T18:01:01.963594+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 prestart /app 
+2021-02-20T18:01:01.963595+00:00 app[web.1]: > npx knex migrate:latest 2021-02-20T18:01:01.963596+00:00 
+app[web.1]: 2021-02-20T18:01:02.338285+00:00 app[web.1]: Using environment: production 
+2021-02-20T18:01:02.931415+00:00 app[web.1]: Batch 1 run: 14 migrations 2021-02-20T18:01:02.940648+00:00 
+app[web.1]: 2021-02-20T18:01:02.940652+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 start /app 
+2021-02-20T18:01:02.940653+00:00 app[web.1]: > node -r dotenv-safe/config index.js 
+2021-02-20T18:01:02.940653+00:00 app[web.1]: 2021-02-20T18:01:03.011876+00:00 app[web.1]: 
+2021-02-20T18:01:03.011880+00:00 app[web.1]: /app/node_modules/dotenv-safe/index.js:31 
+2021-02-20T18:01:03.011884+00:00 app[web.1]: throw new MissingEnvVarsError(allowEmptyValues, options.path || 
+'.env', example, missing, dotenvResult.error); 2021-02-20T18:01:03.011890+00:00 app[web.1]: ^ 
+2021-02-20T18:01:03.018034+00:00 app[web.1]: MissingEnvVarsError: The following variables were defined in 
+.env.example but are not present in the environment: 2021-02-20T18:01:03.018038+00:00 app[web.1]: 
+POSTGRES_DATABASE 2021-02-20T18:01:03.018040+00:00 app[web.1]: Make sure to add them to .env or directly to the 
+environment. 2021-02-20T18:01:03.018040+00:00 app[web.1]: 2021-02-20T18:01:03.018041+00:00 app[web.1]: If you 
+expect any of these variables to be empty, you can use the allowEmptyValues option: 
+2021-02-20T18:01:03.018042+00:00 app[web.1]: require('dotenv-safe').config({ 2021-02-20T18:01:03.018042+00:00 
+app[web.1]: allowEmptyValues: true 2021-02-20T18:01:03.018043+00:00 app[web.1]: }); 
+2021-02-20T18:01:03.018043+00:00 app[web.1]: 2021-02-20T18:01:03.018044+00:00 app[web.1]: Also, the following 
+error was thrown when trying to read variables from .env: 2021-02-20T18:01:03.018044+00:00 app[web.1]: ENOENT: 
+no such file or directory, open '/app/.env' 2021-02-20T18:01:03.018045+00:00 app[web.1]: at Object.config 
+(/app/node_modules/dotenv-safe/index.js:31:19) 2021-02-20T18:01:03.018045+00:00 app[web.1]: at 
+/app/node_modules/dotenv-safe/config.js:9:18 2021-02-20T18:01:03.018046+00:00 app[web.1]: at Object.<anonymous> 
+(/app/node_modules/dotenv-safe/config.js:10:3) 2021-02-20T18:01:03.018046+00:00 app[web.1]: at Module._compile 
+(internal/modules/cjs/loader.js:1063:30) 2021-02-20T18:01:03.018047+00:00 app[web.1]: at 
+Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10) 2021-02-20T18:01:03.018047+00:00 
+app[web.1]: at Module.load (internal/modules/cjs/loader.js:928:32) 2021-02-20T18:01:03.018048+00:00 app[web.1]: 
+at Function.Module._load (internal/modules/cjs/loader.js:769:14) 2021-02-20T18:01:03.018048+00:00 app[web.1]: at 
+Module.require (internal/modules/cjs/loader.js:952:19) 2021-02-20T18:01:03.018048+00:00 app[web.1]: at 
+Module._preloadModules (internal/modules/cjs/loader.js:1217:12) 2021-02-20T18:01:03.018049+00:00 app[web.1]: at 
+loadPreloadModules (internal/bootstrap/pre_execution.js:449:5) { 2021-02-20T18:01:03.018049+00:00 app[web.1]: 
+missing: [ 'POSTGRES_DATABASE' ], 2021-02-20T18:01:03.018050+00:00 app[web.1]: sample: '.env.example', 
+2021-02-20T18:01:03.018050+00:00 app[web.1]: example: '.env.example' 2021-02-20T18:01:03.018050+00:00 
+app[web.1]: } 2021-02-20T18:01:03.034542+00:00 app[web.1]: npm ERR! code ELIFECYCLE 
+2021-02-20T18:01:03.034875+00:00 app[web.1]: npm ERR! errno 1 2021-02-20T18:01:03.041630+00:00 app[web.1]: npm 
+ERR! neighborhood-chef-be@0.0.1 start: `node -r dotenv-safe/config index.js` 2021-02-20T18:01:03.041726+00:00 
+app[web.1]: npm ERR! Exit status 1 2021-02-20T18:01:03.041846+00:00 app[web.1]: npm ERR! 
+2021-02-20T18:01:03.041913+00:00 app[web.1]: npm ERR! Failed at the neighborhood-chef-be@0.0.1 start script. 
+2021-02-20T18:01:03.042009+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely 
+additional logging output above. 2021-02-20T18:01:03.049754+00:00 app[web.1]: 2021-02-20T18:01:03.049898+00:00 
+app[web.1]: npm ERR! A complete log of this run can be found in: 2021-02-20T18:01:03.049979+00:00 app[web.1]: 
+npm ERR!  /app/.npm/_logs/2021-02-20T18_01_03_042Z-debug.log 2021-02-20T18:01:03.119553+00:00 heroku[web.1]: 
+Process exited with status 1 2021-02-20T18:01:03.184125+00:00 heroku[web.1]: State changed from starting to 
+crashed 2021-02-20T18:02:01.581165+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET 
+path="/favicon.ico" host=nhcredux-be.herokuapp.com request_id=ab417a3e-76d4-45a9-8f59-c7f964e9b525 
+fwd="67.252.14.32" dyno= connect= service= status=503 bytes= protocol=https 2021-02-20T18:02:01.359865+00:00 
+heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=nhcredux-be.herokuapp.com 
+request_id=132cba0a-3520-4ca2-b6cf-5aae51ec1d66 fwd="67.252.14.32" dyno= connect= service= status=503 bytes= 
+protocol=https 2021-02-20T18:03:51.827109+00:00 app[api]: Release v33 created by user merrifield48@gmail.com 
+2021-02-20T18:03:51.827109+00:00 app[api]: Set POSTGRES_DATABASE config vars by user merrifield48@gmail.com 
+2021-02-20T18:03:52.196497+00:00 heroku[web.1]: State changed from crashed to starting 
+2021-02-20T18:04:01.344114+00:00 heroku[web.1]: Starting process with command `npm start` 
+2021-02-20T18:04:06.803214+00:00 app[web.1]: 2021-02-20T18:04:06.803231+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T18:04:06.803232+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T18:04:06.803232+00:00 app[web.1]: 2021-02-20T18:04:08.845068+00:00 app[web.1]: Using environment: 
+production 2021-02-20T18:04:09.866807+00:00 app[web.1]: Already up to date 2021-02-20T18:04:09.920150+00:00 
+app[web.1]: 2021-02-20T18:04:09.920153+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 start /app 
+2021-02-20T18:04:09.920153+00:00 app[web.1]: > node -r dotenv-safe/config index.js 
+2021-02-20T18:04:09.920154+00:00 app[web.1]: 2021-02-20T18:04:14.354644+00:00 heroku[web.1]: State changed from 
+starting to up 2021-02-20T18:04:14.145211+00:00 app[web.1]: Server listening on 40474 
+2021-02-20T18:04:16.317618+00:00 heroku[router]: at=info method=GET path="/" host=nhcredux-be.herokuapp.com 
+request_id=6c6c0f21-1c8e-4b7f-bc97-3ad73dabb540 fwd="67.252.14.32" dyno=web.1 connect=1ms service=41ms 
+status=404 bytes=583 protocol=https 2021-02-20T18:04:33.000000+00:00 app[api]: Build started by user 
+merrifield48@gmail.com 2021-02-20T18:05:26.897635+00:00 heroku[web.1]: Restarting 
+2021-02-20T18:05:26.913552+00:00 heroku[web.1]: State changed from up to starting 
+2021-02-20T18:05:26.543145+00:00 app[api]: Deploy 66165485 by user merrifield48@gmail.com 
+2021-02-20T18:05:26.543145+00:00 app[api]: Release v34 created by user merrifield48@gmail.com 
+2021-02-20T18:05:28.550387+00:00 heroku[web.1]: Stopping all processes with SIGTERM 
+2021-02-20T18:05:28.777286+00:00 heroku[web.1]: Process exited with status 143 2021-02-20T18:05:32.000000+00:00 
+app[api]: Build succeeded 2021-02-20T18:05:37.247919+00:00 heroku[web.1]: Starting process with command `npm 
+start` 2021-02-20T18:05:41.366543+00:00 app[web.1]: 2021-02-20T18:05:41.366613+00:00 app[web.1]: > 
+neighborhood-chef-be@0.0.1 prestart /app 2021-02-20T18:05:41.366618+00:00 app[web.1]: > npx knex migrate:latest 
+2021-02-20T18:05:41.366619+00:00 app[web.1]: 2021-02-20T18:05:42.397765+00:00 app[web.1]: Using environment: 
+production 2021-02-20T18:05:42.996184+00:00 app[web.1]: Already up to date 2021-02-20T18:05:43.017840+00:00 
+app[web.1]: 2021-02-20T18:05:43.017843+00:00 app[web.1]: > neighborhood-chef-be@0.0.1 start /app 
+2021-02-20T18:05:43.017843+00:00 app[web.1]: > node -r dotenv-safe/config index.js 
+2021-02-20T18:05:43.017843+00:00 app[web.1]: 2021-02-20T18:05:45.843862+00:00 app[web.1]: Server listening on 
+30926 2021-02-20T18:05:46.544344+00:00 heroku[web.1]: State changed from starting to up 
+2021-02-20T18:05:47.766712+00:00 heroku[router]: at=info method=GET path="/" host=nhcredux-be.herokuapp.com 
+request_id=6b5439ea-29af-402f-9888-62f88189f12e fwd="67.252.14.32" dyno=web.1 connect=1ms service=24ms 
+status=404 bytes=583 protocol=https

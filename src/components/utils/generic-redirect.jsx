@@ -21,6 +21,7 @@ function GenericRedirect(props) {
         variables: { input: { email: decodedToken } },
       },
     }).then((res) => {
+      console.log(res);
       sessionStorage.setItem(
         "user",
         JSON.stringify(res.data.data.getUserByEmail)
