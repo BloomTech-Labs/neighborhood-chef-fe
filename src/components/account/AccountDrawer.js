@@ -307,7 +307,7 @@ const AccountDrawer = (props) => {
 
             <div>
               {"Pets: "}
-              {me.pets ? (
+              {me.pets && typeof me.pets == "Array" ? (
                 me.pets.map((pet, ind) => (
                   <Typography component="span" key={ind}>
                     {ind < me.pets.length - 1 ? `${pet}, ` : `${pet}.`}
