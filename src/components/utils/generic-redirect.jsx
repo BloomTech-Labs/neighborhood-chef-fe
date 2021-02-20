@@ -30,7 +30,7 @@ function GenericRedirect(props) {
     });
   };
 
-  if (!ls.get("access_token" && false)) {
+  if (!ls.get("access_token")) {
     push(`/generic-redirect/${redirect_path}`);
   } else {
     getInitialUserDataAndRedirectOnSuccess();
