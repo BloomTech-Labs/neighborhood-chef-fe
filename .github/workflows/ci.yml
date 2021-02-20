@@ -12,6 +12,7 @@ on:
 jobs:
   tests:
     name: Tests
+    environment: test 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
