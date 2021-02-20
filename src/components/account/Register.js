@@ -43,9 +43,14 @@ const Register = () => {
                   dietaryPreferences: [],
                   children: [],
                   pets: [],
+                  location: {
+                    latitude: null,
+                    longitude: null,
+                  },
                 }}
                 validate={(values) => {
                   const errors = {};
+
                   if (!values.email) {
                     errors.email = "Required";
                   } else if (
@@ -70,6 +75,7 @@ const Register = () => {
                   if (!values.location.address) {
                     errors.address = "Required";
                   }
+
                   return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
@@ -92,6 +98,7 @@ const Register = () => {
                     children: JSON.stringify(values.children),
                     pets: JSON.stringify(values.pets),
                   };
+                  console.log("here");
                   axios
                     .post(
                       `${process.env.REACT_APP_BASE_URL}/auth/register`,

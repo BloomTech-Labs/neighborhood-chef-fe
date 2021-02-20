@@ -263,7 +263,7 @@ const ProfileFields = (props) => {
           variant="contained"
           color="primary"
           type="submit"
-          disabled={props.submitting}
+          disabled={false}
         >
           <Typography variant="h5">
             {props.submitting ? (
