@@ -22,10 +22,7 @@ function GenericRedirect(props) {
       },
     }).then((res) => {
       console.log(res);
-      sessionStorage.setItem(
-        "user",
-        JSON.stringify(res.data.data.getUserByEmail)
-      );
+      sessionStorage.setItem("user", JSON.stringify(res.data.getUserByEmail));
       push(`/${redirect_path}`);
     });
   };
