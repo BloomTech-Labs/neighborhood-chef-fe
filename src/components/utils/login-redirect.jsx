@@ -22,7 +22,7 @@ function LoginRedirect(props) {
         const url = `https://dev-36383529.okta.com/oauth2/default/v1/token`;
         const body = {
           grant_type: "authorization_code",
-          client_id: "0oa5rm6uhfY70s8QA5d6",
+          client_id: process.env.REACT_APP_CLIENT_ID,
           redirect_uri: `${process.env.REACT_APP_FRONT_END_BASE_URL}/login-redirect-url`,
           code,
           code_verifier: verifier,

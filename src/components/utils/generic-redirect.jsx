@@ -35,7 +35,7 @@ function GenericRedirect(props) {
     getInitialUserDataAndRedirectOnSuccess();
   }
 
-  return <p>sup</p>;
+  return null;
 }
 
 export default GenericRedirect;

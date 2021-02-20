@@ -17,7 +17,7 @@ function PrivateRoute({ component: Component, path, ...props }) {
           const body = {
             token: ls.get("access_token"),
             token_type_hint: "access_token",
-            client_id: "0oa5rm6uhfY70s8QA5d6",
+            client_id: process.env.REACT_APP_CLIENT_ID,
           };
 
           const response = await axios.post(
