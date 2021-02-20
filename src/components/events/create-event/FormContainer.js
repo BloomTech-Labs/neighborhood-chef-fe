@@ -200,7 +200,7 @@ const FormContainer = () => {
                         if (deletedIngredientsList.length > 0) {
                           deletedIngredientsList.forEach(async (ingredient) => {
                             try {
-                              // const response = 
+                              // const response =
                               await axiosWithAuth().post(
                                 `${process.env.REACT_APP_BASE_URL}/graphql`,
                                 {
@@ -232,7 +232,7 @@ const FormContainer = () => {
                   } else {
                     deletedIngredientsList.forEach(async (ingredient) => {
                       try {
-                        // const response = 
+                        // const response =
                         await axiosWithAuth().post(
                           `${process.env.REACT_APP_BASE_URL}/graphql`,
                           {
@@ -265,6 +265,7 @@ const FormContainer = () => {
                 variables: { input: event },
               })
               .then((res) => {
+                console.log(res);
                 dispatch(createEventSuccess(res.data.data.addEvent));
 
                 const formattedIngredientsList = ingredientList.map(
