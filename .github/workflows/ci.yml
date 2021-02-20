@@ -1,6 +1,5 @@
 # The name of the workflow
 name: build
-
 # What conditions trigger the workflow
 #  In this case, pull requests on master branch
 on:
