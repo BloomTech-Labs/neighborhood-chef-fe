@@ -319,7 +319,7 @@ const AccountDrawer = (props) => {
             </div>
             <div>
               {"Children: "}
-              {me.children && typeof me.children ? (
+              {me.children && typeof me.children == "Array" ? (
                 me.children.map((kid, ind) => (
                   <Typography component="span" key={ind}>
                     {ind < me.children.length - 1 ? `${kid}, ` : `${kid}.`}
@@ -333,7 +333,8 @@ const AccountDrawer = (props) => {
             <Typography>Gender: {me.gender}</Typography>
             <Typography variant="h6">Dietary Preferences</Typography>
             <div>
-              {me.dietaryPreferences && typeof me.dietaryPreferences ? (
+              {me.dietaryPreferences &&
+              typeof me.dietaryPreferences == "Array" ? (
                 me.dietaryPreferences.map((pref, ind) => (
                   <Typography key={ind}>
                     {ind < me.dietaryPreferences.length - 1
