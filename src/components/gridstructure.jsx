@@ -128,7 +128,7 @@ function GridStructure(props) {
 
           sessionStorage.setItem(
             "user",
-            JSON.stringify(res.data.getUserByEmail)
+            JSON.stringify(res.data.data.getUserByEmail)
           );
         })
         .catch((err) => console.log(err));
