@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import axios from "axios";
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/utils/private-route";
 import GenericRedirect from "./components/utils/generic-redirect";
@@ -18,6 +19,13 @@ import Login from "./components/account/Login";
 import GridStructure from "./components/gridstructure";
 
 function App() {
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/awake`)
+      .then((res) => console.log(res))
+      .catch((err) => console.err(err));
+  }, []);
+
   return (
     <div className="app-container">
       <Switch>
