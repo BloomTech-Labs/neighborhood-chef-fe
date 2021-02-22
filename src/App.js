@@ -21,7 +21,7 @@ import GridStructure from "./components/gridstructure";
 function App() {
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/awake`)
+      .get(`${process.env.REACT_APP_BASE_URL}/wakeup`)
       .then((res) => console.log(res))
       .catch((err) => console.err(err));
   }, []);
