@@ -19,7 +19,7 @@ import Login from "./components/account/Login";
 import GridStructure from "./components/gridstructure";
 
 function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/wakeup`)
       .then((res) => console.log(res))
