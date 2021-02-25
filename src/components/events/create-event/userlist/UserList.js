@@ -1,8 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import InvitedUser from "./InvitedUser.js";
-import UninvitedUser from "./UninvitedUser.js";
+import InvitedUser from '../invited-user/InvitedUser.js';
+import UninvitedUser from '../uninvited-user/UninvitedUser.js';
 
 const UserList = ({ event, filteredList }) => {
   const invitedList = useSelector((state) => state.inviteList);

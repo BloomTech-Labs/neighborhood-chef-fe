@@ -1,54 +1,54 @@
-import React from "react";
-import moment from "moment";
+import React from 'react';
+import moment from 'moment';
 
-import DisplayEventModifiers from "./DisplayEventModifiers.js";
-import { scrollToTop } from "./FormPageOne.js";
-import { useDispatch } from "react-redux";
-import { setPage } from "../../../utilities/actions";
+import DisplayEventModifiers from '../display-event-modifiers/DisplayEventModifiers.js';
+import { scrollToTop } from '../form-page-one/FormPageOne.js';
+import { useDispatch } from 'react-redux';
+import { setPage } from '../../../../utilities/actions';
 
 import {
   convertTime,
   chooseDefaultPicture,
-} from "../../../utilities/functions";
+} from '../../../../utilities/functions';
 
 const FormPageThree = (props) => {
   const dispatch = useDispatch();
   return (
-    <div className="formPageThreeContainer">
+    <div className='formPageThreeContainer'>
       <h3>
         Double check if your event details are correct. Once finished, click
         done.
       </h3>
-      <div className="formPageThreeCardContainter">
-        <div className="pageThreeCard">
+      <div className='formPageThreeCardContainter'>
+        <div className='pageThreeCard'>
           <img
-            className="pageThreeImg"
+            className='pageThreeImg'
             src={props.photo || chooseDefaultPicture(props.values.category_id)}
-            alt="Event Page 3 Img"
+            alt='Event Page 3 Img'
           />
 
-          <div className="pageThreeText">
+          <div className='pageThreeText'>
             <h3
               style={{
-                fontSize: "2.5rem",
-                fontWeight: "500",
-                color: "#1A0F2C",
-                margin: "0",
+                fontSize: '2.5rem',
+                fontWeight: '500',
+                color: '#1A0F2C',
+                margin: '0',
               }}
             >
               {props.values.title}
             </h3>
-            <div style={{ display: "flex" }}>
-              <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
+            <div style={{ display: 'flex' }}>
+              <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
                 {props.values.date &&
-                  moment(props.values.date).format("MMM Do YYYY")}
+                  moment(props.values.date).format('MMM Do YYYY')}
                 .&nbsp;
               </p>
               <p
                 style={{
-                  fontSize: "1.6rem",
-                  color: "#82DF96",
-                  fontWeight: "500",
+                  fontSize: '1.6rem',
+                  color: '#82DF96',
+                  fontWeight: '500',
                 }}
               >
                 {convertTime(props.values.startTime)}&nbsp;
@@ -58,17 +58,17 @@ const FormPageThree = (props) => {
                 <>
                   <p
                     style={{
-                      fontSize: "1.6rem",
-                      color: "rgba(0, 0, 0, 0.5)",
+                      fontSize: '1.6rem',
+                      color: 'rgba(0, 0, 0, 0.5)',
                     }}
                   >
                     to&nbsp;
                   </p>
                   <p
                     style={{
-                      fontSize: "1.6rem",
-                      color: "#ea6565",
-                      fontWeight: "500",
+                      fontSize: '1.6rem',
+                      color: '#ea6565',
+                      fontWeight: '500',
                     }}
                   >
                     {convertTime(props.values.endTime)}
@@ -76,7 +76,7 @@ const FormPageThree = (props) => {
                 </>
               )}
             </div>
-            <p style={{ fontSize: "1.6rem", color: "rgba(0, 0, 0, 0.5)" }}>
+            <p style={{ fontSize: '1.6rem', color: 'rgba(0, 0, 0, 0.5)' }}>
               {props.values.address}
             </p>
           </div>
@@ -91,16 +91,12 @@ const FormPageThree = (props) => {
           setAllergenList={props.setAllergenList}
           dietWarnings={props.dietWarnings}
           setDietWarnings={props.setDietWarnings}
-          ingredientList={props.ingredientList}
-          setIngredientList={props.setIngredientList}
-          deletedIngredientsList={props.deletedIngredientsList}
-          setDeletedIngredientsList={props.setDeletedIngredientsList}
         />
       </div>
 
-      <div className="createFormButtonDiv">
+      <div className='createFormButtonDiv'>
         <button
-          className="createRightBtn"
+          className='createRightBtn'
           onClick={() => {
             dispatch(setPage(2));
             scrollToTop();
@@ -108,7 +104,7 @@ const FormPageThree = (props) => {
         >
           Previous
         </button>
-        <button className="createLeftBtn" type="submit">
+        <button className='createLeftBtn' type='submit'>
           Done
         </button>
       </div>

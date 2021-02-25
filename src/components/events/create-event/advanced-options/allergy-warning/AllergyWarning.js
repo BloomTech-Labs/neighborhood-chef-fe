@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
   const removeAllergy = (id) => {
@@ -10,13 +10,13 @@ const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
   };
 
   return (
-    <div key={allergy.id} className="warning">
-      <p style={{ wordWrap: "break-word" }}>{allergy.name}</p>
+    <div key={allergy.id} className='warning'>
+      <p style={{ wordWrap: 'break-word' }}>{allergy.name}</p>
       <span
         style={{
-          cursor: "pointer",
-          fontWeight: "bold",
-          marginLeft: "10px",
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          marginLeft: '10px',
         }}
         onClick={() => removeAllergy(allergy.id)}
       >
