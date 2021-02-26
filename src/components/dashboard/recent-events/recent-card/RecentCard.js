@@ -27,7 +27,7 @@ import {
     makeInitials,
 } from '../../../../utilities/functions';
 
-import StatusButton from '../../../events/view-events/StatusButton';
+import StatusButton from '../../../shared/event-details/status-button/StatusButton';
 
 import { rsvpButtons } from '../../../../data/buttons';
 
@@ -47,7 +47,7 @@ import {
 } from '../../../../utilities/actions';
 
 import EventButtonModal from './event-button-modal/EventButtonModal';
-import Emoji from '../../../other/Emoji';
+import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
     // console.log(`RecentCard -> props`, props);

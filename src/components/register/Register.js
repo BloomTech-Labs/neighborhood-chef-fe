@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import { MobileStepper } from '@material-ui/core';
 import { cardStyles } from '../../styles';
-import AuthHeader from '../other/AuthHeader.js';
+import AuthHeader from '../shared/AuthHeader.js';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';

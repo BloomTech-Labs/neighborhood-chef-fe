@@ -25,7 +25,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { parseTime } from '../../../../../utilities/functions';
 
-import WarnRemoveModal from '../../../WarnRemoveModal';
+import WarnRemoveModal from './warn-remove-modal/WarnRemoveModal';
 
 const EventButtonModal = ({ eventId, userId }) => {
     const location = useLocation();

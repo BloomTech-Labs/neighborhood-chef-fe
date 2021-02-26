@@ -8,11 +8,11 @@ import LoginRedirect from './components/utils/login-redirect';
 import Register from './components/register/Register.js';
 import ChangePassword from './components/account/PasswordChangePage';
 import CheckEmail from './components/account/CheckEmail';
-import AboutUs from './components/other/AboutUs';
-import Community from './components/other/Community';
+import AboutUs from './components/about/AboutUs';
+import Community from './components/community/Community';
 
 import Login from './components/login/Login';
-import GridStructure from './components/gridstructure';
+import GridStructure from './components/shared/grid-structure/gridstructure';
 
 function App() {
     React.useEffect(() => {

@@ -13,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { buttonStyles, textBoxStyles } from '../../../styles';
 import { changePage } from '../../../utilities/actions';
 import Typography from '@material-ui/core/Typography';
-import EventImageUpload from '../../events/create-event/event-image-upload/EventImageUpload';
+import EventImageUpload from '../../shared/event-image-upload/EventImageUpload';
 import MapIcon from '@material-ui/icons/Map';
 import IconButton from '@material-ui/core/IconButton';
 import RoomIcon from '@material-ui/icons/Room';
