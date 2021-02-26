@@ -13,14 +13,8 @@ on:
     branches: [ master ]
 env:
   NODE_ENV: development
-  POSTGRES_ADMIN_USER: dev
-  POSTGRES_ADMIN_PASSWORD: dev
-  POSTGRES_HOSTNAME: localhost
-  POSTGRES_PORT: 5432
-  POSTGRES_DATABASE: NHC-test
-  POSTGRES_CONNECTION_STRING: postgresql://dev:dev@localhost:5432/nhc-test
   COVERAGE_LOCATION: /home/runner/work/_temp
-  CC_TEST_REPORTER_ID: 12a500dc24c9e35c38e5ae3f65265f29d8f53f19360024642fb4caf970159fd6
+  CC_TEST_REPORTER_ID: 131f71285d75e44e8025382b731dc4aed8f122b98d7b3e41b617951aff59c791
 
 jobs:
 #   test:     
@@ -82,7 +76,7 @@ jobs:
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.7.5
       env:
-        CC_TEST_REPORTER_ID: 12a500dc24c9e35c38e5ae3f65265f29d8f53f19360024642fb4caf970159fd6
+        CC_TEST_REPORTER_ID: 131f71285d75e44e8025382b731dc4aed8f122b98d7b3e41b617951aff59c791
       with:
         coverageLocations: |
           ${{runner.temp}}/lcov.info:lcov
