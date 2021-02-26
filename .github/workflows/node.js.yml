@@ -17,49 +17,28 @@ env:
   CC_TEST_REPORTER_ID: 131f71285d75e44e8025382b731dc4aed8f122b98d7b3e41b617951aff59c791
 
 jobs:
-#   test:     
-#     strategy:
-#       matrix:
-#         node-version: [10.x]
-#           # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-#     runs-on: ubuntu-latest
-#     steps:
-#       # checkout branch
-#       - name: Checkout 
-#         uses: actions/checkout@v1
-#   #     #set up caching 
-#   #     - name: Get npm cache
-#   #       id: npm-cache
-#   #       run: echo "::set-output name=dir::$(yarn cache dir)"
+  test:     
+    strategy:
+      matrix:
+        node-version: [10.x]
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    runs-on: ubuntu-latest
+    steps:
+      # checkout branch
+      - name: Checkout 
+        uses: actions/checkout@v1
 
-#   #     - uses: actions/cache@v1
-#   #       with:
-#   #         path: ${{ steps.yarn-npm.outputs.dir }}
-#   #         key: ${{ runner.os }}-npm-${{ hashFiles('**/npm.lock') }}
-#   #         restore-keys: |
-#   #           ${{ runner.os }}-yarn-
+       #set up node 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          run: npm install
 
-#   #     - uses: actions/checkout@v2
-
-#        #set up node 
-#       - name: Use Node.js ${{ matrix.node-version }}
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: ${{ matrix.node-version }}
-#           run: npm install
-
-#       - name: Setup PostgreSQL
-#         uses: harmon758/postgresql-action@v1.0.0
-#         with:
-#           postgresql version: 11
-#           postgresql db: nhc-test
-#           postgresql user: dev
-#           postgresql password: dev
-#       - run: npm ci
-#       - run: npm run migrate 
-#       - run: npm run seed
-#       - run: npm test
+      - run: npm ci
+      - run: npm test
   coverage:
+    needs: [test]
     runs-on: ubuntu-latest
     strategy:
       matrix:
