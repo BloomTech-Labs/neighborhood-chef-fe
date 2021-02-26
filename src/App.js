@@ -6,8 +6,8 @@ import PrivateRoute from './components/utils/private-route';
 import GenericRedirect from './components/utils/generic-redirect';
 import LoginRedirect from './components/utils/login-redirect';
 import Register from './components/register/Register.js';
-import ChangePassword from './components/account/PasswordChangePage';
-import CheckEmail from './components/account/CheckEmail';
+import ChangePassword from './components/change-password/PasswordChangePage';
+import CheckEmail from './components/check-email/CheckEmail';
 import AboutUs from './components/about/AboutUs';
 import Community from './components/community/Community';
 
