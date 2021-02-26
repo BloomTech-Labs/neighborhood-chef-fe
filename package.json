@@ -60,7 +60,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject",
-    "coverage": "CI=true yarn test --coverage --watchAll=false || true"
+    "coverage": "CI=true yarn test --coverage --watchAll=false || true",
     "coverage-ci": "CI=true yarn test --coverageDirectory=/home/runner/work/_temp --coverage --watchAll=false || true"
   },
   "jest": {
