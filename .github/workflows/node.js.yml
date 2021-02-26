@@ -1,0 +1,88 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+  
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+env:
+  NODE_ENV: development
+  POSTGRES_ADMIN_USER: dev
+  POSTGRES_ADMIN_PASSWORD: dev
+  POSTGRES_HOSTNAME: localhost
+  POSTGRES_PORT: 5432
+  POSTGRES_DATABASE: NHC-test
+  POSTGRES_CONNECTION_STRING: postgresql://dev:dev@localhost:5432/nhc-test
+  COVERAGE_LOCATION: /home/runner/work/_temp
+  CC_TEST_REPORTER_ID: 12a500dc24c9e35c38e5ae3f65265f29d8f53f19360024642fb4caf970159fd6
+
+jobs:
+#   test:     
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
+#           # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+#     runs-on: ubuntu-latest
+#     steps:
+#       # checkout branch
+#       - name: Checkout 
+#         uses: actions/checkout@v1
+#   #     #set up caching 
+#   #     - name: Get npm cache
+#   #       id: npm-cache
+#   #       run: echo "::set-output name=dir::$(yarn cache dir)"
+
+#   #     - uses: actions/cache@v1
+#   #       with:
+#   #         path: ${{ steps.yarn-npm.outputs.dir }}
+#   #         key: ${{ runner.os }}-npm-${{ hashFiles('**/npm.lock') }}
+#   #         restore-keys: |
+#   #           ${{ runner.os }}-yarn-
+
+#   #     - uses: actions/checkout@v2
+
+#        #set up node 
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#           run: npm install
+
+#       - name: Setup PostgreSQL
+#         uses: harmon758/postgresql-action@v1.0.0
+#         with:
+#           postgresql version: 11
+#           postgresql db: nhc-test
+#           postgresql user: dev
+#           postgresql password: dev
+#       - run: npm ci
+#       - run: npm run migrate 
+#       - run: npm run seed
+#       - run: npm test
+  coverage:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    name: coverage
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+          node-version: ${{ matrix.node-version }}
+          run: npm install
+    - run: npm ci
+    - run: npm run coverage-ci
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: 12a500dc24c9e35c38e5ae3f65265f29d8f53f19360024642fb4caf970159fd6
+      with:
+        coverageLocations: |
+          ${{runner.temp}}/lcov.info:lcov
