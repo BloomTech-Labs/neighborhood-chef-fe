@@ -19,7 +19,7 @@ function App() {
         axios
             .get(`${process.env.REACT_APP_BASE_URL}/wakeup`)
             .then((res) => console.log(res))
-            .catch((err) => console.err(err));
+            .catch((err) => console.error(err));
     }, []);
 
     return (
