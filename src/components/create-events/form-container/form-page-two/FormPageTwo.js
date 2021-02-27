@@ -37,7 +37,7 @@ const FormPageTwo = (props) => {
 
     return (
         <>
-            <div className="createFormPage2Container">
+            <div style={{ width: '90%' }}>
                 <EventImageUpload
                     values={props.values}
                     avatar={props.photo}

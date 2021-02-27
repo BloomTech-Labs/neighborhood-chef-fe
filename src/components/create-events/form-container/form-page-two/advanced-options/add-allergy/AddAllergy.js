@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import AllergyWarning from '../allergy-warning/AllergyWarning.js';
+import AllergyWarning from '../allergy-warning/AllergyWarning';
+import { addAllergyStyles } from './AddAllergy.styles';
 
 const AddAllergy = ({ allergenList, setAllergenList }) => {
     const [formInput, setFormInput] = useState({ name: '' });
+    const styles = addAllergyStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -23,44 +25,26 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
     return (
         <>
-            <div style={{ marginTop: '55px', marginBottom: '25px' }}>
+            <div className={styles.root}>
                 <Typography>Add allergy warnings</Typography>
                 <input
                     type="text"
                     name="name"
                     onChange={handleChange}
                     value={formInput.name}
-                    style={{
-                        fontSize: '1.6rem',
-                        border: 'none',
-                        borderBottom: '2px solid #f0f0f0',
-                        width: '40%',
-                        outline: 'none',
-                        borderRadius: '10px',
-                        padding: '15px 15px',
-                    }}
+                    className={styles.input}
                 />
                 <button
                     onClick={addAllergy}
                     disabled={!formInput.name}
-                    className={!formInput.name ? 'inactive' : ''}
-                    style={{
-                        color: 'white',
-                        fontSize: '1.6rem',
-                        background: '#82df96',
-                        borderRadius: '10px',
-                        border: 'none',
-                        fontWeight: 'bold',
-                        wordSpacing: '15px',
-                        cursor: 'pointer',
-                        padding: '15px 20px',
-                        marginLeft: '2%',
-                    }}
+                    className={`${styles.button} ${
+                        !formInput.name ? styles.inactive : ''
+                    }`}
                 >
                     Add +
                 </button>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', width: '60%' }}>
+            <div className={styles.allergyContainer}>
                 {allergenList.map((allergy) => {
                     return (
                         <AllergyWarning

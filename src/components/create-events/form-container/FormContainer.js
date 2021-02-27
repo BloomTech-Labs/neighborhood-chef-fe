@@ -190,8 +190,23 @@ const FormContainer = () => {
                 }}
             >
                 {({ handleSubmit, handleChange, values, setFieldValue }) => (
-                    <div className="createEventContainer">
-                        <Form className="createForm" onSubmit={handleSubmit}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: ' column',
+                            width: '96%',
+                        }}
+                    >
+                        <Form
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                width: '100%',
+                            }}
+                            onSubmit={handleSubmit}
+                        >
                             {page === 1 && (
                                 <>
                                     <FormPageOne
