@@ -4,12 +4,15 @@ import Hashtag from '../../form-page-two/add-hashtag/hashtag/Hashtag.js';
 import Modifier from '../../form-page-two/modifier/Modifier.js';
 import AllergyWarning from '../../form-page-two/advanced-options/allergy-warning/AllergyWarning.js';
 import DietaryWarning from '../../form-page-two/advanced-options/dietary-warning/DietaryWarning.js';
+import { displayEventModifiersStyles } from './DisplayModifiers.styles';
 
 const DisplayEventModifiers = (props) => {
+    const styles = displayEventModifiersStyles();
+
     return (
-        <div className="modifierContainer">
+        <div className={styles.root}>
             {props.hashtags.length > 0 && (
-                <div className="individualModifierContainer">
+                <div className={styles.modifierContainer}>
                     <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
                         Hashtags
                     </h4>
@@ -35,7 +38,7 @@ const DisplayEventModifiers = (props) => {
             )}
 
             {props.modifiers.length > 0 && (
-                <div className="individualModifierContainer">
+                <div className={styles.modifierContainer}>
                     <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
                         Modifications
                     </h4>
@@ -61,7 +64,7 @@ const DisplayEventModifiers = (props) => {
             )}
 
             {props.allergenList.length > 0 && (
-                <div className="individualModifierContainer">
+                <div className={styles.modifierContainer}>
                     <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
                         Allergy Warnings
                     </h4>
@@ -87,7 +90,7 @@ const DisplayEventModifiers = (props) => {
             )}
 
             {props.dietWarnings.length > 0 && (
-                <div className="individualModifierContainer">
+                <div className={styles.modifierContainer}>
                     <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
                         Dietary Warnings
                     </h4>

@@ -11,10 +11,16 @@ import {
     chooseDefaultPicture,
 } from '../../../../utilities/functions';
 
+import { formPageThreeStyles } from './FormPageThree.styles';
+import { buttonStyles } from '../../SharedForm.styles';
+
 const FormPageThree = (props) => {
     const dispatch = useDispatch();
+    const styles = formPageThreeStyles();
+    const btnStyles = buttonStyles();
+
     return (
-        <div className="formPageThreeContainer">
+        <div className={styles.root}>
             <h3>
                 Double check if your event details are correct. Once finished,
                 click done.
@@ -109,9 +115,9 @@ const FormPageThree = (props) => {
                 />
             </div>
 
-            <div className="createFormButtonDiv">
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className="createRightBtn"
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         dispatch(setPage(2));
                         scrollToTop();
@@ -119,7 +125,7 @@ const FormPageThree = (props) => {
                 >
                     Previous
                 </button>
-                <button className="createLeftBtn" type="submit">
+                <button className={btnStyles.rightBtn} type="submit">
                     Done
                 </button>
             </div>

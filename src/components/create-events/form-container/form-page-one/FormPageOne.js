@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setPage } from '../../../../utilities/actions';
 import moment from 'moment';
 import { formPageOneStyles } from './FormPageOne.styles';
-import CreateFormButtons from '../../create-form-buttons/CreateFormButtons';
+import { buttonStyles } from '../../SharedForm.styles';
 
 export const scrollToTop = () => {
     window.scrollTo({
@@ -26,6 +26,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
     const { push } = useHistory();
     const dispatch = useDispatch();
     const styles = formPageOneStyles();
+    const btnStyles = buttonStyles();
     const today = moment().format('YYYY-MM-DD');
 
     const mapAccess = {
@@ -296,9 +297,9 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                 </p>
             )}
 
-            <div className={styles.buttonContainer}>
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className={styles.leftBtn}
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         push('/dashboard');
                     }}
@@ -307,7 +308,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                 </button>
                 <button
                     type="button"
-                    className={styles.rightBtn}
+                    className={btnStyles.rightBtn}
                     onClick={() => validateAndTurnPage()}
                 >
                     Next

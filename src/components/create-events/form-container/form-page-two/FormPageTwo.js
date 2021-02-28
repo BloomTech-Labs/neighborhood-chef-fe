@@ -20,7 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import CreateFormButtons from '../../create-form-buttons/CreateFormButtons';
+import { buttonStyles } from '../../SharedForm.styles';
 
 export const modifierData = [
     { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
@@ -36,6 +36,7 @@ const FormPageTwo = (props) => {
         showOptions(props.allergenList, props.dietWarnings)
     );
     const dispatch = useDispatch();
+    const btnStyles = buttonStyles();
 
     return (
         <>
@@ -114,9 +115,9 @@ const FormPageTwo = (props) => {
                 )}
             </div>
 
-            <div className="createFormButtonDiv">
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className="createRightBtn"
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         dispatch(setPage(1));
                         scrollToTop();
@@ -125,7 +126,7 @@ const FormPageTwo = (props) => {
                     Previous
                 </button>
                 <button
-                    className="createLeftBtn"
+                    className={btnStyles.rightBtn}
                     onClick={() => {
                         dispatch(setPage(3));
                         scrollToTop();
