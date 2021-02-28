@@ -34,7 +34,7 @@ a {
     font-size: 1.5rem;
 }
 
-/* ---- start of Landing Page styles ---- */
+/* ---- Register geocoder styles ---- */
 
 @media (max-width: 700px) {
     .register-map,
@@ -60,73 +60,7 @@ a {
     z-index: 5;
 }
 
-/* ---- start of Dashboard styles ---- */
-
-.dashboard-container {
-    display: flex;
-    width: 100%;
-}
-
-.header-container {
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.header-container > :last-child {
-    flex-basis: 20%;
-}
-
-.header-icons {
-    display: flex;
-    justify-content: flex-end;
-}
-.header-icons > :first-child {
-    margin-right: 10px;
-}
-
-.dashboard-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-}
-
-.feed-container {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.recent-events-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-align: left;
-}
-.recent-events-container > * {
-    padding-right: 10px;
-    padding-top: 10px;
-}
-
-.date-box {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background: #f8f8f8;
-    border-radius: 8px;
-    margin-top: -14%;
-    margin-left: 5%;
-    align-self: left;
-    width: 46px;
-    align-items: center;
-    position: relative;
-}
-
-/* ---- start of CreateEvent styles ---- */
-
-/* note: geocoder input doesn't seem to respond well to makestyles */
+/* create event geocoder styles */
 .createFormInputDiv {
     display: flex;
     align-items: center;
