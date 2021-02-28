@@ -33,19 +33,11 @@ a {
     color: black;
     font-size: 1.5rem;
 }
-/* .app-container {
-    margin: 0%;
-} */
-
-.component-main {
-    display: flex;
-    justify-content: space-between;
-}
 
 /* ---- start of Landing Page styles ---- */
 
 @media (max-width: 700px) {
-    .register-map,
+    /* .register-map, */
     .overlays {
         display: none;
     }
@@ -67,36 +59,6 @@ a {
     cursor: pointer;
     z-index: 5;
 }
-
-/* ---- start of Sidebar styles ---- */
-
-/* .left-side-header {
-    display: flex;
-    align-items: center;
-    font-size: 1.7rem;
-    font-weight: 500;
-    margin-left: 5px;
-}
-@media (max-width: 700px) {
-    .left-side-header {
-        margin-top: 10px;
-    }
-} */
-
-/* .nav-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.sidebar-container {
-    padding-right: 20px;
-    width: 255px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
 
 /* ---- start of Dashboard styles ---- */
 
@@ -161,121 +123,6 @@ a {
     align-items: center;
     position: relative;
 }
-
-/* ---- start of View Event styles ---- */
-
-/* .calendar-view-main {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-}
-
-.calendar-row {
-    background: white;
-    border-radius: 10px;
-    padding: 10px 50px;
-    margin-bottom: 20px;
-    width: calc(100%-100px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    cursor: pointer;
-} */
-
-/* .calendar-row-even {
-    background: #f2f2f2;
-} */
-
-/* .calendar-row-active {
-    clip-path: polygon(92% 0, 100% 46%, 100% 54%, 92% 100%, 0 100%, 0% 0%);
-    background: rgba(88, 212, 115, 0.1);
-} */
-
-/* .month-picker-container {
-    background: #f2f2f2;
-    border-radius: 10px;
-    padding: 10px;
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-    color: rgba(0, 0, 0, 0.5);
-    align-self: center;
-} */
-
-/* .middle-calendar {
-    width: 60%;
-    margin-right: 5%;
-    display: flex;
-    flex-direction: column;
-} */
-
-/* .right-side-calendar {
-    display: flex;
-    background: #f2f2f2;
-    height: 85vh;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 10px;
-    max-width: 400px;
-} */
-
-/* @media (max-width: 700px) { */
-/* .right-side-calendar {
-        display: none;
-    } */
-/* .calendar-row {
-        width: 60%;
-        padding: 10px 100px;
-        margin: 10px auto;
-    } */
-/* .calendar-row-active {
-        clip-path: polygon(0, 0, 0, 0);
-    } */
-/* .month-picker-container {
-        width: 100%;
-    } */
-/* .middle-calendar {
-        width: 100%;
-        text-align: center;
-        margin: 0 auto;
-    }
-} */
-/* .event-details-container {
-    width: 100%;
-} */
-
-/* .account-button {
-    text-align: right;
-} */
-
-/* .rsvp-buttons {
-    height: 60px;
-    width: 60px;
-    border-radius: 180px;
-    color: white;
-    font-weight: bolder;
-    cursor: pointer;
-    border: none;
-    opacity: 0.5;
-} */
-
-/* .rsvp-active {
-    border: 1px solid black;
-    opacity: 1;
-} */
-
-/* .green-link > a {
-    color: #58d473;
-} */
-
-/* .login-container {
-    margin: 20px auto;
-    border: 2px solid #58d473;
-    border-radius: 10px;
-    width: 60%;
-    padding: 0 20px 50px 20px;
-} */
 
 /* ---- start of CreateEvent styles ---- */
 
