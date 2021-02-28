@@ -102,14 +102,6 @@ const FormPageTwo = (props) => {
                             setAllergenList={props.setAllergenList}
                             dietWarnings={props.dietWarnings}
                             setDietWarnings={props.setDietWarnings}
-                            ingredientList={props.ingredientList}
-                            setIngredientList={props.setIngredientList}
-                            deletedIngredientsList={
-                                props.deletedIngredientsList
-                            }
-                            setDeletedIngredientsList={
-                                props.setDeletedIngredientsList
-                            }
                         />
                     </>
                 )}

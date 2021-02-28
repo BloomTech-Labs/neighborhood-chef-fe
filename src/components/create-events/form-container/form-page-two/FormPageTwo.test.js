@@ -27,7 +27,6 @@ describe('Test FormPageTwo component', () => {
                                 hashtags={[{ id: 1, title: '#hashtags' }]}
                                 allergenList={[]}
                                 dietWarnings={[]}
-                                ingredientList={[]}
                             />
                         </Form>
                     </Formik>

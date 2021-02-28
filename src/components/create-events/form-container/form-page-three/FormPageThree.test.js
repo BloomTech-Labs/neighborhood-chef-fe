@@ -42,7 +42,6 @@ describe('Test FormPageThree component', () => {
                             hashtags={[{ id: 1, title: '#hashtag' }]}
                             dietWarnings={[]}
                             allergenList={[]}
-                            ingredientList={[]}
                         />
                     </Form>
                 </Formik>
