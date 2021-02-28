@@ -84,20 +84,6 @@ a {
     width: 100%;
 }
 
-/* .geocoder-container > label {
-  position: relative;
-  top: 10px;
-  left: -112px;
-  z-index: 1;
-} */
-
-/*
-.react-geocoder {
-  position: absolute;
-  z-index: 1;
-  width: 31vw;
-} */
-
 .react-geocoder-results {
     display: relative;
     background: white;
@@ -317,7 +303,7 @@ a {
 
 /* ---- start of SingleEvent styles ---- */
 
-.single-event-box {
+/* .single-event-box {
     background: #f2f2f2;
     padding: 10px;
     border-radius: 10px;
@@ -369,11 +355,11 @@ a {
         max-height: 100%;
         height: 100%;
     }
-}
+} */
 
 /* ---- start of CreateEvent styles ---- */
 
-/* note: geocoder input doesn't seem to responsd to makestyles */
+/* note: geocoder input doesn't seem to respond well to makestyles */
 .createFormInputDiv {
     display: flex;
     align-items: center;

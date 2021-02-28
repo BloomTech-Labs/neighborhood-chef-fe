@@ -6,6 +6,7 @@ export const headerStyles = makeStyles(() => ({
         justifyContent: 'space-around',
         alignItems: 'center',
         width: '100%',
+        marginTop: '20px',
         marginBottom: '20px',
     },
     notActive: {
