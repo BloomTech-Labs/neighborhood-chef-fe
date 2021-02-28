@@ -1,5 +1,5 @@
 import React from 'react';
-import MonthPicker from './MonthPicker.js';
+import MonthPicker from './MonthPicker';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';

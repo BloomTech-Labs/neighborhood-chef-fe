@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AddAllergy from './add-allergy/AddAllergy.js';
-import AddDietWarning from './add-diet-warning/AddDietWarning.js';
+import AddAllergy from './add-allergy/AddAllergy.jsx';
+import AddDietWarning from './add-diet-warning/AddDietWarning.jsx';
 
 const AdvancedOptions = ({
     allergenList,

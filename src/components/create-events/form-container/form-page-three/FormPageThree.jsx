@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
-import DisplayEventModifiers from './display-event-modifiers/DisplayEventModifiers.js';
-import { scrollToTop } from '../form-page-one/FormPageOne.js';
+import DisplayEventModifiers from './display-event-modifiers/DisplayEventModifiers';
+import { scrollToTop } from '../form-page-one/FormPageOne.jsx';
 import { useDispatch } from 'react-redux';
 import { setPage } from '../../../../utilities/actions';
 

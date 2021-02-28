@@ -1,5 +1,5 @@
 import React from 'react';
-import StatusButton from './StatusButton.js';
+import StatusButton from './StatusButton';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';

@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/utils/private-route';
 import GenericRedirect from './components/utils/generic-redirect';
 import LoginRedirect from './components/utils/login-redirect';
-import Register from './components/register/Register.js';
+import Register from './components/register/Register';
 import ChangePassword from './components/change-password/PasswordChangePage';
 import CheckEmail from './components/check-email/CheckEmail';
 import AboutUs from './components/about/AboutUs';
@@ -19,7 +19,7 @@ function App() {
         axios
             .get(`${process.env.REACT_APP_BASE_URL}/wakeup`)
             .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+            .catch((err) => console.error(err));
     }, []);
 
     return (

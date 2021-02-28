@@ -7,7 +7,8 @@ import {
     showOptions,
 } from './index';
 
-import { modifierData } from '../../components/create-events/form-container/form-page-two/FormPageTwo.js';
+import { modifierData } from '../../components/create-events/form-container/form-page-two/FormPageTwo';
+
 
 const favoriteEvents = [
     { id: 1, title: 'BBQ' },
