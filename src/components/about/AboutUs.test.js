@@ -15,8 +15,6 @@ describe('Test AboutUs static properties', () => {
         );
     });
 
-    expect(1).toEqual(2);
-
     test.only('AboutUs contains text paragraph', () => {
         expect(AboutComponent.getByText(/Welcome to Neighborhood Chef/i));
     });

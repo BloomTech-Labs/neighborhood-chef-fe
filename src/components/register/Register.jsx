@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form } from 'formik';
-import AuthFields from './authfields/AuthFields.js';
-import ProfileFields from './profilefields/ProfileFields.js';
+import AuthFields from './authfields/AuthFields';
+import ProfileFields from './profilefields/ProfileFields';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { MobileStepper } from '@material-ui/core';
 import { cardStyles } from '../../styles';
-import AuthHeader from '../shared/AuthHeader.js';
+import AuthHeader from '../shared/AuthHeader';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';

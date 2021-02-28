@@ -7,7 +7,7 @@ import { axiosWithAuth } from '../../../../../utilities/axiosWithAuth';
 
 import { GET_UNINVITED_USERS } from '../../../../../graphql/users/user-queries.js';
 import { searchForUsersSuccess } from '../../../../../utilities/actions';
-import UserList from './userlist/UserList.js';
+import UserList from './userlist/UserList';
 
 const SearchFriends = () => {
     const [searchTerm, setSearchTerm] = useState('');

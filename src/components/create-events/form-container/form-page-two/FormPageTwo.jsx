@@ -7,11 +7,11 @@ import dogIcon from '@iconify/icons-whh/dog';
 import icon18Plus from '@iconify/icons-uil/18-plus';
 import foodApple from '@iconify/icons-mdi/food-apple';
 
-import EventImageUpload from '../../../shared/event-image-upload/EventImageUpload.js';
-import Modifier from './modifier/Modifier.js';
-import AddHashtag from './add-hashtag/AddHashtag.js';
-import { scrollToTop } from '../form-page-one/FormPageOne.js';
-import AdvancedOptions from './advanced-options/AdvancedOptions.js';
+import EventImageUpload from '../../../shared/event-image-upload/EventImageUpload';
+import Modifier from './modifier/Modifier.jsx';
+import AddHashtag from './add-hashtag/AddHashtag.jsx';
+import { scrollToTop } from '../form-page-one/FormPageOne.jsx';
+import AdvancedOptions from './advanced-options/AdvancedOptions.jsx';
 import { useDispatch } from 'react-redux';
 import { setPage } from '../../../../utilities/actions';
 import { showOptions } from '../../../../utilities/functions';

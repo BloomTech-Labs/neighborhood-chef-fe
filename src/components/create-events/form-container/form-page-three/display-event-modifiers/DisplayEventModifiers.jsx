@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Hashtag from '../../form-page-two/add-hashtag/hashtag/Hashtag.js';
-import Modifier from '../../form-page-two/modifier/Modifier.js';
-import AllergyWarning from '../../form-page-two/advanced-options/allergy-warning/AllergyWarning.js';
-import DietaryWarning from '../../form-page-two/advanced-options/dietary-warning/DietaryWarning.js';
+import Hashtag from '../../form-page-two/add-hashtag/hashtag/Hashtag.jsx';
+import Modifier from '../../form-page-two/modifier/Modifier.jsx';
+import AllergyWarning from '../../form-page-two/advanced-options/allergy-warning/AllergyWarning.jsx';
+import DietaryWarning from '../../form-page-two/advanced-options/dietary-warning/DietaryWarning.jsx';
 
 const DisplayEventModifiers = (props) => {
     return (

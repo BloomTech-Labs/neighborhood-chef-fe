@@ -1,5 +1,5 @@
 import React from 'react';
-import AdvancedOptions from './AdvancedOptions.js';
+import AdvancedOptions from './AdvancedOptions';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -16,25 +16,24 @@ const dietWarnings = [{ id: 1, title: 'Keto' }];
 const ingredientList = [{ description: 'Milk 1 Gallon' }];
 
 describe('Test AdvanedOptions component', () => {
-  let AdvancedOptionsComponent;
-  beforeEach(() => {
-    AdvancedOptionsComponent = render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <AdvancedOptions
-            allergenList={allergenList}
-            dietWarnings={dietWarnings}
-            ingredientList={ingredientList}
-          />
-        </BrowserRouter>
-      </Provider>
-    );
-  });
+    let AdvancedOptionsComponent;
+    beforeEach(() => {
+        AdvancedOptionsComponent = render(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <AdvancedOptions
+                        allergenList={allergenList}
+                        dietWarnings={dietWarnings}
+                        ingredientList={ingredientList}
+                    />
+                </BrowserRouter>
+            </Provider>
+        );
+    });
 
-  test('advanced options component renders with text from props', () => {
-    expect(AdvancedOptionsComponent).toBeDefined();
-    expect(AdvancedOptionsComponent.getByText(/Shellfish/i));
-    expect(AdvancedOptionsComponent.getByText(/Keto/i));
-    expect(AdvancedOptionsComponent.getByText(/Milk 1 Gallon/i));
-  });
+    test('advanced options component renders with text from props', () => {
+        expect(AdvancedOptionsComponent).toBeDefined();
+        expect(AdvancedOptionsComponent.getByText(/Shellfish/i));
+        expect(AdvancedOptionsComponent.getByText(/Keto/i));
+    });
 });

@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import AllergyWarning from '../allergy-warning/AllergyWarning.js';
+import DietaryWarning from '../dietary-warning/DietaryWarning';
 
-const AddAllergy = ({ allergenList, setAllergenList }) => {
-    const [formInput, setFormInput] = useState({ name: '' });
+const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
+    const [formInput, setFormInput] = useState({ title: '' });
 
     const handleChange = (e) => {
         e.preventDefault();
-        setFormInput({ name: e.target.value });
+        setFormInput({ title: e.target.value });
     };
 
-    const addAllergy = (e) => {
+    const addDietWarning = (e) => {
         e.preventDefault();
-        const newAllergy = {
-            id: allergenList.length + 1,
-            name: formInput.name,
+        const newDietWarning = {
+            id: dietWarnings.length + 1,
+            title: formInput.title,
         };
-        setAllergenList([...allergenList, newAllergy]);
-        setFormInput({ name: '' });
+        setDietWarnings([...dietWarnings, newDietWarning]);
+        setFormInput({ title: '' });
     };
 
     return (
         <>
             <div style={{ marginTop: '55px', marginBottom: '25px' }}>
-                <Typography>Add allergy warnings</Typography>
+                <Typography>Add dietary warnings</Typography>
                 <input
                     type="text"
-                    name="name"
+                    name="title"
                     onChange={handleChange}
-                    value={formInput.name}
+                    value={formInput.title}
                     style={{
                         fontSize: '1.6rem',
                         border: 'none',
@@ -41,9 +41,9 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
                     }}
                 />
                 <button
-                    onClick={addAllergy}
-                    disabled={!formInput.name}
-                    className={!formInput.name ? 'inactive' : ''}
+                    onClick={addDietWarning}
+                    disabled={!formInput.title}
+                    className={!formInput.title ? 'inactive' : ''}
                     style={{
                         color: 'white',
                         fontSize: '1.6rem',
@@ -61,13 +61,13 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
                 </button>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', width: '60%' }}>
-                {allergenList.map((allergy) => {
+                {dietWarnings.map((diet) => {
                     return (
-                        <AllergyWarning
-                            allergy={allergy}
-                            key={allergy.id}
-                            allergenList={allergenList}
-                            setAllergenList={setAllergenList}
+                        <DietaryWarning
+                            diet={diet}
+                            key={diet.id}
+                            dietWarnings={dietWarnings}
+                            setDietWarnings={setDietWarnings}
                         />
                     );
                 })}
@@ -76,4 +76,4 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
     );
 };
 
-export default AddAllergy;
+export default AddDietRestriction;
