@@ -92,7 +92,7 @@ export const formPageOneStyles = makeStyles((theme) => ({
         border: 'none',
         borderRadius: '15px',
         color: 'black',
-        padding: '12px 30px',
+        padding: '14px 30px',
         fontSize: '1.6rem',
     },
     timeDiv: {
@@ -138,7 +138,7 @@ export const formPageOneStyles = makeStyles((theme) => ({
         marginLeft: '5%',
         background: 'white',
         fontSize: '1.6rem',
-        padding: '5px 30px',
+        padding: '6px 30px',
         outline: 'none',
         color: 'black',
     },

@@ -22,6 +22,8 @@ import { buttonStyles } from '../../../styles';
 
 import { parseTime } from '../../../utilities/functions';
 
+import { calendarStyles } from '../Calendar.styles';
+
 const CalendarView = () => {
     const eventList = useSelector((state) => state.eventList);
     const selectedMonth = useSelector((state) => state.selectedMonth);
@@ -29,6 +31,7 @@ const CalendarView = () => {
     const update = useSelector((state) => state.update);
     const dispatch = useDispatch();
     const classes = buttonStyles();
+    const styles = calendarStyles();
     const [isLoading, setIsLoading] = useState(false);
     const eventsInMonth =
         eventList &&
@@ -93,7 +96,7 @@ const CalendarView = () => {
                 height: '80vh',
             }}
         >
-            <div className="calendar-view-main">
+            <div className={styles.calendarViewMain}>
                 {!isLoading ? (
                     !!eventsInMonth && eventsInMonth.length > 0 ? (
                         eventsInMonth.map((event, eventNum) => (

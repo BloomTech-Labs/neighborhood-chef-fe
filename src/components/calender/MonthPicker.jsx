@@ -6,12 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+import { calendarStyles } from './Calendar.styles';
+
 const MonthPicker = () => {
     const selectedMonth = useSelector((state) => state.selectedMonth);
     const formattedMonth = parseTime(selectedMonth.valueOf()).monthYear;
     const dispatch = useDispatch();
+    const styles = calendarStyles();
+
     return (
-        <div className="month-picker-container">
+        <div className={styles.monthPickerContainer}>
             <div
                 onClick={() => dispatch(setMonth('previous'))}
                 style={{ cursor: 'pointer', width: '50px' }}
