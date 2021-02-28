@@ -33,9 +33,9 @@ a {
     color: black;
     font-size: 1.5rem;
 }
-.app-container {
+/* .app-container {
     margin: 0%;
-}
+} */
 
 .component-main {
     display: flex;
@@ -70,7 +70,7 @@ a {
 
 /* ---- start of Sidebar styles ---- */
 
-.left-side-header {
+/* .left-side-header {
     display: flex;
     align-items: center;
     font-size: 1.7rem;
@@ -81,9 +81,9 @@ a {
     .left-side-header {
         margin-top: 10px;
     }
-}
+} */
 
-.nav-container {
+/* .nav-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -96,7 +96,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
 
 /* ---- start of Dashboard styles ---- */
 

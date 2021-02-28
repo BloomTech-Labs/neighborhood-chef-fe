@@ -23,7 +23,7 @@ function App() {
     }, []);
 
     return (
-        <div className="app-container">
+        <div style={{ margin: '0%' }}>
             <Switch>
                 <Route path="/login-redirect-url" component={LoginRedirect} />
                 <Route
