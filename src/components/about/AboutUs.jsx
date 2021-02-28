@@ -8,16 +8,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import food from '../../assets/food.jpg';
+import { landingPageStyles } from '../../styles';
 
 const AboutUs = () => {
     const cardClass = cardStyles();
+    const styles = landingPageStyles();
     // const buttonClass = buttonStyles();
 
     return (
         <>
             <AuthHeader />
-            <div className="landing-page-container">
-                <div className="landing-page-left">
+            <div className={styles.landingPageContainer}>
+                <div className={styles.landingPageLeft}>
                     <Card
                         className={`${cardClass.root} ${cardClass.landingPage}`}
                     >
@@ -49,7 +51,7 @@ const AboutUs = () => {
                     </Card>
                 </div>
                 <div
-                    className="landing-page-right"
+                    className={styles.landingPageRight}
                     style={{ overflow: 'hidden' }}
                 >
                     <img src={food} alt="food community" height="100%" />

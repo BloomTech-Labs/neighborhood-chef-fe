@@ -15,18 +15,20 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import food from '../../assets/food.jpg';
+import { landingPageStyles } from '../../styles';
 
 const Register = () => {
     const history = useHistory();
     const currentPage = useSelector((state) => state.page);
     const cardClass = cardStyles();
+    const styles = landingPageStyles();
     const [errMessage, setErrMessage] = useState('');
 
     return (
         <div>
             <AuthHeader />
-            <div className="landing-page-container">
-                <div className="landing-page-left">
+            <div className={styles.landingPageContainer}>
+                <div className={styles.landingPageLeft}>
                     <Card
                         className={`${cardClass.root} ${cardClass.landingPage}`}
                         style={{ overflowY: 'auto' }}
@@ -86,7 +88,7 @@ const Register = () => {
                                         address: values.location.address,
                                         photo: values.photo,
                                     };
-                                    console.log('here');
+
                                     axios
                                         .post(
                                             `${process.env.REACT_APP_BASE_URL}/auth/register`,
@@ -148,7 +150,7 @@ const Register = () => {
                     </Card>
                 </div>
                 <div
-                    className="landing-page-right"
+                    className={styles.landingPageRight}
                     style={{ overflow: 'hidden' }}
                 >
                     <img src={food} alt="food community" height="100%" />

@@ -44,34 +44,10 @@ a {
 
 /* ---- start of Landing Page styles ---- */
 
-.landing-page-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.landing-page-left {
-    display: flex;
-    justify-content: center;
-    width: 50vw;
-    height: 80vh;
-    text-align: center;
-    align-self: center;
-}
-
-.landing-page-right {
-    height: 90vh;
-    width: 50vw;
-}
-
 @media (max-width: 700px) {
-    .landing-page-right,
     .register-map,
     .overlays {
         display: none;
-    }
-    .landing-page-left {
-        width: 100vw;
-        padding-top: 35px;
     }
     .toggle-map {
         visibility: hidden;
