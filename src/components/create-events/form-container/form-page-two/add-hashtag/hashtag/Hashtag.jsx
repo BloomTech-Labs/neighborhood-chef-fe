@@ -1,43 +1,27 @@
-import React from "react";
+import React from 'react';
+import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
 const Hashtag = ({ hashtag, hashtags, setHashtags }) => {
-  const removeHashtag = (id) => {
-    setHashtags(hashtags.filter((tag) => tag.id !== id));
-  };
+    const styles = hashtagAndWarningStyles();
+    const removeHashtag = (id) => {
+        setHashtags(hashtags.filter((tag) => tag.id !== id));
+    };
 
-  return (
-    <div
-      key={hashtag.id}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-around",
-        background: "#58D473",
-        opacity: "0.75",
-        borderRadius: "10px",
-        marginTop: "10px",
-        marginRight: "20px",
-        color: "white",
-        fontSize: "1.6rem",
-        width: "auto",
-        maxWidth: "400px",
-        whiteSpace: "pre-line",
-        padding: "12px 20px",
-      }}
-    >
-      <p style={{ wordWrap: "break-word" }}>#{hashtag.title}</p>
-      <span
-        style={{
-          cursor: "pointer",
-          fontWeight: "bold",
-          marginLeft: "10px",
-        }}
-        onClick={() => removeHashtag(hashtag.id)}
-      >
-        x
-      </span>
-    </div>
-  );
+    return (
+        <div
+            key={hashtag.id}
+            className={styles.root}
+            style={{ background: '#58D473' }}
+        >
+            <p className={styles.p}>#{hashtag.title}</p>
+            <span
+                className={styles.span}
+                onClick={() => removeHashtag(hashtag.id)}
+            >
+                x
+            </span>
+        </div>
+    );
 };
 
 export default Hashtag;

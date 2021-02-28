@@ -11,18 +11,24 @@ import {
     chooseDefaultPicture,
 } from '../../../../utilities/functions';
 
+import { formPageThreeStyles } from './FormPageThree.styles';
+import { buttonStyles } from '../../CreateEvent.styles';
+
 const FormPageThree = (props) => {
     const dispatch = useDispatch();
+    const styles = formPageThreeStyles();
+    const btnStyles = buttonStyles();
+
     return (
-        <div className="formPageThreeContainer">
-            <h3>
+        <div className={styles.root}>
+            <h3 className={styles.h3}>
                 Double check if your event details are correct. Once finished,
                 click done.
             </h3>
-            <div className="formPageThreeCardContainter">
-                <div className="pageThreeCard">
+            <div className={styles.cardContainer}>
+                <div className={styles.card}>
                     <img
-                        className="pageThreeImg"
+                        className={styles.img}
                         src={
                             props.photo ||
                             chooseDefaultPicture(props.values.category_id)
@@ -30,7 +36,7 @@ const FormPageThree = (props) => {
                         alt="Event Page 3 Img"
                     />
 
-                    <div className="pageThreeText">
+                    <div className={styles.text}>
                         <h3
                             style={{
                                 fontSize: '2.5rem',
@@ -50,9 +56,9 @@ const FormPageThree = (props) => {
                             >
                                 {props.values.date &&
                                     moment(props.values.date).format(
-                                        'MMM Do YYYY'
+                                        'MMMM Do YYYY'
                                     )}
-                                .&nbsp;
+                                &nbsp;
                             </p>
                             <p
                                 style={{
@@ -109,9 +115,9 @@ const FormPageThree = (props) => {
                 />
             </div>
 
-            <div className="createFormButtonDiv">
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className="createRightBtn"
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         dispatch(setPage(2));
                         scrollToTop();
@@ -119,7 +125,7 @@ const FormPageThree = (props) => {
                 >
                     Previous
                 </button>
-                <button className="createLeftBtn" type="submit">
+                <button className={btnStyles.rightBtn} type="submit">
                     Done
                 </button>
             </div>

@@ -1,29 +1,32 @@
-import React from "react";
+import React from 'react';
+import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
 const DietaryWarning = ({ diet, dietWarnings, setDietWarnings }) => {
-  const removeDietWarning = (id) => {
-    setDietWarnings(
-      dietWarnings.filter((diet) => {
-        return diet.id !== id;
-      })
-    );
-  };
+    const styles = hashtagAndWarningStyles();
 
-  return (
-    <div key={diet.id} className="warning">
-      <p style={{ wordWrap: "break-word" }}>{diet.title}</p>
-      <span
-        style={{
-          cursor: "pointer",
-          fontWeight: "bold",
-          marginLeft: "10px",
-        }}
-        onClick={() => removeDietWarning(diet.id)}
-      >
-        x
-      </span>
-    </div>
-  );
+    const removeDietWarning = (id) => {
+        setDietWarnings(
+            dietWarnings.filter((diet) => {
+                return diet.id !== id;
+            })
+        );
+    };
+
+    return (
+        <div
+            key={diet.id}
+            className={styles.root}
+            style={{ background: '#ea6565' }}
+        >
+            <p className={styles.p}>{diet.title}</p>
+            <span
+                className={styles.span}
+                onClick={() => removeDietWarning(diet.id)}
+            >
+                x
+            </span>
+        </div>
+    );
 };
 
 export default DietaryWarning;

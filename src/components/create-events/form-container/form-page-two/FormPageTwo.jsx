@@ -20,6 +20,8 @@ import Typography from '@material-ui/core/Typography';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
+import { buttonStyles } from '../../CreateEvent.styles';
+
 export const modifierData = [
     { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
     { id: 2, title: 'Kid-Friendly', icon: strollerIcon, active: false },
@@ -34,10 +36,11 @@ const FormPageTwo = (props) => {
         showOptions(props.allergenList, props.dietWarnings)
     );
     const dispatch = useDispatch();
+    const btnStyles = buttonStyles();
 
     return (
         <>
-            <div className="createFormPage2Container">
+            <div style={{ width: '90%' }}>
                 <EventImageUpload
                     values={props.values}
                     avatar={props.photo}
@@ -112,9 +115,9 @@ const FormPageTwo = (props) => {
                 )}
             </div>
 
-            <div className="createFormButtonDiv">
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className="createRightBtn"
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         dispatch(setPage(1));
                         scrollToTop();
@@ -123,7 +126,7 @@ const FormPageTwo = (props) => {
                     Previous
                 </button>
                 <button
-                    className="createLeftBtn"
+                    className={btnStyles.rightBtn}
                     onClick={() => {
                         dispatch(setPage(3));
                         scrollToTop();

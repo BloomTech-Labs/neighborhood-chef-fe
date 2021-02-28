@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import Hashtag from './hashtag/Hashtag';
 import Typography from '@material-ui/core/Typography';
+import { addModifierFormStyles } from '../../../CreateEvent.styles';
 
 const AddHashtag = ({ hashtags, setHashtags }) => {
     const [formInput, setFormInput] = useState({ title: '' });
+    const styles = addModifierFormStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -22,55 +24,29 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
     };
 
     return (
-        <div style={{ margin: '15px 0' }}>
+        <div className={styles.root}>
             <Typography style={{ marginTop: '25px', marginBottom: '25px' }}>
                 Add some hashtags for your event.
             </Typography>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flexStart',
-                    marginTop: '25px',
-                    marginBottom: '25px',
-                }}
-            >
+            <div className={styles.container}>
                 <input
                     type="text"
                     name="title"
                     value={formInput.title}
                     onChange={handleChange}
-                    style={{
-                        fontSize: '1.6rem',
-                        border: 'none',
-                        borderBottom: '2px solid #f0f0f0',
-                        width: '40%',
-                        outline: 'none',
-                        borderRadius: '10px',
-                        padding: '15px 15px',
-                    }}
+                    className={styles.input}
                 />
                 <button
                     onClick={handleSubmit}
                     disabled={!formInput.title}
-                    className={!formInput.title ? 'inactive' : ''}
-                    style={{
-                        color: 'white',
-                        fontSize: '1.6rem',
-                        background: '#82df96',
-                        borderRadius: '10px',
-                        border: 'none',
-                        fontWeight: 'bold',
-                        wordSpacing: '15px',
-                        cursor: 'pointer',
-                        padding: '15px 20px',
-                        marginLeft: '2%',
-                    }}
+                    className={`${styles.button} ${
+                        !formInput.title ? styles.inactive : ''
+                    }`}
                 >
                     Add +
                 </button>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', width: '60%' }}>
+            <div className={styles.modifierContainer}>
                 {hashtags.map((hashtag) => {
                     return (
                         <Hashtag

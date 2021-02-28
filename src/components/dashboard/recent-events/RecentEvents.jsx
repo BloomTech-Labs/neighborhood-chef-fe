@@ -97,7 +97,14 @@ const RecentEvents = () => {
                     justifyContent: 'space-between',
                 }}
             >
-                <div className="recent-events-container">
+                <div
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-evenly',
+                        textAlign: 'left',
+                    }}
+                >
                     {isFetching ? (
                         <div style={{ textAlign: 'center' }}>
                             <CircularProgress style={{ color: '#58D573' }} />
