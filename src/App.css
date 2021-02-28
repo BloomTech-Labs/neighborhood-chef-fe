@@ -301,62 +301,6 @@ a {
     padding: 0 20px 50px 20px;
 }
 
-/* ---- start of SingleEvent styles ---- */
-
-/* .single-event-box {
-    background: #f2f2f2;
-    padding: 10px;
-    border-radius: 10px;
-    height: calc(90vh - 20px);
-    max-height: calc(90vh - 20px);
-    width: 100%;
-    display: flex;
-}
-
-.single-event-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-}
-
-.single-event-right-column {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.single-event-top-row {
-    display: flex;
-}
-
-.single-event-comment-card {
-    height: 100%;
-}
-
-.hidden {
-    display: none;
-}
-
-.emoji-container {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-@media (max-width: 700px) {
-    .single-event-container,
-    .single-event-box,
-    .single-event-top-row {
-        flex-wrap: wrap;
-    }
-
-    .single-event-box {
-        max-height: 100%;
-        height: 100%;
-    }
-} */
-
 /* ---- start of CreateEvent styles ---- */
 
 /* note: geocoder input doesn't seem to respond well to makestyles */

@@ -9,12 +9,14 @@ export const eventCardStyles = makeStyles((theme) => ({
         borderRadius: '25px',
         padding: '30px',
         width: '90%',
+        alignItems: 'center',
     },
     card: {
         display: 'flex',
         width: '100%',
         minHeight: '200px',
-        [theme.breakpoints.down('600')]: {
+        alignItems: 'center',
+        [theme.breakpoints.down('800')]: {
             flexDirection: 'column',
             alignItems: 'center',
             width: '90%',
@@ -25,8 +27,8 @@ export const eventCardStyles = makeStyles((theme) => ({
         border: '8px solid #58d473',
         borderRadius: '25px',
         maxHeight: '300px',
-        [theme.breakpoints.down('600')]: {
-            maxwidth: '90%',
+        [theme.breakpoints.down('800')]: {
+            maxWidth: '90%',
         },
     },
     textContainer: {
@@ -36,7 +38,7 @@ export const eventCardStyles = makeStyles((theme) => ({
         marginLeft: '30px',
         textAlign: 'left',
         width: '50%',
-        [theme.breakpoints.down('600')]: {
+        [theme.breakpoints.down('800')]: {
             width: '96%',
             marginTop: '10px',
             height: '100px',

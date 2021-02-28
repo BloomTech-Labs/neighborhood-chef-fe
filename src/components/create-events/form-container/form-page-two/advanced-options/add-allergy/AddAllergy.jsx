@@ -10,7 +10,7 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        setFormInput({ name: e.tasrget.value });
+        setFormInput({ name: e.target.value });
     };
 
     const addAllergy = (e) => {
