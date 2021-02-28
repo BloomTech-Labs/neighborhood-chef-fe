@@ -1,5 +1,5 @@
 import React from 'react';
-import AdvancedOptions from './AdvancedOptions.js';
+import AdvancedOptions from './AdvancedOptions';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -13,6 +13,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 const allergenList = [{ id: 1, name: 'Shellfish' }];
 const dietWarnings = [{ id: 1, title: 'Keto' }];
+const ingredientList = [{ description: 'Milk 1 Gallon' }];
 
 describe('Test AdvanedOptions component', () => {
     let AdvancedOptionsComponent;
@@ -23,6 +24,8 @@ describe('Test AdvanedOptions component', () => {
                     <AdvancedOptions
                         allergenList={allergenList}
                         dietWarnings={dietWarnings}
+                        ingredientList={ingredientList}
+
                     />
                 </BrowserRouter>
             </Provider>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import DietaryWarning from '../dietary-warning/DietaryWarning.js';
+import DietaryWarning from '../dietary-warning/DietaryWarning';
 import { addModifierFormStyles } from '../../../../CreateEvent.styles';
 
 const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import CalendarRow from './CalendarRow.js';
+import CalendarRow from './CalendarRow';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';

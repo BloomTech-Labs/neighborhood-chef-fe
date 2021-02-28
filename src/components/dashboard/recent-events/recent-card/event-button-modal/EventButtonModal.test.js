@@ -1,5 +1,5 @@
 import React from 'react';
-import EventButtonModal from './EventButtonModal.js';
+import EventButtonModal from './EventButtonModal';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';

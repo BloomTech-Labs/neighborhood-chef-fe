@@ -1,5 +1,5 @@
 import React from 'react';
-import RecentCard from './RecentCard.js';
+import RecentCard from './RecentCard';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';

@@ -10,20 +10,20 @@ import {
     createEventSuccess,
     updateEventSuccess,
     cancelEdit,
-} from '../../../utilities/actions/index.js';
+} from '../../../utilities/actions/index';
 
 // graphql query imports
 import {
     ADD_EVENT,
     UPDATE_EVENT,
-} from '../../../graphql/events/event-mutations.js';
+} from '../../../graphql/events/event-mutations';
 
 // component and helper function imports
-import FormPageOne from './form-page-one/FormPageOne.js';
-import FormPageTwo from './form-page-two/FormPageTwo.js';
-import FormPageThree from './form-page-three/FormPageThree.js';
-import FormPageFour from './form-page-four/FormPageFour.js';
-import { modifierData } from './form-page-two/FormPageTwo.js';
+import FormPageOne from './form-page-one/FormPageOne';
+import FormPageTwo from './form-page-two/FormPageTwo';
+import FormPageThree from './form-page-three/FormPageThree';
+import FormPageFour from './form-page-four/FormPageFour';
+import { modifierData } from './form-page-two/FormPageTwo';
 import { restoreSavedModifiers } from '../../../utilities/functions';
 
 const initialState = {
