@@ -4,9 +4,6 @@ import React from 'react';
 import houseDoor from '@iconify/icons-bi/house-door';
 import calendarOutlined from '@iconify/icons-ant-design/calendar-outlined';
 import calendarPlus from '@iconify/icons-mdi/calendar-plus';
-// import outlineSettings from "@iconify/icons-ic/outline-settings";
-// import bxMessageSquareDots from "@iconify/icons-bx/bx-message-square-dots";
-// import bxFoodMenu from "@iconify/icons-bx/bx-food-menu";
 
 //component import
 import SidebarButton from './sidebar-button/SidebarButton';
@@ -30,32 +27,28 @@ const buttonList = [
         text: 'Create Event',
         icon: calendarPlus,
     },
-    // {
-    //   active: false,
-    //   link: "recipes",
-    //   text: "Shared Recipes",
-    //   icon: bxFoodMenu,
-    // },
-    // {
-    //   active: false,
-    //   link: "messages",
-    //   text: "Messages",
-    //   icon: bxMessageSquareDots,
-    // },
 ];
-
-// const settingButton = {
-//   active: false,
-//   link: "settings",
-//   text: "Settings",
-//   icon: outlineSettings,
-// };
 
 const Sidebar = ({ active }) => {
     return (
-        <div className="sidebar-container">
+        <div
+            style={{
+                paddingRight: '20px',
+                width: '255px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+            }}
+        >
             <div>
-                <nav className="nav-container">
+                <nav
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        textAlign: 'left',
+                    }}
+                >
                     {buttonList.map((ele) => (
                         <SidebarButton
                             {...ele}
@@ -65,12 +58,6 @@ const Sidebar = ({ active }) => {
                     ))}
                 </nav>
             </div>
-            {/* <div className="settings-button">
-        <SidebarButton
-          {...settingButton}
-          active={active === settingButton.link}
-        />
-      </div> */}
         </div>
     );
 };

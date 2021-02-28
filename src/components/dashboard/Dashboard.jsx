@@ -4,8 +4,15 @@ import RecentEvents from './recent-events/RecentEvents';
 
 const Dashboard = () => {
     return (
-        <div className="dashboard-container">
-            <div className="dashboard-main">
+        <div style={{ display: 'flex', width: '100%' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    alignItems: 'center',
+                }}
+            >
                 <div>
                     <RecentEvents />
                 </div>

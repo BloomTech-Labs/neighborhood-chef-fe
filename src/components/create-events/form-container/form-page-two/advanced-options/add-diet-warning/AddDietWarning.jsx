@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import DietaryWarning from '../dietary-warning/DietaryWarning';
+import { addModifierFormStyles } from '../../../../CreateEvent.styles';
 
 const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
     const [formInput, setFormInput] = useState({ title: '' });
+    const styles = addModifierFormStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -23,44 +25,26 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
 
     return (
         <>
-            <div style={{ marginTop: '55px', marginBottom: '25px' }}>
+            <div className={styles.root}>
                 <Typography>Add dietary warnings</Typography>
                 <input
                     type="text"
                     name="title"
                     onChange={handleChange}
                     value={formInput.title}
-                    style={{
-                        fontSize: '1.6rem',
-                        border: 'none',
-                        borderBottom: '2px solid #f0f0f0',
-                        width: '40%',
-                        outline: 'none',
-                        borderRadius: '10px',
-                        padding: '15px 15px',
-                    }}
+                    className={styles.input}
                 />
                 <button
                     onClick={addDietWarning}
                     disabled={!formInput.title}
-                    className={!formInput.title ? 'inactive' : ''}
-                    style={{
-                        color: 'white',
-                        fontSize: '1.6rem',
-                        background: '#82df96',
-                        borderRadius: '10px',
-                        border: 'none',
-                        fontWeight: 'bold',
-                        wordSpacing: '15px',
-                        cursor: 'pointer',
-                        padding: '15px 20px',
-                        marginLeft: '2%',
-                    }}
+                    className={`${styles.button} ${
+                        !formInput.title ? styles.inactive : ''
+                    }`}
                 >
                     Add +
                 </button>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', width: '60%' }}>
+            <div className={styles.modifierContainer}>
                 {dietWarnings.map((diet) => {
                     return (
                         <DietaryWarning

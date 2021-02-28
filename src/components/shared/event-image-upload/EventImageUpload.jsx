@@ -4,13 +4,15 @@ import uploadOutlined from '@iconify/icons-ant-design/upload-outlined';
 import { buttonStyles } from '../../../styles';
 import Typography from '@material-ui/core/Typography';
 import { useLocation } from 'react-router-dom';
+import { eventImageUploadStyles } from './EventImageUpload.styles';
 
 import { chooseDefaultPicture } from '../../../utilities/functions';
 
 const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
+    const styles = eventImageUploadStyles();
     const location = useLocation();
     const thisURL = location.pathname.split('/')[1];
-    // console.log(`EventImageUpload -> values`, values);
+
     const classes = buttonStyles();
     const imageSizeLimit = 1500000;
     let photo;
@@ -20,7 +22,6 @@ const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
             avatar !== 'null' && avatar !== null
                 ? avatar
                 : chooseDefaultPicture(values.category_id);
-        // console.log('Initial photo', photo);
     } else if (avatar) photo = avatar;
 
     const handleChange = (e) => {
@@ -33,31 +34,15 @@ const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
                 reader.readAsDataURL(file);
                 reader.onloadend = () => {
                     setPhoto(reader.result);
-                    // console.log('Photo changed!', photo);
                 };
             }
         }
     };
 
     return (
-        <div className="createImgDiv">
-            <Typography
-                style={{
-                    marginTop: '10px',
-                    marginBottom: '25px',
-                    textAlign: 'left',
-                }}
-            >
-                {title}
-            </Typography>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: '70%',
-                }}
-            >
+        <div className={styles.root}>
+            <Typography className={styles.p}>{title}</Typography>
+            <div className={styles.button}>
                 <div>
                     <input
                         type="file"
@@ -86,13 +71,7 @@ const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
                         onClick={() => setPhoto(null)}
                         src={photo}
                         alt="Event Img Upload"
-                        style={{
-                            maxWidth: '40%',
-                            maxHeight: '120px',
-                            borderRadius: '10px',
-                            border: '2px solid rgba(0,0,0,.4)',
-                            cursor: 'pointer',
-                        }}
+                        className={styles.img}
                     />
                 )}
             </div>

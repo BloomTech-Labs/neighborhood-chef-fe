@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import food from '../../assets/food.jpg';
+import { landingPageStyles } from '../../styles';
 
 const qs = require('querystring');
 const crypto = require('crypto-browserify');
@@ -14,6 +15,7 @@ const crypto = require('crypto-browserify');
 const Login = () => {
     const cardClass = cardStyles();
     const buttonClass = buttonStyles();
+    const styles = landingPageStyles();
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -45,8 +47,8 @@ const Login = () => {
     return (
         <>
             <AuthHeader />
-            <div className="landing-page-container">
-                <div className="landing-page-left">
+            <div className={styles.landingPageContainer}>
+                <div className={styles.landingPageLeft}>
                     <Card
                         className={`${cardClass.root} ${cardClass.landingPage}`}
                     >
@@ -75,7 +77,7 @@ const Login = () => {
                     </Card>
                 </div>
                 <div
-                    className="landing-page-right"
+                    className={styles.landingPageRight}
                     style={{ overflow: 'hidden' }}
                 >
                     <img src={food} alt="food community" height="100%" />

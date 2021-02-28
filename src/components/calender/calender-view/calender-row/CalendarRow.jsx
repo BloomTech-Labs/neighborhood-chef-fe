@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useHistory } from 'react-router-dom';
+import { calendarStyles } from '../../Calendar.styles';
 
 const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
     const activeEvent = useSelector((state) => state.activeEvent);
@@ -13,14 +14,14 @@ const CalendarRow = ({ id, title, startTime, eventNum, status }) => {
     const history = useHistory();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const styles = calendarStyles();
     const timeObject = parseTime(startTime, null);
 
     return (
         <div
-            className={`calendar-row ${
-                parseInt(eventNum) % 2 === 0 && 'calendar-row-even'
-            } ${activeEvent === id && 'calendar-row-active'}`}
+            className={`${styles.calendarRow} ${
+                parseInt(eventNum) % 2 === 0 && styles.calendarRowEven
+            } ${activeEvent === id && styles.calendarRowActive}`}
             onClick={
                 matches
                     ? () => {

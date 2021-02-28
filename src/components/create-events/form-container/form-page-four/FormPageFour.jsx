@@ -4,7 +4,15 @@ import SearchFriends from './search-friends/SearchFriends';
 
 const FormPageFour = () => {
     return (
-        <div className="formPageFourContainer">
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+            }}
+        >
             <EventCard />
             <SearchFriends />
         </div>

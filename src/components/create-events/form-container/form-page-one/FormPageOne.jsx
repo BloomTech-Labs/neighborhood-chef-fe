@@ -10,6 +10,8 @@ import Geocoder from 'react-mapbox-gl-geocoder';
 import { useDispatch } from 'react-redux';
 import { setPage } from '../../../../utilities/actions';
 import moment from 'moment';
+import { formPageOneStyles } from './FormPageOne.styles';
+import { buttonStyles } from '../../CreateEvent.styles';
 
 export const scrollToTop = () => {
     window.scrollTo({
@@ -23,6 +25,8 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
     const [viewport, setViewport] = useState({});
     const { push } = useHistory();
     const dispatch = useDispatch();
+    const styles = formPageOneStyles();
+    const btnStyles = buttonStyles();
     const today = moment().format('YYYY-MM-DD');
 
     const mapAccess = {
@@ -61,15 +65,16 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
 
     return (
         <>
-            <div className="createFormPage1Container">
-                <div className="createFormPage1LeftContainer">
-                    <div className="createFormInputDiv">
+            <div className={styles.root}>
+                <div className={styles.leftContainer}>
+                    <div className={styles.inputDiv}>
                         <Field
                             type="text"
                             name="title"
                             placeholder="Title"
                             onChange={handleChange}
                             value={values.title}
+                            className={styles.input}
                         />
                         <CreateIcon
                             color="disabled"
@@ -90,7 +95,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                             initialInputValue={
                                 values.address ? values.address : ''
                             }
-                            className="locationInput"
+                            className={styles.geo}
                         />
                         <SearchIcon
                             color="disabled"
@@ -104,17 +109,19 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                         placeholder="Write a description for your event..."
                         onChange={handleChange}
                         value={values.description}
-                        className="createFormTextArea"
+                        className={styles.textArea}
                     />
                 </div>
 
-                <div className="createFormPage1RightContainer">
-                    <div className="eventDateDiv">
-                        <label htmlFor="eventFormDate">Date</label>
+                <div className={styles.rightContainer}>
+                    <div className={styles.timeDiv}>
+                        <label htmlFor="eventFormDate" className={styles.label}>
+                            Date
+                        </label>
                         <TextField
                             type="date"
                             name="date"
-                            id="eventFormDate"
+                            className={styles.date}
                             value={values.date}
                             onChange={handleChange}
                             InputProps={{
@@ -124,13 +131,14 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                         />
                     </div>
 
-                    <div className="eventTimeDiv">
-                        <label htmlFor="greenSelect">
+                    <div className={styles.timeDiv}>
+                        <label htmlFor="greenSelect" className={styles.label}>
                             The event starts at:
                         </label>
                         <Select
                             name="startTime"
-                            id="greenSelect"
+                            className={styles.select}
+                            style={{ background: '#58d573' }}
                             value={values.startTime}
                             onChange={handleChange}
                             disableUnderline={true}
@@ -187,11 +195,14 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                         </Select>
                     </div>
 
-                    <div className="eventTimeDiv">
-                        <label htmlFor="redSelect">The event ends at:</label>
+                    <div className={styles.timeDiv}>
+                        <label htmlFor="redSelect" className={styles.label}>
+                            The event ends at:
+                        </label>
                         <Select
                             name="endTime"
-                            id="redSelect"
+                            className={styles.select}
+                            style={{ background: '#ea6565' }}
                             value={values.endTime}
                             onChange={handleChange}
                             disableUnderline={true}
@@ -248,11 +259,13 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                         </Select>
                     </div>
 
-                    <div className="categoryDiv">
-                        <label htmlFor="category_id">Category</label>
+                    <div className={styles.categoryDiv}>
+                        <label htmlFor="category_id" className={styles.labels}>
+                            Category
+                        </label>
                         <Select
                             name="category_id"
-                            id="category_id"
+                            className={styles.category}
                             value={values.category_id}
                             onChange={handleChange}
                             disableUnderline
@@ -284,9 +297,9 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                 </p>
             )}
 
-            <div className="createFormButtonDiv">
+            <div className={btnStyles.buttonContainer}>
                 <button
-                    className="createRightBtn"
+                    className={btnStyles.leftBtn}
                     onClick={() => {
                         push('/dashboard');
                     }}
@@ -295,7 +308,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                 </button>
                 <button
                     type="button"
-                    className="createLeftBtn"
+                    className={btnStyles.rightBtn}
                     onClick={() => validateAndTurnPage()}
                 >
                     Next

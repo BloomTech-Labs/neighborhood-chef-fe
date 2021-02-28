@@ -1,0 +1,62 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+  
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+env:
+  NODE_ENV: development
+  COVERAGE_LOCATION: /home/runner/work/_temp
+  CC_TEST_REPORTER_ID: 131f71285d75e44e8025382b731dc4aed8f122b98d7b3e41b617951aff59c791
+  REACT_APP_MAPBOX_ACCESS_TOKEN: pk.eyJ1IjoibmhjcmVkdXgiLCJhIjoiY2tsZG01bTFyNGMyajJwcGxvNTAwdHVraCJ9.EtrpKsmxgeZNNwSG4ORGPA
+
+jobs:
+  test:     
+    strategy:
+      matrix:
+        node-version: [10.x]
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    runs-on: ubuntu-latest
+    steps:
+      # checkout branch
+      - name: Checkout 
+        uses: actions/checkout@v1
+
+       #set up node 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          run: npm install
+
+      - run: npm ci
+      - run: npm test
+  coverage:
+    needs: [test]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    name: coverage
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+          node-version: ${{ matrix.node-version }}
+          run: npm install
+    - run: npm ci
+    - run: npm run coverage-ci
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: 131f71285d75e44e8025382b731dc4aed8f122b98d7b3e41b617951aff59c791
+      with:
+        coverageLocations: |
+          ${{runner.temp}}/lcov.info:lcov

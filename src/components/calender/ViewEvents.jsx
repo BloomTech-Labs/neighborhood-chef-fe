@@ -4,13 +4,17 @@ import React from 'react';
 import CalendarView from './calender-view/CalendarView';
 import EventDetails from '../shared/event-details/EventDetails';
 
+import { calendarStyles } from './Calendar.styles';
+
 const ViewEvents = () => {
+    const styles = calendarStyles();
+
     return (
-        <div className="component-main">
-            <div className="middle-calendar">
+        <div className={styles.componentMain}>
+            <div className={styles.middleCalendar}>
                 <CalendarView />
             </div>
-            <div className="right-side-calendar">
+            <div className={styles.rightSideCalendar}>
                 <EventDetails />
             </div>
         </div>

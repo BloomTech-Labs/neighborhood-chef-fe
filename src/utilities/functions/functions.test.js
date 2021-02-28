@@ -9,6 +9,7 @@ import {
 
 import { modifierData } from '../../components/create-events/form-container/form-page-two/FormPageTwo';
 
+
 const favoriteEvents = [
     { id: 1, title: 'BBQ' },
     { id: 2, title: 'Pho Night' },

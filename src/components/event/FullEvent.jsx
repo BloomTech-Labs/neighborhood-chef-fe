@@ -12,11 +12,14 @@ import EventDetails from '../shared/event-details/EventDetails';
 import ParticipantCard from './participant-card/ParticipantsCard';
 import ShareCard from './share-card/ShareCard';
 import CommentsCard from './comments-card/CommentsCard';
+import { fullEventStyles } from './FullEvent.styles';
 
 const FullEvent = ({ match }) => {
     const eventId = parseInt(match.params.id);
     const dispatch = useDispatch();
     const currentEvent = useSelector((state) => state.currentEvent);
+    const styles = fullEventStyles();
+
     useEffect(() => {
         if (eventId)
             axiosWithAuth()({
@@ -38,18 +41,18 @@ const FullEvent = ({ match }) => {
     }, []);
 
     return (
-        <div className="single-event-container">
+        <div className={styles.singleEventContainer}>
             <Grow in style={{ transformOrigin: '200 200 200' }}>
-                <div className="single-event-box">
+                <div className={styles.singleEventBox}>
                     {currentEvent ? (
                         <>
                             <EventDetails />
-                            <div className="single-event-right-column">
-                                <div className="single-event-top-row">
+                            <div className={styles.singleEventRightColumn}>
+                                <div className={styles.singleEventTopRow}>
                                     <ParticipantCard />
                                     <ShareCard />
                                 </div>
-                                <div className="single-event-comment-card">
+                                <div className={styles.singleEventCommentCard}>
                                     <CommentsCard eventId={eventId} />
                                 </div>
                             </div>

@@ -15,9 +15,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
-// import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-// import { Icon } from "@iconify/react";
-// import smHeart from "@iconify/icons-heroicons/sm-heart";
 
 import {
     timeAgo,
@@ -50,7 +47,6 @@ import EventButtonModal from './event-button-modal/EventButtonModal';
 import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
-    // console.log(`RecentCard -> props`, props);
     const me = JSON.parse(sessionStorage.getItem('user'));
     const classes = cardStyles();
     const dispatch = useDispatch();
@@ -60,7 +56,6 @@ const RecentCard = (props) => {
     const [creatorName, setCreatorName] = useState('');
     const favoriteEvents = useSelector((state) => state.favoriteEvents);
     const isFavorite = isEventFavorite(favoriteEvents, props.id);
-    // const [liked, setLiked] = useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -69,9 +64,6 @@ const RecentCard = (props) => {
     const timeObject = parseTime(props.startTime, props.endTime);
     const shownTime = timeAgo(props.createDateTime);
 
-    // const toggleLike = () => {
-    //   setLiked(!liked);
-    // };
     const addFavoriteEvent = () => {
         const addFavorite = {
             event_id: Number(props.id),
@@ -192,7 +184,21 @@ const RecentCard = (props) => {
                         title="Recent Card Event Photo"
                     />
                 )}
-                <div className="date-box">
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '10px',
+                        background: '#f8f8f8',
+                        borderRadius: '8px',
+                        marginTop: '-14%',
+                        marginLeft: '5%',
+                        alignSelf: 'left',
+                        width: '46px',
+                        alignItems: 'center',
+                        position: 'relative',
+                    }}
+                >
                     <Typography variant="h5">{timeObject.day}</Typography>
                     <Typography variant="h5" color="secondary">
                         {timeObject.monthShort}

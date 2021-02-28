@@ -7,7 +7,9 @@ import { axiosWithAuth } from '../../../../../utilities/axiosWithAuth';
 
 import { GET_UNINVITED_USERS } from '../../../../../graphql/users/user-queries.js';
 import { searchForUsersSuccess } from '../../../../../utilities/actions';
+
 import UserList from './userlist/UserList';
+import { searchFriendsStyles } from './SearchFriends.styles';
 
 const SearchFriends = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +18,7 @@ const SearchFriends = () => {
     const event = useSelector((state) => state.newEvent);
     const dispatch = useDispatch();
     const { push } = useHistory();
+    const styles = searchFriendsStyles();
 
     useEffect(() => {
         axiosWithAuth()
@@ -89,57 +92,24 @@ const SearchFriends = () => {
     }, [users, searchTerm]);
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                border: '2px solid #F3F3F3',
-                boxShadow: '0px 4px 15px rgba(179, 179, 179, 0.1)',
-                borderRadius: '25px',
-                marginTop: '15px',
-                marginBottom: '120px',
-                padding: '30px',
-                width: '90%',
-            }}
-        >
+        <div className={styles.root}>
             <div>
-                <h3
-                    style={{
-                        fontSize: '1.8rem',
-                        color: '#1A0F2C',
-                        fontWeight: 'normal',
-                        fontStyle: 'normal',
-                        marginTop: '10px',
-                        marginBottom: '10px',
-                    }}
-                >
-                    Invite Neighbors
-                </h3>
-                <p
-                    style={{
-                        color: '#DEDEDE',
-                        fontSize: '1.6rem',
-                        fontWeight: 'normal',
-                        fontStyle: 'normal',
-                        marginTop: '10px',
-                    }}
-                >
+                <h3 className={styles.h3}>Invite Neighbors</h3>
+                <p className={styles.p}>
                     Search for neighbors by name or email.
                 </p>
             </div>
 
             <div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div
-                        className="createFormInputDiv"
-                        style={{ width: '70%' }}
-                    >
+                    <div className={styles.inputDiv} style={{ width: '70%' }}>
                         <input
                             type="text"
                             name="search"
                             placeholder="Search"
                             onChange={(e) => setSearchTerm(e.target.value)}
                             value={searchTerm}
+                            className={styles.input}
                         />
                         <SearchIcon
                             color="disabled"
@@ -148,7 +118,7 @@ const SearchFriends = () => {
                     </div>
                     <button
                         onClick={() => push('/view-events')}
-                        className="searchFriendsBtn"
+                        className={styles.button}
                     >
                         Done
                     </button>
