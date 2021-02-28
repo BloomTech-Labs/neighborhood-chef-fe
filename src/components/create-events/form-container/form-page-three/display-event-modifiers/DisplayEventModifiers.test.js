@@ -21,7 +21,6 @@ describe('Test DisplayEventModifiers component', () => {
                 hashtags={[{ id: 1, title: '#hashtag' }]}
                 dietWarnings={[{ id: 1, diet: 'Vegan Only' }]}
                 allergenList={[]}
-                ingredientList={[]}
             />
         );
     });
