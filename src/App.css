@@ -37,7 +37,7 @@ a {
 /* ---- start of Landing Page styles ---- */
 
 @media (max-width: 700px) {
-    /* .register-map, */
+    .register-map,
     .overlays {
         display: none;
     }
