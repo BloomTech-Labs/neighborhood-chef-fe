@@ -1,14 +1,18 @@
 import React from 'react';
-import { hashtagStyles } from './Hashtag.styles';
+import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
 const Hashtag = ({ hashtag, hashtags, setHashtags }) => {
-    const styles = hashtagStyles();
+    const styles = hashtagAndWarningStyles();
     const removeHashtag = (id) => {
         setHashtags(hashtags.filter((tag) => tag.id !== id));
     };
 
     return (
-        <div key={hashtag.id} className={styles.root}>
+        <div
+            key={hashtag.id}
+            className={styles.root}
+            style={{ background: '#58D473' }}
+        >
             <p className={styles.p}>#{hashtag.title}</p>
             <span
                 className={styles.span}

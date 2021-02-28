@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import AllergyWarning from '../allergy-warning/AllergyWarning';
-import { addAllergyStyles } from './AddAllergy.styles';
+import { addModifierFormStyles } from '../../../../CreateEvent.styles';
 
 const AddAllergy = ({ allergenList, setAllergenList }) => {
     const [formInput, setFormInput] = useState({ name: '' });
-    const styles = addAllergyStyles();
+    const styles = addModifierFormStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -44,7 +44,7 @@ const AddAllergy = ({ allergenList, setAllergenList }) => {
                     Add +
                 </button>
             </div>
-            <div className={styles.allergyContainer}>
+            <div className={styles.modifierContainer}>
                 {allergenList.map((allergy) => {
                     return (
                         <AllergyWarning

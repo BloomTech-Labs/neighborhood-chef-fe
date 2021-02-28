@@ -1,9 +1,8 @@
 import React from 'react';
-
-import { allergyWarningStyles } from './AllergyWarning.styles';
+import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
 const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
-    const styles = allergyWarningStyles();
+    const styles = hashtagAndWarningStyles();
 
     const removeAllergy = (id) => {
         setAllergenList(
@@ -14,7 +13,11 @@ const AllergyWarning = ({ allergy, allergenList, setAllergenList }) => {
     };
 
     return (
-        <div key={allergy.id} className={styles.warning}>
+        <div
+            key={allergy.id}
+            className={styles.root}
+            style={{ background: '#ea6565' }}
+        >
             <p className={styles.p}>{allergy.name}</p>
             <span
                 className={styles.span}

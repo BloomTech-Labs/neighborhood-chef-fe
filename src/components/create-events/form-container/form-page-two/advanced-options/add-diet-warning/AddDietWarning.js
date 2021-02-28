@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import DietaryWarning from '../dietary-warning/DietaryWarning.js';
-import { addDietWarningStyles } from './AddDietWarning.styles';
+import { addModifierFormStyles } from '../../../../CreateEvent.styles';
 
 const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
     const [formInput, setFormInput] = useState({ title: '' });
-    const styles = addDietWarningStyles();
+    const styles = addModifierFormStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -44,7 +44,7 @@ const AddDietRestriction = ({ dietWarnings, setDietWarnings }) => {
                     Add +
                 </button>
             </div>
-            <div className={styles.dietWarningContainer}>
+            <div className={styles.modifierContainer}>
                 {dietWarnings.map((diet) => {
                     return (
                         <DietaryWarning

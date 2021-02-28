@@ -13,16 +13,8 @@ const DisplayEventModifiers = (props) => {
         <div className={styles.root}>
             {props.hashtags.length > 0 && (
                 <div className={styles.modifierContainer}>
-                    <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
-                        Hashtags
-                    </h4>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            flexFlow: 'row wrap',
-                        }}
-                    >
+                    <h4 className={styles.h4}>Hashtags</h4>
+                    <div className={styles.modifier}>
                         {props.hashtags.map((hashtag) => {
                             return (
                                 <Hashtag
@@ -39,16 +31,8 @@ const DisplayEventModifiers = (props) => {
 
             {props.modifiers.length > 0 && (
                 <div className={styles.modifierContainer}>
-                    <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
-                        Modifications
-                    </h4>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            flexFlow: 'row wrap',
-                        }}
-                    >
+                    <h4 className={styles.h4}>Modifications</h4>
+                    <div className={styles.modifier}>
                         {props.modifiers.map((modifier) => {
                             return (
                                 <Modifier
@@ -65,16 +49,8 @@ const DisplayEventModifiers = (props) => {
 
             {props.allergenList.length > 0 && (
                 <div className={styles.modifierContainer}>
-                    <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
-                        Allergy Warnings
-                    </h4>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            flexFlow: 'row wrap',
-                        }}
-                    >
+                    <h4 className={styles.h4}>Allergy Warnings</h4>
+                    <div className={styles.modifier}>
                         {props.allergenList.map((allergy) => {
                             return (
                                 <AllergyWarning
@@ -91,16 +67,8 @@ const DisplayEventModifiers = (props) => {
 
             {props.dietWarnings.length > 0 && (
                 <div className={styles.modifierContainer}>
-                    <h4 style={{ fontWeight: '500', fontSize: '2rem' }}>
-                        Dietary Warnings
-                    </h4>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            flexFlow: 'row wrap',
-                        }}
-                    >
+                    <h4 className={styles.h4}>Dietary Warnings</h4>
+                    <div className={styles.modifier}>
                         {props.dietWarnings.map((diet) => {
                             return (
                                 <DietaryWarning

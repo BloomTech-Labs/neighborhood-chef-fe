@@ -1,8 +1,8 @@
 import React from 'react';
-import { dietaryWarningStyles } from './DietaryWarning.styles';
+import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
 const DietaryWarning = ({ diet, dietWarnings, setDietWarnings }) => {
-    const styles = dietaryWarningStyles();
+    const styles = hashtagAndWarningStyles();
 
     const removeDietWarning = (id) => {
         setDietWarnings(
@@ -13,7 +13,11 @@ const DietaryWarning = ({ diet, dietWarnings, setDietWarnings }) => {
     };
 
     return (
-        <div key={diet.id} className={styles.warning}>
+        <div
+            key={diet.id}
+            className={styles.root}
+            style={{ background: '#ea6565' }}
+        >
             <p className={styles.p}>{diet.title}</p>
             <span
                 className={styles.span}

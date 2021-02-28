@@ -1,29 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const formPageThreeStyles = makeStyles((theme) => ({
+export const eventCardStyles = makeStyles((theme) => ({
     root: {
-        width: '90%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-    },
-    h3: {
-        textAlign: 'left',
-        width: '100%',
-        fontSize: '1.8rem',
-        fontWeight: '500',
-        color: '#1a0f2c',
-        margin: '5px 0',
-        marginLeft: '2%',
-    },
-    cardContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
         border: '2px solid #f3f3f3',
         boxShadow: '0px 4px 15px rgba(179, 179, 179, 0.1)',
         borderRadius: '25px',
-        marginTop: '10px',
         padding: '30px',
         width: '90%',
     },
@@ -31,9 +14,10 @@ export const formPageThreeStyles = makeStyles((theme) => ({
         display: 'flex',
         width: '100%',
         minHeight: '200px',
-        [theme.breakpoints.down('800')]: {
+        [theme.breakpoints.down('600')]: {
             flexDirection: 'column',
             alignItems: 'center',
+            width: '90%',
         },
     },
     img: {
@@ -41,24 +25,35 @@ export const formPageThreeStyles = makeStyles((theme) => ({
         border: '8px solid #58d473',
         borderRadius: '25px',
         maxHeight: '300px',
-        [theme.breakpoints.down('800')]: {
-            maxWidth: '90%',
+        [theme.breakpoints.down('600')]: {
+            maxwidth: '90%',
         },
     },
-    text: {
+    textContainer: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         marginLeft: '30px',
         textAlign: 'left',
         width: '50%',
-        [theme.breakpoints.down('800')]: {
-            width: '82%',
+        [theme.breakpoints.down('600')]: {
+            width: '96%',
             marginTop: '10px',
             height: '100px',
         },
-        [theme.breakpoints.down('695')]: {
-            width: '96%',
+    },
+    button: {
+        background: '#82df96',
+        padding: '15px 20px',
+        borderRadius: '5px',
+        marginLeft: '5%',
+        color: 'white',
+        outline: 'none',
+        fontSize: '2rem',
+        fontWeight: 'bold',
+        width: '15%',
+        [theme.breakpoints.down('800')]: {
+            width: '25%',
         },
     },
 }));

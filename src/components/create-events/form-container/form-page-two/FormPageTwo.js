@@ -20,7 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import { buttonStyles } from '../../SharedForm.styles';
+import { buttonStyles } from '../../CreateEvent.styles';
 
 export const modifierData = [
     { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },

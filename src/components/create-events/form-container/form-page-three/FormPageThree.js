@@ -12,7 +12,7 @@ import {
 } from '../../../../utilities/functions';
 
 import { formPageThreeStyles } from './FormPageThree.styles';
-import { buttonStyles } from '../../SharedForm.styles';
+import { buttonStyles } from '../../CreateEvent.styles';
 
 const FormPageThree = (props) => {
     const dispatch = useDispatch();
@@ -21,14 +21,14 @@ const FormPageThree = (props) => {
 
     return (
         <div className={styles.root}>
-            <h3>
+            <h3 className={styles.h3}>
                 Double check if your event details are correct. Once finished,
                 click done.
             </h3>
-            <div className="formPageThreeCardContainter">
-                <div className="pageThreeCard">
+            <div className={styles.cardContainer}>
+                <div className={styles.card}>
                     <img
-                        className="pageThreeImg"
+                        className={styles.img}
                         src={
                             props.photo ||
                             chooseDefaultPicture(props.values.category_id)
@@ -36,7 +36,7 @@ const FormPageThree = (props) => {
                         alt="Event Page 3 Img"
                     />
 
-                    <div className="pageThreeText">
+                    <div className={styles.text}>
                         <h3
                             style={{
                                 fontSize: '2.5rem',
@@ -56,9 +56,9 @@ const FormPageThree = (props) => {
                             >
                                 {props.values.date &&
                                     moment(props.values.date).format(
-                                        'MMM Do YYYY'
+                                        'MMMM Do YYYY'
                                     )}
-                                .&nbsp;
+                                &nbsp;
                             </p>
                             <p
                                 style={{

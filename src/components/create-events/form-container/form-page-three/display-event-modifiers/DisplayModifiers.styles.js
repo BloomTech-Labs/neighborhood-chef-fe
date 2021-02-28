@@ -6,6 +6,11 @@ export const displayEventModifiersStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         width: '100%',
     },
+    h4: {
+        fontWeight: '500',
+        fontSize: '2rem',
+        marginBottom: '15px',
+    },
     modifierContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -17,5 +22,10 @@ export const displayEventModifiersStyles = makeStyles((theme) => ({
             marginTop: '25px',
             width: '100%',
         },
+    },
+    modifier: {
+        display: 'flex',
+        width: '100%',
+        flexFlow: 'row wrap',
     },
 }));

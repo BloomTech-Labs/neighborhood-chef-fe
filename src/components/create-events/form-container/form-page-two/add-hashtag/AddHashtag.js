@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { addHashtagStyles } from './AddHashtag.styles';
 import Hashtag from './hashtag/Hashtag';
 import Typography from '@material-ui/core/Typography';
+import { addModifierFormStyles } from '../../../CreateEvent.styles';
 
 const AddHashtag = ({ hashtags, setHashtags }) => {
     const [formInput, setFormInput] = useState({ title: '' });
-    const styles = addHashtagStyles();
+    const styles = addModifierFormStyles();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -46,7 +46,7 @@ const AddHashtag = ({ hashtags, setHashtags }) => {
                     Add +
                 </button>
             </div>
-            <div className={styles.hashtagsContainer}>
+            <div className={styles.modifierContainer}>
                 {hashtags.map((hashtag) => {
                     return (
                         <Hashtag

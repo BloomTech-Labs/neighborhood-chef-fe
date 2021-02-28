@@ -2,11 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
+import { eventCardStyles } from './EventCard.styles';
 import { chooseDefaultPicture } from '../../../../../utilities/functions';
 
 const EventCard = () => {
     const values = useSelector((state) => state.newEvent);
-    // console.log(`EventCard -> values`, values);
+    const styles = eventCardStyles();
 
     const photo =
         values.photo !== 'null'
@@ -14,20 +15,10 @@ const EventCard = () => {
             : chooseDefaultPicture(values.category_id);
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                border: '2px solid #F3F3F3',
-                boxShadow: '0px 4px 15px rgba(179, 179, 179, 0.1)',
-                borderRadius: '25px',
-                padding: '30px',
-                width: '90%',
-            }}
-        >
-            <div className="pageFourCard">
-                <img className="pageFourImg" src={photo} alt="Event Card Img" />
-                <div className="pageFourText">
+        <div className={styles.root}>
+            <div className={styles.card}>
+                <img className={styles.img} src={photo} alt="Event Card Img" />
+                <div className={styles.textContainer}>
                     <h3
                         style={{
                             fontSize: '2.5rem',
@@ -41,9 +32,9 @@ const EventCard = () => {
 
                     <p style={{ color: 'rgba(0, 0, 0, 0.35)' }}>
                         {moment(parseInt(values.startTime)).format(
-                            'MMM Do, YYYY'
+                            'MMMM Do, YYYY'
                         )}
-                        .&nbsp;
+                        &nbsp;
                     </p>
                     <div style={{ display: 'flex' }}>
                         <p

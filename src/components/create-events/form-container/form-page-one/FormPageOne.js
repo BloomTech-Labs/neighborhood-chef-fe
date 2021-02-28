@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setPage } from '../../../../utilities/actions';
 import moment from 'moment';
 import { formPageOneStyles } from './FormPageOne.styles';
-import { buttonStyles } from '../../SharedForm.styles';
+import { buttonStyles } from '../../CreateEvent.styles';
 
 export const scrollToTop = () => {
     window.scrollTo({
