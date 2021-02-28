@@ -3,8 +3,8 @@
 You can find the deployed project at [www.ourneighborhoodchef.com](https://ourneighborhoodchef.com)
 
 ![build](https://github.com/Lambda-School-Labs/neighborhood-chef-fe/workflows/build/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/217cf613842592864005/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/217cf613842592864005/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/neighborhood-chef-fe/test_coverage)
+<a href="https://codeclimate.com/github/Aaroneld/neighborhood-chef-fe/maintainability"><img src="https://api.codeclimate.com/v1/badges/941fd2afa5829cc2e013/maintainability" /></a>
+<a href="https://codeclimate.com/github/Aaroneld/neighborhood-chef-fe/test_coverage"><img src="https://api.codeclimate.com/v1/badges/941fd2afa5829cc2e013/test_coverage" /></a>
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
