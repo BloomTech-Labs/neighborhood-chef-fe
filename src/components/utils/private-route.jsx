@@ -11,30 +11,30 @@ function PrivateRoute({ component: Component, path, ...props }) {
         ? 'development'
         : 'production';
 
-    // const { validate, response, requestMade } = useValidate();
+    const { validate, response, requestMade } = useValidate();
 
-    // useEffect(() => {
-    //     validate(env);
-    //     // eslint-disable-next-line
-    // }, [path, Component]);
+    useEffect(() => {
+        validate(env);
+        // eslint-disable-next-line
+    }, [path, Component]);
 
-    // if (!response) {
-    //     return <p>...loading</p>;
-    // }
+    console.log(response);
+
+    if (!response) {
+        return <p>...loading</p>;
+    }
 
     if (
-        false
-        // env === 'production' &&
-        // response.status.toString().match(/2[0-9][0-9]/) &&
-        // response.data.active
+        env === 'production' &&
+        response.status.toString().match(/2[0-9][0-9]/) &&
+        response.data.active
     ) {
         return <Route {...props} path={path} component={Component} />;
-    } else if (env == 'development' && true) {
+    } else if (env == 'development' && response.data.success) {
         return <Route {...props} path={path} component={Component} />;
+    } else if (requestMade) {
+        push('/');
     }
-    // else if (requestMade) {
-    //     push('/');
-    // }
     return null;
 }
 

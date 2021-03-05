@@ -24,7 +24,6 @@ function useValidate() {
                     );
                     setResponse(res);
                 } else {
-                    console.log('here');
                     res = await axiosWithAuth().post(
                         'http://localhost:5100/authenticate',
                         {}
