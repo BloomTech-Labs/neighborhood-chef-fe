@@ -120,18 +120,21 @@ function GridStructure(props) {
                 method: 'post',
                 data: {
                     query: print(USER_BY_EMAIL),
-                    variables: { input: { email: decodedToken } },
+                    variables: { queryParams: { email: decodedToken } },
                 },
             })
                 .then((res) => {
-                    console.log(res);
+                    console.dir(res);
 
                     sessionStorage.setItem(
                         'user',
-                        JSON.stringify(res.data.data.getUserByEmail)
+                        JSON.stringify(res.data.data.Users)
                     );
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                    console.log(err.response.data.errors);
+                    console.dir(err);
+                });
         }
     }, []);
 

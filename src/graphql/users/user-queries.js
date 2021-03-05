@@ -1,5 +1,41 @@
 import gql from 'graphql-tag';
 
+const getBYEmailEventString = `
+id
+startTime
+endTime
+createDateTime
+title
+description
+category
+address
+latitude
+longitude
+modifiers
+hashtags
+EventUsers {
+    attending {
+        id
+        email
+        firstName
+        lastName
+        address
+        longitude
+        latitude
+        status
+    }
+    invited {
+        id
+        email
+        firstName
+        lastName
+        address
+        longitude
+        latitude
+        status
+    }
+}`;
+
 export const ALL_USERS = gql`
     query getAllUsers {
         getAllUsers {
@@ -86,8 +122,8 @@ export const USER_BY_ID = gql`
 `;
 
 export const USER_BY_EMAIL = gql`
-    query getUserByEmail($input: UserEmailInput!) {
-        getUserByEmail(input: $input) {
+    query getUserByEmail($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
             id
             email
             firstName
@@ -96,36 +132,23 @@ export const USER_BY_EMAIL = gql`
             address
             latitude
             longitude
-            photo
-            eventsOwned {
-                id
-                startTime
-                endTime
-                createDateTime
-                title
-                description
-                category_id
-                user_id
-                address
-                photo
-                latitude
-                longitude
-                modifiers
-                hashtags
-                users {
-                    id
-                    email
-                    firstName
-                    lastName
-                    address
-                    longitude
-                    latitude
-                    status
-                    photo
+
+            UserEvents {
+                attending {
+                    ${getBYEmailEventString}
+                }
+                invited {
+                    ${getBYEmailEventString}
+                }
+                favorited {
+                    ${getBYEmailEventString}
+                }
+                owned {
+                    ${getBYEmailEventString}
                 }
             }
-        }
     }
+}
 `;
 
 export const GET_AUTHORED_EVENTS = gql`
