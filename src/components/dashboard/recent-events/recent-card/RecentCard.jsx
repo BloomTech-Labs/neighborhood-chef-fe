@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //style imports
@@ -14,7 +14,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useDispatch } from 'react-redux';
 import { print } from 'graphql';
 
 import {
@@ -32,19 +31,15 @@ import {
     REMOVE_FAVORITE_EVENT,
 } from '../../../../graphql/users/user-mutations';
 
-import {
-    addFavoriteEventSuccess,
-    removeFavoriteEventSuccess,
-} from '../../../../utilities/actions';
-
 import EventButtonModal from './event-button-modal/EventButtonModal';
 import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
+    console.log(props);
     const classes = cardStyles();
-    const dispatch = useDispatch();
     const [expanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
+    let isFavorite = props.favoriteEvents.includes(props.id);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -54,7 +49,7 @@ const RecentCard = (props) => {
     const shownTime = timeAgo(props.createDateTime);
 
     const addFavoriteEvent = () => {
-        const addFavorite = {
+        const favoriteEvent = {
             event_id: Number(props.id),
             user_id: Number(props.User.id),
         };
@@ -62,18 +57,17 @@ const RecentCard = (props) => {
         axiosWithAuth()
             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(ADD_FAVORITE_EVENT),
-                variables: { input: addFavorite },
+                variables: { favoriteEvent: favoriteEvent },
             })
             .then((res) => {
-                dispatch(
-                    addFavoriteEventSuccess(res.data.data.addFavoriteEvent)
-                );
+                props.setFavoriteEvents([...props.favoriteEvents, props.id]);
+                isFavorite = true;
             })
             .catch((err) => console.log(err));
     };
 
     const removeFavoriteEvent = () => {
-        const removeFavorite = {
+        const favoriteEvent = {
             event_id: Number(props.id),
             user_id: Number(props.User.id),
         };
@@ -81,14 +75,13 @@ const RecentCard = (props) => {
         axiosWithAuth()
             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(REMOVE_FAVORITE_EVENT),
-                variables: { input: removeFavorite },
+                variables: { favoriteEvent: favoriteEvent },
             })
             .then((res) => {
-                dispatch(
-                    removeFavoriteEventSuccess(
-                        res.data.data.removeFavoriteEvent
-                    )
+                props.setFavoriteEvents(
+                    props.favoriteEvents.filter((id) => id !== props.id)
                 );
+                isFavorite = false;
             })
             .catch((err) => console.log(err));
     };
@@ -176,22 +169,22 @@ const RecentCard = (props) => {
                     <Typography variant="body1" align="center">
                         <span
                             style={
-                                currentStatus === 'Not Going'
+                                props.User.status === 'Not Going'
                                     ? { color: 'rgba(232, 64, 64, .75)' }
-                                    : currentStatus === 'Maybe'
+                                    : props.User.status === 'Maybe'
                                     ? { color: 'rgba(255, 169, 40, .75)' }
-                                    : currentStatus === 'Going'
+                                    : props.User.status === 'Going'
                                     ? { color: 'rgba(33, 186, 66, .75)' }
                                     : { color: 'rgba(0,0,0, .3)' }
                             }
                         >
-                            {currentStatus || 'undecided'}
+                            {props.User.status || 'undecided'}
                         </span>
                     </Typography>
                 </CardContent>
             </Link>
             <CardActions disableSpacing>
-                {!props.favoriteEvents ? (
+                {!isFavorite ? (
                     <div
                         style={{ fontSize: '2.5rem', cursor: 'pointer' }}
                         onClick={() => addFavoriteEvent()}

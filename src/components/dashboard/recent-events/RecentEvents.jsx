@@ -38,8 +38,9 @@ const RecentEvents = () => {
                         ...userEventLists.invited,
                         ...userEventLists.attending,
                     ]);
+                    console.log('here', userEventLists);
                     setFavoriteEvents(
-                        userEventLists.favorites.map((obj) => obj.id)
+                        userEventLists.favorited.map((obj) => obj.id)
                     );
                 })
                 .catch((err) => {
@@ -88,7 +89,8 @@ const RecentEvents = () => {
                             <RecentCard
                                 {...ele}
                                 key={ele.id}
-                                favoriteEvents={favoriteEvents.includes(ele.id)}
+                                // favoriteEvents={favoriteEvents.includes(ele.id)}
+                                favoriteEvents={favoriteEvents}
                                 setFavoriteEvents={setFavoriteEvents}
                             />
                         ))

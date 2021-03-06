@@ -146,6 +146,7 @@ export const RECENT_EVENTS = gql`
                         id
                         firstName
                         lastName
+                        status
                     }
                     ${getBYEmailEventString}
                 }
@@ -154,6 +155,7 @@ export const RECENT_EVENTS = gql`
                         id
                         firstName
                         lastName
+                        status
                     }
                     ${getBYEmailEventString}
                 }
@@ -165,6 +167,7 @@ export const RECENT_EVENTS = gql`
                         id
                         firstName
                         lastName
+                        status
                     }
                     ${getBYEmailEventString}
                 }
