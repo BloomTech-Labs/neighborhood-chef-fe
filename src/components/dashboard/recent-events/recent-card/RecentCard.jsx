@@ -14,24 +14,18 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { print } from 'graphql';
 
 import {
     timeAgo,
     parseTime,
-    isEventFavorite,
     chooseDefaultPicture,
-    makeInitials,
 } from '../../../../utilities/functions';
 
 import StatusButton from '../../../shared/event-details/status-button/StatusButton';
-
 import { rsvpButtons } from '../../../../data/buttons';
-
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
-
-import { USER_BY_ID } from '../../../../graphql/users/user-queries';
-import { print } from 'graphql';
 
 import {
     ADD_FAVORITE_EVENT,
@@ -47,15 +41,10 @@ import EventButtonModal from './event-button-modal/EventButtonModal';
 import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
-    const me = JSON.parse(sessionStorage.getItem('user'));
     const classes = cardStyles();
     const dispatch = useDispatch();
     const [expanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
-    const [creatorData, setCreatorData] = useState({});
-    const [creatorName, setCreatorName] = useState('');
-    const favoriteEvents = useSelector((state) => state.favoriteEvents);
-    const isFavorite = isEventFavorite(favoriteEvents, props.id);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -67,7 +56,7 @@ const RecentCard = (props) => {
     const addFavoriteEvent = () => {
         const addFavorite = {
             event_id: Number(props.id),
-            user_id: Number(me.id),
+            user_id: Number(props.User.id),
         };
 
         axiosWithAuth()
@@ -86,7 +75,7 @@ const RecentCard = (props) => {
     const removeFavoriteEvent = () => {
         const removeFavorite = {
             event_id: Number(props.id),
-            user_id: Number(me.id),
+            user_id: Number(props.User.id),
         };
 
         axiosWithAuth()
@@ -104,46 +93,23 @@ const RecentCard = (props) => {
             .catch((err) => console.log(err));
     };
 
-    useEffect(() => {
-        //get creator name & photo when event loads.
-        //This is a rough and inefficient way to do this, especially if there ends up being protected queries
-        props.user_id &&
-            axiosWithAuth()({
-                url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-                method: 'post',
-                data: {
-                    query: print(USER_BY_ID),
-                    variables: { id: props.user_id },
-                },
-            })
-                .then((res) => {
-                    const data = res.data.data.getUserById;
-                    setCreatorData(data);
-                    setCreatorName(`${data.firstName} ${data.lastName}`);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        // eslint-disable-next-line
-    }, []);
-
     return (
         <Card className={`${classes.root} ${classes.dashboard}`}>
             <CardHeader
                 avatar={
                     <Avatar
-                        key={creatorData.id}
-                        title={creatorName}
+                        key={props.User.id}
+                        title={`${props.User.firstName} ${props.User.lastName}`}
                         aria-label="avatar"
                         className={classes.avatar}
-                        src={
-                            creatorData.photo === 'null'
-                                ? null
-                                : creatorData.photo
-                        }
+                        src={props.User.photo ? props.User.photo : ''}
                     >
-                        {creatorData.photo === 'null' && (
-                            <Typography>{makeInitials(creatorData)}</Typography>
+                        {!props.User.photo && (
+                            <Typography>{`${props.User.firstName
+                                .split('')[0]
+                                .toUpperCase()}${props.User.lastName
+                                .split('')[0]
+                                .toUpperCase()}`}</Typography>
                         )}
                     </Avatar>
                 }
@@ -155,7 +121,7 @@ const RecentCard = (props) => {
                 }
                 title={
                     <Typography variant="h6">
-                        {creatorName}
+                        {`${props.User.firstName} ${props.User.lastName}`}
                         <span style={{ opacity: '.6' }}> created an event</span>
                     </Typography>
                 }
@@ -169,21 +135,17 @@ const RecentCard = (props) => {
             <Link to={'/events/' + props.id}>
                 {/* If you need to disable functionality of events showing custom uploaded images on 
         dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
-                {props.photo !== 'null' &&
-                process.env.REACT_APP_ALLOW_USER_IMG === '1' ? (
-                    <CardMedia
-                        style={{ maxHeight: '40%' }}
-                        component="img"
-                        src={props.photo}
-                        title="Recent Card Event Photo"
-                    />
-                ) : (
-                    <CardMedia
-                        className={classes.media}
-                        image={chooseDefaultPicture(props.category_id)}
-                        title="Recent Card Event Photo"
-                    />
-                )}
+                <CardMedia
+                    style={{ maxHeight: '40%' }}
+                    component="img"
+                    src={
+                        props.User.photo
+                            ? props.User.photo
+                            : chooseDefaultPicture()
+                    }
+                    title="Recent Card Event Photo"
+                />
+
                 <div
                     style={{
                         display: 'flex',
@@ -229,7 +191,7 @@ const RecentCard = (props) => {
                 </CardContent>
             </Link>
             <CardActions disableSpacing>
-                {!isFavorite ? (
+                {!props.favoriteEvents ? (
                     <div
                         style={{ fontSize: '2.5rem', cursor: 'pointer' }}
                         onClick={() => addFavoriteEvent()}
@@ -269,7 +231,7 @@ const RecentCard = (props) => {
                                 key={ele.name}
                                 eventStatus={currentStatus}
                                 eventId={props.id}
-                                userId={me.id}
+                                userId={props.User.id}
                                 setStatus={setCurrentStatus}
                             />
                         ))}

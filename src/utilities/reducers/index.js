@@ -21,11 +21,13 @@ import {
     REMOVE_FAVORITE_EVENT_SUCCESS,
     SET_PAGE,
     SAVE_USER_UPDATE_INFO,
+    SAVE_USER,
 } from '../actions';
 
 const initialDate = new Date();
 
 const initialState = {
+    user: {},
     loginCredentials: {},
     page: 1,
     activeEvent: null,
@@ -47,6 +49,11 @@ const initialState = {
 
 export const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case SAVE_USER:
+            return {
+                ...state,
+                user: payload,
+            };
         case GET_EVENTS_SUCCESS:
             return {
                 ...state,

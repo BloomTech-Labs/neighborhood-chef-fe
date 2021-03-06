@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AccountDrawer = (props) => {
     const styleClasses = styles();
-    const me = JSON.parse(sessionStorage.getItem('user'));
+    const me = useSelector((state) => state.user);
     const cardClasses = cardStyles();
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -154,18 +154,20 @@ const AccountDrawer = (props) => {
                 method: 'post',
                 data: {
                     query: print(GET_AUTHORED_EVENTS),
-                    variables: { id: me.id },
+                    variables: { queryParams: { id: 3 } },
                 },
             })
                 .then((res) => {
-                    setMyList(sortList(res.data.data.getAuthoredEvents));
+                    setMyList(
+                        sortList(res.data.data.Users[0].UserEvents.owned)
+                    );
                 })
                 .catch((err) => {
                     console.log(err.message);
                 });
         }
         // eslint-disable-next-line
-    }, [update]);
+    }, [update, me]);
 
     const [modalIsOpen, setModelIsOpen] = useState(false);
 
@@ -211,7 +213,6 @@ const AccountDrawer = (props) => {
             };
 
             localStorage.clear();
-            sessionStorage.clear();
 
             window.location.replace(`${url}?${qs.stringify(body)}`);
         } catch (err) {

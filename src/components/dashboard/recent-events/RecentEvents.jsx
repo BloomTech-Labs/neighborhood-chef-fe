@@ -3,46 +3,44 @@ import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 import { useSelector, useDispatch } from 'react-redux';
 import RecentCard from './recent-card/RecentCard';
 import { print } from 'graphql';
-import {
-    GET_INVITED_EVENTS,
-    GET_FAVORITE_EVENTS,
-} from '../../../graphql/users/user-queries';
-import {
-    getEventsSuccess,
-    getFavoriteEventsSuccess,
-} from '../../../utilities/actions';
+import { RECENT_EVENTS } from '../../../graphql/users/user-queries';
 import Typography from '@material-ui/core/Typography';
 
 //icon imports
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const RecentEvents = () => {
-    const me = JSON.parse(sessionStorage.getItem('user'));
+    const me = useSelector((state) => state.user);
     const update = useSelector((state) => state.update);
-    const eventList = useSelector((state) => state.eventList);
-    const dispatch = useDispatch();
     const [isFetching, setIsFetching] = useState(true);
+    const [eventList, setEventList] = useState([]);
+    const [favoriteEvents, setFavoriteEvents] = useState([]);
 
     useEffect(() => {
-        if (me) {
+        if (me.id) {
             setIsFetching(true);
             axiosWithAuth()({
                 url: `${process.env.REACT_APP_BASE_URL}/graphql`,
                 method: 'post',
                 data: {
-                    query: print(GET_INVITED_EVENTS),
-                    variables: { id: me.id },
+                    query: print(RECENT_EVENTS),
+                    variables: {
+                        queryParams: {
+                            id: me.id,
+                        },
+                    },
                 },
             })
                 .then((res) => {
-                    const sorted = res.data.data.getInvitedEvents.sort(
-                        (a, b) => b.createDateTime - a.createDateTime
+                    const userEventLists = res.data.data.Users[0].UserEvents;
+                    setEventList([
+                        ...userEventLists.owned,
+                        ...userEventLists.invited,
+                        ...userEventLists.attending,
+                    ]);
+                    setFavoriteEvents(
+                        userEventLists.favorites.map((obj) => obj.id)
                     );
-                    const limitSet = sorted.slice(
-                        0,
-                        process.env.REACT_APP_DASHBOARD_EVENT_LIMIT
-                    );
-                    dispatch(getEventsSuccess(limitSet));
                 })
                 .catch((err) => {
                     console.log(err.message);
@@ -52,31 +50,7 @@ const RecentEvents = () => {
                 });
         }
         // eslint-disable-next-line
-    }, [update]);
-
-    useEffect(() => {
-        if (me) {
-            axiosWithAuth()({
-                url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-                method: 'post',
-                data: {
-                    query: print(GET_FAVORITE_EVENTS),
-                    variables: { id: me.id },
-                },
-            })
-                .then((res) => {
-                    dispatch(
-                        getFavoriteEventsSuccess(
-                            res.data.data.getFavoriteEvents
-                        )
-                    );
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        }
-        // eslint-disable-next-line
-    }, []);
+    }, [update, me]);
 
     return (
         <div>
@@ -87,7 +61,7 @@ const RecentEvents = () => {
                     { textAlign: 'center', marginBottom: '10px' } // {{ marginLeft: "12px", marginBottom: "5px" }}
                 }
             >
-                Newest Events
+                Recent Events
             </Typography>
             <div
                 style={{
@@ -114,11 +88,8 @@ const RecentEvents = () => {
                             <RecentCard
                                 {...ele}
                                 key={ele.id}
-                                currentStatus={
-                                    ele.users.filter(
-                                        (u) => `${u.id}` === `${me.id}`
-                                    )[0].status
-                                }
+                                favoriteEvents={favoriteEvents.includes(ele.id)}
+                                setFavoriteEvents={setFavoriteEvents}
                             />
                         ))
                     ) : (

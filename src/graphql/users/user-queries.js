@@ -132,18 +132,40 @@ export const USER_BY_EMAIL = gql`
             address
             latitude
             longitude
+        }
+    }
+`;
 
+export const RECENT_EVENTS = gql`
+    query recentEvents($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
+            id
             UserEvents {
                 attending {
+                    User {
+                        id
+                        firstName
+                        lastName
+                    }
                     ${getBYEmailEventString}
                 }
                 invited {
+                    User {
+                        id
+                        firstName
+                        lastName
+                    }
                     ${getBYEmailEventString}
                 }
                 favorited {
-                    ${getBYEmailEventString}
+                    id
                 }
                 owned {
+                    User {
+                        id
+                        firstName
+                        lastName
+                    }
                     ${getBYEmailEventString}
                 }
             }
@@ -152,33 +174,14 @@ export const USER_BY_EMAIL = gql`
 `;
 
 export const GET_AUTHORED_EVENTS = gql`
-    query getAuthoredEvents($id: ID!) {
-        getAuthoredEvents(id: $id) {
+    query getAuthoredEvents($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
             id
-            category_id
-            startTime
-            endTime
-            createDateTime
-            description
-            title
-            address
-            latitude
-            longitude
-            user_id
-            photo
-            modifiers
-            hashtags
-            users {
-                id
-                email
-                firstName
-                lastName
-                longitude
-                latitude
-                status
-                address
-                gender
-                photo
+            firstName
+            UserEvents {
+                owned {
+                    ${getBYEmailEventString} 
+                }
             }
         }
     }

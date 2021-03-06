@@ -20,6 +20,12 @@ export const ADD_FAVORITE_EVENT_SUCCESS = 'ADD_FAVORITE_EVENT_SUCCESS';
 export const REMOVE_FAVORITE_EVENT_SUCCESS = 'REMOVE_FAVORITE_EVENT_SUCCESS';
 export const SET_PAGE = 'SET_PAGE';
 export const SAVE_USER_UPDATE_INFO = 'SAVE_USER_UPDATE_INFO';
+export const SAVE_USER = 'SAVE_USER';
+
+export const saveUser = (user) => ({
+    type: SAVE_USER,
+    payload: user,
+});
 
 export const getEventsSuccess = (events) => ({
     type: GET_EVENTS_SUCCESS,
