@@ -35,7 +35,6 @@ import EventButtonModal from './event-button-modal/EventButtonModal';
 import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
-    console.log(props);
     const classes = cardStyles();
     const [expanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(props.currentStatus);

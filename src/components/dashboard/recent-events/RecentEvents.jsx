@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import RecentCard from './recent-card/RecentCard';
 import { print } from 'graphql';
 import { RECENT_EVENTS } from '../../../graphql/users/user-queries';
@@ -15,6 +15,9 @@ const RecentEvents = () => {
     const [isFetching, setIsFetching] = useState(true);
     const [eventList, setEventList] = useState([]);
     const [favoriteEvents, setFavoriteEvents] = useState([]);
+
+    const sortEvents = (events) =>
+        events.sort((a, b) => b.createDateTime - a.createDateTime);
 
     useEffect(() => {
         if (me.id) {
@@ -33,12 +36,12 @@ const RecentEvents = () => {
             })
                 .then((res) => {
                     const userEventLists = res.data.data.Users[0].UserEvents;
-                    setEventList([
+                    const allEvents = [
                         ...userEventLists.owned,
                         ...userEventLists.invited,
                         ...userEventLists.attending,
-                    ]);
-                    console.log('here', userEventLists);
+                    ];
+                    setEventList(sortEvents(allEvents));
                     setFavoriteEvents(
                         userEventLists.favorited.map((obj) => obj.id)
                     );
