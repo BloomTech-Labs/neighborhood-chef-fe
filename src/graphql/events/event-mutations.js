@@ -1,31 +1,9 @@
 import gql from 'graphql-tag';
 
-export const ADD_EVENT = gql`
-    mutation addEvent($input: NewEventInput!) {
-        addEvent(input: $input) {
+export const CREATE_EVENT = gql`
+    mutation inputEvent($input: EventInput!) {
+        inputEvent(input: $input) {
             id
-            title
-            description
-            startTime
-            endTime
-            user_id
-            category_id
-            address
-            latitude
-            longitude
-            hashtags
-            modifiers
-            allergenWarnings
-            dietaryWarnings
-            photo
-            users {
-                id
-                email
-                firstName
-                lastName
-                status
-                photo
-            }
         }
     }
 `;

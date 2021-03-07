@@ -41,6 +41,9 @@ export const formPageOneStyles = makeStyles((theme) => ({
         outline: 'none',
         fontSize: '1.6rem',
         width: '90%',
+        '&::placeholder': {
+            color: '#b7b7b7',
+        },
     },
     geo: {
         width: '90%',
@@ -58,6 +61,9 @@ export const formPageOneStyles = makeStyles((theme) => ({
         padding: '10px 12px',
         fontSize: '1.6rem',
         width: '94%',
+        '&::placeholder': {
+            color: '#b7b7b7',
+        },
         [theme.breakpoints.down('800')]: {
             width: '95%',
             margin: '20px 0',

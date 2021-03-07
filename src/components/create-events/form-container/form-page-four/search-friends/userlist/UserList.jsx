@@ -9,7 +9,7 @@ const UserList = ({ event, filteredList }) => {
 
     return (
         <>
-            {invitedList
+            {/* {invitedList
                 .sort((a, b) => a.firstName.localeCompare(b.firstName))
                 .map((user) => {
                     return (
@@ -26,7 +26,7 @@ const UserList = ({ event, filteredList }) => {
                             <UninvitedUser key={user.id} user={user} />
                         )
                     );
-                })}
+                })} */}
         </>
     );
 };

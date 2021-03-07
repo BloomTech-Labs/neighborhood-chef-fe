@@ -53,8 +53,7 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
             values.address &&
             values.description &&
             values.date &&
-            values.startTime &&
-            values.category_id
+            values.startTime
         ) {
             dispatch(setPage(2));
             scrollToTop();
@@ -258,28 +257,19 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                             <MenuItem value={'23:30:00'}>11:30pm</MenuItem>
                         </Select>
                     </div>
-
-                    <div className={styles.categoryDiv}>
-                        <label htmlFor="category_id" className={styles.labels}>
-                            Category
-                        </label>
-                        <Select
-                            name="category_id"
-                            className={styles.category}
-                            value={values.category_id}
+                    <div className={styles.inputDiv}>
+                        <Field
+                            type="text"
+                            name="category"
+                            placeholder="Category"
                             onChange={handleChange}
-                            disableUnderline
-                        >
-                            <MenuItem value=""></MenuItem>
-                            <MenuItem value={1}>BBQ</MenuItem>
-                            <MenuItem value={2}>Picnic</MenuItem>
-                            <MenuItem value={3}>Wine and Cheese</MenuItem>
-                            <MenuItem value={4}>Multi-course meal</MenuItem>
-                            <MenuItem value={5}>Sunday Sports</MenuItem>
-                            <MenuItem value={6}>Kids Play Date</MenuItem>
-                            <MenuItem value={7}>Puppy Play Date</MenuItem>
-                            <MenuItem value={8}>Cat Play Date</MenuItem>
-                        </Select>
+                            value={values.category}
+                            className={styles.input}
+                        />
+                        <CreateIcon
+                            color="disabled"
+                            style={{ fontSize: '22px' }}
+                        />
                     </div>
                 </div>
             </div>
@@ -292,8 +282,8 @@ const FormPageOne = ({ handleChange, values, setFieldValue }) => {
                         width: '90%',
                     }}
                 >
-                    *Title, Address, Description, Date, Start Time, and Category
-                    are required
+                    Title, Address, Description, Date, and Start Time are
+                    required
                 </p>
             )}
 
