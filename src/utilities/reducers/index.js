@@ -22,6 +22,7 @@ import {
     SET_PAGE,
     SAVE_USER_UPDATE_INFO,
     SAVE_USER,
+    ADD_LOGGED_IN_USER_INFO,
 } from '../actions';
 
 const initialDate = new Date();
@@ -49,6 +50,9 @@ const initialState = {
 
 export const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case ADD_LOGGED_IN_USER_INFO:
+            console.log(payload);
+            return { ...state, user: payload };
         case SAVE_USER:
             return {
                 ...state,

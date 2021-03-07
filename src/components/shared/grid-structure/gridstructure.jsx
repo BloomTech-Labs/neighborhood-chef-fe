@@ -123,14 +123,17 @@ function GridStructure(props) {
                 method: 'post',
                 data: {
                     query: print(USER_BY_EMAIL),
-                    variables: { queryParams: { email: decodedToken } },
+                    variables: {
+                        queryParams: { email: decodedToken },
+                        mileRadius: 10000,
+                    },
                 },
             })
                 .then((res) => {
                     dispatch(saveUser(res.data.data.Users[0]));
                 })
                 .catch((err) => {
-                    console.log(err.response.data.errors);
+                    console.log(err);
                     console.dir(err);
                 });
         }

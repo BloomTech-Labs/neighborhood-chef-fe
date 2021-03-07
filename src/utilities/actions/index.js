@@ -21,6 +21,12 @@ export const REMOVE_FAVORITE_EVENT_SUCCESS = 'REMOVE_FAVORITE_EVENT_SUCCESS';
 export const SET_PAGE = 'SET_PAGE';
 export const SAVE_USER_UPDATE_INFO = 'SAVE_USER_UPDATE_INFO';
 export const SAVE_USER = 'SAVE_USER';
+export const ADD_LOGGED_IN_USER_INFO = 'ADD_LOGGED_IN_USER_INFO';
+
+export const addLoggedInUserInformation = (user) => ({
+    type: ADD_LOGGED_IN_USER_INFO,
+    payload: user,
+});
 
 export const saveUser = (user) => ({
     type: SAVE_USER,

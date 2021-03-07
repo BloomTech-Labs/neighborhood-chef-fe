@@ -1,0 +1,22 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161.5 22.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #43ff6b;
+      }
+    </style>
+  </defs>
+  <title>tab</title>
+  <path class="cls-1" d="M167.54,28.89" transform="translate(-20 -31)"/>
+  <path class="cls-2" d="M181.5,53.5H20a16.91,16.91,0,0,0,10-3.13c3.59-2.69,4.89-7.07,7.49-10.61a23.21,23.21,0,0,1,10.59-8.31A11.67,11.67,0,0,1,50,31H151.5a11.67,11.67,0,0,1,1.92.45A23.21,23.21,0,0,1,164,39.76c2.6,3.54,3.9,7.92,7.49,10.61A16.91,16.91,0,0,0,181.5,53.5Z" transform="translate(-20 -31)"/>
+</svg>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 //style imports
@@ -38,7 +38,7 @@ const RecentCard = (props) => {
     const classes = cardStyles();
     const [expanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
-    let isFavorite = props.favoriteEvents.includes(props.id);
+    const [favorite, setFavorite] = useState(props.isFavorite);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -50,7 +50,7 @@ const RecentCard = (props) => {
     const addFavoriteEvent = () => {
         const favoriteEvent = {
             event_id: Number(props.id),
-            user_id: Number(props.User.id),
+            user_id: Number(props.currentUserId),
         };
 
         axiosWithAuth()
@@ -59,16 +59,15 @@ const RecentCard = (props) => {
                 variables: { favoriteEvent: favoriteEvent },
             })
             .then((res) => {
-                props.setFavoriteEvents([...props.favoriteEvents, props.id]);
-                isFavorite = true;
+                setFavorite(!favorite);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.dir(err));
     };
 
     const removeFavoriteEvent = () => {
         const favoriteEvent = {
             event_id: Number(props.id),
-            user_id: Number(props.User.id),
+            user_id: Number(props.currentUserId),
         };
 
         axiosWithAuth()
@@ -77,12 +76,9 @@ const RecentCard = (props) => {
                 variables: { favoriteEvent: favoriteEvent },
             })
             .then((res) => {
-                props.setFavoriteEvents(
-                    props.favoriteEvents.filter((id) => id !== props.id)
-                );
-                isFavorite = false;
+                setFavorite(!favorite);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.dir(err));
     };
 
     return (
@@ -105,12 +101,12 @@ const RecentCard = (props) => {
                         )}
                     </Avatar>
                 }
-                action={
-                    <EventButtonModal
-                        eventId={props.id}
-                        userId={props.user_id}
-                    />
-                }
+                // action={
+                //     <EventButtonModal
+                //         eventId={props.id}
+                //         userId={props.user_id}
+                //     />
+                // }
                 title={
                     <Typography variant="h6">
                         {`${props.User.firstName} ${props.User.lastName}`}
@@ -183,7 +179,7 @@ const RecentCard = (props) => {
                 </CardContent>
             </Link>
             <CardActions disableSpacing>
-                {!isFavorite ? (
+                {!favorite ? (
                     <div
                         style={{ fontSize: '2.5rem', cursor: 'pointer' }}
                         onClick={() => addFavoriteEvent()}

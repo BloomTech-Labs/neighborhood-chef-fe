@@ -13,6 +13,12 @@ latitude
 longitude
 modifiers
 hashtags
+status
+User {
+    id
+    firstName
+    lastName
+}
 EventUsers {
     attending {
         id
@@ -122,7 +128,7 @@ export const USER_BY_ID = gql`
 `;
 
 export const USER_BY_EMAIL = gql`
-    query getUserByEmail($queryParams: UserInput!) {
+    query getUserByEmail($queryParams: UserInput!, $mileRadius: Int!) {
         Users(queryParams: $queryParams) {
             id
             email
@@ -132,8 +138,23 @@ export const USER_BY_EMAIL = gql`
             address
             latitude
             longitude
-        }
+            UserEvents {
+                attending {
+                    ${getBYEmailEventString}
+                }
+                invited {
+                    ${getBYEmailEventString}
+                }
+                favorited 
+                owned {
+                    ${getBYEmailEventString}
+                }
+                local(mileRadius: $mileRadius) {
+                    ${getBYEmailEventString}
+                }
+            }
     }
+}
 `;
 
 export const RECENT_EVENTS = gql`
