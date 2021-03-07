@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //style imports
@@ -16,6 +16,10 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { print } from 'graphql';
 
+import { Icon } from '@iconify/react';
+import starEmpty from '@iconify-icons/dashicons/star-empty';
+import starFilled from '@iconify-icons/carbon/star-filled';
+
 import {
     timeAgo,
     parseTime,
@@ -32,7 +36,6 @@ import {
 } from '../../../../graphql/users/user-mutations';
 
 import EventButtonModal from './event-button-modal/EventButtonModal';
-import Emoji from '../../../shared/Emoji';
 
 const RecentCard = (props) => {
     const classes = cardStyles();
@@ -181,17 +184,26 @@ const RecentCard = (props) => {
             <CardActions disableSpacing>
                 {!favorite ? (
                     <div
-                        style={{ fontSize: '2.5rem', cursor: 'pointer' }}
-                        onClick={() => addFavoriteEvent()}
+                        style={{ cursor: 'pointer' }}
+                        onClick={addFavoriteEvent}
                     >
-                        <Emoji label="star" symbol="☆" />
+                        <Icon
+                            icon={starEmpty}
+                            style={{ fontSize: '3.5rem', color: 'gray' }}
+                        />
                     </div>
                 ) : (
                     <div
-                        style={{ fontSize: '2.5rem', cursor: 'pointer' }}
-                        onClick={() => removeFavoriteEvent()}
+                        style={{ cursor: 'pointer' }}
+                        onClick={removeFavoriteEvent}
                     >
-                        <Emoji label="star" symbol="⭐" />
+                        <Icon
+                            icon={starFilled}
+                            style={{
+                                fontSize: '3.5rem',
+                                color: '#f50057',
+                            }}
+                        />
                     </div>
                 )}
                 <IconButton
