@@ -28,7 +28,7 @@ import globeIcon from '@iconify/icons-flat-color-icons/globe';
 
 //component imports
 import StatusButton from './status-button/StatusButton';
-import EventButtonModal from '../../dashboard/recent-events/recent-card/event-button-modal/EventButtonModal';
+import EventButtonModal from '../../dashboard/event-view/recent-card/event-button-modal/EventButtonModal';
 
 //data/function imports
 import { rsvpButtons } from '../../../data/buttons';

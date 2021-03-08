@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import tabImage from '../../assets/tab.svg';
+import tabImage from '../../../assets/tab.svg';
 
 const useStyles = makeStyles({
     container: {

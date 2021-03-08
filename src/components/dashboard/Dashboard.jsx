@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import Feed from "./Feed";
-import RecentEvents from './recent-events/RecentEvents';
-import DashboardTabs from './dashboard-tabs';
-import EventView from './event-view';
+
+import DashboardTabs from './dashboard-tabs/dashboard-tabs';
+import EventView from './event-view/event-view';
 const Dashboard = () => {
     const [currentTab, selectCurrentTab] = useState(1);
 

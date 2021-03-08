@@ -26,7 +26,6 @@ import {
     chooseDefaultPicture,
 } from '../../../../utilities/functions';
 
-import StatusButton from '../../../shared/event-details/status-button/StatusButton';
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
 
 import {
@@ -35,6 +34,7 @@ import {
 } from '../../../../graphql/users/user-mutations';
 
 import EventButtonModal from './event-button-modal/EventButtonModal';
+import StatusButtons from './status-buttons/status-buttons';
 
 const RecentCard = (props) => {
     const classes = cardStyles();
@@ -223,32 +223,11 @@ const RecentCard = (props) => {
                     <Typography variant="h6">
                         Are you attending this event?
                     </Typography>
-                    <div style={{ display: 'flex', marginTop: '10px' }}>
-                        <StatusButton
-                            status={'GOING'}
-                            currStatus={status}
-                            setStatus={setStatus}
-                            eventId={props.id}
-                            userId={props.currentUserId}
-                            color={'#82DF96'}
-                        />
-                        <StatusButton
-                            status={'MAYBE_GOING'}
-                            currStatus={status}
-                            setStatus={setStatus}
-                            eventId={props.id}
-                            userId={props.currentUserId}
-                            color={'#C4C4C4'}
-                        />
-                        <StatusButton
-                            status={'NOT_GOING'}
-                            currStatus={status}
-                            setStatus={setStatus}
-                            eventId={props.id}
-                            userId={props.currentUserId}
-                            color={'#EA6565'}
-                        />
-                    </div>
+                    <StatusButtons
+                        id={props.id}
+                        currentUserId={props.currentUserId}
+                        status={status}
+                    />
                 </CardContent>
             </Collapse>
         </Card>

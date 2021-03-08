@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RecentCard from './recent-events/recent-card/RecentCard';
+import RecentCard from './recent-card/recent-card';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 
