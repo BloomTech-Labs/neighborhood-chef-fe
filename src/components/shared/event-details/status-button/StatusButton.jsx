@@ -1,69 +1,56 @@
 import React from 'react';
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
-import { useDispatch } from 'react-redux';
-import { changeStatus } from '../../../../utilities/actions';
 import { buttonStyles } from '../../../../styles';
-import { useLocation } from 'react-router-dom';
 
 import { print } from 'graphql';
-import { UPDATE_INVITATION } from '../../../../graphql/events/event-mutations';
+import { UPDATE_EVENT_STATUS } from '../../../../graphql/events/event-mutations';
 
 const StatusButton = ({
-    name,
+    status,
     color,
-    eventStatus,
+    currStatus,
     eventId,
     userId,
     setStatus,
-    setParticipants,
 }) => {
     const classes = buttonStyles();
-    const dispatch = useDispatch();
-    let location = useLocation();
 
-    const updateStatus = (newStatus) => {
+    const updateStatus = () => {
         axiosWithAuth()
             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                query: print(UPDATE_INVITATION),
+                query: print(UPDATE_EVENT_STATUS),
                 variables: {
-                    input: {
+                    eventStatus: {
                         event_id: parseInt(eventId),
                         user_id: parseInt(userId),
-                        status: newStatus,
+                        status: status,
                     },
                 },
             })
-            .then((res) => {
-                const newStatus = res.data.data.updateInvitation.users.filter(
-                    (u) => `${u.id}` === `${userId}`
-                )[0].status;
-                setStatus(newStatus);
-                dispatch(changeStatus(eventId, newStatus));
-
-                if (
-                    location.pathname === `/events/${eventId}` ||
-                    location.pathname === '/view-events'
-                ) {
-                    const attendees = res.data.data.updateInvitation.users.filter(
-                        (user) => user.status === 'Going'
-                    );
-                    setParticipants(attendees);
-                }
+            .then(() => {
+                setStatus(status);
+            })
+            .catch((err) => {
+                console.dir(err);
             });
     };
     return (
         <button
-            className={`${classes.rsvpRoot} ${
-                eventStatus === name && classes.rsvpActive
-            }`}
-            style={{ background: color }}
-            name={name}
+            className={classes.rsvpRoot}
+            style={{
+                filter: status === currStatus ? 'none' : 'brightness(80%)',
+                background: color,
+            }}
             onClick={(e) => {
                 e.preventDefault();
-                updateStatus(e.target.name);
+                updateStatus();
             }}
         >
-            {name === 'Going' ? 'Yes' : name === 'Not Going' ? 'No' : 'Maybe'}
+            {status === 'GOING'
+                ? 'Yes'
+                : status === 'NOT_GOING'
+                ? 'No'
+                : 'Maybe'}
         </button>
     );
 };

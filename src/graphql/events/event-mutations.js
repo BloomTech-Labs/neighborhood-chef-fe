@@ -8,6 +8,14 @@ export const CREATE_EVENT = gql`
     }
 `;
 
+export const UPDATE_EVENT_STATUS = gql`
+    mutation inputEventStatus($eventStatus: EventStatusInput!) {
+        inputEventStatus(eventStatus: $eventStatus) {
+            id
+        }
+    }
+`;
+
 export const UPDATE_EVENT = gql`
     mutation updateEvent($id: ID!, $input: UpdateEventInput!) {
         updateEvent(id: $id, input: $input) {

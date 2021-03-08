@@ -57,7 +57,7 @@ export default function EventView({ currentTab }) {
                             <RecentCard
                                 {...event}
                                 key={event.id}
-                                currentStatus={'attending'}
+                                currentStatus={event.status}
                                 isFavorite={event.favorite}
                                 currentUserId={currentUserId}
                             />

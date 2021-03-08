@@ -27,7 +27,6 @@ import {
 } from '../../../../utilities/functions';
 
 import StatusButton from '../../../shared/event-details/status-button/StatusButton';
-import { rsvpButtons } from '../../../../data/buttons';
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
 
 import {
@@ -40,7 +39,7 @@ import EventButtonModal from './event-button-modal/EventButtonModal';
 const RecentCard = (props) => {
     const classes = cardStyles();
     const [expanded, setExpanded] = useState(false);
-    const [currentStatus, setCurrentStatus] = useState(props.currentStatus);
+    const [status, setStatus] = useState(props.currentStatus);
     const [favorite, setFavorite] = useState(props.isFavorite);
 
     const handleExpandClick = () => {
@@ -225,16 +224,30 @@ const RecentCard = (props) => {
                         Are you attending this event?
                     </Typography>
                     <div style={{ display: 'flex', marginTop: '10px' }}>
-                        {rsvpButtons.map((ele) => (
-                            <StatusButton
-                                {...ele}
-                                key={ele.name}
-                                eventStatus={currentStatus}
-                                eventId={props.id}
-                                userId={props.User.id}
-                                setStatus={setCurrentStatus}
-                            />
-                        ))}
+                        <StatusButton
+                            status={'GOING'}
+                            currStatus={status}
+                            setStatus={setStatus}
+                            eventId={props.id}
+                            userId={props.currentUserId}
+                            color={'#82DF96'}
+                        />
+                        <StatusButton
+                            status={'MAYBE_GOING'}
+                            currStatus={status}
+                            setStatus={setStatus}
+                            eventId={props.id}
+                            userId={props.currentUserId}
+                            color={'#C4C4C4'}
+                        />
+                        <StatusButton
+                            status={'NOT_GOING'}
+                            currStatus={status}
+                            setStatus={setStatus}
+                            eventId={props.id}
+                            userId={props.currentUserId}
+                            color={'#EA6565'}
+                        />
                     </div>
                 </CardContent>
             </Collapse>

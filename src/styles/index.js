@@ -62,12 +62,8 @@ export const buttonStyles = makeStyles({
         fontWeight: 'bolder',
         cursor: 'pointer',
         border: 'none',
-        opacity: '.6',
         margin: '0px 3px',
-    },
-    rsvpActive: {
-        border: '1px solid black',
-        opacity: '1',
+        outline: 'none',
     },
     icon: {
         background: '#E8E8E8',
