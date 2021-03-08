@@ -22,7 +22,10 @@ function GenericRedirect(props) {
             method: 'post',
             data: {
                 query: print(USER_BY_EMAIL),
-                variables: { queryParams: { email: decodedToken } },
+                variables: {
+                    queryParams: { email: decodedToken },
+                    mileRadius: 25,
+                },
             },
         })
             .then((res) => {
