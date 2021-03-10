@@ -137,7 +137,7 @@ function GridStructure(props) {
                     console.dir(err);
                 });
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={classes['grid-container']}>

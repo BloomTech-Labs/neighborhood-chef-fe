@@ -101,17 +101,6 @@ export const formPageOneStyles = makeStyles((theme) => ({
         padding: '14px 30px',
         fontSize: '1.6rem',
     },
-    timeDiv: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        border: '2px solid #f0f0f0',
-        borderRadius: '15px',
-        margin: '40px 0',
-        [theme.breakpoints.down('800')]: {
-            margin: '20px 0',
-        },
-    },
     select: {
         display: 'flex',
         alignItems: 'center',

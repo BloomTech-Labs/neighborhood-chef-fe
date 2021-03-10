@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import RecentCard from './recent-card/recent-card';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
@@ -30,9 +30,9 @@ export default function EventView({ currentTab }) {
 
     const currentUserId = useSelector((state) => state.user.id);
 
-    useEffect(() => {
-        console.log(events);
-    }, [events]);
+    // useEffect(() => {
+    //     console.log(events);
+    // }, [events]);
 
     return (
         <div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import DashboardTabs from './dashboard-tabs/dashboard-tabs';
 import EventView from './event-view/event-view';
+
 const Dashboard = () => {
     const [currentTab, selectCurrentTab] = useState(1);
 
