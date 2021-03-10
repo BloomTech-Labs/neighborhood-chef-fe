@@ -1,3 +1,7 @@
+import { axiosWithAuth } from '../axiosWithAuth';
+import { print } from 'graphql';
+import { UPDATE_EVENT_STATUS } from '../../graphql/events/event-mutations';
+
 export const MAKEACTIVE = 'MAKEACTIVE';
 export const CHANGE_MONTH = 'CHANGE_MONTH';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
@@ -22,6 +26,30 @@ export const SET_PAGE = 'SET_PAGE';
 export const SAVE_USER_UPDATE_INFO = 'SAVE_USER_UPDATE_INFO';
 export const SAVE_USER = 'SAVE_USER';
 export const ADD_LOGGED_IN_USER_INFO = 'ADD_LOGGED_IN_USER_INFO';
+export const CHANGE_STATUS_FOR_SINGLE_EVENT = 'CHANGE_STATUS_FOR_SINGLE_EVENT';
+
+export const changeStatusForSingleEvent = (data) => (dispatch) => {
+    axiosWithAuth()
+        .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+            query: print(UPDATE_EVENT_STATUS),
+            variables: {
+                eventStatus: {
+                    event_id: parseInt(data.eventId),
+                    user_id: parseInt(data.userId),
+                    status: data.status,
+                },
+            },
+        })
+        .then(() => {
+            dispatch({
+                type: CHANGE_STATUS_FOR_SINGLE_EVENT,
+                payload: { event_id: data.eventId, status: data.status },
+            });
+        })
+        .catch((err) => {
+            console.dir(err);
+        });
+};
 
 export const addLoggedInUserInformation = (user) => ({
     type: ADD_LOGGED_IN_USER_INFO,

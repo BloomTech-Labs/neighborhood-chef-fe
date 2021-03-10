@@ -24,7 +24,7 @@ function GenericRedirect(props) {
                 query: print(USER_BY_EMAIL),
                 variables: {
                     queryParams: { email: decodedToken },
-                    mileRadius: 25,
+                    mileRadius: 10,
                 },
             },
         })

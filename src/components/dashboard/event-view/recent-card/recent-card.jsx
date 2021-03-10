@@ -39,7 +39,6 @@ import StatusButtons from './status-buttons/status-buttons';
 const RecentCard = (props) => {
     const classes = cardStyles();
     const [expanded, setExpanded] = useState(false);
-    const [status, setStatus] = useState(props.currentStatus);
     const [favorite, setFavorite] = useState(props.isFavorite);
 
     const handleExpandClick = () => {
@@ -103,12 +102,6 @@ const RecentCard = (props) => {
                         )}
                     </Avatar>
                 }
-                // action={
-                //     <EventButtonModal
-                //         eventId={props.id}
-                //         userId={props.user_id}
-                //     />
-                // }
                 title={
                     <Typography variant="h6">
                         {`${props.User.firstName} ${props.User.lastName}`}
@@ -166,16 +159,22 @@ const RecentCard = (props) => {
                     <Typography variant="body1" align="center">
                         <span
                             style={
-                                props.User.status === 'Not Going'
+                                props.status === 'NOT_GOING'
                                     ? { color: 'rgba(232, 64, 64, .75)' }
-                                    : props.User.status === 'Maybe'
+                                    : props.status === 'MAYBE_GOING'
                                     ? { color: 'rgba(255, 169, 40, .75)' }
-                                    : props.User.status === 'Going'
+                                    : props.status === 'GOING'
                                     ? { color: 'rgba(33, 186, 66, .75)' }
                                     : { color: 'rgba(0,0,0, .3)' }
                             }
                         >
-                            {props.User.status || 'undecided'}
+                            {props.status === 'GOING'
+                                ? 'Going'
+                                : props.status === 'NOT_GOING'
+                                ? 'Not Going'
+                                : props.status === 'MAYBE_GOING'
+                                ? 'Maybe Going'
+                                : 'undecided'}
                         </span>
                     </Typography>
                 </CardContent>
@@ -226,7 +225,6 @@ const RecentCard = (props) => {
                     <StatusButtons
                         id={props.id}
                         currentUserId={props.currentUserId}
-                        status={status}
                     />
                 </CardContent>
             </Collapse>

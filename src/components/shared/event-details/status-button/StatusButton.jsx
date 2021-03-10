@@ -1,9 +1,7 @@
 import React from 'react';
-import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
+import { connect } from 'react-redux';
 import { buttonStyles } from '../../../../styles';
-
-import { print } from 'graphql';
-import { UPDATE_EVENT_STATUS } from '../../../../graphql/events/event-mutations';
+import { changeStatusForSingleEvent } from '../../../../utilities/actions';
 
 const StatusButton = ({
     status,
@@ -11,29 +9,10 @@ const StatusButton = ({
     currStatus,
     eventId,
     userId,
-    setStatus,
+    changeStatusForSingleEvent,
 }) => {
     const classes = buttonStyles();
 
-    const updateStatus = () => {
-        axiosWithAuth()
-            .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                query: print(UPDATE_EVENT_STATUS),
-                variables: {
-                    eventStatus: {
-                        event_id: parseInt(eventId),
-                        user_id: parseInt(userId),
-                        status: status,
-                    },
-                },
-            })
-            .then(() => {
-                setStatus(status);
-            })
-            .catch((err) => {
-                console.dir(err);
-            });
-    };
     return (
         <button
             className={classes.rsvpRoot}
@@ -41,9 +20,13 @@ const StatusButton = ({
                 filter: status === currStatus ? 'none' : 'brightness(80%)',
                 background: color,
             }}
-            onClick={(e) => {
+            onClick={async (e) => {
                 e.preventDefault();
-                updateStatus();
+                changeStatusForSingleEvent({
+                    status,
+                    eventId,
+                    userId,
+                });
             }}
         >
             {status === 'GOING'
@@ -55,4 +38,4 @@ const StatusButton = ({
     );
 };
 
-export default StatusButton;
+export default connect(null, { changeStatusForSingleEvent })(StatusButton);

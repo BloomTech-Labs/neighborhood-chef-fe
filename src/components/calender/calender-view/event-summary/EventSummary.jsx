@@ -58,45 +58,29 @@ const EventSummary = ({ selectedEvent }) => {
                         }
                         subheader={
                             <Typography variant="caption">
-                                <span style={{ opacity: '.6' }}>
-                                    created by{' '}
-                                </span>
+                                <span>created by</span>
                                 {`${selectedEvent.User.firstName} ${selectedEvent.User.lastName}`}
                             </Typography>
                         }
                     />
                     <CardMedia
-                        style={{ maxHeight: '40%' }}
                         component="img"
                         src={photo}
                         title="Event Details Photo"
                     />
-                    <p style={{ opacity: '.5' }}>
-                        {' '}
-                        {selectedEvent.description}
-                    </p>
+                    <p> {selectedEvent.description}</p>
                     <div>
                         Confirmed Attending:{' '}
                         {selectedEvent.EventUsers.attending.length}
                     </div>
                     <div>
-                        <span
-                            style={{
-                                marginRight: '5px',
-                                verticalAlign: 'middle',
-                            }}
-                        >
+                        <span>
                             <Icon height="20" icon={calendarIcon} />
                         </span>
                         {timeObject.formattedDate}
                     </div>
                     <div>
-                        <span
-                            style={{
-                                marginRight: '5px',
-                                verticalAlign: 'middle',
-                            }}
-                        >
+                        <span>
                             <Icon height="20" icon={clockIcon} />
                         </span>
                         {`${timeObject.startTime} ${
@@ -106,36 +90,29 @@ const EventSummary = ({ selectedEvent }) => {
                         }`}
                     </div>
                     <div>
-                        <span
-                            style={{
-                                marginRight: '5px',
-                                verticalAlign: 'middle',
-                            }}
-                        >
+                        <span>
                             <Icon height="20" icon={globeIcon} />
                         </span>
                         <a
                             href={parsedAddressURL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: 'rgb(79, 79, 248)' }}
                         >
                             {selectedEvent.address}
                         </a>
                     </div>
-                    <div style={{ padding: '20px 0px 10px 0px' }}>
+                    <div>
                         <Typography variant="h6">
                             Will you be attending this event?
                         </Typography>
                         <StatusButtons
-                            status={selectedEvent.status}
                             id={selectedEvent.id}
                             currentUserId={userId}
                         />
                     </div>
                 </Card>
             ) : (
-                <Typography variant="h6" style={{ padding: '10px' }}>
+                <Typography variant="h6">
                     Please select an event to view its details
                 </Typography>
             )}

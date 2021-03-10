@@ -125,7 +125,7 @@ function GridStructure(props) {
                     query: print(USER_BY_EMAIL),
                     variables: {
                         queryParams: { email: decodedToken },
-                        mileRadius: 10000,
+                        mileRadius: 10,
                     },
                 },
             })

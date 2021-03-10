@@ -30,10 +30,6 @@ export default function EventView({ currentTab }) {
 
     const currentUserId = useSelector((state) => state.user.id);
 
-    // useEffect(() => {
-    //     console.log(events);
-    // }, [events]);
-
     return (
         <div>
             <div
@@ -57,7 +53,6 @@ export default function EventView({ currentTab }) {
                             <RecentCard
                                 {...event}
                                 key={event.id}
-                                currentStatus={event.status}
                                 isFavorite={event.favorite}
                                 currentUserId={currentUserId}
                             />
