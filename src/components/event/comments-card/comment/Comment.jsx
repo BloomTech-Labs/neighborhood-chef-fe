@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import {
-    GET_COMMENT_REACTIONS,
-    HANDLE_REACTION,
-} from '../../../../graphql/comments/comment-queries';
+import { HANDLE_REACTION } from '../../../../graphql/comments/comment-queries';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
 import { cardStyles } from '../../../../styles';
@@ -16,39 +14,14 @@ import ShowEmoji from './show-emoji/ShowEmoji';
 
 import { ADD_COMMENT } from '../../../../graphql/comments/comment-queries';
 
-const makeInitials = (user) => {
-    return `${user.firstName.slice(0, 1).toUpperCase()}${user.lastName
-        .slice(0, 1)
-        .toUpperCase()}`;
-};
-
 const Comment = (props) => {
-    const me = JSON.parse(sessionStorage.getItem('user'));
+    const user = useSelector((state) => state.user);
     const timeObject = parseTime(props.dateCreated);
     const classes = cardStyles();
-    const user = props.user;
-    const [reactions, setReactions] = useState([]);
-
-    useEffect(() => {
-        if (me) {
-            axiosWithAuth()({
-                url: `${process.env.REACT_APP_BASE_URL}/graphql`,
-                method: 'post',
-                data: {
-                    query: print(GET_COMMENT_REACTIONS),
-                    variables: { id: Number(props.id) },
-                },
-            })
-                .then((res) => {
-                    setReactions(res.data.data.getCommentReactions);
-                })
-                .catch((err) => {
-                    console.dir(err.message);
-                });
-        }
-
-        //eslint-disable-next-line
-    }, []);
+    const [reactions, setReactions] = useState(props.Reactions);
+    const [subComments, setSubComments] = useState(
+        props.Subcomments ? props.Subcomments : []
+    );
 
     const toggleEmoji = (emoji) => {
         axiosWithAuth()({
@@ -57,9 +30,9 @@ const Comment = (props) => {
             data: {
                 query: print(HANDLE_REACTION),
                 variables: {
-                    input: {
+                    reaction: {
                         comment_id: Number(props.id),
-                        user_id: Number(me.id),
+                        user_id: Number(user.id),
                         reaction: emoji,
                     },
                 },
@@ -69,37 +42,41 @@ const Comment = (props) => {
                 setReactions(res.data.data.handleReaction);
             })
             .catch((err) => {
-                console.dir(err.message);
+                console.dir(err);
             });
     };
 
-    const addReply = (message) => {
-        const replyObject = {
-            user_id: Number(me.id),
-            event_id: Number(props.event_id),
-            parent_id: Number(props.id),
-            root_id:
-                props.root_id === -1 ? Number(props.id) : Number(props.root_id),
-            dateCreated: new Date().toISOString(),
-            comment: message,
+    const addReply = (reply) => {
+        const newComment = {
+            comment: reply,
+            root_id: Number(props.id),
+            parent_id: 0,
+            event_id: Number(props.eventId),
+            user_id: Number(user.id),
         };
+
         axiosWithAuth()({
             url: `${process.env.REACT_APP_BASE_URL}/graphql`,
             method: 'post',
             data: {
                 query: print(ADD_COMMENT),
-                variables: { input: replyObject },
+                variables: {
+                    comment: newComment,
+                },
             },
-        })
-            .then((res) => {
-                props.setComments([
-                    ...props.comments,
-                    res.data.data.addComment,
-                ]);
-            })
-            .catch((err) => {
-                console.dir(err.message);
-            });
+        }).then(
+            (res) => {
+                newComment.id = res.data.data.inputComment.id;
+                newComment.User = {
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                };
+                newComment.dateCreated = Date.now();
+                setSubComments([...subComments, newComment]);
+            },
+            (err) => console.dir(err)
+        );
     };
 
     return (
@@ -118,26 +95,28 @@ const Comment = (props) => {
                 }}
             >
                 <Avatar
-                    key={user.id}
-                    title={`${user.firstName} ${user.lastName}`}
+                    key={props.User.id}
+                    title={`${props.User.firstName} ${props.User.lastName}`}
                     aria-label="avatar"
                     className={classes.avatar}
-                    src={user.photo === 'null' ? null : user.photo}
+                    src={!props.User.photo ? null : props.User.photo}
                     style={{
                         marginRight: '5px',
                         width: '26px',
                         height: '26px',
                     }}
                 >
-                    {user.photo === 'null' && (
+                    {!props.User.photo && (
                         <Typography variant="body2">
-                            {makeInitials(user)}
+                            {`${props.User.firstName.split('')[0]}${
+                                props.User.lastName.split('')[0]
+                            }`}
                         </Typography>
                     )}
                 </Avatar>
                 {user && (
                     <Typography variant="body1">
-                        {`${user.firstName} ${user.lastName}`}
+                        {`${props.User.firstName} ${props.User.lastName}`}
                     </Typography>
                 )}
             </div>
@@ -153,12 +132,12 @@ const Comment = (props) => {
             >
                 <div style={{ display: 'flex' }}>
                     <ReplyButton
-                        name={`${user.firstName} ${user.lastName}`}
+                        name={`${props.User.firstName} ${props.User.lastName}`}
                         description={props.comment}
                         addReply={addReply}
                     />
                     <ReactButton
-                        name={`${user.firstName} ${user.lastName}`}
+                        name={`${props.User.firstName} ${props.User.lastName}`}
                         toggleEmoji={toggleEmoji}
                     />
                     {reactions.map((item, index) => {

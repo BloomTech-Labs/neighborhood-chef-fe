@@ -75,8 +75,11 @@ export const EVENT_BY_ID = gql`
             }
             Comments {
                 id
-                user_id
-                parent_id
+                Parent {
+                    firstName
+                    lastName
+                    photo
+                }
                 root_id
                 dateCreated
                 comment
@@ -84,8 +87,27 @@ export const EVENT_BY_ID = gql`
                     reaction
                 }
                 User {
+                    id
                     firstName
                     lastName
+                    photo
+                }
+                Subcomments {
+                    id
+                    root_id
+                    dateCreated
+                    comment
+                    Parent {
+                        firstName
+                        lastName
+                        photo
+                    }
+                    User {
+                        id
+                        firstName
+                        lastName
+                        photo
+                    }
                 }
             }
         }
