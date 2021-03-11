@@ -115,70 +115,69 @@ const RecentCard = (props) => {
                 }
             />
 
-            <Link to={'/events/' + props.id}>
-                {/* If you need to disable functionality of events showing custom uploaded images on 
+            {/* If you need to disable functionality of events showing custom uploaded images on 
         dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
-                <CardMedia
-                    style={{ maxHeight: '40%' }}
-                    component="img"
-                    src={
-                        props.User.photo
-                            ? props.User.photo
-                            : chooseDefaultPicture()
-                    }
-                    title="Recent Card Event Photo"
-                />
+            <CardMedia
+                style={{ maxHeight: '40%' }}
+                component="img"
+                src={
+                    props.User.photo ? props.User.photo : chooseDefaultPicture()
+                }
+                title="Recent Card Event Photo"
+            />
 
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        padding: '10px',
-                        background: '#f8f8f8',
-                        borderRadius: '8px',
-                        marginTop: '-14%',
-                        marginLeft: '5%',
-                        alignSelf: 'left',
-                        width: '46px',
-                        alignItems: 'center',
-                        position: 'relative',
-                    }}
-                >
-                    <Typography variant="h5">{timeObject.day}</Typography>
-                    <Typography variant="h5" color="secondary">
-                        {timeObject.monthShort}
-                    </Typography>
-                </div>
-                <Typography variant="body1" align="center">
-                    {`@ ${timeObject.startTime}`}
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: '10px',
+                    background: '#f8f8f8',
+                    borderRadius: '8px',
+                    marginTop: '-14%',
+                    marginLeft: '5%',
+                    alignSelf: 'left',
+                    width: '46px',
+                    alignItems: 'center',
+                    position: 'relative',
+                }}
+            >
+                <Typography variant="h5">{timeObject.day}</Typography>
+                <Typography variant="h5" color="secondary">
+                    {timeObject.monthShort}
                 </Typography>
-                <CardContent style={{ padding: '5px' }}>
+            </div>
+            <Typography variant="body1" align="center">
+                {`@ ${timeObject.startTime}`}
+            </Typography>
+            <CardContent style={{ padding: '5px' }}>
+                <Link to={`events/${props.id}`}>
                     <Typography variant="h4" align="center">
                         {props.title}
                     </Typography>
-                    <Typography variant="body1" align="center">
-                        <span
-                            style={
-                                props.status === 'NOT_GOING'
-                                    ? { color: 'rgba(232, 64, 64, .75)' }
-                                    : props.status === 'MAYBE_GOING'
-                                    ? { color: 'rgba(255, 169, 40, .75)' }
-                                    : props.status === 'GOING'
-                                    ? { color: 'rgba(33, 186, 66, .75)' }
-                                    : { color: 'rgba(0,0,0, .3)' }
-                            }
-                        >
-                            {props.status === 'GOING'
-                                ? 'Going'
-                                : props.status === 'NOT_GOING'
-                                ? 'Not Going'
+                </Link>
+                <Typography variant="body1" align="center">
+                    <span
+                        style={
+                            props.status === 'NOT_GOING'
+                                ? { color: 'rgba(232, 64, 64, .75)' }
                                 : props.status === 'MAYBE_GOING'
-                                ? 'Maybe Going'
-                                : 'undecided'}
-                        </span>
-                    </Typography>
-                </CardContent>
-            </Link>
+                                ? { color: 'rgba(255, 169, 40, .75)' }
+                                : props.status === 'GOING'
+                                ? { color: 'rgba(33, 186, 66, .75)' }
+                                : { color: 'rgba(0,0,0, .3)' }
+                        }
+                    >
+                        {props.status === 'GOING'
+                            ? 'Going'
+                            : props.status === 'NOT_GOING'
+                            ? 'Not Going'
+                            : props.status === 'MAYBE_GOING'
+                            ? 'Maybe Going'
+                            : 'undecided'}
+                    </span>
+                </Typography>
+            </CardContent>
+
             <CardActions disableSpacing>
                 {!favorite ? (
                     <div

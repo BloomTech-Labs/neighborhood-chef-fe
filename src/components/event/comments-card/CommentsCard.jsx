@@ -76,7 +76,7 @@ const CommentsCard = (props) => {
     useEffect(() => {
         if (comments) {
             const sorted = comments.sort((a, b) => {
-                return a - b; //sorting not setup yet
+                return 'please god kill me'; //sorting not setup yet
             });
             setOrganizedComments(sorted);
         }
