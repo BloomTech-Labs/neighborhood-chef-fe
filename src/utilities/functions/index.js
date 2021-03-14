@@ -84,19 +84,6 @@ export const parseTime = (start, end) => ({
     formEndTime: end ? moment(parseInt(end)).format('HH:mm:ss') : '',
 });
 
-export const isEventFavorite = (arr, id) => {
-    const seen = {};
-    arr.forEach((event) => {
-        if (event.id === id) {
-            seen[event.id] = event;
-        }
-    });
-    if (seen[id]) {
-        return true;
-    }
-    return false;
-};
-
 export const showOptions = (arr1, arr2) => {
     if (arr1.length > 0 || arr2.length > 0) {
         return true;
