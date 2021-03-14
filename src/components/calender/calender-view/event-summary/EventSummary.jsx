@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+//redux imports
 import { useSelector } from 'react-redux';
-//react router imports
 
 //style imports
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import { cardStyles } from '../../../styles';
-import StatusTabs from '../../dashboard/event-view/recent-card/status-buttons/status-buttons';
+import { cardStyles } from '../../../../styles';
 
 //icon imports
 import { Icon } from '@iconify/react';
@@ -17,22 +18,27 @@ import clockIcon from '@iconify/icons-flat-color-icons/clock';
 import globeIcon from '@iconify/icons-flat-color-icons/globe';
 
 //data/function imports
+import StatusButtons from '../../../dashboard/event-view/recent-card/status-buttons/status-buttons';
+import {
+    parseTime,
+    chooseDefaultPicture,
+} from '../../../../utilities/functions';
 
-import { parseTime, chooseDefaultPicture } from '../../../utilities/functions';
-
-const EventDetails = ({ event }) => {
+const EventSummary = ({ selectedEvent }) => {
+    const userId = useSelector((state) => state.user.id);
     const classes = cardStyles();
-    const currentUserId = useSelector((state) => state.user.id);
+    const event = useSelector((state) => state.currentEvent);
+
     const photo =
-        event.photo !== 'null'
-            ? event.photo
+        selectedEvent.photo !== 'null'
+            ? selectedEvent.photo
             : chooseDefaultPicture(event.category_id);
 
     let timeObject, parsedAddressURL;
 
-    if (Object.keys(event).length > 0) {
-        timeObject = parseTime(event.startTime, event.endTime);
-        parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
+    if (Object.keys(selectedEvent).length > 0) {
+        timeObject = parseTime(selectedEvent.startTime, selectedEvent.endTime);
+        parsedAddressURL = `https://www.google.com/maps/search/${selectedEvent.address.replace(
             ' ',
             '+'
         )}`;
@@ -40,16 +46,20 @@ const EventDetails = ({ event }) => {
 
     return (
         <div className="event-details-container">
-            {event ? (
+            {Object.keys(selectedEvent).length > 0 ? (
                 <Card className={`${classes.root} ${classes.fullEvent}`}>
                     <CardHeader
                         title={
-                            <Typography variant="h3">{event.title}</Typography>
+                            <Link to={`/events/${selectedEvent.id}`}>
+                                <Typography variant="h3">
+                                    {selectedEvent.title}
+                                </Typography>
+                            </Link>
                         }
                         subheader={
                             <Typography variant="caption">
-                                <span>created by </span>
-                                {`${event.User.firstName} ${event.User.lastName}`}
+                                <span>created by</span>
+                                {`${selectedEvent.User.firstName} ${selectedEvent.User.lastName}`}
                             </Typography>
                         }
                     />
@@ -58,9 +68,10 @@ const EventDetails = ({ event }) => {
                         src={photo}
                         title="Event Details Photo"
                     />
-                    <p> {event.description}</p>
+                    <p> {selectedEvent.description}</p>
                     <div>
-                        Confirmed Attending: {event.EventUsers.attending.length}
+                        Confirmed Attending:{' '}
+                        {selectedEvent.EventUsers.attending.length}
                     </div>
                     <div>
                         <span>
@@ -87,19 +98,17 @@ const EventDetails = ({ event }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            {event.address}
+                            {selectedEvent.address}
                         </a>
                     </div>
                     <div>
                         <Typography variant="h6">
                             Will you be attending this event?
                         </Typography>
-                        <div>
-                            <StatusTabs
-                                id={event.id}
-                                currentUserId={currentUserId}
-                            />
-                        </div>
+                        <StatusButtons
+                            id={selectedEvent.id}
+                            currentUserId={userId}
+                        />
                     </div>
                 </Card>
             ) : (
@@ -111,4 +120,4 @@ const EventDetails = ({ event }) => {
     );
 };
 
-export default EventDetails;
+export default EventSummary;

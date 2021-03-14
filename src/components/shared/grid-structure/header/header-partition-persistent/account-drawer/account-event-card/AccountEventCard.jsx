@@ -19,9 +19,7 @@ const AccountEVentCard = ({ event }) => {
         event.photo !== 'null'
             ? event.photo
             : chooseDefaultPicture(event.category_id);
-    const attending = event.users
-        ? event.users.filter((event) => event.status === 'Going')
-        : null;
+    const attending = event.EventUsers.attending;
 
     return (
         <>

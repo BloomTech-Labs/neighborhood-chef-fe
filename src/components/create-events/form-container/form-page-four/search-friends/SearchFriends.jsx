@@ -5,16 +5,18 @@ import { useHistory } from 'react-router-dom';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../../../utilities/axiosWithAuth';
 
-import { GET_UNINVITED_USERS } from '../../../../../graphql/users/user-queries.js';
+import { USER_WITHIN_RADIUS } from '../../../../../graphql/users/user-queries.js';
 import { searchForUsersSuccess } from '../../../../../utilities/actions';
 
 import UserList from './userlist/UserList';
 import { searchFriendsStyles } from './SearchFriends.styles';
 
 const SearchFriends = () => {
+    const user = useSelector((state) => state.user);
+    const [usersWithinRadius, setUsersWithinRadius] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredList, setFilteredList] = useState([]);
-    let users = useSelector((state) => state.userList);
+
     const event = useSelector((state) => state.newEvent);
     const dispatch = useDispatch();
     const { push } = useHistory();
@@ -23,15 +25,19 @@ const SearchFriends = () => {
     useEffect(() => {
         axiosWithAuth()
             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                query: print(GET_UNINVITED_USERS),
-                variables: { id: event.id },
+                query: print(USER_WITHIN_RADIUS),
+                variables: {
+                    queryParams: {
+                        latitude: user.latitude,
+                        longitude: user.longitude,
+                        radius: 1000000,
+                    },
+                },
             })
             .then((res) => {
-                dispatch(
-                    searchForUsersSuccess(res.data.data.getUninvitedUsers)
-                );
+                setUsersWithinRadius(res.data.data.Users);
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) => console.dir(err));
     }, [dispatch, event]);
 
     // filtering userList to allow search by first name, last name and email
@@ -43,7 +49,7 @@ const SearchFriends = () => {
                 )
             ) {
                 setFilteredList(
-                    users.filter((user) => {
+                    usersWithinRadius.filter((user) => {
                         return user.email
                             .toLowerCase()
                             .includes(searchTerm.toLowerCase());
@@ -57,7 +63,7 @@ const SearchFriends = () => {
                     .replace('.', '')
                     .replace(' ', '');
                 setFilteredList(
-                    users.filter((user) => {
+                    usersWithinRadius.filter((user) => {
                         return (
                             user.firstName
                                 .toLowerCase()
@@ -74,12 +80,12 @@ const SearchFriends = () => {
             } else if (searchTerm.match(/(^\w*|^\w*.) {1}\w*\w$/)) {
                 const firstName = searchTerm.split(' ')[0];
                 const lastName = searchTerm.split(' ')[1];
-                const firstNameArray = users.filter((user) =>
+                const firstNameArray = usersWithinRadius.filter((user) =>
                     user.firstName
                         .toLowerCase()
                         .includes(firstName.toLowerCase())
                 );
-                const lastNameArray = users.filter((user) =>
+                const lastNameArray = usersWithinRadius.filter((user) =>
                     user.lastName.toLowerCase().includes(lastName.toLowerCase())
                 );
                 setFilteredList(
@@ -89,7 +95,7 @@ const SearchFriends = () => {
                 );
             } else setFilteredList([]);
         } else setFilteredList([]);
-    }, [users, searchTerm]);
+    }, [usersWithinRadius, searchTerm]);
 
     return (
         <div className={styles.root}>

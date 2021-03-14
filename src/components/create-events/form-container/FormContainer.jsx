@@ -14,8 +14,8 @@ import {
 
 // graphql query imports
 import {
-    ADD_EVENT,
     UPDATE_EVENT,
+    CREATE_EVENT,
 } from '../../../graphql/events/event-mutations';
 
 // component and helper function imports
@@ -32,21 +32,20 @@ const initialState = {
     date: '',
     startTime: '',
     endTime: '',
-    category_id: '',
+    category: '',
     address: '',
     latitude: '',
     longitude: '',
 };
 
 const FormContainer = () => {
-    const me = JSON.parse(sessionStorage.getItem('user'));
+    const user = useSelector((state) => state.user);
     const page = useSelector((state) => state.page);
     const [hashtags, setHashtags] = useState([]);
     const [modifiers, setModifiers] = useState([]);
     const [photo, setPhoto] = useState(null);
     const [allergenList, setAllergenList] = useState([]);
     const [dietWarnings, setDietWarnings] = useState([]);
-
     const eventToEdit = useSelector((state) => state.eventToEdit);
     const isEditing = useSelector((state) => state.isEditing);
     const dispatch = useDispatch();
@@ -126,7 +125,7 @@ const FormContainer = () => {
                     const event = {
                         title: values.title,
                         description: values.description,
-                        category_id: values.category_id,
+                        category: values.category,
                         address: values.address,
                         startTime: startTime.toISOString(),
                         endTime: values.endTime ? endTime.toISOString() : null,
@@ -137,7 +136,7 @@ const FormContainer = () => {
                         longitude: values.longitude,
                         latitude: values.latitude,
                         photo: photo ? photo : null,
-                        user_id: parseInt(me.id),
+                        user_id: parseInt(user.id),
                         allergenWarnings: JSON.stringify({
                             allergenWarnings: [...allergenList],
                         }),
@@ -147,6 +146,8 @@ const FormContainer = () => {
                     };
 
                     if (isEditing) {
+                        event.id = eventToEdit.id;
+
                         axiosWithAuth()
                             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                                 query: print(UPDATE_EVENT),
@@ -172,20 +173,19 @@ const FormContainer = () => {
                         event.createDateTime = new Date().toISOString();
                         axiosWithAuth()
                             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                                query: print(ADD_EVENT),
+                                query: print(CREATE_EVENT),
                                 variables: { input: event },
                             })
                             .then((res) => {
-                                dispatch(
-                                    createEventSuccess(res.data.data.addEvent)
-                                );
+                                event.id = res.data.data.inputEvent.id;
+                                dispatch(createEventSuccess(event));
                                 setHashtags([]);
                                 resetForm(initialState);
                                 resetModifiers();
                                 setModifiers([]);
                                 dispatch(setPage(4));
                             })
-                            .catch((err) => console.log(err.message));
+                            .catch((err) => console.dir(err));
                     }
                 }}
             >

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 //style imports
 import { cardStyles, buttonStyles } from '../../../styles';
@@ -9,50 +10,29 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Comment from './comment/Comment';
 
-import {
-    ALL_EVENT_COMMENTS,
-    ADD_COMMENT,
-} from '../../../graphql/comments/comment-queries';
+import { ADD_COMMENT } from '../../../graphql/comments/comment-queries';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 
-const CommentsCard = (props) => {
-    const me = JSON.parse(sessionStorage.getItem('user'));
+const CommentsCard = ({ initialComments, eventId }) => {
+    const user = useSelector((state) => state.user);
     const classes = cardStyles();
     const buttonClass = buttonStyles();
-    const [newCommentWords, setNewCommentWords] = useState('');
-    const [organizedComments, setOrganizedComments] = useState([]);
-    const [comments, setComments] = useState([]);
-
-    useEffect(() => {
-        if (me) {
-            axiosWithAuth()
-                .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                    query: print(ALL_EVENT_COMMENTS),
-                    variables: { id: props.eventId },
-                })
-                .then((res) => {
-                    const commentList = res.data.data.getEventComments;
-                    setComments(commentList);
-                })
-                .catch((err) => console.dir(err));
-        }
-        // eslint-disable-next-line
-    }, []);
+    const [commentFormInput, setCommentFormInput] = useState('');
+    const [comments, setComments] = useState(initialComments);
 
     const handleChange = (e) => {
-        setNewCommentWords(e.target.value);
+        setCommentFormInput(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const commentObject = {
-            user_id: Number(me.id),
-            event_id: Number(props.eventId),
-            parent_id: -1,
-            root_id: -1,
-            dateCreated: new Date().toISOString(),
-            comment: newCommentWords,
+        const newComment = {
+            comment: commentFormInput,
+            root_id: 0,
+            parent_id: 0,
+            event_id: Number(eventId),
+            user_id: Number(user.id),
         };
 
         axiosWithAuth()({
@@ -60,27 +40,26 @@ const CommentsCard = (props) => {
             method: 'post',
             data: {
                 query: print(ADD_COMMENT),
-                variables: { input: commentObject },
+                variables: {
+                    comment: newComment,
+                },
             },
-        })
-            .then((res) => {
-                setComments([...comments, res.data.data.addComment]);
-            })
-            .catch((err) => {
-                console.dir(err.message);
-            });
-
-        setNewCommentWords('');
+        }).then(
+            (res) => {
+                newComment.id = res.data.data.inputComment.id;
+                newComment.User = {
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                };
+                newComment.dateCreated = Date.now();
+                console.log(comments);
+                setComments([...comments, newComment]);
+                setCommentFormInput('');
+            },
+            (err) => console.dir(err)
+        );
     };
-
-    useEffect(() => {
-        if (comments) {
-            const sorted = comments.sort((a, b) => {
-                return a - b; //sorting not setup yet
-            });
-            setOrganizedComments(sorted);
-        }
-    }, [comments]);
 
     return (
         <div style={{ height: '100%' }}>
@@ -98,13 +77,12 @@ const CommentsCard = (props) => {
                             maxHeight: '35vh',
                         }}
                     >
-                        {organizedComments &&
-                            organizedComments.map((comment) => (
+                        {comments &&
+                            comments.map((comment) => (
                                 <Comment
                                     key={comment.id}
-                                    setComments={setComments}
-                                    comments={comments}
                                     {...comment}
+                                    eventId={eventId}
                                 />
                             ))}
                     </div>
@@ -127,11 +105,11 @@ const CommentsCard = (props) => {
                             placeholder="Write a comment..."
                             style={{ width: '60%' }}
                             onChange={handleChange}
-                            value={newCommentWords}
+                            value={commentFormInput}
                         />
                         <Button
                             type="submit"
-                            disabled={!newCommentWords}
+                            disabled={!commentFormInput}
                             className={`${buttonClass.root} ${buttonClass.single}`}
                         >
                             <Typography>Add Comment</Typography>

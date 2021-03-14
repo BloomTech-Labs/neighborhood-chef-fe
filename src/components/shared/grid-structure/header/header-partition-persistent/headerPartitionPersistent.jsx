@@ -35,7 +35,7 @@ function PersistentHeader(props) {
         <Icon icon={magnifyingGlass} />
       </Typography> */}
 
-            <AccountDrawer {...props} />
+            {/* <AccountDrawer {...props} /> */}
         </section>
     );
 }

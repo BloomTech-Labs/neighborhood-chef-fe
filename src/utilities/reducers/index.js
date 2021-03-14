@@ -21,11 +21,15 @@ import {
     REMOVE_FAVORITE_EVENT_SUCCESS,
     SET_PAGE,
     SAVE_USER_UPDATE_INFO,
+    SAVE_USER,
+    ADD_LOGGED_IN_USER_INFO,
+    CHANGE_STATUS_FOR_SINGLE_EVENT,
 } from '../actions';
 
 const initialDate = new Date();
 
 const initialState = {
+    user: {},
     loginCredentials: {},
     page: 1,
     activeEvent: null,
@@ -47,6 +51,34 @@ const initialState = {
 
 export const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case CHANGE_STATUS_FOR_SINGLE_EVENT:
+            const mapCallback = (event) => {
+                if (payload.event_id === event.id) {
+                    return { ...event, status: payload.status };
+                } else return event;
+            };
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    UserEvents: {
+                        ...state.user.UserEvents,
+                        local: state.user.UserEvents.local.map(mapCallback),
+                        owned: state.user.UserEvents.owned.map(mapCallback),
+                        invited: state.user.UserEvents.invited.map(mapCallback),
+                        attending: state.user.UserEvents.attending.map(
+                            mapCallback
+                        ),
+                    },
+                },
+            };
+        case ADD_LOGGED_IN_USER_INFO:
+            return { ...state, user: payload };
+        case SAVE_USER:
+            return {
+                ...state,
+                user: payload,
+            };
         case GET_EVENTS_SUCCESS:
             return {
                 ...state,

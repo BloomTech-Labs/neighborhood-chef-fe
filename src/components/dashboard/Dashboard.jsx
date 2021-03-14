@@ -1,8 +1,11 @@
-import React from 'react';
-// import Feed from "./Feed";
-import RecentEvents from './recent-events/RecentEvents';
+import React, { useState } from 'react';
+
+import DashboardTabs from './dashboard-tabs/dashboard-tabs';
+import EventView from './event-view/event-view';
 
 const Dashboard = () => {
+    const [currentTab, selectCurrentTab] = useState(1);
+
     return (
         <div style={{ display: 'flex', width: '100%' }}>
             <div
@@ -13,9 +16,12 @@ const Dashboard = () => {
                     alignItems: 'center',
                 }}
             >
-                <div>
-                    <RecentEvents />
-                </div>
+                <DashboardTabs
+                    currentTab={currentTab}
+                    selectCurrentTab={selectCurrentTab}
+                />
+
+                <EventView currentTab={currentTab} />
             </div>
         </div>
     );

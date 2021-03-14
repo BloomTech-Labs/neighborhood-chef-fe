@@ -70,6 +70,9 @@ a {
     margin: 40px 0;
     padding: 10px 15px;
 }
+.createFormInputDiv ::placeholder {
+    color: #b7b7b7;
+}
 
 @media (max-width: 800px) {
     .createFormInputDiv {

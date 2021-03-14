@@ -1,5 +1,47 @@
 import gql from 'graphql-tag';
 
+const getBYEmailEventString = `
+id
+startTime
+endTime
+createDateTime
+title
+description
+category
+address
+latitude
+longitude
+modifiers
+hashtags
+status
+User {
+    id
+    firstName
+    lastName
+}
+EventUsers {
+    attending {
+        id
+        email
+        firstName
+        lastName
+        address
+        longitude
+        latitude
+        status
+    }
+    invited {
+        id
+        email
+        firstName
+        lastName
+        address
+        longitude
+        latitude
+        status
+    }
+}`;
+
 export const ALL_USERS = gql`
     query getAllUsers {
         getAllUsers {
@@ -38,6 +80,22 @@ export const ALL_USERS = gql`
                     photo
                 }
             }
+        }
+    }
+`;
+
+export const USER_WITHIN_RADIUS = gql`
+    query getUserWithinRadius($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
+            id
+            email
+            firstName
+            lastName
+            gender
+            address
+            latitude
+            longitude
+            photo
         }
     }
 `;
@@ -86,8 +144,8 @@ export const USER_BY_ID = gql`
 `;
 
 export const USER_BY_EMAIL = gql`
-    query getUserByEmail($input: UserEmailInput!) {
-        getUserByEmail(input: $input) {
+    query getUserByEmail($queryParams: UserInput!, $mileRadius: Int!) {
+        Users(queryParams: $queryParams) {
             id
             email
             firstName
@@ -96,66 +154,74 @@ export const USER_BY_EMAIL = gql`
             address
             latitude
             longitude
-            photo
-            eventsOwned {
-                id
-                startTime
-                endTime
-                createDateTime
-                title
-                description
-                category_id
-                user_id
-                address
-                photo
-                latitude
-                longitude
-                modifiers
-                hashtags
-                users {
-                    id
-                    email
-                    firstName
-                    lastName
-                    address
-                    longitude
-                    latitude
-                    status
-                    photo
+            UserEvents {
+                attending {
+                    ${getBYEmailEventString}
+                }
+                invited {
+                    ${getBYEmailEventString}
+                }
+                favorited 
+                owned {
+                    ${getBYEmailEventString}
+                }
+                local(mileRadius: $mileRadius) {
+                    ${getBYEmailEventString}
                 }
             }
-        }
     }
+}
+`;
+
+export const RECENT_EVENTS = gql`
+    query recentEvents($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
+            id
+            UserEvents {
+                attending {
+                    User {
+                        id
+                        firstName
+                        lastName
+                        status
+                    }
+                    ${getBYEmailEventString}
+                }
+                invited {
+                    User {
+                        id
+                        firstName
+                        lastName
+                        status
+                    }
+                    ${getBYEmailEventString}
+                }
+                favorited {
+                    id
+                }
+                owned {
+                    User {
+                        id
+                        firstName
+                        lastName
+                        status
+                    }
+                    ${getBYEmailEventString}
+                }
+            }
+    }
+}
 `;
 
 export const GET_AUTHORED_EVENTS = gql`
-    query getAuthoredEvents($id: ID!) {
-        getAuthoredEvents(id: $id) {
+    query getAuthoredEvents($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
             id
-            category_id
-            startTime
-            endTime
-            createDateTime
-            description
-            title
-            address
-            latitude
-            longitude
-            user_id
-            photo
-            modifiers
-            hashtags
-            users {
-                id
-                email
-                firstName
-                lastName
-                longitude
-                latitude
-                status
-                address
-                gender
-                photo
+            firstName
+            UserEvents {
+                owned {
+                    ${getBYEmailEventString} 
+                }
             }
         }
     }

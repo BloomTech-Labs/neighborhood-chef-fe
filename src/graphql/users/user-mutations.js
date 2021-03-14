@@ -46,57 +46,17 @@ export const DELETE_USER = gql`
 `;
 
 export const ADD_FAVORITE_EVENT = gql`
-    mutation addFavoriteEvent($input: NewFavoriteEventInput!) {
-        addFavoriteEvent(input: $input) {
+    mutation favoriteEventInput($favoriteEvent: FavoriteEventInput!) {
+        favoriteEventInput(favoriteEvent: $favoriteEvent) {
             id
-            startTime
-            endTime
-            title
-            description
-            category_id
-            user_id
-            address
-            latitude
-            longitude
-            users {
-                id
-                email
-                firstName
-                lastName
-                longitude
-                latitude
-                status
-                address
-                gender
-            }
         }
     }
 `;
 
 export const REMOVE_FAVORITE_EVENT = gql`
-    mutation removeFavoriteEvent($input: RemoveFavoriteEventInput!) {
-        removeFavoriteEvent(input: $input) {
+    mutation removeFavoriteEvent($favoriteEvent: FavoriteEventInput!) {
+        removeFavoriteEvent(favoriteEvent: $favoriteEvent) {
             id
-            startTime
-            endTime
-            title
-            description
-            category_id
-            user_id
-            address
-            latitude
-            longitude
-            users {
-                id
-                email
-                firstName
-                lastName
-                longitude
-                latitude
-                status
-                address
-                gender
-            }
         }
     }
 `;

@@ -6,6 +6,7 @@ import ResponsiveMenu from './responsive-menu/ResponsiveMenu';
 import VariableMainContent from './variable-main-content/variableMainContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 //kyles imports
 import ls from 'local-storage';
@@ -13,6 +14,7 @@ import jwt from 'jwt-decode';
 import { USER_BY_EMAIL } from '../../../graphql/users/user-queries';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 import { print } from 'graphql';
+import { saveUser } from '../../../utilities/actions';
 
 const styles = makeStyles((theme) => {
     return {
@@ -102,6 +104,7 @@ const styles = makeStyles((theme) => {
 });
 
 function GridStructure(props) {
+    const dispatch = useDispatch();
     const classes = styles();
     const location = useLocation();
     const [urlLocation, setUrlLocation] = useState(
@@ -120,20 +123,21 @@ function GridStructure(props) {
                 method: 'post',
                 data: {
                     query: print(USER_BY_EMAIL),
-                    variables: { input: { email: decodedToken } },
+                    variables: {
+                        queryParams: { email: decodedToken },
+                        mileRadius: 10,
+                    },
                 },
             })
                 .then((res) => {
-                    console.log(res);
-
-                    sessionStorage.setItem(
-                        'user',
-                        JSON.stringify(res.data.data.getUserByEmail)
-                    );
+                    dispatch(saveUser(res.data.data.Users[0]));
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                    console.log(err);
+                    console.dir(err);
+                });
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={classes['grid-container']}>
