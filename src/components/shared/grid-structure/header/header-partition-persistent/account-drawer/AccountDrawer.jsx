@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../../../../../utilities/axiosWithAuth';
 import { print } from 'graphql';
-import { GET_AUTHORED_EVENTS } from '../../../../../../graphql/users/user-queries';
 import { useSelector } from 'react-redux';
 
 import clsx from 'clsx';
@@ -153,7 +152,7 @@ const AccountDrawer = (props) => {
                 url: `${process.env.REACT_APP_BASE_URL}/graphql`,
                 method: 'post',
                 data: {
-                    query: print(GET_AUTHORED_EVENTS),
+                    query: print(),
                     variables: { queryParams: { id: 3 } },
                 },
             })

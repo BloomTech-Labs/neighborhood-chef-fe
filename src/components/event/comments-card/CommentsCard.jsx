@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Comment from './comment/Comment';
 
-import { ADD_COMMENT } from '../../../graphql/comments/comment-queries';
+import { ADD_COMMENT } from '../../../graphql/events/event-mutations';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 
