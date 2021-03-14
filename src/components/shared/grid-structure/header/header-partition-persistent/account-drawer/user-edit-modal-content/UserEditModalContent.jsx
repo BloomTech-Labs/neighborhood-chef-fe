@@ -15,7 +15,6 @@ import { UPDATE_USER } from '../../../../../../../graphql/users/user-mutations';
 import { axiosWithAuth } from '../../../../../../../utilities/axiosWithAuth';
 import { print } from 'graphql';
 
-import { saveUserUpdateInfo } from '../../../../../../../utilities/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Icon } from '@iconify/react';
@@ -135,12 +134,12 @@ function UserEditModalContent(props) {
             [e.target.name]: e.target.value,
         });
 
-        dispatch(
-            saveUserUpdateInfo({
-                ...userInputInfo,
-                [e.target.name]: e.target.value,
-            })
-        );
+        // dispatch(
+        //     saveUserUpdateInfo({
+        //         ...userInputInfo,
+        //         [e.target.name]: e.target.value,
+        //     })
+        // );
     };
 
     const handleAddressChange = (e) => {
@@ -150,13 +149,13 @@ function UserEditModalContent(props) {
             longitude: e.longitude,
         });
 
-        dispatch(
-            saveUserUpdateInfo({
-                ...userInputInfo,
-                latitude: e.latitude,
-                longitude: e.longitude,
-            })
-        );
+        // dispatch(
+        //     saveUserUpdateInfo({
+        //         ...userInputInfo,
+        //         latitude: e.latitude,
+        //         longitude: e.longitude,
+        //     })
+        // );
     };
 
     const handleSubmit = async (e) => {

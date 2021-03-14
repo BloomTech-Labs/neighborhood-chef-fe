@@ -33,7 +33,6 @@ import {
     REMOVE_FAVORITE_EVENT,
 } from '../../../../graphql/users/user-mutations';
 
-import EventButtonModal from './event-button-modal/EventButtonModal';
 import StatusButtons from './status-buttons/status-buttons';
 
 const RecentCard = (props) => {
