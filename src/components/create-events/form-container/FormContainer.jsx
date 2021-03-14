@@ -13,10 +13,7 @@ import {
 } from '../../../utilities/actions/index';
 
 // graphql query imports
-import {
-    UPDATE_EVENT,
-    CREATE_EVENT,
-} from '../../../graphql/events/event-mutations';
+import { CREATE_EVENT } from '../../../graphql/events/event-mutations';
 
 // component and helper function imports
 import FormPageOne from './form-page-one/FormPageOne';
@@ -150,7 +147,7 @@ const FormContainer = () => {
 
                         axiosWithAuth()
                             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                                query: print(UPDATE_EVENT),
+                                query: print(CREATE_EVENT),
                                 variables: {
                                     id: Number(eventToEdit.id),
                                     input: event,

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import { HANDLE_REACTION } from '../../../../graphql/comments/comment-queries';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../../utilities/axiosWithAuth';
 import { cardStyles } from '../../../../styles';
@@ -13,7 +12,10 @@ import ReplyButton from './reply-button/ReplyButton';
 import ReactButton from './react-buttom/ReactButton';
 import ShowEmoji from './show-emoji/ShowEmoji';
 
-import { ADD_COMMENT } from '../../../../graphql/comments/comment-queries';
+import {
+    ADD_COMMENT,
+    HANDLE_REACTION,
+} from '../../../../graphql/events/event-mutations';
 
 const Comment = (props) => {
     const user = useSelector((state) => state.user);

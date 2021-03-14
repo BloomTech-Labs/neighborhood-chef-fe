@@ -16,93 +16,9 @@ export const UPDATE_EVENT_STATUS = gql`
     }
 `;
 
-export const UPDATE_EVENT = gql`
-    mutation updateEvent($id: ID!, $input: UpdateEventInput!) {
-        updateEvent(id: $id, input: $input) {
-            id
-            title
-            description
-            startTime
-            endTime
-            category_id
-            address
-            latitude
-            longitude
-            hashtags
-            modifiers
-            allergenWarnings
-            dietaryWarnings
-            user_id
-            photo
-            users {
-                id
-                email
-                firstName
-                lastName
-                status
-                photo
-            }
-        }
-    }
-`;
-
-export const DELETE_EVENT = gql`
-    mutation removeEvent($id: ID!) {
-        removeEvent(id: $id) {
-            id
-            title
-            description
-            startTime
-            endTime
-            category_id
-            address
-            latitude
-            longitude
-            hashtags
-            modifiers
-            allergenWarnings
-            dietaryWarnings
-        }
-    }
-`;
-
 export const INVITE_USER = gql`
     mutation inviteUserToEvent($inviteInput: EventInviteInput!) {
         inputEventInvite(inviteInput: $inviteInput)
-    }
-`;
-
-export const UPDATE_INVITATION = gql`
-    mutation updateInvitation($input: UpdateInviteInput!) {
-        updateInvitation(input: $input) {
-            id
-            startTime
-            endTime
-            title
-            description
-            category_id
-            user_id
-            address
-            latitude
-            longitude
-            modifiers
-            hashtags
-            allergenWarnings
-            dietaryWarnings
-            photo
-            users {
-                id
-                email
-                firstName
-                lastName
-                gender
-                address
-                latitude
-                longitude
-                status
-                photo
-            }
-        }
     }
 `;
 
@@ -135,6 +51,24 @@ export const REMOVE_INVITATION = gql`
                 status
                 photo
             }
+        }
+    }
+`;
+
+export const ADD_COMMENT = gql`
+    mutation inputComment($comment: CommentInput!) {
+        inputComment(comment: $comment) {
+            id
+        }
+    }
+`;
+
+export const HANDLE_REACTION = gql`
+    mutation handleReaction($reaction: ReactionInput!) {
+        handleReaction(reaction: $reaction) {
+            comment_id
+            user_id
+            reaction
         }
     }
 `;
