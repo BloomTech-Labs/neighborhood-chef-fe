@@ -15,7 +15,7 @@ import {
 
 import { INVITE_USER } from '../../../../../../../graphql/events/event-mutations.js';
 
-const UninvitedUser = ({ user }) => {
+const UninvitedUser = ({ user, setAlreadyInvited }) => {
     const buttonClasses = buttonStyles();
     const classes = cardStyles();
     const dispatch = useDispatch();
@@ -27,23 +27,18 @@ const UninvitedUser = ({ user }) => {
             event_id: Number(event.id),
             inviter_id: Number(event.user_id),
             user_id: Number(id),
-            status: 'Approved',
         };
 
         axiosWithAuth()
             .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
                 query: print(INVITE_USER),
-                variables: { input: invite },
+                variables: { inviteInput: invite },
             })
             .then((res) => {
-                dispatch(
-                    inviteUserSuccess(res.data.data.inviteUserToEvent.users)
-                );
-                dispatch(
-                    filterUserListSuccess(
-                        users.filter((user) => user.id !== id)
-                    )
-                );
+                setAlreadyInvited((alreadyInvited) => [
+                    ...alreadyInvited,
+                    user,
+                ]);
             })
             .catch((err) => console.log(err.message));
     };

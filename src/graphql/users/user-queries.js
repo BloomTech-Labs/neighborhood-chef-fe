@@ -84,6 +84,22 @@ export const ALL_USERS = gql`
     }
 `;
 
+export const USER_WITHIN_RADIUS = gql`
+    query getUserWithinRadius($queryParams: UserInput!) {
+        Users(queryParams: $queryParams) {
+            id
+            email
+            firstName
+            lastName
+            gender
+            address
+            latitude
+            longitude
+            photo
+        }
+    }
+`;
+
 export const USER_BY_ID = gql`
     query getUserById($id: ID!) {
         getUserById(id: $id) {

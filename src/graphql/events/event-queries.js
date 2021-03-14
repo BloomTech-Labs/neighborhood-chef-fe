@@ -108,7 +108,23 @@ export const EVENT_BY_ID = gql`
                         lastName
                         photo
                     }
+                    Reactions {
+                        reaction
+                    }
                 }
+            }
+        }
+    }
+`;
+
+export const GET_USER_INVITED_TO_EVENT_BY_CURRENT_USER = gql`
+    query getUserInvitedToEventByCurrentUser(
+        $queryParams: EventInput
+        $currentUser: Int
+    ) {
+        Events(queryParams: $queryParams, currentUser: $currentUser) {
+            EventUsers {
+                currentUserInvited
             }
         }
     }

@@ -67,36 +67,8 @@ export const DELETE_EVENT = gql`
 `;
 
 export const INVITE_USER = gql`
-    mutation inviteUserToEvent($input: EventInviteInput!) {
-        inviteUserToEvent(input: $input) {
-            id
-            startTime
-            endTime
-            title
-            description
-            category_id
-            user_id
-            address
-            latitude
-            longitude
-            hashtags
-            modifiers
-            allergenWarnings
-            dietaryWarnings
-            photo
-            users {
-                id
-                email
-                firstName
-                lastName
-                gender
-                address
-                latitude
-                longitude
-                status
-                photo
-            }
-        }
+    mutation inviteUserToEvent($inviteInput: EventInviteInput!) {
+        inputEventInvite(inviteInput: $inviteInput)
     }
 `;
 

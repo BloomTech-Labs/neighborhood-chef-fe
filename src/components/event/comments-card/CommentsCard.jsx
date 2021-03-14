@@ -53,6 +53,7 @@ const CommentsCard = ({ initialComments, eventId }) => {
                     lastName: user.lastName,
                 };
                 newComment.dateCreated = Date.now();
+                console.log(comments);
                 setComments([...comments, newComment]);
                 setCommentFormInput('');
             },
