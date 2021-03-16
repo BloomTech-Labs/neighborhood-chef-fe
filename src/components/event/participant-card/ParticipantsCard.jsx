@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 //style imports
 import { cardStyles } from '../../../styles';
@@ -11,8 +11,6 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 const ParticipantCard = ({ attending }) => {
     const classes = cardStyles();
-
-    useEffect(() => {}, [attending]);
 
     return (
         <>
