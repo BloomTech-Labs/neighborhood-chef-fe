@@ -33,14 +33,14 @@ const StatusButton = ({
                 });
                 // the code below is for updating the participants on the single-event-page
                 if (attending && setAttending) {
-                    let next = attending
+                    const updatedAttendingList = attending
                         .map((user) => user)
                         .filter((user) => user.id !== userId);
 
                     if (status === 'GOING') {
-                        next.push(user);
+                        updatedAttendingList.push(user);
                     }
-                    setAttending(next);
+                    setAttending(updatedAttendingList);
                 }
             }}
         >
