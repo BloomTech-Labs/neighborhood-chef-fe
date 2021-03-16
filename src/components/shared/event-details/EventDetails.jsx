@@ -23,10 +23,7 @@ import { parseTime, chooseDefaultPicture } from '../../../utilities/functions';
 const EventDetails = ({ event }) => {
     const classes = cardStyles();
     const currentUserId = useSelector((state) => state.user.id);
-    const photo =
-        event.photo !== 'null'
-            ? event.photo
-            : chooseDefaultPicture(event.category_id);
+    const photo = event.photo ? event.photo : chooseDefaultPicture();
 
     let timeObject, parsedAddressURL;
 
@@ -54,6 +51,7 @@ const EventDetails = ({ event }) => {
                         }
                     />
                     <CardMedia
+                        className={classes.img}
                         component="img"
                         src={photo}
                         title="Event Details Photo"

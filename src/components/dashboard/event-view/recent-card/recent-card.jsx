@@ -3,17 +3,13 @@ import { Link } from 'react-router-dom';
 
 //style imports
 import { cardStyles } from '../../../../styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { print } from 'graphql';
 
 import { Icon } from '@iconify/react';
@@ -40,10 +36,6 @@ const RecentCard = (props) => {
     const [expanded, setExpanded] = useState(false);
     const [favorite, setFavorite] = useState(props.isFavorite);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
     const timeObject = parseTime(props.startTime, props.endTime);
     const shownTime = timeAgo(props.createDateTime);
 
@@ -58,7 +50,7 @@ const RecentCard = (props) => {
                 query: print(ADD_FAVORITE_EVENT),
                 variables: { favoriteEvent: favoriteEvent },
             })
-            .then((res) => {
+            .then(() => {
                 setFavorite(!favorite);
             })
             .catch((err) => console.dir(err));
@@ -117,7 +109,7 @@ const RecentCard = (props) => {
             {/* If you need to disable functionality of events showing custom uploaded images on 
         dashboard, change REACT_APP_ALLOW_USER_IMG variable within .env file to 0 (zero) */}
             <CardMedia
-                style={{ maxHeight: '40%' }}
+                className={classes.dashboardImg}
                 component="img"
                 src={
                     props.User.photo ? props.User.photo : chooseDefaultPicture()
@@ -125,21 +117,7 @@ const RecentCard = (props) => {
                 title="Recent Card Event Photo"
             />
 
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '10px',
-                    background: '#f8f8f8',
-                    borderRadius: '8px',
-                    marginTop: '-14%',
-                    marginLeft: '5%',
-                    alignSelf: 'left',
-                    width: '46px',
-                    alignItems: 'center',
-                    position: 'relative',
-                }}
-            >
+            <div className={classes.dateOverlay}>
                 <Typography variant="h5">{timeObject.day}</Typography>
                 <Typography variant="h5" color="secondary">
                     {timeObject.monthShort}
@@ -202,30 +180,18 @@ const RecentCard = (props) => {
                         />
                     </div>
                 )}
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <div>
-                        <ExpandMoreIcon />
-                    </div>
-                </IconButton>
             </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Typography variant="h6">
-                        Are you attending this event?
-                    </Typography>
+            <CardContent>
+                <Typography variant="h6">
+                    Are you attending this event?
+                </Typography>
+                <div className={classes.statusButtonContainer}>
                     <StatusButtons
                         id={props.id}
                         currentUserId={props.currentUserId}
                     />
-                </CardContent>
-            </Collapse>
+                </div>
+            </CardContent>
         </Card>
     );
 };

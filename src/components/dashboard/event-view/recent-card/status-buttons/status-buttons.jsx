@@ -42,7 +42,7 @@ function StatusButtons({ id, currentUserId }) {
                 currStatus={currStatus}
                 eventId={id}
                 userId={currentUserId}
-                color={'#C4C4C4'}
+                color={'#FFBF1A'}
             />
             <StatusButton
                 status={'NOT_GOING'}

@@ -29,10 +29,9 @@ const EventSummary = ({ selectedEvent }) => {
     const classes = cardStyles();
     const event = useSelector((state) => state.currentEvent);
 
-    const photo =
-        selectedEvent.photo !== 'null'
-            ? selectedEvent.photo
-            : chooseDefaultPicture(event.category_id);
+    const photo = selectedEvent.photo
+        ? selectedEvent.photo
+        : chooseDefaultPicture();
 
     let timeObject, parsedAddressURL;
 
@@ -45,7 +44,7 @@ const EventSummary = ({ selectedEvent }) => {
     }
 
     return (
-        <div className="event-details-container">
+        <div className={classes.eventDetailsContainer}>
             {Object.keys(selectedEvent).length > 0 ? (
                 <Card className={`${classes.root} ${classes.fullEvent}`}>
                     <CardHeader
@@ -64,6 +63,7 @@ const EventSummary = ({ selectedEvent }) => {
                         }
                     />
                     <CardMedia
+                        className={classes.img}
                         component="img"
                         src={photo}
                         title="Event Details Photo"
@@ -105,10 +105,12 @@ const EventSummary = ({ selectedEvent }) => {
                         <Typography variant="h6">
                             Will you be attending this event?
                         </Typography>
-                        <StatusButtons
-                            id={selectedEvent.id}
-                            currentUserId={userId}
-                        />
+                        <div className={classes.statusButtonContainer}>
+                            <StatusButtons
+                                id={selectedEvent.id}
+                                currentUserId={userId}
+                            />
+                        </div>
                     </div>
                 </Card>
             ) : (

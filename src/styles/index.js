@@ -231,6 +231,10 @@ export const cardStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': { display: 'none' },
         '-ms-overflow-style': 'none',
     },
+    dashboard: {
+        maxHeight: '90%',
+        maxWidth: '380px',
+    },
     eventDetailsContainer: {
         width: '100%',
     },
@@ -242,6 +246,25 @@ export const cardStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         paddingTop: '10px',
+    },
+    dateOverlay: {
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '10px',
+        background: '#f8f8f8',
+        borderRadius: '8px',
+        marginTop: '-14%',
+        marginLeft: '5%',
+        alignSelf: 'left',
+        width: '46px',
+        alignItems: 'center',
+        position: 'relative',
+    },
+    img: {
+        maxHeight: '40%',
+    },
+    dashboardImg: {
+        maxHeight: '20%',
     },
     span: {
         marginRight: '5px',
