@@ -1,7 +1,13 @@
 import React from 'react';
 import SubComment from './subcomment/subcomment';
 
-export default function SubComments({ subcomments, eventId, setSubComments }) {
+export default function SubComments({
+    subcomments,
+    eventId,
+    setSubComments,
+    userId,
+}) {
+    console.log(subcomments);
     return (
         <div>
             {subcomments &&
@@ -17,6 +23,7 @@ export default function SubComments({ subcomments, eventId, setSubComments }) {
                         eventId={eventId}
                         Reactions={comment.Reactions}
                         setSubComments={setSubComments}
+                        User={comment.User}
                     />
                 ))}
         </div>

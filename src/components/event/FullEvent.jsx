@@ -15,7 +15,6 @@ const FullEvent = ({ match }) => {
     const styles = fullEventStyles();
 
     useEffect(() => {
-        console.log('here');
         if (eventId)
             axiosWithAuth()({
                 url: `${process.env.REACT_APP_BASE_URL}/graphql`,

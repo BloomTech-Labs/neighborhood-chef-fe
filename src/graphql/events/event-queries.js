@@ -11,6 +11,7 @@ export const EVENT_BY_ID = gql`
             description
             category
             User {
+                id
                 firstName
                 lastName
             }
@@ -41,6 +42,7 @@ export const EVENT_BY_ID = gql`
             Comments {
                 id
                 Parent {
+                    id
                     firstName
                     lastName
                     photo
@@ -63,6 +65,7 @@ export const EVENT_BY_ID = gql`
                     dateCreated
                     comment
                     Parent {
+                        id
                         firstName
                         lastName
                         photo

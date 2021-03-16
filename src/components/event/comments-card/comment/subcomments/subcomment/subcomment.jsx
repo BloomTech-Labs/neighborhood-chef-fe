@@ -26,8 +26,8 @@ export default function SubComment({
     eventId,
     Reactions,
     setSubComments,
+    User,
 }) {
-    console.log('here', parent);
     const user = useSelector((state) => state.user);
     const timeObject = parseTime(dateCreated);
     const classes = cardStyles();
@@ -49,7 +49,6 @@ export default function SubComment({
             },
         })
             .then((res) => {
-                console.log(id);
                 setReactions(res.data.data.handleReaction);
             })
             .catch((err) => {
@@ -61,7 +60,7 @@ export default function SubComment({
         const newComment = {
             comment: reply,
             root_id: Number(root),
-            parent_id: Number(commentOwner.id),
+            parent_id: Number(User.id),
             event_id: Number(eventId),
             user_id: Number(user.id),
         };
@@ -85,8 +84,9 @@ export default function SubComment({
                 };
                 newComment.dateCreated = Date.now();
                 newComment.Parent = {
-                    firstName: parent.firstName,
-                    lastName: parent.lastName,
+                    id: User.id,
+                    firstName: User.firstName,
+                    lastName: User.lastName,
                 };
                 setSubComments((subComments) => [...subComments, newComment]);
             },
