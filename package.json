@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/error-message": "0.0.5",
     "@iconify-icons/carbon": "^1.1.2",
     "@iconify-icons/dashicons": "^1.1.0",
     "@iconify/icons-ant-design": "^1.0.8",
@@ -43,6 +44,7 @@
     "react": "~16.13.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "~16.13.0",
+    "react-hook-form": "^6.15.4",
     "react-infinite-scroll-component": "^5.0.5",
     "react-map-gl": "^5.3.7",
     "react-mapbox-gl-geocoder": "^1.1.0",

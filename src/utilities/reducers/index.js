@@ -126,9 +126,15 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         case UPDATE_EVENT_SUCCESS:
             return {
                 ...state,
+                user: {
+                    ...state.user,
+                    UserEvents: {
+                        ...state.user.UserEvents,
+                        owned: [...this.user.UserEvents.owned, payload],
+                    },
+                },
                 isEditing: false,
                 eventToEdit: {},
-                newEvent: payload,
                 inviteList: payload.users,
             };
 
