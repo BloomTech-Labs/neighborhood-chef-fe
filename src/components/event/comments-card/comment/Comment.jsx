@@ -18,6 +18,7 @@ import {
 } from '../../../../graphql/events/event-mutations';
 
 const Comment = (props) => {
+    console.log('commnet', props);
     const user = useSelector((state) => state.user);
     const timeObject = parseTime(props.dateCreated);
     const classes = cardStyles();
@@ -74,6 +75,11 @@ const Comment = (props) => {
                     id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
+                };
+                newComment.Parent = {
+                    id: props.User.id,
+                    firstName: props.User.firstName,
+                    lastName: props.User.lastName,
                 };
                 newComment.dateCreated = Date.now();
                 setSubComments([...subComments, newComment]);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import RecentCard from './recent-card/recent-card';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';

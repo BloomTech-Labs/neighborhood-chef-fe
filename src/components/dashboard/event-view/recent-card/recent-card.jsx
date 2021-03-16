@@ -33,7 +33,6 @@ import StatusButtons from './status-buttons/status-buttons';
 
 const RecentCard = (props) => {
     const classes = cardStyles();
-    const [expanded, setExpanded] = useState(false);
     const [favorite, setFavorite] = useState(props.isFavorite);
 
     const timeObject = parseTime(props.startTime, props.endTime);
@@ -95,7 +94,7 @@ const RecentCard = (props) => {
                 }
                 title={
                     <Typography variant="h6">
-                        {`${props.User.firstName} ${props.User.lastName}`}
+                        {`${props.User.firstName} ${props.User.lastName} `}
                         <span style={{ opacity: '.6' }}> created an event</span>
                     </Typography>
                 }

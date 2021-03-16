@@ -10,7 +10,7 @@ export default function SubComments({ subcomments, eventId, setSubComments }) {
                         key={comment.id}
                         id={comment.id}
                         subcomment={comment.comment}
-                        parent={comment.Parent ? comment.Parent : null}
+                        parent={comment.Parent}
                         commentOwner={comment.User}
                         dateCreated={comment.dateCreated}
                         root={comment.root_id}

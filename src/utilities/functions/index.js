@@ -1,12 +1,10 @@
 import moment from 'moment';
 
-import modernRoom from '../../assets/modernRoom.png';
 import bbq from '../../assets/bbq.jpg';
 import cats from '../../assets/cats.jpg';
 import dogs from '../../assets/dogs.jpg';
 import kids from '../../assets/kids.jpg';
 import picnic from '../../assets/picnic.jpg';
-import sports from '../../assets/sports.jpg';
 import wineCheese from '../../assets/wine-cheese.jpg';
 import fullCourse from '../../assets/full-course.jpg';
 
@@ -92,7 +90,7 @@ export const showOptions = (arr1, arr2) => {
 };
 
 export const chooseDefaultPicture = () => {
-    const category_id = Math.floor(Math.random() * 9);
+    const category_id = Math.floor(Math.random() * 8);
     switch (category_id) {
         case 1:
             return bbq;
@@ -103,15 +101,13 @@ export const chooseDefaultPicture = () => {
         case 4:
             return fullCourse;
         case 5:
-            return sports;
-        case 6:
             return kids;
-        case 7:
+        case 6:
             return dogs;
-        case 8:
+        case 7:
             return cats;
         default:
-            return modernRoom;
+            return picnic;
     }
 };
 

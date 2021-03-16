@@ -12,7 +12,7 @@ function useValidate() {
         let res;
         try {
             if (ls.get('access_token')) {
-                if (env == 'production') {
+                if (env === 'production') {
                     const body = {
                         token: ls.get('access_token'),
                         token_type_hint: 'access_token',

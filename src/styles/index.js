@@ -233,7 +233,7 @@ export const cardStyles = makeStyles((theme) => ({
     },
     dashboard: {
         maxHeight: '90%',
-        maxWidth: '380px',
+        maxWidth: '390px',
     },
     eventDetailsContainer: {
         width: '100%',

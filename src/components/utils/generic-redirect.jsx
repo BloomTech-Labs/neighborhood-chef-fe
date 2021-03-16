@@ -1,5 +1,4 @@
 import { useHistory, useParams } from 'react-router-dom';
-import React from 'react';
 import ls from 'local-storage';
 import jwt from 'jwt-decode';
 import { useDispatch } from 'react-redux';

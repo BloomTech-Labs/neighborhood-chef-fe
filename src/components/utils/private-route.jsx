@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory, Route } from 'react-router-dom';
 import useValidate from '../../hooks/useValidate';
 
-const qs = require('querystring');
+//const qs = require('querystring');
 
 function PrivateRoute({ component: Component, path, ...props }) {
     const { push } = useHistory();
@@ -30,7 +30,7 @@ function PrivateRoute({ component: Component, path, ...props }) {
         response.data.active
     ) {
         return <Route {...props} path={path} component={Component} />;
-    } else if (env == 'development' && response.data.success) {
+    } else if (env === 'development' && response.data.success) {
         return <Route {...props} path={path} component={Component} />;
     } else if (requestMade) {
         push('/');

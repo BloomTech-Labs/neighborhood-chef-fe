@@ -27,7 +27,6 @@ import {
 const EventSummary = ({ selectedEvent }) => {
     const userId = useSelector((state) => state.user.id);
     const classes = cardStyles();
-    const event = useSelector((state) => state.currentEvent);
 
     const photo = selectedEvent.photo
         ? selectedEvent.photo

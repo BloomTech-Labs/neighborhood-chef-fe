@@ -27,6 +27,7 @@ export default function SubComment({
     Reactions,
     setSubComments,
 }) {
+    console.log('here', parent);
     const user = useSelector((state) => state.user);
     const timeObject = parseTime(dateCreated);
     const classes = cardStyles();
