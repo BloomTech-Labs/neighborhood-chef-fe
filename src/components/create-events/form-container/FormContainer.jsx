@@ -23,8 +23,10 @@ import FormPageFour from './form-page-four/FormPageFour';
 import { modifierData } from './form-page-two/FormPageTwo';
 import { restoreSavedModifiers } from '../../../utilities/functions';
 import { useForm } from 'react-hook-form';
+import { formContainerStyles } from './FormContainer.styles';
 
 const FormContainer = () => {
+    const styles = formContainerStyles();
     const user = useSelector((state) => state.user);
     const page = useSelector((state) => state.page);
     const [stepper, setStepper] = useState(1);
@@ -192,7 +194,7 @@ const FormContainer = () => {
     // }}
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             {stepper === 1 && (
                 <FormPageOne
                     setStepper={setStepper}
@@ -226,6 +228,7 @@ const FormContainer = () => {
                     hashtags={hashtags}
                     setHashtags={setHashtags}
                     register={register}
+                    getValues={getValues}
                     handleSubmit={handleSubmit}
                     modifiers={modifiers}
                     setModifiers={setModifiers}

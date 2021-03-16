@@ -39,7 +39,7 @@ const EventDetails = ({ event }) => {
     }
 
     return (
-        <div className="event-details-container">
+        <div className={classes.eventDetailsContainer}>
             {event ? (
                 <Card className={`${classes.root} ${classes.fullEvent}`}>
                     <CardHeader
@@ -63,13 +63,13 @@ const EventDetails = ({ event }) => {
                         Confirmed Attending: {event.EventUsers.attending.length}
                     </div>
                     <div>
-                        <span>
+                        <span className={classes.span}>
                             <Icon height="20" icon={calendarIcon} />
                         </span>
                         {timeObject.formattedDate}
                     </div>
                     <div>
-                        <span>
+                        <span className={classes.span}>
                             <Icon height="20" icon={clockIcon} />
                         </span>
                         {`${timeObject.startTime} ${
@@ -78,7 +78,7 @@ const EventDetails = ({ event }) => {
                                 : ''
                         }`}
                     </div>
-                    <div>
+                    <div className={classes.addressContainer}>
                         <span>
                             <Icon height="20" icon={globeIcon} />
                         </span>
@@ -94,7 +94,7 @@ const EventDetails = ({ event }) => {
                         <Typography variant="h6">
                             Will you be attending this event?
                         </Typography>
-                        <div>
+                        <div className={classes.statusButtonContainer}>
                             <StatusTabs
                                 id={event.id}
                                 currentUserId={currentUserId}

@@ -27,7 +27,7 @@ export default function TimeInputs({ errors, control }) {
                     }}
                     as={
                         <Select
-                            className={styles.select}
+                            className={styles.selectGreen}
                             disableUnderline={true}
                         >
                             <MenuItem value=""></MenuItem>
@@ -58,7 +58,7 @@ export default function TimeInputs({ errors, control }) {
                     name="endTime"
                     as={
                         <Select
-                            className={styles.select}
+                            className={styles.selectRed}
                             disableUnderline={true}
                         >
                             <MenuItem value=""></MenuItem>

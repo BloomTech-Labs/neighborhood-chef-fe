@@ -40,7 +40,7 @@ function MapboxGeocoder({ setValue, errors, clearErrors }) {
                         console.log({ location: result });
                     }}
                 />
-                <SearchIcon color="disabled" />
+                <SearchIcon color="disabled" className={styles.icon} />
             </div>
             <ErrorMessage
                 name="address"

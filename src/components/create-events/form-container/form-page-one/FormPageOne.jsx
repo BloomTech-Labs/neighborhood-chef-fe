@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import TitleInput from './title-input/title-input';
 import DescriptionInput from './description-input/description-input';
@@ -6,8 +7,6 @@ import DateInput from './date-input/date-input';
 import TimeInputs from './time-inputs/time-inputs';
 import CatagoryInput from './category-input/catagory-input';
 import MapboxGeocoder from './mapbox-geocoder/mapbox-geocoder';
-
-import { useHistory } from 'react-router-dom';
 
 import { formPageOneStyles } from './FormPageOne.styles';
 import { buttonStyles } from '../../CreateEvent.styles';
@@ -61,8 +60,6 @@ const FormPageOne = ({
             }
         });
     };
-
-    console.log(errors);
 
     return (
         <>

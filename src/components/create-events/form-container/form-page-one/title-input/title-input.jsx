@@ -22,7 +22,7 @@ export default function TitleInput({ register, errors }) {
                     className={styles.input}
                 />
 
-                <CreateIcon color="disabled" />
+                <CreateIcon color="disabled" className={styles.icon} />
             </div>
             <ErrorMessage
                 name="title"

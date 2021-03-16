@@ -15,7 +15,7 @@ export default function CatagoryInput({ register }) {
                     ref={register}
                     className={styles.input}
                 />
-                <CreateIcon color="disabled" />
+                <CreateIcon color="disabled" className={styles.icon} />
             </div>
         </>
     );

@@ -34,6 +34,9 @@ export const formPageOneStyles = makeStyles((theme) => ({
             margin: '20px 0',
         },
     },
+    icon: {
+        fontSize: '2.6rem',
+    },
     input: {
         height: '35px',
         border: 'none',
@@ -54,22 +57,18 @@ export const formPageOneStyles = makeStyles((theme) => ({
         marginRight: '6px',
     },
     textArea: {
-        height: '150px',
+        height: '168px',
         border: '2px dashed #f0f0f0',
         borderRadius: '15px',
         outline: 'none',
-        padding: '10px 12px',
+        padding: '10px 20px',
         fontSize: '1.6rem',
-        width: '94%',
+        width: '100%',
         '&::placeholder': {
             color: '#b7b7b7',
         },
         [theme.breakpoints.down('800')]: {
-            width: '95%',
             margin: '20px 0',
-        },
-        [theme.breakpoints.down('600')]: {
-            width: '93%',
         },
     },
     rightContainer: {
@@ -98,10 +97,10 @@ export const formPageOneStyles = makeStyles((theme) => ({
         border: 'none',
         borderRadius: '15px',
         color: 'black',
-        padding: '14px 30px',
+        padding: '12px 30px',
         fontSize: '1.6rem',
     },
-    select: {
+    selectGreen: {
         display: 'flex',
         alignItems: 'center',
         margin: '10px 5px',
@@ -112,6 +111,20 @@ export const formPageOneStyles = makeStyles((theme) => ({
         border: 'none',
         borderBottom: 'none',
         fontSize: '1.4rem',
+        background: '#58d573',
+    },
+    selectRed: {
+        display: 'flex',
+        alignItems: 'center',
+        margin: '10px 5px',
+        opacity: '0.75',
+        borderRadius: '5px',
+        color: 'white',
+        padding: '5px 20px',
+        border: 'none',
+        borderBottom: 'none',
+        fontSize: '1.4rem',
+        background: '#ea6565',
     },
     categoryDiv: {
         display: 'flex',

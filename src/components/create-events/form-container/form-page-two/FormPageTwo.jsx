@@ -21,6 +21,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import { buttonStyles } from '../../CreateEvent.styles';
+import { formPageTwoStyles } from './FormPageTwo.styles';
 
 export const modifierData = [
     { id: 1, title: 'BBQ', icon: baselineOutdoorGrill, active: false },
@@ -37,10 +38,11 @@ const FormPageTwo = (props) => {
     );
     const dispatch = useDispatch();
     const btnStyles = buttonStyles();
+    const styles = formPageTwoStyles();
 
     return (
         <>
-            <div style={{ width: '90%' }}>
+            <div className={styles.container}>
                 <EventImageUpload
                     values={props.values}
                     avatar={props.photo}
@@ -53,16 +55,10 @@ const FormPageTwo = (props) => {
                     removeHashtag={props.removeHashtag}
                 />
                 <div>
-                    <Typography style={{ margin: '10px 0' }}>
+                    <Typography className={styles.modifierLabel}>
                         Pick modifiers for your event.
                     </Typography>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            flexFlow: 'row wrap',
-                        }}
-                    >
+                    <div className={styles.modifierContainer}>
                         {modifierData.map((modifier) => {
                             return (
                                 <Modifier
@@ -76,20 +72,16 @@ const FormPageTwo = (props) => {
                     </div>
                 </div>
                 <div
-                    style={{ cursor: 'pointer' }}
+                    className={styles.pointer}
                     onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
                 >
                     {showAdvancedOptions ? (
-                        <Typography
-                            style={{ marginTop: '25px', fontWeight: 'bold' }}
-                        >
+                        <Typography className={styles.typography}>
                             Click here to hide additional options{' '}
                             <ArrowDropDownIcon />
                         </Typography>
                     ) : (
-                        <Typography
-                            style={{ marginTop: '25px', fontWeight: 'bold' }}
-                        >
+                        <Typography className={styles.typography}>
                             Click here to show additional options{' '}
                             <ArrowRightIcon />
                         </Typography>
@@ -111,7 +103,7 @@ const FormPageTwo = (props) => {
                 <button
                     className={btnStyles.leftBtn}
                     onClick={() => {
-                        dispatch(setPage(1));
+                        props.setStepper(1);
                         scrollToTop();
                     }}
                 >
@@ -120,7 +112,7 @@ const FormPageTwo = (props) => {
                 <button
                     className={btnStyles.rightBtn}
                     onClick={() => {
-                        dispatch(setPage(3));
+                        props.setStepper(3);
                         scrollToTop();
                     }}
                 >

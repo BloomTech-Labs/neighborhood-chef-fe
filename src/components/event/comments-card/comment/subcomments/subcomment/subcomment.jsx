@@ -94,20 +94,8 @@ export default function SubComment({
     };
 
     return (
-        <div
-            className={classes.singleCommentParent}
-            // props.parent_id < 0
-            //   ? classes.singleCommentParent
-            //   : classes.singleCommentChild
-            // }
-        >
-            <div
-                style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                }}
-            >
+        <div className={classes.singleCommentChild}>
+            <div className={classes.avatarContainer}>
                 {commentOwner && (
                     <>
                         <Avatar
@@ -118,11 +106,7 @@ export default function SubComment({
                             src={
                                 !commentOwner.photo ? null : commentOwner.photo
                             }
-                            style={{
-                                marginRight: '5px',
-                                width: '26px',
-                                height: '26px',
-                            }}
+                            className={classes.photoContainer}
                         >
                             {!commentOwner.photo && (
                                 <Typography variant="body2">
@@ -145,13 +129,7 @@ export default function SubComment({
                 </Typography>
                 <Typography variant="caption">{subcomment}</Typography>
             </div>
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                }}
-            >
+            <div className={classes.replyBtnContainer}>
                 <div style={{ display: 'flex' }}>
                     <ReplyButton
                         name={`${commentOwner.firstName} ${commentOwner.lastName}`}

@@ -18,6 +18,7 @@ const FormPageThree = (props) => {
     const dispatch = useDispatch();
     const styles = formPageThreeStyles();
     const btnStyles = buttonStyles();
+    const values = props.getValues();
 
     return (
         <div className={styles.root}>
@@ -29,24 +30,12 @@ const FormPageThree = (props) => {
                 <div className={styles.card}>
                     <img
                         className={styles.img}
-                        src={
-                            props.photo ||
-                            chooseDefaultPicture(props.values.category_id)
-                        }
+                        src={props.photo || chooseDefaultPicture()}
                         alt="Event Page 3 Img"
                     />
 
                     <div className={styles.text}>
-                        <h3
-                            style={{
-                                fontSize: '2.5rem',
-                                fontWeight: '500',
-                                color: '#1A0F2C',
-                                margin: '0',
-                            }}
-                        >
-                            {props.values.title}
-                        </h3>
+                        <h4 className={styles.h4}>{values.title}</h4>
                         <div style={{ display: 'flex' }}>
                             <p
                                 style={{
@@ -54,10 +43,8 @@ const FormPageThree = (props) => {
                                     color: 'rgba(0, 0, 0, 0.5)',
                                 }}
                             >
-                                {props.values.date &&
-                                    moment(props.values.date).format(
-                                        'MMMM Do YYYY'
-                                    )}
+                                {values.date &&
+                                    moment(values.date).format('MMMM Do YYYY')}
                                 &nbsp;
                             </p>
                             <p
@@ -67,10 +54,10 @@ const FormPageThree = (props) => {
                                     fontWeight: '500',
                                 }}
                             >
-                                {convertTime(props.values.startTime)}&nbsp;
+                                {/* {convertTime(values.startTime)}&nbsp; */}
                             </p>
 
-                            {props.values.endTime && (
+                            {values.endTime && (
                                 <>
                                     <p
                                         style={{
@@ -87,7 +74,7 @@ const FormPageThree = (props) => {
                                             fontWeight: '500',
                                         }}
                                     >
-                                        {convertTime(props.values.endTime)}
+                                        {/* {convertTime(values.endTime)} */}
                                     </p>
                                 </>
                             )}
@@ -98,7 +85,7 @@ const FormPageThree = (props) => {
                                 color: 'rgba(0, 0, 0, 0.5)',
                             }}
                         >
-                            {props.values.address}
+                            {values.address}
                         </p>
                     </div>
                 </div>

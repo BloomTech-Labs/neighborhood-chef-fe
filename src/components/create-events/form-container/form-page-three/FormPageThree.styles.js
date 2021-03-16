@@ -16,6 +16,12 @@ export const formPageThreeStyles = makeStyles((theme) => ({
         margin: '5px 0',
         marginLeft: '2%',
     },
+    h4: {
+        fontSize: '2.5rem',
+        fontWeight: '500',
+        color: '#1A0F2C',
+        margin: '0',
+    },
     cardContainer: {
         display: 'flex',
         flexDirection: 'column',

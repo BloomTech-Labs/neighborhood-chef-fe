@@ -231,10 +231,35 @@ export const cardStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': { display: 'none' },
         '-ms-overflow-style': 'none',
     },
-
+    eventDetailsContainer: {
+        width: '100%',
+    },
+    addressContainer: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    statusButtonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingTop: '10px',
+    },
+    span: {
+        marginRight: '5px',
+        verticalAlign: 'middle',
+    },
     fullEvent: {
         maxWidth: '100%',
         height: 'calc(100% - 36px)',
+    },
+    cardContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '5px',
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '10px',
     },
     participants: {
         maxHeight: 150,
@@ -346,6 +371,21 @@ export const cardStyles = makeStyles((theme) => ({
         borderRadius: '10px',
         padding: '5px',
         marginLeft: '35px',
+    },
+    avatarContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+    },
+    photoContainer: {
+        marginRight: '5px',
+        width: '26px',
+        height: '26px',
+    },
+    replyBtnContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
 }));
 
