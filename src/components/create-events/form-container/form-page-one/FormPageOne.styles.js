@@ -57,13 +57,17 @@ export const formPageOneStyles = makeStyles((theme) => ({
         marginRight: '6px',
     },
     textArea: {
-        height: '168px',
         border: '2px dashed #f0f0f0',
         borderRadius: '15px',
         outline: 'none',
-        padding: '10px 20px',
+        paddingTop: '10px',
+        paddingBottom: '145px',
+        paddingLeft: '10px',
+        paddingRight: '10px',
         fontSize: '1.6rem',
         width: '100%',
+        whiteSpace: 'pre-wrap',
+
         '&::placeholder': {
             color: '#b7b7b7',
         },

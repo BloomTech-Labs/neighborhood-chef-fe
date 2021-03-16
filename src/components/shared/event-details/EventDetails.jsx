@@ -20,7 +20,7 @@ import globeIcon from '@iconify/icons-flat-color-icons/globe';
 
 import { parseTime, chooseDefaultPicture } from '../../../utilities/functions';
 
-const EventDetails = ({ event }) => {
+const EventDetails = ({ event, attending, setAttending }) => {
     const classes = cardStyles();
     const currentUserId = useSelector((state) => state.user.id);
     const photo = event.photo ? event.photo : chooseDefaultPicture();
@@ -96,6 +96,8 @@ const EventDetails = ({ event }) => {
                             <StatusTabs
                                 id={event.id}
                                 currentUserId={currentUserId}
+                                attending={attending}
+                                setAttending={setAttending}
                             />
                         </div>
                     </div>

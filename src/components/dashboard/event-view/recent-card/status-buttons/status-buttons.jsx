@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import StatusButton from '../../../../shared/event-details/status-button/StatusButton';
 
-function StatusButtons({ id, currentUserId }) {
+function StatusButtons({ id, currentUserId, attending, setAttending }) {
     const currStatus = useSelector((state) => {
         if (state.user.UserEvents) {
             let eventsList = state.user.UserEvents;
@@ -36,6 +36,8 @@ function StatusButtons({ id, currentUserId }) {
                 eventId={id}
                 userId={currentUserId}
                 color={'#82DF96'}
+                attending={attending}
+                setAttending={setAttending}
             />
             <StatusButton
                 status={'MAYBE_GOING'}
@@ -43,6 +45,8 @@ function StatusButtons({ id, currentUserId }) {
                 eventId={id}
                 userId={currentUserId}
                 color={'#FFBF1A'}
+                attending={attending}
+                setAttending={setAttending}
             />
             <StatusButton
                 status={'NOT_GOING'}
@@ -50,6 +54,8 @@ function StatusButtons({ id, currentUserId }) {
                 eventId={id}
                 userId={currentUserId}
                 color={'#EA6565'}
+                attending={attending}
+                setAttending={setAttending}
             />
         </div>
     );

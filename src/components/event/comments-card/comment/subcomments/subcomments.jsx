@@ -7,7 +7,6 @@ export default function SubComments({
     setSubComments,
     userId,
 }) {
-    console.log(subcomments);
     return (
         <div>
             {subcomments &&

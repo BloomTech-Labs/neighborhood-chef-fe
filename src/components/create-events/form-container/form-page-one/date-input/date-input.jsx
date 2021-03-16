@@ -21,7 +21,7 @@ export default function DateInput({ errors, control }) {
                     rules={{
                         required: {
                             value: true,
-                            message: "'Date'is a required field",
+                            message: "'Date' is a required field",
                         },
                     }}
                     as={

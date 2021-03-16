@@ -8,7 +8,7 @@ export default function DescriptionInput({ register, errors }) {
     return (
         <>
             <input
-                as="textarea"
+                type="textarea"
                 name="description"
                 placeholder="Write a description for your event..."
                 ref={register({

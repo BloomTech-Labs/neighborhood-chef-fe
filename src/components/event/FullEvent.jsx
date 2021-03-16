@@ -12,6 +12,7 @@ import { fullEventStyles } from './FullEvent.styles';
 const FullEvent = ({ match }) => {
     const eventId = parseInt(match.params.id);
     const [event, setEvent] = useState(null);
+    const [attending, setAttending] = useState([]);
     const styles = fullEventStyles();
 
     useEffect(() => {
@@ -30,6 +31,7 @@ const FullEvent = ({ match }) => {
             }).then(
                 (res) => {
                     setEvent(res.data.data.Events[0]);
+                    setAttending(res.data.data.Events[0].EventUsers.attending);
                 },
                 (err) => console.dir(err)
             );
@@ -40,12 +42,14 @@ const FullEvent = ({ match }) => {
             <div className={styles.singleEventBox}>
                 {event ? (
                     <>
-                        <EventDetails event={event} />
+                        <EventDetails
+                            event={event}
+                            attending={attending}
+                            setAttending={setAttending}
+                        />
                         <div className={styles.singleEventRightColumn}>
                             <div className={styles.singleEventTopRow}>
-                                <ParticipantCard
-                                    attending={event.EventUsers.attending}
-                                />
+                                <ParticipantCard attending={attending} />
                                 <ShareCard />
                             </div>
                             <div className={styles.singleEventCommentCard}>
