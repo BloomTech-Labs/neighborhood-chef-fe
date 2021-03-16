@@ -24,7 +24,6 @@ const ParticipantCard = ({ attending }) => {
                     <CardContent className={classes.cardContent}>
                         <AvatarGroup max={4}>
                             {attending.map((user) => {
-                                // console.log(user.photo);
                                 return (
                                     <Avatar
                                         key={user.id}
