@@ -14,7 +14,10 @@ const CalendarRow = (props) => {
                 props.selectedEvent.id === props.event.id &&
                 styles.calendarRowActive
             }`}
-            onClick={() => props.setSelectedEvent(props.event)}
+            onClick={() => {
+                props.setSelectedEvent(props.event);
+                props.setAttending(props.event.EventUsers.attending);
+            }}
         >
             <div style={{ width: '15%' }}>
                 <Typography color="textSecondary">

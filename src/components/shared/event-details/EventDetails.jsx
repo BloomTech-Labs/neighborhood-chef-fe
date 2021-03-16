@@ -58,7 +58,10 @@ const EventDetails = ({ event, attending, setAttending }) => {
                     />
                     <p> {event.description}</p>
                     <div>
-                        Confirmed Attending: {event.EventUsers.attending.length}
+                        Confirmed Attending:{' '}
+                        {attending
+                            ? attending.length
+                            : event.EventUsers.attending.length}
                     </div>
                     <div>
                         <span className={classes.span}>

@@ -16,7 +16,12 @@ import { parseTime } from '../../../utilities/functions';
 
 import { calendarStyles } from '../Calendar.styles';
 
-const CalendarView = ({ eventList, setSelectedEvent, selectedEvent }) => {
+const CalendarView = ({
+    eventList,
+    setSelectedEvent,
+    selectedEvent,
+    setAttending,
+}) => {
     const selectedMonth = useSelector((state) => state.selectedMonth);
     const classes = buttonStyles();
     const styles = calendarStyles();
@@ -48,6 +53,7 @@ const CalendarView = ({ eventList, setSelectedEvent, selectedEvent }) => {
                                 eventNum={eventNum}
                                 selectedEvent={selectedEvent}
                                 setSelectedEvent={setSelectedEvent}
+                                setAttending={setAttending}
                             />
                         ))
                     ) : (
