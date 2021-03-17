@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Formik, Form } from 'formik';
 import { print } from 'graphql';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,19 +23,10 @@ import { formContainerStyles } from './FormContainer.styles';
 const FormContainer = () => {
   const styles = formContainerStyles();
   const user = useSelector((state) => state.user);
-  const page = useSelector((state) => state.page);
-  const [stepper, setStepper] = useState(1);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    errors,
-    control,
-    setValue,
-    getValues,
-    setError,
-    clearErrors,
-  } = useForm({ mode: 'onBlur' });
+  const [stepper, setStepper] = useState(2);
+  const { register, handleSubmit, errors, control, setValue, getValues, setError, clearErrors } = useForm({
+    mode: 'onBlur',
+  });
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -224,6 +214,7 @@ const FormContainer = () => {
           setDietWarnings={setDietWarnings}
           setStepper={setStepper}
           getValues={getValues}
+          setValue={setValue}
         />
       )}
       {stepper === 3 && (
