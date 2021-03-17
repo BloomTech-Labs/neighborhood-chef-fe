@@ -31,11 +31,11 @@ const StatusButton = ({
                     eventId,
                     userId,
                 });
-                // the code below is for updating the participants on the single-event-page
+                // the code below is for updating the participants on the single-event-page & calendar event details
                 if (attending && setAttending) {
-                    const updatedAttendingList = attending
-                        .map((user) => user)
-                        .filter((user) => user.id !== userId);
+                    const updatedAttendingList = attending.filter(
+                        (user) => user.id !== userId
+                    );
 
                     if (status === 'GOING') {
                         updatedAttendingList.push(user);
