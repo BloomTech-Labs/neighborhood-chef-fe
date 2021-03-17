@@ -41,6 +41,16 @@ export const rootReducer = (state = initialState, { type, payload }) => {
         case CHANGE_STATUS_FOR_SINGLE_EVENT:
             const mapCallback = (event) => {
                 if (payload.event_id === event.id) {
+                    if (
+                        payload.status === 'NOT_GOING' ||
+                        payload.status === 'MAYBE_GOING'
+                    )
+                        event.EventUsers.attending = event.EventUsers.attending.filter(
+                            (user) => user.id !== state.user.id
+                        );
+                    else if (payload.status === 'GOING') {
+                        event.EventUsers.attending.push(state.user);
+                    }
                     return { ...event, status: payload.status };
                 } else return event;
             };
