@@ -65,19 +65,47 @@ const FormPageOne = ({
         <>
             <div className={styles.root}>
                 <div className={styles.leftContainer}>
-                    <TitleInput register={register} errors={errors} />
+                    <TitleInput
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                    />
                     <MapboxGeocoder
                         setValue={setValue}
                         errors={errors}
                         clearErrors={clearErrors}
+                        register={register}
+                        getValues={getValues}
                     />
-                    <DescriptionInput register={register} errors={errors} />
+                    <DescriptionInput
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                    />
                 </div>
 
                 <div className={styles.rightContainer}>
-                    <DateInput control={control} errors={errors} />
-                    <TimeInputs control={control} errors={errors} />
-                    <CatagoryInput register={register} />
+                    <DateInput
+                        control={control}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                        register={register}
+                    />
+                    <TimeInputs
+                        control={control}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                        register={register}
+                    />
+                    <CatagoryInput
+                        register={register}
+                        setValue={setValue}
+                        getValues={getValues}
+                    />
                 </div>
             </div>
 

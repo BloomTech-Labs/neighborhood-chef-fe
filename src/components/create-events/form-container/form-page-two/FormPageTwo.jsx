@@ -33,6 +33,7 @@ export const modifierData = [
 ];
 
 const FormPageTwo = (props) => {
+    console.log(props.getValues());
     const [showAdvancedOptions, setShowAdvancedOptions] = useState(
         showOptions(props.allergenList, props.dietWarnings)
     );
@@ -47,7 +48,7 @@ const FormPageTwo = (props) => {
                     values={props.values}
                     avatar={props.photo}
                     setPhoto={props.setPhoto}
-                    title="Upload a main picture for your event page if you don't want to use the category default"
+                    title="Upload a main picture for your event page"
                 />
                 <AddHashtag
                     hashtags={props.hashtags}

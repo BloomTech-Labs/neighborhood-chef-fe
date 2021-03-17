@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { formPageOneStyles } from '../FormPageOne.styles';
 import { ErrorMessage } from '@hookform/error-message';
 import CreateIcon from '@material-ui/icons/Create';
 
-export default function TitleInput({ register, errors }) {
+export default function TitleInput({ register, errors, setValue, getValues }) {
+    const [forceUpdate, setforceUpdate] = useState(false);
     const styles = formPageOneStyles();
+
+    useEffect(() => {
+        register('title', {
+            required: {
+                value: true,
+                message: "'Title' is a required field",
+            },
+        });
+    }, []);
+
+    useEffect(() => {}, [forceUpdate]);
+
+    const handleChange = (e) => {
+        setforceUpdate(!forceUpdate);
+        setValue(e.target.name, e.target.value);
+    };
 
     return (
         <>
@@ -12,14 +29,10 @@ export default function TitleInput({ register, errors }) {
                 <input
                     type="text"
                     name="title"
+                    value={getValues('title')}
                     placeholder="Title"
-                    ref={register({
-                        required: {
-                            value: true,
-                            message: "'Title' is a required field",
-                        },
-                    })}
                     className={styles.input}
+                    onChange={handleChange}
                 />
 
                 <CreateIcon color="disabled" className={styles.icon} />

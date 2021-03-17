@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { formPageOneStyles } from '../FormPageOne.styles';
-import { Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import useTimes from '../../../../../hooks/useTimes';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-export default function TimeInputs({ errors, control }) {
+export default function TimeInputs({ errors, register, setValue, getValues }) {
+    const [forceUpdate, setforceUpdate] = useState(false);
     const styles = formPageOneStyles();
     const time = useTimes();
+
+    useEffect(() => {
+        register('startTime', {
+            required: {
+                value: true,
+                message: "'Start Time' is a required field",
+            },
+        });
+
+        register('endTime', {
+            required: {
+                value: true,
+                message: "'End Time' is a required field",
+            },
+        });
+    }, []);
+
+    useEffect(() => {}, [forceUpdate]);
+
+    const handleChange = (e) => {
+        setforceUpdate(!forceUpdate);
+        setValue(e.target.name, e.target.value);
+    };
 
     return (
         <>
@@ -16,30 +39,22 @@ export default function TimeInputs({ errors, control }) {
                 <label htmlFor="greenSelect" className={styles.label}>
                     The event starts at:
                 </label>
-                <Controller
-                    control={control}
+
+                <Select
+                    className={styles.selectGreen}
+                    disableUnderline={true}
                     name="startTime"
-                    rules={{
-                        required: {
-                            value: true,
-                            message: "'Start Time' is a required field",
-                        },
-                    }}
-                    as={
-                        <Select
-                            className={styles.selectGreen}
-                            disableUnderline={true}
-                        >
-                            <MenuItem value=""></MenuItem>
-                            {time.militaryTimes &&
-                                time.militaryTimes.map((mTime, index) => (
-                                    <MenuItem value={mTime}>
-                                        {time.normalTimes[index]}
-                                    </MenuItem>
-                                ))}
-                        </Select>
-                    }
-                />
+                    value={getValues('startTime')}
+                    onChange={handleChange}
+                >
+                    <MenuItem value=""></MenuItem>
+                    {time.militaryTimes &&
+                        time.militaryTimes.map((mTime, index) => (
+                            <MenuItem value={mTime}>
+                                {time.normalTimes[index]}
+                            </MenuItem>
+                        ))}
+                </Select>
             </div>
             <ErrorMessage
                 name="startTime"
@@ -53,24 +68,22 @@ export default function TimeInputs({ errors, control }) {
                 <label htmlFor="redSelect" className={styles.label}>
                     The event ends at:
                 </label>
-                <Controller
-                    control={control}
+
+                <Select
+                    className={styles.selectRed}
+                    disableUnderline={true}
                     name="endTime"
-                    as={
-                        <Select
-                            className={styles.selectRed}
-                            disableUnderline={true}
-                        >
-                            <MenuItem value=""></MenuItem>
-                            {time.militaryTimes &&
-                                time.militaryTimes.map((mTime, index) => (
-                                    <MenuItem value={mTime}>
-                                        {time.normalTimes[index]}
-                                    </MenuItem>
-                                ))}
-                        </Select>
-                    }
-                />
+                    value={getValues('endTime')}
+                    onChange={handleChange}
+                >
+                    <MenuItem value=""></MenuItem>
+                    {time.militaryTimes &&
+                        time.militaryTimes.map((mTime, index) => (
+                            <MenuItem value={mTime}>
+                                {time.normalTimes[index]}
+                            </MenuItem>
+                        ))}
+                </Select>
             </div>
         </>
     );
