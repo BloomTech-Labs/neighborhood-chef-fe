@@ -24,7 +24,7 @@ import {
     chooseDefaultPicture,
 } from '../../../../utilities/functions';
 
-const EventSummary = ({ selectedEvent, attending, setAttending }) => {
+const EventSummary = ({ selectedEvent }) => {
     const userId = useSelector((state) => state.user.id);
     const classes = cardStyles();
 
@@ -68,7 +68,10 @@ const EventSummary = ({ selectedEvent, attending, setAttending }) => {
                         title="Event Details Photo"
                     />
                     <p> {selectedEvent.description}</p>
-                    <div>Confirmed Attending: {attending.length}</div>
+                    <div>
+                        Confirmed Attending:{' '}
+                        {selectedEvent.EventUsers.attending.length}
+                    </div>
                     <div>
                         <span>
                             <Icon height="20" icon={calendarIcon} />
@@ -105,8 +108,6 @@ const EventSummary = ({ selectedEvent, attending, setAttending }) => {
                             <StatusButtons
                                 id={selectedEvent.id}
                                 currentUserId={userId}
-                                attending={attending}
-                                setAttending={setAttending}
                             />
                         </div>
                     </div>

@@ -57,12 +57,7 @@ const EventDetails = ({ event, attending, setAttending }) => {
                         title="Event Details Photo"
                     />
                     <p> {event.description}</p>
-                    <div>
-                        Confirmed Attending:{' '}
-                        {attending
-                            ? attending.length
-                            : event.EventUsers.attending.length}
-                    </div>
+                    <div>Confirmed Attending: {attending.length}</div>
                     <div>
                         <span className={classes.span}>
                             <Icon height="20" icon={calendarIcon} />

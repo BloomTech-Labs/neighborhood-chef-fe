@@ -31,7 +31,7 @@ const StatusButton = ({
                     eventId,
                     userId,
                 });
-                // the code below is for updating the participants on the single-event-page & calendar event details
+                // the code below is for updating the participants on the single-event-page
                 if (attending && setAttending) {
                     const updatedAttendingList = attending.filter(
                         (user) => user.id !== userId

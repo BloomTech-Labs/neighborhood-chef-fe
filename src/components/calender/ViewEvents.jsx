@@ -9,7 +9,6 @@ import { calendarStyles } from './Calendar.styles';
 
 const ViewEvents = () => {
     const [selectedEvent, setSelectedEvent] = useState({});
-    const [attending, setAttending] = useState([]);
     const styles = calendarStyles();
 
     const eventList = useSelector((state) => {
@@ -41,15 +40,10 @@ const ViewEvents = () => {
                     eventList={eventList}
                     selectedEvent={selectedEvent}
                     setSelectedEvent={setSelectedEvent}
-                    setAttending={setAttending}
                 />
             </div>
             <div className={styles.rightSideCalendar}>
-                <EventSummary
-                    selectedEvent={selectedEvent}
-                    attending={attending}
-                    setAttending={setAttending}
-                />
+                <EventSummary selectedEvent={selectedEvent} />
             </div>
         </div>
     );

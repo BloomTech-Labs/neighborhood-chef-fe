@@ -35,7 +35,7 @@ const FullEvent = ({ match }) => {
                 },
                 (err) => console.dir(err)
             );
-    }, []);
+    }, [eventId]);
 
     return (
         <div className={styles.singleEventContainer}>

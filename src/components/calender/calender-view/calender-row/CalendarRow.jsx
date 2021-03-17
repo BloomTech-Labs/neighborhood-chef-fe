@@ -16,7 +16,6 @@ const CalendarRow = (props) => {
             }`}
             onClick={() => {
                 props.setSelectedEvent(props.event);
-                props.setAttending(props.event.EventUsers.attending);
             }}
         >
             <div style={{ width: '15%' }}>
