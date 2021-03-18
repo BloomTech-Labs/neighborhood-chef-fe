@@ -1,30 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import { formPageOneStyles } from './../FormPageOne.styles';
 import Geocoder from 'react-mapbox-gl-geocoder';
 import SearchIcon from '@material-ui/icons/Search';
 import { ErrorMessage } from '@hookform/error-message';
 
-function MapboxGeocoder({ setValue, errors, clearErrors, getValues, register }) {
+function MapboxGeocoder({ errors, setValues, values, validate }) {
   const styles = formPageOneStyles();
 
   const onSelected = (viewport, item) => {
-    setValue('address', item.place_name);
-    setValue('latitude', item.center[1]);
-    setValue('longitude', item.center[0]);
-    clearErrors('address');
+    setValues((values) => {
+      return { ...values, address: item.place_name, latitude: item.center[1], longitude: item.center[0] };
+    });
+    validate('address');
   };
 
-  useEffect(() => {
-    register('address', {
-      required: {
-        value: true,
-        message: "'Address' is a required field",
-      },
-    });
-  }, []);
-
   const handleChange = (e) => {
-    setValue(e.target.name, e.target.value);
+    e.persist();
+    setValues((values) => {
+      return { ...values, address: e.target.value };
+    });
   };
 
   return (
@@ -35,11 +29,11 @@ function MapboxGeocoder({ setValue, errors, clearErrors, getValues, register }) 
           onSelected={onSelected}
           hideOnSelect={true}
           onChange={handleChange}
-          inputValue={getValues('address')}
+          inputValue={values.address}
           updateInputOnSelect={true}
           className={styles.geo}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-          initialInputValue={getValues('address') ? getValues('address') : ''}
+          initialInputValue={values.address ? values.address : ''}
           inputComponent={(props) => <input {...props} placeholder="Address" />}
           queryParams={{
             country: 'us',
@@ -47,11 +41,14 @@ function MapboxGeocoder({ setValue, errors, clearErrors, getValues, register }) 
         />
         <SearchIcon color="disabled" className={styles.icon} />
       </div>
-      <ErrorMessage
-        name="address"
-        errors={errors}
-        render={({ message }) => <p style={{ color: 'crimson' }}>{message}</p>}
-      />
+      {errors.address && errors.address.length && (
+        <ErrorMessage
+          name="address"
+          errors={errors}
+          message={errors.address[0]}
+          render={({ message }) => <p style={{ color: 'crimson' }}>{message}</p>}
+        />
+      )}
     </>
   );
 }

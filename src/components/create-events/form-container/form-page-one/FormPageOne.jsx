@@ -12,123 +12,70 @@ import { formPageOneStyles } from './FormPageOne.styles';
 import { buttonStyles } from '../../CreateEvent.styles';
 
 export const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 };
 
 const FormPageOne = ({
-    register,
-    control,
-    setValue,
-    setStepper,
-    errors,
-    getValues,
-    setError,
-    clearErrors,
+  setStepper,
+  errors,
+
+  values,
+  setValues,
+  validate,
 }) => {
-    const { push } = useHistory();
-    const styles = formPageOneStyles();
-    const btnStyles = buttonStyles();
+  const { push } = useHistory();
+  const styles = formPageOneStyles();
+  const btnStyles = buttonStyles();
 
-    const validateAndTurnPage = () => {
-        validateRequiredValues();
-        if (!Object.keys(errors).length) {
-            setStepper(2);
-            scrollToTop();
-        }
-    };
+  const validateAndTurnPage = () => {
+    validateRequiredValues();
+    if (!Object.keys(errors).length) {
+      setStepper(2);
+      scrollToTop();
+    }
+  };
 
-    const validateRequiredValues = () => {
-        const currentValues = getValues();
+  const validateRequiredValues = () => {};
 
-        const inputNames = [
-            'title',
-            'description',
-            'date',
-            'startTime',
-            'address',
-        ];
+  return (
+    <>
+      <div className={styles.root}>
+        <div className={styles.leftContainer}>
+          <TitleInput errors={errors} values={values} setValues={setValues} validate={validate} />
+          <MapboxGeocoder errors={errors} values={values} setValues={setValues} validate={validate} />
+          <DescriptionInput errors={errors} values={values} setValues={setValues} validate={validate} />
+        </div>
 
-        inputNames.forEach((name) => {
-            if (!currentValues[name]) {
-                setError(name, {
-                    type: 'manual',
-                    message: `${name} is a required field`,
-                });
-            }
-        });
-    };
+        <div className={styles.rightContainer}>
+          <DateInput errors={errors} values={values} setValues={setValues} validate={validate} />
+          <TimeInputs errors={errors} values={values} setValues={setValues} validate={validate} />
+          <CatagoryInput errors={errors} values={values} setValues={setValues} validate={validate} />
+        </div>
+      </div>
 
-    return (
-        <>
-            <div className={styles.root}>
-                <div className={styles.leftContainer}>
-                    <TitleInput
-                        register={register}
-                        errors={errors}
-                        setValue={setValue}
-                        getValues={getValues}
-                    />
-                    <MapboxGeocoder
-                        setValue={setValue}
-                        errors={errors}
-                        clearErrors={clearErrors}
-                        register={register}
-                        getValues={getValues}
-                    />
-                    <DescriptionInput
-                        register={register}
-                        errors={errors}
-                        setValue={setValue}
-                        getValues={getValues}
-                    />
-                </div>
-
-                <div className={styles.rightContainer}>
-                    <DateInput
-                        control={control}
-                        errors={errors}
-                        setValue={setValue}
-                        getValues={getValues}
-                        register={register}
-                    />
-                    <TimeInputs
-                        control={control}
-                        errors={errors}
-                        setValue={setValue}
-                        getValues={getValues}
-                        register={register}
-                    />
-                    <CatagoryInput
-                        register={register}
-                        setValue={setValue}
-                        getValues={getValues}
-                    />
-                </div>
-            </div>
-
-            <div className={btnStyles.buttonContainer}>
-                <button
-                    className={btnStyles.leftBtn}
-                    onClick={() => {
-                        push('/dashboard');
-                    }}
-                >
-                    Cancel
-                </button>
-                <button
-                    type="button"
-                    disabled={Object.keys(errors).length}
-                    className={btnStyles.rightBtn}
-                    onClick={validateAndTurnPage}
-                >
-                    Next
-                </button>
-            </div>
-        </>
-    );
+      <div className={btnStyles.buttonContainer}>
+        <button
+          className={btnStyles.leftBtn}
+          onClick={() => {
+            push('/dashboard');
+          }}
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          disabled={Object.keys(errors).length}
+          className={btnStyles.rightBtn}
+          onClick={validateAndTurnPage}
+        >
+          Next
+        </button>
+      </div>
+    </>
+  );
 };
 
 export default FormPageOne;

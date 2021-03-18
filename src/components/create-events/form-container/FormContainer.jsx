@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { print } from 'graphql';
-import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPage } from '../../../utilities/actions';
 
 // redux action imports
-import { createEventSuccess, updateEventSuccess, cancelEdit } from '../../../utilities/actions/index';
-
-// graphql query imports
-import { CREATE_EVENT } from '../../../graphql/events/event-mutations';
+import { cancelEdit } from '../../../utilities/actions/index';
 
 // component and helper function imports
 import FormPageOne from './form-page-one/FormPageOne';
@@ -16,17 +11,44 @@ import FormPageTwo from './form-page-two/FormPageTwo';
 import FormPageThree from './form-page-three/FormPageThree';
 import FormPageFour from './form-page-four/FormPageFour';
 import { modifierData } from './form-page-two/FormPageTwo';
-import { restoreSavedModifiers } from '../../../utilities/functions';
 import { useForm } from 'react-hook-form';
 import { formContainerStyles } from './FormContainer.styles';
+
+import useForm2 from '../../../hooks/useForm.js';
+import * as yup from 'yup';
 
 const FormContainer = () => {
   const styles = formContainerStyles();
   const user = useSelector((state) => state.user);
-  const [stepper, setStepper] = useState(2);
-  const { register, handleSubmit, errors, control, setValue, getValues, setError, clearErrors } = useForm({
+  const [stepper, setStepper] = useState(1);
+  const { register, handleSubmit, control, setValue, getValues, setError, clearErrors } = useForm({
     mode: 'onBlur',
   });
+
+  const { values, setValues, validate, errors } = useForm2(
+    {
+      title: '',
+      description: '',
+      address: '',
+      date: '',
+      startTime: '',
+      endTime: '',
+      category: '',
+      latitude: '',
+      longitude: '',
+    },
+    yup.object().shape({
+      title: yup.string().required("'Title' is a required field"),
+      description: yup.string().required("'Description' is a required field"),
+      address: yup.string().required("'Address' is a required field"),
+      date: yup.string().required("'Date' is a required field"),
+      startTime: yup.string().required("'Start Time' is a required field"),
+      endTime: yup.string(),
+      category: yup.string(),
+      latitude: yup.number().required(),
+      longitude: yup.number().required(),
+    })
+  );
   const [hashtags, setHashtags] = useState([]);
   const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
@@ -190,13 +212,10 @@ const FormContainer = () => {
       {stepper === 1 && (
         <FormPageOne
           setStepper={setStepper}
-          register={register}
-          control={control}
-          setValue={setValue}
+          values={values}
+          setValues={setValues}
+          validate={validate}
           errors={errors}
-          getValues={getValues}
-          setError={setError}
-          clearErrors={clearErrors}
         />
       )}
       {stepper === 2 && (
