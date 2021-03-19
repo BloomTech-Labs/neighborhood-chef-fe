@@ -23,8 +23,8 @@ const FormPageOne = ({ setStepper, errors, values, setValues, validate }) => {
   const styles = formPageOneStyles();
   const btnStyles = buttonStyles();
 
-  const validateAndTurnPage = async () => {
-    const isValid = await validate();
+  const validateAndTurnPage = () => {
+    const isValid = validate();
     console.log(isValid);
     if (isValid) {
       setStepper(2);
