@@ -21,11 +21,11 @@ const FormContainer = () => {
   const styles = formContainerStyles();
   const user = useSelector((state) => state.user);
   const [stepper, setStepper] = useState(1);
-  const { register, handleSubmit, control, setValue, getValues, setError, clearErrors } = useForm({
+  const { register, handleSubmit, control, setValue, setError, clearErrors } = useForm({
     mode: 'onBlur',
   });
 
-  const { values, setValues, validate, errors } = useForm2(
+  const { values, setValues, validate, errors, getValues } = useForm2(
     {
       title: '',
       description: '',
@@ -40,13 +40,15 @@ const FormContainer = () => {
     yup.object().shape({
       title: yup.string().required("'Title' is a required field"),
       description: yup.string().required("'Description' is a required field"),
-      address: yup.string().required("'Address' is a required field"),
+      address: yup
+        .string()
+        .required("'Address' is a required field - Selecting an option from the dropdown menu is required'"),
       date: yup.string().required("'Date' is a required field"),
       startTime: yup.string().required("'Start Time' is a required field"),
       endTime: yup.string(),
       category: yup.string(),
       latitude: yup.number().required(),
-      longitude: yup.number().required(),
+      longitude: yup.mixed().required(),
     })
   );
   const [hashtags, setHashtags] = useState([]);
@@ -71,19 +73,6 @@ const FormContainer = () => {
       };
     });
   };
-
-  //register mapbox fields
-  useEffect(() => {
-    register('title', { required: true });
-    register('address', { required: true });
-    register('latitude', { required: true });
-    register('longitude', { required: true });
-    register('description', { required: true });
-    register('date', { required: true });
-    register('startTime', { required: true });
-    register('endTime', { required: false });
-    // register('category', { required: false });
-  }, []);
 
   // useEffect(() => {
   //     if (isEditing) {

@@ -18,27 +18,19 @@ export const scrollToTop = () => {
   });
 };
 
-const FormPageOne = ({
-  setStepper,
-  errors,
-
-  values,
-  setValues,
-  validate,
-}) => {
+const FormPageOne = ({ setStepper, errors, values, setValues, validate }) => {
   const { push } = useHistory();
   const styles = formPageOneStyles();
   const btnStyles = buttonStyles();
 
   const validateAndTurnPage = () => {
-    validateRequiredValues();
-    if (!Object.keys(errors).length) {
+    const isValid = validate();
+    console.log(errors);
+    if (isValid) {
       setStepper(2);
       scrollToTop();
     }
   };
-
-  const validateRequiredValues = () => {};
 
   return (
     <>
@@ -67,7 +59,7 @@ const FormPageOne = ({
         </button>
         <button
           type="button"
-          disabled={Object.keys(errors).length}
+          disabled={Object.keys(errors).length > 0}
           className={btnStyles.rightBtn}
           onClick={validateAndTurnPage}
         >

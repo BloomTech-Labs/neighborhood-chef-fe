@@ -1,51 +1,66 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { formPageOneStyles } from './../FormPageOne.styles';
-import Geocoder from 'react-mapbox-gl-geocoder';
 import SearchIcon from '@material-ui/icons/Search';
 import { ErrorMessage } from '@hookform/error-message';
+import MapboxAddressSearch from './mapbox-address-search';
 
 function MapboxGeocoder({ errors, setValues, values, validate }) {
   const styles = formPageOneStyles();
+  const [data, setData] = useState({});
+  const [open, setOpen] = useState(false);
+  const [flagAddressValidation, flag] = useState(0);
+  const [mostRecentlyChosenAddress, setMostRecentlyChosenAddress] = useState('');
 
-  const onSelected = (viewport, item) => {
-    setValues((values) => {
-      return { ...values, address: item.place_name, latitude: item.center[1], longitude: item.center[0] };
-    });
-    validate('address');
-  };
+  useEffect(() => {
+    if (data) {
+      setValues((values) => {
+        return { ...values, ...data };
+      });
+    }
+  }, [data]);
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    if (!values.address && flagAddressValidation === 1) {
+      validate('address');
+      validate('longitude');
+      flag(0);
+    }
+  }, [flagAddressValidation]);
+
+  const handleBlur = (e) => {
     e.persist();
-    setValues((values) => {
-      return { ...values, address: e.target.value };
-    });
+    if (data) {
+      setData(null);
+      validate('address');
+      validate('longitude');
+      setMostRecentlyChosenAddress(e.target.value);
+    } else if (mostRecentlyChosenAddress !== e.target.value) {
+      setValues((values) => {
+        return { ...values, address: '', longitude: '', latitude: '' };
+      });
+      flag(1);
+    }
+    setOpen(false);
   };
-
   return (
     <>
       <div className="createFormInputDiv">
-        <Geocoder
-          name="address"
-          onSelected={onSelected}
-          hideOnSelect={true}
-          onChange={handleChange}
-          inputValue={values.address}
-          updateInputOnSelect={true}
-          className={styles.geo}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-          initialInputValue={values.address ? values.address : ''}
-          inputComponent={(props) => <input {...props} placeholder="Address" />}
-          queryParams={{
-            country: 'us',
-          }}
-        />
+        <MapboxAddressSearch setData={setData} handleBlur={handleBlur} open={open} setOpen={setOpen} />
         <SearchIcon color="disabled" className={styles.icon} />
       </div>
-      {errors.address && errors.address.length && (
+      {errors.address && errors.address.length > 0 && (
         <ErrorMessage
           name="address"
           errors={errors}
           message={errors.address[0]}
+          render={({ message }) => <p style={{ color: 'crimson' }}>{message}</p>}
+        />
+      )}
+      {errors.longitude && errors.longitude.length > 0 && (
+        <ErrorMessage
+          name="longitude"
+          errors={errors}
+          message={errors.longitude[0]}
           render={({ message }) => <p style={{ color: 'crimson' }}>{message}</p>}
         />
       )}

@@ -32,7 +32,7 @@ export default function TitleInput({ errors, setValues, values, validate }) {
 
         <CreateIcon color="disabled" className={styles.icon} />
       </div>
-      {errors.title && errors.title.length && (
+      {errors.title && errors.title.length > 0 && (
         <ErrorMessage
           name="title"
           errors={errors}
