@@ -49,11 +49,11 @@ const DisplayEventModifiers = ({ values, setValues }) => {
         </div>
       )}
 
-      {values.dietWarnings.length > 0 && (
+      {values.dietaryWarnings.length > 0 && (
         <div className={styles.modifierContainer}>
           <h4 className={styles.h4}>Dietary Warnings</h4>
           <div className={styles.modifier}>
-            {values.dietWarnings.map((diet) => {
+            {values.dietaryWarnings.map((diet) => {
               return <DietaryWarning key={diet} diet={diet} values={values} setValues={setValues} />;
             })}
           </div>

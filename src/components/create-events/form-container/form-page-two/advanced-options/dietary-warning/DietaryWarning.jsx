@@ -5,7 +5,7 @@ const DietaryWarning = ({ diet, values, setValues }) => {
   const styles = hashtagAndWarningStyles();
 
   const removeDietWarning = () => {
-    setValues({ ...values, dietWarnings: values.dietWarnings.filter((ele) => ele !== diet) });
+    setValues({ ...values, dietaryWarnings: values.dietaryWarnings.filter((ele) => ele !== diet) });
   };
 
   return (

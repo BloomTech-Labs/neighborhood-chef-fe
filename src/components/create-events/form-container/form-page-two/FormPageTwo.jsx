@@ -32,7 +32,7 @@ export const modifierData = [
 
 const FormPageTwo = (props) => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(
-    showOptions(props.values.allergenWarnings, props.values.dietWarnings)
+    showOptions(props.values.allergenWarnings, props.values.dietaryWarnings)
   );
   const btnStyles = buttonStyles();
   const styles = formPageTwoStyles();
@@ -46,13 +46,7 @@ const FormPageTwo = (props) => {
           setPhoto={props.setPhoto}
           title="Upload a main picture for your event page"
         />
-        <AddHashtag
-          hashtags={props.hashtags}
-          setHashtags={props.setHashtags}
-          removeHashtag={props.removeHashtag}
-          values={props.values}
-          setValues={props.setValues}
-        />
+        <AddHashtag values={props.values} setValues={props.setValues} />
         <div>
           <Typography className={styles.modifierLabel}>Pick modifiers for your event.</Typography>
           <div className={styles.modifierContainer}>

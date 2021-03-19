@@ -48,18 +48,7 @@ const FormPageThree = (props) => {
           </div>
         </div>
 
-        <DisplayEventModifiers
-          //   hashtags={props.hashtags}
-          //   setHashtags={props.setHashtags}
-          //   modifiers={props.modifiers}
-          //   setModifiers={props.setModifiers}
-          //   allergenList={props.allergenList}
-          //   setAllergenList={props.setAllergenList}
-          //   dietWarnings={props.dietWarnings}
-          //   setDietWarnings={props.setDietWarnings}
-          values={props.values}
-          setValues={props.setValues}
-        />
+        <DisplayEventModifiers values={props.values} setValues={props.setValues} />
       </div>
 
       <div className={btnStyles.buttonContainer}>
@@ -72,7 +61,7 @@ const FormPageThree = (props) => {
         >
           Previous
         </button>
-        <button className={btnStyles.rightBtn} type="submit">
+        <button className={btnStyles.rightBtn} onSubmit={props.handleSubmit}>
           Done
         </button>
       </div>

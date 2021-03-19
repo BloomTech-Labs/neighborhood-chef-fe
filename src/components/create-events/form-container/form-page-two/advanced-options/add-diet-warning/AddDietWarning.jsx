@@ -14,8 +14,8 @@ const AddDietRestriction = ({ values, setValues }) => {
 
   const addDietWarning = (e) => {
     e.preventDefault();
-    if (!values.dietWarnings.includes(formInput)) {
-      setValues({ ...values, dietWarnings: [...values.dietWarnings, formInput] });
+    if (!values.dietaryWarnings.includes(formInput)) {
+      setValues({ ...values, dietaryWarnings: [...values.dietaryWarnings, formInput] });
     }
     setFormInput('');
   };
@@ -34,8 +34,8 @@ const AddDietRestriction = ({ values, setValues }) => {
         </button>
       </div>
       <div className={styles.modifierContainer}>
-        {values.dietWarnings.length > 0 &&
-          values.dietWarnings.map((diet) => {
+        {values.dietaryWarnings.length > 0 &&
+          values.dietaryWarnings.map((diet) => {
             return <DietaryWarning diet={diet} key={diet} values={values} setValues={setValues} />;
           })}
       </div>
