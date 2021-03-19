@@ -9,7 +9,6 @@ export default function useForm2(defaultValues, schemaInput) {
   function validate(branch = null, options = { abortEarly: false }) {
     if (branch) {
       const subSchema = yup.reach(schema, branch);
-      console.log(options);
       subSchema
         .validate(values[branch], options)
         .then((_) => {
@@ -23,9 +22,6 @@ export default function useForm2(defaultValues, schemaInput) {
           setErrors((errors) => {
             return { ...errors, [branch]: err.errors };
           });
-          console.log(err);
-          console.log(errors);
-          console.log(values);
         });
     } else {
       try {
@@ -35,7 +31,6 @@ export default function useForm2(defaultValues, schemaInput) {
       } catch (err) {
         const newErrors = {};
         err.inner.forEach((error) => {
-          console.log('here');
           newErrors[error.path] = error.errors;
         });
         setErrors(newErrors);
@@ -44,18 +39,7 @@ export default function useForm2(defaultValues, schemaInput) {
     }
   }
 
-  function testGeocoder() {
-    console.log(values);
-    return values.address && values.latitude && values.longitude;
-  }
-
-  function getValues() {
-    return values;
-  }
-
   return {
-    testGeocoder,
-    getValues,
     values,
     setValues,
     errors,
