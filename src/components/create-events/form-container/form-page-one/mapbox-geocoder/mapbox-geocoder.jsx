@@ -9,7 +9,9 @@ function MapboxGeocoder({ errors, setValues, values, validate }) {
   const [data, setData] = useState({});
   const [open, setOpen] = useState(false);
   const [flagAddressValidation, flag] = useState(0);
-  const [mostRecentlyChosenAddress, setMostRecentlyChosenAddress] = useState('');
+  const [mostRecentlyChosenAddress, setMostRecentlyChosenAddress] = useState(
+    values.address ? values.address : ''
+  );
 
   useEffect(() => {
     if (data) {
@@ -47,7 +49,13 @@ function MapboxGeocoder({ errors, setValues, values, validate }) {
   return (
     <>
       <div className="createFormInputDiv">
-        <MapboxAddressSearch setData={setData} handleBlur={handleBlur} open={open} setOpen={setOpen} />
+        <MapboxAddressSearch
+          setData={setData}
+          handleBlur={handleBlur}
+          open={open}
+          setOpen={setOpen}
+          mostRecentlyChosenAddress={mostRecentlyChosenAddress}
+        />
         <SearchIcon color="disabled" className={styles.icon} />
       </div>
       {errors.address && errors.address.length > 0 && (

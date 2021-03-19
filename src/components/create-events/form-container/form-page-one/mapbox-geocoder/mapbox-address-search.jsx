@@ -4,17 +4,24 @@ import axios from 'axios';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { separateOperations } from 'graphql';
 
-export default function MapboxAddressSearch({ setData, handleBlur, open, setOpen }) {
+export default function MapboxAddressSearch({
+  setData,
+  handleBlur,
+  open,
+  setOpen,
+  mostRecentlyChosenAddress,
+}) {
   const [addresses, setAddresses] = useState([]);
   const [innerData, setInnerData] = useState([]);
 
   const handleChange = async (e) => {
+    console.log(addresses);
     if (e && e.type === 'change') {
       try {
         const response = await axios.get(
           `https://api.mapbox.com/geocoding/v5/mapbox.places/${
-            e.target.value ? e.target.value : 'random'
-          }.json?types=address&access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
+            e.target.value ? e.target.value.split(' ').join('%20') : 'random'
+          }.json?access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
         );
 
         setInnerData(
@@ -52,6 +59,8 @@ export default function MapboxAddressSearch({ setData, handleBlur, open, setOpen
       options={addresses}
       onInputChange={handleChange}
       onClose={handleClose}
+      filterOptions={(options) => options}
+      defaultValue={mostRecentlyChosenAddress}
       renderInput={(params) => (
         <div ref={params.InputProps.ref}>
           <input
@@ -60,6 +69,7 @@ export default function MapboxAddressSearch({ setData, handleBlur, open, setOpen
             {...params.inputProps}
             onClick={handleClick}
             onBlur={handleBlur}
+            placeholder="Address"
           />
         </div>
       )}
