@@ -28,21 +28,19 @@ export default function useForm2(defaultValues, schemaInput) {
           console.log(values);
         });
     } else {
-      schema
-        .validate(values, options)
-        .then((_) => {
-          setErrors({});
-          return true;
-        })
-        .catch((err) => {
-          const newErrors = {};
-          err.inner.forEach((error) => {
-            console.log('here');
-            newErrors[error.path] = error.errors;
-          });
-          setErrors(newErrors);
-          return false;
+      try {
+        schema.validateSync(values, options);
+        setErrors({});
+        return true;
+      } catch (err) {
+        const newErrors = {};
+        err.inner.forEach((error) => {
+          console.log('here');
+          newErrors[error.path] = error.errors;
         });
+        setErrors(newErrors);
+        return false;
+      }
     }
   }
 

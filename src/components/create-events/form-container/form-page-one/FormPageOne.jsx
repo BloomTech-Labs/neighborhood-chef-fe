@@ -23,9 +23,9 @@ const FormPageOne = ({ setStepper, errors, values, setValues, validate }) => {
   const styles = formPageOneStyles();
   const btnStyles = buttonStyles();
 
-  const validateAndTurnPage = () => {
-    const isValid = validate();
-    console.log(errors);
+  const validateAndTurnPage = async () => {
+    const isValid = await validate();
+    console.log(isValid);
     if (isValid) {
       setStepper(2);
       scrollToTop();
@@ -57,12 +57,7 @@ const FormPageOne = ({ setStepper, errors, values, setValues, validate }) => {
         >
           Cancel
         </button>
-        <button
-          type="button"
-          disabled={Object.keys(errors).length > 0}
-          className={btnStyles.rightBtn}
-          onClick={validateAndTurnPage}
-        >
+        <button type="button" className={btnStyles.rightBtn} onClick={validateAndTurnPage}>
           Next
         </button>
       </div>

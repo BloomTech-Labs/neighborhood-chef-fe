@@ -23,6 +23,7 @@ function MapboxGeocoder({ errors, setValues, values, validate }) {
     if (!values.address && flagAddressValidation === 1) {
       validate('address');
       validate('longitude');
+      validate('latitude');
       flag(0);
     }
   }, [flagAddressValidation]);
@@ -33,6 +34,7 @@ function MapboxGeocoder({ errors, setValues, values, validate }) {
       setData(null);
       validate('address');
       validate('longitude');
+      validate('latitude');
       setMostRecentlyChosenAddress(e.target.value);
     } else if (mostRecentlyChosenAddress !== e.target.value) {
       setValues((values) => {
