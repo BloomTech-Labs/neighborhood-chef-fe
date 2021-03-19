@@ -2,24 +2,29 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { modifierStyles } from './Modifier.styles';
 
-const Modifier = ({ title, active, icon, getValues, setValue, setForceUpdate }) => {
+const Modifier = ({ modifier, values, setValues }) => {
   const styles = modifierStyles();
 
   const updateModifier = () => {
-    setValue('modifiers', { ...getValues('modifiers'), [title]: !active });
-    setForceUpdate((prevState) => !prevState);
+    if (values.modifiers.includes(modifier.title)) {
+      modifier.active = false;
+      setValues({ ...values, modifiers: values.modifiers.filter((mod) => mod !== modifier.title) });
+    } else {
+      modifier.active = true;
+      setValues({ ...values, modifiers: [...values.modifiers, modifier.title] });
+    }
   };
 
   return (
     <div className={styles.root}>
       <div
         onClick={() => updateModifier()}
-        className={`${styles.modifierNotActive} ${active ? styles.modifierActive : ''}`}
+        className={`${styles.modifierNotActive} ${modifier.active ? styles.modifierActive : ''}`}
       >
-        <Icon icon={icon} className={styles.icon} />
+        <Icon icon={modifier.icon} className={styles.icon} />
       </div>
 
-      <p className={styles.p}>{title}</p>
+      <p className={styles.p}>{modifier.title}</p>
     </div>
   );
 };

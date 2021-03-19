@@ -12,7 +12,6 @@ import Modifier from './modifier/Modifier.jsx';
 import AddHashtag from './add-hashtag/AddHashtag.jsx';
 import { scrollToTop } from '../form-page-one/FormPageOne.jsx';
 import AdvancedOptions from './advanced-options/AdvancedOptions.jsx';
-import { useDispatch } from 'react-redux';
 import { showOptions } from '../../../../utilities/functions';
 import Typography from '@material-ui/core/Typography';
 
@@ -32,22 +31,11 @@ export const modifierData = [
 ];
 
 const FormPageTwo = (props) => {
-  const [forceUpdate, setForceUpdate] = useState(false);
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(
-    showOptions(props.allergenList, props.dietWarnings)
+    showOptions(props.values.allergenWarnings, props.values.dietWarnings)
   );
-  const dispatch = useDispatch();
   const btnStyles = buttonStyles();
   const styles = formPageTwoStyles();
-
-  useEffect(() => {
-    if (!props.getValues().modifiers) {
-      props.register('modifiers');
-      props.setValue('modifiers', {});
-    }
-  }, []);
-
-  useEffect(() => {}, [forceUpdate]);
 
   return (
     <>
@@ -62,9 +50,8 @@ const FormPageTwo = (props) => {
           hashtags={props.hashtags}
           setHashtags={props.setHashtags}
           removeHashtag={props.removeHashtag}
-          setValue={props.setValue}
-          getValues={props.getValues}
-          register={props.register}
+          values={props.values}
+          setValues={props.setValues}
         />
         <div>
           <Typography className={styles.modifierLabel}>Pick modifiers for your event.</Typography>
@@ -74,15 +61,8 @@ const FormPageTwo = (props) => {
                 <Modifier
                   key={modifier.id}
                   modifier={modifier}
-                  modifiers={props.modifiers}
-                  setModifiers={props.setModifiers}
-                  setValue={props.setValue}
-                  getValues={props.getValues}
-                  register={props.register}
-                  title={modifier.title}
-                  icon={modifier.icon}
-                  active={props.getValues('modifiers') && props.getValues('modifiers')[modifier.title]}
-                  setForceUpdate={setForceUpdate}
+                  values={props.values}
+                  setValues={props.setValues}
                 />
               );
             })}
@@ -101,12 +81,7 @@ const FormPageTwo = (props) => {
         </div>
         {showAdvancedOptions && (
           <>
-            <AdvancedOptions
-              allergenList={props.allergenList}
-              setAllergenList={props.setAllergenList}
-              dietWarnings={props.dietWarnings}
-              setDietWarnings={props.setDietWarnings}
-            />
+            <AdvancedOptions values={props.values} setValues={props.setValues} />
           </>
         )}
       </div>

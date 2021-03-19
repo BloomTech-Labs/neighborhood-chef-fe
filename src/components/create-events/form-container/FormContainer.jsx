@@ -11,7 +11,6 @@ import FormPageTwo from './form-page-two/FormPageTwo';
 import FormPageThree from './form-page-three/FormPageThree';
 import FormPageFour from './form-page-four/FormPageFour';
 import { modifierData } from './form-page-two/FormPageTwo';
-import { useForm } from 'react-hook-form';
 import { formContainerStyles } from './FormContainer.styles';
 
 import useForm2 from '../../../hooks/useForm.js';
@@ -21,9 +20,6 @@ const FormContainer = () => {
   const styles = formContainerStyles();
   const user = useSelector((state) => state.user);
   const [stepper, setStepper] = useState(1);
-  const { register, handleSubmit, control, setValue, getValues, setError, clearErrors } = useForm({
-    mode: 'onBlur',
-  });
 
   const { values, setValues, validate, errors } = useForm2(
     {
@@ -36,6 +32,10 @@ const FormContainer = () => {
       category: '',
       latitude: '',
       longitude: '',
+      hashtags: [],
+      modifiers: [],
+      allergenWarnings: [],
+      dietWarnings: [],
     },
     yup.object().shape({
       title: yup.string().required("'Title' is a required field"),
@@ -49,11 +49,7 @@ const FormContainer = () => {
       longitude: yup.number().required(),
     })
   );
-  const [hashtags, setHashtags] = useState([]);
-  const [modifiers, setModifiers] = useState([]);
   const [photo, setPhoto] = useState(null);
-  const [allergenList, setAllergenList] = useState([]);
-  const [dietWarnings, setDietWarnings] = useState([]);
   // const eventToEdit = useSelector((state) => state.eventToEdit);
   // const isEditing = useSelector((state) => state.isEditing);
   const dispatch = useDispatch();
@@ -62,28 +58,9 @@ const FormContainer = () => {
     return modifierData.map((mod) => (mod.active = false));
   };
 
-  const modifiersWithoutIcon = () => {
-    return modifiers.map((mod) => {
-      return {
-        id: mod.id,
-        title: mod.title,
-        active: mod.active,
-      };
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
-
-  //register mapbox fields
-  useEffect(() => {
-    register('title', { required: true });
-    register('address', { required: true });
-    register('latitude', { required: true });
-    register('longitude', { required: true });
-    register('description', { required: true });
-    register('date', { required: true });
-    register('startTime', { required: true });
-    register('endTime', { required: false });
-    // register('category', { required: false });
-  }, []);
 
   // useEffect(() => {
   //     if (isEditing) {
@@ -220,38 +197,15 @@ const FormContainer = () => {
       )}
       {stepper === 2 && (
         <FormPageTwo
-          register={register}
-          hashtags={hashtags}
-          setHashtags={setHashtags}
-          modifiers={modifiers}
-          setModifiers={setModifiers}
           photo={photo}
           setPhoto={setPhoto}
-          allergenList={allergenList}
-          setAllergenList={setAllergenList}
-          dietWarnings={dietWarnings}
-          setDietWarnings={setDietWarnings}
           setStepper={setStepper}
-          getValues={getValues}
-          setValue={setValue}
+          values={values}
+          setValues={setValues}
         />
       )}
       {stepper === 3 && (
-        <FormPageThree
-          hashtags={hashtags}
-          setHashtags={setHashtags}
-          register={register}
-          getValues={getValues}
-          handleSubmit={handleSubmit}
-          modifiers={modifiers}
-          setModifiers={setModifiers}
-          photo={photo}
-          allergenList={allergenList}
-          setAllergenList={setAllergenList}
-          dietWarnings={dietWarnings}
-          setDietWarnings={setDietWarnings}
-          setStepper={setStepper}
-        />
+        <FormPageThree photo={photo} values={values} setValues={setValues} setStepper={setStepper} />
       )}
       {stepper === 4 && <FormPageFour />}
     </form>

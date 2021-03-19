@@ -31,11 +31,8 @@ const FormPageOne = ({
   const btnStyles = buttonStyles();
 
   const validateAndTurnPage = () => {
-    validateRequiredValues();
-    if (!Object.keys(errors).length) {
-      setStepper(2);
-      scrollToTop();
-    }
+    setStepper(2);
+    scrollToTop();
   };
 
   const validateRequiredValues = () => {};
@@ -67,7 +64,7 @@ const FormPageOne = ({
         </button>
         <button
           type="button"
-          disabled={Object.keys(errors).length}
+          //disabled={Object.keys(errors).length}
           className={btnStyles.rightBtn}
           onClick={validateAndTurnPage}
         >

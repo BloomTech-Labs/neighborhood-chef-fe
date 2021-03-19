@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Hashtag from './hashtag/Hashtag';
 import Typography from '@material-ui/core/Typography';
 import { addModifierFormStyles } from '../../../CreateEvent.styles';
 
-const AddHashtag = ({ hashtags, getValues, setValue, register }) => {
+const AddHashtag = ({ hashtags, values, setValues }) => {
   const [formInput, setFormInput] = useState('');
-  const [forceUpdate, setForceUpdate] = useState(false);
   const styles = addModifierFormStyles();
-
-  useEffect(() => {
-    if (!getValues().hashtags) {
-      register('hashtags');
-      setValue('hashtags', JSON.stringify([]));
-    }
-  }, []);
-
-  useEffect(() => {}, [forceUpdate]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -25,8 +15,14 @@ const AddHashtag = ({ hashtags, getValues, setValue, register }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (JSON.parse(getValues('hashtags')).indexOf(formInput) === -1) {
-      setValue('hashtags', JSON.stringify([...JSON.parse(getValues('hashtags')), formInput]));
+    e.persist();
+    setValues((values) => {
+      return { ...values, category: e.target.value };
+    });
+    if (values.hashtags.indexOf(formInput) === -1) {
+      setValues((values) => {
+        return { ...values, hashtags: [...values.hashtags, formInput] };
+      });
     }
     setFormInput('');
   };
@@ -51,17 +47,9 @@ const AddHashtag = ({ hashtags, getValues, setValue, register }) => {
         </button>
       </div>
       <div className={styles.modifierContainer}>
-        {getValues().hashtags &&
-          JSON.parse(getValues('hashtags')).map((hashtag) => {
-            return (
-              <Hashtag
-                key={hashtag}
-                hashtag={hashtag}
-                setValue={setValue}
-                getValues={getValues}
-                setForceUpdate={setForceUpdate}
-              />
-            );
+        {values.hashtags.length > 0 &&
+          values.hashtags.map((hashtag) => {
+            return <Hashtag key={hashtag} hashtag={hashtag} values={values} setValues={setValues} />;
           })}
       </div>
     </div>
