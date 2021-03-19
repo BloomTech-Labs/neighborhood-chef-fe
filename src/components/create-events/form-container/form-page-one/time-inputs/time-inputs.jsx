@@ -12,7 +12,7 @@ export default function TimeInputs({ errors, setValues, values, validate }) {
   const handleChange = (e) => {
     e.persist();
     setValues((values) => {
-      return { ...values, [e.target.value]: e.target.name };
+      return { ...values, [e.target.name]: e.target.value };
     });
   };
 

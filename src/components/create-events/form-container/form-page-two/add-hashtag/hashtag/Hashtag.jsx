@@ -1,12 +1,11 @@
 import React from 'react';
 import { hashtagAndWarningStyles } from '../../../../CreateEvent.styles';
 
-const Hashtag = ({ hashtag, getValues, setValue, setForceUpdate }) => {
+const Hashtag = ({ hashtag, values, setValues }) => {
   const styles = hashtagAndWarningStyles();
 
   const removeHashtag = () => {
-    setValue('hashtags', JSON.stringify(JSON.parse(getValues('hashtags')).filter((tag) => tag !== hashtag)));
-    setForceUpdate((prevState) => !prevState);
+    setValues({ ...values, hashtags: values.hashtags.filter((tag) => tag !== hashtag) });
   };
 
   return (
