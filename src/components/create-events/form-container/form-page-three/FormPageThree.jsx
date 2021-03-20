@@ -29,7 +29,9 @@ const FormPageThree = (props) => {
           />
 
           <div className={styles.text}>
-            <h4 className={styles.h4}>{props.values.title}</h4>
+            <h4 className={styles.h4}>
+              {props.values.title.length < 22 ? props.values.title : `${props.values.title.slice(0, 22)}...`}
+            </h4>
             <div className={styles.dateDiv}>
               <p className={styles.grayText}>
                 {props.values.date && moment(props.values.date).format('MMMM Do YYYY')}

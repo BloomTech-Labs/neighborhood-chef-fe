@@ -1,570 +1,585 @@
-import {
-    makeStyles,
-    createMuiTheme,
-    responsiveFontSizes,
-} from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 export const buttonStyles = makeStyles({
-    root: {
-        display: 'flex',
-        alignItems: 'center',
-        textTransform: 'none',
-        margin: '3px',
-        marginBottom: '8px',
-        border: 0,
-        borderRadius: 6,
-        padding: '8px 20px',
-        cursor: 'pointer',
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    textTransform: 'none',
+    margin: '3px',
+    marginBottom: '8px',
+    border: 0,
+    borderRadius: 6,
+    padding: '8px 20px',
+    cursor: 'pointer',
+  },
+  notActive: {
+    background: 'white',
+    color: 'black',
+    opacity: 0.5,
+    '&:hover': {
+      background: 'rgba(88, 212, 115, 0.3)',
     },
-    notActive: {
-        background: 'white',
-        color: 'black',
-        opacity: 0.5,
-        '&:hover': {
-            background: 'rgba(88, 212, 115, 0.3)',
-        },
+  },
+  warn: {
+    background: 'white',
+    color: 'black',
+    opacity: 0.5,
+    '&:hover': {
+      background: '#fd7c7c',
     },
-    warn: {
-        background: 'white',
-        color: 'black',
-        opacity: 0.5,
-        '&:hover': {
-            background: '#fd7c7c',
-        },
+  },
+  active: {
+    background: '#58D573',
+    color: 'white',
+    '& a': {
+      color: 'white',
     },
-    active: {
-        background: '#58D573',
-        color: 'white',
-        '& a': {
-            color: 'white',
-        },
-        '&:hover': {
-            background: '#58D573',
-        },
+    '&:hover': {
+      background: '#58D573',
     },
-    single: {
-        justifyContent: 'center',
-        textAlign: 'center',
-        background: '#58D573',
-        color: 'white',
-        '& a': {
-            color: 'white',
-        },
-        '&:hover': {
-            background: '#58D573',
-        },
+  },
+  single: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    background: '#58D573',
+    color: 'white',
+    '& a': {
+      color: 'white',
     },
-    rsvpRoot: {
-        height: '30px',
-        width: '100px',
-        borderRadius: '5px',
-        color: 'white',
-        fontWeight: 'bolder',
-        cursor: 'pointer',
-        border: 'none',
-        margin: '0px 3px',
-        outline: 'none',
+    '&:hover': {
+      background: '#58D573',
     },
-    icon: {
-        background: '#E8E8E8',
-        width: '45px',
-        height: '45px',
+  },
+  rsvpRoot: {
+    height: '30px',
+    width: '100px',
+    borderRadius: '5px',
+    color: 'white',
+    fontWeight: 'bolder',
+    cursor: 'pointer',
+    border: 'none',
+    margin: '0px 3px',
+    outline: 'none',
+  },
+  icon: {
+    background: '#E8E8E8',
+    width: '45px',
+    height: '45px',
+  },
+  iconGreen: {
+    background: '#58D573',
+    width: '45px',
+    height: '45px',
+    '&:hover': {
+      background: '#58D573',
     },
-    iconGreen: {
-        background: '#58D573',
-        width: '45px',
-        height: '45px',
-        '&:hover': {
-            background: '#58D573',
-        },
-    },
+  },
 });
 
 export const formStyles = makeStyles({
-    registerComponent: {
-        'text-align': 'center',
-        'font-size': '20px',
-        color: '#A2A2A2',
-        '& .loginLink': {
-            color: '#58d473',
-            'text-decoration': 'underline',
-            'font-size': '20px',
-        },
-        '& .steps': {
-            background: 'inherit',
-            width: '100%',
-            'justify-content': 'center',
-            '& .MuiMobileStepper-dotActive': {
-                'background-color': '#000000',
-            },
-        },
+  registerComponent: {
+    'text-align': 'center',
+    'font-size': '20px',
+    color: '#A2A2A2',
+    '& .loginLink': {
+      color: '#58d473',
+      'text-decoration': 'underline',
+      'font-size': '20px',
     },
-    registerForm: {
-        width: '60%',
-        margin: '0 auto',
-        display: 'flex',
-        'flex-wrap': 'wrap',
-        '& h1': {
-            width: '100%',
-            'font-size': '44px',
-            'line-height': '66px',
-            'letter-spacing': '0.02em',
-            'font-weight': 'normal',
-            color: '#000000',
-        },
-        '& .email': {
-            'margin-top': '40px',
-            width: '100%',
-            'text-align': 'left',
-        },
-        '& .password': {
-            'margin-top': '40px',
-            width: '48%',
-            'text-align': 'left',
-        },
-        '& .confirmPassword': {
-            'margin-top': '40px',
-            width: '48%',
-            'text-align': 'left',
-            'margin-left': '4%',
-        },
-        '& .firstName': {
-            'margin-top': '40px',
-            width: '48%',
-            'text-align': 'left',
-        },
-        '& .lastName': {
-            'margin-top': '40px',
-            width: '48%',
-            'text-align': 'left',
-            'margin-left': '4%',
-        },
-        '& .location': {
-            visibility: 'hidden',
-            'margin-top': '40px',
-            width: '100%',
-            'text-align': 'left',
-        },
-        '& .geocoder': {
-            width: '100%',
-            'margin-top': '-35px',
-            '& input': {
-                width: '100%',
-            },
-            '& .react-geocoder-item': {
-                cursor: 'pointer',
-            },
-        },
-        '& .terms': {
-            'margin-top': '40px',
-            width: '100%',
-        },
-        '& .gender': {
-            'margin-top': '40px',
-            width: '100%',
-            'text-align': 'left',
-            '& h3': {
-                margin: '0',
-                'font-weight': 'normal',
-                'font-size': '20px',
-            },
-            '& span': {
-                'font-size': '16px',
-            },
-        },
-        '& .photo': {
-            'margin-top': '40px',
-            width: '100%',
-        },
-        '& input': {
-            'font-size': '20px',
-            'font-style': 'normal',
-            'font-weight': '500',
-            'line-height': '30px',
-            'letter-spacing': '0.02em',
-        },
-        '& label': {
-            'font-size': '20px',
-            color: '#A2A2A2',
-        },
-        '& button': {
-            width: '100%',
-            padding: '10px 30px',
-            margin: '20px 0',
-            'background-color': '#58d473',
-            'border-color': '#58d473',
-            'border-radius': '10px',
-            'font-size': '24px',
-            '&:hover': {
-                'background-color': '#12a245',
-            },
-        },
-        '& .Mui-disabled': {
-            'background-color': '#58D473',
-            opacity: '0.5',
-            color: '#fff',
-        },
-        '& .MuiFormControl-root': {
-            'margin-top': '40px',
-        },
-        '& .Mui-error': {
-            'font-size': '16px',
-        },
+    '& .steps': {
+      background: 'inherit',
+      width: '100%',
+      'justify-content': 'center',
+      '& .MuiMobileStepper-dotActive': {
+        'background-color': '#000000',
+      },
     },
-    icon: {
+  },
+  registerForm: {
+    width: '60%',
+    margin: '0 auto',
+    display: 'flex',
+    'flex-wrap': 'wrap',
+    '& h1': {
+      width: '100%',
+      'font-size': '44px',
+      'line-height': '66px',
+      'letter-spacing': '0.02em',
+      'font-weight': 'normal',
+      color: '#000000',
+    },
+    '& .email': {
+      'margin-top': '40px',
+      width: '100%',
+      'text-align': 'left',
+    },
+    '& .password': {
+      'margin-top': '40px',
+      width: '48%',
+      'text-align': 'left',
+    },
+    '& .confirmPassword': {
+      'margin-top': '40px',
+      width: '48%',
+      'text-align': 'left',
+      'margin-left': '4%',
+    },
+    '& .firstName': {
+      'margin-top': '40px',
+      width: '48%',
+      'text-align': 'left',
+    },
+    '& .lastName': {
+      'margin-top': '40px',
+      width: '48%',
+      'text-align': 'left',
+      'margin-left': '4%',
+    },
+    '& .location': {
+      visibility: 'hidden',
+      'margin-top': '40px',
+      width: '100%',
+      'text-align': 'left',
+    },
+    '& .geocoder': {
+      width: '100%',
+      'margin-top': '-35px',
+      '& input': {
+        width: '100%',
+      },
+      '& .react-geocoder-item': {
         cursor: 'pointer',
+      },
     },
+    '& .terms': {
+      'margin-top': '40px',
+      width: '100%',
+    },
+    '& .gender': {
+      'margin-top': '40px',
+      width: '100%',
+      'text-align': 'left',
+      '& h3': {
+        margin: '0',
+        'font-weight': 'normal',
+        'font-size': '20px',
+      },
+      '& span': {
+        'font-size': '16px',
+      },
+    },
+    '& .photo': {
+      'margin-top': '40px',
+      width: '100%',
+    },
+    '& input': {
+      'font-size': '20px',
+      'font-style': 'normal',
+      'font-weight': '500',
+      'line-height': '30px',
+      'letter-spacing': '0.02em',
+    },
+    '& label': {
+      'font-size': '20px',
+      color: '#A2A2A2',
+    },
+    '& button': {
+      width: '100%',
+      padding: '10px 30px',
+      margin: '20px 0',
+      'background-color': '#58d473',
+      'border-color': '#58d473',
+      'border-radius': '10px',
+      'font-size': '24px',
+      '&:hover': {
+        'background-color': '#12a245',
+      },
+    },
+    '& .Mui-disabled': {
+      'background-color': '#58D473',
+      opacity: '0.5',
+      color: '#fff',
+    },
+    '& .MuiFormControl-root': {
+      'margin-top': '40px',
+    },
+    '& .Mui-error': {
+      'font-size': '16px',
+    },
+  },
+  icon: {
+    cursor: 'pointer',
+  },
 });
 
 export const cardStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 350,
-        minWidth: 200,
-        margin: '8px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: 'calc(100% - 36px)',
-        padding: '10px',
-        overflowY: 'auto',
-        //these next two lines hide scrollbars on cards
-        '&::-webkit-scrollbar': { display: 'none' },
-        '-ms-overflow-style': 'none',
+  root: {
+    maxWidth: '350',
+    minWidth: 200,
+    margin: '8px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: 'calc(100% - 36px)',
+    padding: '10px',
+    overflowY: 'auto',
+    wordWrap: 'break-word',
+    //these next two lines hide scrollbars on cards
+    '&::-webkit-scrollbar': { display: 'none' },
+    '-ms-overflow-style': 'none',
+  },
+  dashboard: {
+    maxHeight: '90%',
+    maxWidth: '390px',
+  },
+  eventDetailsContainer: {
+    maxWidth: '500px',
+  },
+  addressContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  statusButtonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingTop: '10px',
+  },
+  headerContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  dateOverlay: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '10px',
+    background: '#f8f8f8',
+    borderRadius: '8px',
+    marginTop: '-14%',
+    marginLeft: '5%',
+    alignSelf: 'left',
+    width: '46px',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  icon: {
+    fontSize: '2.4rem',
+    marginRight: '5px',
+    cursor: 'pointer',
+    color: 'black',
+    opacity: '.5',
+  },
+  img: {
+    maxHeight: '40%',
+  },
+  dashboardImg: {
+    maxHeight: '20%',
+  },
+  span: {
+    marginRight: '5px',
+    verticalAlign: 'middle',
+  },
+  title: {
+    wordWrap: 'break-word',
+    maxWidth: '440px',
+  },
+  fullEvent: {
+    maxWidth: '100%',
+    height: 'calc(100% - 36px)',
+  },
+  cardContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '5px',
+  },
+  iconContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginBottom: '10px',
+  },
+  participants: {
+    maxHeight: 150,
+    width: '100%',
+    maxWidth: '100%',
+    justifyContent: 'flex-start',
+  },
+  landingPage: {
+    width: '70%',
+    maxWidth: 450,
+    justifyContent: 'space-between',
+    height: 'auto',
+    maxHeight: '100%',
+    overflow: 'auto',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  media: {
+    height: 0,
+    paddingTop: '40%',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+    backgroundColor: '#e8e8e8',
+    color: 'black',
+    letterSpacing: '3px',
+  },
+  share: {
+    maxHeight: 150,
+    width: '100%',
+    maxWidth: '100%',
+  },
+  shareButtons: {
+    width: '40px',
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    borderRadius: 180,
+    cursor: 'pointer',
+    color: (props) => {
+      if (props.name === 'Facebook') {
+        return '#3965FF';
+      }
+      if (props.name === 'Twitter') {
+        return '#55ACEE';
+      }
+      if (props.name === 'Text') {
+        return '#2ddd53';
+      }
+      if (props.name === 'Email') {
+        return '#5192f3';
+      }
     },
-    dashboard: {
-        maxHeight: '90%',
-        maxWidth: '390px',
+    background: (props) => {
+      if (props.name === 'Facebook') {
+        return '#E5F0FF';
+      }
+      if (props.name === 'Twitter') {
+        return '#D9EFFF';
+      }
+      if (props.name === 'Text') {
+        return '#ebfff5';
+      }
+      if (props.name === 'Email') {
+        return '#e0e6ff';
+      }
     },
-    eventDetailsContainer: {
-        width: '100%',
+    '&:hover': {
+      background: '#f8f8f8',
     },
-    addressContainer: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    statusButtonContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingTop: '10px',
-    },
-    dateOverlay: {
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '10px',
-        background: '#f8f8f8',
-        borderRadius: '8px',
-        marginTop: '-14%',
-        marginLeft: '5%',
-        alignSelf: 'left',
-        width: '46px',
-        alignItems: 'center',
-        position: 'relative',
-    },
-    img: {
-        maxHeight: '40%',
-    },
-    dashboardImg: {
-        maxHeight: '20%',
-    },
-    span: {
-        marginRight: '5px',
-        verticalAlign: 'middle',
-    },
-    fullEvent: {
-        maxWidth: '100%',
-        height: 'calc(100% - 36px)',
-    },
-    cardContent: {
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '5px',
-    },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginBottom: '10px',
-    },
-    participants: {
-        maxHeight: 150,
-        width: '100%',
-        maxWidth: '100%',
-        justifyContent: 'flex-start',
-    },
-    landingPage: {
-        width: '70%',
-        maxWidth: 450,
-        justifyContent: 'space-between',
-        height: 'auto',
-        maxHeight: '100%',
-        overflow: 'auto',
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
-    media: {
-        height: 0,
-        paddingTop: '40%',
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: '#e8e8e8',
-        color: 'black',
-        letterSpacing: '3px',
-    },
-    share: {
-        maxHeight: 150,
-        width: '100%',
-        maxWidth: '100%',
-    },
-    shareButtons: {
-        width: '40px',
-        height: '40px',
-        display: 'flex',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center',
-        borderRadius: 180,
-        cursor: 'pointer',
-        color: (props) => {
-            if (props.name === 'Facebook') {
-                return '#3965FF';
-            }
-            if (props.name === 'Twitter') {
-                return '#55ACEE';
-            }
-            if (props.name === 'Text') {
-                return '#2ddd53';
-            }
-            if (props.name === 'Email') {
-                return '#5192f3';
-            }
-        },
-        background: (props) => {
-            if (props.name === 'Facebook') {
-                return '#E5F0FF';
-            }
-            if (props.name === 'Twitter') {
-                return '#D9EFFF';
-            }
-            if (props.name === 'Text') {
-                return '#ebfff5';
-            }
-            if (props.name === 'Email') {
-                return '#e0e6ff';
-            }
-        },
-        '&:hover': {
-            background: '#f8f8f8',
-        },
-    },
-    accountEvent: {
-        maxHeight: 200,
-        maxWidth: 350,
-        minWidth: 200,
-        margin: 8,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '10px',
-        cursor: 'pointer',
-        textAlign: 'center',
-        height: 'calc(100% - 36px)',
-    },
-    comments: {
-        maxWidth: '100%',
-        height: 'calc(100% - 36px)',
-    },
-    singleCommentParent: {
-        marginBottom: '10px',
-        border: '1px solid rgba(0,0,0,.2)',
-        borderRadius: '10px',
-        padding: '5px',
-    },
-    singleCommentChild: {
-        marginBottom: '10px',
-        border: '1px solid rgba(0,0,0,.1)',
-        borderRadius: '10px',
-        padding: '5px',
-        marginLeft: '35px',
-    },
-    avatarContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-    },
-    photoContainer: {
-        marginRight: '5px',
-        width: '26px',
-        height: '26px',
-    },
-    replyBtnContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
+  },
+  accountEvent: {
+    maxHeight: 200,
+    maxWidth: 350,
+    minWidth: 200,
+    margin: 8,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: '10px',
+    cursor: 'pointer',
+    textAlign: 'center',
+    height: 'calc(100% - 36px)',
+  },
+  comments: {
+    maxWidth: '100%',
+    height: 'calc(100% - 36px)',
+  },
+  singleCommentParent: {
+    marginBottom: '10px',
+    border: '1px solid rgba(0,0,0,.2)',
+    borderRadius: '10px',
+    padding: '5px',
+  },
+  singleCommentChild: {
+    marginBottom: '10px',
+    border: '1px solid rgba(0,0,0,.1)',
+    borderRadius: '10px',
+    padding: '5px',
+    marginLeft: '35px',
+  },
+  avatarContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+  },
+  photoContainer: {
+    marginRight: '5px',
+    width: '26px',
+    height: '26px',
+  },
+  replyBtnContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 }));
 
 export const textBoxStyles = makeStyles({
-    background: {
-        border: '0',
-        borderRadius: '5px',
-        background: 'rgba(0,0,0,.1)',
-        width: '180px',
-        padding: '0px 5px',
-        display: 'flex',
-        alignItems: 'center',
+  background: {
+    border: '0',
+    borderRadius: '5px',
+    background: 'rgba(0,0,0,.1)',
+    width: '180px',
+    padding: '0px 5px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  button: {
+    background: '0',
+    cursor: 'pointer',
+    border: '0',
+    width: '10%',
+    padding: '0 5px',
+  },
+  textBox: {
+    border: '0',
+    borderRadius: '10px',
+    background: '0',
+    width: '85%',
+    height: '100%',
+    fontSize: '1.5rem',
+  },
+  addressInput: {
+    position: 'relative',
+    marginTop: '35px',
+    fontSize: '1.7rem',
+    display: 'block',
+    border: 0,
+    borderBottom: '1px solid rgba(0,0,0,.5)',
+    width: '99%',
+    background: 0,
+    transition: 'all .2s ease',
+    '&:focus': {
+      outline: 'none',
+      borderBottom: '2px solid #4051b5',
+      '&:hover': {
+        borderBottom: '2px solid #4051b5',
+      },
     },
-    button: {
-        background: '0',
-        cursor: 'pointer',
-        border: '0',
-        width: '10%',
-        padding: '0 5px',
+    '&:hover': {
+      borderBottom: '2px solid rgba(0,0,0,.8)',
     },
-    textBox: {
-        border: '0',
-        borderRadius: '10px',
-        background: '0',
-        width: '85%',
-        height: '100%',
-        fontSize: '1.5rem',
-    },
-    addressInput: {
-        position: 'relative',
-        marginTop: '35px',
-        fontSize: '1.7rem',
-        display: 'block',
-        border: 0,
-        borderBottom: '1px solid rgba(0,0,0,.5)',
-        width: '99%',
-        background: 0,
-        transition: 'all .2s ease',
-        '&:focus': {
-            outline: 'none',
-            borderBottom: '2px solid #4051b5',
-            '&:hover': {
-                borderBottom: '2px solid #4051b5',
-            },
-        },
-        '&:hover': {
-            borderBottom: '2px solid rgba(0,0,0,.8)',
-        },
-        zIndex: 2,
-    },
-    addressLabel: {
-        letterSpacing: '.5px',
-        transition: 'all .2s ease',
-        position: 'relative',
-        top: ({ isFocus, addressValue }) =>
-            isFocus || addressValue ? '57px' : '67px',
-        color: ({ isFocus }) => (isFocus ? '#4051b5' : 'rgba(0,0,0,.5)'),
-    },
-    icon: {
-        position: 'relative',
-        top: '60px',
-        left: ({ isFocus, addressValue }) =>
-            isFocus || addressValue ? '71%' : '67%',
-        zIndex: 3,
-    },
+    zIndex: 2,
+  },
+  addressLabel: {
+    letterSpacing: '.5px',
+    transition: 'all .2s ease',
+    position: 'relative',
+    top: ({ isFocus, addressValue }) => (isFocus || addressValue ? '57px' : '67px'),
+    color: ({ isFocus }) => (isFocus ? '#4051b5' : 'rgba(0,0,0,.5)'),
+  },
+  icon: {
+    position: 'relative',
+    top: '60px',
+    left: ({ isFocus, addressValue }) => (isFocus || addressValue ? '71%' : '67%'),
+    zIndex: 3,
+  },
 });
 
 export const modalStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    paper: {
-        marginRight: theme.spacing(2),
-    },
+  root: {
+    display: 'flex',
+  },
+  paper: {
+    marginRight: theme.spacing(2),
+  },
 }));
 
 /*----Theme styling for entire app-----*/
 
 export const theme = responsiveFontSizes(
-    createMuiTheme({
-        overrides: {
-            MuiButton: {
-                root: {
-                    '&$disabled': {
-                        opacity: '.4',
-                        background: 'rgba(88, 212, 115, 0.6)',
-                    },
-                },
-            },
+  createMuiTheme({
+    overrides: {
+      MuiButton: {
+        root: {
+          '&$disabled': {
+            opacity: '.4',
+            background: 'rgba(88, 212, 115, 0.6)',
+          },
         },
-        breakpoints: {
-            values: {
-                xs: 0,
-                sm: 600,
-                md: 700,
-                lg: 1280,
-                xl: 1920,
-            },
-        },
-        typography: {
-            h1: {
-                fontSize: '5rem',
-            },
-            h2: {
-                fontSize: '4.5rem',
-            },
-            h3: {
-                fontSize: '3.5rem',
-            },
-            h4: {
-                fontSize: '3rem',
-            },
-            h5: {
-                fontSize: '2.4rem',
-            },
-            h6: {
-                fontSize: '1.8rem',
-            },
-            caption: {
-                fontSize: '1.5rem',
-            },
-            body1: {
-                fontSize: '1.7rem',
-            },
-            body2: {
-                fontSize: '1.2rem',
-            },
-        },
-        palette: {
-            textSecondary: { color: 'rgba(0, 0, 0, 0.6)' },
-        },
-    })
+      },
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 700,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    typography: {
+      h1: {
+        fontSize: '5rem',
+      },
+      h2: {
+        fontSize: '4.5rem',
+      },
+      h3: {
+        fontSize: '3.5rem',
+      },
+      h4: {
+        fontSize: '3rem',
+      },
+      h5: {
+        fontSize: '2.4rem',
+      },
+      h6: {
+        fontSize: '1.8rem',
+      },
+      caption: {
+        fontSize: '1.5rem',
+      },
+      body1: {
+        fontSize: '1.7rem',
+      },
+      body2: {
+        fontSize: '1.2rem',
+      },
+    },
+    palette: {
+      textSecondary: { color: 'rgba(0, 0, 0, 0.6)' },
+    },
+  })
 );
 
 export const landingPageStyles = makeStyles((theme) => ({
-    landingPageContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
+  landingPageContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  landingPageLeft: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '50vw',
+    height: '80vh',
+    textAlign: 'center',
+    alignSelf: 'center',
+    [theme.breakpoints.down('700')]: {
+      width: '100vw',
+      paddingTop: '35px',
     },
-    landingPageLeft: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '50vw',
-        height: '80vh',
-        textAlign: 'center',
-        alignSelf: 'center',
-        [theme.breakpoints.down('700')]: {
-            width: '100vw',
-            paddingTop: '35px',
-        },
+  },
+  landingPageRight: {
+    height: '90vh',
+    width: '50vw',
+    [theme.breakpoints.down('700')]: {
+      display: 'none',
     },
-    landingPageRight: {
-        height: '90vh',
-        width: '50vw',
-        [theme.breakpoints.down('700')]: {
-            display: 'none',
-        },
-    },
+  },
 }));

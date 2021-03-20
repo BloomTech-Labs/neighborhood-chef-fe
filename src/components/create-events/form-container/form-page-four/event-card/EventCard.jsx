@@ -6,69 +6,42 @@ import { eventCardStyles } from './EventCard.styles';
 import { chooseDefaultPicture } from '../../../../../utilities/functions';
 
 const EventCard = () => {
-    const values = useSelector((state) => state.newEvent);
-    const styles = eventCardStyles();
+  const values = useSelector((state) => state.newEvent);
+  const styles = eventCardStyles();
 
-    const photo = values.photo ? values.photo : chooseDefaultPicture();
+  const photo = values.photo ? values.photo : chooseDefaultPicture();
 
-    return (
-        <div className={styles.root}>
-            <div className={styles.card}>
-                <img className={styles.img} src={photo} alt="Event Card Img" />
-                <div className={styles.textContainer}>
-                    <h3
-                        style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '500',
-                            color: '#1A0F2C',
-                            marginBottom: '5px',
-                        }}
-                    >
-                        {values.title}
-                    </h3>
+  return (
+    <div className={styles.root}>
+      <div className={styles.card}>
+        <img className={styles.img} src={photo} alt="Event Card Img" />
+        <div className={styles.textContainer}>
+          <h3 className={styles.h3}>
+            {values.title.length < 22 ? values.title : `${values.title.slice(0, 22)}...`}
+          </h3>
 
-                    <p style={{ color: 'rgba(0, 0, 0, 0.35)' }}>
-                        {moment(parseInt(values.startTime)).format(
-                            'MMMM Do, YYYY'
-                        )}
-                        &nbsp;
-                    </p>
-                    <div style={{ display: 'flex' }}>
-                        <p
-                            style={{
-                                color: '#82DF96',
-                                fontWeight: '500',
-                            }}
-                        >
-                            {moment(parseInt(values.startTime)).format('h:mmA')}
-                            &nbsp;
-                        </p>
-                        {values.endTime && (
-                            <>
-                                <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
-                                    to&nbsp;
-                                </p>
-                                <p
-                                    style={{
-                                        color: '#ea6565',
-                                        fontWeight: '500',
-                                    }}
-                                >
-                                    {moment(parseInt(values.endTime)).format(
-                                        'h:mmA'
-                                    )}
-                                </p>
-                            </>
-                        )}
-                    </div>
+          <p className={styles.grayText}>
+            {moment(parseInt(values.startTime)).format('MMMM Do, YYYY')}
+            &nbsp;
+          </p>
+          <div style={{ display: 'flex' }}>
+            <p className={styles.greenText}>
+              {moment(parseInt(values.startTime)).format('h:mmA')}
+              &nbsp;
+            </p>
+            {values.endTime && (
+              <>
+                <p className={styles.grayText}>to&nbsp;</p>
+                <p className={styles.redText}>{moment(parseInt(values.endTime)).format('h:mmA')}</p>
+              </>
+            )}
+          </div>
 
-                    <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
-                        {values.address}
-                    </p>
-                </div>
-            </div>
+          <p className={styles.grayText}>{values.address}</p>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default EventCard;

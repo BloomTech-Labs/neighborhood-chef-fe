@@ -117,7 +117,7 @@ const RecentCard = (props) => {
       <CardContent style={{ padding: '5px' }}>
         <Link to={`events/${props.id}`}>
           <Typography variant="h4" align="center">
-            {props.title}
+            {props.title.length < 22 ? props.title : `${props.title.slice(0, 22)}...`}
           </Typography>
         </Link>
         <Typography variant="body1" align="center">

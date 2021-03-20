@@ -15,98 +15,93 @@ import { Icon } from '@iconify/react';
 import calendarIcon from '@iconify/icons-flat-color-icons/calendar';
 import clockIcon from '@iconify/icons-flat-color-icons/clock';
 import globeIcon from '@iconify/icons-flat-color-icons/globe';
+import pencilIcon from '@iconify/icons-mdi/pencil';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 //data/function imports
 
 import { parseTime, chooseDefaultPicture } from '../../../utilities/functions';
 
 const EventDetails = ({ event, attending, setAttending }) => {
-    const classes = cardStyles();
-    const currentUserId = useSelector((state) => state.user.id);
-    const photo = event.photo ? event.photo : chooseDefaultPicture();
+  const classes = cardStyles();
+  const currentUserId = useSelector((state) => state.user.id);
+  const photo = event.photo ? event.photo : chooseDefaultPicture();
 
-    let timeObject, parsedAddressURL;
+  let timeObject, parsedAddressURL;
 
-    if (Object.keys(event).length > 0) {
-        timeObject = parseTime(event.startTime, event.endTime);
-        parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(
-            ' ',
-            '+'
-        )}`;
-    }
+  if (Object.keys(event).length > 0) {
+    timeObject = parseTime(event.startTime, event.endTime);
+    parsedAddressURL = `https://www.google.com/maps/search/${event.address.replace(' ', '+')}`;
+  }
 
-    return (
-        <div className={classes.eventDetailsContainer}>
-            {event ? (
-                <Card className={`${classes.root} ${classes.fullEvent}`}>
-                    <CardHeader
-                        title={
-                            <Typography variant="h3">{event.title}</Typography>
-                        }
-                        subheader={
-                            <Typography variant="caption">
-                                <span>created by </span>
-                                {`${event.User.firstName} ${event.User.lastName}`}
-                            </Typography>
-                        }
-                    />
-                    <CardMedia
-                        className={classes.img}
-                        component="img"
-                        src={photo}
-                        title="Event Details Photo"
-                    />
-                    <p> {event.description}</p>
-                    <div>Confirmed Attending: {attending.length}</div>
-                    <div>
-                        <span className={classes.span}>
-                            <Icon height="20" icon={calendarIcon} />
-                        </span>
-                        {timeObject.formattedDate}
-                    </div>
-                    <div>
-                        <span className={classes.span}>
-                            <Icon height="20" icon={clockIcon} />
-                        </span>
-                        {`${timeObject.startTime} ${
-                            timeObject.endTime !== 'Invalid date'
-                                ? '- ' + timeObject.endTime
-                                : ''
-                        }`}
-                    </div>
-                    <div className={classes.addressContainer}>
-                        <span>
-                            <Icon height="20" icon={globeIcon} />
-                        </span>
-                        <a
-                            href={parsedAddressURL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {event.address}
-                        </a>
-                    </div>
-                    <div>
-                        <Typography variant="h6">
-                            Will you be attending this event?
-                        </Typography>
-                        <div className={classes.statusButtonContainer}>
-                            <StatusTabs
-                                id={event.id}
-                                currentUserId={currentUserId}
-                                attending={attending}
-                                setAttending={setAttending}
-                            />
-                        </div>
-                    </div>
-                </Card>
-            ) : (
-                <Typography variant="h6">
-                    Please select an event to view its details
+  return (
+    <div className={classes.eventDetailsContainer}>
+      {event ? (
+        <Card className={`${classes.root} ${classes.fullEvent}`}>
+          <div className={classes.headerContainer}>
+            <CardHeader
+              style={{ marginLeft: '-3%' }}
+              title={
+                <Typography variant="h3" className={classes.title}>
+                  {event.title}
                 </Typography>
+              }
+              subheader={
+                <Typography variant="caption">
+                  <span>created by </span>
+                  {`${event.User.firstName} ${event.User.lastName}`}
+                </Typography>
+              }
+            />
+            {event.User.id === currentUserId && (
+              <div style={{ display: 'flex', marginBottom: '100px' }}>
+                <DeleteOutlinedIcon className={classes.icon} />
+                <Icon icon={pencilIcon} className={classes.icon} />
+              </div>
             )}
-        </div>
-    );
+          </div>
+          <CardMedia className={classes.img} component="img" src={photo} title="Event Details Photo" />
+          <p> {event.description}</p>
+          <div>Confirmed Attending: {attending.length}</div>
+          <div>
+            <span className={classes.span}>
+              <Icon height="20" icon={calendarIcon} />
+            </span>
+            {timeObject.formattedDate}
+          </div>
+          <div>
+            <span className={classes.span}>
+              <Icon height="20" icon={clockIcon} />
+            </span>
+            {`${timeObject.startTime} ${
+              timeObject.endTime !== 'Invalid date' ? '- ' + timeObject.endTime : ''
+            }`}
+          </div>
+          <div className={classes.addressContainer}>
+            <span>
+              <Icon height="20" icon={globeIcon} />
+            </span>
+            <a href={parsedAddressURL} target="_blank" rel="noopener noreferrer">
+              {event.address}
+            </a>
+          </div>
+          <div>
+            <Typography variant="h6">Will you be attending this event?</Typography>
+            <div className={classes.statusButtonContainer}>
+              <StatusTabs
+                id={event.id}
+                currentUserId={currentUserId}
+                attending={attending}
+                setAttending={setAttending}
+              />
+            </div>
+          </div>
+        </Card>
+      ) : (
+        <Typography variant="h6">Please select an event to view its details</Typography>
+      )}
+    </div>
+  );
 };
 
 export default EventDetails;
