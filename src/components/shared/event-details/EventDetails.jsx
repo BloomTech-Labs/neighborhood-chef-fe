@@ -54,7 +54,7 @@ const EventDetails = ({ event, attending, setAttending }) => {
               }
             />
             {event.User.id === currentUserId && (
-              <div style={{ display: 'flex', marginBottom: '100px' }}>
+              <div style={{ display: 'flex' }}>
                 <DeleteOutlinedIcon className={classes.icon} />
                 <Icon icon={pencilIcon} className={classes.icon} />
               </div>

@@ -4,66 +4,47 @@ import { useSelector } from 'react-redux';
 import { print } from 'graphql';
 import { GET_USER_INVITED_TO_EVENT_BY_CURRENT_USER } from '../../../../../../graphql/events/event-queries';
 
-import InvitedUser from './invited-user/InvitedUser';
-import UninvitedUser from './uninvited-user/UninvitedUser';
+import UserCard from './user-card/UserCard';
 
-const UserList = ({ event, filteredList }) => {
-    const user_id = useSelector((state) => state.user.id);
-    const event_id = useSelector((state) => state.newEvent.id);
-    const [usersCurrentUserAlreadyInvited, setAlreadyInvited] = useState([]);
+const UserList = ({ event_id, filteredList }) => {
+  const user_id = useSelector((state) => state.user.id);
+  const [invitedUsers, setAlreadyInvited] = useState([]);
 
-    useEffect(() => {
-        axiosWithAuth()
-            .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
-                query: print(GET_USER_INVITED_TO_EVENT_BY_CURRENT_USER),
-                variables: {
-                    queryParams: {
-                        id: event_id,
-                    },
-                    currentUser: user_id,
-                },
-            })
-            .then((res) => {
-                setAlreadyInvited(
-                    res.data.data.Events.EventUsers.currentUserInvited
-                );
-            })
-            .catch((err) => console.dir(err));
-    }, []);
+  useEffect(() => {
+    axiosWithAuth()
+      .post(`${process.env.REACT_APP_BASE_URL}/graphql`, {
+        query: print(GET_USER_INVITED_TO_EVENT_BY_CURRENT_USER),
+        variables: {
+          queryParams: {
+            id: Number(event_id),
+          },
+          currentUser: Number(user_id),
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setAlreadyInvited(res.data.data.Events[0].EventUsers.currentUserInvited.map((user) => user.id));
+      })
+      .catch((err) => console.dir(err));
+  }, []);
 
-    return (
-        <>
-            {usersCurrentUserAlreadyInvited
-                .sort((a, b) => a.firstName.localeCompare(b.firstName))
-                .map((user) => {
-                    return (
-                        Number(user.id) !== event.user_id && (
-                            <InvitedUser key={user.id} user={user} />
-                        )
-                    );
-                })}
-            {filteredList
-                .filter((user) => {
-                    const alreadyInvited = usersCurrentUserAlreadyInvited.map(
-                        (user) => user.id
-                    );
+  useEffect(() => {}, [invitedUsers]);
 
-                    return !alreadyInvited.includes(user.id);
-                })
-                .sort((a, b) => a.firstName.localeCompare(b.firstName))
-                .map((user) => {
-                    return (
-                        Number(user.id) !== event.user_id && (
-                            <UninvitedUser
-                                key={user.id}
-                                user={user}
-                                setAlreadyInvited={setAlreadyInvited}
-                            />
-                        )
-                    );
-                })}
-        </>
-    );
+  return (
+    <>
+      {filteredList.map((user) => {
+        return (
+          <UserCard
+            key={user.id}
+            user={user}
+            event_id={event_id}
+            invited={invitedUsers.includes(user.id) ? true : false}
+            setAlreadyInvited={setAlreadyInvited}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default UserList;

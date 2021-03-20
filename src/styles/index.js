@@ -263,7 +263,7 @@ export const cardStyles = makeStyles((theme) => ({
     position: 'relative',
   },
   icon: {
-    fontSize: '2.4rem',
+    fontSize: '2rem',
     marginRight: '5px',
     cursor: 'pointer',
     color: 'black',

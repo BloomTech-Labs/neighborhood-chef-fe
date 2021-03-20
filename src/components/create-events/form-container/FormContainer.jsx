@@ -94,6 +94,7 @@ const FormContainer = () => {
             status: 'UNDECIDED',
           })
         );
+        setValues({ ...values, id: res.data.data.inputEvent.id });
         setStepper(4);
       })
       .catch((err) => {
@@ -128,7 +129,7 @@ const FormContainer = () => {
           handleSubmit={handleSubmit}
         />
       )}
-      {stepper === 4 && <FormPageFour />}
+      {stepper === 4 && <FormPageFour values={values} />}
     </form>
   );
 };

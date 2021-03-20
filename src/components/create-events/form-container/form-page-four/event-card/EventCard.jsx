@@ -5,8 +5,8 @@ import moment from 'moment';
 import { eventCardStyles } from './EventCard.styles';
 import { chooseDefaultPicture } from '../../../../../utilities/functions';
 
-const EventCard = () => {
-  const values = useSelector((state) => state.newEvent);
+const EventCard = ({ values }) => {
+  console.log(values);
   const styles = eventCardStyles();
 
   const photo = values.photo ? values.photo : chooseDefaultPicture(values.title.charAt(0));
@@ -21,7 +21,7 @@ const EventCard = () => {
           </h3>
 
           <p className={styles.grayText}>
-            {moment(parseInt(values.startTime)).format('MMMM Do, YYYY')}
+            {moment(new Date(`${values.date} ${values.startTime}`).getTime()).format('MMMM Do, YYYY')}
             &nbsp;
           </p>
           <div style={{ display: 'flex' }}>
