@@ -37,6 +37,7 @@ const FormContainer = () => {
       modifiers: [],
       allergenWarnings: [],
       dietaryWarnings: [],
+      photo: null,
     },
     yup.object().shape({
       title: yup.string().required("'Title' is a required field"),

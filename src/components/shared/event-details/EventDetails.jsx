@@ -25,7 +25,7 @@ import { parseTime, chooseDefaultPicture } from '../../../utilities/functions';
 const EventDetails = ({ event, attending, setAttending }) => {
   const classes = cardStyles();
   const currentUserId = useSelector((state) => state.user.id);
-  const photo = event.photo ? event.photo : chooseDefaultPicture();
+  const photo = event.photo ? event.photo : chooseDefaultPicture(event.title.charAt(0));
 
   let timeObject, parsedAddressURL;
 

@@ -24,7 +24,7 @@ const FormPageThree = (props) => {
         <div className={styles.card}>
           <img
             className={styles.img}
-            src={props.values.photo || chooseDefaultPicture()}
+            src={props.values.photo || chooseDefaultPicture(props.values.title.charAt(0))}
             alt="Event Page 3 Img"
           />
 

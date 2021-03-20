@@ -42,8 +42,8 @@ const FormPageTwo = (props) => {
       <div className={styles.container}>
         <EventImageUpload
           values={props.values}
-          avatar={props.photo}
-          setPhoto={props.setPhoto}
+          avatar={props.values.photo}
+          setValues={props.setValues}
           title="Upload a main picture for your event page"
         />
         <AddHashtag values={props.values} setValues={props.setValues} />

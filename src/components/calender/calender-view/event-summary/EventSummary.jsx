@@ -24,14 +24,12 @@ import { parseTime, chooseDefaultPicture } from '../../../../utilities/functions
 const EventSummary = ({ selectedEvent }) => {
   const userId = useSelector((state) => state.user.id);
   const classes = cardStyles();
-
-  const photo = selectedEvent.photo ? selectedEvent.photo : chooseDefaultPicture();
-
-  let timeObject, parsedAddressURL;
+  let timeObject, parsedAddressURL, photo;
 
   if (Object.keys(selectedEvent).length > 0) {
     timeObject = parseTime(selectedEvent.startTime, selectedEvent.endTime);
     parsedAddressURL = `https://www.google.com/maps/search/${selectedEvent.address.replace(' ', '+')}`;
+    photo = selectedEvent.photo ? selectedEvent.photo : chooseDefaultPicture(selectedEvent.title.charAt(0));
   }
 
   return (

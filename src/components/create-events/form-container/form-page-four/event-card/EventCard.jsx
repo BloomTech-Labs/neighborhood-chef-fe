@@ -9,7 +9,7 @@ const EventCard = () => {
   const values = useSelector((state) => state.newEvent);
   const styles = eventCardStyles();
 
-  const photo = values.photo ? values.photo : chooseDefaultPicture();
+  const photo = values.photo ? values.photo : chooseDefaultPicture(values.title.charAt(0));
 
   return (
     <div className={styles.root}>

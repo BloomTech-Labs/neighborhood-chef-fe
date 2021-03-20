@@ -18,7 +18,7 @@ const EventImageUpload = ({ avatar, values, setPhoto, title }) => {
   let photo;
 
   if (values && thisURL === 'create-event') {
-    photo = avatar !== 'null' && avatar !== null ? avatar : chooseDefaultPicture();
+    photo = avatar !== 'null' && avatar !== null ? avatar : chooseDefaultPicture(values.title.charAt(0));
   } else if (avatar) photo = avatar;
 
   const handleChange = (e) => {

@@ -37,7 +37,9 @@ export default function TimeInputs({ errors, setValues, values, validate }) {
           <MenuItem value=""></MenuItem>
           {time.militaryTimes &&
             time.militaryTimes.map((mTime, index) => (
-              <MenuItem value={mTime}>{time.normalTimes[index]}</MenuItem>
+              <MenuItem key={index} value={mTime}>
+                {time.normalTimes[index]}
+              </MenuItem>
             ))}
         </Select>
       </div>
@@ -68,7 +70,9 @@ export default function TimeInputs({ errors, setValues, values, validate }) {
           <MenuItem value=""></MenuItem>
           {time.militaryTimes &&
             time.militaryTimes.map((mTime, index) => (
-              <MenuItem value={mTime}>{time.normalTimes[index]}</MenuItem>
+              <MenuItem key={index} value={mTime}>
+                {time.normalTimes[index]}
+              </MenuItem>
             ))}
         </Select>
       </div>
