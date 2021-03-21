@@ -92,6 +92,9 @@ export const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case CREATE_EVENT_SUCCESS:
+      console.log(state.user.UserEvents.owned, payload.id);
+      const filteredEvents = state.user.UserEvents.owned.filter((event) => event.id !== payload.id);
+
       return {
         ...state,
         user: {
@@ -99,7 +102,7 @@ export const rootReducer = (state = initialState, { type, payload }) => {
           UserEvents: {
             ...state.user.UserEvents,
             owned: [
-              ...state.user.UserEvents.owned,
+              ...filteredEvents,
               {
                 ...payload,
                 User: {

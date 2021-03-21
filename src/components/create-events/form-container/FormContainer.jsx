@@ -13,32 +13,41 @@ import { formContainerStyles } from './FormContainer.styles';
 import { print } from 'graphql';
 import { CREATE_EVENT } from '../../../graphql/events/event-mutations';
 import { axiosWithAuth } from '../../../utilities/axiosWithAuth';
-
+import jwtdecode from 'jwt-decode';
 import useForm2 from '../../../hooks/useForm.js';
 import * as yup from 'yup';
 
-const FormContainer = () => {
+const FormContainer = (props) => {
   const styles = formContainerStyles();
   const user = useSelector((state) => state.user);
   const [stepper, setStepper] = useState(1);
+  const [initialValues, setInitialValues] = useState({
+    title: '',
+    description: '',
+    address: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    category: '',
+    latitude: '',
+    longitude: '',
+    hashtags: [],
+    modifiers: [],
+    allergenWarnings: [],
+    dietaryWarnings: [],
+    photo: null,
+  });
+  const [loadedFlag, flag] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (window.location.pathname.split('/')[2]) {
+      setInitialValues(jwtdecode(window.location.pathname.split('/')[2]));
+    }
+  }, []);
 
   const { values, setValues, validate, errors } = useForm2(
-    {
-      title: '',
-      description: '',
-      address: '',
-      date: '',
-      startTime: '',
-      endTime: '',
-      category: '',
-      latitude: '',
-      longitude: '',
-      hashtags: [],
-      modifiers: [],
-      allergenWarnings: [],
-      dietaryWarnings: [],
-      photo: null,
-    },
+    initialValues,
     yup.object().shape({
       title: yup.string().required("'Title' is a required field"),
       description: yup.string().required("'Description' is a required field"),
@@ -54,6 +63,17 @@ const FormContainer = () => {
     })
   );
 
+  useEffect(() => {
+    setValues(initialValues);
+  }, [initialValues]);
+
+  useEffect(() => {
+    if ((loadedFlag === 0 && values.title !== '') || !window.location.pathname.split('/')[2]) {
+      flag(1);
+      setLoaded(true);
+    }
+  }, [values]);
+
   const dispatch = useDispatch();
 
   const resetModifiers = () => {
@@ -65,6 +85,11 @@ const FormContainer = () => {
 
     const requestValues = { ...values };
     delete requestValues.date;
+    delete requestValues.iat;
+
+    if (requestValues.id) {
+      requestValues.id = Number(requestValues.id);
+    }
 
     axiosWithAuth()({
       url: `${process.env.REACT_APP_BASE_URL}/graphql`,
@@ -88,13 +113,13 @@ const FormContainer = () => {
           createEventSuccess({
             ...requestValues,
             id: res.data.data.inputEvent.id,
-            createDateTime: new Date().toISOString(),
+            createDateTime: Date.now().toString(),
             startTime: new Date(`${values.date} ${values.startTime}`).getTime(),
             endTime: values.endTime ? new Date(`${values.date} ${values.endTime}`).getTime() : null,
             status: 'UNDECIDED',
           })
         );
-        setValues({ ...values, id: res.data.data.inputEvent.id });
+        setValues({ ...values, id: res.data.data.inputEvent.id, createDateTime: Date.now().toString() });
         setStepper(4);
       })
       .catch((err) => {
@@ -111,23 +136,27 @@ const FormContainer = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      {stepper === 1 && (
-        <FormPageOne
-          setStepper={setStepper}
-          values={values}
-          setValues={setValues}
-          validate={validate}
-          errors={errors}
-        />
-      )}
-      {stepper === 2 && <FormPageTwo setStepper={setStepper} values={values} setValues={setValues} />}
-      {stepper === 3 && (
-        <FormPageThree
-          values={values}
-          setValues={setValues}
-          setStepper={setStepper}
-          handleSubmit={handleSubmit}
-        />
+      {loaded && (
+        <>
+          {stepper === 1 && (
+            <FormPageOne
+              setStepper={setStepper}
+              values={values}
+              setValues={setValues}
+              validate={validate}
+              errors={errors}
+            />
+          )}
+          {stepper === 2 && <FormPageTwo setStepper={setStepper} values={values} setValues={setValues} />}
+          {stepper === 3 && (
+            <FormPageThree
+              values={values}
+              setValues={setValues}
+              setStepper={setStepper}
+              handleSubmit={handleSubmit}
+            />
+          )}
+        </>
       )}
       {stepper === 4 && <FormPageFour values={values} />}
     </form>

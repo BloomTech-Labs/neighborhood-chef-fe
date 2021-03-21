@@ -29,6 +29,7 @@ export default function useForm2(defaultValues, schemaInput) {
         setErrors({});
         return true;
       } catch (err) {
+        console.log(err);
         const newErrors = {};
         err.inner.forEach((error) => {
           newErrors[error.path] = error.errors;

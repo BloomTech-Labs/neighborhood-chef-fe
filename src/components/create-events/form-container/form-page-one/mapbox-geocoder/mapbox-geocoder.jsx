@@ -3,6 +3,7 @@ import { formPageOneStyles } from './../FormPageOne.styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { ErrorMessage } from '@hookform/error-message';
 import MapboxAddressSearch from './mapbox-address-search';
+import { forceUpdate } from '../../../../../utilities/actions';
 
 function MapboxGeocoder({ errors, setValues, values, validate }) {
   const styles = formPageOneStyles();

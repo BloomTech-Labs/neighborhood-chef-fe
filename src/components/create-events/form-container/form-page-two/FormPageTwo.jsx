@@ -50,16 +50,24 @@ const FormPageTwo = (props) => {
         <div>
           <Typography className={styles.modifierLabel}>Pick modifiers for your event.</Typography>
           <div className={styles.modifierContainer}>
-            {modifierData.map((modifier) => {
-              return (
-                <Modifier
-                  key={modifier.id}
-                  modifier={modifier}
-                  values={props.values}
-                  setValues={props.setValues}
-                />
-              );
-            })}
+            {modifierData
+              .map((modifier) => {
+                if (props.values.modifiers.includes(modifier.title)) {
+                  return { ...modifier, active: true };
+                } else {
+                  return modifier;
+                }
+              })
+              .map((modifier) => {
+                return (
+                  <Modifier
+                    key={modifier.id}
+                    modifier={modifier}
+                    values={props.values}
+                    setValues={props.setValues}
+                  />
+                );
+              })}
           </div>
         </div>
         <div className={styles.pointer} onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}>
